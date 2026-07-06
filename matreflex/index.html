@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>MatRefleks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F0E9; --surface:#FFFFFF; --ink:#23211C; --ink-soft:#6F6B62; --ink-faint:#9C988E;
+    --line:#E6E2D9; --green:#1C5C48; --green-soft:#E5EFE9; --green-ink:#134034;
+    --amber:#A9700F; --amber-soft:#F6ECD5; --gold:#C8971E;
+    --butter:#E7C25C; --moss:#BDB25E; --palm:#647550; --guava:#F088A2;
+    --sunset:#E59A70; --sangria:#DE5F53; --seabreeze:#E5E9EB; --lagoon:#7FB0AA; --odyssey:#2E6480;
+    --shadow-sm:0 1px 2px rgba(31,28,22,.05);
+    --shadow:0 2px 6px rgba(31,28,22,.05), 0 14px 34px rgba(31,28,22,.08);
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:'Inter',system-ui,sans-serif; color:var(--ink); background:#DFDCD3;
+    display:flex; align-items:center; justify-content:center; min-height:100dvh; padding:22px; -webkit-font-smoothing:antialiased;}
+  .phone{width:100%; max-width:390px; height:min(824px,94dvh); background:var(--paper); border-radius:34px;
+    box-shadow:var(--shadow); overflow:hidden; position:relative; display:flex; flex-direction:column; border:1px solid rgba(31,28,22,.06);}
+  .screens{flex:1; position:relative; overflow:hidden}
+  .screen{position:absolute; inset:0; overflow-y:auto; padding:24px 44px 18px 22px; opacity:0; pointer-events:none;
+    transition:opacity .35s var(--ease); display:flex; flex-direction:column}
+  .screen.active{opacity:1; pointer-events:auto}
+  .screen::-webkit-scrollbar{width:0}
+
+  h1{font-family:'Fraunces',serif; font-weight:500; font-size:26px; letter-spacing:-.01em; line-height:1.22}
+  .eyebrow{font-size:12px; letter-spacing:.05em; color:var(--amber); font-weight:500; text-transform:uppercase}
+  .muted{color:var(--ink-soft)} .sub{font-size:14.5px; line-height:1.55; color:var(--ink-soft)}
+  .sec-title{font-size:12px; letter-spacing:.05em; color:var(--ink-faint); text-transform:uppercase; font-weight:600; margin:22px 4px 10px}
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow-sm)}
+  .btn{font-family:'Inter'; font-weight:500; font-size:16px; color:#fff; background:var(--green); border:none; border-radius:14px;
+    padding:15px; width:100%; cursor:pointer; box-shadow:var(--shadow-sm); transition:transform .15s, opacity .4s; min-height:52px}
+  .btn:active{transform:scale(.985)}
+  .btn.ghost{background:transparent; color:var(--green); border:1px solid var(--line); box-shadow:none}
+  .btn.sm{font-size:14px; padding:12px; min-height:46px}
+
+  /* home */
+  .hero{background:var(--green); color:#fff; border-radius:20px; padding:20px; position:relative; overflow:hidden; box-shadow:var(--shadow)}
+  .hero .k{font-size:12px; letter-spacing:.06em; text-transform:uppercase; opacity:.65}
+  .hero h2{font-family:'Fraunces',serif; font-weight:500; font-size:23px; margin:6px 0 4px; line-height:1.2}
+  .hero p{font-size:13.5px; opacity:.82; line-height:1.5}
+  .hero .go{margin-top:16px; background:#fff; color:var(--green-ink); border:none; border-radius:13px; padding:13px; width:100%;
+    font-family:'Inter'; font-weight:600; font-size:15px; cursor:pointer; transition:transform .15s}
+  .hero .go:active{transform:scale(.98)}
+  .hero .ring{position:absolute; right:-30px; top:-30px; width:120px; height:120px; border-radius:50%; border:14px solid rgba(255,255,255,.10)}
+  .refresh{display:flex; align-items:center; gap:12px; padding:14px 16px; margin-top:12px; cursor:pointer}
+  .refresh .rdot{width:34px; height:34px; border-radius:10px; background:var(--amber-soft); color:var(--amber);
+    display:flex; align-items:center; justify-content:center; font-family:'Fraunces'; font-size:17px; flex:none}
+  .refresh .rt{flex:1} .refresh .rt b{font-size:14px; font-weight:600} .refresh .rt span{font-size:12.5px; color:var(--ink-soft)}
+  .refresh .rgo{font-size:13px; color:var(--green); font-weight:500}
+  .pillars{display:flex; gap:10px; margin-top:12px}
+  .pill{flex:1; padding:14px 12px; text-align:center; cursor:pointer; transition:transform .15s}
+  .pill:active{transform:scale(.97)} .pill .pn{font-size:13px; font-weight:600; margin-bottom:8px}
+  .pmeter{height:5px; background:var(--line); border-radius:99px; overflow:hidden}
+  .pmeter>i{display:block; height:100%; background:var(--green); border-radius:99px}
+
+  /* skills */
+  .pillar-h{display:flex; align-items:baseline; gap:8px; margin:22px 4px 10px}
+  .pillar-h .ph{font-family:'Fraunces'; font-weight:500; font-size:18px}
+  .pillar-h .pd{font-size:12px; color:var(--ink-faint)}
+  .srow{display:flex; align-items:center; gap:13px; padding:14px 16px; margin-bottom:8px; cursor:pointer; transition:transform .15s}
+  .srow:active{transform:scale(.99)}
+  .srow .ic{width:38px; height:38px; border-radius:11px; background:var(--green-soft); color:var(--green);
+    display:flex; align-items:center; justify-content:center; font-family:'Fraunces'; font-size:16px; flex:none}
+  .srow.lock .ic{background:#EFEDE6; color:var(--ink-faint)}
+  .srow .st{flex:1} .srow .st b{font-size:14.5px; font-weight:600; display:block} .srow .st span{font-size:12.5px; color:var(--ink-soft)}
+  .srow .chev{color:var(--ink-faint); font-size:18px}
+  .states{display:flex; gap:5px; margin-top:5px}
+  .sdot{width:6px; height:6px; border-radius:50%; background:var(--line)}
+  .sdot.on{background:var(--green)} .sdot.fresh{background:var(--amber)}
+
+  /* detail */
+  .back{display:inline-flex; align-items:center; gap:6px; font-size:14px; color:var(--ink-soft); background:none; border:none;
+    cursor:pointer; margin-bottom:14px; font-family:'Inter'}
+  .dhead p{font-size:14px; color:var(--ink-soft); line-height:1.5; margin-top:4px}
+  .statebar{display:flex; gap:10px; margin:16px 0}
+  .stat{flex:1; padding:12px 14px}
+  .stat .sl{font-size:11px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); font-weight:600}
+  .stat .sv{font-family:'Fraunces'; font-size:19px; margin-top:3px}
+  .stat.master .sv{color:var(--green)} .stat.fresh .sv{color:var(--amber)}
+  .lrow{display:flex; align-items:center; gap:13px; padding:15px 16px; margin-bottom:9px; cursor:pointer; transition:transform .15s}
+  .lrow:active{transform:scale(.99)}
+  .lrow .ln{width:30px; height:30px; border-radius:9px; background:var(--paper); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; color:var(--green); flex:none}
+  .lrow .lt{flex:1} .lrow .lt b{font-size:14px; font-weight:600; display:block} .lrow .lt span{font-size:12.5px; color:var(--ink-soft)}
+  .lrow.primary{background:var(--green); color:#fff; border:none}
+  .lrow.primary .lt span{color:rgba(255,255,255,.8)} .lrow.primary .ln{background:rgba(255,255,255,.15); border:none; color:#fff}
+  .guidebox{padding:16px; margin-top:4px}
+  .guidebox .gt{font-size:13.5px; line-height:1.6; color:var(--ink)}
+  .guidebox .gt b{color:var(--green)} .guidebox .gt .amb{color:var(--amber); font-weight:600}
+  .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+  .refchip{font-family:'Fraunces'; font-size:16px; padding:7px 13px; border-radius:11px; border:1px solid var(--line); background:var(--paper)}
+  .refchip.good{border-color:#CFE3D8; background:var(--green-soft); color:var(--green-ink)}
+  .refchip.bad{border-color:#EAD9AE; background:var(--amber-soft); color:var(--amber); text-decoration:line-through; opacity:.8}
+
+  /* flashcard */
+  .fcard{margin:18px auto; width:100%; max-width:280px; height:190px; perspective:1200px; cursor:pointer}
+  .fcinner{position:relative; width:100%; height:100%; transform-style:preserve-3d; transition:transform .6s var(--ease)}
+  .fcard.flip .fcinner{transform:rotateY(180deg)}
+  .fcface{position:absolute; inset:0; backface-visibility:hidden; border-radius:20px; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; box-shadow:var(--shadow)}
+  .fcfront{background:var(--surface); border:1px solid var(--line)}
+  .fcfront .q{font-family:'Fraunces'; font-size:50px; color:var(--ink)} .fcfront .h{position:absolute; bottom:16px; font-size:12px; color:var(--ink-faint)}
+  .fcback{background:var(--green); color:#fff; transform:rotateY(180deg)} .fcback .a{font-family:'Fraunces'; font-size:50px}
+  .fcbtns{display:flex; gap:10px; margin-top:2px}
+  .fcbtn{flex:1; padding:13px; border-radius:13px; border:1px solid var(--line); background:var(--surface); font-family:'Inter';
+    font-weight:500; font-size:14px; cursor:pointer; transition:transform .15s}
+  .fcbtn:active{transform:scale(.98)} .fcbtn.hard{color:var(--amber)} .fcbtn.easy{color:var(--green)}
+  .fcprog{display:flex; gap:5px; justify-content:center; margin-top:14px}
+  .fp{width:22px; height:5px; border-radius:99px; background:var(--line)} .fp.done{background:var(--green)} .fp.on{background:var(--amber)}
+
+  /* toolbox */
+  .tgrid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px}
+  .tool{perspective:1000px; height:150px; cursor:pointer}
+  .tinner{position:relative; width:100%; height:100%; transform-style:preserve-3d; transition:transform .6s var(--ease)}
+  .tool.flip .tinner{transform:rotateY(180deg)}
+  .tface{position:absolute; inset:0; backface-visibility:hidden; border-radius:15px; padding:14px; display:flex; flex-direction:column}
+  .tfront{background:var(--green); color:#fff; box-shadow:var(--shadow-sm)}
+  .tfront .tl{font-size:10px; letter-spacing:.12em; text-transform:uppercase; opacity:.65}
+  .tfront .tn{font-family:'Fraunces'; font-size:18px; font-weight:500; margin-top:auto; line-height:1.15}
+  .tfront .tg{position:absolute; right:12px; top:10px; font-family:'Fraunces'; font-size:22px; color:var(--gold)}
+  .tback{background:var(--surface); border:1px solid var(--line); transform:rotateY(180deg); font-size:11px; line-height:1.35}
+  .tback .r{padding:4px 0; border-bottom:1px solid var(--line)} .tback .r:last-child{border:none}
+  .tback .r b{color:var(--green)} .tback .r.bad b{color:var(--amber)}
+  .tlocked{background:#EFEDE6; border:1px dashed #D8D4C9; border-radius:15px; height:150px; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; text-align:center; padding:14px; color:var(--ink-faint)}
+  .tlocked .lk{font-size:20px; margin-bottom:6px} .tlocked b{font-size:13px; color:var(--ink-soft)} .tlocked span{font-size:11px; margin-top:3px}
+
+  /* progress */
+  .bigstat{padding:20px; text-align:center; margin-top:14px}
+  .bigstat .bl{font-size:12px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); font-weight:600}
+  .bigstat .bv{font-family:'Fraunces'; font-size:44px; color:var(--green); margin:6px 0 2px; line-height:1}
+  .bigstat .bd{font-size:13px; color:var(--ink-soft)}
+  .pskill{padding:14px 16px; margin-bottom:8px}
+  .pskill .pn{font-size:14px; font-weight:600; margin-bottom:9px; display:flex; justify-content:space-between}
+  .pskill .pn span{font-size:12px; font-weight:400; color:var(--ink-soft)}
+  .twobar{display:flex; gap:10px} .tb{flex:1}
+  .tb .tbl{font-size:10.5px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:4px; font-weight:600}
+  .tb .bar{height:6px; background:var(--line); border-radius:99px; overflow:hidden} .tb .bar>i{display:block; height:100%; border-radius:99px}
+  .tb.master .bar>i{background:var(--green)} .tb.fresh .bar>i{background:var(--amber)}
+  .ach{display:flex; align-items:center; gap:12px; padding:13px 16px; margin-bottom:8px}
+  .ach .ai{width:32px; height:32px; border-radius:9px; background:var(--green-soft); color:var(--green);
+    display:flex; align-items:center; justify-content:center; font-size:15px; flex:none}
+  .ach .at b{font-size:13.5px; font-weight:600; display:block} .ach .at span{font-size:12px; color:var(--ink-soft)}
+
+  /* session */
+  .shead{display:flex; align-items:center; gap:11px; margin-bottom:14px}
+  .shead .exit{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:var(--surface);
+    color:var(--ink-soft); font-size:18px; cursor:pointer; display:flex;align-items:center;justify-content:center; flex:none}
+  .shead .sh-title{display:flex; flex-direction:column; line-height:1.2}
+  .shead .sh-k{font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--amber); font-weight:600}
+  .shead .sh-n{font-family:'Fraunces'; font-size:17px; font-weight:500; color:var(--ink)}
+  .dots{display:flex; gap:6px; margin-bottom:4px}
+  .dot{flex:1; height:5px; border-radius:99px; background:var(--line); transition:.4s}
+  .dot.on{background:var(--amber)} .dot.done{background:var(--green)}
+  .center{flex:1; display:flex; flex-direction:column; justify-content:center; gap:20px; transition:opacity .3s var(--ease)}
+  .eqwrap{display:flex; align-items:center; justify-content:center; padding:0 8px; min-height:90px}
+  .eqline{font-family:'Fraunces',serif; font-weight:500; font-size:clamp(23px,7vw,31px); letter-spacing:-.02em;
+    display:flex; align-items:center; justify-content:center; flex-wrap:nowrap; gap:6px; color:var(--ink); white-space:nowrap; max-width:100%}
+  .eqline .op{color:var(--ink-soft); font-weight:400}
+  .cell{display:inline-block; text-align:center; transition:opacity .3s var(--ease)}
+  .hcell{min-width:54px; text-align:center; padding:4px 8px; border-radius:12px; border:1px solid transparent;
+    transition:opacity .2s var(--ease), background .3s, border-color .3s}
+  .hcell.tapme{background:var(--amber-soft); border-color:#E6D3A5; cursor:pointer}
+  .hcell.friendly{color:var(--green)}
+  .trans{display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border-radius:13px; border:1px solid transparent;
+    transition:background .3s, border-color .3s, box-shadow .3s}
+  .trans.tapme{background:var(--amber-soft); border-color:#E6D3A5; cursor:pointer}
+  .fcell{min-width:50px; text-align:center; transition:opacity .3s var(--ease)}
+  .fcell.friendly{color:var(--green)}
+  #comp{width:0; opacity:0; color:var(--amber); font-weight:500}
+  #eq{width:0; opacity:0} #tR{width:0; opacity:0; color:var(--green)}
+  .pulse{animation:pulse 1.5s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(169,112,15,0)}50%{box-shadow:0 0 0 7px rgba(169,112,15,.13)}}
+  .guide{background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--green); border-radius:12px;
+    padding:14px 16px; font-size:14px; line-height:1.55; color:var(--ink); height:84px; display:flex; align-items:center;
+    opacity:0; transition:opacity .35s var(--ease)}
+  .guide.show{opacity:1} .guide #gtext{transition:opacity .3s var(--ease)}
+  .guide b{color:var(--green);font-weight:600} .guide .amb{color:var(--amber);font-weight:600}
+  .hinttap{font-size:12px; color:var(--ink-faint); text-align:center; height:16px; opacity:0; transition:opacity .3s; margin-top:-8px}
+  .hinttap.show{opacity:1}
+  .footer{min-height:56px; display:flex; align-items:center}
+  .cevap{width:100%; opacity:0; transition:opacity .35s; pointer-events:none} .cevap.show{opacity:1; pointer-events:auto}
+  .report{width:100%; display:flex; gap:10px; opacity:0; transition:opacity .35s; pointer-events:none} .report.show{opacity:1; pointer-events:auto}
+  .rbtn{flex:1; padding:14px 10px; border-radius:13px; border:1px solid var(--line); background:var(--surface);
+    font-family:'Inter'; font-weight:500; font-size:14.5px; cursor:pointer; transition:transform .15s}
+  .rbtn:active{transform:scale(.98)} .rbtn.known{color:var(--green); border-color:#CFE3D8; background:var(--green-soft)} .rbtn.again{color:var(--amber)}
+  .preview{display:flex; gap:10px; margin:22px 0}
+  .pv{flex:1; padding:14px 10px; text-align:center; background:var(--surface); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow-sm)}
+  .pv .pn{font-family:'Fraunces'; font-size:20px; color:var(--green)} .pv .pl{font-size:11px; color:var(--ink-soft); margin-top:4px}
+  .donewrap{flex:1; display:flex; flex-direction:column; justify-content:center}
+  .bigcheck{width:56px; height:56px; border-radius:50%; background:var(--green-soft); color:var(--green);
+    display:flex; align-items:center; justify-content:center; font-size:26px; margin-bottom:18px}
+  .donestat{display:flex; gap:10px; margin:18px 0}
+  .ds{flex:1; padding:14px; text-align:center; background:var(--surface); border:1px solid var(--line); border-radius:14px}
+  .ds .dv{font-family:'Fraunces'; font-size:22px; color:var(--green)} .ds .dl{font-size:11.5px; color:var(--ink-soft); margin-top:3px}
+
+  /* nav */
+  .nav{flex:none; display:flex; background:var(--surface); border-top:1px solid var(--line); padding:8px 6px calc(8px + env(safe-area-inset-bottom))}
+  .navitem{flex:1; background:none; border:none; cursor:pointer; padding:6px 4px; display:flex; flex-direction:column;
+    align-items:center; gap:4px; color:var(--ink-faint); font-family:'Inter'; font-size:10.5px; transition:color .2s}
+  .navitem svg{width:23px; height:23px; stroke:currentColor; stroke-width:1.7; fill:none; stroke-linecap:round; stroke-linejoin:round}
+  .navitem.on{color:var(--green)}
+
+  .tool2{background:var(--green); color:#fff; border-radius:15px; padding:14px; height:118px; display:flex; flex-direction:column;
+    cursor:pointer; box-shadow:var(--shadow-sm); position:relative; transition:transform .15s}
+  .tool2:active{transform:scale(.98)}
+  .tool2 .tg2{position:absolute; right:12px; top:10px; font-family:'Fraunces'; font-size:23px; color:var(--gold)}
+  .tool2 .tk{font-size:10px; letter-spacing:.12em; text-transform:uppercase; opacity:.65}
+  .tool2 .tn2{font-family:'Fraunces'; font-size:17px; font-weight:500; margin-top:auto; line-height:1.15}
+  .tool2 .tmore{font-size:12px; opacity:.75; margin-top:6px}
+  .twocol{display:flex; gap:10px}
+  .tcond{flex:1; padding:12px 14px}
+  .tcond .ch{font-size:11px; letter-spacing:.04em; text-transform:uppercase; font-weight:600; margin-bottom:5px}
+  .tcond.good .ch{color:var(--green)} .tcond.bad .ch{color:var(--amber)}
+  .tcond .cb{font-size:12.5px; line-height:1.45; color:var(--ink-soft)}
+  .exrow{display:flex; align-items:baseline; gap:12px; padding:12px 14px; margin-bottom:8px}
+  .exq{font-family:'Fraunces'; font-size:16px; color:var(--ink); white-space:nowrap}
+  .exw{font-family:'Fraunces'; font-size:14px; color:var(--green); line-height:1.35}
+  .tcond .cx{margin-top:7px; font-family:'Fraunces'; font-size:13px}
+  .tcond.good .cx{color:var(--green)} .tcond.bad .cx{color:var(--amber)}
+  .drillbox{padding:16px}
+  .drill-q{font-family:'Fraunces'; font-size:30px; text-align:center; color:var(--ink); margin:4px 0 12px}
+  .drill-ask{font-size:13.5px; color:var(--ink-soft); text-align:center; margin-bottom:12px}
+  .drill-btns{display:flex; gap:10px}
+  .drill-fb{font-size:13.5px; line-height:1.5; margin-top:12px; padding:12px 14px; border-radius:12px}
+  .drill-fb.good{background:var(--green-soft); color:var(--green-ink)}
+  .drill-fb.bad{background:var(--amber-soft); color:var(--amber)}
+  .drill-fb b{font-weight:600}
+  .memlist{display:grid; grid-template-columns:repeat(3,1fr); gap:8px}
+  .memcell{background:var(--surface); border:1px solid var(--line); border-radius:11px; padding:9px 6px; text-align:center}
+  .memcell .mq{font-family:'Fraunces'; font-size:14px; color:var(--ink-soft); display:block}
+  .memcell .ma{font-family:'Fraunces'; font-size:18px; color:var(--green); display:block; margin-top:2px}
+  .memmodes{display:flex; flex-direction:column; gap:9px}
+  .memmode{display:flex; align-items:center; gap:13px; padding:14px 16px; background:var(--surface); border:1px solid var(--line); border-radius:14px; cursor:pointer; box-shadow:var(--shadow-sm); transition:transform .15s}
+  .memmode:active{transform:scale(.99)}
+  .memmode .mi{width:36px;height:36px;border-radius:10px;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:16px;flex:none}
+  .memmode .mt b{font-size:14.5px;font-weight:600;display:block} .memmode .mt span{font-size:12.5px;color:var(--ink-soft)}
+  .gprompt{font-family:'Fraunces'; font-size:clamp(30px,10vw,46px); text-align:center; color:var(--ink)}
+  .gsub{font-size:14px; color:var(--ink-soft); text-align:center; margin:8px 0 22px}
+  .gopts{display:flex; gap:12px}
+  .gopt{flex:1; padding:22px 10px; border-radius:15px; border:1px solid var(--line); background:var(--surface); font-family:'Fraunces'; font-size:26px; color:var(--ink); cursor:pointer; transition:transform .15s, background .2s, border-color .2s}
+  .gopt:active{transform:scale(.98)}
+  .gopt.right{background:var(--green-soft); border-color:#CFE3D8; color:var(--green-ink)}
+  .gopt.wrong{background:var(--amber-soft); border-color:#EAD9AE; color:var(--amber)}
+  .gfb{text-align:center; font-size:14px; margin-top:16px; min-height:20px; color:var(--ink-soft)}
+  .mtans{font-family:'Fraunces'; font-size:40px; text-align:center; color:var(--ink-faint); min-height:50px; letter-spacing:.02em; margin-top:10px}
+  .mtans.right{color:var(--green)} .mtans.wrong{color:var(--amber)}
+  .mtpanel{margin-top:14px; opacity:0; transition:opacity .3s}
+  .mtpanel.show{opacity:1}
+  .pcard{background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--green); border-radius:12px; padding:13px 15px; font-size:13.5px; line-height:1.6; color:var(--ink)}
+  .pcard .pk{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:6px}
+  .pcard b{color:var(--green); font-family:'Fraunces'; font-size:16px}
+  .pad{display:grid; grid-template-columns:repeat(3,1fr); gap:7px; margin-top:auto}
+  .padkey{padding:11px 0; border-radius:11px; border:1px solid var(--line); background:var(--surface); font-family:'Fraunces'; font-size:19px; color:var(--ink); cursor:pointer; transition:transform .1s}
+  .padkey:active{transform:scale(.96)}
+  .padkey.ok{background:var(--green); color:#fff; border:none; font-family:'Inter'; font-weight:600; font-size:15px}
+  .padkey.wide{font-family:'Inter'; font-size:14px; color:var(--ink-soft)}
+  .pcard.alt{border-left-color:var(--ink-faint)}
+  .pcard+.pcard{margin-top:8px}
+  .ppath{font-family:'Fraunces'; font-size:15px; color:var(--ink); margin-top:2px}
+  .pmeta{font-size:11.5px; color:var(--ink-faint); margin-top:6px}
+  .ftmethod{margin-top:20px; width:100%}
+  .ftm-label{font-size:11px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); font-weight:600; text-align:center; margin-bottom:9px}
+  .ftchips{display:flex; flex-wrap:wrap; gap:7px; justify-content:center}
+  .ftchip{padding:8px 12px; border-radius:11px; border:1px solid var(--line); background:var(--surface); font-family:'Inter'; font-size:12.5px; color:var(--ink-soft); cursor:pointer; transition:.15s}
+  .ftchip.sel{background:var(--green-soft); border-color:#CFE3D8; color:var(--green-ink); font-weight:500}
+  .rrow{display:flex; align-items:center; gap:10px; padding:13px 15px; margin-bottom:7px; cursor:pointer; background:var(--surface); border:1px solid var(--line); border-radius:13px}
+  .rq{font-family:'Fraunces'; font-size:17px; min-width:78px}
+  .rinfo{flex:1; display:flex; flex-direction:column; gap:2px; font-size:11.5px; color:var(--ink-soft)}
+  .rinfo .rf{color:var(--green)}
+  .rmark{font-size:17px; flex:none} .rmark.good{color:var(--green)} .rmark.soft{color:var(--amber)} .rmark.none{color:var(--ink-faint)}
+  .rdetail{padding:0 2px 10px}
+  .hhead{display:flex; align-items:flex-start; justify-content:space-between}
+  .hmenu{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);font-size:18px;cursor:pointer;flex:none;transition:transform .15s}
+  .hmenu:active{transform:scale(.95)}
+  .hstage{position:relative; flex:1; min-height:380px; margin-top:10px}
+  .hhint{position:absolute; top:4px; left:0; right:0; text-align:center; font-size:12px; color:var(--ink-faint); transition:opacity .3s; pointer-events:none}
+  .hcard{position:absolute; left:2px; right:2px; height:86px; border-radius:16px; padding:14px 18px; box-shadow:0 6px 18px rgba(31,28,22,.12); cursor:pointer; will-change:transform; transition:transform 320ms cubic-bezier(.32,1.25,.4,1)}
+  .hcard .ht{font-family:'Fraunces'; font-weight:500; font-size:18px; line-height:1.1}
+  .hcard .hs{font-size:12.5px; margin-top:7px; transition:opacity .25s}
+  .rail{position:absolute; right:0; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:7px; z-index:60}
+  .tab{writing-mode:vertical-rl; text-orientation:mixed; padding:12px 7px; background:var(--surface); border:1px solid var(--line); border-right:none; border-radius:12px 0 0 12px; font-family:'Inter'; font-weight:500; font-size:11.5px; letter-spacing:.02em; color:var(--ink-soft); cursor:pointer; box-shadow:-3px 2px 10px rgba(31,28,22,.07); transition:background .2s, color .2s}
+  .tab.on{background:var(--green); color:#fff; border-color:var(--green)}
+  .chrome-menu{position:absolute; top:14px; right:14px; width:38px; height:38px; border-radius:11px; border:1px solid var(--line); background:var(--surface); color:var(--ink-soft); font-size:17px; cursor:pointer; z-index:60; box-shadow:var(--shadow-sm); transition:transform .15s}
+  .chrome-menu:active{transform:scale(.95)}
+  .homehead{margin-bottom:14px}
+  .progsum{background:linear-gradient(135deg,#1C5C48,#2E7359); color:#fff; border-radius:20px; padding:18px 20px; box-shadow:var(--shadow); cursor:pointer; position:relative; overflow:hidden}
+  .progsum .pk{font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; opacity:.72}
+  .progsum h2{font-family:'Fraunces'; font-weight:500; font-size:22px; margin:5px 0 14px; line-height:1.2}
+  .progsum .pbars{display:flex; flex-direction:column; gap:9px}
+  .pbar{display:flex; align-items:center; gap:10px}
+  .pbar .pl{font-size:12px; width:76px; opacity:.88; flex:none}
+  .pbar .pt{flex:1; height:7px; background:rgba(255,255,255,.18); border-radius:99px; overflow:hidden}
+  .pbar .pt>i{display:block; height:100%; background:#E7C86A; border-radius:99px}
+  .progsum .pmore{position:absolute; top:16px; right:18px; font-size:12px; opacity:.82}
+  .todaycta{display:flex; align-items:center; gap:14px; padding:15px 18px; margin-top:12px; background:var(--surface); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow-sm); cursor:pointer}
+  .todaycta .tct{flex:1}
+  .todaycta .tk{font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--amber); font-weight:600; display:block}
+  .todaycta .tct b{font-family:'Fraunces'; font-weight:500; font-size:17px; display:block; margin:2px 0}
+  .todaycta .ts{font-size:12.5px; color:var(--ink-soft)}
+  .todaycta .tgo{width:40px; height:40px; border-radius:50%; background:var(--green); color:#fff; display:flex; align-items:center; justify-content:center; flex:none}
+  .folders{margin-top:18px; display:flex; flex-direction:column; gap:10px}
+  .folder{background:var(--surface); border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:var(--shadow-sm)}
+  .fhead{display:flex; align-items:center; gap:13px; padding:15px 16px; cursor:pointer}
+  .fhead .ficon{width:40px; height:40px; border-radius:12px; background:var(--fc,#2F6E57); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fraunces'; font-size:18px; flex:none}
+  .fhead .ftext{flex:1} .fhead .ftext b{font-size:15px; font-weight:600; display:block} .fhead .ftext span{font-size:12.5px; color:var(--ink-soft)}
+  .fhead .fchev{color:var(--ink-faint); font-size:18px; transition:transform .3s}
+  .folder.open .fhead .fchev{transform:rotate(90deg)}
+  .fbody{max-height:0; overflow:hidden; opacity:0; transition:max-height .35s var(--ease), opacity .3s}
+  .folder.open .fbody{max-height:360px; opacity:1}
+  .fitem{display:flex; align-items:center; gap:11px; padding:12px 16px 12px 18px; margin:0 10px 8px; border-radius:12px; background:var(--paper); cursor:pointer; font-size:14px; transition:transform .15s}
+  .fitem:first-child{margin-top:2px} .fitem:active{transform:scale(.99)}
+  .fitem .fdot{width:6px;height:6px;border-radius:50%;background:var(--fc,#2F6E57);flex:none}
+  .chrome{position:absolute; top:12px; right:12px; display:flex; gap:8px; z-index:60}
+  .chrome-btn{width:36px;height:36px;border-radius:11px;border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);font-size:16px;cursor:pointer;box-shadow:var(--shadow-sm);transition:transform .15s}
+  .chrome-btn:active{transform:scale(.95)}
+  .pgrid{display:flex; align-items:center; gap:14px}
+  .pgtext{flex:1} .progsum .pgsub{font-size:12.5px; opacity:.8}
+  .pgrings{flex:none}
+  .ringwrap{position:relative; width:100%; display:flex; justify-content:center; margin:4px 0}
+  .rings svg{display:block}
+  .ringcenter{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center}
+  .rc-num{font-family:'Fraunces'; font-size:34px; color:var(--ink); display:block; line-height:1} .rc-num b{font-size:17px; color:var(--ink-soft); font-weight:500}
+  .rc-lbl{font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint)}
+  .ringlegend{display:flex; justify-content:center; gap:16px; margin:8px 0 2px; flex-wrap:wrap}
+  .lgd{display:flex; align-items:center; gap:6px; font-size:12.5px; color:var(--ink-soft)}
+  .lgd .ld{width:10px;height:10px;border-radius:50%} .lgd b{color:var(--ink); font-weight:600}
+  .suggest{padding:15px 16px; border-left:3px solid var(--sunset)}
+  .suggest .st{font-size:13.5px; line-height:1.55}
+  .suggest .sbtn{margin-top:10px; display:inline-block; font-size:13px; color:var(--green); font-weight:600; cursor:pointer}
+  .progtopics{display:flex; flex-direction:column; gap:8px}
+  .ptopic{background:var(--surface); border:1px solid var(--line); border-radius:14px; overflow:hidden}
+  .pthead{display:flex; align-items:center; gap:11px; padding:12px 14px; cursor:pointer}
+  .pthead .ptdot{width:12px;height:12px;border-radius:4px;flex:none}
+  .pthead .ptt{flex:1; font-size:14px; font-weight:600}
+  .pthead .ptpct{font-family:'Fraunces'; font-size:15px; color:var(--ink-soft)}
+  .ptbody{max-height:0; overflow:hidden; opacity:0; transition:max-height .35s var(--ease), opacity .3s; padding:0 14px}
+  .ptopic.open .ptbody{max-height:220px; opacity:1; padding:0 14px 14px}
+  .ptbar{margin-top:9px} .ptbar .ptl{font-size:10px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-faint); margin-bottom:4px}
+  .ptbar .ptt2{height:7px; background:var(--line); border-radius:99px; overflow:hidden} .ptbar .ptt2>i{display:block;height:100%;border-radius:99px}
+  .ptsug{margin-top:11px; font-size:12.5px; color:var(--ink-soft)} .ptsug .go{color:var(--green); font-weight:600; cursor:pointer}
+  .onboard{position:absolute; inset:0; background:var(--paper); z-index:200; display:none; flex-direction:column; padding:26px 24px 22px}
+  .onboard.show{display:flex}
+  .onb-skip{position:absolute; top:16px; right:16px; background:none; border:none; color:var(--ink-soft); font-size:14px; cursor:pointer; font-family:'Inter'}
+  .onb-body{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition:opacity .3s var(--ease)}
+  .onb-emblem{width:118px; height:118px; border-radius:32px; display:flex; align-items:center; justify-content:center; font-family:'Fraunces'; font-size:50px; margin-bottom:26px; box-shadow:var(--shadow-sm)}
+  .onb-eyebrow{font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--amber); font-weight:600; margin-bottom:8px}
+  .onb-title{font-family:'Fraunces'; font-weight:500; font-size:26px; line-height:1.22; margin-bottom:12px}
+  .onb-text{font-size:15px; line-height:1.6; color:var(--ink-soft); max-width:300px}
+  .onb-dots{display:flex; justify-content:center; gap:8px; margin-bottom:16px}
+  .onb-dot{width:8px; height:8px; border-radius:50%; background:var(--line); transition:.3s}
+  .onb-dot.on{background:var(--green); width:22px; border-radius:99px}
+  .segrow{display:flex; gap:8px; margin-top:6px}
+  .seg{flex:1; padding:12px 8px; border-radius:12px; border:1px solid var(--line); background:var(--surface); font-family:'Inter'; font-weight:500; font-size:13px; color:var(--ink-soft); cursor:pointer; transition:.15s}
+  .seg.on{background:var(--green-soft); border-color:#CFE3D8; color:var(--green-ink)}
+  .splash{position:absolute; inset:0; z-index:300; background:radial-gradient(120% 90% at 50% 32%, #F8F6F0, #EBE8DF); display:none; flex-direction:column; align-items:center; justify-content:center; transition:opacity .5s var(--ease)}
+  .splash.show{display:flex} .splash.out{opacity:0}
+  .splash-scene{position:relative; width:200px; height:200px; display:flex; align-items:center; justify-content:center}
+  .goo{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; filter:url(#gooflt)}
+  .drop{width:104px; height:104px; border-radius:38px; background:radial-gradient(115% 115% at 33% 24%, #FBB463, #EE7B2E 56%, #D9691F 100%); box-shadow:inset 0 -9px 18px rgba(150,58,0,.28), inset 0 9px 16px rgba(255,255,255,.32), 0 12px 30px rgba(216,105,31,.28); transform:translateY(-360px); animation:dropFall 1.8s linear forwards}
+  .sat{position:absolute; left:50%; top:50%; width:28px; height:28px; margin:-14px 0 0 -14px; border-radius:50%; background:#E8772C; opacity:0}
+  .splash.impact .sat{animation:sat 680ms var(--ease) forwards}
+  .splash.impact .sat2{animation-delay:30ms} .splash.impact .sat3{animation-delay:60ms}
+  .ripple{position:absolute; width:104px; height:104px; border-radius:50%; border:2px solid rgba(216,105,31,.4); opacity:0}
+  .splash.impact .ripple{animation:sripple 720ms var(--ease) forwards}
+  .sym-layer{position:absolute; left:50%; top:50%; width:92px; height:92px; margin:-46px 0 0 -46px; display:grid; grid-template-columns:1fr 1fr; place-items:center; pointer-events:none}
+  .sym-layer .op{font-family:'Fraunces'; font-weight:500; font-size:22px; color:#fff; opacity:0; transform:scale(0)}
+  .splash.impact .op{animation:opPop 420ms var(--ease) forwards}
+  .splash.impact .op.o2{animation-delay:80ms} .splash.impact .op.o3{animation-delay:160ms} .splash.impact .op.o4{animation-delay:240ms}
+  .splash-name{font-family:'Fraunces'; font-weight:500; font-size:34px; letter-spacing:.01em; color:var(--ink); margin-top:14px; opacity:0; transform:translateY(10px); transition:opacity .55s var(--ease), transform .55s var(--ease)}
+  .splash.named .splash-name{opacity:1; transform:none}
+  .splash-sub{font-size:13.5px; letter-spacing:.01em; color:var(--ink-soft); margin-top:9px; opacity:0; transition:opacity .5s}
+  .splash.subbed .splash-sub{opacity:1}
+  .splash-skip{position:absolute; bottom:24px; font-size:12px; color:var(--ink-faint); opacity:.55; cursor:pointer}
+  @keyframes dropFall{ 0%{transform:translateY(-360px) scaleX(.7) scaleY(1.4)} 40%{transform:translateY(-190px) scaleX(.82) scaleY(1.24)} 68%{transform:translateY(-30px) scaleX(.74) scaleY(1.34)} 78%{transform:translateY(18px) scaleX(1.42) scaleY(.6)} 85%{transform:translateY(-12px) scaleX(.8) scaleY(1.24)} 90%{transform:translateY(8px) scaleX(1.2) scaleY(.86)} 94%{transform:translateY(-4px) scaleX(.93) scaleY(1.08)} 97%{transform:translateY(2px) scaleX(1.04) scaleY(.97)} 100%{transform:translateY(0) scaleX(1) scaleY(1)} }
+  @keyframes sat{ 0%{opacity:0; transform:translate(0,0) scale(.5)} 20%{opacity:1} 60%{transform:translate(var(--sx),var(--sy)) scale(.7)} 100%{opacity:0; transform:translate(calc(var(--sx) * 1.2), calc(var(--sy) * 1.3 + 44px)) scale(.3)} }
+  @keyframes sripple{ 0%{opacity:.5; transform:scale(.7)} 100%{opacity:0; transform:scale(2.5)} }
+  @keyframes opPop{ 0%{opacity:0; transform:scale(0)} 60%{opacity:1; transform:scale(1.2)} 100%{opacity:1; transform:scale(1)} }
+  .linkrow{text-decoration:none; color:inherit}
+  @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important; animation:none!important}}
+  :focus-visible{outline:2px solid var(--green); outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="screens">
+
+    <!-- BUGÜN -->
+    <section class="screen active" id="home">
+      <div class="homehead"><div class="eyebrow">merhaba</div><h1 style="margin:4px 0 0">Bugün nasılsın?</h1></div>
+      <div class="progsum" onclick="show('progress')">
+        <div class="pmore">detay →</div>
+        <div class="pgrid">
+          <div class="pgtext"><div class="pk">durumun</div><h2>Gelişimin sürüyor</h2><span class="pgsub">üç yönde ilerliyorsun</span></div>
+          <div class="pgrings" id="progsumRings"></div>
+        </div>
+      </div>
+      <div class="todaycta" onclick="launchSession('ref')">
+        <div class="tct"><span class="tk">bugünün antrenmanı</span><b>Referans Sayılar</b><span class="ts">dört kısa soru, kafadan</span></div>
+        <div class="tgo">▶</div>
+      </div>
+      <div class="folders" id="folders">
+        <div class="folder" data-f="method" style="--fc:#D65A4E">
+          <div class="fhead" onclick="toggleFolder('method')"><div class="ficon">≈</div><div class="ftext"><b>Yöntemler</b><span>zoru kolaya çeviren yollar</span></div><div class="fchev">›</div></div>
+          <div class="fbody">
+            <div class="fitem" onclick="launchSession('ref')"><span class="fdot"></span>Referans Sayılar</div>
+            <div class="fitem" onclick="launchSession('double')"><span class="fdot"></span>İkile-Yarıla</div>
+            <div class="fitem" onclick="launchSession('twins')"><span class="fdot"></span>Onluk İkizler</div>
+            <div class="fitem" onclick="launchSession('eleven')"><span class="fdot"></span>Onbir Çarpımı</div>
+            <div class="fitem" onclick="launchSession('decomp')"><span class="fdot"></span>Ayrıştırma</div>
+            <div class="fitem" onclick="show('toolbox')"><span class="fdot"></span>Araç çantası</div>
+          </div>
+        </div>
+        <div class="folder" data-f="mem" style="--fc:#5E9B93">
+          <div class="fhead" onclick="toggleFolder('mem')"><div class="ficon">²</div><div class="ftext"><b>Hafıza</b><span>oyunla ezber</span></div><div class="fchev">›</div></div>
+          <div class="fbody">
+            <div class="fitem" onclick="openMem('squares')"><span class="fdot"></span>Kareler</div>
+            <div class="fitem" onclick="openMem('cubes')"><span class="fdot"></span>Küpler</div>
+          </div>
+        </div>
+        <div class="folder" data-f="test" style="--fc:#B0862C">
+          <div class="fhead" onclick="toggleFolder('test')"><div class="ficon">✦</div><div class="ftext"><b>Test</b><span>kendini dene, rapor al</span></div><div class="fchev">›</div></div>
+          <div class="fbody">
+            <div class="fitem" onclick="show('testhub')"><span class="fdot"></span>Karma test</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- YETENEKLER -->
+    <section class="screen" id="skills">
+      <h1>Yetenekler</h1>
+      <p class="sub" style="margin-top:4px">İstediğin yerden başlayabilirsin. En iyi yolu öneririz, ama karar senin.</p>
+
+      <div class="pillar-h"><span class="ph">Yöntemler</span><span class="pd">zoru kolaya çeviren düşünme yolları</span></div>
+      <div class="card srow" onclick="show('skillDetail')">
+        <div class="ic">≈</div><div class="st"><b>Referans Sayılar</b><span>zoru, dost bir sayıyla çözersin</span>
+          <div class="states"><i class="sdot on"></i><i class="sdot on"></i><i class="sdot on"></i><i class="sdot fresh"></i><i class="sdot"></i></div></div>
+        <div class="chev">›</div>
+      </div>
+      <div class="card srow" onclick="launchSession('double')">
+        <div class="ic">⇄</div><div class="st"><b>İkile-Yarıla</b><span>çarpımı kolaylaştıran ikili dönüşüm</span>
+          <div class="states"><i class="sdot on"></i><i class="sdot on"></i><i class="sdot"></i><i class="sdot"></i><i class="sdot"></i></div></div>
+        <div class="chev">›</div>
+      </div>
+      <div class="card srow" onclick="launchSession('twins')">
+        <div class="ic">◑</div><div class="st"><b>Onluk İkizler</b><span>birler 10'a tamamlanan çarpımlar</span>
+          <div class="states"><i class="sdot on"></i><i class="sdot"></i><i class="sdot"></i><i class="sdot"></i><i class="sdot"></i></div></div>
+        <div class="chev">›</div>
+      </div>
+      <div class="card srow" onclick="launchSession('eleven')">
+        <div class="ic">11</div><div class="st"><b>Onbir Çarpımı</b><span>11 ile çarpımda araya toplama</span>
+          <div class="states"><i class="sdot on"></i><i class="sdot"></i><i class="sdot"></i><i class="sdot"></i><i class="sdot"></i></div></div>
+        <div class="chev">›</div>
+      </div>
+      <div class="card srow lock">
+        <div class="ic">⁝</div><div class="st"><b>Ayrıştırma</b><span>henüz başlamadın</span></div><div class="chev">›</div>
+      </div>
+
+      <div class="pillar-h"><span class="ph">Hafıza</span><span class="pd">anında hatırlanan sayısal bilgi</span></div>
+      <div class="card srow" onclick="openMem('squares')">
+        <div class="ic">²</div><div class="st"><b>Kareler</b><span>1'den 25'e kadar · oyunla ezber</span>
+          <div class="states"><i class="sdot on"></i><i class="sdot on"></i><i class="sdot fresh"></i><i class="sdot"></i><i class="sdot"></i></div></div>
+        <div class="chev">›</div>
+      </div>
+      <div class="card srow" onclick="openMem('cubes')">
+        <div class="ic">³</div><div class="st"><b>Küpler</b><span>1'den 12'ye kadar</span></div><div class="chev">›</div>
+      </div>
+
+      <div class="pillar-h"><span class="ph">Refleks</span><span class="pd">düşünmeyi otomatiğe bağlayan kısa seriler</span></div>
+      <div class="card srow lock">
+        <div class="ic">⚡</div><div class="st"><b>Hızlı Seri</b><span>bir beceride ustalaşınca açılır</span></div><div class="chev">›</div>
+      </div>
+    </section>
+
+    <!-- REFERANS SAYILAR DETAY -->
+    <section class="screen" id="skillDetail">
+      <button class="back" onclick="show('home')">‹ Ana Sayfa</button>
+      <div class="dhead"><div class="eyebrow">yöntem</div><h1>Referans Sayılar</h1>
+        <p>Zor bir sayıyla boğuşmak yerine, ona yakın dost bir sayıyla çözersin; küçük farkı sonra telafi edersin.</p></div>
+      <div class="statebar">
+        <div class="card stat master"><div class="sl">Ustalık</div><div class="sv">İyi</div></div>
+        <div class="card stat fresh"><div class="sl">Form</div><div class="sv">Orta</div></div>
+      </div>
+      <div class="lrow primary" onclick="launchSession('ref')"><div class="ln">▶</div>
+        <div class="lt"><b>Antrenmana başlayalım</b><span>4 soruluk kısa seri</span></div></div>
+      <div class="sec-title">keşif</div>
+      <div class="card lrow" onclick="show('guideRef')"><div class="ln">?</div>
+        <div class="lt"><b>Rehber: hangi sayı iyi referans?</b><span>100, 50, 25… 99 neden güzel, 93 neden değil</span></div>
+        <div class="chev" style="margin-left:auto;color:var(--ink-faint)">›</div></div>
+      <div class="card lrow" onclick="show('guideRef')"><div class="ln">◎</div>
+        <div class="lt"><b>Nerede işine yarar</b><span>market, sınav, döviz, bahşiş</span></div>
+        <div class="chev" style="margin-left:auto;color:var(--ink-faint)">›</div></div>
+      <div class="sec-title">kontrol</div>
+      <div class="card lrow" onclick="startMethodTest('ref')"><div class="ln">✓</div>
+        <div class="lt"><b>Kendini dene</b><span>kısa ve kaygısız, yerini görürüz</span></div>
+        <div class="chev" style="margin-left:auto;color:var(--ink-faint)">›</div></div>
+    </section>
+
+    <!-- REHBER -->
+    <section class="screen" id="guideRef">
+      <button class="back" onclick="show('skillDetail')">‹ Referans Sayılar</button>
+      <div class="eyebrow">rehber</div><h1 style="margin:4px 0 14px">Hangi sayı iyi referans?</h1>
+      <div class="card guidebox">
+        <div class="gt">İyi bir referans, işlemi <b>kolaylaştıran</b> sayıdır: <b>yuvarlaktır</b> (100, 50, 10) ya da <b>bölmesi kolaydır</b> (25 = 100'ün çeyreği). Bir sayı referansa <span class='amb'>yakınsa</span> onu referans yapmak işini kısaltır.</div>
+        <div class="chips"><span class="refchip good">100</span><span class="refchip good">50</span><span class="refchip good">25</span><span class="refchip good">10</span></div>
+      </div>
+      <div class="sec-title">99 güzel, 93 değil. Neden?</div>
+      <div class="card guidebox">
+        <div class="gt"><span class='amb'>99</span>, 100'e yalnızca <b>1</b> uzakta, telafi çok küçük. <span class='amb'>93</span> ise 100'e 7 uzakta; telafi büyür, kafa yükü artar. Kural: referans <b>ne kadar yakınsa</b>, o kadar işe yarar.</div>
+        <div class="chips"><span class="refchip good">99 → 100 (−1)</span><span class="refchip bad">93 → 100 (−7)</span></div>
+      </div>
+      <div class="lrow primary" style="margin-top:16px" onclick="launchSession('ref')"><div class="ln">▶</div>
+        <div class="lt"><b>Deneyelim</b><span>öğrendiğini bir soruda görelim</span></div></div>
+    </section>
+
+    <!-- HAFIZA HUB -->
+    <section class="screen" id="memHub">
+      <button class="back" onclick="show('skills')">‹ Yetenekler</button>
+      <div class="eyebrow">hafıza · oyunla ezber</div>
+      <h1 id="memHubTitle" style="margin:4px 0 4px">Kareler</h1>
+      <p class="sub" id="memHubSub"></p>
+      <div class="sec-title">liste</div>
+      <div class="memlist" id="memList"></div>
+      <div class="sec-title">oyunlar</div>
+      <div class="memmodes">
+        <div class="memmode" onclick="startGame('choice')"><div class="mi">?</div><div class="mt"><b>Hangisi doğru?</b><span>sonucu iki şıktan seç</span></div></div>
+        <div class="memmode" onclick="startGame('reverse')"><div class="mi">↺</div><div class="mt"><b>Tersi</b><span>sonucu görüp hangi sayı olduğunu bul</span></div></div>
+        <div class="memmode" onclick="startGame('card')"><div class="mi">▦</div><div class="mt"><b>Kart</b><span>çevir, hatırla, işaretle</span></div></div>
+      </div>
+    </section>
+
+    <!-- HAFIZA OYUN -->
+    <section class="screen" id="memGame">
+      <div class="shead"><button class="exit" onclick="show('memHub')">‹</button>
+        <div class="sh-title"><span class="sh-k" id="gameKind"></span><span class="sh-n" id="gameSetName"></span></div></div>
+      <div class="dots" id="gDots"></div>
+      <div class="center"><div id="gameBody"></div></div>
+    </section>
+
+    <!-- ARAÇLAR -->
+    <section class="screen" id="toolbox">
+      <button class="back" onclick="show('home')">‹ Ana Sayfa</button>
+      <h1>Araç Çantası</h1>
+      <p class="sub" style="margin-top:4px">Keşfettiğin zihinsel araçlar. Her kart, kendin bulduğun bir yöntem.</p>
+      <div class="tgrid">
+        <div class="tool2" onclick="openTool('ref')"><span class="tk">yöntem</span><span class="tg2">≈</span><span class="tn2">Referans Sayılar</span><span class="tmore">detay ›</span></div>
+        <div class="tool2" onclick="openTool('double')"><span class="tk">yöntem</span><span class="tg2">⇄</span><span class="tn2">İkile-Yarıla</span><span class="tmore">detay ›</span></div>
+        <div class="tool2" onclick="openTool('twins')"><span class="tk">yöntem</span><span class="tg2">◑</span><span class="tn2">Onluk İkizler</span><span class="tmore">detay ›</span></div>
+        <div class="tool2" onclick="openTool('eleven')"><span class="tk">yöntem</span><span class="tg2">11</span><span class="tn2">Onbir Çarpımı</span><span class="tmore">detay ›</span></div>
+        <div class="tool2" onclick="openTool('decomp')"><span class="tk">yöntem</span><span class="tg2">⁝</span><span class="tn2">Ayrıştırma</span><span class="tmore">detay ›</span></div>
+      </div>
+    </section>
+
+    <!-- ARAÇ DETAY -->
+    <section class="screen" id="toolDetail">
+      <button class="back" onclick="show('toolbox')">‹ Araç Çantası</button>
+      <div id="toolBody"></div>
+    </section>
+
+    <!-- İLERLEME -->
+    <section class="screen" id="progress">
+      <button class="back" onclick="show('home')">‹ Ana Sayfa</button>
+      <div class="eyebrow">ilerleme</div><h1 style="margin:4px 0 10px">Nerede kaldın</h1>
+      <div class="ringwrap"><div class="rings" id="progRings"></div>
+        <div class="ringcenter"><span class="rc-num" id="rcNum">0%</span><span class="rc-lbl">genel</span></div></div>
+      <div class="ringlegend" id="ringLegend"></div>
+      <div class="sec-title">sırada ne var</div>
+      <div class="card suggest">
+        <div class="st" id="sugText"></div>
+        <span class="sbtn" id="sugBtn"></span>
+      </div>
+      <div class="sec-title">konu konu</div>
+      <div class="progtopics" id="progTopics"></div>
+    </section>
+
+    <!-- OTURUM: ÖĞRET -->
+    <section class="screen" id="sTeach">
+      <div class="shead"><button class="exit" onclick="show('home')">‹</button>
+        <div class="sh-title"><span class="sh-k">nasıl çalışır</span><span class="sh-n" id="teachName"></span></div></div>
+      <div class="center">
+        <div class="eqwrap"><div class="eqline" id="teachEq"></div></div>
+        <div class="guide show"><span id="teachGuide"></span></div>
+      </div>
+      <button class="btn" id="teachNext" onclick="teachAdvance()">Devam edelim</button>
+      <button class="btn ghost sm" style="margin-top:8px" onclick="startPractice()">Doğrudan pratiğe</button>
+    </section>
+
+    <!-- OTURUM: GİRİŞ -->
+    <section class="screen" id="sIntro">
+      <div class="shead"><button class="exit" onclick="show('home')">‹</button>
+        <div class="sh-title"><span class="sh-k">yöntem</span><span class="sh-n" id="introName"></span></div></div>
+      <h1 id="introH" style="margin-top:8px">Dört kısa soru, hepsi kafadan.</h1>
+      <p class="sub" id="introLine"></p>
+      <div class="preview"><div class="pv"><div class="pn">4</div><div class="pl">soru</div></div>
+        <div class="pv"><div class="pn">~3</div><div class="pl">dakika</div></div>
+        <div class="pv"><div class="pn">1</div><div class="pl">yöntem</div></div></div>
+      <div style="margin-top:auto"><button class="btn" onclick="beginSolve()">Başlayalım</button>
+        <button class="btn ghost sm" style="margin-top:8px" onclick="startMethodTest(curMethodKey)">Kendini dene (test)</button></div>
+    </section>
+
+    <!-- OTURUM: ÇÖZÜM -->
+    <section class="screen" id="sSolve">
+      <div class="shead"><button class="exit" onclick="show('home')">‹</button>
+        <div class="sh-title"><span class="sh-k">yöntem</span><span class="sh-n" id="methodName"></span></div></div>
+      <div class="dots" id="dots"></div>
+      <div class="center">
+        <div class="eqwrap"><div class="eqline" id="eqline"></div></div>
+        <div class="guide" id="guide"><span id="gtext"></span></div>
+        <div class="hinttap" id="hinttap"></div>
+        <div class="footer">
+          <button class="btn cevap" id="cevap" onclick="showAnswer()">Cevabı görelim</button>
+          <div class="report" id="report">
+            <button class="rbtn known" onclick="nextItem(true)">ilerle</button>
+            <button class="rbtn again" onclick="nextItem(false)">pekiştir</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OTURUM: BİTİŞ -->
+    <section class="screen" id="sDone">
+      <div class="donewrap">
+        <div class="bigcheck">✓</div><div class="eyebrow">bugünlük bu kadar</div>
+        <h1 id="doneTitle">Dört soruyu da kafadan çözdün.</h1>
+        <p class="sub" id="doneSub"></p>
+        <div class="donestat"><div class="ds"><div class="dv">4</div><div class="dl">soru, kafadan</div></div>
+          <div class="ds"><div class="dv" id="dsRev">0</div><div class="dl">tekrar, pekişti</div></div></div>
+      </div>
+      <button class="btn" onclick="show('home')">Ana Sayfaya dön</button>
+      <button class="btn ghost sm" style="margin-top:8px" id="againBtn">Baştan</button>
+    </section>
+
+    <!-- TEST HUB -->
+    <section class="screen" id="testhub">
+      <button class="back" onclick="show('home')">‹ Ana Sayfa</button>
+      <div class="eyebrow">test</div><h1 style="margin:4px 0 6px">Karma test</h1>
+      <p class="sub">Farklı yöntemler karışık gelir, sonunda rapor çıkar. Nasıl olsun?</p>
+      <div class="sec-title">uzunluk</div>
+      <div class="segrow" id="lenRow">
+        <button class="seg on" data-len="6" onclick="segPick('lenRow',this)">Kısa · 6 soru</button>
+        <button class="seg" data-len="12" onclick="segPick('lenRow',this)">Uzun · 12 soru</button>
+      </div>
+      <div class="sec-title">odak</div>
+      <div class="segrow" id="focusRow">
+        <button class="seg on" data-focus="all" onclick="segPick('focusRow',this)">Karışık</button>
+        <button class="seg" data-focus="mult" onclick="segPick('focusRow',this)">Sadece çarpma</button>
+      </div>
+      <button class="btn" style="margin-top:24px" onclick="startConfiguredTest()">Başlayalım</button>
+    </section>
+
+    <!-- AYARLAR -->
+    <section class="screen" id="settings">
+      <div class="eyebrow">ayarlar</div><h1 style="margin:4px 0 8px">Ayarlar</h1>
+      <p class="sub">Ayrıntılı ayarlar ve Hakkında bölümü sonraki adımda burada olacak.</p>
+      <div class="sec-title">uygulama</div>
+      <div class="card lrow"><div class="ln">♪</div><div class="lt"><b>Ses ve titreşim</b><span>yakında</span></div></div>
+      <div class="card lrow"><div class="ln">◐</div><div class="lt"><b>Hareketi azalt</b><span>yakında</span></div></div>
+      <div class="sec-title">veri</div>
+      <div class="card lrow" onclick="resetProgressAsk()"><div class="ln">↺</div><div class="lt"><b>İlerlemeyi sıfırla</b><span id="resetSub">baştan başla</span></div></div>
+      <div class="sec-title">hakkında</div>
+      <a class="card lrow linkrow" href="https://zeynepkaya.app/matreflex/privacy" target="_blank" rel="noopener"><div class="ln">◆</div><div class="lt"><b>Gizlilik Politikası</b><span>verilerin nasıl işlenir</span></div><div class="chev" style="margin-left:auto;color:var(--ink-faint)">›</div></a>
+      <a class="card lrow linkrow" href="https://zeynepkaya.app/matreflex/terms" target="_blank" rel="noopener"><div class="ln">§</div><div class="lt"><b>Kullanım Koşulları</b><span>kullanım şartları</span></div><div class="chev" style="margin-left:auto;color:var(--ink-faint)">›</div></a>
+      <a class="card lrow linkrow" href="https://zeynepkaya.app/matreflex/support" target="_blank" rel="noopener"><div class="ln">?</div><div class="lt"><b>Destek</b><span>yardım ve iletişim</span></div><div class="chev" style="margin-left:auto;color:var(--ink-faint)">›</div></a>
+      <div class="card lrow"><div class="ln">i</div><div class="lt"><b>Sürüm</b><span>MatRefleks 0.1.0</span></div></div>
+      <button class="btn ghost sm" style="margin-top:16px" onclick="show('home')">Kapat</button>
+    </section>
+
+    <!-- SERBEST / KARMA TEST -->
+    <section class="screen" id="freeTest">
+      <div class="shead"><button class="exit" onclick="show('home')">‹</button>
+        <div class="sh-title"><span class="sh-k">karma test</span><span class="sh-n">serbest</span></div></div>
+      <div class="dots" id="ftDots"></div>
+      <div class="center" style="justify-content:flex-start; padding-top:6px">
+        <div class="eqwrap" style="min-height:58px"><div class="eqline" id="ftProblem"></div></div>
+        <div class="mtans" id="ftAns">?</div>
+        <div class="ftmethod">
+          <div class="ftm-label">yöntemin · isteğe bağlı</div>
+          <div class="ftchips">
+            <button class="ftchip" data-m="ref" onclick="ftPick('ref')">Referans</button>
+            <button class="ftchip" data-m="double" onclick="ftPick('double')">İkile-Yarıla</button>
+            <button class="ftchip" data-m="twins" onclick="ftPick('twins')">Onluk İkizler</button>
+            <button class="ftchip" data-m="eleven" onclick="ftPick('eleven')">Onbir Çarpımı</button>
+            <button class="ftchip" data-m="decomp" onclick="ftPick('decomp')">Ayrıştırma</button>
+            <button class="ftchip" data-m="duz" onclick="ftPick('duz')">Düz</button>
+          </div>
+        </div>
+      </div>
+      <div class="pad" id="ftPad">
+        <button class="padkey" onclick="ftTap('1')">1</button>
+        <button class="padkey" onclick="ftTap('2')">2</button>
+        <button class="padkey" onclick="ftTap('3')">3</button>
+        <button class="padkey" onclick="ftTap('4')">4</button>
+        <button class="padkey" onclick="ftTap('5')">5</button>
+        <button class="padkey" onclick="ftTap('6')">6</button>
+        <button class="padkey" onclick="ftTap('7')">7</button>
+        <button class="padkey" onclick="ftTap('8')">8</button>
+        <button class="padkey" onclick="ftTap('9')">9</button>
+        <button class="padkey wide" onclick="ftDel()">sil</button>
+        <button class="padkey" onclick="ftTap('0')">0</button>
+        <button class="padkey ok" onclick="ftOk()">onayla</button>
+      </div>
+    </section>
+
+    <!-- KARMA TEST RAPORU -->
+    <section class="screen" id="freeReport">
+      <button class="back" onclick="show('home')">‹ Bugün</button>
+      <div id="freeReportBody"></div>
+    </section>
+
+    <!-- YÖNTEM TESTİ -->
+    <section class="screen" id="mtest">
+      <div class="shead"><button class="exit" onclick="show('home')">‹</button>
+        <div class="sh-title"><span class="sh-k">test</span><span class="sh-n" id="mtName"></span></div></div>
+      <div class="dots" id="mtDots"></div>
+      <div class="center" style="justify-content:flex-start; padding-top:6px">
+        <div class="eqwrap" style="min-height:64px"><div class="eqline" id="mtProblem"></div></div>
+        <div class="mtans" id="mtAns">?</div>
+        <div class="mtpanel" id="mtPanel"></div>
+      </div>
+      <div class="pad" id="mtPad">
+        <button class="padkey" onclick="padTap('1')">1</button>
+        <button class="padkey" onclick="padTap('2')">2</button>
+        <button class="padkey" onclick="padTap('3')">3</button>
+        <button class="padkey" onclick="padTap('4')">4</button>
+        <button class="padkey" onclick="padTap('5')">5</button>
+        <button class="padkey" onclick="padTap('6')">6</button>
+        <button class="padkey" onclick="padTap('7')">7</button>
+        <button class="padkey" onclick="padTap('8')">8</button>
+        <button class="padkey" onclick="padTap('9')">9</button>
+        <button class="padkey wide" onclick="padDel()">sil</button>
+        <button class="padkey" onclick="padTap('0')">0</button>
+        <button class="padkey ok" onclick="padOk()">onayla</button>
+      </div>
+      <button class="btn" id="mtNextBtn" style="display:none;margin-top:10px" onclick="mtNext()">Sıradaki</button>
+    </section>
+
+  </div>
+
+  <div class="chrome">
+    <button class="chrome-btn" onclick="show('home')" aria-label="ana sayfa">⌂</button>
+    <button class="chrome-btn" onclick="show('settings')" aria-label="ayarlar">☰</button>
+  </div>
+  <div class="onboard" id="onboard">
+    <button class="onb-skip" onclick="onbSkip()">geç</button>
+    <div class="onb-body" id="onbBody">
+      <div class="onb-emblem" id="onbEmblem"></div>
+      <div class="onb-eyebrow" id="onbEyebrow"></div>
+      <h1 class="onb-title" id="onbTitle"></h1>
+      <p class="onb-text" id="onbText"></p>
+    </div>
+    <div class="onb-foot">
+      <div class="onb-dots" id="onbDots"></div>
+      <button class="btn" id="onbNextBtn" onclick="onbNext()">Devam edelim</button>
+    </div>
+  </div>
+  <div class="splash" id="splash">
+    <svg width="0" height="0" style="position:absolute"><defs><filter id="gooflt"><feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b"/><feColorMatrix in="b" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="g"/><feBlend in="SourceGraphic" in2="g"/></filter></defs></svg>
+    <div class="splash-scene">
+      <div class="goo">
+        <div class="drop"></div>
+        <div class="sat sat1" style="--sx:-46px;--sy:-34px"></div>
+        <div class="sat sat2" style="--sx:48px;--sy:-28px"></div>
+        <div class="sat sat3" style="--sx:2px;--sy:-56px"></div>
+      </div>
+      <div class="ripple"></div>
+      <div class="sym-layer"><span class="op o1">+</span><span class="op o2">−</span><span class="op o3">×</span><span class="op o4">÷</span></div>
+    </div>
+    <div class="splash-name" id="splashName">MatRefleks</div>
+    <div class="splash-sub" id="splashSub"></div>
+    <div class="splash-skip" id="splashSkip">dokun, geç</div>
+  </div>
+</div>
+
+<script>
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function id(x){return document.getElementById(x);}
+  /* ---------- kalıcılık (yerel kayıt, hata-korumalı) ---------- */
+  var STORE=(function(){
+    var KEY='mentalmath_v1', data={};
+    try{ var raw=localStorage.getItem(KEY); if(raw) data=JSON.parse(raw); }catch(e){}
+    function save(){ try{ localStorage.setItem(KEY, JSON.stringify(data)); }catch(e){} }
+    return { get:function(k,d){ return (k in data)?data[k]:d; }, set:function(k,v){ data[k]=v; save(); } };
+  })();
+  function defaultStats(){ return {
+    methods:{ ref:{ust:0,form:0}, double:{ust:0,form:0}, twins:{ust:0,form:0}, eleven:{ust:0,form:0}, decomp:{ust:0,form:0} },
+    mem:{ squares:{ust:0,form:0}, cubes:{ust:0,form:0} },
+    tests:{ count:0, best:0, last:0 } }; }
+  var stats=STORE.get('stats', defaultStats());
+  (function(){ var d=defaultStats(); for(var g in d){ if(!stats[g]) stats[g]=d[g]; for(var k in d[g]){ if(stats[g][k]===undefined) stats[g][k]=d[g][k]; } } })();
+  function saveStats(){ STORE.set('stats', stats); }
+  function decayForms(){
+    var last=STORE.get('lastActive', null), now=Date.now();
+    if(last){ var days=Math.floor((now-last)/86400000); if(days>0){ var dd=days*6;
+      for(var k in stats.methods){ stats.methods[k].form=Math.max(0, stats.methods[k].form-dd); }
+      for(var m in stats.mem){ stats.mem[m].form=Math.max(0, stats.mem[m].form-dd); }
+      saveStats(); } }
+    STORE.set('lastActive', now);
+  }
+  function bumpMethod(key,dUst,formTo){ var m=stats.methods[key]; if(!m) return; m.ust=Math.min(100,m.ust+dUst); m.form=Math.min(100,Math.max(m.form,formTo)); saveStats(); }
+  function bumpMem(set,dUst,formTo){ var m=stats.mem[set]; if(!m) return; m.ust=Math.min(100,m.ust+dUst); m.form=Math.min(100,Math.max(m.form,formTo)); saveStats(); }
+  function sessionDone(key){ var f=stats.methods[key]?stats.methods[key].form:0; bumpMethod(key,4,f+18); refreshProgress(); }
+  function methodTestDone(key,score,total){ bumpMethod(key, score*3, 100); refreshProgress(); }
+  function memDone(set,score,total){ bumpMem(set, Math.round((score/(total||1))*10)+2, 100); refreshProgress(); }
+  function freeDone(records, correct){ stats.tests.count++; stats.tests.last=correct; if(correct>stats.tests.best) stats.tests.best=correct;
+    records.forEach(function(r){ if(r.fastest && stats.methods[r.fastest]) bumpMethod(r.fastest, 2, 60); }); saveStats(); refreshProgress(); }
+  function refreshProgress(){ if(typeof renderProgressUI==="function") renderProgressUI(); }
+  var resetArmed=false, resetTimer=null;
+  function resetProgressAsk(){
+    if(resetArmed){ doResetProgress(); return; }
+    resetArmed=true;
+    var sub=id('resetSub'); if(sub){ sub.textContent='emin misin? tekrar dokun'; sub.style.color='var(--amber)'; }
+    clearTimeout(resetTimer);
+    resetTimer=setTimeout(function(){ resetArmed=false; var s2=id('resetSub'); if(s2){ s2.textContent='baştan başla'; s2.style.color=''; } }, 3000);
+  }
+  function doResetProgress(){
+    clearTimeout(resetTimer); resetArmed=false;
+    stats=defaultStats(); saveStats(); STORE.set('lastActive', Date.now());
+    if(typeof renderProgressUI==='function') renderProgressUI();
+    var sub=id('resetSub'); if(sub){ sub.textContent='sıfırlandı'; sub.style.color='var(--green)'; setTimeout(function(){ var s3=id('resetSub'); if(s3){ s3.textContent='baştan başla'; s3.style.color=''; } }, 2000); }
+  }
+  var TABS=[
+    {key:'path',   act:function(){show('home');}},
+    {key:'method', act:function(){show('skills');}},
+    {key:'mem',    act:function(){openMem('squares');}},
+    {key:'test',   act:function(){show('testhub');}},
+    {key:'prog',   act:function(){show('progress');}}
+  ];
+  var screenTab={ home:'path', settings:'path',
+    skills:'method', skillDetail:'method', guideRef:'method', toolbox:'method', toolDetail:'method',
+    mtest:'method', sIntro:'method', sTeach:'method', sSolve:'method', sDone:'method',
+    memHub:'mem', memGame:'mem',
+    testhub:'test', freeTest:'test', freeReport:'test',
+    progress:'prog' };
+  function goTab(k){ for(var i=0;i<TABS.length;i++){ if(TABS[i].key===k){ TABS[i].act(); return; } } }
+  function show(pid){
+    document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active'); s.style.opacity='';});
+    var el=id(pid); el.classList.add('active'); el.scrollTop=0;
+    var tab=screenTab[pid]||'path';
+    document.querySelectorAll('.tab').forEach(function(t){ t.classList.toggle('on', t.dataset.k===tab); });
+    if((pid==='progress'||pid==='home') && typeof renderProgressUI==='function') renderProgressUI();
+  }
+  function toggleFolder(f){
+    document.querySelectorAll('#folders .folder').forEach(function(el){ if(el.dataset.f===f) el.classList.toggle('open'); else el.classList.remove('open'); });
+  }
+
+  /* ---------- araç çantası ---------- */
+  var tools={
+    ref:{ name:"Referans Sayılar",
+      lead:"Zor bir sayıyla uğraşmak yerine, ona yakın yuvarlak bir sayıyla işlem yaparsın; aradaki küçük farkı sonra düzeltirsin.",
+      why:"Yuvarlak sayılarla (100, 50, 10) toplamak, çıkarmak ve çarpmak çok kolaydır. Sayıyı böyle bir sayıya yaklaştırınca zor kısım kaybolur; geriye yalnızca küçük bir düzeltme kalır.",
+      strong:"Sayılardan biri 100, 50, 25 ya da 10'a yakınsa. Örneğin 98, 47, 197.",
+      strongEx:"156 + 98 → 254",
+      weak:"İki sayı da zaten yuvarlaksa yönteme gerek kalmaz; doğrudan işlem daha kısadır.",
+      weakEx:"40 + 30 (zaten kolay)",
+      examples:[
+        {q:"156 + 98", work:"156 + 100 − 2 = 254"},
+        {q:"7 × 99", work:"7 × 100 − 7 = 693"},
+        {q:"200 − 97", work:"200 − 100 + 3 = 103"},
+        {q:"234 + 52", work:"234 + 50 + 2 = 286"}
+      ],
+      where:"Markette 99 TL'lik ürünler, sınavda hızlı çarpımlar, döviz ve bahşiş hesabı.",
+      drill:[
+        {q:"156 + 98", fits:true, ans:"254", why:"98, 100'e çok yakın; referans işi kısaltır."},
+        {q:"7 × 99", fits:true, ans:"693", why:"99, 100'e çok yakın."},
+        {q:"200 − 97", fits:true, ans:"103", why:"97, 100'e çok yakın."},
+        {q:"312 + 48", fits:true, ans:"360", why:"48, 50'ye çok yakın."},
+        {q:"245 + 99", fits:true, ans:"344", why:"99, 100'e çok yakın."},
+        {q:"40 + 30", fits:false, why:"Sayılar zaten yuvarlak; referansa gerek yok, doğrudan toplarsın."},
+        {q:"50 + 25", fits:false, why:"İkisi de zaten kolay; referans bir şey kısaltmaz."},
+        {q:"20 × 3", fits:false, why:"Zaten kolay bir çarpım; yönteme gerek yok."}
+      ] },
+    double:{ name:"İkile-Yarıla",
+      lead:"Bir çarpımı, bir çarpanı yarıya bölüp diğerini iki katına çıkararak kolaylaştırırsın.",
+      why:"Bir sayıyı ikiye böler, diğerini iki katına çıkarırsan çarpım değişmez, çünkü iki katı ile yarısı birbirini götürür. Sayıları böyle taşıya taşıya biri 10 ya da 100 gibi yuvarlak bir değere ulaşır ve çarpım kendiliğinden kolaylaşır.",
+      strong:"Çarpanlardan biri çift, diğeri 5, 25 ya da 50 ise. Böylece birkaç adımda 10 veya 100'e ulaşırsın.",
+      strongEx:"16 × 25 → 400",
+      weak:"İki çarpan da tekse yarıya bölmek kesir üretir. Hiçbiri 5, 25, 50 gibi bir sayıya yaklaşmıyorsa da fayda etmez.",
+      weakEx:"13 × 17 (ikisi de tek)",
+      examples:[
+        {q:"16 × 25", work:"8 × 50 → 4 × 100 = 400"},
+        {q:"24 × 25", work:"12 × 50 → 6 × 100 = 600"},
+        {q:"14 × 5", work:"7 × 10 = 70"}
+      ],
+      where:"5, 25, 50 ile çarpımlar; ölçü, tarif ve fiyat hesapları.",
+      drill:[
+        {q:"16 × 25", fits:true, ans:"400", why:"16 çift, 25 ile ikile-yarıla 100'e ulaşır."},
+        {q:"24 × 25", fits:true, ans:"600", why:"24 çift, 25 ile 100'e ulaşır."},
+        {q:"14 × 5", fits:true, ans:"70", why:"14 çift, 5 ile 10'a ulaşır."},
+        {q:"18 × 5", fits:true, ans:"90", why:"18 çift, 5 ile 10'a ulaşır."},
+        {q:"13 × 17", fits:false, why:"İkisi de tek; yarıya bölmek kesir üretir."},
+        {q:"23 × 7", fits:false, why:"23 tek ve 7 yuvarlağa yaklaşmıyor; yöntem tutmaz."},
+        {q:"15 × 13", fits:false, why:"İkisi de tek; ikile-yarıla işlemez."},
+        {q:"12 × 7", fits:false, why:"7 ne çift ne de 5/25/50; yuvarlağa ulaşmaz."}
+      ] },
+    twins:{ name:"Onluk İkizler",
+      lead:"Koşula uyan iki basamaklı çarpımları tek bakışta, iki küçük çarpımla çözersin.",
+      why:"Koşullar sağlanınca çarpım düzgünce iki parçaya ayrılır: sol parça onlar basamağı ile bir fazlasının çarpımı, sağ parça ise birler basamaklarının çarpımıdır. Merak edersen: (10t+a)(10t+b) açılımında a + b = 10 olunca sonuç 100·t·(t+1) + a·b değerine iner.",
+      strong:"Birler basamakları toplamı tam 10 ve onlar basamakları aynı olduğunda.",
+      strongEx:"78 × 72 → 5616",
+      weak:"Bu iki koşuldan biri bile yoksa çalışmaz.",
+      weakEx:"78 × 74 (birler 12)",
+      examples:[
+        {q:"78 × 72", work:"7×8 = 56, 8×2 = 16 → 5616"},
+        {q:"91 × 99", work:"9×10 = 90, 1×9 = 09 → 9009"},
+        {q:"23 × 27", work:"2×3 = 6, 3×7 = 21 → 621"}
+      ],
+      tip:"Sağ parça her zaman iki haneli yazılır; tek haneyse başına 0 eklenir (09 gibi). En sık yapılan hata budur.",
+      where:"Sınavda hızlı iki basamaklı çarpımlar. Koşula uyan sayıları tanıdıkça çok hızlanırsın.",
+      drill:[
+        {q:"78 × 72", fits:true, ans:"5616", why:"Birler 8+2=10, onlar ikiz (7)."},
+        {q:"56 × 54", fits:true, ans:"3024", why:"Birler 6+4=10, onlar ikiz (5)."},
+        {q:"91 × 99", fits:true, ans:"9009", why:"Birler 1+9=10, onlar ikiz (9)."},
+        {q:"34 × 36", fits:true, ans:"1224", why:"Birler 4+6=10, onlar ikiz (3)."},
+        {q:"78 × 74", fits:false, why:"Birler 8+4=12, 10 değil."},
+        {q:"78 × 62", fits:false, why:"Onlar farklı: 7 ve 6."},
+        {q:"45 × 55", fits:false, why:"Onlar farklı: 4 ve 5. Birler 10 olsa da yetmez."},
+        {q:"63 × 68", fits:false, why:"Birler 3+8=11, 10 değil."}
+      ] },
+    eleven:{ name:"Onbir Çarpımı",
+      lead:"İki basamaklı bir sayıyı 11 ile çarparken, kenar rakamları bırakıp ortaya toplamlarını yazarsın.",
+      why:"11 = 10 + 1. Bir sayıyı 11 ile çarpmak, onu bir kez 10 ile bir kez de kendisiyle çarpıp toplamak demek. Bu da rakamları bir basamak kaydırıp üst üste toplamaya denk gelir; sonuçta kenar rakamlar yerinde kalır, ortaya iki rakamın toplamı düşer.",
+      strong:"İki basamaklı bir sayıyı 11 ile çarparken.",
+      strongEx:"63 × 11 → 693",
+      weak:"Çarpan 11 değilse ya da sayı üç basamaklıysa kural değişir.",
+      weakEx:"63 × 12 (11 değil)",
+      examples:[
+        {q:"63 × 11", work:"6 _ 3, ortaya 6+3=9 → 693"},
+        {q:"48 × 11", work:"4+8=12, taşı → 528"},
+        {q:"27 × 11", work:"2+7=9 → 297"}
+      ],
+      tip:"Ortadaki toplam 10 ya da üstüyse, fazladan 1'i sola, kenardaki rakama eklersin (48 → 4+8=12 → 528).",
+      where:"Fiyat ve adet hesapları; 11'li çarpımlar sandığından sık karşına çıkar.",
+      drill:[
+        {q:"63 × 11", fits:true, ans:"693", why:"11 çarpımı; kenarlar 6 ve 3, ortaya 9."},
+        {q:"27 × 11", fits:true, ans:"297", why:"2 + 7 = 9 → 297."},
+        {q:"48 × 11", fits:true, ans:"528", why:"4 + 8 = 12, 1'i sola taşı → 528."},
+        {q:"85 × 11", fits:true, ans:"935", why:"8 + 5 = 13, taşı → 935."},
+        {q:"63 × 12", fits:false, why:"Çarpan 11 değil; bu kısa yol yalnızca 11 için."},
+        {q:"63 × 21", fits:false, why:"21 ile bu kural çalışmaz."},
+        {q:"7 × 11", fits:false, why:"Tek basamaklı zaten kolay (7 × 11 = 77); kurala gerek yok."}
+      ] },
+    decomp:{ name:"Ayrıştırma",
+      lead:"Bir kısayol yokken, sayıyı parçalara ayırıp her parçayı ayrı çarpıp toplarsın.",
+      why:"Çarpma dağılır: (20 + 3) × 7, 20 × 7 ile 3 × 7'nin toplamına eşittir. Büyük sayıyı onlar ve birler diye ayırınca geriye iki küçük çarpım ve bir toplama kalır. Her sayıda işe yarar; o yüzden özel bir kısayol yokken en güvenli yol budur.",
+      strong:"Özel bir kısayolun uymadığı çarpımlarda, özellikle iki basamaklı bir sayıyı tek basamaklıyla çarparken.",
+      strongEx:"23 × 7 → 161",
+      weak:"Daha kısa bir yöntem uyuyorsa (referans, ikizler, 11) o daha hızlıdır.",
+      weakEx:"78 × 72 (burada Onluk İkizler daha hızlı)",
+      examples:[
+        {q:"36 × 8", work:"30×8=240, 6×8=48 → 288"},
+        {q:"63 × 7", work:"60×7=420, 3×7=21 → 441"},
+        {q:"84 × 3", work:"80×3=240, 4×3=12 → 252"}
+      ],
+      tip:"Büyük sayıyı hep onlar ve birler diye ayır; iki küçük çarpımı topla.",
+      where:"Neredeyse her çarpımda; kısayol yoksa varsayılan yolun budur.",
+      drill:[
+        {q:"36 × 8", fits:true, ans:"288", why:"Kısayol yok; 30×8=240, 6×8=48 → 288."},
+        {q:"63 × 7", fits:true, ans:"441", why:"60×7=420, 3×7=21 → 441."},
+        {q:"84 × 3", fits:true, ans:"252", why:"80×3=240, 4×3=12 → 252."},
+        {q:"39 × 4", fits:true, ans:"156", why:"30×4=120, 9×4=36 → 156."},
+        {q:"78 × 72", fits:false, why:"Burada Onluk İkizler var; parçalamak daha uzun."},
+        {q:"7 × 99", fits:false, why:"99 referansa yakın; parçalamaya gerek yok."},
+        {q:"16 × 25", fits:false, why:"İkile-Yarıla daha kısa."}
+      ] }
+  };
+  var currentDrill=[], drillOrder=[], drillPos=0, drillCur=null;
+  function openTool(key){
+    var t=tools[key], h=""; currentDrill=t.drill;
+    h+='<div class="eyebrow">araç · yöntem</div><h1 style="margin:4px 0 8px">'+t.name+'</h1>';
+    h+='<p class="sub">'+t.lead+'</p>';
+    h+='<div class="sec-title">neden çalışır</div><div class="card guidebox"><div class="gt">'+t.why+'</div></div>';
+    h+='<div class="sec-title">ne zaman</div><div class="twocol">';
+    h+='<div class="card tcond good"><div class="ch">güçlü</div><div class="cb">'+t.strong+'</div><div class="cx">örn. '+t.strongEx+'</div></div>';
+    h+='<div class="card tcond bad"><div class="ch">zayıf</div><div class="cb">'+t.weak+'</div><div class="cx">örn. '+t.weakEx+'</div></div></div>';
+    h+='<div class="sec-title">örnekler</div>';
+    t.examples.forEach(function(e){ h+='<div class="card exrow"><span class="exq">'+e.q+'</span><span class="exw">'+e.work+'</span></div>'; });
+    if(t.tip){ h+='<div class="sec-title">dikkat</div><div class="card guidebox"><div class="gt">'+t.tip+'</div></div>'; }
+    if(t.where){ h+='<div class="sec-title">nerede işine yarar</div><div class="card guidebox"><div class="gt">'+t.where+'</div></div>'; }
+    h+='<div class="sec-title">sıra sende</div>';
+    h+='<div class="card drillbox">';
+    h+='  <div id="drillIntro"><p class="sub" style="margin-bottom:14px">Bu yöntemin nerede işine yaradığını, nerede yaramadığını tanıyabiliyor musun? Kısa bir dene.</p><button class="btn sm" onclick="startDrill()">Başlayalım</button></div>';
+    h+='  <div id="drillLive" style="display:none">';
+    h+='     <div class="drill-q" id="drillQ"></div>';
+    h+='     <div class="drill-ask">Bu yöntem burada işine yarar mı?</div>';
+    h+='     <div class="drill-btns" id="drillBtns"><button class="rbtn known" onclick="drillAnswer(true)">yarar</button><button class="rbtn again" onclick="drillAnswer(false)">yaramaz</button></div>';
+    h+='     <div class="drill-fb" id="drillFb"></div>';
+    h+='     <button class="btn sm ghost" id="drillNextBtn" onclick="drillNext()" style="display:none;margin-top:12px">Sıradaki</button>';
+    h+='  </div>';
+    h+='</div>';
+    id('toolBody').innerHTML=h; id('toolDetail').scrollTop=0; show('toolDetail');
+  }
+  function startDrill(){
+    drillOrder=shuffle(currentDrill.map(function(_,i){return i;})); drillPos=0;
+    id('drillIntro').style.display='none'; id('drillLive').style.display='block'; loadDrill();
+  }
+  function loadDrill(){
+    drillCur=currentDrill[drillOrder[drillPos]];
+    id('drillQ').textContent=drillCur.q;
+    var fb=id('drillFb'); fb.innerHTML=''; fb.className='drill-fb';
+    id('drillBtns').style.display='flex'; id('drillNextBtn').style.display='none';
+  }
+  function drillAnswer(said){
+    var ok=(said===drillCur.fits);
+    id('drillBtns').style.display='none';
+    var body=drillCur.why;
+    if(drillCur.fits && drillCur.ans){ body+=' Cevap: '+drillCur.ans+'.'; }
+    var fb=id('drillFb'); fb.className='drill-fb '+(ok?'good':'bad');
+    fb.innerHTML='<b>'+(ok?'Doğru':'Bu sefer olmadı')+'.</b> '+body;
+    id('drillNextBtn').style.display='block';
+  }
+  function drillNext(){ drillPos++; if(drillPos>=drillOrder.length){ drillOrder=shuffle(drillOrder); drillPos=0; } loadDrill(); }
+
+  /* ---------- hafıza oyunları ---------- */
+  function buildSet(title,sub,exp,maxN){ var items=[]; for(var n=1;n<=maxN;n++){ items.push({base:n, val:Math.pow(n,exp), q:n+(exp===2?'²':'³')}); } return {title:title,sub:sub,exp:exp,items:items}; }
+  var memSets={ squares:buildSet("Kareler","1'den 15'e kadar. Önce listeye bak, sonra oyunlarla pekiştir.",2,15),
+                cubes:buildSet("Küpler","1'den 10'a kadar. Önce listeye bak, sonra oyunlarla pekiştir.",3,10) };
+  var curSet="squares", gMode, gItems, gN, gi, gScore, gLocked, gameBody;
+  function openMem(key){
+    curSet=key; var st=memSets[key];
+    id('memHubTitle').textContent=st.title; id('memHubSub').textContent=st.sub;
+    var lh=''; st.items.forEach(function(it){ lh+='<div class="memcell"><span class="mq">'+it.q+'</span><span class="ma">'+it.val+'</span></div>'; });
+    id('memList').innerHTML=lh; show('memHub');
+  }
+  function startGame(mode){
+    gameBody=id('gameBody'); gMode=mode; gItems=shuffle(memSets[curSet].items); gN=Math.min(8,gItems.length); gi=0; gScore=0;
+    id('gameSetName').textContent=memSets[curSet].title;
+    id('gameKind').textContent = mode==='choice'?'hangisi doğru':(mode==='reverse'?'tersi':'kart');
+    show('memGame'); renderQ();
+  }
+  function gDots(){ var h=''; for(var k=0;k<gN;k++){h+='<span class="dot'+(k<gi?' done':k===gi?' on':'')+'"></span>';} id('gDots').innerHTML=h; }
+  function otherItem(it){ var a=memSets[curSet].items.filter(function(x){return x.base!==it.base;}); return a[Math.floor(Math.random()*a.length)]; }
+  function renderQ(){
+    if(gi>=gN){ finishGame(); return; }
+    gDots(); gLocked=false;
+    var st=memSets[curSet], it=gItems[gi], o=otherItem(it);
+    if(gMode==='card'){
+      gameBody.innerHTML='<div class="fcard" id="gfc"><div class="fcinner">'
+        +'<div class="fcface fcfront"><div class="q">'+it.q+'</div><div class="h">dokununca cevabı görürsün</div></div>'
+        +'<div class="fcface fcback"><div class="a">'+it.val+'</div></div></div></div>'
+        +'<div class="fcbtns"><button class="fcbtn hard" id="cbH">zorlandım</button><button class="fcbtn easy" id="cbE">kolaydı</button></div>';
+      id('gfc').onclick=function(){ this.classList.toggle('flip'); };
+      id('cbH').onclick=function(){ nextQ(); };
+      id('cbE').onclick=function(){ gScore++; nextQ(); };
+      return;
+    }
+    var promptText, subText, opts;
+    if(gMode==='choice'){ promptText=it.q; subText="hangisi doğru?"; opts=[{text:it.val,correct:true},{text:o.val,correct:false}]; }
+    else { promptText=it.val; subText="bu neyin "+(st.exp===2?"karesi":"küpü")+"?"; opts=[{text:it.base,correct:true},{text:o.base,correct:false}]; }
+    gameBody.innerHTML='<div class="gprompt">'+promptText+'</div><div class="gsub">'+subText+'</div>'
+      +'<div class="gopts"><button class="gopt" id="o0"></button><button class="gopt" id="o1"></button></div><div class="gfb" id="gfb"></div>';
+    var order=shuffle([0,1]);
+    [id('o0'),id('o1')].forEach(function(btn,slot){ var opt=opts[order[slot]]; btn.textContent=opt.text; btn.onclick=function(){ pick(opt.correct, btn, opts); }; });
+  }
+  function pick(correct, btn, opts){
+    if(gLocked) return; gLocked=true;
+    document.querySelectorAll('.gopt').forEach(function(b){ b.disabled=true; });
+    var correctText=String(opts[0].correct?opts[0].text:opts[1].text);
+    if(correct){ btn.classList.add('right'); gScore++; id('gfb').textContent='doğru'; }
+    else { btn.classList.add('wrong'); document.querySelectorAll('.gopt').forEach(function(b){ if(b.textContent===correctText) b.classList.add('right'); }); id('gfb').textContent='doğrusu: '+correctText; }
+    setTimeout(nextQ, reduce?0:1000);
+  }
+  function nextQ(){ gi++; renderQ(); }
+  function finishGame(){
+    memDone(curSet, gScore, gN);
+    id('gDots').innerHTML='';
+    var msg = gMode==='card' ? (gScore+' / '+gN+' rahat geldi') : (gScore+' / '+gN+' doğru');
+    gameBody.innerHTML='<div class="bigcheck" style="margin:0 auto 16px">✓</div>'
+      +'<h1 style="text-align:center">'+msg+'</h1>'
+      +'<p class="sub" style="text-align:center;margin-top:6px">Tekrar ettikçe daha da hızlanır.</p>'
+      +'<button class="btn" id="gAgain" style="margin-top:22px">Tekrar</button>'
+      +'<button class="btn ghost sm" id="gBack" style="margin-top:8px">Listeye dön</button>';
+    id('gAgain').onclick=function(){ startGame(gMode); };
+    id('gBack').onclick=function(){ openMem(curSet); };
+  }
+
+  /* ---------- session engine ---------- */  /* ---------- session engine ---------- */
+  var methods={
+    ref:{ name:"Referans Sayılar", type:"ref",
+      intro:"Referans Sayılar'ı farklı sorularda kullanacağız. Her oturum biraz farklı gelir; acele yok.",
+      pool:[
+        {a:"156",op:"+",b:"98",fr:"100",comp:"− 2",ans:"254",near:"98, 100'e çok yakın.",after:"98'i <b>100</b> yaptın. Fazladan eklediğin <span class='amb'>2</span>'yi geri alırsın."},
+        {a:"7",op:"×",b:"99",fr:"100",comp:"− 7",ans:"693",near:"99, 100'e çok yakın.",after:"99'u <b>100</b> yaptın. 7 × 100 = 700, sonra bir kez <span class='amb'>7</span> çıkarırsın."},
+        {a:"245",op:"+",b:"99",fr:"100",comp:"− 1",ans:"344",near:"99, 100'e çok yakın.",after:"99'u <b>100</b> yaptın. Fazladan eklediğin <span class='amb'>1</span>'i geri alırsın."},
+        {a:"200",op:"−",b:"97",fr:"100",comp:"+ 3",ans:"103",near:"97, 100'e çok yakın.",after:"97'yi <b>100</b> yaptın. Fazladan çıkardığın <span class='amb'>3</span>'ü geri eklersin."},
+        {a:"8",op:"×",b:"98",fr:"100",comp:"− 16",ans:"784",near:"98, 100'e çok yakın.",after:"98'i <b>100</b> yaptın. 8 × 100 = 800, sonra 8 × 2 = <span class='amb'>16</span> çıkarırsın."},
+        {a:"500",op:"−",b:"96",fr:"100",comp:"+ 4",ans:"404",near:"96, 100'e çok yakın.",after:"96'yı <b>100</b> yaptın. Fazladan çıkardığın <span class='amb'>4</span>'ü geri eklersin."},
+        {a:"312",op:"+",b:"48",fr:"50",comp:"− 2",ans:"360",near:"48, 50'ye çok yakın.",after:"48'i <b>50</b> yaptın. Fazladan eklediğin <span class='amb'>2</span>'yi geri alırsın."},
+        {a:"6",op:"×",b:"49",fr:"50",comp:"− 6",ans:"294",near:"49, 50'ye çok yakın.",after:"49'u <b>50</b> yaptın. 6 × 50 = 300, sonra bir kez <span class='amb'>6</span> çıkarırsın."},
+        {a:"200",op:"−",b:"47",fr:"50",comp:"+ 3",ans:"153",near:"47, 50'ye çok yakın.",after:"47'yi <b>50</b> yaptın. Fazladan çıkardığın <span class='amb'>3</span>'ü geri eklersin."},
+        {a:"234",op:"+",b:"52",fr:"50",comp:"+ 2",ans:"286",near:"52, 50'ye çok yakın.",after:"52'yi <b>50</b> yaptın. Eksik kalan <span class='amb'>2</span>'yi eklersin."},
+        {a:"340",op:"+",b:"198",fr:"200",comp:"− 2",ans:"538",near:"198, 200'e çok yakın.",after:"198'i <b>200</b> yaptın. Fazladan eklediğin <span class='amb'>2</span>'yi geri alırsın."},
+        {a:"3",op:"×",b:"199",fr:"200",comp:"− 3",ans:"597",near:"199, 200'e çok yakın.",after:"199'u <b>200</b> yaptın. 3 × 200 = 600, sonra bir kez <span class='amb'>3</span> çıkarırsın."}
+      ]},
+    double:{ name:"İkile-Yarıla", type:"double",
+      intro:"Bir çarpanı yarıya inince diğeri iki katına çıkar. Çarpım değişmez, sayılar yuvarlağa döner ve iş kolaylaşır.",
+      pool:[
+        {steps:[["16","25"],["8","50"],["4","100"]],ans:"400"},
+        {steps:[["24","25"],["12","50"],["6","100"]],ans:"600"},
+        {steps:[["28","25"],["14","50"],["7","100"]],ans:"700"},
+        {steps:[["12","25"],["6","50"],["3","100"]],ans:"300"},
+        {steps:[["6","50"],["3","100"]],ans:"300"},
+        {steps:[["14","50"],["7","100"]],ans:"700"},
+        {steps:[["14","5"],["7","10"]],ans:"70"},
+        {steps:[["18","5"],["9","10"]],ans:"90"},
+        {steps:[["24","5"],["12","10"]],ans:"120"},
+        {steps:[["16","5"],["8","10"]],ans:"80"}
+      ]}
+    ,twins:{ name:"Onluk İkizler", type:"twins",
+      intro:"Birler basamağı 10'a tamamlanan ve onlar basamağı aynı olan iki sayının çarpımı. Önce nasıl çalıştığını görelim, sonra sıra sende.",
+      teach:[
+        {eq:"7<span class='amb'>8</span> × 7<span class='amb'>2</span>", g:"Birler basamaklarına bak: <span class='amb'>8</span> ve <span class='amb'>2</span>. Toplamları tam <b>10</b>."},
+        {eq:"<span style='color:var(--green)'>7</span>8 × <span style='color:var(--green)'>7</span>2", g:"Onlar basamakları ikisinde de <b>7</b>. Yani ikiz."},
+        {eq:"78 × 72", g:"İki koşul: birler 10'a tamamlanır ve onlar aynıdır. İşte o zaman bu yöntem çalışır."},
+        {eq:"78 × 72 = <span style='color:var(--green)'>56</span>", g:"Onları çarp, biraz fazlasıyla: 7 × 8 = <b>56</b>. Bu sol taraf."},
+        {eq:"78 × 72 = <span style='color:var(--green)'>56</span> <span class='amb'>16</span>", g:"Birleri çarp: 8 × 2 = <b>16</b>. Bu sağ taraf. Tek haneyse başına 0 koyarsın."},
+        {eq:"78 × 72 = <span style='color:var(--green)'>5616</span>", g:"Yan yana koy: <b>5616</b>. Bu kadar. Sıra sende."}
+      ],
+      pool:[
+        {a:"78",b:"72",ans:"5616",recog:"Birler 8 + 2 = 10, onlar ikiz (7).",recipe:"Onlar: 7 × 8 = <b>56</b>. Birler: 8 × 2 = <b>16</b>. Yan yana koy."},
+        {a:"56",b:"54",ans:"3024",recog:"Birler 6 + 4 = 10, onlar ikiz (5).",recipe:"Onlar: 5 × 6 = <b>30</b>. Birler: 6 × 4 = <b>24</b>. Yan yana koy."},
+        {a:"23",b:"27",ans:"621",recog:"Birler 3 + 7 = 10, onlar ikiz (2).",recipe:"Onlar: 2 × 3 = <b>6</b>. Birler: 3 × 7 = <b>21</b>. Yan yana koy."},
+        {a:"91",b:"99",ans:"9009",recog:"Birler 1 + 9 = 10, onlar ikiz (9).",recipe:"Onlar: 9 × 10 = <b>90</b>. Birler: 1 × 9 = 9, iki haneli yaz: <b>09</b>."},
+        {a:"34",b:"36",ans:"1224",recog:"Birler 4 + 6 = 10, onlar ikiz (3).",recipe:"Onlar: 3 × 4 = <b>12</b>. Birler: 4 × 6 = <b>24</b>. Yan yana koy."},
+        {a:"62",b:"68",ans:"4216",recog:"Birler 2 + 8 = 10, onlar ikiz (6).",recipe:"Onlar: 6 × 7 = <b>42</b>. Birler: 2 × 8 = <b>16</b>. Yan yana koy."},
+        {a:"45",b:"45",ans:"2025",recog:"Birler 5 + 5 = 10, onlar ikiz (4).",recipe:"Onlar: 4 × 5 = <b>20</b>. Birler: 5 × 5 = <b>25</b>. Yan yana koy."},
+        {a:"87",b:"83",ans:"7221",recog:"Birler 7 + 3 = 10, onlar ikiz (8).",recipe:"Onlar: 8 × 9 = <b>72</b>. Birler: 7 × 3 = <b>21</b>. Yan yana koy."},
+        {a:"46",b:"44",ans:"2024",recog:"Birler 6 + 4 = 10, onlar ikiz (4).",recipe:"Onlar: 4 × 5 = <b>20</b>. Birler: 6 × 4 = <b>24</b>. Yan yana koy."},
+        {a:"19",b:"11",ans:"209",recog:"Birler 9 + 1 = 10, onlar ikiz (1).",recipe:"Onlar: 1 × 2 = <b>2</b>. Birler: 9 × 1 = 9, iki haneli yaz: <b>09</b>."}
+      ]}
+    ,eleven:{ name:"Onbir Çarpımı", type:"eleven",
+      intro:"İki basamaklı bir sayıyı 11 ile çarpmanın kısa yolu: kenar rakamları yerinde bırak, ortaya toplamlarını yaz. Önce görelim, sonra sıra sende.",
+      teach:[
+        {eq:"63 × 11", g:"İki basamaklı bir sayıyı 11 ile çarpıyoruz."},
+        {eq:"<span style='color:var(--green)'>6</span> _ <span style='color:var(--green)'>3</span>", g:"Rakamları ayır: 6 ve 3. Kenarlara koy, orta boş kalsın."},
+        {eq:"6 <span class='amb'>9</span> 3", g:"Ortaya ikisinin toplamını yaz: 6 + 3 = <b>9</b>."},
+        {eq:"<span style='color:var(--green)'>693</span>", g:"Sonuç: <b>693</b>. Kenarlar aynı, orta toplam."},
+        {eq:"48 × 11 = 528", g:"Toplam 10 ya da üstüyse fazlalığı sola taşırsın: 4 + 8 = 12 → <b>528</b>. Sıra sende."}
+      ],
+      pool:[
+        {a:"63",b:"11",ans:"693",recog:"11 ile çarpım.",recipe:"Kenarlar 6 ve 3, ortaya 6 + 3 = <b>9</b> → 693."},
+        {a:"27",b:"11",ans:"297",recog:"11 ile çarpım.",recipe:"Kenarlar 2 ve 7, ortaya 2 + 7 = <b>9</b> → 297."},
+        {a:"72",b:"11",ans:"792",recog:"11 ile çarpım.",recipe:"Kenarlar 7 ve 2, ortaya 7 + 2 = <b>9</b> → 792."},
+        {a:"45",b:"11",ans:"495",recog:"11 ile çarpım.",recipe:"Kenarlar 4 ve 5, ortaya 4 + 5 = <b>9</b> → 495."},
+        {a:"81",b:"11",ans:"891",recog:"11 ile çarpım.",recipe:"Kenarlar 8 ve 1, ortaya 8 + 1 = <b>9</b> → 891."},
+        {a:"48",b:"11",ans:"528",recog:"11 ile çarpım.",recipe:"Kenarlar 4 ve 8, ortaya 4 + 8 = 12; 1'i sola taşı → <b>528</b>."},
+        {a:"85",b:"11",ans:"935",recog:"11 ile çarpım.",recipe:"Kenarlar 8 ve 5, ortaya 8 + 5 = 13; 1'i sola taşı → <b>935</b>."},
+        {a:"76",b:"11",ans:"836",recog:"11 ile çarpım.",recipe:"Kenarlar 7 ve 6, ortaya 7 + 6 = 13; 1'i sola taşı → <b>836</b>."},
+        {a:"57",b:"11",ans:"627",recog:"11 ile çarpım.",recipe:"Kenarlar 5 ve 7, ortaya 5 + 7 = 12; 1'i sola taşı → <b>627</b>."},
+        {a:"94",b:"11",ans:"1034",recog:"11 ile çarpım.",recipe:"Kenarlar 9 ve 4, ortaya 9 + 4 = 13; 1'i sola taşı → <b>1034</b>."}
+      ]}
+    ,decomp:{ name:"Ayrıştırma", type:"decomp",
+      intro:"Özel bir kısayol olmadığında, sayıyı parçalara ayırıp her parçayı ayrı çarpıp toplarsın. Önce görelim, sonra sıra sende.",
+      teach:[
+        {eq:"23 × 7", g:"Elimizde özel bir kısayol yok. O zaman parçalarız."},
+        {eq:"(20 + 3) × 7", g:"23'ü onlar ve birler diye ayır: 20 ve 3."},
+        {eq:"20 × 7 = <span class='amb'>140</span>", g:"Her parçayı 7 ile çarp. Önce 20 × 7 = 140."},
+        {eq:"3 × 7 = <span class='amb'>21</span>", g:"Sonra 3 × 7 = 21."},
+        {eq:"140 + 21 = <span style='color:var(--green)'>161</span>", g:"İkisini topla: 161. Sıra sende."}
+      ],
+      pool:[
+        {a:"36",b:"8",ans:"288",recog:"Özel bir kısayol yok; parçalayarak çözersin.",recipe:"30 × 8 = <b>240</b>, 6 × 8 = <b>48</b>, topla → 288."},
+        {a:"39",b:"4",ans:"156",recog:"Özel bir kısayol yok; parçalayarak çözersin.",recipe:"30 × 4 = <b>120</b>, 9 × 4 = <b>36</b>, topla → 156."},
+        {a:"63",b:"7",ans:"441",recog:"Özel bir kısayol yok; parçalayarak çözersin.",recipe:"60 × 7 = <b>420</b>, 3 × 7 = <b>21</b>, topla → 441."},
+        {a:"67",b:"6",ans:"402",recog:"Özel bir kısayol yok; parçalayarak çözersin.",recipe:"60 × 6 = <b>360</b>, 7 × 6 = <b>42</b>, topla → 402."},
+        {a:"83",b:"9",ans:"747",recog:"Özel bir kısayol yok; parçalayarak çözersin.",recipe:"80 × 9 = <b>720</b>, 3 × 9 = <b>27</b>, topla → 747."},
+        {a:"84",b:"3",ans:"252",recog:"Özel bir kısayol yok; parçalayarak çözersin.",recipe:"80 × 3 = <b>240</b>, 4 × 3 = <b>12</b>, topla → 252."},
+        {a:"58",b:"6",ans:"348",recog:"Özel bir kısayol yok; parçalayarak çözersin.",recipe:"50 × 6 = <b>300</b>, 8 × 6 = <b>48</b>, topla → 348."},
+        {a:"62",b:"7",ans:"434",recog:"Özel bir kısayol yok; parçalayarak çözersin.",recipe:"60 × 7 = <b>420</b>, 2 × 7 = <b>14</b>, topla → 434."},
+        {a:"66",b:"8",ans:"528",recog:"Özel bir kısayol yok; parçalayarak çözersin.",recipe:"60 × 8 = <b>480</b>, 6 × 8 = <b>48</b>, topla → 528."},
+        {a:"87",b:"4",ans:"348",recog:"Özel bir kısayol yok; parçalayarak çözersin.",recipe:"80 × 4 = <b>320</b>, 7 × 4 = <b>28</b>, topla → 348."}
+      ]}
+  };
+
+  var cfg, chosen, sequence, cur, requeued, revisits, stage, step;
+  function shuffle(a){a=a.slice();for(var k=a.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1));var t=a[k];a[k]=a[j];a[j]=t;}return a;}
+  function say(html){ var g=id('guide'),t=id('gtext'); g.classList.add('show'); if(reduce){t.innerHTML=html;return;}
+    t.style.opacity='0'; setTimeout(function(){t.innerHTML=html; t.style.opacity='1';},150); }
+  function fadeThrough(el,val,green,cb){
+    if(reduce){el.textContent=val; if(green)el.classList.add('friendly'); if(cb)cb(); return;}
+    el.style.opacity='0'; setTimeout(function(){ el.textContent=val; if(green)el.classList.add('friendly'); el.style.opacity='1'; if(cb)setTimeout(cb,340); },190);
+  }
+  function renderDots(){ var h=''; for(var k=0;k<sequence.length;k++){h+='<span class="dot'+(k<cur?' done':k===cur?' on':'')+'"></span>';} id('dots').innerHTML=h; }
+
+  var ti=0;
+  function launchSession(key){
+    cfg=methods[key]; curMethodKey=key;
+    chosen=shuffle(cfg.pool).slice(0,4); sequence=[0,1,2,3]; cur=0; requeued={}; revisits=0;
+    id('introName').textContent=cfg.name; id('introLine').textContent=cfg.intro;
+    id('methodName').textContent=cfg.name; id('teachName').textContent=cfg.name;
+    id('againBtn').onclick=function(){ launchSession(key); };
+    show('sIntro');
+  }
+  function beginSolve(){ if(cfg.teach){ startTeach(); } else { startPractice(); } }
+  function startPractice(){ show('sSolve'); loadItem(); }
+  function startTeach(){ ti=0; show('sTeach'); showTeachStep(); }
+  function showTeachStep(){ id('teachEq').innerHTML=cfg.teach[ti].eq; id('teachGuide').innerHTML=cfg.teach[ti].g;
+    id('teachNext').textContent=(ti===cfg.teach.length-1)?"Sıra sende":"Devam edelim"; }
+  function teachAdvance(){ if(ti<cfg.teach.length-1){ ti++; showTeachStep(); } else { startPractice(); } }
+
+  function loadItem(){
+    renderDots();
+    id('cevap').classList.remove('show'); id('report').classList.remove('show');
+    var firstItem=(cur===0 && sequence.length===4);
+    var it=chosen[sequence[cur]]; step=0;
+    if(cfg.type==='ref') buildRef(it,firstItem);
+    else if(cfg.type==='double') buildDouble(it,firstItem);
+    else buildTwins(it,firstItem);
+  }
+
+  function buildTwins(it,first){
+    stage='pick';
+    id('eqline').innerHTML=
+      '<span class="trans tapme pulse" id="trans"><span class="cell">'+it.a+'</span><span class="op">×</span><span class="cell">'+it.b+'</span></span>'+
+      '<span class="cell op" id="eq">=</span><span class="cell" id="tR"></span>';
+    id('eq').style.width='24px'; id('eq').style.opacity='0';
+    id('tR').style.width='80px'; id('tR').style.opacity='0';
+    var hint=id('hinttap'); hint.textContent='dokununca yönteme göre çözülür'; hint.classList.toggle('show',first);
+    say(it.recog);
+    id('trans').onclick=function(){
+      if(stage!=='pick') return; stage='wait';
+      this.classList.remove('tapme','pulse'); hint.classList.remove('show');
+      say(it.recipe);
+      id('eq').style.opacity='1'; id('tR').textContent='?'; id('tR').style.opacity='1';
+      setTimeout(function(){ id('cevap').classList.add('show'); stage='answer'; }, reduce?0:200);
+    };
+  }
+
+  function buildRef(it,first){
+    stage='pick';
+    id('eqline').innerHTML=
+      '<span class="cell">'+it.a+'</span><span class="op">'+it.op+'</span>'+
+      '<span class="hcell tapme pulse" id="tB">'+it.b+'</span>'+
+      '<span class="cell" id="comp">'+it.comp+'</span>'+
+      '<span class="cell op" id="eq">=</span><span class="cell" id="tR"></span>';
+    id('comp').style.width='58px'; id('comp').style.opacity='0';
+    id('eq').style.width='24px'; id('eq').style.opacity='0';
+    id('tR').style.width='60px'; id('tR').style.opacity='0';
+    var hint=id('hinttap'); hint.textContent='yakınındaki sayıya dokunabilirsin'; hint.classList.toggle('show',first);
+    say(it.near);
+    id('tB').onclick=function(){
+      if(stage!=='pick') return; stage='wait';
+      this.classList.remove('tapme','pulse'); hint.classList.remove('show');
+      fadeThrough(id('tB'),it.fr,true,function(){
+        id('comp').style.opacity='1'; say(it.after);
+        setTimeout(function(){ id('cevap').classList.add('show'); stage='answer'; }, reduce?0:200);
+      });
+    };
+  }
+
+  function buildDouble(it,first){
+    stage='transform'; var s0=it.steps[0];
+    id('eqline').innerHTML=
+      '<span class="trans tapme pulse" id="trans"><span class="fcell" id="f1">'+s0[0]+'</span><span class="op">×</span><span class="fcell" id="f2">'+s0[1]+'</span></span>'+
+      '<span class="cell op" id="eq">=</span><span class="cell" id="tR"></span>';
+    id('eq').style.width='24px'; id('eq').style.opacity='0';
+    id('tR').style.width='60px'; id('tR').style.opacity='0';
+    var hint=id('hinttap'); hint.textContent='dokununca yarılanıp ikilenir'; hint.classList.toggle('show',first);
+    say(first ? "Bir çarpanı yarıya inince diğeri iki katına çıkar. Çarpım aynı kalır, sayılar kolaylaşır." : "Biri yarıya, diğeri iki katına.");
+    id('trans').onclick=function(){
+      if(stage!=='transform') return; stage='wait'; hint.classList.remove('show');
+      step++; var st=it.steps[step], isFinal=(step===it.steps.length-1); var tr=this;
+      fadeThrough(id('f1'),st[0],false);
+      fadeThrough(id('f2'),st[1],isFinal,function(){
+        if(isFinal){ tr.classList.remove('tapme','pulse'); say("<b>"+st[0]+" × "+st[1]+"</b> artık kolay.");
+          setTimeout(function(){ id('cevap').classList.add('show'); stage='answer'; }, reduce?0:200); }
+        else { say("Aynı çarpım, daha kolay. Bir adım daha var."); stage='transform'; }
+      });
+    };
+  }
+
+  function showAnswer(){
+    if(stage!=='answer') return; stage='report';
+    id('cevap').classList.remove('show');
+    var it=chosen[sequence[cur]];
+    id('eq').style.opacity='1'; var tR=id('tR'); tR.textContent=it.ans; tR.style.opacity='1';
+    setTimeout(function(){ id('report').classList.add('show'); }, reduce?0:260);
+  }
+  function nextItem(settled){
+    if(stage!=='report') return; stage='';
+    var idx=sequence[cur];
+    if(!settled && !requeued[idx]){ sequence.push(idx); requeued[idx]=true; revisits++; }
+    var c=document.querySelector('#sSolve .center'); c.style.opacity='0';
+    setTimeout(function(){ cur++; if(cur>=sequence.length){finish();} else {loadItem();} c.style.opacity='1'; }, reduce?0:300);
+  }
+  function finish(){
+    sessionDone(curMethodKey);
+    id('dsRev').textContent=revisits;
+    id('doneSub').textContent = revisits===0 ? cfg.name+" rahat oturdu."
+      : (revisits===1 ? "Birini tekrar gördün; böylece daha iyi yerleşti." : "Birkaçını tekrar gördün; böylece daha iyi yerleşti.");
+    show('sDone');
+  }
+
+  /* ---------- analiz motoru (Faz B) ---------- */
+  function rawOf(key,it){
+    if(key==='double') return {a:+it.steps[0][0], op:'×', b:+it.steps[0][1]};
+    if(key==='twins'||key==='eleven'||key==='decomp') return {a:+it.a, op:'×', b:+it.b};
+    return {a:+it.a, op:it.op, b:+it.b};
+  }
+  function loadWord(e){ return e<=2?'az':(e<=4?'orta':'çok'); }
+  function twinsPath(a,b){ var t=Math.floor(a/10), left=t*(t+1), r=(a%10)*(b%10), rs=r<10?('0'+r):(''+r);
+    return t+' × '+(t+1)+' = '+left+', birler '+(a%10)+' × '+(b%10)+' = '+rs+' → '+(''+left+rs); }
+  function elevenPath(x){ var d1=Math.floor(x/10), d2=x%10, mid=d1+d2; return d1+' _ '+d2+', ortaya '+d1+'+'+d2+'='+mid+(mid>=10?' (1 sola taşı)':'')+' → '+(x*11); }
+  function decompPath(a,b){ var big=(a>b?a:b), sm=(a>b?b:a), t=Math.floor(big/10)*10, u=big%10; return t+' × '+sm+' = '+(t*sm)+', '+u+' × '+sm+' = '+(u*sm)+' → '+(big*sm); }
+  var dTargets={5:1,25:1,50:1};
+  function doubleFit(a,b){ return (a%2===0 && dTargets[b]) || (b%2===0 && dTargets[a]); }
+  function doubleSteps(a,b){ var e,r; if(a%2===0 && dTargets[b]){e=a;r=b;} else {e=b;r=a;}
+    var steps=[[e,r]], g=0; while(r!==10 && r!==100 && e%2===0 && g<6){ e=e/2; r=r*2; steps.push([e,r]); g++; } return steps; }
+  function nearRef(n){ var r=Math.round(n/25)*25, c=n-r; if(r>0 && c!==0 && Math.abs(c)<=4) return {ref:r,corr:c}; return null; }
+  function refFit(a,op,b){
+    if(op==='×' && Math.min(a,b)>12) return null;
+    var nb=nearRef(b), na=nearRef(a), pick=null, which;
+    if(nb){ pick=nb; which='b'; } else if(na && op!=='−'){ pick=na; which='a'; }
+    if(!pick) return null;
+    var R=pick.ref, corr=pick.corr, ans=(op==='×'?a*b:op==='+'?a+b:a-b);
+    var effort=((R%100===0||R%50===0)?2:3)+(op==='×'?1:0), path;
+    if(op==='+'){ var other=(which==='b'?a:b); path=other+' + '+R+' '+(corr<0?('− '+(-corr)):('+ '+corr))+' = '+ans; }
+    else if(op==='−'){ var t=-corr; path=a+' − '+R+' '+(t<0?('− '+(-t)):('+ '+t))+' = '+ans; }
+    else { var val=(which==='b'?a:b), adj=val*corr; path=val+' × '+R+' '+(adj<0?('− '+(-adj)):('+ '+adj))+' = '+ans; }
+    return {effort:effort, path:path};
+  }
+  function bruteEffort(a,op,b){ if(op==='×'){ return ((''+a).length>1 && (''+b).length>1)?6:5; } return 3; }
+  function analyze(a,op,b){
+    var ans=(op==='×'?a*b:op==='+'?a+b:a-b), out=[];
+    if(op==='×' && a>9&&a<100&&b>9&&b<100 && (a%10)+(b%10)===10 && Math.floor(a/10)===Math.floor(b/10))
+      out.push({key:'twins',name:'Onluk İkizler',effort:2,path:twinsPath(a,b)});
+    if(op==='×' && (a===11||b===11)){ var x11=(b===11?a:b); if(x11>9&&x11<100) out.push({key:'eleven',name:'Onbir Çarpımı',effort:2,path:elevenPath(x11)}); }
+    if(op==='×' && ((a<10&&b>9&&b<100)||(b<10&&a>9&&a<100))) out.push({key:'decomp',name:'Ayrıştırma',effort:4,path:decompPath(a,b)});
+    if(op==='×' && doubleFit(a,b)){ var st=doubleSteps(a,b);
+      out.push({key:'double',name:'İkile-Yarıla',effort:1+st.length,path:st.map(function(x){return x[0]+' × '+x[1];}).join(' → ')+' = '+ans}); }
+    var rf=refFit(a,op,b); if(rf) out.push({key:'ref',name:'Referans Sayılar',effort:rf.effort,path:rf.path});
+    out.push({key:'duz',name:'Düz işlem',effort:bruteEffort(a,op,b),path:a+' '+op+' '+b+' = '+ans+', basamak basamak'});
+    out.sort(function(x,y){return x.effort-y.effort;});
+    return {ans:ans, methods:out};
+  }
+
+  /* ---------- yöntem testi (Faz A) ---------- */
+  var curMethodKey, mtPool, mti, mtScore, entered, mtAnswered;
+  function startMethodTest(key){
+    cfg=methods[key]; curMethodKey=key;
+    mtPool=shuffle(cfg.pool).slice(0,5); mti=0; mtScore=0;
+    id('mtName').textContent=cfg.name; show('mtest'); renderMT();
+  }
+  function mtDots(){ var h=''; for(var k=0;k<mtPool.length;k++){h+='<span class="dot'+(k<mti?' done':k===mti?' on':'')+'"></span>';} id('mtDots').innerHTML=h; }
+  function problemStr(key,it){ if(key==='double') return it.steps[0][0]+' × '+it.steps[0][1]; if(key==='twins'||key==='eleven'||key==='decomp') return it.a+' × '+it.b; return it.a+' '+it.op+' '+it.b; }
+  function smartPath(key,it){
+    if(key==='ref') return '<b>'+it.a+' '+it.op+' '+it.fr+' '+it.comp+' = '+it.ans+'</b><br>Zoru yuvarlak bir sayıyla çözdün, küçük farkı düzelttin. Düz hesaptan kısa.';
+    if(key==='double'){ var chain=it.steps.map(function(s){return s[0]+' × '+s[1];}).join(' → '); return '<b>'+chain+' = '+it.ans+'</b><br>Yarıla ve ikile, çarpım yuvarlağa indi.'; }
+    return '<b>'+it.a+' × '+it.b+' = '+it.ans+'</b><br>'+it.recipe;
+  }
+  function renderMT(){
+    if(mti>=mtPool.length){ finishMT(); return; }
+    mtDots(); entered=''; mtAnswered=false;
+    var it=mtPool[mti];
+    id('mtProblem').innerHTML=problemStr(curMethodKey,it);
+    var a=id('mtAns'); a.textContent='?'; a.className='mtans';
+    var pn=id('mtPanel'); pn.className='mtpanel'; pn.innerHTML='';
+    id('mtPad').style.display='grid'; id('mtNextBtn').style.display='none';
+  }
+  function updAns(){ id('mtAns').textContent = entered===''?'?':entered; }
+  function padTap(d){ if(mtAnswered||entered.length>=5) return; entered+=d; updAns(); }
+  function padDel(){ if(mtAnswered) return; entered=entered.slice(0,-1); updAns(); }
+  function padOk(){
+    if(mtAnswered||entered==='') return; mtAnswered=true;
+    var it=mtPool[mti], ok=(entered===String(it.ans));
+    var a=id('mtAns'); a.className='mtans '+(ok?'right':'wrong');
+    if(ok) mtScore++;
+    var raw=rawOf(curMethodKey,it), an=analyze(raw.a,raw.op,raw.b);
+    var head = ok ? 'Doğru.' : 'Bu sefer olmadı. Doğrusu '+it.ans+'.';
+    var html='<p class="sub" style="text-align:center;margin-bottom:12px">'+head+'</p>';
+    an.methods.slice(0,3).forEach(function(m,i){
+      var isFast=(i===0), yours=(m.key===curMethodKey);
+      var tag=(isFast?'en hızlı yol':'alternatif')+(yours?' · senin yolun':'');
+      html+='<div class="pcard'+(isFast?'':' alt')+'"><div class="pk">'+tag+' · '+m.name+'</div>'
+        +'<div class="ppath">'+m.path+'</div><div class="pmeta">zihinsel yük: '+loadWord(m.effort)+'</div></div>';
+    });
+    var pn=id('mtPanel'); pn.innerHTML=html; pn.classList.add('show');
+    id('mtPad').style.display='none'; id('mtNextBtn').style.display='block';
+  }
+  function mtNext(){ mti++; renderMT(); }
+  function finishMT(){
+    methodTestDone(curMethodKey, mtScore, mtPool.length);
+    id('mtDots').innerHTML=''; id('mtPad').style.display='none'; id('mtNextBtn').style.display='none';
+    id('mtProblem').innerHTML=''; var a=id('mtAns'); a.textContent=''; a.className='mtans';
+    var pn=id('mtPanel'); pn.className='mtpanel show';
+    pn.innerHTML='<div class="bigcheck" style="margin:0 auto 16px">✓</div>'
+      +'<h1 style="text-align:center">'+mtScore+' / '+mtPool.length+' doğru</h1>'
+      +'<p class="sub" style="text-align:center;margin-top:6px">Doğru cevap tek başına önemli değil; yöntemi kullandın, asıl olan bu.</p>'
+      +'<button class="btn" id="mtAgain" style="margin-top:20px">Tekrar</button>'
+      +'<button class="btn ghost sm" id="mtDoneBtn" style="margin-top:8px">Ana Sayfaya dön</button>';
+    id('mtAgain').onclick=function(){ startMethodTest(curMethodKey); };
+    id('mtDoneBtn').onclick=function(){ show('home'); };
+  }
+
+  /* ---------- serbest / karma test (Faz C) ---------- */
+  var METHOD_NAMES={ref:'Referans Sayılar', double:'İkile-Yarıla', twins:'Onluk İkizler', eleven:'Onbir Çarpımı', decomp:'Ayrıştırma', duz:'Düz işlem'};
+  var ftPool, fti, ftEntered, ftAnswered, ftChosen, ftRecords, ftCount=6, ftFocus='all';
+  function allRawProblems(){
+    var arr=[];
+    methods.ref.pool.forEach(function(it){ arr.push({a:+it.a, op:it.op, b:+it.b, ans:it.ans}); });
+    methods.double.pool.forEach(function(it){ arr.push({a:+it.steps[0][0], op:'×', b:+it.steps[0][1], ans:it.ans}); });
+    methods.twins.pool.forEach(function(it){ arr.push({a:+it.a, op:'×', b:+it.b, ans:it.ans}); });
+    methods.eleven.pool.forEach(function(it){ arr.push({a:+it.a, op:'×', b:+it.b, ans:it.ans}); });
+    methods.decomp.pool.forEach(function(it){ arr.push({a:+it.a, op:'×', b:+it.b, ans:it.ans}); });
+    return arr;
+  }
+  function startFreeTest(count, focus){
+    ftCount=count||6; ftFocus=focus||'all';
+    var arr=allRawProblems();
+    if(ftFocus==='mult') arr=arr.filter(function(x){return x.op==='×';});
+    ftPool=shuffle(arr).slice(0,ftCount); fti=0; ftRecords=[]; show('freeTest'); renderFT();
+  }
+  function segPick(row, btn){ document.querySelectorAll('#'+row+' .seg').forEach(function(b){b.classList.remove('on');}); btn.classList.add('on'); }
+  function startConfiguredTest(){
+    var l=document.querySelector('#lenRow .seg.on'), f=document.querySelector('#focusRow .seg.on');
+    startFreeTest(l?+l.dataset.len:6, f?f.dataset.focus:'all');
+  }
+  function ftDots(){ var h=''; for(var k=0;k<ftPool.length;k++){h+='<span class="dot'+(k<fti?' done':k===fti?' on':'')+'"></span>';} id('ftDots').innerHTML=h; }
+  function renderFT(){
+    if(fti>=ftPool.length){ finishFreeTest(); return; }
+    ftDots(); ftEntered=''; ftAnswered=false; ftChosen=null;
+    var p=ftPool[fti];
+    id('ftProblem').textContent=p.a+' '+p.op+' '+p.b;
+    var a=id('ftAns'); a.textContent='?'; a.className='mtans';
+    document.querySelectorAll('#freeTest .ftchip').forEach(function(c){ c.classList.remove('sel'); });
+  }
+  function ftPick(key){ if(ftAnswered) return; ftChosen=key;
+    document.querySelectorAll('#freeTest .ftchip').forEach(function(c){ c.classList.toggle('sel', c.dataset.m===key); }); }
+  function ftTap(d){ if(ftAnswered||ftEntered.length>=5) return; ftEntered+=d; id('ftAns').textContent=ftEntered===''?'?':ftEntered; }
+  function ftDel(){ if(ftAnswered) return; ftEntered=ftEntered.slice(0,-1); id('ftAns').textContent=ftEntered===''?'?':ftEntered; }
+  function ftOk(){
+    if(ftAnswered||ftEntered==='') return; ftAnswered=true;
+    var p=ftPool[fti], ok=(ftEntered===String(p.ans)), an=analyze(p.a,p.op,p.b);
+    id('ftAns').className='mtans '+(ok?'right':'wrong');
+    ftRecords.push({a:p.a,op:p.op,b:p.b,ans:p.ans,correct:ok,chosen:ftChosen,fastest:an.methods[0].key,an:an});
+    setTimeout(function(){ fti++; renderFT(); }, reduce?0:650);
+  }
+  function finishFreeTest(){
+    var correct=0, chosen=0, matched=0;
+    ftRecords.forEach(function(r){ if(r.correct) correct++; if(r.chosen) chosen++; if(r.chosen && r.chosen===r.fastest) matched++; });
+    freeDone(ftRecords, correct);
+    var miss={},topMiss=null,topN=0;
+    ftRecords.forEach(function(r){ if(r.chosen!==r.fastest && r.fastest!=='duz'){ miss[r.fastest]=(miss[r.fastest]||0)+1; } });
+    for(var mk in miss){ if(miss[mk]>topN){ topN=miss[mk]; topMiss=mk; } }
+    var missCard = topMiss ? '<div class="card suggest" style="margin:4px 0"><div class="st">Bu testte en çok <b>'+METHOD_NAMES[topMiss]+'</b> kısa yolunu atladın. Ona bir göz atmak ister misin?</div><span class="sbtn" id="missBtn">'+METHOD_NAMES[topMiss]+' →</span></div>' : '';
+    var insight = chosen>0 ? (matched+' / '+chosen+' soruda en hızlı yolu seçtin.')
+                           : 'Yöntem işaretlemedin; her soru için en hızlı yolu aşağıda görebilirsin.';
+    var h='<div class="bigcheck" style="margin:18px auto 14px">✓</div>'
+      +'<h1 style="text-align:center">Karma test raporu</h1>'
+      +'<p class="sub" style="text-align:center;margin-top:6px">'+correct+' / '+ftRecords.length+' doğru. '+insight+'</p>'
+      +missCard
+      +'<div class="sec-title">soru soru</div>';
+    ftRecords.forEach(function(r,i){
+      var probStr=r.a+' '+r.op+' '+r.b;
+      var mark = r.chosen ? (r.chosen===r.fastest?'<span class="rmark good">✓</span>':'<span class="rmark soft">○</span>') : '<span class="rmark none">·</span>';
+      h+='<div class="rrow" onclick="toggleRow('+i+')"><div class="rq">'+probStr+'</div>'
+        +'<div class="rinfo"><span>senin: '+(r.chosen?METHOD_NAMES[r.chosen]:'işaretlemedin')+'</span>'
+        +'<span class="rf">en hızlı: '+METHOD_NAMES[r.fastest]+'</span></div>'+mark+'</div>';
+      var det='';
+      r.an.methods.slice(0,3).forEach(function(m,j){
+        var isFast=(j===0), yours=(m.key===r.chosen);
+        det+='<div class="pcard'+(isFast?'':' alt')+'"><div class="pk">'+(isFast?'en hızlı':'alternatif')+(yours?' · senin':'')+' · '+m.name+'</div>'
+          +'<div class="ppath">'+m.path+'</div><div class="pmeta">zihinsel yük: '+loadWord(m.effort)+'</div></div>';
+      });
+      h+='<div class="rdetail" id="rd'+i+'" style="display:none">'+det+'</div>';
+    });
+    h+='<button class="btn" style="margin-top:18px" onclick="startFreeTest(ftCount,ftFocus)">Tekrar</button>'
+      +'<button class="btn ghost sm" style="margin-top:8px" onclick="show(\'home\')">Bugüne dön</button>';
+    id('freeReportBody').innerHTML=h; if(topMiss && id('missBtn')) id('missBtn').onclick=function(){ launchSession(topMiss); }; show('freeReport');
+  }
+  function toggleRow(i){ var d=id('rd'+i); d.style.display = d.style.display==='none'?'block':'none'; }
+
+  /* ---------- Bugün: kart yığını menüsü ---------- */
+  var HOME_CARDS=[
+    {t:"İlerleme", s:"ustalık ve form durumun", bg:"#7C5A34", ink:"#fff", go:function(){show('progress');}},
+    {t:"Araç çantası", s:"keşfettiğin yöntemlerin detayı", bg:"#A9700F", ink:"#fff", go:function(){show('toolbox');}},
+    {t:"Karma test", s:"farklı yöntemler, sonunda rapor", bg:"#C8971E", ink:"#3A2E12", go:function(){startFreeTest();}},
+    {t:"Hafıza", s:"kareler, küpler, oyunla ezber", bg:"#5F7A4E", ink:"#fff", go:function(){openMem('squares');}},
+    {t:"Yöntemler", s:"zoru kolaya çeviren yollar", bg:"#2F6E57", ink:"#fff", go:function(){show('skills');}},
+    {t:"Bugünün antrenmanı", s:"dört kısa soru, kafadan", bg:"#1C5C48", ink:"#fff", go:function(){launchSession('ref');}}
+  ];
+  var HN=HOME_CARDS.length, HPEEK=48, HCARD=86, hOpen=false, hBusy=false, hStage, hEls=[];
+  function buildHomeCards(){
+    hStage=id('hStage'); if(!hStage) return;
+    var html='';
+    HOME_CARDS.forEach(function(c,i){
+      html+='<div class="hcard" data-i="'+i+'" style="background:'+c.bg+';color:'+c.ink+'"><div class="ht">'+c.t+'</div><div class="hs">'+c.s+'</div></div>';
+    });
+    hStage.insertAdjacentHTML('afterbegin', html);
+    hEls=[].slice.call(hStage.querySelectorAll('.hcard'));
+    hEls.forEach(function(el){ el.addEventListener('click', function(){ onHomeCardTap(+el.dataset.i); }); });
+    requestAnimationFrame(applyHomeLayout);
+    window.addEventListener('resize', applyHomeLayout);
+    setTimeout(function(){ setHomeOpen(true); }, 400);
+  }
+  function applyHomeLayout(){
+    if(!hStage) return;
+    var H=hStage.clientHeight||380, openGap=(H-HCARD)/(HN-1);
+    hEls.forEach(function(el,i){
+      var y,rot,sc;
+      if(hOpen){ y=i*openGap; rot=(i%2?-0.4:0.4); sc=1; }
+      else { y=H-HCARD-(HN-1-i)*HPEEK; rot=(i%2?0.9:-1.1); sc=1-(HN-1-i)*0.012; }
+      el.style.zIndex=i+1;
+      el.style.transitionDelay=(i*22)+'ms';
+      el.style.transform='translateY('+y+'px) rotate('+rot+'deg) scale('+sc+')';
+      var hs=el.querySelector('.hs'); if(hs) hs.style.opacity=hOpen?0.85:0;
+    });
+  }
+  function setHomeOpen(v){ hOpen=v; id('hHint').style.opacity=v?0:1; applyHomeLayout(); }
+  function onHomeCardTap(i){
+    if(hBusy) return;
+    if(!hOpen){ setHomeOpen(true); return; }
+    hBusy=true;
+    var el=hEls[i];
+    el.style.transitionDelay='0ms'; el.style.zIndex=100;
+    var m=el.style.transform.match(/translateY\(([-\d.]+)px\)/), y=m?parseFloat(m[1]):0;
+    el.style.transform='translateY('+(y-4)+'px) rotate(0deg) scale(1.04)';
+    setTimeout(function(){
+      HOME_CARDS[i].go();
+      setTimeout(function(){ el.style.zIndex=i+1; applyHomeLayout(); hBusy=false; }, 260);
+    }, 200);
+  }
+  /* ---------- ilerleme (halkalar + konular, gerçek veriden) ---------- */
+  var METH_KEYS=['ref','double','twins','eleven','decomp'];
+  var METH_INFO={ ref:{t:'Referans Sayılar',c:'#D65A4E'}, double:{t:'İkile-Yarıla',c:'#E59A70'}, twins:{t:'Onluk İkizler',c:'#B0862C'}, eleven:{t:'Onbir Çarpımı',c:'#5E9B93'}, decomp:{t:'Ayrıştırma',c:'#8A9A5B'} };
+  var PROGRESS=[], TOPICS=[];
+  function sugLine(o){ if(o.ust===0 && o.form===0) return 'Henüz başlamadın; ilk turu atmak güzel olur.'; if(o.form<40) return 'Biraz pas tutmuş; kısa bir tazeleme iyi gelir.'; if(o.ust<40) return 'Az daha pratik, bu da oturur.'; return 'Rahatsın; ara ara tazelemen yeter.'; }
+  function deriveProgress(){
+    var mk=stats.methods;
+    var yp=Math.round(METH_KEYS.reduce(function(a,k){return a+mk[k].ust;},0)/METH_KEYS.length);
+    var hp=Math.round((stats.mem.squares.ust+stats.mem.cubes.ust)/2);
+    var rp=Math.min(100, stats.tests.count*15);
+    PROGRESS=[{label:'Yöntemler',pct:yp,color:'#D65A4E'},{label:'Hafıza',pct:hp,color:'#5E9B93'},{label:'Refleks',pct:rp,color:'#C79A3C'}];
+    TOPICS=[];
+    METH_KEYS.forEach(function(k){ TOPICS.push({t:METH_INFO[k].t,c:METH_INFO[k].c,ust:mk[k].ust,form:mk[k].form,sug:sugLine(mk[k]),key:k,kind:'m'}); });
+    TOPICS.push({t:'Kareler',c:'#2E6480',ust:stats.mem.squares.ust,form:stats.mem.squares.form,sug:sugLine(stats.mem.squares),key:'squares',kind:'s'});
+    TOPICS.push({t:'Küpler',c:'#F088A2',ust:stats.mem.cubes.ust,form:stats.mem.cubes.form,sug:sugLine(stats.mem.cubes),key:'cubes',kind:'s'});
+  }
+  function nextSuggestion(){
+    var mk=stats.methods, lo=METH_KEYS[0], hi=METH_KEYS[0];
+    METH_KEYS.forEach(function(k){ if(mk[k].ust+mk[k].form < mk[lo].ust+mk[lo].form) lo=k; if(mk[k].ust+mk[k].form > mk[hi].ust+mk[hi].form) hi=k; });
+    var text, key=lo;
+    if(mk[hi].ust+mk[hi].form===0){ text='Henüz başlamadın. İlk turunu bir yöntemle atmak ister misin?'; key='ref'; }
+    else if(hi!==lo){ text=METH_INFO[hi].t+' güzel gidiyor. '+METH_INFO[lo].t+' için birkaç tur daha atmak ister misin? Bu da onu tam oturtur.'; }
+    else { text=METH_INFO[lo].t+' için birkaç tur daha, güzel oturur.'; }
+    return { text:text, label:METH_INFO[key].t+' →', key:key };
+  }
+  function ringsSVG(size, track){
+    var c=size/2, sw=size*0.09, gap=sw*1.35, r0=c-sw/2-2, out='<svg viewBox="0 0 '+size+' '+size+'" width="'+size+'" height="'+size+'">';
+    PROGRESS.forEach(function(m,i){
+      var r=r0-i*gap, circ=2*Math.PI*r, dash=circ*m.pct/100;
+      out+='<circle cx="'+c+'" cy="'+c+'" r="'+r+'" fill="none" stroke="'+track+'" stroke-width="'+sw+'"/>';
+      out+='<circle cx="'+c+'" cy="'+c+'" r="'+r+'" fill="none" stroke="'+m.color+'" stroke-width="'+sw+'" stroke-linecap="round" stroke-dasharray="'+dash+' '+(circ-dash)+'" transform="rotate(-90 '+c+' '+c+')"/>';
+    });
+    return out+'</svg>';
+  }
+  function renderProgressUI(){
+    deriveProgress();
+    var avg=Math.round(PROGRESS.reduce(function(a,m){return a+m.pct;},0)/PROGRESS.length);
+    if(id('progRings')) id('progRings').innerHTML=ringsSVG(190,'rgba(31,28,22,.07)');
+    if(id('rcNum')) id('rcNum').innerHTML=avg+'<b>%</b>';
+    if(id('ringLegend')) id('ringLegend').innerHTML=PROGRESS.map(function(m){return '<span class="lgd"><span class="ld" style="background:'+m.color+'"></span>'+m.label+' <b>'+m.pct+'%</b></span>';}).join('');
+    if(id('progsumRings')) id('progsumRings').innerHTML=ringsSVG(84,'rgba(255,255,255,.22)');
+    var ns=nextSuggestion();
+    if(id('sugText')) id('sugText').textContent=ns.text;
+    if(id('sugBtn')){ id('sugBtn').textContent=ns.label; id('sugBtn').onclick=function(){ launchSession(ns.key); }; }
+    if(id('progTopics')) id('progTopics').innerHTML=TOPICS.map(function(t,i){
+      return '<div class="ptopic" data-i="'+i+'"><div class="pthead" onclick="toggleTopic('+i+')"><span class="ptdot" style="background:'+t.c+'"></span><span class="ptt">'+t.t+'</span><span class="ptpct">'+Math.round((t.ust+t.form)/2)+'%</span></div>'
+        +'<div class="ptbody"><div class="ptbar"><div class="ptl">ustalık</div><div class="ptt2"><i style="width:'+t.ust+'%;background:var(--green)"></i></div></div>'
+        +'<div class="ptbar"><div class="ptl">form</div><div class="ptt2"><i style="width:'+t.form+'%;background:var(--amber)"></i></div></div>'
+        +'<div class="ptsug">'+t.sug+' <span class="go" onclick="TOPIC_GO('+i+')">pratik →</span></div></div></div>';
+    }).join('');
+  }
+  function toggleTopic(i){ var el=document.querySelector('#progTopics .ptopic[data-i="'+i+'"]'); if(el) el.classList.toggle('open'); }
+  function TOPIC_GO(i){ var t=TOPICS[i]; if(!t) return; if(t.kind==='s') openMem(t.key); else launchSession(t.key); }
+  /* ---------- ilk açılış (onboarding) ---------- */
+  var ONB=[
+    {sym:'✦', bg:'#F6E7DC', fg:'#E8772C', eyebrow:'merhaba', title:'MatRefleks\'e hoş geldin', text:'Hızlı hesap yapmak zeka değil, yöntem işidir. Toplama, çıkarma, çarpma ve bölmede kısa yolları görerek sayı refleksini geliştireceğiz.'},
+    {sym:'≈', bg:'#F6E7DC', fg:'#D65A4E', eyebrow:'yöntemler', title:'Sayıların kısa yollarını keşfet', text:'Bir işlemin tek yolu yok. Daha hızlı, daha kolay ve daha akıllıca çözme yollarını burada öğrenirsin.'},
+    {sym:'◑', bg:'#E4EEEA', fg:'#2E6480', eyebrow:'hafıza ve ilerleme', title:'Oyunla pekiştir, kaldığın yerden devam et', text:'Kareler, küpler ve temel sayı bilgilerini kısa oyunlarla güçlendir. İlerlemen kaydolur; ara versen bile kaldığın yerden devam edersin.'}
+  ];
+  var onbI=0;
+  function showOnboard(){ onbI=0; id('onboard').classList.add('show'); onbRender(); }
+  function onbRender(){
+    var b=id('onbBody'), sl=ONB[onbI];
+    function fill(){
+      var em=id('onbEmblem'); em.textContent=sl.sym; em.style.background=sl.bg; em.style.color=sl.fg;
+      id('onbEyebrow').textContent=sl.eyebrow; id('onbTitle').textContent=sl.title; id('onbText').textContent=sl.text;
+      id('onbNextBtn').textContent=(onbI===ONB.length-1)?'Başlayalım':'Devam edelim';
+      var d=''; for(var k=0;k<ONB.length;k++){ d+='<span class="onb-dot'+(k===onbI?' on':'')+'"></span>'; } id('onbDots').innerHTML=d;
+      if(b) b.style.opacity='1';
+    }
+    if(b && !reduce){ b.style.opacity='0'; setTimeout(fill,150); } else fill();
+  }
+  function onbNext(){ if(onbI<ONB.length-1){ onbI++; onbRender(); } else onbFinish(); }
+  function onbSkip(){ onbFinish(); }
+  function onbFinish(){ STORE.set('onboarded',1); id('onboard').classList.remove('show'); show('home'); }
+  /* ---------- açılış jeneriği ---------- */
+  var APP_NAME='MatRefleks', splashDone=false;
+  function showSplash(){
+    var sp=id('splash'); id('splashName').textContent=APP_NAME; id('splashSub').textContent='zihinden hesap için kısa yollar';
+    sp.classList.add('show'); splashDone=false;
+    id('splashSkip').onclick=finishSplash; sp.onclick=finishSplash;
+    if(reduce){ sp.classList.add('impact','named','subbed'); setTimeout(finishSplash, 1100); return; }
+    setTimeout(function(){ sp.classList.add('impact'); }, 1440);
+    setTimeout(function(){ sp.classList.add('named'); }, 1760);
+    setTimeout(function(){ sp.classList.add('subbed'); }, 2360);
+    setTimeout(function(){ finishSplash(); }, 3900);
+  }
+  function finishSplash(){
+    if(splashDone) return; splashDone=true;
+    var sp=id('splash'); sp.classList.add('out');
+    setTimeout(function(){ sp.classList.remove('show','out','impact','named','subbed'); if(!STORE.get('onboarded',0)) showOnboard(); }, 520);
+  }
+  decayForms();
+  buildHomeCards();
+  renderProgressUI();
+  if(!STORE.get('onboarded',0)) showOnboard();
+</script>
+</body>
+</html>
