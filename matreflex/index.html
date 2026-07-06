@@ -396,6 +396,24 @@
   @keyframes sripple{ 0%{opacity:.5; transform:scale(.7)} 100%{opacity:0; transform:scale(2.5)} }
   @keyframes opPop{ 0%{opacity:0; transform:scale(0)} 60%{opacity:1; transform:scale(1.2)} 100%{opacity:1; transform:scale(1)} }
   .linkrow{text-decoration:none; color:inherit}
+  .sigcard{display:flex; align-items:center; gap:14px; padding:15px 18px; margin-top:10px; background:var(--surface); border:1px solid #EBD9C4; border-left:3px solid #E8772C; border-radius:16px; box-shadow:var(--shadow-sm); cursor:pointer}
+  .sigcard .tgo{background:#E8772C}
+  .cmp-dots{display:flex; gap:6px; justify-content:center; margin:6px 0 10px}
+  .cmp-dots i{width:22px; height:4px; border-radius:2px; background:var(--line)} .cmp-dots i.on,.cmp-dots i.done{background:var(--green)}
+  .cmp-q{font-family:'Fraunces'; font-size:38px; text-align:center; margin:16px 0 20px; color:var(--ink)}
+  .cmp-opts{display:flex; flex-direction:column; gap:12px}
+  .cmp-opt{border:1px solid var(--line); background:var(--surface); border-radius:16px; padding:15px 18px; cursor:pointer; transition:transform .15s, background .2s, border-color .2s; text-align:left}
+  .cmp-opt:active{transform:scale(.99)}
+  .cmp-opt .ol{font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); font-weight:600; margin-bottom:5px}
+  .cmp-opt .op{font-family:'Fraunces'; font-size:20px; color:var(--ink)}
+  .cmp-opt .ores{font-size:13px; color:var(--ink-soft); margin-top:0; max-height:0; overflow:hidden; opacity:0; transition:opacity .3s, max-height .3s, margin-top .3s}
+  .cmp-opt.reveal .ores{opacity:1; max-height:40px; margin-top:7px}
+  .cmp-opt.light{border-color:#CFE3D8; background:var(--green-soft)}
+  .cmp-opt.dim{opacity:.55}
+  .cmp-fb{margin-top:16px; opacity:0; transition:opacity .3s}
+  .cmp-fb.show{opacity:1}
+  .cmp-fb .fbhead{font-family:'Fraunces'; font-size:17px; margin-bottom:6px}
+  .cmp-fb .fbwhy{font-size:13.5px; line-height:1.55; color:var(--ink-soft)}
   @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important; animation:none!important}}
   :focus-visible{outline:2px solid var(--green); outline-offset:2px}
 </style>
@@ -417,6 +435,10 @@
       <div class="todaycta" onclick="launchSession('ref')">
         <div class="tct"><span class="tk">bugünün refleksi</span><b>Referans Sayılar</b><span class="ts">bugün referans sayılarını fark etmeyi çalışıyoruz</span></div>
         <div class="tgo">▶</div>
+      </div>
+      <div class="sigcard" onclick="startCompare()">
+        <div class="tct"><span class="tk" style="color:#E8772C">sezgi modu</span><b>Hangi yol daha kolay?</b><span class="ts">çözme yok, en akıllı yolu seç</span></div>
+        <div class="tgo">⇄</div>
       </div>
       <div class="folders" id="folders">
         <div class="folder" data-f="method" style="--fc:#D65A4E">
@@ -686,6 +708,16 @@
       <button class="btn ghost sm" style="margin-top:16px" onclick="show('home')">Kapat</button>
     </section>
 
+    <!-- HANGİ YOL DAHA KOLAY -->
+    <section class="screen" id="compare">
+      <button class="back" onclick="show('home')">‹ Ana Sayfa</button>
+      <div class="eyebrow" style="text-align:center">hangi yol daha kolay?</div>
+      <div class="cmp-dots" id="cmpDots"></div>
+      <div class="cmp-q" id="cmpQ"></div>
+      <div class="cmp-opts" id="cmpOpts"></div>
+      <div class="cmp-fb" id="cmpFb"></div>
+    </section>
+
     <!-- SERBEST / KARMA TEST -->
     <section class="screen" id="freeTest">
       <div class="shead"><button class="exit" onclick="show('home')">‹</button>
@@ -805,7 +837,7 @@
   function defaultStats(){ return {
     methods:{ ref:{ust:0,form:0}, double:{ust:0,form:0}, twins:{ust:0,form:0}, eleven:{ust:0,form:0}, decomp:{ust:0,form:0} },
     mem:{ squares:{ust:0,form:0}, cubes:{ust:0,form:0} },
-    tests:{ count:0, best:0, last:0 } }; }
+    tests:{ count:0, best:0, last:0 }, compare:{ rounds:0 } }; }
   var stats=STORE.get('stats', defaultStats());
   (function(){ var d=defaultStats(); for(var g in d){ if(!stats[g]) stats[g]=d[g]; for(var k in d[g]){ if(stats[g][k]===undefined) stats[g][k]=d[g][k]; } } })();
   function saveStats(){ STORE.set('stats', stats); }
@@ -1550,7 +1582,7 @@
     var mk=stats.methods;
     var yp=Math.round(METH_KEYS.reduce(function(a,k){return a+mk[k].ust;},0)/METH_KEYS.length);
     var hp=Math.round((stats.mem.squares.ust+stats.mem.cubes.ust)/2);
-    var rp=Math.min(100, stats.tests.count*15);
+    var rp=Math.min(100, (stats.tests.count + (stats.compare?stats.compare.rounds:0))*12);
     PROGRESS=[{label:'Yöntemler',pct:yp,color:'#D65A4E'},{label:'Hafıza',pct:hp,color:'#5E9B93'},{label:'Refleks',pct:rp,color:'#C79A3C'}];
     TOPICS=[];
     METH_KEYS.forEach(function(k){ TOPICS.push({t:METH_INFO[k].t,c:METH_INFO[k].c,ust:mk[k].ust,form:mk[k].form,sug:sugLine(mk[k]),key:k,kind:'m'}); });
@@ -1594,6 +1626,63 @@
   }
   function toggleTopic(i){ var el=document.querySelector('#progTopics .ptopic[data-i="'+i+'"]'); if(el) el.classList.toggle('open'); }
   function TOPIC_GO(i){ var t=TOPICS[i]; if(!t) return; if(t.kind==='s') openMem(t.key); else launchSession(t.key); }
+  /* ---------- hangi yol daha kolay? ---------- */
+  var COMPARE=[
+    {q:"99 × 7", p1:{label:"100 × 7 − 7", res:"700 − 7 = 693"}, p2:{label:"90 × 7 + 9 × 7", res:"630 + 63 = 693"}, why:"99, 100'e bir adım uzakta; bir çarpım ve küçük bir çıkarma yeter. Parçalamak iki çarpım ve bir toplama ister."},
+    {q:"48 × 25", p1:{label:"48 × 100 ÷ 4", res:"4800 ÷ 4 = 1200"}, p2:{label:"48 × 20 + 48 × 5", res:"960 + 240 = 1200"}, why:"25, 100'ün dörtte biri. Yüzle çarpıp dörde bölmek tek yuvarlak yol; parçalamak daha çok adım."},
+    {q:"16 × 25", p1:{label:"8 × 50 → 4 × 100", res:"= 400"}, p2:{label:"16 × 20 + 16 × 5", res:"320 + 80 = 400"}, why:"İkile-yarıla ile 4 × 100 gibi yuvarlak bir çarpıma inersin; parçalama iki çarpım ister."},
+    {q:"45 × 12", p1:{label:"90 × 6", res:"= 540"}, p2:{label:"45 × 10 + 45 × 2", res:"450 + 90 = 540"}, why:"Bir ikile bir yarıla: 45 × 12, 90 × 6 olur, tek çarpım. Parçalama iki parça ister."},
+    {q:"19 × 6", p1:{label:"20 × 6 − 6", res:"120 − 6 = 114"}, p2:{label:"10 × 6 + 9 × 6", res:"60 + 54 = 114"}, why:"19, 20'ye bir adım; bir çarpım ve küçük bir çıkarma yeter."},
+    {q:"63 × 11", p1:{label:"6 _ (6+3) _ 3", res:"= 693"}, p2:{label:"63 × 10 + 63", res:"630 + 63 = 693"}, why:"11 ile çarpımda rakamları araya toplamak neredeyse anında; ×10 artı kendisi de olur ama bir toplama daha ister."},
+    {q:"35 × 35", p1:{label:"3 × 4 = 12, sona 25", res:"= 1225"}, p2:{label:"35 × 30 + 35 × 5", res:"1050 + 175 = 1225"}, why:"Birler 10'a tamamlanıp onlar eşit olunca kısa yol var: 3 × 4 = 12, sonuna 25. Parçalamak çok daha uzun."},
+    {q:"102 × 6", p1:{label:"100 × 6 + 2 × 6", res:"600 + 12 = 612"}, p2:{label:"102 × 6 basamak basamak", res:"= 612"}, why:"102, 100'e iki adım; yuvarlaktan gitmek basamak basamak çarpmaktan hafif."},
+    {q:"24 × 15", p1:{label:"12 × 30", res:"= 360"}, p2:{label:"24 × 10 + 24 × 5", res:"240 + 120 = 360"}, why:"Yarıla-ikile ile 12 × 30 gibi yuvarlak tek çarpıma inersin; parçalama iki parça ve bir toplama ister."},
+    {q:"50 × 18", p1:{label:"100 × 9", res:"= 900"}, p2:{label:"50 × 10 + 50 × 8", res:"500 + 400 = 900"}, why:"İkile-yarıla: 50 × 18, 100 × 9 olur, tek yuvarlak çarpım."}
+  ];
+  var cmpItems=[], cmpIdx=0, cScore=0, cmpOrder=['p1','p2'], cmpLocked=false;
+  function startCompare(){ cmpItems=shuffle(COMPARE.slice()).slice(0,6); cmpIdx=0; cScore=0; show('compare'); renderCmp(); }
+  function renderCmp(){
+    cmpLocked=false;
+    var it=cmpItems[cmpIdx];
+    cmpOrder = Math.random()<0.5 ? ['p1','p2'] : ['p2','p1'];
+    id('cmpQ').textContent=it.q;
+    var labels=['A','B'], html='';
+    cmpOrder.forEach(function(key,i){
+      var pth=it[key];
+      html+='<div class="cmp-opt" data-k="'+key+'" onclick="cmpPick(\''+labels[i]+'\')"><div class="ol">'+labels[i]+'</div><div class="op">'+pth.label+'</div><div class="ores">'+pth.res+'</div></div>';
+    });
+    id('cmpOpts').innerHTML=html;
+    var fb=id('cmpFb'); fb.classList.remove('show'); fb.innerHTML='';
+    var d=''; for(var k=0;k<cmpItems.length;k++){ d+='<i class="'+(k<cmpIdx?'done':(k===cmpIdx?'on':''))+'"></i>'; } id('cmpDots').innerHTML=d;
+  }
+  function cmpPick(pos){
+    if(cmpLocked) return; cmpLocked=true;
+    var it=cmpItems[cmpIdx];
+    var chosenKey=(pos==='A')?cmpOrder[0]:cmpOrder[1];
+    var correct=(chosenKey==='p1');
+    if(correct) cScore++;
+    document.querySelectorAll('#cmpOpts .cmp-opt').forEach(function(el){
+      el.classList.add('reveal');
+      if(el.dataset.k==='p1') el.classList.add('light'); else el.classList.add('dim');
+    });
+    var fb=id('cmpFb');
+    fb.innerHTML='<div class="fbhead">'+(correct?'Evet, en hafif yol bu.':'İkisi de doğru sonucu verir; ama diğeri genelde daha hafif.')+'</div>'
+      +'<div class="fbwhy">'+it.why+'</div>'
+      +'<button class="btn" style="margin-top:14px" onclick="cmpNext()">'+(cmpIdx===cmpItems.length-1?'Bitir':'Sonraki')+'</button>';
+    fb.classList.add('show');
+  }
+  function cmpNext(){ if(cmpIdx<cmpItems.length-1){ cmpIdx++; renderCmp(); } else cmpDone(); }
+  function cmpDone(){
+    compareDone();
+    id('cmpDots').innerHTML=''; id('cmpQ').textContent='Tur bitti'; id('cmpOpts').innerHTML='';
+    var fb=id('cmpFb');
+    fb.innerHTML='<div class="fbhead" style="text-align:center">'+cScore+' / '+cmpItems.length+' soruda en hafif yolu sezdin.</div>'
+      +'<div class="fbwhy" style="text-align:center;margin-top:6px">Önemli olan doğru cevap değil, hangi yolun daha az adım istediğini görmek.</div>'
+      +'<button class="btn" style="margin-top:16px" onclick="startCompare()">Yeni tur</button>'
+      +'<button class="btn ghost sm" style="margin-top:8px" onclick="show(\'home\')">Ana Sayfa</button>';
+    fb.classList.add('show');
+  }
+  function compareDone(){ if(!stats.compare) stats.compare={rounds:0}; stats.compare.rounds++; saveStats(); refreshProgress(); }
   /* ---------- ilk açılış (onboarding) ---------- */
   var ONB=[
     {sym:'✦', bg:'#F6E7DC', fg:'#E8772C', eyebrow:'merhaba', title:'MatReflex\'e hoş geldin', text:'Hızlı hesap yapmak zeka değil, yöntem işidir. Toplama, çıkarma, çarpma ve bölmede kısa yolları görerek sayı refleksini geliştireceğiz.'},
