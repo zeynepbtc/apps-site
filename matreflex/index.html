@@ -2,12 +2,23 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>MatRefleks</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MatReflex</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1C5C48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="MatReflex">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="mobile-web-app-capable" content="yes">
+<!-- yazı tipleri uygulama içinde gömülü (fonts/) -->
 <style>
+  @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url('fonts/inter-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url('fonts/inter-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url('fonts/fraunces-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url('fonts/fraunces-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
   :root{
     --paper:#F2F0E9; --surface:#FFFFFF; --ink:#23211C; --ink-soft:#6F6B62; --ink-faint:#9C988E;
     --line:#E6E2D9; --green:#1C5C48; --green-soft:#E5EFE9; --green-ink:#134034;
@@ -350,7 +361,7 @@
   .onboard{position:absolute; inset:0; background:var(--paper); z-index:200; display:none; flex-direction:column; padding:26px 24px 22px}
   .onboard.show{display:flex}
   .onb-skip{position:absolute; top:16px; right:16px; background:none; border:none; color:var(--ink-soft); font-size:14px; cursor:pointer; font-family:'Inter'}
-  .onb-body{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition:opacity .3s var(--ease)}
+  .onb-body{flex:1; min-height:0; overflow-y:auto; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition:opacity .25s var(--ease)}
   .onb-emblem{width:118px; height:118px; border-radius:32px; display:flex; align-items:center; justify-content:center; font-family:'Fraunces'; font-size:50px; margin-bottom:26px; box-shadow:var(--shadow-sm)}
   .onb-eyebrow{font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--amber); font-weight:600; margin-bottom:8px}
   .onb-title{font-family:'Fraunces'; font-weight:500; font-size:26px; line-height:1.22; margin-bottom:12px}
@@ -395,7 +406,7 @@
 
     <!-- BUGÜN -->
     <section class="screen active" id="home">
-      <div class="homehead"><div class="eyebrow">merhaba</div><h1 style="margin:4px 0 0">Bugün nasılsın?</h1></div>
+      <div class="homehead"><div class="eyebrow">merhaba</div><h1 style="margin:4px 0 0">Bugün ne çalışalım?</h1></div>
       <div class="progsum" onclick="show('progress')">
         <div class="pmore">detay →</div>
         <div class="pgrid">
@@ -404,7 +415,7 @@
         </div>
       </div>
       <div class="todaycta" onclick="launchSession('ref')">
-        <div class="tct"><span class="tk">bugünün antrenmanı</span><b>Referans Sayılar</b><span class="ts">dört kısa soru, kafadan</span></div>
+        <div class="tct"><span class="tk">bugünün refleksi</span><b>Referans Sayılar</b><span class="ts">bugün referans sayılarını fark etmeyi çalışıyoruz</span></div>
         <div class="tgo">▶</div>
       </div>
       <div class="folders" id="folders">
@@ -524,10 +535,11 @@
 
     <!-- HAFIZA HUB -->
     <section class="screen" id="memHub">
-      <button class="back" onclick="show('skills')">‹ Yetenekler</button>
+      <button class="back" onclick="show('home')">‹ Ana Sayfa</button>
       <div class="eyebrow">hafıza · oyunla ezber</div>
       <h1 id="memHubTitle" style="margin:4px 0 4px">Kareler</h1>
       <p class="sub" id="memHubSub"></p>
+      <div class="pcard" style="margin:4px 0 14px"><div class="pk">neden</div>Bazı işlemleri çözmezsin, tanırsın. Kareler ve küpler, zihinden hesapta yakıt gibidir.</div>
       <div class="sec-title">liste</div>
       <div class="memlist" id="memList"></div>
       <div class="sec-title">oyunlar</div>
@@ -670,7 +682,7 @@
       <a class="card lrow linkrow" href="https://zeynepkaya.app/matreflex/privacy" target="_blank" rel="noopener"><div class="ln">◆</div><div class="lt"><b>Gizlilik Politikası</b><span>verilerin nasıl işlenir</span></div><div class="chev" style="margin-left:auto;color:var(--ink-faint)">›</div></a>
       <a class="card lrow linkrow" href="https://zeynepkaya.app/matreflex/terms" target="_blank" rel="noopener"><div class="ln">§</div><div class="lt"><b>Kullanım Koşulları</b><span>kullanım şartları</span></div><div class="chev" style="margin-left:auto;color:var(--ink-faint)">›</div></a>
       <a class="card lrow linkrow" href="https://zeynepkaya.app/matreflex/support" target="_blank" rel="noopener"><div class="ln">?</div><div class="lt"><b>Destek</b><span>yardım ve iletişim</span></div><div class="chev" style="margin-left:auto;color:var(--ink-faint)">›</div></a>
-      <div class="card lrow"><div class="ln">i</div><div class="lt"><b>Sürüm</b><span>MatRefleks 0.1.0</span></div></div>
+      <div class="card lrow"><div class="ln">i</div><div class="lt"><b>Sürüm</b><span>MatReflex 0.1.0</span></div></div>
       <button class="btn ghost sm" style="margin-top:16px" onclick="show('home')">Kapat</button>
     </section>
 
@@ -774,7 +786,7 @@
       <div class="ripple"></div>
       <div class="sym-layer"><span class="op o1">+</span><span class="op o2">−</span><span class="op o3">×</span><span class="op o4">÷</span></div>
     </div>
-    <div class="splash-name" id="splashName">MatRefleks</div>
+    <div class="splash-name" id="splashName">MatReflex</div>
     <div class="splash-sub" id="splashSub"></div>
     <div class="splash-skip" id="splashSkip">dokun, geç</div>
   </div>
@@ -1447,7 +1459,8 @@
     var correct=0, chosen=0, matched=0;
     ftRecords.forEach(function(r){ if(r.correct) correct++; if(r.chosen) chosen++; if(r.chosen && r.chosen===r.fastest) matched++; });
     freeDone(ftRecords, correct);
-    var miss={},topMiss=null,topN=0;
+    var miss={},topMiss=null,topN=0,shortMissed=0;
+    ftRecords.forEach(function(r){ if(r.fastest && r.fastest!=='duz' && r.chosen!==r.fastest) shortMissed++; });
     ftRecords.forEach(function(r){ if(r.chosen!==r.fastest && r.fastest!=='duz'){ miss[r.fastest]=(miss[r.fastest]||0)+1; } });
     for(var mk in miss){ if(miss[mk]>topN){ topN=miss[mk]; topMiss=mk; } }
     var missCard = topMiss ? '<div class="card suggest" style="margin:4px 0"><div class="st">Bu testte en çok <b>'+METHOD_NAMES[topMiss]+'</b> kısa yolunu atladın. Ona bir göz atmak ister misin?</div><span class="sbtn" id="missBtn">'+METHOD_NAMES[topMiss]+' →</span></div>' : '';
@@ -1455,7 +1468,7 @@
                            : 'Yöntem işaretlemedin; her soru için en hızlı yolu aşağıda görebilirsin.';
     var h='<div class="bigcheck" style="margin:18px auto 14px">✓</div>'
       +'<h1 style="text-align:center">Karma test raporu</h1>'
-      +'<p class="sub" style="text-align:center;margin-top:6px">'+correct+' / '+ftRecords.length+' doğru. '+insight+'</p>'
+      +'<p class="sub" style="text-align:center;margin-top:6px">'+correct+' / '+ftRecords.length+' doğru'+(shortMissed>0?'. '+shortMissed+' soruda daha kısa yol vardı':'')+'.</p>'
       +missCard
       +'<div class="sec-title">soru soru</div>';
     ftRecords.forEach(function(r,i){
@@ -1583,28 +1596,32 @@
   function TOPIC_GO(i){ var t=TOPICS[i]; if(!t) return; if(t.kind==='s') openMem(t.key); else launchSession(t.key); }
   /* ---------- ilk açılış (onboarding) ---------- */
   var ONB=[
-    {sym:'✦', bg:'#F6E7DC', fg:'#E8772C', eyebrow:'merhaba', title:'MatRefleks\'e hoş geldin', text:'Hızlı hesap yapmak zeka değil, yöntem işidir. Toplama, çıkarma, çarpma ve bölmede kısa yolları görerek sayı refleksini geliştireceğiz.'},
+    {sym:'✦', bg:'#F6E7DC', fg:'#E8772C', eyebrow:'merhaba', title:'MatReflex\'e hoş geldin', text:'Hızlı hesap yapmak zeka değil, yöntem işidir. Toplama, çıkarma, çarpma ve bölmede kısa yolları görerek sayı refleksini geliştireceğiz.'},
     {sym:'≈', bg:'#F6E7DC', fg:'#D65A4E', eyebrow:'yöntemler', title:'Sayıların kısa yollarını keşfet', text:'Bir işlemin tek yolu yok. Daha hızlı, daha kolay ve daha akıllıca çözme yollarını burada öğrenirsin.'},
     {sym:'◑', bg:'#E4EEEA', fg:'#2E6480', eyebrow:'hafıza ve ilerleme', title:'Oyunla pekiştir, kaldığın yerden devam et', text:'Kareler, küpler ve temel sayı bilgilerini kısa oyunlarla güçlendir. İlerlemen kaydolur; ara versen bile kaldığın yerden devam edersin.'}
   ];
-  var onbI=0;
-  function showOnboard(){ onbI=0; id('onboard').classList.add('show'); onbRender(); }
-  function onbRender(){
-    var b=id('onbBody'), sl=ONB[onbI];
-    function fill(){
-      var em=id('onbEmblem'); em.textContent=sl.sym; em.style.background=sl.bg; em.style.color=sl.fg;
-      id('onbEyebrow').textContent=sl.eyebrow; id('onbTitle').textContent=sl.title; id('onbText').textContent=sl.text;
-      id('onbNextBtn').textContent=(onbI===ONB.length-1)?'Başlayalım':'Devam edelim';
-      var d=''; for(var k=0;k<ONB.length;k++){ d+='<span class="onb-dot'+(k===onbI?' on':'')+'"></span>'; } id('onbDots').innerHTML=d;
-      if(b) b.style.opacity='1';
-    }
-    if(b && !reduce){ b.style.opacity='0'; setTimeout(fill,150); } else fill();
+  var onbI=0, onbBusy=false;
+  function showOnboard(){ onbI=0; onbBusy=false; id('onboard').classList.add('show'); id('onbBody').style.opacity='1'; onbFill(); }
+  function onbFill(){
+    var sl=ONB[onbI], em=id('onbEmblem');
+    em.textContent=sl.sym; em.style.background=sl.bg; em.style.color=sl.fg;
+    id('onbEyebrow').textContent=sl.eyebrow; id('onbTitle').textContent=sl.title; id('onbText').textContent=sl.text;
+    id('onbNextBtn').textContent=(onbI===ONB.length-1)?'Başlayalım':'Devam edelim';
+    var d=''; for(var k=0;k<ONB.length;k++){ d+='<span class="onb-dot'+(k===onbI?' on':'')+'"></span>'; } id('onbDots').innerHTML=d;
+    id('onbBody').style.opacity='1';
   }
-  function onbNext(){ if(onbI<ONB.length-1){ onbI++; onbRender(); } else onbFinish(); }
-  function onbSkip(){ onbFinish(); }
-  function onbFinish(){ STORE.set('onboarded',1); id('onboard').classList.remove('show'); show('home'); }
+  function onbNext(){
+    if(onbBusy) return;
+    if(onbI>=ONB.length-1){ onbFinish(); return; }
+    onbI++;
+    if(reduce){ onbFill(); return; }
+    onbBusy=true; id('onbBody').style.opacity='0';
+    setTimeout(function(){ onbFill(); setTimeout(function(){ onbBusy=false; }, 260); }, 300);
+  }
+  function onbSkip(){ if(!onbBusy) onbFinish(); }
+  function onbFinish(){ onbBusy=false; STORE.set('onboarded',1); id('onboard').classList.remove('show'); show('home'); }
   /* ---------- açılış jeneriği ---------- */
-  var APP_NAME='MatRefleks', splashDone=false;
+  var APP_NAME='MatReflex', splashDone=false;
   function showSplash(){
     var sp=id('splash'); id('splashName').textContent=APP_NAME; id('splashSub').textContent='zihinden hesap için kısa yollar';
     sp.classList.add('show'); splashDone=false;
@@ -1625,5 +1642,6 @@
   renderProgressUI();
   if(!STORE.get('onboarded',0)) showOnboard();
 </script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script>
 </body>
 </html>
