@@ -17,31 +17,37 @@
 <style>
   @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url('fonts/inter-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
   @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url('fonts/inter-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-  @font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url('fonts/fraunces-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-  @font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url('fonts/fraunces-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'Fredoka';font-style:normal;font-weight:100 900;font-display:swap;src:url('fonts/fraunces-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'Fredoka';font-style:normal;font-weight:100 900;font-display:swap;src:url('fonts/fraunces-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'Fredoka';font-style:normal;font-weight:300 700;font-display:swap;src:url('fonts/fredoka-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'Fredoka';font-style:normal;font-weight:300 700;font-display:swap;src:url('fonts/fredoka-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
   :root{
-    --paper:#F2F0E9; --surface:#FFFFFF; --ink:#23211C; --ink-soft:#6F6B62; --ink-faint:#9C988E;
-    --line:#E6E2D9; --green:#1C5C48; --green-soft:#E5EFE9; --green-ink:#134034;
-    --amber:#A9700F; --amber-soft:#F6ECD5; --gold:#C8971E;
+    --cream:#F4EFE4; --deep-green:#123F35; --petrol:#1B5C52; --orange:#E8752A; --mustard:#D9A92F;
+    --sage:#A8B883; --clay:#D98573; --soft-blue:#DDE8E6;
+    --coral:#E24C5B; --teal:#279B8E; --dark:#2A2521;
+    --paper:#F4EFE4; --surface:#FBF7EE; --ink:#191A17; --ink-soft:#565A4F; --ink-faint:#8E8B7C;
+    --line:#E3DCCB; --green:#1B5C52; --green-soft:#DDE8E6; --green-ink:#123F35;
+    --amber:#E8752A; --amber-soft:#F7E4D2; --gold:#D9A92F;
     --butter:#E7C25C; --moss:#BDB25E; --palm:#647550; --guava:#F088A2;
     --sunset:#E59A70; --sangria:#DE5F53; --seabreeze:#E5E9EB; --lagoon:#7FB0AA; --odyssey:#2E6480;
-    --shadow-sm:0 1px 2px rgba(31,28,22,.05);
-    --shadow:0 2px 6px rgba(31,28,22,.05), 0 14px 34px rgba(31,28,22,.08);
-    --ease:cubic-bezier(.22,.61,.36,1);
+    --shadow-sm:0 1px 3px rgba(25,26,23,.06);
+    --shadow:0 3px 8px rgba(25,26,23,.07), 0 16px 34px rgba(25,26,23,.13);
+    --pop:0 13px 26px -10px rgba(25,26,23,.34), inset 0 -3px 0 rgba(0,0,0,.10);
+    --ease:cubic-bezier(.22,.61,.36,1); --spring:cubic-bezier(.34,1.56,.64,1);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
-  body{font-family:'Inter',system-ui,sans-serif; color:var(--ink); background:#DFDCD3;
+  body{font-family:'Inter',system-ui,sans-serif; color:var(--ink); background-color:#E7E0D1; background-image:radial-gradient(rgba(25,26,23,.05) 1px,transparent 1px); background-size:22px 22px;
     display:flex; align-items:center; justify-content:center; min-height:100dvh; padding:22px; -webkit-font-smoothing:antialiased;}
-  .phone{width:100%; max-width:390px; height:min(824px,94dvh); background:var(--paper); border-radius:34px;
+  .phone{width:100%; max-width:390px; height:min(824px,94dvh); background-color:var(--paper); background-image:radial-gradient(rgba(25,26,23,.04) 1.1px,transparent 1.1px); background-size:22px 22px; border-radius:34px;
     box-shadow:var(--shadow); overflow:hidden; position:relative; display:flex; flex-direction:column; border:1px solid rgba(31,28,22,.06);}
   .screens{flex:1; position:relative; overflow:hidden}
-  .screen{position:absolute; inset:0; overflow-y:auto; padding:24px 44px 18px 22px; opacity:0; pointer-events:none;
+  .screen{position:absolute; inset:0; overflow-y:auto; padding:24px 20px 20px 22px; opacity:0; pointer-events:none;
     transition:opacity .35s var(--ease); display:flex; flex-direction:column}
   .screen.active{opacity:1; pointer-events:auto}
   .screen::-webkit-scrollbar{width:0}
 
-  h1{font-family:'Fraunces',serif; font-weight:500; font-size:26px; letter-spacing:-.01em; line-height:1.22}
+  h1{font-family:'Fredoka',sans-serif; font-weight:500; font-size:26px; letter-spacing:-.01em; line-height:1.22}
   .eyebrow{font-size:12px; letter-spacing:.05em; color:var(--amber); font-weight:500; text-transform:uppercase}
   .muted{color:var(--ink-soft)} .sub{font-size:14.5px; line-height:1.55; color:var(--ink-soft)}
   .sec-title{font-size:12px; letter-spacing:.05em; color:var(--ink-faint); text-transform:uppercase; font-weight:600; margin:22px 4px 10px}
@@ -55,7 +61,7 @@
   /* home */
   .hero{background:var(--green); color:#fff; border-radius:20px; padding:20px; position:relative; overflow:hidden; box-shadow:var(--shadow)}
   .hero .k{font-size:12px; letter-spacing:.06em; text-transform:uppercase; opacity:.65}
-  .hero h2{font-family:'Fraunces',serif; font-weight:500; font-size:23px; margin:6px 0 4px; line-height:1.2}
+  .hero h2{font-family:'Fredoka',sans-serif; font-weight:500; font-size:23px; margin:6px 0 4px; line-height:1.2}
   .hero p{font-size:13.5px; opacity:.82; line-height:1.5}
   .hero .go{margin-top:16px; background:#fff; color:var(--green-ink); border:none; border-radius:13px; padding:13px; width:100%;
     font-family:'Inter'; font-weight:600; font-size:15px; cursor:pointer; transition:transform .15s}
@@ -63,7 +69,7 @@
   .hero .ring{position:absolute; right:-30px; top:-30px; width:120px; height:120px; border-radius:50%; border:14px solid rgba(255,255,255,.10)}
   .refresh{display:flex; align-items:center; gap:12px; padding:14px 16px; margin-top:12px; cursor:pointer}
   .refresh .rdot{width:34px; height:34px; border-radius:10px; background:var(--amber-soft); color:var(--amber);
-    display:flex; align-items:center; justify-content:center; font-family:'Fraunces'; font-size:17px; flex:none}
+    display:flex; align-items:center; justify-content:center; font-family:'Fredoka'; font-size:17px; flex:none}
   .refresh .rt{flex:1} .refresh .rt b{font-size:14px; font-weight:600} .refresh .rt span{font-size:12.5px; color:var(--ink-soft)}
   .refresh .rgo{font-size:13px; color:var(--green); font-weight:500}
   .pillars{display:flex; gap:10px; margin-top:12px}
@@ -74,12 +80,12 @@
 
   /* skills */
   .pillar-h{display:flex; align-items:baseline; gap:8px; margin:22px 4px 10px}
-  .pillar-h .ph{font-family:'Fraunces'; font-weight:500; font-size:18px}
+  .pillar-h .ph{font-family:'Fredoka'; font-weight:500; font-size:18px}
   .pillar-h .pd{font-size:12px; color:var(--ink-faint)}
   .srow{display:flex; align-items:center; gap:13px; padding:14px 16px; margin-bottom:8px; cursor:pointer; transition:transform .15s}
   .srow:active{transform:scale(.99)}
   .srow .ic{width:38px; height:38px; border-radius:11px; background:var(--green-soft); color:var(--green);
-    display:flex; align-items:center; justify-content:center; font-family:'Fraunces'; font-size:16px; flex:none}
+    display:flex; align-items:center; justify-content:center; font-family:'Fredoka'; font-size:16px; flex:none}
   .srow.lock .ic{background:#EFEDE6; color:var(--ink-faint)}
   .srow .st{flex:1} .srow .st b{font-size:14.5px; font-weight:600; display:block} .srow .st span{font-size:12.5px; color:var(--ink-soft)}
   .srow .chev{color:var(--ink-faint); font-size:18px}
@@ -94,7 +100,7 @@
   .statebar{display:flex; gap:10px; margin:16px 0}
   .stat{flex:1; padding:12px 14px}
   .stat .sl{font-size:11px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); font-weight:600}
-  .stat .sv{font-family:'Fraunces'; font-size:19px; margin-top:3px}
+  .stat .sv{font-family:'Fredoka'; font-size:19px; margin-top:3px}
   .stat.master .sv{color:var(--green)} .stat.fresh .sv{color:var(--amber)}
   .lrow{display:flex; align-items:center; gap:13px; padding:15px 16px; margin-bottom:9px; cursor:pointer; transition:transform .15s}
   .lrow:active{transform:scale(.99)}
@@ -107,7 +113,7 @@
   .guidebox .gt{font-size:13.5px; line-height:1.6; color:var(--ink)}
   .guidebox .gt b{color:var(--green)} .guidebox .gt .amb{color:var(--amber); font-weight:600}
   .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
-  .refchip{font-family:'Fraunces'; font-size:16px; padding:7px 13px; border-radius:11px; border:1px solid var(--line); background:var(--paper)}
+  .refchip{font-family:'Fredoka'; font-size:16px; padding:7px 13px; border-radius:11px; border:1px solid var(--line); background:var(--paper)}
   .refchip.good{border-color:#CFE3D8; background:var(--green-soft); color:var(--green-ink)}
   .refchip.bad{border-color:#EAD9AE; background:var(--amber-soft); color:var(--amber); text-decoration:line-through; opacity:.8}
 
@@ -118,8 +124,8 @@
   .fcface{position:absolute; inset:0; backface-visibility:hidden; border-radius:20px; display:flex; flex-direction:column;
     align-items:center; justify-content:center; box-shadow:var(--shadow)}
   .fcfront{background:var(--surface); border:1px solid var(--line)}
-  .fcfront .q{font-family:'Fraunces'; font-size:50px; color:var(--ink)} .fcfront .h{position:absolute; bottom:16px; font-size:12px; color:var(--ink-faint)}
-  .fcback{background:var(--green); color:#fff; transform:rotateY(180deg)} .fcback .a{font-family:'Fraunces'; font-size:50px}
+  .fcfront .q{font-family:'Fredoka'; font-size:50px; color:var(--ink)} .fcfront .h{position:absolute; bottom:16px; font-size:12px; color:var(--ink-faint)}
+  .fcback{background:var(--green); color:#fff; transform:rotateY(180deg)} .fcback .a{font-family:'Fredoka'; font-size:50px}
   .fcbtns{display:flex; gap:10px; margin-top:2px}
   .fcbtn{flex:1; padding:13px; border-radius:13px; border:1px solid var(--line); background:var(--surface); font-family:'Inter';
     font-weight:500; font-size:14px; cursor:pointer; transition:transform .15s}
@@ -135,8 +141,8 @@
   .tface{position:absolute; inset:0; backface-visibility:hidden; border-radius:15px; padding:14px; display:flex; flex-direction:column}
   .tfront{background:var(--green); color:#fff; box-shadow:var(--shadow-sm)}
   .tfront .tl{font-size:10px; letter-spacing:.12em; text-transform:uppercase; opacity:.65}
-  .tfront .tn{font-family:'Fraunces'; font-size:18px; font-weight:500; margin-top:auto; line-height:1.15}
-  .tfront .tg{position:absolute; right:12px; top:10px; font-family:'Fraunces'; font-size:22px; color:var(--gold)}
+  .tfront .tn{font-family:'Fredoka'; font-size:18px; font-weight:500; margin-top:auto; line-height:1.15}
+  .tfront .tg{position:absolute; right:12px; top:10px; font-family:'Fredoka'; font-size:22px; color:var(--gold)}
   .tback{background:var(--surface); border:1px solid var(--line); transform:rotateY(180deg); font-size:11px; line-height:1.35}
   .tback .r{padding:4px 0; border-bottom:1px solid var(--line)} .tback .r:last-child{border:none}
   .tback .r b{color:var(--green)} .tback .r.bad b{color:var(--amber)}
@@ -147,7 +153,7 @@
   /* progress */
   .bigstat{padding:20px; text-align:center; margin-top:14px}
   .bigstat .bl{font-size:12px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); font-weight:600}
-  .bigstat .bv{font-family:'Fraunces'; font-size:44px; color:var(--green); margin:6px 0 2px; line-height:1}
+  .bigstat .bv{font-family:'Fredoka'; font-size:44px; color:var(--green); margin:6px 0 2px; line-height:1}
   .bigstat .bd{font-size:13px; color:var(--ink-soft)}
   .pskill{padding:14px 16px; margin-bottom:8px}
   .pskill .pn{font-size:14px; font-weight:600; margin-bottom:9px; display:flex; justify-content:space-between}
@@ -163,17 +169,17 @@
 
   /* session */
   .shead{display:flex; align-items:center; gap:11px; margin-bottom:14px}
-  .shead .exit{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:var(--surface);
-    color:var(--ink-soft); font-size:18px; cursor:pointer; display:flex;align-items:center;justify-content:center; flex:none}
+  .shead .exit{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--surface);
+    color:var(--ink-soft); font-size:20px; cursor:pointer; display:flex;align-items:center;justify-content:center; flex:none}
   .shead .sh-title{display:flex; flex-direction:column; line-height:1.2}
   .shead .sh-k{font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--amber); font-weight:600}
-  .shead .sh-n{font-family:'Fraunces'; font-size:17px; font-weight:500; color:var(--ink)}
+  .shead .sh-n{font-family:'Fredoka'; font-size:17px; font-weight:500; color:var(--ink)}
   .dots{display:flex; gap:6px; margin-bottom:4px}
   .dot{flex:1; height:5px; border-radius:99px; background:var(--line); transition:.4s}
   .dot.on{background:var(--amber)} .dot.done{background:var(--green)}
   .center{flex:1; display:flex; flex-direction:column; justify-content:center; gap:20px; transition:opacity .3s var(--ease)}
-  .eqwrap{display:flex; align-items:center; justify-content:center; padding:0 8px; min-height:90px}
-  .eqline{font-family:'Fraunces',serif; font-weight:500; font-size:clamp(23px,7vw,31px); letter-spacing:-.02em;
+  .eqwrap{display:flex; align-items:center; justify-content:center; padding:24px 16px; min-height:100px; background:var(--surface); border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow-sm)}
+  .eqline{font-family:'Fredoka',sans-serif; font-weight:500; font-size:clamp(23px,7vw,31px); letter-spacing:-.02em;
     display:flex; align-items:center; justify-content:center; flex-wrap:nowrap; gap:6px; color:var(--ink); white-space:nowrap; max-width:100%}
   .eqline .op{color:var(--ink-soft); font-weight:400}
   .cell{display:inline-block; text-align:center; transition:opacity .3s var(--ease)}
@@ -190,28 +196,31 @@
   #eq{width:0; opacity:0} #tR{width:0; opacity:0; color:var(--green)}
   .pulse{animation:pulse 1.5s infinite}
   @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(169,112,15,0)}50%{box-shadow:0 0 0 7px rgba(169,112,15,.13)}}
-  .guide{background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--green); border-radius:12px;
-    padding:14px 16px; font-size:14px; line-height:1.55; color:var(--ink); height:84px; display:flex; align-items:center;
-    opacity:0; transition:opacity .35s var(--ease)}
+  .guide{background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--teal); border-radius:16px;
+    padding:15px 17px; font-size:14px; line-height:1.55; color:var(--ink); min-height:84px; display:flex; align-items:center;
+    opacity:0; transition:opacity .35s var(--ease); box-shadow:var(--shadow-sm)}
   .guide.show{opacity:1} .guide #gtext{transition:opacity .3s var(--ease)}
   .guide b{color:var(--green);font-weight:600} .guide .amb{color:var(--amber);font-weight:600}
   .hinttap{font-size:12px; color:var(--ink-faint); text-align:center; height:16px; opacity:0; transition:opacity .3s; margin-top:-8px}
   .hinttap.show{opacity:1}
-  .footer{min-height:56px; display:flex; align-items:center}
+  .footer{min-height:56px; display:flex; flex-direction:column; align-items:stretch; justify-content:center}
   .cevap{width:100%; opacity:0; transition:opacity .35s; pointer-events:none} .cevap.show{opacity:1; pointer-events:auto}
-  .report{width:100%; display:flex; gap:10px; opacity:0; transition:opacity .35s; pointer-events:none} .report.show{opacity:1; pointer-events:auto}
-  .rbtn{flex:1; padding:14px 10px; border-radius:13px; border:1px solid var(--line); background:var(--surface);
-    font-family:'Inter'; font-weight:500; font-size:14.5px; cursor:pointer; transition:transform .15s}
-  .rbtn:active{transform:scale(.98)} .rbtn.known{color:var(--green); border-color:#CFE3D8; background:var(--green-soft)} .rbtn.again{color:var(--amber)}
-  .preview{display:flex; gap:10px; margin:22px 0}
-  .pv{flex:1; padding:14px 10px; text-align:center; background:var(--surface); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow-sm)}
-  .pv .pn{font-family:'Fraunces'; font-size:20px; color:var(--green)} .pv .pl{font-size:11px; color:var(--ink-soft); margin-top:4px}
+  .report{width:100%; display:flex; flex-direction:column; gap:9px; opacity:0; transition:opacity .35s; pointer-events:none} .report.show{opacity:1; pointer-events:auto}
+  .report .rq{text-align:center; font-family:'Fredoka'; font-weight:500; font-size:15px; color:var(--ink-soft)}
+  .rbtns{display:flex; gap:10px}
+  .rbtn{flex:1; padding:15px 10px; border-radius:15px; border:none; color:#fff; font-family:'Fredoka'; font-weight:600; font-size:15.5px; cursor:pointer; box-shadow:var(--pop); transition:transform .15s}
+  .rbtn:active{transform:scale(.97)} .rbtn.known{background:var(--teal)} .rbtn.again{background:var(--orange)}
+  .rhint{text-align:center; font-size:11.5px; color:var(--ink-faint)}
+  .preview{display:flex; gap:10px; margin:24px 0}
+  .pv{flex:1; padding:16px 10px; text-align:center; background:var(--surface); border:1px solid var(--line); border-radius:16px; box-shadow:var(--pop)}
+  .pv .pn{font-family:'Fredoka'; font-weight:600; font-size:26px; line-height:1} .pv .pl{font-size:11px; color:var(--ink-soft); margin-top:4px}
+  .pv:nth-child(1) .pn{color:var(--orange)} .pv:nth-child(2) .pn{color:var(--teal)} .pv:nth-child(3) .pn{color:var(--mustard)}
   .donewrap{flex:1; display:flex; flex-direction:column; justify-content:center}
   .bigcheck{width:56px; height:56px; border-radius:50%; background:var(--green-soft); color:var(--green);
     display:flex; align-items:center; justify-content:center; font-size:26px; margin-bottom:18px}
   .donestat{display:flex; gap:10px; margin:18px 0}
   .ds{flex:1; padding:14px; text-align:center; background:var(--surface); border:1px solid var(--line); border-radius:14px}
-  .ds .dv{font-family:'Fraunces'; font-size:22px; color:var(--green)} .ds .dl{font-size:11.5px; color:var(--ink-soft); margin-top:3px}
+  .ds .dv{font-family:'Fredoka'; font-size:22px; color:var(--green)} .ds .dl{font-size:11.5px; color:var(--ink-soft); margin-top:3px}
 
   /* nav */
   .nav{flex:none; display:flex; background:var(--surface); border-top:1px solid var(--line); padding:8px 6px calc(8px + env(safe-area-inset-bottom))}
@@ -223,9 +232,9 @@
   .tool2{background:var(--green); color:#fff; border-radius:15px; padding:14px; height:118px; display:flex; flex-direction:column;
     cursor:pointer; box-shadow:var(--shadow-sm); position:relative; transition:transform .15s}
   .tool2:active{transform:scale(.98)}
-  .tool2 .tg2{position:absolute; right:12px; top:10px; font-family:'Fraunces'; font-size:23px; color:var(--gold)}
+  .tool2 .tg2{position:absolute; right:12px; top:10px; font-family:'Fredoka'; font-size:23px; color:var(--gold)}
   .tool2 .tk{font-size:10px; letter-spacing:.12em; text-transform:uppercase; opacity:.65}
-  .tool2 .tn2{font-family:'Fraunces'; font-size:17px; font-weight:500; margin-top:auto; line-height:1.15}
+  .tool2 .tn2{font-family:'Fredoka'; font-size:17px; font-weight:500; margin-top:auto; line-height:1.15}
   .tool2 .tmore{font-size:12px; opacity:.75; margin-top:6px}
   .twocol{display:flex; gap:10px}
   .tcond{flex:1; padding:12px 14px}
@@ -233,12 +242,12 @@
   .tcond.good .ch{color:var(--green)} .tcond.bad .ch{color:var(--amber)}
   .tcond .cb{font-size:12.5px; line-height:1.45; color:var(--ink-soft)}
   .exrow{display:flex; align-items:baseline; gap:12px; padding:12px 14px; margin-bottom:8px}
-  .exq{font-family:'Fraunces'; font-size:16px; color:var(--ink); white-space:nowrap}
-  .exw{font-family:'Fraunces'; font-size:14px; color:var(--green); line-height:1.35}
-  .tcond .cx{margin-top:7px; font-family:'Fraunces'; font-size:13px}
+  .exq{font-family:'Fredoka'; font-size:16px; color:var(--ink); white-space:nowrap}
+  .exw{font-family:'Fredoka'; font-size:14px; color:var(--green); line-height:1.35}
+  .tcond .cx{margin-top:7px; font-family:'Fredoka'; font-size:13px}
   .tcond.good .cx{color:var(--green)} .tcond.bad .cx{color:var(--amber)}
   .drillbox{padding:16px}
-  .drill-q{font-family:'Fraunces'; font-size:30px; text-align:center; color:var(--ink); margin:4px 0 12px}
+  .drill-q{font-family:'Fredoka'; font-size:30px; text-align:center; color:var(--ink); margin:4px 0 12px}
   .drill-ask{font-size:13.5px; color:var(--ink-soft); text-align:center; margin-bottom:12px}
   .drill-btns{display:flex; gap:10px}
   .drill-fb{font-size:13.5px; line-height:1.5; margin-top:12px; padding:12px 14px; border-radius:12px}
@@ -247,36 +256,49 @@
   .drill-fb b{font-weight:600}
   .memlist{display:grid; grid-template-columns:repeat(3,1fr); gap:8px}
   .memcell{background:var(--surface); border:1px solid var(--line); border-radius:11px; padding:9px 6px; text-align:center}
-  .memcell .mq{font-family:'Fraunces'; font-size:14px; color:var(--ink-soft); display:block}
-  .memcell .ma{font-family:'Fraunces'; font-size:18px; color:var(--green); display:block; margin-top:2px}
+  .memcell .mq{font-family:'Fredoka'; font-size:14px; color:var(--ink-soft); display:block}
+  .memcell .ma{font-family:'Fredoka'; font-size:18px; color:var(--green); display:block; margin-top:2px}
   .memmodes{display:flex; flex-direction:column; gap:9px}
   .memmode{display:flex; align-items:center; gap:13px; padding:14px 16px; background:var(--surface); border:1px solid var(--line); border-radius:14px; cursor:pointer; box-shadow:var(--shadow-sm); transition:transform .15s}
   .memmode:active{transform:scale(.99)}
   .memmode .mi{width:36px;height:36px;border-radius:10px;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:16px;flex:none}
   .memmode .mt b{font-size:14.5px;font-weight:600;display:block} .memmode .mt span{font-size:12.5px;color:var(--ink-soft)}
-  .gprompt{font-family:'Fraunces'; font-size:clamp(30px,10vw,46px); text-align:center; color:var(--ink)}
+  /* hafıza yolu (infographic tricks) */
+  .mtwrap{display:flex; flex-direction:column; gap:10px}
+  .mtrick{position:relative; background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:14px 15px 13px; box-shadow:var(--shadow-sm); overflow:hidden}
+  .mtrick::before{content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--tc)}
+  .mtrick .mt-name{font-family:'Fredoka'; font-weight:600; font-size:15px; color:var(--ink)}
+  .mtrick .mt-idea{font-size:12.5px; color:var(--ink-soft); margin-top:2px; line-height:1.45}
+  .mtrick .mt-flow{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:12px}
+  .mtrick .mt-q{font-family:'Fredoka'; font-weight:600; font-size:19px; color:var(--ink); margin-right:2px}
+  .mtrick .mt-chip{font-size:12.5px; background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:5px 9px; color:var(--ink); font-weight:500}
+  .mtrick .mt-arrow{color:var(--ink-faint); font-family:'Fredoka'; font-size:15px}
+  .mtrick .mt-eq{color:var(--ink-faint); font-family:'Fredoka'; font-size:18px; margin:0 1px}
+  .mtrick .mt-res{font-family:'Fredoka'; font-weight:600; font-size:19px; color:var(--tc)}
+  .mtrick .mt-note{font-size:11.5px; color:var(--ink-faint); margin-top:10px; line-height:1.5}
+  .gprompt{font-family:'Fredoka'; font-size:clamp(30px,10vw,46px); text-align:center; color:var(--ink)}
   .gsub{font-size:14px; color:var(--ink-soft); text-align:center; margin:8px 0 22px}
   .gopts{display:flex; gap:12px}
-  .gopt{flex:1; padding:22px 10px; border-radius:15px; border:1px solid var(--line); background:var(--surface); font-family:'Fraunces'; font-size:26px; color:var(--ink); cursor:pointer; transition:transform .15s, background .2s, border-color .2s}
+  .gopt{flex:1; padding:22px 10px; border-radius:15px; border:1px solid var(--line); background:var(--surface); font-family:'Fredoka'; font-size:26px; color:var(--ink); cursor:pointer; transition:transform .15s, background .2s, border-color .2s}
   .gopt:active{transform:scale(.98)}
   .gopt.right{background:var(--green-soft); border-color:#CFE3D8; color:var(--green-ink)}
   .gopt.wrong{background:var(--amber-soft); border-color:#EAD9AE; color:var(--amber)}
   .gfb{text-align:center; font-size:14px; margin-top:16px; min-height:20px; color:var(--ink-soft)}
-  .mtans{font-family:'Fraunces'; font-size:40px; text-align:center; color:var(--ink-faint); min-height:50px; letter-spacing:.02em; margin-top:10px}
+  .mtans{font-family:'Fredoka'; font-size:40px; text-align:center; color:var(--ink-faint); min-height:50px; letter-spacing:.02em; margin-top:10px}
   .mtans.right{color:var(--green)} .mtans.wrong{color:var(--amber)}
   .mtpanel{margin-top:14px; opacity:0; transition:opacity .3s}
   .mtpanel.show{opacity:1}
   .pcard{background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--green); border-radius:12px; padding:13px 15px; font-size:13.5px; line-height:1.6; color:var(--ink)}
   .pcard .pk{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:6px}
-  .pcard b{color:var(--green); font-family:'Fraunces'; font-size:16px}
+  .pcard b{color:var(--green); font-family:'Fredoka'; font-size:16px}
   .pad{display:grid; grid-template-columns:repeat(3,1fr); gap:7px; margin-top:auto}
-  .padkey{padding:11px 0; border-radius:11px; border:1px solid var(--line); background:var(--surface); font-family:'Fraunces'; font-size:19px; color:var(--ink); cursor:pointer; transition:transform .1s}
+  .padkey{padding:11px 0; border-radius:11px; border:1px solid var(--line); background:var(--surface); font-family:'Fredoka'; font-size:19px; color:var(--ink); cursor:pointer; transition:transform .1s}
   .padkey:active{transform:scale(.96)}
   .padkey.ok{background:var(--green); color:#fff; border:none; font-family:'Inter'; font-weight:600; font-size:15px}
   .padkey.wide{font-family:'Inter'; font-size:14px; color:var(--ink-soft)}
   .pcard.alt{border-left-color:var(--ink-faint)}
   .pcard+.pcard{margin-top:8px}
-  .ppath{font-family:'Fraunces'; font-size:15px; color:var(--ink); margin-top:2px}
+  .ppath{font-family:'Fredoka'; font-size:15px; color:var(--ink); margin-top:2px}
   .pmeta{font-size:11.5px; color:var(--ink-faint); margin-top:6px}
   .ftmethod{margin-top:20px; width:100%}
   .ftm-label{font-size:11px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); font-weight:600; text-align:center; margin-bottom:9px}
@@ -284,7 +306,7 @@
   .ftchip{padding:8px 12px; border-radius:11px; border:1px solid var(--line); background:var(--surface); font-family:'Inter'; font-size:12.5px; color:var(--ink-soft); cursor:pointer; transition:.15s}
   .ftchip.sel{background:var(--green-soft); border-color:#CFE3D8; color:var(--green-ink); font-weight:500}
   .rrow{display:flex; align-items:center; gap:10px; padding:13px 15px; margin-bottom:7px; cursor:pointer; background:var(--surface); border:1px solid var(--line); border-radius:13px}
-  .rq{font-family:'Fraunces'; font-size:17px; min-width:78px}
+  .rq{font-family:'Fredoka'; font-size:17px; min-width:78px}
   .rinfo{flex:1; display:flex; flex-direction:column; gap:2px; font-size:11.5px; color:var(--ink-soft)}
   .rinfo .rf{color:var(--green)}
   .rmark{font-size:17px; flex:none} .rmark.good{color:var(--green)} .rmark.soft{color:var(--amber)} .rmark.none{color:var(--ink-faint)}
@@ -294,8 +316,8 @@
   .hmenu:active{transform:scale(.95)}
   .hstage{position:relative; flex:1; min-height:380px; margin-top:10px}
   .hhint{position:absolute; top:4px; left:0; right:0; text-align:center; font-size:12px; color:var(--ink-faint); transition:opacity .3s; pointer-events:none}
-  .hcard{position:absolute; left:2px; right:2px; height:86px; border-radius:16px; padding:14px 18px; box-shadow:0 6px 18px rgba(31,28,22,.12); cursor:pointer; will-change:transform; transition:transform 320ms cubic-bezier(.32,1.25,.4,1)}
-  .hcard .ht{font-family:'Fraunces'; font-weight:500; font-size:18px; line-height:1.1}
+
+  .hcard .ht{font-family:'Fredoka'; font-weight:500; font-size:18px; line-height:1.1}
   .hcard .hs{font-size:12.5px; margin-top:7px; transition:opacity .25s}
   .rail{position:absolute; right:0; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:7px; z-index:60}
   .tab{writing-mode:vertical-rl; text-orientation:mixed; padding:12px 7px; background:var(--surface); border:1px solid var(--line); border-right:none; border-radius:12px 0 0 12px; font-family:'Inter'; font-weight:500; font-size:11.5px; letter-spacing:.02em; color:var(--ink-soft); cursor:pointer; box-shadow:-3px 2px 10px rgba(31,28,22,.07); transition:background .2s, color .2s}
@@ -305,7 +327,7 @@
   .homehead{margin-bottom:14px}
   .progsum{background:linear-gradient(135deg,#1C5C48,#2E7359); color:#fff; border-radius:20px; padding:18px 20px; box-shadow:var(--shadow); cursor:pointer; position:relative; overflow:hidden}
   .progsum .pk{font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; opacity:.72}
-  .progsum h2{font-family:'Fraunces'; font-weight:500; font-size:22px; margin:5px 0 14px; line-height:1.2}
+  .progsum h2{font-family:'Fredoka'; font-weight:500; font-size:22px; margin:5px 0 14px; line-height:1.2}
   .progsum .pbars{display:flex; flex-direction:column; gap:9px}
   .pbar{display:flex; align-items:center; gap:10px}
   .pbar .pl{font-size:12px; width:76px; opacity:.88; flex:none}
@@ -315,13 +337,13 @@
   .todaycta{display:flex; align-items:center; gap:14px; padding:15px 18px; margin-top:12px; background:var(--surface); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow-sm); cursor:pointer}
   .todaycta .tct{flex:1}
   .todaycta .tk{font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--amber); font-weight:600; display:block}
-  .todaycta .tct b{font-family:'Fraunces'; font-weight:500; font-size:17px; display:block; margin:2px 0}
+  .todaycta .tct b{font-family:'Fredoka'; font-weight:500; font-size:17px; display:block; margin:2px 0}
   .todaycta .ts{font-size:12.5px; color:var(--ink-soft)}
   .todaycta .tgo{width:40px; height:40px; border-radius:50%; background:var(--green); color:#fff; display:flex; align-items:center; justify-content:center; flex:none}
   .folders{margin-top:18px; display:flex; flex-direction:column; gap:10px}
   .folder{background:var(--surface); border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:var(--shadow-sm)}
   .fhead{display:flex; align-items:center; gap:13px; padding:15px 16px; cursor:pointer}
-  .fhead .ficon{width:40px; height:40px; border-radius:12px; background:var(--fc,#2F6E57); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fraunces'; font-size:18px; flex:none}
+  .fhead .ficon{width:40px; height:40px; border-radius:12px; background:var(--fc,#2F6E57); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka'; font-size:18px; flex:none}
   .fhead .ftext{flex:1} .fhead .ftext b{font-size:15px; font-weight:600; display:block} .fhead .ftext span{font-size:12.5px; color:var(--ink-soft)}
   .fhead .fchev{color:var(--ink-faint); font-size:18px; transition:transform .3s}
   .folder.open .fhead .fchev{transform:rotate(90deg)}
@@ -339,7 +361,7 @@
   .ringwrap{position:relative; width:100%; display:flex; justify-content:center; margin:4px 0}
   .rings svg{display:block}
   .ringcenter{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center}
-  .rc-num{font-family:'Fraunces'; font-size:34px; color:var(--ink); display:block; line-height:1} .rc-num b{font-size:17px; color:var(--ink-soft); font-weight:500}
+  .rc-num{font-family:'Fredoka'; font-size:34px; color:var(--ink); display:block; line-height:1} .rc-num b{font-size:17px; color:var(--ink-soft); font-weight:500}
   .rc-lbl{font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint)}
   .ringlegend{display:flex; justify-content:center; gap:16px; margin:8px 0 2px; flex-wrap:wrap}
   .lgd{display:flex; align-items:center; gap:6px; font-size:12.5px; color:var(--ink-soft)}
@@ -352,7 +374,7 @@
   .pthead{display:flex; align-items:center; gap:11px; padding:12px 14px; cursor:pointer}
   .pthead .ptdot{width:12px;height:12px;border-radius:4px;flex:none}
   .pthead .ptt{flex:1; font-size:14px; font-weight:600}
-  .pthead .ptpct{font-family:'Fraunces'; font-size:15px; color:var(--ink-soft)}
+  .pthead .ptpct{font-family:'Fredoka'; font-size:15px; color:var(--ink-soft)}
   .ptbody{max-height:0; overflow:hidden; opacity:0; transition:max-height .35s var(--ease), opacity .3s; padding:0 14px}
   .ptopic.open .ptbody{max-height:220px; opacity:1; padding:0 14px 14px}
   .ptbar{margin-top:9px} .ptbar .ptl{font-size:10px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-faint); margin-bottom:4px}
@@ -362,9 +384,9 @@
   .onboard.show{display:flex}
   .onb-skip{position:absolute; top:16px; right:16px; background:none; border:none; color:var(--ink-soft); font-size:14px; cursor:pointer; font-family:'Inter'}
   .onb-body{flex:1; min-height:0; overflow-y:auto; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition:opacity .25s var(--ease)}
-  .onb-emblem{width:118px; height:118px; border-radius:32px; display:flex; align-items:center; justify-content:center; font-family:'Fraunces'; font-size:50px; margin-bottom:26px; box-shadow:var(--shadow-sm)}
+  .onb-emblem{width:118px; height:118px; border-radius:32px; display:flex; align-items:center; justify-content:center; font-family:'Fredoka'; font-size:50px; margin-bottom:26px; box-shadow:var(--shadow-sm)}
   .onb-eyebrow{font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--amber); font-weight:600; margin-bottom:8px}
-  .onb-title{font-family:'Fraunces'; font-weight:500; font-size:26px; line-height:1.22; margin-bottom:12px}
+  .onb-title{font-family:'Fredoka'; font-weight:500; font-size:26px; line-height:1.22; margin-bottom:12px}
   .onb-text{font-size:15px; line-height:1.6; color:var(--ink-soft); max-width:300px}
   .onb-dots{display:flex; justify-content:center; gap:8px; margin-bottom:16px}
   .onb-dot{width:8px; height:8px; border-radius:50%; background:var(--line); transition:.3s}
@@ -372,6 +394,47 @@
   .segrow{display:flex; gap:8px; margin-top:6px}
   .seg{flex:1; padding:12px 8px; border-radius:12px; border:1px solid var(--line); background:var(--surface); font-family:'Inter'; font-weight:500; font-size:13px; color:var(--ink-soft); cursor:pointer; transition:.15s}
   .seg.on{background:var(--green-soft); border-color:#CFE3D8; color:var(--green-ink)}
+  /* pratik config */
+  .pintro{display:flex; align-items:flex-start; gap:14px; margin-top:8px}
+  .pintro-ic{width:52px; height:52px; border-radius:16px; flex:none; display:flex; align-items:center; justify-content:center; background:var(--amber-soft); background:color-mix(in srgb, var(--orange) 14%, var(--surface)); color:var(--orange)}
+  .pintro-ic svg{width:27px; height:27px}
+  .pintro-tx{flex:1; min-width:0}
+  .optrow{display:flex; gap:12px; margin-top:6px}
+  .optcard{flex:1; min-width:0; display:flex; flex-direction:column; align-items:center; text-align:center; padding:16px 10px 14px; border:1.5px solid var(--line); border-radius:18px; background:var(--surface); cursor:pointer; transition:transform .15s, border-color .2s, background .2s; font-family:'Inter'; position:relative}
+  .optcard:active{transform:scale(.98)}
+  .optcard .opt-k{width:46px; height:46px; border-radius:14px; display:flex; align-items:center; justify-content:center; background:var(--paper); font-family:'Fredoka'; font-weight:600; font-size:22px; color:var(--ink-soft); margin-bottom:9px; transition:background .2s, color .2s}
+  .optcard .opt-k.mini{font-size:13px; letter-spacing:.5px}
+  .optcard .opt-t{font-family:'Fredoka'; font-weight:600; font-size:15px; color:var(--ink)}
+  .optcard .opt-s{font-size:11.5px; color:var(--ink-soft); margin-top:2px; line-height:1.3}
+  .optcard.on{border-color:var(--orange); background:var(--amber-soft); background:color-mix(in srgb, var(--orange) 8%, var(--surface))}
+  .optcard.on .opt-k{background:var(--orange); color:#fff}
+  .optcard.on::after{content:'✓'; position:absolute; top:9px; right:11px; font-size:12px; font-weight:700; color:var(--orange)}
+  .btn-pratik{background:var(--orange)}
+  /* pratik decks */
+  .hhero.pk-daily{display:block; background:var(--orange); background:linear-gradient(135deg, var(--orange), #DA5F27)}
+  .hhero.pk-daily .hh-s{max-width:88%}
+  .deckhead{display:flex; align-items:center; justify-content:space-between; margin:24px 4px 12px}
+  .dh-toggle{background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:6px 15px; font-family:'Inter'; font-size:12px; font-weight:600; color:var(--ink-soft); cursor:pointer; box-shadow:var(--shadow-sm); transition:transform .12s}
+  .dh-toggle:active{transform:scale(.95)}
+  .pkd{display:flex; align-items:center; gap:14px; padding:15px 16px; border-radius:22px; background:linear-gradient(135deg, var(--orange), #DA5F27); color:#fff; cursor:pointer; box-shadow:var(--pop); margin-top:4px; animation:hpop .5s var(--spring) both; animation-delay:.05s; transition:transform .16s var(--spring)}
+  .pkd:active{transform:scale(.99)}
+  .pkd-ic{width:50px; height:50px; border-radius:15px; flex:none; background:rgba(255,255,255,.2); display:flex; align-items:center; justify-content:center}
+  .pkd-ic svg{width:26px; height:26px}
+  .pkd-body{flex:1; min-width:0}
+  .pkd-t{font-family:'Fredoka'; font-weight:600; font-size:21px; line-height:1.15}
+  .pkd-s{font-size:12.5px; opacity:.93; margin-top:2px; line-height:1.35}
+  .pkd-go{font-family:'Fredoka'; font-size:24px; opacity:.75; flex:none}
+  .decklist{display:flex; flex-direction:column; gap:12px; margin-top:8px}
+  .deck{position:relative; display:flex; align-items:center; gap:14px; min-height:82px; box-sizing:border-box; padding:14px 15px; border:1px solid var(--line); border-radius:20px; background:var(--surface); cursor:pointer; text-align:left; font-family:'Inter'; overflow:hidden; box-shadow:0 2px 5px rgba(25,26,23,.05), 0 14px 26px -16px rgba(25,26,23,.26); transition:transform .16s var(--spring), box-shadow .25s; animation:hpop .5s var(--spring) both}
+  .decklist .deck:nth-child(2){animation-delay:.06s} .decklist .deck:nth-child(3){animation-delay:.12s} .decklist .deck:nth-child(4){animation-delay:.18s}
+  .deck:active{transform:scale(.985); box-shadow:0 1px 3px rgba(25,26,23,.08), 0 6px 14px -10px rgba(25,26,23,.30)}
+  .deck::before{content:''; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--dc)}
+  .deck .dk-tile{width:48px; height:48px; border-radius:14px; flex:none; display:flex; align-items:center; justify-content:center; background:var(--soft-blue); background:color-mix(in srgb, var(--dc) 15%, var(--surface)); color:var(--dc); font-family:'Fredoka'; font-weight:600; font-size:24px; line-height:1}
+  .deck .dk-tile svg{width:24px; height:24px}
+  .deck .dk-body{flex:1; min-width:0}
+  .deck .dk-name{font-family:'Fredoka'; font-weight:600; font-size:17px; color:var(--ink); display:block; line-height:1.1}
+  .deck .dk-desc{font-size:12px; color:var(--ink-soft); display:block; margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .deck .dk-go{font-family:'Fredoka'; font-size:24px; color:var(--ink-faint); flex:none}
   .splash{position:absolute; inset:0; z-index:300; background:radial-gradient(120% 90% at 50% 32%, #F8F6F0, #EBE8DF); display:none; flex-direction:column; align-items:center; justify-content:center; transition:opacity .5s var(--ease)}
   .splash.show{display:flex} .splash.out{opacity:0}
   .splash-scene{position:relative; width:200px; height:200px; display:flex; align-items:center; justify-content:center}
@@ -383,10 +446,10 @@
   .ripple{position:absolute; width:104px; height:104px; border-radius:50%; border:2px solid rgba(216,105,31,.4); opacity:0}
   .splash.impact .ripple{animation:sripple 720ms var(--ease) forwards}
   .sym-layer{position:absolute; left:50%; top:50%; width:92px; height:92px; margin:-46px 0 0 -46px; display:grid; grid-template-columns:1fr 1fr; place-items:center; pointer-events:none}
-  .sym-layer .op{font-family:'Fraunces'; font-weight:500; font-size:22px; color:#fff; opacity:0; transform:scale(0)}
+  .sym-layer .op{font-family:'Fredoka'; font-weight:500; font-size:22px; color:#fff; opacity:0; transform:scale(0)}
   .splash.impact .op{animation:opPop 420ms var(--ease) forwards}
   .splash.impact .op.o2{animation-delay:80ms} .splash.impact .op.o3{animation-delay:160ms} .splash.impact .op.o4{animation-delay:240ms}
-  .splash-name{font-family:'Fraunces'; font-weight:500; font-size:34px; letter-spacing:.01em; color:var(--ink); margin-top:14px; opacity:0; transform:translateY(10px); transition:opacity .55s var(--ease), transform .55s var(--ease)}
+  .splash-name{font-family:'Fredoka'; font-weight:500; font-size:34px; letter-spacing:.01em; color:var(--ink); margin-top:14px; opacity:0; transform:translateY(10px); transition:opacity .55s var(--ease), transform .55s var(--ease)}
   .splash.named .splash-name{opacity:1; transform:none}
   .splash-sub{font-size:13.5px; letter-spacing:.01em; color:var(--ink-soft); margin-top:9px; opacity:0; transition:opacity .5s}
   .splash.subbed .splash-sub{opacity:1}
@@ -400,20 +463,290 @@
   .sigcard .tgo{background:#E8772C}
   .cmp-dots{display:flex; gap:6px; justify-content:center; margin:6px 0 10px}
   .cmp-dots i{width:22px; height:4px; border-radius:2px; background:var(--line)} .cmp-dots i.on,.cmp-dots i.done{background:var(--green)}
-  .cmp-q{font-family:'Fraunces'; font-size:38px; text-align:center; margin:16px 0 20px; color:var(--ink)}
+  .cmp-q{font-family:'Fredoka'; font-size:38px; text-align:center; margin:16px 0 20px; color:var(--ink)}
   .cmp-opts{display:flex; flex-direction:column; gap:12px}
   .cmp-opt{border:1px solid var(--line); background:var(--surface); border-radius:16px; padding:15px 18px; cursor:pointer; transition:transform .15s, background .2s, border-color .2s; text-align:left}
   .cmp-opt:active{transform:scale(.99)}
   .cmp-opt .ol{font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); font-weight:600; margin-bottom:5px}
-  .cmp-opt .op{font-family:'Fraunces'; font-size:20px; color:var(--ink)}
+  .cmp-opt .op{font-family:'Fredoka'; font-size:20px; color:var(--ink)}
   .cmp-opt .ores{font-size:13px; color:var(--ink-soft); margin-top:0; max-height:0; overflow:hidden; opacity:0; transition:opacity .3s, max-height .3s, margin-top .3s}
   .cmp-opt.reveal .ores{opacity:1; max-height:40px; margin-top:7px}
   .cmp-opt.light{border-color:#CFE3D8; background:var(--green-soft)}
   .cmp-opt.dim{opacity:.55}
   .cmp-fb{margin-top:16px; opacity:0; transition:opacity .3s}
   .cmp-fb.show{opacity:1}
-  .cmp-fb .fbhead{font-family:'Fraunces'; font-size:17px; margin-bottom:6px}
+  .cmp-fb .fbhead{font-family:'Fredoka'; font-size:17px; margin-bottom:6px}
   .cmp-fb .fbwhy{font-size:13.5px; line-height:1.55; color:var(--ink-soft)}
+  .mathbg{position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0}
+  .mathbg span{position:absolute; font-family:'Fredoka'; font-weight:600; opacity:.07; line-height:1}
+  .home-in{position:relative; z-index:1}
+  .logo{font-family:'Fredoka'; font-weight:600; font-size:41px; letter-spacing:-.01em; line-height:1; margin-top:2px}
+  .logo .l2{color:var(--orange)}
+  .hsubtitle{font-size:14.5px; line-height:1.5; color:var(--ink-soft); margin:10px 0 2px; max-width:305px; font-weight:500}
+  .progpill{display:inline-flex; align-items:center; gap:6px; margin-top:12px; padding:8px 14px; border-radius:99px; border:1px solid var(--line); background:var(--surface); color:var(--ink-soft); font-family:'Inter'; font-size:13px; font-weight:500; cursor:pointer; box-shadow:var(--shadow-sm); transition:transform .15s}
+  .progpill:active{transform:scale(.96)} .progpill b{color:var(--green); font-family:'Fredoka'; font-weight:600}
+  .hgrid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:16px}
+  .hcard{position:relative; overflow:hidden; border:none; border-radius:24px; background:var(--c); color:var(--tx); padding:16px 16px 17px; min-height:158px; display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-start; text-align:left; cursor:pointer; box-shadow:var(--pop); transition:transform .18s var(--spring); font-family:'Inter'; animation:hpop .5s var(--spring) both}
+  .hcard:active{transform:scale(.94)}
+  .hcard .hsym{position:absolute; top:6px; right:14px; font-family:'Fredoka'; font-weight:600; font-size:66px; line-height:1; opacity:.82}
+  .hcard .htitle{font-family:'Fredoka'; font-weight:600; font-size:23px}
+  .hcard .hsub{font-size:12.5px; opacity:.92; margin-top:2px; font-weight:500; line-height:1.3}
+  .hgrid .hcard:nth-child(2){animation-delay:.05s} .hgrid .hcard:nth-child(3){animation-delay:.1s} .hgrid .hcard:nth-child(4){animation-delay:.15s}
+  .reflexstrip{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:14px; padding:13px 15px 13px 18px; border:none; border-radius:20px; background:var(--deep-green); color:#fff; cursor:pointer; box-shadow:var(--shadow); transition:transform .18s var(--spring); width:100%; text-align:left; font-family:'Inter'; animation:hpop .5s var(--spring) both; animation-delay:.2s}
+  .reflexstrip:active{transform:scale(.98)}
+  .reflexstrip .rs-k{font-size:11px; letter-spacing:.05em; text-transform:uppercase; opacity:.82; font-weight:600; display:block}
+  .reflexstrip .rs-t{font-family:'Fredoka'; font-weight:500; font-size:16px; display:block; margin-top:1px}
+  .reflexstrip .rs-go{width:42px;height:42px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:22px;flex:none}
+  @keyframes hpop{0%{opacity:0;transform:translateY(12px) scale(.95)} 100%{opacity:1;transform:none}}
+  .homerow{display:flex; align-items:flex-start; justify-content:space-between; gap:12px}
+  .streak{display:inline-flex; align-items:center; gap:5px; padding:7px 12px 7px 10px; border-radius:99px; background:var(--coral); color:#fff; border:none; font-family:'Fredoka'; font-weight:600; font-size:15px; cursor:pointer; box-shadow:var(--shadow-sm); flex:none; margin-top:6px}
+  .streak svg{width:16px; height:16px}
+  .hstack{display:flex; flex-direction:column; gap:12px; margin-top:16px}
+  .hrow{display:flex; align-items:center; gap:14px; padding:16px 15px; border:none; border-radius:20px; background:var(--c); color:var(--tx); cursor:pointer; box-shadow:var(--pop); transition:transform .18s var(--spring); text-align:left; font-family:'Inter'; animation:hpop .5s var(--spring) both}
+  .hrow:active{transform:scale(.97)}
+  .hrow .hric{width:46px; height:46px; border-radius:14px; background:rgba(255,255,255,.16); display:flex; align-items:center; justify-content:center; flex:none}
+  .hrow .hric svg{width:25px; height:25px}
+  .hrow .hrtext{flex:1} .hrow .hrtext b{font-family:'Fredoka'; font-weight:600; font-size:19px; display:block; line-height:1.1}
+  .hrow .hrtext span{font-size:12.5px; opacity:.9; display:block; margin-top:2px; line-height:1.3}
+  .hrow .hrchev{font-family:'Fredoka'; font-size:24px; opacity:.65; flex:none}
+  .hstack .hrow:nth-child(2){animation-delay:.06s} .hstack .hrow:nth-child(3){animation-delay:.12s} .hstack .hrow:nth-child(4){animation-delay:.18s}
+  /* home grid */
+  .hgrid{display:flex; flex-direction:column; gap:12px; margin-top:16px}
+  .hpair{display:flex; gap:12px; animation:hpop .5s var(--spring) both}
+  .hmini{flex:1; min-width:0; display:flex; flex-direction:column; align-items:flex-start; padding:15px 14px 14px; border:none; border-radius:20px; background:var(--c); color:var(--tx); cursor:pointer; box-shadow:var(--pop); transition:transform .18s var(--spring); text-align:left; font-family:'Inter'; min-height:136px}
+  .hmini:active{transform:scale(.97)}
+  .hmini .hric{width:42px; height:42px; border-radius:13px; background:rgba(255,255,255,.16); display:flex; align-items:center; justify-content:center; margin-bottom:auto}
+  .hmini .hric svg{width:23px; height:23px}
+  .hmini b{font-family:'Fredoka'; font-weight:600; font-size:16.5px; display:block; line-height:1.12; margin-top:12px}
+  .hmini span{font-size:11.5px; opacity:.9; display:block; margin-top:3px; line-height:1.3}
+  .hhero{position:relative; display:flex; flex-direction:column; align-items:flex-start; padding:19px 18px 18px; border:none; border-radius:24px; background:var(--c); color:var(--tx); cursor:pointer; box-shadow:var(--pop); transition:transform .18s var(--spring); text-align:left; font-family:'Inter'; overflow:hidden; animation:hpop .5s var(--spring) both; animation-delay:.09s}
+  .hhero:active{transform:scale(.98)}
+  .hhero .hh-ic{width:48px; height:48px; border-radius:15px; background:rgba(255,255,255,.18); display:flex; align-items:center; justify-content:center; margin-bottom:12px}
+  .hhero .hh-ic svg{width:26px; height:26px}
+  .hhero .hh-t{font-family:'Fredoka'; font-weight:600; font-size:24px; line-height:1.1; display:block}
+  .hhero .hh-s{font-size:13px; opacity:.92; display:block; margin-top:5px; max-width:82%}
+  .hhero .hh-tag{display:inline-block; margin-top:13px; font-size:11.5px; background:rgba(255,255,255,.2); padding:5px 11px; border-radius:999px; letter-spacing:.02em}
+  .hhero .hh-chev{position:absolute; right:16px; bottom:14px; font-family:'Fredoka'; font-size:26px; opacity:.7}
+  .hgrid>.hrow{animation-delay:.16s; margin:0}
+  /* test hub cards */
+  .tstack{display:flex; flex-direction:column; gap:14px; margin-top:20px}
+  .tcard{position:relative; display:flex; align-items:flex-start; gap:15px; width:100%; text-align:left; padding:18px 17px 16px; border:1px solid var(--line); border-radius:22px; background:var(--surface); background:linear-gradient(180deg, color-mix(in srgb, var(--tc) 7%, var(--surface)), var(--surface) 62%); cursor:pointer; box-shadow:0 10px 22px -14px rgba(25,26,23,.30), inset 0 1px 0 rgba(255,255,255,.6); transition:transform .18s var(--spring), box-shadow .2s ease; font-family:'Inter'; overflow:hidden; animation:hpop .5s var(--spring) both}
+  .tcard::before{content:''; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--tc)}
+  .tcard:active{transform:scale(.985); box-shadow:0 5px 14px -12px rgba(25,26,23,.26)}
+  .tcard:nth-child(2){animation-delay:.07s}
+  .tcard .tcard-ic{width:46px; height:46px; border-radius:14px; flex:none; display:flex; align-items:center; justify-content:center; background:var(--soft-blue); background:color-mix(in srgb, var(--tc) 18%, var(--surface)); color:var(--tc); box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+  .tcard .tcard-ic svg{width:23px; height:23px}
+  .tcard .tcard-body{flex:1; min-width:0}
+  .tcard .tcard-t{font-family:'Fredoka'; font-weight:600; font-size:18px; color:var(--ink); display:block; line-height:1.15}
+  .tcard .tcard-s{font-size:13px; color:var(--ink-soft); display:block; margin-top:3px; line-height:1.4}
+  .tcard .tcard-meta{display:inline-block; margin-top:10px; font-size:11.5px; letter-spacing:.02em; color:var(--tc); background:var(--soft-blue); background:color-mix(in srgb, var(--tc) 10%, transparent); padding:4px 9px; border-radius:999px; font-weight:500}
+  .tcard .tcard-go{font-family:'Fredoka'; font-size:22px; color:var(--ink-faint); flex:none; align-self:center}
+  .tabbar{position:absolute; left:14px; right:14px; bottom:calc(10px + env(safe-area-inset-bottom)); display:flex; background:rgba(250,247,240,.72); backdrop-filter:blur(18px) saturate(1.5); -webkit-backdrop-filter:blur(18px) saturate(1.5); border:1px solid rgba(255,255,255,.5); border-radius:22px; box-shadow:0 10px 26px rgba(25,26,23,.16); padding:9px 4px; z-index:65}
+  #home,#ogren,#ezber,#progress,#karmaConfig,#settings{padding-bottom:98px}
+  #karmaConfig{padding-bottom:calc(122px + env(safe-area-inset-bottom))}
+  .homefab{position:absolute; top:14px; right:14px; width:42px; height:42px; border-radius:50%; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow-sm); display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:70; color:var(--ink)}
+  .homefab.hidden{display:none} .homefab:active{transform:scale(.92)} .homefab svg{width:20px;height:20px}
+  .tabbar.hidden{display:none}
+  .tabbar .tb{flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; background:none; border:none; cursor:pointer; color:var(--ink-faint); font-family:'Inter'; font-size:10.5px; font-weight:500; padding:3px 0; transition:color .2s}
+  .tabbar .tb svg{width:22px; height:22px}
+  .tabbar .tb.on{color:var(--coral)}
+  .ohead{position:relative; text-align:center; padding-top:2px; margin-bottom:6px}
+  .ohead .obk{position:absolute; left:0; top:-3px; width:42px; height:42px; border-radius:50%; border:1px solid var(--line); background:var(--surface); color:var(--ink); font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-sm)}
+  .ohead .obk:active{transform:scale(.94)}
+  .ohead h1{font-size:27px} .ohead .sub{margin-top:2px}
+  .opgrid{display:grid; grid-template-columns:1fr 1fr; gap:13px; margin:auto 0}
+  .opm-card{display:flex; align-items:center; gap:13px; padding:15px 16px; border:1px solid var(--line); background:var(--surface); border-radius:16px; cursor:pointer; box-shadow:var(--shadow-sm); transition:transform .15s; margin-bottom:10px}
+  .opm-card:active{transform:scale(.98)}
+  .opm-card .omi{width:38px;height:38px;border-radius:11px;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fredoka';font-weight:600;font-size:17px;flex:none}
+  .opm-card .omt{flex:1} .opm-card .omt b{font-family:'Fredoka';font-weight:600;font-size:16px;display:block} .opm-card .omt span{font-size:12.5px;color:var(--ink-soft)}
+  .opm-card .omgo{color:var(--ink-faint);font-family:'Fredoka';font-size:20px}
+  @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+  .shake{animation:shake .35s}
+  .cmp-title{font-family:'Fredoka'; font-weight:600; font-size:29px; line-height:1.12; margin-top:6px; position:relative; display:inline-block}
+  .cmp-title::after{content:''; position:absolute; left:2px; width:62%; bottom:-3px; height:5px; border-radius:3px; background:var(--mustard); opacity:.75}
+  .cmp-top{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px}
+  .cmp-top .obk{width:42px; height:42px; flex:none; padding:0; border-radius:50%; border:1px solid var(--line); background:var(--surface); color:var(--ink); font-size:22px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-sm)}
+  .cmp-top .obk:active{transform:scale(.94)}
+  .cmp-count{font-family:'Fredoka'; font-weight:600; font-size:16px; color:var(--ink-soft)}
+  .cmp-qcard{margin:16px 0 4px; padding:24px 18px; border-radius:20px; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow-sm); text-align:center; font-family:'Fredoka'; font-weight:600; font-size:46px; color:var(--ink); letter-spacing:.01em}
+  .cmp-opts{display:flex; flex-direction:column; gap:12px; margin-top:12px}
+  .cmp-opt{position:relative; border:none; border-radius:20px; background:var(--c); color:#fff; padding:17px 18px; cursor:pointer; text-align:left; box-shadow:var(--pop); transition:transform .18s var(--spring); font-family:'Inter'; overflow:hidden}
+  .cmp-opt:active{transform:scale(.98)}
+  .cmp-opt .yol{position:absolute; top:12px; right:13px; font-size:11px; font-weight:700; letter-spacing:.04em; background:rgba(255,255,255,.2); padding:3px 9px; border-radius:99px}
+  .cmp-opt .cmp-form{font-family:'Fredoka'; font-weight:600; font-size:25px; display:block; padding-right:52px; line-height:1.15}
+  .cmp-opt .cmp-desc{font-size:12.5px; opacity:.92; display:block; margin-top:5px}
+  .cmp-opt.reveal{cursor:default} .cmp-opt.lose{opacity:.48}
+  .cmp-opt.win{animation:cmpwin .55s var(--spring)}
+  @keyframes cmpwin{0%{transform:scale(1)}40%{transform:scale(1.035)}100%{transform:scale(1)}}
+  .cmp-opt.win .yol{background:rgba(255,255,255,.35)}
+  .cmp-hint{text-align:center; font-size:13px; color:var(--ink-soft); margin-top:15px}
+  .cmp-verdict{font-family:'Fredoka'; font-weight:600; font-size:18px; margin-top:16px; text-align:center}
+  .cmp-verdict.good{color:var(--teal)} .cmp-verdict.soft{color:var(--orange)}
+  .cmp-why{font-size:14px; line-height:1.55; color:var(--ink-soft); text-align:center; margin:8px 4px 4px}
+  .cmp-fb .btn{margin-top:16px}
+  .res-head{text-align:center; margin-top:10px}
+  .res-head h1{font-family:'Fredoka'; font-weight:600; font-size:34px; color:var(--coral)}
+  .res-head .sub{margin-top:4px}
+  .res-ringwrap{position:relative; width:130px; height:130px; margin:18px auto 4px}
+  .res-ringwrap svg{display:block}
+  .res-center{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center}
+  .res-center .rc-top{font-size:11px; color:var(--ink-faint)}
+  .res-center .rc-big{font-family:'Fredoka'; font-weight:600; font-size:36px; color:var(--ink); line-height:1}
+  .res-center .rc-lbl{font-size:11px; color:var(--ink-soft); margin-top:1px}
+  .res-chips{display:flex; justify-content:center; gap:10px; margin-top:12px}
+  .res-chip{display:flex; flex-direction:column; align-items:center; padding:9px 20px; border-radius:14px; color:#fff; font-family:'Inter'; min-width:76px}
+  .res-chip .rch-k{font-size:11px; opacity:.9} .res-chip .rch-n{font-family:'Fredoka'; font-weight:600; font-size:20px}
+  .res-chip.ok{background:var(--teal)} .res-chip.no{background:var(--coral)}
+  .res-miss{display:flex; align-items:center; gap:13px; margin-top:18px; padding:15px 16px; border-radius:18px; background:var(--dark); color:#fff; cursor:pointer; box-shadow:var(--shadow)}
+  .res-miss .rm-ic{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;flex:none}
+  .res-miss .rm-ic svg{width:24px;height:24px}
+  .res-miss .rm-t{flex:1} .res-miss .rm-t .rm-k{font-size:10.5px;opacity:.72;text-transform:uppercase;letter-spacing:.04em} .res-miss .rm-t b{font-family:'Fredoka';font-weight:600;font-size:17px;display:block;margin-top:1px} .res-miss .rm-t span{font-size:12px;opacity:.85}
+  .res-miss .rm-go{color:rgba(255,255,255,.55);font-family:'Fredoka';font-size:20px}
+  .res-btns{display:flex; gap:10px; margin-top:20px}
+  .res-btns .btn{margin:0}
+  .m-hero{font-family:'Fredoka'; font-weight:600; font-size:23px; line-height:1.2; margin-top:8px; color:var(--ink)}
+  .macc{margin-top:16px; display:flex; flex-direction:column; gap:12px}
+  .mcard{background:var(--surface); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow-sm); overflow:hidden}
+  .mchead{display:flex; align-items:center; gap:12px; padding:15px 16px; cursor:pointer}
+  .mchead .mci{width:34px;height:34px;border-radius:10px;background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fredoka';font-weight:600;font-size:16px;flex:none}
+  .mchead b{flex:1; font-family:'Fredoka'; font-weight:600; font-size:17px}
+  .mchead .mchev{font-family:'Fredoka'; color:var(--ink-faint); font-size:15px; transition:transform .3s}
+  .mcard.open .mchead .mchev{transform:rotate(180deg)}
+  .mcbody{max-height:0; overflow:hidden; opacity:0; transition:max-height .4s var(--ease), opacity .3s; padding:0 16px}
+  .mcard.open .mcbody{max-height:3200px; opacity:1; padding:0 16px 16px}
+  .mprose{font-size:14px; line-height:1.6; color:var(--ink-soft)}
+  /* method flow visual */
+  .flow{display:flex; flex-direction:column; align-items:stretch; margin:2px 0 18px}
+  .flow-label{font-family:'Inter'; font-size:11.5px; font-weight:600; letter-spacing:.03em; color:var(--fc); background:color-mix(in srgb, var(--fc) 10%, var(--surface)); align-self:flex-start; padding:4px 11px; border-radius:999px; margin-bottom:10px}
+  .flow-step{background:var(--surface); border:1px solid var(--line); border-radius:15px; padding:13px 14px; font-family:'Fredoka'; font-weight:500; font-size:18px; color:var(--ink); text-align:center; box-shadow:0 2px 4px rgba(25,26,23,.04); line-height:1.2}
+  .flow-step.flow-start{background:color-mix(in srgb, var(--fc) 9%, var(--surface)); border-color:color-mix(in srgb, var(--fc) 22%, var(--line))}
+  .flow-arrow{display:flex; flex-direction:column; align-items:center; padding:4px 0}
+  .flow-arrow .fa-chev{font-size:15px; line-height:1; color:var(--fc); opacity:.55}
+  .flow-arrow .fa-n{font-family:'Inter'; font-size:11.5px; color:var(--ink-soft); margin-top:1px; text-align:center}
+  .flow-res{background:var(--fc); color:#fff; border-radius:16px; padding:14px; font-family:'Fredoka'; font-weight:600; font-size:25px; text-align:center; box-shadow:0 6px 16px -8px rgba(25,26,23,.35); letter-spacing:.04em}
+  .flow .fem{color:var(--fc); font-weight:600}
+  /* 11 times table */
+  .et-tip{display:flex; align-items:center; gap:10px; background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:13px 14px; box-shadow:var(--shadow-sm); margin-bottom:12px; font-size:13px; color:var(--ink-soft); line-height:1.45}
+  .et-tip .ett-go{margin-left:auto; color:var(--teal); font-family:'Fredoka'; font-weight:600; font-size:13px; white-space:nowrap; cursor:pointer}
+  .et-legend{display:flex; gap:16px; align-items:center; font-size:11.5px; color:var(--ink-soft); margin:0 2px 12px}
+  .et-legend i{width:12px; height:12px; border-radius:4px; display:inline-block; vertical-align:-2px; margin-right:5px}
+  .ettable{display:grid; grid-template-columns:repeat(4,1fr); gap:8px}
+  .etcell{display:flex; flex-direction:column; align-items:center; gap:1px; padding:9px 4px; border-radius:12px; background:var(--paper); background:color-mix(in srgb, var(--teal) 8%, var(--surface)); border:1px solid var(--line)}
+  .etcell.carry{background:#FBEFE9; background:color-mix(in srgb, var(--coral) 11%, var(--surface)); border-color:color-mix(in srgb, var(--coral) 24%, var(--line))}
+  .etcell .etn{font-family:'Fredoka'; font-weight:600; font-size:16px; color:var(--ink)}
+  .etcell .etp{font-family:'Fredoka'; font-weight:500; font-size:13px; color:var(--teal)}
+  .etcell.carry .etp{color:var(--coral)}
+  /* asal & dost tablolari */
+  .numgrid{display:grid; grid-template-columns:repeat(5,1fr); gap:8px}
+  .numcell{display:flex; align-items:center; justify-content:center; padding:13px 4px; border-radius:12px; font-family:'Fredoka'; font-weight:600; font-size:17px; color:var(--ink); background:color-mix(in srgb, var(--a,#E24C5B) 11%, var(--surface)); border:1px solid color-mix(in srgb, var(--a,#E24C5B) 22%, var(--line))}
+  .tgroup{font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); font-weight:600; margin:18px 2px 9px}
+  .pairlist{display:flex; flex-direction:column; gap:8px}
+  .paircell{display:flex; align-items:center; gap:11px; background:color-mix(in srgb, var(--a,#E8752A) 9%, var(--surface)); border:1px solid color-mix(in srgb, var(--a,#E8752A) 20%, var(--line)); border-radius:14px; padding:12px 15px; font-family:'Fredoka'}
+  .paircell .pn{font-size:20px; font-weight:600; color:var(--ink)}
+  .paircell .px{font-size:14px; color:var(--ink-soft)}
+  .paircell .pr{margin-left:auto; font-size:20px; font-weight:600; color:var(--a,#E8752A)}
+  #primeTable,#friendTable{padding-bottom:40px}
+  .tablelink{display:flex; align-items:center; gap:8px; width:100%; text-align:left; background:var(--paper); background:color-mix(in srgb, var(--teal) 8%, var(--surface)); border:1px solid color-mix(in srgb, var(--teal) 20%, var(--line)); border-radius:14px; padding:12px 14px; margin:2px 0 14px; cursor:pointer; font-family:'Inter'; font-size:13.5px; font-weight:600; color:var(--teal)}
+  .tablelink .tl-go{margin-left:auto; font-family:'Fredoka'; font-size:20px}
+  /* settings ribbons */
+  .splaque{position:relative; background:var(--surface); border:1px solid var(--line); border-radius:24px; padding:20px 20px 18px; box-shadow:0 1px 2px rgba(38,32,24,.05), 0 20px 34px -22px rgba(38,32,24,.26)}
+  .splaque .prow{display:flex; align-items:center; gap:15px}
+  .splaque .pav{width:56px; height:56px; border-radius:18px; flex:none; display:flex; align-items:center; justify-content:center; font-family:'Fredoka'; font-weight:600; font-size:24px; color:#fff; background:linear-gradient(145deg,#347565,#1B5C52); box-shadow:0 8px 16px -7px rgba(27,92,82,.55), inset 0 1px 0 rgba(255,255,255,.3)}
+  .splaque .pname{font-family:'Fredoka'; font-weight:600; font-size:20px; line-height:1.1}
+  .splaque .psub{font-size:12.5px; color:var(--ink-soft); margin-top:3px}
+  .splaque .pstats{display:flex; gap:9px; margin-top:16px}
+  .splaque .pstat{flex:1; background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:10px 12px; position:relative; overflow:hidden}
+  .splaque .pstat b{font-family:'Fredoka'; font-weight:600; font-size:20px; display:block; line-height:1; color:var(--ink)}
+  .splaque .pstat span{font-size:10.5px; color:var(--ink-soft); display:block; margin-top:4px}
+  .splaque .pstat i{position:absolute; left:0; top:0; bottom:0; width:3px}
+  .sgroup{font-size:10.5px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin:22px 6px 13px}
+  .rib{position:relative; display:block; min-height:74px; width:100%; text-align:left; cursor:pointer; font-family:'Inter'; overflow:hidden; padding:15px 15px 15px 26px; margin-top:11px; border:none; border-radius:18px; background:var(--paper); background:linear-gradient(177deg, color-mix(in srgb,var(--a) 20%, var(--surface)), color-mix(in srgb,var(--a) 11%, var(--surface))); box-shadow:0 1px 2px rgba(38,32,24,.05), 0 15px 26px -17px rgba(38,32,24,.32), inset 0 1px 0 rgba(255,255,255,.4); transition:box-shadow .4s ease, transform .35s var(--spring)}
+  .rib::before{content:''; position:absolute; left:0; top:0; bottom:0; width:11px; background:var(--a)}
+  .rib::after{content:''; position:absolute; left:11px; top:12px; bottom:12px; width:7px; background:linear-gradient(90deg, rgba(0,0,0,.15), transparent); pointer-events:none}
+  .rib.lift{box-shadow:0 4px 10px rgba(38,32,24,.08), 0 32px 50px -22px rgba(38,32,24,.42), inset 0 1px 0 rgba(255,255,255,.4)}
+  .rib-static{cursor:default}
+  .setcard{background:var(--surface); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow-sm); padding:2px 16px; margin-top:11px}
+  .setrow{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 0}
+  .setrow + .setrow{border-top:1px solid var(--line)}
+  .setrow-l{font-size:14px; font-weight:500; color:var(--ink)}
+  .setrow-s{font-size:12px; color:var(--ink-soft); margin-top:2px}
+  .setpill{font-size:12.5px; font-weight:500; color:var(--ink-soft); background:color-mix(in srgb,var(--ink) 6%, var(--surface)); padding:5px 12px; border-radius:99px}
+  .setrow-btn{cursor:pointer; margin:0 -16px; padding-left:16px; padding-right:16px; border-radius:12px; transition:background .15s}
+  .setrow-btn:active{background:color-mix(in srgb,var(--ink) 4%, transparent)}
+  .rib-head{display:flex; align-items:center; gap:14px; width:100%}
+  .rib-main{flex:1; min-width:0}
+  .rib-t{font-family:'Fredoka'; font-weight:600; font-size:17px; color:var(--ink); line-height:1.15; display:block}
+  .rib-d{font-size:12px; color:var(--ink-soft); margin-top:2px; display:block}
+  .rib-meta{flex:none; font-family:'Fredoka'; font-weight:600; font-size:14px; color:color-mix(in srgb,var(--a) 60%, #000 22%); background:color-mix(in srgb,var(--a) 22%, var(--surface)); padding:4px 11px; border-radius:99px}
+  .rib-ic{width:47px; height:47px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center; background:radial-gradient(120% 120% at 32% 24%, rgba(255,255,255,.5), transparent 55%), color-mix(in srgb,var(--a) 72%, #fff); color:#fff; box-shadow:inset 0 1px 1px rgba(255,255,255,.55), inset 0 -3px 5px rgba(0,0,0,.14), 0 5px 10px -4px rgba(38,32,24,.34)}
+  .rib-ic svg{width:23px; height:23px; fill:none; stroke:currentColor; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round}
+  .rib-exp{width:100%; overflow:hidden; max-height:0; opacity:0; transition:max-height .5s var(--spring), opacity .3s, margin-top .5s var(--spring)}
+  .rib.open .rib-exp{max-height:260px; opacity:1; margin-top:15px}
+  .rib.open .rib-ic{transform:scale(1.04); transition:transform .4s var(--spring)}
+  .rib-inner{border-top:1px solid color-mix(in srgb,var(--a) 20%, var(--line)); padding-top:14px}
+  .rib-bars{display:flex; gap:11px}
+  .rib-bar{flex:1}
+  .rib-bar .k{font-size:10.5px; color:var(--ink-soft); display:flex; justify-content:space-between; margin-bottom:5px}
+  .rib-bar .k b{font-family:'Fredoka'; font-weight:600; color:var(--ink); font-size:12px}
+  .rib-track{height:7px; border-radius:99px; background:color-mix(in srgb,var(--a) 15%, var(--surface)); overflow:hidden}
+  .rib-fill{height:100%; border-radius:99px; background:var(--a)}
+  .rib-more{display:inline-flex; align-items:center; gap:5px; margin-top:13px; font-size:12.5px; font-weight:600; color:color-mix(in srgb,var(--a) 60%, #000 20%); cursor:pointer}
+  .rib-tgl{display:flex; align-items:center; justify-content:space-between; padding:9px 0}
+  .rib-tgl .l{font-size:13.5px; color:var(--ink)} .rib-tgl .s{font-size:11.5px; color:var(--ink-soft); margin-top:1px}
+  .tglsw{width:44px; height:26px; border-radius:99px; background:color-mix(in srgb,var(--a) 22%, var(--line)); position:relative; flex:none; cursor:pointer; transition:background .25s}
+  .tglsw::after{content:''; position:absolute; top:3px; left:3px; width:20px; height:20px; border-radius:50%; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.22); transition:transform .28s var(--spring)}
+  .tglsw.on{background:var(--a)} .tglsw.on::after{transform:translateX(18px)}
+  .rib-pill{font-size:12.5px; font-weight:600; color:color-mix(in srgb,var(--a) 60%, #000 20%); background:color-mix(in srgb,var(--a) 16%, var(--surface)); padding:5px 12px; border-radius:99px}
+  .rib-pill.info{color:var(--ink-soft); background:color-mix(in srgb,var(--ink) 6%, var(--surface)); font-weight:500; cursor:default}
+  /* settings sheet */
+  .ssscrim{position:absolute; inset:0; background:rgba(30,26,20,.30); opacity:0; pointer-events:none; transition:opacity .4s ease; z-index:80; backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px)}
+  .ssscrim.show{opacity:1; pointer-events:auto}
+  .sssheet{position:absolute; left:0; right:0; bottom:0; z-index:90; background:var(--surface); border-top:1px solid var(--line); border-radius:28px 28px 0 0; padding:10px 22px calc(24px + env(safe-area-inset-bottom)); transform:translateY(103%); transition:transform .5s var(--spring); box-shadow:0 -20px 50px -20px rgba(38,32,24,.4); max-height:80%; overflow-y:auto}
+  .sssheet.show{transform:translateY(0)}
+  .sss-grip{width:40px; height:5px; border-radius:99px; background:var(--line); margin:6px auto 16px}
+  .sss-k{font-size:10.5px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--a); margin-bottom:5px}
+  .sss-t{font-family:'Fredoka'; font-weight:600; font-size:23px; margin-bottom:14px}
+  .sss-b{font-size:14px; line-height:1.7; color:var(--ink-soft)} .sss-b p{margin-bottom:12px} .sss-b b{color:var(--ink); font-weight:600}
+  .sss-link{display:inline-block; margin-top:4px; font-weight:600; color:var(--a); text-decoration:none}
+  .sss-close{margin-top:18px; width:100%; padding:14px; border:none; border-radius:16px; background:var(--ink); color:var(--surface); font-family:'Fredoka'; font-weight:600; font-size:15px; cursor:pointer}
+  body.reduce-motion *{transition-duration:.02ms !important; animation-duration:.02ms !important; animation-iteration-count:1 !important}
+  .minfo{font-size:13px; color:var(--ink-soft); margin-top:10px; line-height:1.5}
+  .mtag{font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; padding:2px 8px; border-radius:99px; margin-right:7px; white-space:nowrap}
+  .mtag.good{background:var(--green-soft); color:var(--green-ink)} .mtag.soft{background:var(--amber-soft); color:#8a5410}
+  .msteps-k{font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); font-weight:600; margin:16px 0 8px}
+  .msteps{display:flex; flex-direction:column; gap:8px}
+  .mstep{display:flex; gap:12px; align-items:center; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:12px 14px; box-shadow:var(--shadow-sm)}
+  .mstep-n{width:30px;height:30px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;font-family:'Fredoka';font-weight:600;font-size:15px;color:#fff;background:var(--dark)}
+  .mstep-c{flex:1}
+  .msteps .mstep:nth-child(1) .mstep-n{background:var(--coral)}
+  .msteps .mstep:nth-child(2) .mstep-n{background:var(--orange)}
+  .msteps .mstep:nth-child(3) .mstep-n{background:var(--mustard)}
+  .msteps .mstep:nth-child(4) .mstep-n{background:var(--teal)}
+  .msteps .mstep:nth-child(5) .mstep-n{background:var(--petrol)}
+  .msteps .mstep:nth-child(6) .mstep-n{background:var(--clay)}
+  .mstep-eq{font-family:'Fredoka'; font-weight:500; font-size:19px; color:var(--ink)}
+  .mstep-eq .amb{color:var(--orange)}
+  .mstep-g{font-size:12.5px; color:var(--ink-soft); margin-top:3px; line-height:1.4}
+  .mtip{margin-top:14px; background:var(--soft-blue); border-radius:12px; padding:11px 13px; font-size:13px; color:var(--green-ink); line-height:1.5}
+  .mtip b{color:var(--petrol)}
+  .mex{background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:13px 14px; margin-bottom:9px; cursor:pointer}
+  .mex:last-child{margin-bottom:0}
+  .mex-q{font-family:'Fredoka'; font-weight:600; font-size:18px; display:flex; align-items:center; justify-content:space-between}
+  .mex-tap{font-family:'Inter'; font-size:11px; font-weight:600; color:var(--orange); text-transform:uppercase; letter-spacing:.03em}
+  .mex.open .mex-tap{display:none}
+  .mex-w{font-size:13.5px; color:var(--ink-soft); max-height:0; overflow:hidden; opacity:0; transition:max-height .3s, opacity .3s, margin-top .3s}
+  .mex.open .mex-w{margin-top:8px; max-height:80px; opacity:1}
+  .mtry{margin-top:18px; background:var(--dark); color:#fff; border-radius:22px; padding:18px; box-shadow:var(--pop)}
+  .mtry-k{font-size:11px; letter-spacing:.06em; text-transform:uppercase; opacity:.72; font-weight:600}
+  .mtry-t{font-family:'Fredoka'; font-weight:500; font-size:17px; margin:4px 0 14px}
+  .mtry-btns{display:flex; flex-direction:column; gap:10px}
+  .mtry-btns .btn{margin:0; background:var(--orange)}
+  .mtry-btns .btn.ghost{background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.28)}
+  .progtopics{display:flex; flex-direction:column; gap:15px; margin-top:2px}
+  .pbar-row{position:relative; display:flex; align-items:center; background:var(--c); color:#fff; border-radius:16px; padding:15px 62px 15px 18px; box-shadow:var(--pop); cursor:pointer; transition:transform .16s var(--spring)}
+  .pbar-row:active{transform:scale(.98)}
+  .pbar-row .pbr-t{flex:1} .pbr-t b{font-family:'Fredoka';font-weight:600;font-size:16px;display:block} .pbr-t span{font-size:12px;opacity:.88}
+  .pbar-row .pbr-pct{position:absolute; right:-4px; top:50%; transform:translateY(-50%); width:54px; height:54px; border-radius:50%; background:var(--surface); display:flex; align-items:center; justify-content:center; font-family:'Fredoka'; font-weight:600; font-size:15px; box-shadow:0 5px 14px rgba(25,26,23,.22); border:3px solid var(--paper)}
   @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important; animation:none!important}}
   :focus-visible{outline:2px solid var(--green); outline-offset:2px}
 </style>
@@ -424,46 +757,36 @@
 
     <!-- BUGÜN -->
     <section class="screen active" id="home">
-      <div class="homehead"><div class="eyebrow">merhaba</div><h1 style="margin:4px 0 0">Bugün ne çalışalım?</h1></div>
-      <div class="progsum" onclick="show('progress')">
-        <div class="pmore">detay →</div>
-        <div class="pgrid">
-          <div class="pgtext"><div class="pk">durumun</div><h2>Gelişimin sürüyor</h2><span class="pgsub">üç yönde ilerliyorsun</span></div>
-          <div class="pgrings" id="progsumRings"></div>
+      <div class="mathbg" aria-hidden="true"><span style="top:4%;left:-6%;color:var(--sage);font-size:130px">+</span><span style="top:38%;right:-5%;color:var(--clay);font-size:100px">×</span><span style="bottom:4%;left:-4%;color:var(--mustard);font-size:90px">÷</span></div>
+      <div class="home-in">
+        <div class="homerow">
+          <div class="logo"><span class="l1">Mat</span><span class="l2">Reflex</span></div>
+          <button class="streak" onclick="show('progress')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 1.5c.6 3-1.4 4.2-2.9 6-1.6 2-1 4.4-1 4.4s-1.4-1-1.4-3c-1.9 1.5-2.7 3.6-2.7 5.3a6.5 6.5 0 1 0 13 0c0-5.2-4-7.2-4.6-9.8C13.6 6.2 14 4 13.5 1.5z"/></svg><b id="streakN">0</b></button>
         </div>
-      </div>
-      <div class="todaycta" onclick="launchSession('ref')">
-        <div class="tct"><span class="tk">bugünün refleksi</span><b>Referans Sayılar</b><span class="ts">bugün referans sayılarını fark etmeyi çalışıyoruz</span></div>
-        <div class="tgo">▶</div>
-      </div>
-      <div class="sigcard" onclick="startCompare()">
-        <div class="tct"><span class="tk" style="color:#E8772C">sezgi modu</span><b>Hangi yol daha kolay?</b><span class="ts">çözme yok, en akıllı yolu seç</span></div>
-        <div class="tgo">⇄</div>
-      </div>
-      <div class="folders" id="folders">
-        <div class="folder" data-f="method" style="--fc:#D65A4E">
-          <div class="fhead" onclick="toggleFolder('method')"><div class="ficon">≈</div><div class="ftext"><b>Yöntemler</b><span>zoru kolaya çeviren yollar</span></div><div class="fchev">›</div></div>
-          <div class="fbody">
-            <div class="fitem" onclick="launchSession('ref')"><span class="fdot"></span>Referans Sayılar</div>
-            <div class="fitem" onclick="launchSession('double')"><span class="fdot"></span>İkile-Yarıla</div>
-            <div class="fitem" onclick="launchSession('twins')"><span class="fdot"></span>Onluk İkizler</div>
-            <div class="fitem" onclick="launchSession('eleven')"><span class="fdot"></span>Onbir Çarpımı</div>
-            <div class="fitem" onclick="launchSession('decomp')"><span class="fdot"></span>Ayrıştırma</div>
-            <div class="fitem" onclick="show('toolbox')"><span class="fdot"></span>Araç çantası</div>
+        <p class="hsubtitle">Zihinden hızlı işlem yapmayı öğren.</p>
+        <div class="hgrid">
+          <div class="hpair">
+            <button class="hmini" style="--c:var(--coral);--tx:#fff" onclick="show('ogren')">
+              <span class="hric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h5v16H6a2 2 0 0 0-2 1.5z"/><path d="M20 5a2 2 0 0 0-2-2h-5v16h5a2 2 0 0 1 2 1.5z"/></svg></span>
+              <b>Öğren</b><span>Dört işlemin kolay yolları</span>
+            </button>
+            <button class="hmini" style="--c:var(--teal);--tx:#fff" onclick="startCompare()">
+              <span class="hric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-7l-5.5-6"/><path d="M12 15l5.5-6"/><circle cx="5.5" cy="6" r="2.2"/><circle cx="18.5" cy="6" r="2.2"/></svg></span>
+              <b>Yöntem tanıma</b><span>Çözmeden, hangi yol daha hafif</span>
+            </button>
           </div>
-        </div>
-        <div class="folder" data-f="mem" style="--fc:#5E9B93">
-          <div class="fhead" onclick="toggleFolder('mem')"><div class="ficon">²</div><div class="ftext"><b>Hafıza</b><span>oyunla ezber</span></div><div class="fchev">›</div></div>
-          <div class="fbody">
-            <div class="fitem" onclick="openMem('squares')"><span class="fdot"></span>Kareler</div>
-            <div class="fitem" onclick="openMem('cubes')"><span class="fdot"></span>Küpler</div>
-          </div>
-        </div>
-        <div class="folder" data-f="test" style="--fc:#B0862C">
-          <div class="fhead" onclick="toggleFolder('test')"><div class="ficon">✦</div><div class="ftext"><b>Test</b><span>kendini dene, rapor al</span></div><div class="fchev">›</div></div>
-          <div class="fbody">
-            <div class="fitem" onclick="show('testhub')"><span class="fdot"></span>Karma test</div>
-          </div>
+          <button class="hhero" style="--c:var(--orange);--tx:#fff" onclick="show('karmaConfig')">
+            <span class="hh-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="M15 14l6 7"/><path d="M3 4l6 6"/></svg></span>
+            <span class="hh-t">Pratik</span>
+            <span class="hh-s">Karışık sorular gelir, sonunda hangi yöntemin sana yakıştığı raporda çıkar.</span>
+            <span class="hh-tag">6 ya da 12 soru · yöntem raporu</span>
+            <span class="hh-chev">›</span>
+          </button>
+          <button class="hrow" style="--c:var(--dark);--tx:#fff" onclick="show('ezber')">
+            <span class="hric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span>
+            <span class="hrtext"><b>Matematik Tabloları</b><span>Sık geçen sayı tabloları ve akılda tutma yolları</span></span>
+            <span class="hrchev">›</span>
+          </button>
         </div>
       </div>
     </section>
@@ -494,18 +817,20 @@
           <div class="states"><i class="sdot on"></i><i class="sdot"></i><i class="sdot"></i><i class="sdot"></i><i class="sdot"></i></div></div>
         <div class="chev">›</div>
       </div>
-      <div class="card srow lock">
-        <div class="ic">⁝</div><div class="st"><b>Ayrıştırma</b><span>henüz başlamadın</span></div><div class="chev">›</div>
+      <div class="card srow" onclick="launchSession('decomp')">
+        <div class="ic">⁝</div><div class="st"><b>Ayrıştırma</b><span>parçala ve topla</span>
+          <div class="states"><i class="sdot on"></i><i class="sdot"></i><i class="sdot"></i><i class="sdot"></i><i class="sdot"></i></div></div>
+        <div class="chev">›</div>
       </div>
 
       <div class="pillar-h"><span class="ph">Hafıza</span><span class="pd">anında hatırlanan sayısal bilgi</span></div>
       <div class="card srow" onclick="openMem('squares')">
-        <div class="ic">²</div><div class="st"><b>Kareler</b><span>1'den 25'e kadar · oyunla ezber</span>
+        <div class="ic">²</div><div class="st"><b>Kareler</b><span>1'den 15'e kadar · oyunla ezber</span>
           <div class="states"><i class="sdot on"></i><i class="sdot on"></i><i class="sdot fresh"></i><i class="sdot"></i><i class="sdot"></i></div></div>
         <div class="chev">›</div>
       </div>
       <div class="card srow" onclick="openMem('cubes')">
-        <div class="ic">³</div><div class="st"><b>Küpler</b><span>1'den 12'ye kadar</span></div><div class="chev">›</div>
+        <div class="ic">³</div><div class="st"><b>Küpler</b><span>1'den 10'a kadar</span></div><div class="chev">›</div>
       </div>
 
       <div class="pillar-h"><span class="ph">Refleks</span><span class="pd">düşünmeyi otomatiğe bağlayan kısa seriler</span></div>
@@ -558,12 +883,14 @@
     <!-- HAFIZA HUB -->
     <section class="screen" id="memHub">
       <button class="back" onclick="show('home')">‹ Ana Sayfa</button>
-      <div class="eyebrow">hafıza · oyunla ezber</div>
+      <div class="eyebrow">matematik tabloları</div>
       <h1 id="memHubTitle" style="margin:4px 0 4px">Kareler</h1>
       <p class="sub" id="memHubSub"></p>
       <div class="pcard" style="margin:4px 0 14px"><div class="pk">neden</div>Bazı işlemleri çözmezsin, tanırsın. Kareler ve küpler, zihinden hesapta yakıt gibidir.</div>
       <div class="sec-title">liste</div>
       <div class="memlist" id="memList"></div>
+      <div class="sec-title">hafıza yolu</div>
+      <div class="mtwrap" id="memTricks"></div>
       <div class="sec-title">oyunlar</div>
       <div class="memmodes">
         <div class="memmode" onclick="startGame('choice')"><div class="mi">?</div><div class="mt"><b>Hangisi doğru?</b><span>sonucu iki şıktan seç</span></div></div>
@@ -578,6 +905,14 @@
         <div class="sh-title"><span class="sh-k" id="gameKind"></span><span class="sh-n" id="gameSetName"></span></div></div>
       <div class="dots" id="gDots"></div>
       <div class="center"><div id="gameBody"></div></div>
+    </section>
+
+    <!-- TABLO OYUNU (asal / dost) -->
+    <section class="screen" id="tableGame">
+      <div class="shead"><button class="exit" id="tgExit">‹</button>
+        <div class="sh-title"><span class="sh-k" id="tgKind"></span><span class="sh-n" id="tgName"></span></div></div>
+      <div class="dots" id="tgDots"></div>
+      <div class="center"><div id="tgBody"></div></div>
     </section>
 
     <!-- ARAÇLAR -->
@@ -653,8 +988,10 @@
         <div class="footer">
           <button class="btn cevap" id="cevap" onclick="showAnswer()">Cevabı görelim</button>
           <div class="report" id="report">
-            <button class="rbtn known" onclick="nextItem(true)">ilerle</button>
-            <button class="rbtn again" onclick="nextItem(false)">pekiştir</button>
+            <div class="rq">Bu nasıl geldi?</div>
+            <div class="rbtns"><button class="rbtn known" onclick="nextItem(true)">Kolaydı</button>
+              <button class="rbtn again" onclick="nextItem(false)">Zorlandım</button></div>
+            <div class="rhint">zorlandığın soru bu turda tekrar karşına gelir</div>
           </div>
         </div>
       </div>
@@ -673,47 +1010,210 @@
       <button class="btn ghost sm" style="margin-top:8px" id="againBtn">Baştan</button>
     </section>
 
-    <!-- TEST HUB -->
-    <section class="screen" id="testhub">
+    <!-- KARMA TEST AYARI -->
+    <section class="screen" id="karmaConfig">
       <button class="back" onclick="show('home')">‹ Ana Sayfa</button>
-      <div class="eyebrow">test</div><h1 style="margin:4px 0 6px">Karma test</h1>
-      <p class="sub">Farklı yöntemler karışık gelir, sonunda rapor çıkar. Nasıl olsun?</p>
-      <div class="sec-title">uzunluk</div>
-      <div class="segrow" id="lenRow">
-        <button class="seg on" data-len="6" onclick="segPick('lenRow',this)">Kısa · 6 soru</button>
-        <button class="seg" data-len="12" onclick="segPick('lenRow',this)">Uzun · 12 soru</button>
+      <div class="pintro">
+        <span class="pintro-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="M15 14l6 7"/><path d="M3 4l6 6"/></svg></span>
+        <div class="pintro-tx">
+          <div class="eyebrow">pratik</div>
+          <h1 style="margin:2px 0 5px">Ne çalışalım?</h1>
+          <p class="sub">Bir deste seç, dokun, başla. Süre yok, acele yok.</p>
+        </div>
       </div>
-      <div class="sec-title">odak</div>
-      <div class="segrow" id="focusRow">
-        <button class="seg on" data-focus="all" onclick="segPick('focusRow',this)">Karışık</button>
-        <button class="seg" data-focus="mult" onclick="segPick('focusRow',this)">Sadece çarpma</button>
+
+      <div class="pkd" onclick="startDeck('all',6)" role="button" tabindex="0">
+        <div class="pkd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3.2l2.15 6.65L21 12l-6.85 2.15L12 20.8l-2.15-6.65L3 12l6.85-2.15z"/></svg></div>
+        <div class="pkd-body">
+          <div class="pkd-t">Bugünün seti</div>
+          <div class="pkd-s">Karışık, kısa bir tur. Isınmak için birebir.</div>
+        </div>
+        <div class="pkd-go">›</div>
       </div>
-      <button class="btn" style="margin-top:24px" onclick="startConfiguredTest()">Başlayalım</button>
+
+      <div class="sec-title" style="margin-top:22px">desteler</div>
+      <div class="decklist" id="deckList"></div>
     </section>
 
     <!-- AYARLAR -->
     <section class="screen" id="settings">
-      <div class="eyebrow">ayarlar</div><h1 style="margin:4px 0 8px">Ayarlar</h1>
-      <p class="sub">Ayrıntılı ayarlar ve Hakkında bölümü sonraki adımda burada olacak.</p>
-      <div class="sec-title">uygulama</div>
-      <div class="card lrow"><div class="ln">♪</div><div class="lt"><b>Ses ve titreşim</b><span>yakında</span></div></div>
-      <div class="card lrow"><div class="ln">◐</div><div class="lt"><b>Hareketi azalt</b><span>yakında</span></div></div>
-      <div class="sec-title">veri</div>
-      <div class="card lrow" onclick="resetProgressAsk()"><div class="ln">↺</div><div class="lt"><b>İlerlemeyi sıfırla</b><span id="resetSub">baştan başla</span></div></div>
-      <div class="sec-title">hakkında</div>
-      <a class="card lrow linkrow" href="https://zeynepkaya.app/matreflex/privacy" target="_blank" rel="noopener"><div class="ln">◆</div><div class="lt"><b>Gizlilik Politikası</b><span>verilerin nasıl işlenir</span></div><div class="chev" style="margin-left:auto;color:var(--ink-faint)">›</div></a>
-      <a class="card lrow linkrow" href="https://zeynepkaya.app/matreflex/terms" target="_blank" rel="noopener"><div class="ln">§</div><div class="lt"><b>Kullanım Koşulları</b><span>kullanım şartları</span></div><div class="chev" style="margin-left:auto;color:var(--ink-faint)">›</div></a>
-      <a class="card lrow linkrow" href="https://zeynepkaya.app/matreflex/support" target="_blank" rel="noopener"><div class="ln">?</div><div class="lt"><b>Destek</b><span>yardım ve iletişim</span></div><div class="chev" style="margin-left:auto;color:var(--ink-faint)">›</div></a>
-      <div class="card lrow"><div class="ln">i</div><div class="lt"><b>Sürüm</b><span>MatReflex 0.1.0</span></div></div>
-      <button class="btn ghost sm" style="margin-top:16px" onclick="show('home')">Kapat</button>
+      <div class="splaque">
+        <div class="prow">
+          <div class="pav">M</div>
+          <div>
+            <div class="pname">MatReflex</div>
+            <div class="psub">yöntem refleksin gelişiyor</div>
+          </div>
+        </div>
+        <div class="pstats">
+          <div class="pstat"><i style="background:#2E6E5E"></i><b id="setUst">%0</b><span>Ustalık</span></div>
+          <div class="pstat"><i style="background:#3B9384"></i><b id="setForm">%0</b><span>Form</span></div>
+          <div class="pstat"><i style="background:#C99A3E"></i><b id="setSeri">0</b><span>Seri</span></div>
+        </div>
+      </div>
+
+      <div class="sgroup">durumun</div>
+      <div class="rib" data-rib="nav" style="--a:#2E6E5E" role="button" tabindex="0" onclick="show('progress')">
+        <div class="rib-head">
+          <span class="rib-main"><span class="rib-t">İlerleme</span><span class="rib-d">ustalık ve form haritan</span></span>
+          <span class="rib-ic"><svg viewBox="0 0 24 24"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-4"/><path d="M13 16V8"/><path d="M18 16v-7"/></svg></span>
+        </div>
+      </div>
+
+      <div class="sgroup">Ayarlar</div>
+      <div class="setcard" style="--a:#3B9384">
+        <div class="setrow setrow-btn" onclick="toggleMotion(this.querySelector('.tglsw'))" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); toggleMotion(this.querySelector('.tglsw'));}" role="button" tabindex="0" aria-label="Hareketi azalt">
+          <div class="setrow-txt"><div class="setrow-l">Hareketi azalt</div><div class="setrow-s">animasyonları sadeleştir</div></div>
+          <div class="tglsw" id="tglMotion" aria-hidden="true"></div>
+        </div>
+        <div class="setrow">
+          <div class="setrow-txt"><div class="setrow-l">Dil</div><div class="setrow-s">arayüz dili</div></div>
+          <span class="setpill">Türkçe</span>
+        </div>
+      </div>
+      <div class="rib" data-rib="action" onclick="resetProgressAsk()" style="--a:#C99A3E" role="button" tabindex="0">
+        <div class="rib-head">
+          <span class="rib-main"><span class="rib-t">İlerlemeyi sıfırla</span><span class="rib-d" id="resetSub">baştan başla</span></span>
+          <span class="rib-ic"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/></svg></span>
+        </div>
+      </div>
+
+      <div class="sgroup">yasal</div>
+      <div class="rib" data-rib="sheet" data-sheet="privacy" style="--a:#5C6E68" role="button" tabindex="0" onclick="ribSheet(this,'privacy')">
+        <div class="rib-head">
+          <span class="rib-main"><span class="rib-t">Gizlilik</span><span class="rib-d">verilerin nasıl korunur</span></span>
+          <span class="rib-ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span>
+        </div>
+      </div>
+      <div class="rib" data-rib="sheet" data-sheet="terms" style="--a:#5F6A70" role="button" tabindex="0" onclick="ribSheet(this,'terms')">
+        <div class="rib-head">
+          <span class="rib-main"><span class="rib-t">Kullanım Koşulları</span><span class="rib-d">hizmet şartları</span></span>
+          <span class="rib-ic"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h6"/></svg></span>
+        </div>
+      </div>
+      <div class="rib" data-rib="sheet" data-sheet="support" style="--a:#647065" role="button" tabindex="0" onclick="ribSheet(this,'support')">
+        <div class="rib-head">
+          <span class="rib-main"><span class="rib-t">Destek</span><span class="rib-d">yardım ve iletişim</span></span>
+          <span class="rib-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.2 9.3a2.8 2.8 0 0 1 5.4 1c0 1.9-2.6 2-2.6 3.7"/><path d="M12 17h.01"/></svg></span>
+        </div>
+      </div>
+      <div class="rib" data-rib="sheet" data-sheet="about" style="--a:#6E6A62" role="button" tabindex="0" onclick="ribSheet(this,'about')">
+        <div class="rib-head">
+          <span class="rib-main"><span class="rib-t">Hakkında</span><span class="rib-d">sürüm ve künye</span></span>
+          <span class="rib-meta" id="setVer">0.1</span>
+          <span class="rib-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÖĞREN -->
+    <section class="screen" id="ogren">
+      <div class="ohead"><button class="obk" onclick="show('home')">‹</button><h1>Öğren</h1><p class="sub">Dört işlemi kolay yöntemlerle keşfet.</p></div>
+      <div class="opgrid">
+        <button class="hcard" style="--c:var(--coral);--tx:#fff" onclick="openOp('toplama')"><span class="hsym">+</span><span class="htitle">Toplama</span><span class="hsub">hızlı ve pratik yollar</span></button>
+        <button class="hcard" style="--c:var(--teal);--tx:#fff" onclick="openOp('cikarma')"><span class="hsym">−</span><span class="htitle">Çıkarma</span><span class="hsub">kolay çıkarma teknikleri</span></button>
+        <button class="hcard" style="--c:var(--dark);--tx:#fff" onclick="openOp('carpma')"><span class="hsym">×</span><span class="htitle">Çarpma</span><span class="hsub">akıllı çarpım yolları</span></button>
+        <button class="hcard" style="--c:var(--orange);--tx:#fff" onclick="openOp('bolme')"><span class="hsym">÷</span><span class="htitle">Bölme</span><span class="hsub">dost sayılarla kısa yol</span></button>
+      </div>
+    </section>
+
+    <!-- ÖĞREN > YÖNTEMLER -->
+    <section class="screen" id="opmethods">
+      <div class="ohead"><button class="obk" onclick="show('ogren')">‹</button><h1 id="opTitle">Çarpma</h1><p class="sub">Sana en uygun yolu seç.</p></div>
+      <div id="opMethods" style="margin-top:14px"></div>
+    </section>
+
+    <!-- EZBER -->
+    <section class="screen" id="ezber">
+      <div class="ohead"><button class="obk" onclick="show('home')">‹</button><h1>Matematik Tabloları</h1><p class="sub">Sık geçen sayı tabloları, bir de onları akılda tutma yolları.</p></div>
+      <div class="opgrid">
+        <button class="hcard" style="--c:var(--dark);--tx:#fff" onclick="openMem('squares')"><span class="hsym">x²</span><span class="htitle">Kareler</span><span class="hsub">1'den 15'e kadar</span></button>
+        <button class="hcard" style="--c:var(--teal);--tx:#fff" onclick="openMem('cubes')"><span class="hsym">x³</span><span class="htitle">Küpler</span><span class="hsub">1'den 10'a kadar</span></button>
+        <button class="hcard" style="--c:#1B5C52;--tx:#fff" onclick="show('elevenTable')"><span class="hsym">×11</span><span class="htitle">11'le Çarpım</span><span class="hsub">10'dan 99'a tüm katlar</span></button>
+        <button class="hcard" style="--c:var(--coral);--tx:#fff" onclick="show('primeTable')"><span class="hsym">17</span><span class="htitle">Asal Sayılar</span><span class="hsub">bölünmeyenleri tanı</span></button>
+        <button class="hcard" style="--c:var(--orange);--tx:#fff" onclick="show('friendTable')"><span class="hsym">25</span><span class="htitle">Dost Sayılar</span><span class="hsub">25, 50, 100 ve dostları</span></button>
+      </div>
+    </section>
+
+    <!-- 11'LE ÇARPIM TABLOSU -->
+    <section class="screen" id="elevenTable">
+      <div class="ohead"><button class="obk" onclick="show('ezber')">‹</button><h1>11'le Çarpım</h1><p class="sub">10'dan 99'a, her iki basamaklı sayının 11 katı.</p></div>
+      <div class="et-tip"><span>Kenarlar yerinde kalır, ortaya iki rakamın toplamı girer.</span><span class="ett-go" onclick="launchSession('eleven')">yöntemi gör ›</span></div>
+      <div class="et-legend"><span><i style="background:color-mix(in srgb,var(--coral) 22%,var(--surface))"></i>taşımalı</span><span><i style="background:color-mix(in srgb,var(--teal) 16%,var(--surface))"></i>taşımasız</span></div>
+      <div class="ettable" id="etTable"></div>
+    </section>
+
+    <!-- ASAL SAYILAR -->
+    <section class="screen" id="primeTable">
+      <div class="ohead"><button class="obk" onclick="show('ezber')">‹</button><h1>Asal Sayılar</h1><p class="sub">100'e kadar, yalnız 1'e ve kendine bölünen sayılar.</p></div>
+      <div class="et-tip"><span>Çiftler arasında tek asal 2'dir. Gerisi hep tektir, ama her tek sayı asal değildir.</span></div>
+      <div class="numgrid" style="--a:var(--coral)">
+        <div class="numcell">2</div><div class="numcell">3</div><div class="numcell">5</div><div class="numcell">7</div><div class="numcell">11</div>
+        <div class="numcell">13</div><div class="numcell">17</div><div class="numcell">19</div><div class="numcell">23</div><div class="numcell">29</div>
+        <div class="numcell">31</div><div class="numcell">37</div><div class="numcell">41</div><div class="numcell">43</div><div class="numcell">47</div>
+        <div class="numcell">53</div><div class="numcell">59</div><div class="numcell">61</div><div class="numcell">67</div><div class="numcell">71</div>
+        <div class="numcell">73</div><div class="numcell">79</div><div class="numcell">83</div><div class="numcell">89</div><div class="numcell">97</div>
+      </div>
+      <button class="btn" onclick="tgStart('prime')" style="margin-top:16px">Oyunla deneyelim</button>
+      <div class="tgroup">hafıza yolu</div>
+      <div class="mtwrap">
+        <div class="mtrick" style="--tc:var(--coral)"><div class="mt-name">Tek olma kuralı</div><div class="mt-idea">2 dışında her asal tektir.</div><div class="mt-note">Çift sayılar 2'ye bölünür, o yüzden 2'den sonra hiçbir çift sayı asal olamaz.</div></div>
+        <div class="mtrick" style="--tc:var(--coral)"><div class="mt-name">Son rakam</div><div class="mt-idea">5 dışında hiçbir asal 0 ya da 5 ile bitmez.</div><div class="mt-note">Birler basamağı 1, 3, 7 ya da 9 değilse (2 ve 5 hariç) o sayı asal değildir.</div></div>
+        <div class="mtrick" style="--tc:var(--coral)"><div class="mt-name">Üçe bölünme</div><div class="mt-idea">Rakamları toplamı 3'e bölünüyorsa sayı asal değildir.</div><div class="mt-flow"><span class="mt-q">51</span><span class="mt-arrow">›</span><span class="mt-chip">5 + 1 = 6</span><span class="mt-arrow">›</span><span class="mt-chip">6, üçe bölünür</span><span class="mt-eq">=</span><span class="mt-res">asal değil</span></div><div class="mt-note">3 asaldır ama katları (9, 21, 51, 87...) değildir.</div></div>
+        <div class="mtrick" style="--tc:var(--coral)"><div class="mt-name">Nereye kadar bakmalı</div><div class="mt-idea">100'e kadar bir sayı 2, 3, 5 ve 7'ye bölünmüyorsa asaldır.</div><div class="mt-note">Karekökünden büyük böleni denemeye gerek yok. 100'ün karekökü 10, o yüzden bu dört sayı yeter.</div></div>
+      </div>
+    </section>
+
+    <!-- DOST SAYILAR -->
+    <section class="screen" id="friendTable">
+      <div class="ohead"><button class="obk" onclick="show('ezber')">‹</button><h1>Dost Sayılar</h1><p class="sub">Birkaç katıyla yuvarlak sonuca çıkan sayılar.</p></div>
+      <div class="et-tip"><span>25, 50, 125 gibi sayıları tanıyınca çarpma ve bölme, yuvarlak sayılara inip geri çıkmaya dönüşür.</span></div>
+      <div class="tgroup">yüze çıkanlar</div>
+      <div class="pairlist" style="--a:var(--orange)">
+        <div class="paircell"><span class="pn">25</span><span class="px">× 4</span><span class="pr">100</span></div>
+        <div class="paircell"><span class="pn">50</span><span class="px">× 2</span><span class="pr">100</span></div>
+        <div class="paircell"><span class="pn">20</span><span class="px">× 5</span><span class="pr">100</span></div>
+        <div class="paircell"><span class="pn">10</span><span class="px">× 10</span><span class="pr">100</span></div>
+      </div>
+      <div class="tgroup">bine çıkanlar</div>
+      <div class="pairlist" style="--a:var(--orange)">
+        <div class="paircell"><span class="pn">125</span><span class="px">× 8</span><span class="pr">1000</span></div>
+        <div class="paircell"><span class="pn">250</span><span class="px">× 4</span><span class="pr">1000</span></div>
+        <div class="paircell"><span class="pn">500</span><span class="px">× 2</span><span class="pr">1000</span></div>
+        <div class="paircell"><span class="pn">200</span><span class="px">× 5</span><span class="pr">1000</span></div>
+      </div>
+      <button class="btn" onclick="tgStart('dost')" style="margin-top:16px">Oyunla deneyelim</button>
+      <div class="tgroup">hafıza yolu</div>
+      <div class="mtwrap">
+        <div class="mtrick" style="--tc:var(--orange)"><div class="mt-name">25'in dostu 4</div><div class="mt-idea">25 × 4 = 100. 25 gördüğünde 4'ü düşün.</div><div class="mt-flow"><span class="mt-q">36 × 25</span><span class="mt-arrow">›</span><span class="mt-chip">36 × 100</span><span class="mt-arrow">›</span><span class="mt-chip">÷ 4</span><span class="mt-eq">=</span><span class="mt-res">900</span></div><div class="mt-note">×25 demek ×100 ÷ 4. Bölmesi de tersi: ÷25 = ×4 ÷ 100.</div></div>
+        <div class="mtrick" style="--tc:var(--orange)"><div class="mt-name">50'nin dostu 2</div><div class="mt-idea">50 × 2 = 100.</div><div class="mt-flow"><span class="mt-q">48 × 50</span><span class="mt-arrow">›</span><span class="mt-chip">48 × 100</span><span class="mt-arrow">›</span><span class="mt-chip">÷ 2</span><span class="mt-eq">=</span><span class="mt-res">2400</span></div><div class="mt-note">×50 = ×100 ÷ 2.</div></div>
+        <div class="mtrick" style="--tc:var(--orange)"><div class="mt-name">125'in dostu 8</div><div class="mt-idea">125 × 8 = 1000.</div><div class="mt-flow"><span class="mt-q">16 × 125</span><span class="mt-arrow">›</span><span class="mt-chip">16 × 1000</span><span class="mt-arrow">›</span><span class="mt-chip">÷ 8</span><span class="mt-eq">=</span><span class="mt-res">2000</span></div><div class="mt-note">×125 = ×1000 ÷ 8.</div></div>
+      </div>
+    </section>
+
+    <!-- YÖNTEM (öğren > yöntem) -->
+    <section class="screen" id="method">
+      <div class="shead"><button class="exit" onclick="show('ogren')">‹</button>
+        <div class="sh-title"><span class="sh-k">yöntem</span><span class="sh-n" id="mName"></span></div></div>
+      <div class="m-hero" id="mHero"></div>
+      <div class="macc" id="macc">
+        <div class="mcard open" data-sec="how"><div class="mchead" onclick="mToggle('how')"><span class="mci">?</span><b>Nasıl çalışır?</b><span class="mchev">⌄</span></div><div class="mcbody" id="mHow"></div></div>
+        <div class="mcard" data-sec="ex"><div class="mchead" onclick="mToggle('ex')"><span class="mci">≡</span><b>Örnekler</b><span class="mchev">⌄</span></div><div class="mcbody" id="mEx"></div></div>
+      </div>
+      <div class="mtry">
+        <div class="mtry-k">kendini sına</div>
+        <div class="mtry-t">Öğrendiğini pekiştir, kalıcı yap.</div>
+        <div class="mtry-btns"><button class="btn" onclick="startPractice()">Alıştırmaya başla</button>
+          <button class="btn ghost" onclick="startMethodTest(curMethodKey)">Kendini test et</button></div>
+      </div>
     </section>
 
     <!-- HANGİ YOL DAHA KOLAY -->
     <section class="screen" id="compare">
-      <button class="back" onclick="show('home')">‹ Ana Sayfa</button>
-      <div class="eyebrow" style="text-align:center">hangi yol daha kolay?</div>
-      <div class="cmp-dots" id="cmpDots"></div>
-      <div class="cmp-q" id="cmpQ"></div>
+      <div class="cmp-top"><button class="obk" onclick="show('home')">‹</button><span class="cmp-count" id="cmpCount"></span></div>
+      <h1 class="cmp-title">Hangi yol daha kolay?</h1>
+      <p class="sub" style="margin-top:8px">Doğru cevap değil, en hafif yol önemli.</p>
+      <div class="cmp-qcard" id="cmpQ"></div>
       <div class="cmp-opts" id="cmpOpts"></div>
       <div class="cmp-fb" id="cmpFb"></div>
     </section>
@@ -734,6 +1234,7 @@
             <button class="ftchip" data-m="twins" onclick="ftPick('twins')">Onluk İkizler</button>
             <button class="ftchip" data-m="eleven" onclick="ftPick('eleven')">Onbir Çarpımı</button>
             <button class="ftchip" data-m="decomp" onclick="ftPick('decomp')">Ayrıştırma</button>
+            <button class="ftchip" data-m="divide" onclick="ftPick('divide')">Bölme</button>
             <button class="ftchip" data-m="duz" onclick="ftPick('duz')">Düz</button>
           </div>
         </div>
@@ -756,7 +1257,7 @@
 
     <!-- KARMA TEST RAPORU -->
     <section class="screen" id="freeReport">
-      <button class="back" onclick="show('home')">‹ Bugün</button>
+      <button class="back" onclick="show('home')">‹ Ana Sayfa</button>
       <div id="freeReportBody"></div>
     </section>
 
@@ -789,9 +1290,20 @@
 
   </div>
 
-  <div class="chrome">
-    <button class="chrome-btn" onclick="show('home')" aria-label="ana sayfa">⌂</button>
-    <button class="chrome-btn" onclick="show('settings')" aria-label="ayarlar">☰</button>
+  <nav class="tabbar" id="tabbar">
+    <button class="tb" data-t="home" onclick="show('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v9h12v-9"/></svg><span>Ana Sayfa</span></button>
+    <button class="tb" data-t="prog" onclick="show('progress')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 20V9"/><path d="M12 20V4"/><path d="M19 20v-7"/></svg><span>İlerleme</span></button>
+    <button class="tb" data-t="pratik" onclick="show('karmaConfig')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 3 4 14h6l-1 7 9-11h-6z"/></svg><span>Pratik</span></button>
+    <button class="tb" data-t="profil" onclick="show('settings')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>Profil</span></button>
+  </nav>
+  <button class="homefab hidden" id="homefab" onclick="show('home')" aria-label="ana sayfa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v9h12v-9"/></svg></button>
+  <div class="ssscrim" id="ssScrim" onclick="closeSettingsSheet()"></div>
+  <div class="sssheet" id="ssSheet" style="--a:#5C6E68">
+    <div class="sss-grip"></div>
+    <div class="sss-k" id="sssK"></div>
+    <div class="sss-t" id="sssT"></div>
+    <div class="sss-b" id="sssB"></div>
+    <button class="sss-close" onclick="closeSettingsSheet()">Kapat</button>
   </div>
   <div class="onboard" id="onboard">
     <button class="onb-skip" onclick="onbSkip()">geç</button>
@@ -806,22 +1318,6 @@
       <button class="btn" id="onbNextBtn" onclick="onbNext()">Devam edelim</button>
     </div>
   </div>
-  <div class="splash" id="splash">
-    <svg width="0" height="0" style="position:absolute"><defs><filter id="gooflt"><feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b"/><feColorMatrix in="b" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="g"/><feBlend in="SourceGraphic" in2="g"/></filter></defs></svg>
-    <div class="splash-scene">
-      <div class="goo">
-        <div class="drop"></div>
-        <div class="sat sat1" style="--sx:-46px;--sy:-34px"></div>
-        <div class="sat sat2" style="--sx:48px;--sy:-28px"></div>
-        <div class="sat sat3" style="--sx:2px;--sy:-56px"></div>
-      </div>
-      <div class="ripple"></div>
-      <div class="sym-layer"><span class="op o1">+</span><span class="op o2">−</span><span class="op o3">×</span><span class="op o4">÷</span></div>
-    </div>
-    <div class="splash-name" id="splashName">MatReflex</div>
-    <div class="splash-sub" id="splashSub"></div>
-    <div class="splash-skip" id="splashSkip">dokun, geç</div>
-  </div>
 </div>
 
 <script>
@@ -835,7 +1331,7 @@
     return { get:function(k,d){ return (k in data)?data[k]:d; }, set:function(k,v){ data[k]=v; save(); } };
   })();
   function defaultStats(){ return {
-    methods:{ ref:{ust:0,form:0}, double:{ust:0,form:0}, twins:{ust:0,form:0}, eleven:{ust:0,form:0}, decomp:{ust:0,form:0} },
+    methods:{ ref:{ust:0,form:0}, double:{ust:0,form:0}, twins:{ust:0,form:0}, eleven:{ust:0,form:0}, decomp:{ust:0,form:0}, divide:{ust:0,form:0} },
     mem:{ squares:{ust:0,form:0}, cubes:{ust:0,form:0} },
     tests:{ count:0, best:0, last:0 }, compare:{ rounds:0 } }; }
   var stats=STORE.get('stats', defaultStats());
@@ -875,14 +1371,14 @@
     {key:'path',   act:function(){show('home');}},
     {key:'method', act:function(){show('skills');}},
     {key:'mem',    act:function(){openMem('squares');}},
-    {key:'test',   act:function(){show('testhub');}},
+    {key:'test',   act:function(){show('karmaConfig');}},
     {key:'prog',   act:function(){show('progress');}}
   ];
   var screenTab={ home:'path', settings:'path',
     skills:'method', skillDetail:'method', guideRef:'method', toolbox:'method', toolDetail:'method',
     mtest:'method', sIntro:'method', sTeach:'method', sSolve:'method', sDone:'method',
-    memHub:'mem', memGame:'mem',
-    testhub:'test', freeTest:'test', freeReport:'test',
+    memHub:'mem', memGame:'mem', elevenTable:'mem',
+    karmaConfig:'test', compare:'test', freeTest:'test', freeReport:'test',
     progress:'prog' };
   function goTab(k){ for(var i=0;i<TABS.length;i++){ if(TABS[i].key===k){ TABS[i].act(); return; } } }
   function show(pid){
@@ -890,7 +1386,16 @@
     var el=id(pid); el.classList.add('active'); el.scrollTop=0;
     var tab=screenTab[pid]||'path';
     document.querySelectorAll('.tab').forEach(function(t){ t.classList.toggle('on', t.dataset.k===tab); });
+    var NAVSHOW={home:'home',ogren:'home',ezber:'home',progress:'prog',karmaConfig:'pratik',settings:'profil'};
+    var tbe=id('tabbar');
+    if(tbe){ var nt=NAVSHOW[pid];
+      if(nt){ tbe.classList.remove('hidden'); tbe.querySelectorAll('.tb').forEach(function(b){ b.classList.toggle('on', b.dataset.t===nt); }); }
+      else tbe.classList.add('hidden'); }
+    var hf=id('homefab'); if(hf) hf.classList.toggle('hidden', pid==='home');
     if((pid==='progress'||pid==='home') && typeof renderProgressUI==='function') renderProgressUI();
+    if(pid==='karmaConfig' && typeof buildDecks==='function') buildDecks();
+    if(pid==='elevenTable' && typeof buildElevenTable==='function') buildElevenTable();
+    if(pid==='settings' && typeof renderSettings==='function') renderSettings();
   }
   function toggleFolder(f){
     document.querySelectorAll('#folders .folder').forEach(function(el){ if(el.dataset.f===f) el.classList.toggle('open'); else el.classList.remove('open'); });
@@ -899,6 +1404,11 @@
   /* ---------- araç çantası ---------- */
   var tools={
     ref:{ name:"Referans Sayılar",
+      flow:{ex:"156 + 98", accent:"#E24C5B", steps:[
+        {t:"98 → <b class='fem'>100</b>", n:"yakın yuvarlağa çek"},
+        {t:"156 + 100 = 256", n:"kolay toplama"},
+        {t:"256 − <b class='fem'>2</b>", n:"fazladan 2'yi geri al"}
+      ], res:"254"},
       lead:"Zor bir sayıyla uğraşmak yerine, ona yakın yuvarlak bir sayıyla işlem yaparsın; aradaki küçük farkı sonra düzeltirsin.",
       why:"Yuvarlak sayılarla (100, 50, 10) toplamak, çıkarmak ve çarpmak çok kolaydır. Sayıyı böyle bir sayıya yaklaştırınca zor kısım kaybolur; geriye yalnızca küçük bir düzeltme kalır.",
       strong:"Sayılardan biri 100, 50, 25 ya da 10'a yakınsa. Örneğin 98, 47, 197.",
@@ -923,6 +1433,10 @@
         {q:"20 × 3", fits:false, why:"Zaten kolay bir çarpım; yönteme gerek yok."}
       ] },
     double:{ name:"İkile-Yarıla",
+      flow:{ex:"16 × 25", accent:"#E8752A", steps:[
+        {t:"8 × 50", n:"16'yı yarıla, 25'i ikile"},
+        {t:"4 × 100", n:"bir daha yarıla-ikile"}
+      ], res:"400"},
       lead:"Bir çarpımı, bir çarpanı yarıya bölüp diğerini iki katına çıkararak kolaylaştırırsın.",
       why:"Bir sayıyı ikiye böler, diğerini iki katına çıkarırsan çarpım değişmez, çünkü iki katı ile yarısı birbirini götürür. Sayıları böyle taşıya taşıya biri 10 ya da 100 gibi yuvarlak bir değere ulaşır ve çarpım kendiliğinden kolaylaşır.",
       strong:"Çarpanlardan biri çift, diğeri 5, 25 ya da 50 ise. Böylece birkaç adımda 10 veya 100'e ulaşırsın.",
@@ -946,6 +1460,10 @@
         {q:"12 × 7", fits:false, why:"7 ne çift ne de 5/25/50; yuvarlağa ulaşmaz."}
       ] },
     twins:{ name:"Onluk İkizler",
+      flow:{ex:"78 × 72", accent:"#D9A92F", steps:[
+        {t:"sol: 7 × 8 = <b class='fem'>56</b>", n:"onlar × (onlar + 1)"},
+        {t:"sağ: 8 × 2 = <b class='fem'>16</b>", n:"birler çarpımı, iki hane"}
+      ], res:"5616"},
       lead:"Koşula uyan iki basamaklı çarpımları tek bakışta, iki küçük çarpımla çözersin.",
       why:"Koşullar sağlanınca çarpım düzgünce iki parçaya ayrılır: sol parça onlar basamağı ile bir fazlasının çarpımı, sağ parça ise birler basamaklarının çarpımıdır. Merak edersen: (10t+a)(10t+b) açılımında a + b = 10 olunca sonuç 100·t·(t+1) + a·b değerine iner.",
       strong:"Birler basamakları toplamı tam 10 ve onlar basamakları aynı olduğunda.",
@@ -970,6 +1488,18 @@
         {q:"63 × 68", fits:false, why:"Birler 3+8=11, 10 değil."}
       ] },
     eleven:{ name:"Onbir Çarpımı",
+      flow:[
+        {label:"toplam 10'dan küçükse", ex:"63 × 11", accent:"#279B8E", steps:[
+          {t:"6 __ 3", n:"kenarlar yerinde kalır"},
+          {t:"6 + 3 = <b class='fem'>9</b>", n:"ortaya toplamı yaz"}
+        ], res:"693"},
+        {label:"toplam 10 ya da üstüyse", ex:"48 × 11", accent:"#279B8E", steps:[
+          {t:"4 __ 8", n:"kenarlar yerinde kalır"},
+          {t:"4 + 8 = <b class='fem'>12</b>", n:"ortadaki toplam"},
+          {t:"4 + <b class='fem'>1</b> = 5, ortada 2", n:"12 iki basamak, 1'i sola taşı"}
+        ], res:"528"}
+      ],
+      tableLink:{label:"11'le çarpım tablosunu incele", screen:"elevenTable"},
       lead:"İki basamaklı bir sayıyı 11 ile çarparken, kenar rakamları bırakıp ortaya toplamlarını yazarsın.",
       why:"11 = 10 + 1. Bir sayıyı 11 ile çarpmak, onu bir kez 10 ile bir kez de kendisiyle çarpıp toplamak demek. Bu da rakamları bir basamak kaydırıp üst üste toplamaya denk gelir; sonuçta kenar rakamlar yerinde kalır, ortaya iki rakamın toplamı düşer.",
       strong:"İki basamaklı bir sayıyı 11 ile çarparken.",
@@ -978,6 +1508,7 @@
       weakEx:"63 × 12 (11 değil)",
       examples:[
         {q:"63 × 11", work:"6 _ 3, ortaya 6+3=9 → 693"},
+        {q:"42 × 11", work:"4 _ 2, ortaya 4+2=6 → 462"},
         {q:"48 × 11", work:"4+8=12, taşı → 528"},
         {q:"27 × 11", work:"2+7=9 → 297"}
       ],
@@ -993,6 +1524,11 @@
         {q:"7 × 11", fits:false, why:"Tek basamaklı zaten kolay (7 × 11 = 77); kurala gerek yok."}
       ] },
     decomp:{ name:"Ayrıştırma",
+      flow:{ex:"36 × 8", accent:"#1B5C52", steps:[
+        {t:"36 → 30 + 6", n:"onlar ve birler diye ayır"},
+        {t:"30 × 8 = 240", n:"onlar parçası"},
+        {t:"6 × 8 = 48", n:"birler parçası"}
+      ], res:"288"},
       lead:"Bir kısayol yokken, sayıyı parçalara ayırıp her parçayı ayrı çarpıp toplarsın.",
       why:"Çarpma dağılır: (20 + 3) × 7, 20 × 7 ile 3 × 7'nin toplamına eşittir. Büyük sayıyı onlar ve birler diye ayırınca geriye iki küçük çarpım ve bir toplama kalır. Her sayıda işe yarar; o yüzden özel bir kısayol yokken en güvenli yol budur.",
       strong:"Özel bir kısayolun uymadığı çarpımlarda, özellikle iki basamaklı bir sayıyı tek basamaklıyla çarparken.",
@@ -1014,6 +1550,44 @@
         {q:"78 × 72", fits:false, why:"Burada Onluk İkizler var; parçalamak daha uzun."},
         {q:"7 × 99", fits:false, why:"99 referansa yakın; parçalamaya gerek yok."},
         {q:"16 × 25", fits:false, why:"İkile-Yarıla daha kısa."}
+      ] }
+    ,divide:{ name:"Bölme Kısayolları",
+      flow:[
+        {label:"5'e bölme", ex:"340 ÷ 5", accent:"#279B8E", steps:[
+          {t:"340 × 2 = <b class='fem'>680</b>", n:"önce ikile"},
+          {t:"680 ÷ 10", n:"sonra 10'a böl"}
+        ], res:"68"},
+        {label:"25'e bölme", ex:"1200 ÷ 25", accent:"#279B8E", steps:[
+          {t:"1200 × 4 = <b class='fem'>4800</b>", n:"dört katını al"},
+          {t:"4800 ÷ 100", n:"100'e böl"}
+        ], res:"48"},
+        {label:"4'e bölme", ex:"152 ÷ 4", accent:"#279B8E", steps:[
+          {t:"152 ÷ 2 = <b class='fem'>76</b>", n:"yarıla"},
+          {t:"76 ÷ 2", n:"bir daha yarıla"}
+        ], res:"38"}
+      ],
+      tableLink:{label:"Dost sayılar tablosunu incele", screen:"friendTable"},
+      lead:"Bölmeyi doğrudan yapmak yerine böleni dost bir sayıya çevirir, çarpma ve basamak kaydırmaya dönüştürürsün.",
+      why:"5, 25 ve 50, 10 ile 100'ün dostudur. 5'e bölmek ikileyip 10'a bölmek, 25'e bölmek dört katını alıp 100'e bölmek demektir. 4 ve 8'e bölmek ise sayıyı sırayla yarılamaktır. Hepsi zor görünen bölmeyi kısa adımlara indirir.",
+      strong:"Bölen 5, 25, 50, 4 ya da 8 olduğunda.",
+      strongEx:"340 ÷ 5 → 68",
+      weak:"Bölen bu dost sayılardan biri değilse kısayol tutmaz.",
+      weakEx:"340 ÷ 7 (dost değil)",
+      examples:[
+        {q:"340 ÷ 5", work:"× 2 = 680, ÷ 10 → 68"},
+        {q:"1200 ÷ 25", work:"× 4 = 4800, ÷ 100 → 48"},
+        {q:"152 ÷ 4", work:"76 ÷ 2 → 38"},
+        {q:"1700 ÷ 50", work:"× 2 = 3400, ÷ 100 → 34"}
+      ],
+      tip:"5'e bölme: ikile, 10'a böl. 25'e bölme: dört katı, 100'e böl. 4'e bölme: iki kez yarıla.",
+      where:"Fiyat, ölçü ve oran hesaplarında 5, 25 ve 50'ye bölmek sık karşına çıkar.",
+      drill:[
+        {q:"340 ÷ 5", fits:true, ans:"68", why:"5'e bölme; ikile, 10'a böl."},
+        {q:"1200 ÷ 25", fits:true, ans:"48", why:"Dört katı, sonra 100'e böl."},
+        {q:"152 ÷ 4", fits:true, ans:"38", why:"İki kez yarıla."},
+        {q:"1700 ÷ 50", fits:true, ans:"34", why:"İkile, 100'e böl."},
+        {q:"340 ÷ 7", fits:false, why:"7 dost bölen değil; bu kısayol yok."},
+        {q:"96 ÷ 3", fits:false, why:"3 için bu kısayol çalışmaz."}
       ] }
   };
   var currentDrill=[], drillOrder=[], drillPos=0, drillCur=null;
@@ -1067,12 +1641,33 @@
   function buildSet(title,sub,exp,maxN){ var items=[]; for(var n=1;n<=maxN;n++){ items.push({base:n, val:Math.pow(n,exp), q:n+(exp===2?'²':'³')}); } return {title:title,sub:sub,exp:exp,items:items}; }
   var memSets={ squares:buildSet("Kareler","1'den 15'e kadar. Önce listeye bak, sonra oyunlarla pekiştir.",2,15),
                 cubes:buildSet("Küpler","1'den 10'a kadar. Önce listeye bak, sonra oyunlarla pekiştir.",3,10) };
+  var MEMTRICKS={
+    squares:{ tc:'var(--coral)', items:[
+      {name:'5 ile bitenler', idea:'Sonu 5 olan bir sayının karesi tek adımda çıkar.', q:'35²', flow:['3 × 4 = 12','yanına 25'], res:'1225', note:'Onlar basamağını bir fazlasıyla çarp (3×4), sonuna 25 yaz.'},
+      {name:'Komşularla', idea:'Bir eksiği ile bir fazlasını çarp, 1 ekle.', q:'7²', flow:['6 × 8 = 48','+ 1'], res:'49', note:'n² = (n−1)(n+1) + 1. Komşuların çarpımı hep 1 eksik kalır.'}
+    ]},
+    cubes:{ tc:'var(--teal)', items:[
+      {name:'Son rakam imzası', idea:'Küpün son rakamı, sayının son rakamını ele verir.', q:'343', flow:['sonu 3','taban sonu 7'], res:'7³', note:'0, 1, 4, 5, 6, 9 kendine döner. Sadece 2 ile 8, 3 ile 7 yer değiştirir.'}
+    ]}
+  };
+  function renderMemTricks(key){
+    var t=MEMTRICKS[key], el=id('memTricks'); if(!el) return;
+    if(!t){ el.innerHTML=''; return; }
+    var h='';
+    t.items.forEach(function(it){
+      var flow='<span class="mt-q">'+it.q+'</span>';
+      it.flow.forEach(function(f){ flow+='<span class="mt-arrow">›</span><span class="mt-chip">'+f+'</span>'; });
+      flow+='<span class="mt-eq">=</span><span class="mt-res">'+it.res+'</span>';
+      h+='<div class="mtrick" style="--tc:'+t.tc+'"><div class="mt-name">'+it.name+'</div><div class="mt-idea">'+it.idea+'</div><div class="mt-flow">'+flow+'</div><div class="mt-note">'+it.note+'</div></div>';
+    });
+    el.innerHTML=h;
+  }
   var curSet="squares", gMode, gItems, gN, gi, gScore, gLocked, gameBody;
   function openMem(key){
     curSet=key; var st=memSets[key];
     id('memHubTitle').textContent=st.title; id('memHubSub').textContent=st.sub;
     var lh=''; st.items.forEach(function(it){ lh+='<div class="memcell"><span class="mq">'+it.q+'</span><span class="ma">'+it.val+'</span></div>'; });
-    id('memList').innerHTML=lh; show('memHub');
+    id('memList').innerHTML=lh; renderMemTricks(key); show('memHub');
   }
   function startGame(mode){
     gameBody=id('gameBody'); gMode=mode; gItems=shuffle(memSets[curSet].items); gN=Math.min(8,gItems.length); gi=0; gScore=0;
@@ -1126,6 +1721,84 @@
     id('gBack').onclick=function(){ openMem(curSet); };
   }
 
+  /* ---------- tablo oyunlari (asal / dost) ---------- */
+  var TG_PRIME=[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97];
+  var TG_COMPOSITE=[
+    {n:9,f:'3 × 3'},{n:15,f:'3 × 5'},{n:21,f:'3 × 7'},{n:25,f:'5 × 5'},{n:27,f:'3 × 9'},
+    {n:33,f:'3 × 11'},{n:35,f:'5 × 7'},{n:39,f:'3 × 13'},{n:49,f:'7 × 7'},{n:51,f:'3 × 17'},
+    {n:55,f:'5 × 11'},{n:57,f:'3 × 19'},{n:63,f:'7 × 9'},{n:77,f:'7 × 11'},{n:87,f:'3 × 29'},
+    {n:91,f:'7 × 13'},{n:93,f:'3 × 31'},{n:95,f:'5 × 19'}
+  ];
+  var TG_DOST=[
+    {n:25,m:4,t:100},{n:50,m:2,t:100},{n:20,m:5,t:100},{n:10,m:10,t:100},
+    {n:125,m:8,t:1000},{n:250,m:4,t:1000},{n:500,m:2,t:1000},{n:200,m:5,t:1000}
+  ];
+  var tgKind, tgQs, tgN, tgi, tgScore, tgLocked;
+  function tgStart(kind){
+    tgKind=kind; tgi=0; tgScore=0; tgLocked=false;
+    if(kind==='prime'){
+      id('tgName').textContent='Asal Sayılar'; id('tgKind').textContent='asal mı';
+      var pr=shuffle(TG_PRIME).slice(0,4).map(function(n){return {num:n, prime:true};});
+      var co=shuffle(TG_COMPOSITE).slice(0,4).map(function(c){return {num:c.n, prime:false, f:c.f};});
+      tgQs=shuffle(pr.concat(co));
+    } else {
+      id('tgName').textContent='Dost Sayılar'; id('tgKind').textContent='kaçla çarpmalı';
+      tgQs=shuffle(TG_DOST).slice(0,6);
+    }
+    tgN=tgQs.length;
+    id('tgExit').onclick=function(){ show(kind==='prime'?'primeTable':'friendTable'); };
+    show('tableGame'); tgRender();
+  }
+  function tgDots(){ var h=''; for(var k=0;k<tgN;k++){ h+='<span class="dot'+(k<tgi?' done':k===tgi?' on':'')+'"></span>'; } id('tgDots').innerHTML=h; }
+  function tgRender(){
+    if(tgi>=tgN){ tgFinish(); return; }
+    tgDots(); tgLocked=false;
+    var q=tgQs[tgi], body=id('tgBody');
+    if(tgKind==='prime'){
+      body.innerHTML='<div class="gprompt">'+q.num+'</div><div class="gsub">asal mı?</div>'
+        +'<div class="rbtns"><button class="rbtn known" id="tgYes">asal</button><button class="rbtn again" id="tgNo">değil</button></div>'
+        +'<div class="gfb" id="tgFb"></div>';
+      id('tgYes').onclick=function(){ tgPickPrime(true, q); };
+      id('tgNo').onclick=function(){ tgPickPrime(false, q); };
+    } else {
+      var correct='× '+q.m;
+      var pool=[2,4,5,8,10].filter(function(x){return x!==q.m;});
+      var wrong=shuffle(pool).slice(0,2).map(function(x){return '× '+x;});
+      var opts=shuffle([correct].concat(wrong)), oh='';
+      opts.forEach(function(o,i){ oh+='<button class="gopt" id="tgo'+i+'">'+o+'</button>'; });
+      body.innerHTML='<div class="gprompt">'+q.n+' → '+q.t+'</div><div class="gsub">kaçla çarpmalı?</div>'
+        +'<div class="gopts">'+oh+'</div><div class="gfb" id="tgFb"></div>';
+      opts.forEach(function(o,i){ var b=id('tgo'+i); b.onclick=function(){ tgPickDost(o===correct, correct, b); }; });
+    }
+  }
+  function tgPickPrime(said, q){
+    if(tgLocked) return; tgLocked=true;
+    document.querySelectorAll('#tgBody .rbtn').forEach(function(b){ b.disabled=true; });
+    if(said===q.prime){ tgScore++; id('tgFb').textContent = q.prime?'doğru, asal':('doğru, asal değil'+(q.f?' ('+q.f+')':'')); }
+    else { id('tgFb').textContent = q.prime?('yanlış, '+q.num+' asaldır'):('yanlış, '+q.num+' = '+q.f); }
+    setTimeout(tgNext, reduce?0:1100);
+  }
+  function tgPickDost(correct, correctText, btn){
+    if(tgLocked) return; tgLocked=true;
+    var btns=document.querySelectorAll('#tgBody .gopt');
+    btns.forEach(function(b){ b.disabled=true; if(b.textContent===correctText) b.classList.add('right'); });
+    if(correct){ tgScore++; id('tgFb').textContent='doğru'; }
+    else { if(btn) btn.classList.add('wrong'); id('tgFb').textContent='doğrusu: '+correctText; }
+    setTimeout(tgNext, reduce?0:1100);
+  }
+  function tgNext(){ tgi++; tgRender(); }
+  function tgFinish(){
+    id('tgDots').innerHTML='';
+    var back=(tgKind==='prime'?'primeTable':'friendTable');
+    id('tgBody').innerHTML='<div class="bigcheck" style="margin:0 auto 16px">✓</div>'
+      +'<h1 style="text-align:center">'+tgScore+' / '+tgN+' doğru</h1>'
+      +'<p class="sub" style="text-align:center;margin-top:6px">Tanıdıkça daha da hızlanır.</p>'
+      +'<button class="btn" id="tgAgain" style="margin-top:22px">Tekrar</button>'
+      +'<button class="btn ghost sm" id="tgBack" style="margin-top:8px">Tabloya dön</button>';
+    id('tgAgain').onclick=function(){ tgStart(tgKind); };
+    id('tgBack').onclick=function(){ show(back); };
+  }
+
   /* ---------- session engine ---------- */  /* ---------- session engine ---------- */
   var methods={
     ref:{ name:"Referans Sayılar", type:"ref",
@@ -1159,14 +1832,14 @@
         {steps:[["16","5"],["8","10"]],ans:"80"}
       ]}
     ,twins:{ name:"Onluk İkizler", type:"twins",
-      intro:"Birler basamağı 10'a tamamlanan ve onlar basamağı aynı olan iki sayının çarpımı. Önce nasıl çalıştığını görelim, sonra sıra sende.",
+      intro:"Birler basamağı 10'a tamamlanan ve onlar basamağı aynı olan iki sayının çarpımı, tek adımda çıkar.",
       teach:[
         {eq:"7<span class='amb'>8</span> × 7<span class='amb'>2</span>", g:"Birler basamaklarına bak: <span class='amb'>8</span> ve <span class='amb'>2</span>. Toplamları tam <b>10</b>."},
         {eq:"<span style='color:var(--green)'>7</span>8 × <span style='color:var(--green)'>7</span>2", g:"Onlar basamakları ikisinde de <b>7</b>. Yani ikiz."},
         {eq:"78 × 72", g:"İki koşul: birler 10'a tamamlanır ve onlar aynıdır. İşte o zaman bu yöntem çalışır."},
-        {eq:"78 × 72 = <span style='color:var(--green)'>56</span>", g:"Onları çarp, biraz fazlasıyla: 7 × 8 = <b>56</b>. Bu sol taraf."},
+        {eq:"78 × 72 = <span style='color:var(--green)'>56</span>", g:"Onlar basamağını bir üstüyle çarp: 7 × 8 = <b>56</b> (8 = 7+1). Bu sol taraf."},
         {eq:"78 × 72 = <span style='color:var(--green)'>56</span> <span class='amb'>16</span>", g:"Birleri çarp: 8 × 2 = <b>16</b>. Bu sağ taraf. Tek haneyse başına 0 koyarsın."},
-        {eq:"78 × 72 = <span style='color:var(--green)'>5616</span>", g:"Yan yana koy: <b>5616</b>. Bu kadar. Sıra sende."}
+        {eq:"78 × 72 = <span style='color:var(--green)'>5616</span>", g:"Sol tarafı ve sağ tarafı yan yana koy: <b>5616</b>."}
       ],
       pool:[
         {a:"78",b:"72",ans:"5616",recog:"Birler 8 + 2 = 10, onlar ikiz (7).",recipe:"Onlar: 7 × 8 = <b>56</b>. Birler: 8 × 2 = <b>16</b>. Yan yana koy."},
@@ -1181,13 +1854,14 @@
         {a:"19",b:"11",ans:"209",recog:"Birler 9 + 1 = 10, onlar ikiz (1).",recipe:"Onlar: 1 × 2 = <b>2</b>. Birler: 9 × 1 = 9, iki haneli yaz: <b>09</b>."}
       ]}
     ,eleven:{ name:"Onbir Çarpımı", type:"eleven",
-      intro:"İki basamaklı bir sayıyı 11 ile çarpmanın kısa yolu: kenar rakamları yerinde bırak, ortaya toplamlarını yaz. Önce görelim, sonra sıra sende.",
+      intro:"İki basamaklı bir sayıyı 11 ile çarpmanın kısa yolu: kenar rakamları yerinde bırak, ortaya toplamlarını yaz.",
       teach:[
         {eq:"63 × 11", g:"İki basamaklı bir sayıyı 11 ile çarpıyoruz."},
         {eq:"<span style='color:var(--green)'>6</span> _ <span style='color:var(--green)'>3</span>", g:"Rakamları ayır: 6 ve 3. Kenarlara koy, orta boş kalsın."},
         {eq:"6 <span class='amb'>9</span> 3", g:"Ortaya ikisinin toplamını yaz: 6 + 3 = <b>9</b>."},
         {eq:"<span style='color:var(--green)'>693</span>", g:"Sonuç: <b>693</b>. Kenarlar aynı, orta toplam."},
-        {eq:"48 × 11 = 528", g:"Toplam 10 ya da üstüyse fazlalığı sola taşırsın: 4 + 8 = 12 → <b>528</b>. Sıra sende."}
+        {eq:"48 × 11", g:"Bir de taşımalı örnek: kenarlar <b>4</b> ve <b>8</b>. Ortaya 4 + 8 = <span class='amb'>12</span> gelir, ama 12 tek haneye sığmaz."},
+        {eq:"(4+1) 2 8 = <span style='color:var(--green)'>528</span>", g:"12'nin birler basamağı <b>2</b> ortada kalır; onlar basamağı <b>1</b>'i soldaki 4'e ekle: 4 + 1 = <b>5</b>. Sonuç: <b>528</b>."}
       ],
       pool:[
         {a:"63",b:"11",ans:"693",recog:"11 ile çarpım.",recipe:"Kenarlar 6 ve 3, ortaya 6 + 3 = <b>9</b> → 693."},
@@ -1202,13 +1876,13 @@
         {a:"94",b:"11",ans:"1034",recog:"11 ile çarpım.",recipe:"Kenarlar 9 ve 4, ortaya 9 + 4 = 13; 1'i sola taşı → <b>1034</b>."}
       ]}
     ,decomp:{ name:"Ayrıştırma", type:"decomp",
-      intro:"Özel bir kısayol olmadığında, sayıyı parçalara ayırıp her parçayı ayrı çarpıp toplarsın. Önce görelim, sonra sıra sende.",
+      intro:"Özel bir kısayol olmadığında, sayıyı parçalara ayırıp her parçayı ayrı çarpıp toplarsın.",
       teach:[
         {eq:"23 × 7", g:"Elimizde özel bir kısayol yok. O zaman parçalarız."},
         {eq:"(20 + 3) × 7", g:"23'ü onlar ve birler diye ayır: 20 ve 3."},
         {eq:"20 × 7 = <span class='amb'>140</span>", g:"Her parçayı 7 ile çarp. Önce 20 × 7 = 140."},
         {eq:"3 × 7 = <span class='amb'>21</span>", g:"Sonra 3 × 7 = 21."},
-        {eq:"140 + 21 = <span style='color:var(--green)'>161</span>", g:"İkisini topla: 161. Sıra sende."}
+        {eq:"140 + 21 = <span style='color:var(--green)'>161</span>", g:"İki parçayı topla: 140 + 21 = <b>161</b>."}
       ],
       pool:[
         {a:"36",b:"8",ans:"288",recog:"Özel bir kısayol yok; parçalayarak çözersin.",recipe:"30 × 8 = <b>240</b>, 6 × 8 = <b>48</b>, topla → 288."},
@@ -1221,6 +1895,18 @@
         {a:"62",b:"7",ans:"434",recog:"Özel bir kısayol yok; parçalayarak çözersin.",recipe:"60 × 7 = <b>420</b>, 2 × 7 = <b>14</b>, topla → 434."},
         {a:"66",b:"8",ans:"528",recog:"Özel bir kısayol yok; parçalayarak çözersin.",recipe:"60 × 8 = <b>480</b>, 6 × 8 = <b>48</b>, topla → 528."},
         {a:"87",b:"4",ans:"348",recog:"Özel bir kısayol yok; parçalayarak çözersin.",recipe:"80 × 4 = <b>320</b>, 7 × 4 = <b>28</b>, topla → 348."}
+      ]}
+    ,divide:{ name:"Bölme Kısayolları", type:"divide",
+      intro:"Böleni dost bir sayıya çevirip çarpma ve basamak kaydırmaya dönüştürürüz.",
+      pool:[
+        {a:"340",op:"÷",b:"5",ans:"68",recog:"5'e bölme.",recipe:"İkile: 340 × 2 = 680, sonra ÷ 10 → <b>68</b>."},
+        {a:"1200",op:"÷",b:"25",ans:"48",recog:"25'e bölme.",recipe:"Dört katı: 1200 × 4 = 4800, sonra ÷ 100 → <b>48</b>."},
+        {a:"152",op:"÷",b:"4",ans:"38",recog:"4'e bölme.",recipe:"İki kez yarıla: 152 → 76 → <b>38</b>."},
+        {a:"1700",op:"÷",b:"50",ans:"34",recog:"50'ye bölme.",recipe:"İkile: 1700 × 2 = 3400, sonra ÷ 100 → <b>34</b>."},
+        {a:"240",op:"÷",b:"5",ans:"48",recog:"5'e bölme.",recipe:"İkile: 240 × 2 = 480, sonra ÷ 10 → <b>48</b>."},
+        {a:"800",op:"÷",b:"25",ans:"32",recog:"25'e bölme.",recipe:"Dört katı: 800 × 4 = 3200, sonra ÷ 100 → <b>32</b>."},
+        {a:"216",op:"÷",b:"8",ans:"27",recog:"8'e bölme.",recipe:"Üç kez yarıla: 216 → 108 → 54 → <b>27</b>."},
+        {a:"900",op:"÷",b:"50",ans:"18",recog:"50'ye bölme.",recipe:"İkile: 900 × 2 = 1800, sonra ÷ 100 → <b>18</b>."}
       ]}
   };
 
@@ -1238,11 +1924,27 @@
   function launchSession(key){
     cfg=methods[key]; curMethodKey=key;
     chosen=shuffle(cfg.pool).slice(0,4); sequence=[0,1,2,3]; cur=0; requeued={}; revisits=0;
-    id('introName').textContent=cfg.name; id('introLine').textContent=cfg.intro;
     id('methodName').textContent=cfg.name; id('teachName').textContent=cfg.name;
     id('againBtn').onclick=function(){ launchSession(key); };
-    show('sIntro');
+    var t=(typeof tools!=='undefined' && tools[key])?tools[key]:{};
+    id('mName').textContent=cfg.name;
+    id('mHero').textContent=(t.lead||cfg.intro||'');
+    var how='';
+    if(t.flow){ var fl=Array.isArray(t.flow)?t.flow:[t.flow]; fl.forEach(function(f){ how+=flowHTML(f); }); }
+    if(t.tableLink) how+='<button class="tablelink" onclick="show(\''+t.tableLink.screen+'\')"><span>'+t.tableLink.label+'</span><span class="tl-go">›</span></button>';
+    how+='<p class="mprose">'+(t.why||cfg.intro||'')+'</p>';
+    if(t.strong) how+='<div class="minfo"><span class="mtag good">işine yarar</span>'+t.strong+'</div>';
+    if(t.weak) how+='<div class="minfo"><span class="mtag soft">dikkat</span>'+t.weak+'</div>';
+    if(cfg.teach){ how+='<div class="msteps-k">adım adım</div><div class="msteps">'; cfg.teach.forEach(function(st,i){ how+='<div class="mstep"><span class="mstep-n">'+(i+1)+'</span><div class="mstep-c"><div class="mstep-eq">'+st.eq+'</div><div class="mstep-g">'+st.g+'</div></div></div>'; }); how+='</div>'; }
+    if(t.tip) how+='<div class="mtip"><b>ipucu </b>'+t.tip+'</div>';
+    id('mHow').innerHTML=how;
+    var exs=(t.examples||[]);
+    id('mEx').innerHTML = exs.length ? exs.map(function(e){ return '<div class="mex" onclick="this.classList.toggle(\'open\')"><div class="mex-q">'+e.q+'<span class="mex-tap">göster</span></div><div class="mex-w">'+e.work+'</div></div>'; }).join('') : '<p class="mprose">Alıştırmaya başlayınca örnekleri adım adım göreceksin.</p>';
+    mSet('how',true); mSet('ex',false);
+    show('method');
   }
+  function mToggle(sec){ var el=document.querySelector('#macc .mcard[data-sec="'+sec+'"]'); if(el) el.classList.toggle('open'); }
+  function mSet(sec,open){ var el=document.querySelector('#macc .mcard[data-sec="'+sec+'"]'); if(el) el.classList.toggle('open',open); }
   function beginSolve(){ if(cfg.teach){ startTeach(); } else { startPractice(); } }
   function startPractice(){ show('sSolve'); loadItem(); }
   function startTeach(){ ti=0; show('sTeach'); showTeachStep(); }
@@ -1263,7 +1965,7 @@
   function buildTwins(it,first){
     stage='pick';
     id('eqline').innerHTML=
-      '<span class="trans tapme pulse" id="trans"><span class="cell">'+it.a+'</span><span class="op">×</span><span class="cell">'+it.b+'</span></span>'+
+      '<span class="trans tapme pulse" id="trans"><span class="cell">'+it.a+'</span><span class="op">'+(it.op||'×')+'</span><span class="cell">'+it.b+'</span></span>'+
       '<span class="cell op" id="eq">=</span><span class="cell" id="tR"></span>';
     id('eq').style.width='24px'; id('eq').style.opacity='0';
     id('tR').style.width='80px'; id('tR').style.opacity='0';
@@ -1372,8 +2074,23 @@
     return {effort:effort, path:path};
   }
   function bruteEffort(a,op,b){ if(op==='×'){ return ((''+a).length>1 && (''+b).length>1)?6:5; } return 3; }
+  function dividePath(a,b){
+    if(b===5) return a+' × 2 = '+(a*2)+', ÷ 10 → '+(a/5);
+    if(b===25) return a+' × 4 = '+(a*4)+', ÷ 100 → '+(a/25);
+    if(b===50) return a+' × 2 = '+(a*2)+', ÷ 100 → '+(a/50);
+    if(b===4) return a+' ÷ 2 = '+(a/2)+', ÷ 2 → '+(a/4);
+    if(b===8) return a+' ÷ 2 ÷ 2 ÷ 2 → '+(a/8);
+    return a+' ÷ '+b+' = '+(a/b);
+  }
   function analyze(a,op,b){
-    var ans=(op==='×'?a*b:op==='+'?a+b:a-b), out=[];
+    var ans=(op==='×'?a*b:op==='+'?a+b:op==='÷'?a/b:a-b), out=[];
+    if(op==='÷'){
+      var dfit={5:1,25:1,50:1,4:1,8:1};
+      if(b && dfit[b] && a%b===0) out.push({key:'divide',name:'Bölme Kısayolları',effort:2,path:dividePath(a,b)});
+      out.push({key:'duz',name:'Düz işlem',effort:6,path:a+' ÷ '+b+' = '+ans+', basamak basamak'});
+      out.sort(function(x,y){return x.effort-y.effort;});
+      return {ans:ans, methods:out};
+    }
     if(op==='×' && a>9&&a<100&&b>9&&b<100 && (a%10)+(b%10)===10 && Math.floor(a/10)===Math.floor(b/10))
       out.push({key:'twins',name:'Onluk İkizler',effort:2,path:twinsPath(a,b)});
     if(op==='×' && (a===11||b===11)){ var x11=(b===11?a:b); if(x11>9&&x11<100) out.push({key:'eleven',name:'Onbir Çarpımı',effort:2,path:elevenPath(x11)}); }
@@ -1398,7 +2115,7 @@
   function smartPath(key,it){
     if(key==='ref') return '<b>'+it.a+' '+it.op+' '+it.fr+' '+it.comp+' = '+it.ans+'</b><br>Zoru yuvarlak bir sayıyla çözdün, küçük farkı düzelttin. Düz hesaptan kısa.';
     if(key==='double'){ var chain=it.steps.map(function(s){return s[0]+' × '+s[1];}).join(' → '); return '<b>'+chain+' = '+it.ans+'</b><br>Yarıla ve ikile, çarpım yuvarlağa indi.'; }
-    return '<b>'+it.a+' × '+it.b+' = '+it.ans+'</b><br>'+it.recipe;
+    return '<b>'+it.a+' '+(it.op||'×')+' '+it.b+' = '+it.ans+'</b><br>'+it.recipe;
   }
   function renderMT(){
     if(mti>=mtPool.length){ finishMT(); return; }
@@ -1445,16 +2162,109 @@
   }
 
   /* ---------- serbest / karma test (Faz C) ---------- */
-  var METHOD_NAMES={ref:'Referans Sayılar', double:'İkile-Yarıla', twins:'Onluk İkizler', eleven:'Onbir Çarpımı', decomp:'Ayrıştırma', duz:'Düz işlem'};
+  var METHOD_NAMES={ref:'Referans Sayılar', double:'İkile-Yarıla', twins:'Onluk İkizler', eleven:'Onbir Çarpımı', decomp:'Ayrıştırma', divide:'Bölme Kısayolları', duz:'Düz işlem'};
   var ftPool, fti, ftEntered, ftAnswered, ftChosen, ftRecords, ftCount=6, ftFocus='all';
   function allRawProblems(){
     var arr=[];
-    methods.ref.pool.forEach(function(it){ arr.push({a:+it.a, op:it.op, b:+it.b, ans:it.ans}); });
-    methods.double.pool.forEach(function(it){ arr.push({a:+it.steps[0][0], op:'×', b:+it.steps[0][1], ans:it.ans}); });
-    methods.twins.pool.forEach(function(it){ arr.push({a:+it.a, op:'×', b:+it.b, ans:it.ans}); });
-    methods.eleven.pool.forEach(function(it){ arr.push({a:+it.a, op:'×', b:+it.b, ans:it.ans}); });
-    methods.decomp.pool.forEach(function(it){ arr.push({a:+it.a, op:'×', b:+it.b, ans:it.ans}); });
+    methods.ref.pool.forEach(function(it){ arr.push({a:+it.a, op:it.op, b:+it.b, ans:it.ans, m:'ref'}); });
+    methods.double.pool.forEach(function(it){ arr.push({a:+it.steps[0][0], op:'×', b:+it.steps[0][1], ans:it.ans, m:'double'}); });
+    methods.twins.pool.forEach(function(it){ arr.push({a:+it.a, op:'×', b:+it.b, ans:it.ans, m:'twins'}); });
+    methods.eleven.pool.forEach(function(it){ arr.push({a:+it.a, op:'×', b:+it.b, ans:it.ans, m:'eleven'}); });
+    methods.decomp.pool.forEach(function(it){ arr.push({a:+it.a, op:'×', b:+it.b, ans:it.ans, m:'decomp'}); });
+    methods.divide.pool.forEach(function(it){ arr.push({a:+it.a, op:'÷', b:+it.b, ans:it.ans, m:'divide'}); });
     return arr;
+  }
+  function flowHTML(f){
+    var h='<div class="flow" style="--fc:'+f.accent+'">';
+    if(f.label) h+='<div class="flow-label">'+f.label+'</div>';
+    h+='<div class="flow-step flow-start">'+f.ex+'</div>';
+    f.steps.forEach(function(s){
+      h+='<div class="flow-arrow"><span class="fa-chev">↓</span>'+(s.n?'<span class="fa-n">'+s.n+'</span>':'')+'</div><div class="flow-step">'+s.t+'</div>';
+    });
+    h+='<div class="flow-arrow"><span class="fa-chev">↓</span></div><div class="flow-res">'+f.res+'</div></div>';
+    return h;
+  }
+  function startDeck(filter, count){
+    ftCount=count||8; ftFocus=filter||'all';
+    var arr=allRawProblems();
+    if(filter==='mult') arr=arr.filter(function(x){return x.op==='×';});
+    else if(filter && filter.indexOf('m:')===0){ var mk=filter.slice(2); arr=arr.filter(function(x){return x.m===mk;}); }
+    ftPool=shuffle(arr).slice(0,ftCount); fti=0; ftRecords=[]; show('freeTest'); renderFT();
+  }
+  var DECKS=[
+    {name:'Karışık', desc:'dört işlem birden', tile:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="M15 14l6 7"/><path d="M3 4l6 6"/></svg>', tc:'var(--orange)', run:"startDeck('all',8)"},
+    {name:'Çarpma', desc:'sadece çarpma soruları', tile:'×', tc:'var(--teal)', run:"startDeck('mult',8)"},
+    {name:'Referans Sayılar', desc:'yuvarla, telafi et', tile:'≈', tc:'var(--coral)', run:"startDeck('m:ref',8)"},
+    {name:'İkile-Yarıla', desc:'birini ikile, ötekini yarıla', tile:'⇄', tc:'var(--petrol)', run:"startDeck('m:double',8)"}
+  ];
+  function buildDecks(){
+    var el=id('deckList'); if(!el || el.dataset.built) return;
+    var h='';
+    DECKS.forEach(function(d){
+      h+='<button class="deck" style="--dc:'+d.tc+'" onclick="'+d.run+'"><span class="dk-tile">'+d.tile+'</span>'
+        +'<span class="dk-body"><span class="dk-name">'+d.name+'</span><span class="dk-desc">'+d.desc+'</span></span>'
+        +'<span class="dk-go">›</span></button>';
+    });
+    el.innerHTML=h; el.dataset.built='1';
+  }
+  function renderSettings(){
+    var ms=stats.methods, ks=Object.keys(ms), su=0, sf=0;
+    ks.forEach(function(k){ su+=ms[k].ust||0; sf+=ms[k].form||0; });
+    if(id('setUst')) id('setUst').textContent='%'+Math.round(su/ks.length);
+    if(id('setForm')) id('setForm').textContent='%'+Math.round(sf/ks.length);
+    if(id('setSeri')) id('setSeri').textContent=(stats.tests.count + (stats.compare?stats.compare.rounds:0));
+    if(typeof deriveProgress==='function') deriveProgress();
+    if(id('setBars') && typeof PROGRESS!=='undefined'){
+      id('setBars').innerHTML=PROGRESS.map(function(m){
+        return '<div class="rib-bar"><div class="k"><span>'+m.label+'</span><b>'+m.pct+'</b></div><div class="rib-track"><div class="rib-fill" style="width:'+m.pct+'%; background:'+m.color+'"></div></div></div>';
+      }).join('');
+    }
+    if(id('tglMotion')) id('tglMotion').classList.toggle('on', !!STORE.get('reduceMotion',false));
+  }
+  var SET_SHEETS={
+    privacy:{k:'gizlilik', t:'Gizlilik', a:'#5C6E68', b:'<p>MatReflex, öğrenmeni kolaylaştırmak için gereken en az veriyle çalışır. İlerlemen ve tercihlerin <b>yalnızca cihazında</b> saklanır.</p><p>Reklam ağı, üçüncü taraf takip ya da profil satışı yoktur. Hesap açman gerekmez; seni tanımlayan bir kimlik toplanmaz.</p><a class="sss-link" href="https://www.zeynepkaya.app/matreflex/privacy" target="_blank" rel="noopener">Tam metni aç ›</a>'},
+    terms:{k:'koşullar', t:'Kullanım Koşulları', a:'#5F6A70', b:'<p>MatReflex kişisel, ticari olmayan kullanım için sunulur. İçerik ve yöntemler eğitim amaçlıdır.</p><p>Uygulamayı olduğu gibi sağlıyoruz; hesaplama kısayolları öğrenmene yardımcı olmak içindir, resmi bir değerlendirme aracı değildir.</p><a class="sss-link" href="https://www.zeynepkaya.app/matreflex/terms" target="_blank" rel="noopener">Tam metni aç ›</a>'},
+    support:{k:'destek', t:'Destek', a:'#647065', b:'<p>Bir sorun ya da öneri mi var? Seni dinlemek isteriz.</p><p>İletişim: <a href="mailto:hello@zeynepkaya.app" style="color:var(--a);font-weight:600;text-decoration:none">hello@zeynepkaya.app</a></p><a class="sss-link" href="https://www.zeynepkaya.app/matreflex/support" target="_blank" rel="noopener">Yardım sayfasını aç ›</a>'},
+    about:{k:'künye', t:'Hakkında', a:'#6E6A62', b:'<p><b>MatReflex</b> · sürüm 0.1.0</p><p>Hızlı hesap bir zeka değil, tanıdıkça gelişen bir yöntem refleksidir. Bu uygulama o refleksi sakin, yargısız bir ortamda kurman için tasarlandı.</p><p>Tasarım ve yapım: Zeynep Kaya.</p><p>İletişim: <a href="mailto:hello@zeynepkaya.app" style="color:var(--a);font-weight:600;text-decoration:none">hello@zeynepkaya.app</a> · <a href="https://www.zeynepkaya.app" target="_blank" rel="noopener" style="color:var(--a);font-weight:600;text-decoration:none">zeynepkaya.app</a></p>'}
+  };
+  function openSettingsSheet(key){
+    var d=SET_SHEETS[key]; if(!d) return;
+    id('ssSheet').style.setProperty('--a', d.a);
+    id('sssK').textContent=d.k; id('sssT').textContent=d.t; id('sssB').innerHTML=d.b;
+    id('ssScrim').classList.add('show'); id('ssSheet').classList.add('show');
+  }
+  function closeSettingsSheet(){
+    id('ssScrim').classList.remove('show'); id('ssSheet').classList.remove('show');
+    document.querySelectorAll('#settings .rib').forEach(function(r){ r.classList.remove('lift'); });
+  }
+  function toggleMotion(el){
+    var on=!el.classList.contains('on'); el.classList.toggle('on', on);
+    STORE.set('reduceMotion', on);
+    document.body.classList.toggle('reduce-motion', on);
+  }
+  function ribExp(r, e){
+    if(e && (e.target.closest('.tglsw')||e.target.closest('.rib-pill')||e.target.closest('.rib-more'))) return;
+    var willOpen=!r.classList.contains('open');
+    document.querySelectorAll('#settings .rib.open').forEach(function(q){ if(q!==r) q.classList.remove('open','lift'); });
+    r.classList.toggle('open', willOpen);
+    r.classList.toggle('lift', willOpen);
+    if(willOpen) setTimeout(function(){ if(r.scrollIntoView) r.scrollIntoView({block:'nearest', behavior: reduce?'auto':'smooth'}); }, reduce?0:80);
+  }
+  function ribSheet(r, key){
+    r.classList.add('lift');
+    setTimeout(function(){ openSettingsSheet(key); }, reduce?0:130);
+  }
+  function initSettingsRibbons(){
+    if(STORE.get('reduceMotion',false)) document.body.classList.add('reduce-motion');
+  }
+  function buildElevenTable(){
+    var el=id('etTable'); if(!el || el.dataset.built) return;
+    var h='';
+    for(var n=10;n<=99;n++){
+      var carry=(Math.floor(n/10)+(n%10))>=10;
+      h+='<div class="etcell'+(carry?' carry':'')+'"><span class="etn">'+n+'</span><span class="etp">'+(n*11)+'</span></div>';
+    }
+    el.innerHTML=h; el.dataset.built='1';
   }
   function startFreeTest(count, focus){
     ftCount=count||6; ftFocus=focus||'all';
@@ -1463,8 +2273,9 @@
     ftPool=shuffle(arr).slice(0,ftCount); fti=0; ftRecords=[]; show('freeTest'); renderFT();
   }
   function segPick(row, btn){ document.querySelectorAll('#'+row+' .seg').forEach(function(b){b.classList.remove('on');}); btn.classList.add('on'); }
+  function optPick(row, el){ document.querySelectorAll('#'+row+' .optcard').forEach(function(b){b.classList.remove('on');}); el.classList.add('on'); }
   function startConfiguredTest(){
-    var l=document.querySelector('#lenRow .seg.on'), f=document.querySelector('#focusRow .seg.on');
+    var l=document.querySelector('#lenRow .optcard.on'), f=document.querySelector('#focusRow .optcard.on');
     startFreeTest(l?+l.dataset.len:6, f?f.dataset.focus:'all');
   }
   function ftDots(){ var h=''; for(var k=0;k<ftPool.length;k++){h+='<span class="dot'+(k<fti?' done':k===fti?' on':'')+'"></span>';} id('ftDots').innerHTML=h; }
@@ -1487,6 +2298,7 @@
     ftRecords.push({a:p.a,op:p.op,b:p.b,ans:p.ans,correct:ok,chosen:ftChosen,fastest:an.methods[0].key,an:an});
     setTimeout(function(){ fti++; renderFT(); }, reduce?0:650);
   }
+  function toggleFtRows(){ var e=id('freeRows'); if(e) e.style.display=(e.style.display==='none'?'block':'none'); }
   function finishFreeTest(){
     var correct=0, chosen=0, matched=0;
     ftRecords.forEach(function(r){ if(r.correct) correct++; if(r.chosen) chosen++; if(r.chosen && r.chosen===r.fastest) matched++; });
@@ -1495,14 +2307,20 @@
     ftRecords.forEach(function(r){ if(r.fastest && r.fastest!=='duz' && r.chosen!==r.fastest) shortMissed++; });
     ftRecords.forEach(function(r){ if(r.chosen!==r.fastest && r.fastest!=='duz'){ miss[r.fastest]=(miss[r.fastest]||0)+1; } });
     for(var mk in miss){ if(miss[mk]>topN){ topN=miss[mk]; topMiss=mk; } }
-    var missCard = topMiss ? '<div class="card suggest" style="margin:4px 0"><div class="st">Bu testte en çok <b>'+METHOD_NAMES[topMiss]+'</b> kısa yolunu atladın. Ona bir göz atmak ister misin?</div><span class="sbtn" id="missBtn">'+METHOD_NAMES[topMiss]+' →</span></div>' : '';
-    var insight = chosen>0 ? (matched+' / '+chosen+' soruda en hızlı yolu seçtin.')
-                           : 'Yöntem işaretlemedin; her soru için en hızlı yolu aşağıda görebilirsin.';
-    var h='<div class="bigcheck" style="margin:18px auto 14px">✓</div>'
-      +'<h1 style="text-align:center">Karma test raporu</h1>'
-      +'<p class="sub" style="text-align:center;margin-top:6px">'+correct+' / '+ftRecords.length+' doğru'+(shortMissed>0?'. '+shortMissed+' soruda daha kısa yol vardı':'')+'.</p>'
+    var TARGETIC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg>';
+    var missCard = topMiss ? '<div class="res-miss" id="missBtn"><span class="rm-ic">'+TARGETIC+'</span><span class="rm-t"><span class="rm-k">en çok kaçırdığın yöntem</span><b>'+METHOD_NAMES[topMiss]+'</b><span>bu konuda biraz daha pratik yapalım</span></span><span class="rm-go">›</span></div>' : '';
+    var pct=Math.round(correct/ftRecords.length*100);
+    var _C=2*Math.PI*52, _dash=_C*correct/ftRecords.length;
+    var ring='<svg viewBox="0 0 130 130" width="130" height="130"><circle cx="65" cy="65" r="52" fill="none" stroke="rgba(25,26,23,.09)" stroke-width="12"/><circle cx="65" cy="65" r="52" fill="none" stroke="var(--orange)" stroke-width="12" stroke-linecap="round" stroke-dasharray="'+_dash+' '+(_C-_dash)+'" transform="rotate(-90 65 65)"/></svg>';
+    var head = pct>=80?'Harika!':(pct>=50?'İyi gidiyor!':'Devam!');
+    var wrong = ftRecords.length-correct;
+    var h='<div class="res-head"><h1>'+head+'</h1><p class="sub">Bugünkü pratiğini tamamladın.</p></div>'
+      +'<div class="res-ringwrap">'+ring+'<div class="res-center"><span class="rc-top">'+ftRecords.length+' soruda</span><span class="rc-big">'+correct+'</span><span class="rc-lbl">doğru · %'+pct+'</span></div></div>'
+      +'<div class="res-chips"><div class="res-chip ok"><span class="rch-k">Doğru</span><span class="rch-n">'+correct+'</span></div><div class="res-chip no"><span class="rch-k">Yanlış</span><span class="rch-n">'+wrong+'</span></div></div>'
+      +(shortMissed>0?'<p class="sub" style="text-align:center;margin-top:12px">'+shortMissed+' soruda daha kısa yol vardı.</p>':'')
       +missCard
-      +'<div class="sec-title">soru soru</div>';
+      +'<div class="res-btns"><button class="btn ghost" onclick="toggleFtRows()">Sonuçları İncele</button><button class="btn" onclick="startFreeTest(ftCount,ftFocus)">Tekrar Dene</button></div>'
+      +'<div id="freeRows" style="display:none"><div class="sec-title">soru soru</div>';
     ftRecords.forEach(function(r,i){
       var probStr=r.a+' '+r.op+' '+r.b;
       var mark = r.chosen ? (r.chosen===r.fastest?'<span class="rmark good">✓</span>':'<span class="rmark soft">○</span>') : '<span class="rmark none">·</span>';
@@ -1517,65 +2335,14 @@
       });
       h+='<div class="rdetail" id="rd'+i+'" style="display:none">'+det+'</div>';
     });
-    h+='<button class="btn" style="margin-top:18px" onclick="startFreeTest(ftCount,ftFocus)">Tekrar</button>'
-      +'<button class="btn ghost sm" style="margin-top:8px" onclick="show(\'home\')">Bugüne dön</button>';
+    h+='</div>';
     id('freeReportBody').innerHTML=h; if(topMiss && id('missBtn')) id('missBtn').onclick=function(){ launchSession(topMiss); }; show('freeReport');
   }
   function toggleRow(i){ var d=id('rd'+i); d.style.display = d.style.display==='none'?'block':'none'; }
 
-  /* ---------- Bugün: kart yığını menüsü ---------- */
-  var HOME_CARDS=[
-    {t:"İlerleme", s:"ustalık ve form durumun", bg:"#7C5A34", ink:"#fff", go:function(){show('progress');}},
-    {t:"Araç çantası", s:"keşfettiğin yöntemlerin detayı", bg:"#A9700F", ink:"#fff", go:function(){show('toolbox');}},
-    {t:"Karma test", s:"farklı yöntemler, sonunda rapor", bg:"#C8971E", ink:"#3A2E12", go:function(){startFreeTest();}},
-    {t:"Hafıza", s:"kareler, küpler, oyunla ezber", bg:"#5F7A4E", ink:"#fff", go:function(){openMem('squares');}},
-    {t:"Yöntemler", s:"zoru kolaya çeviren yollar", bg:"#2F6E57", ink:"#fff", go:function(){show('skills');}},
-    {t:"Bugünün antrenmanı", s:"dört kısa soru, kafadan", bg:"#1C5C48", ink:"#fff", go:function(){launchSession('ref');}}
-  ];
-  var HN=HOME_CARDS.length, HPEEK=48, HCARD=86, hOpen=false, hBusy=false, hStage, hEls=[];
-  function buildHomeCards(){
-    hStage=id('hStage'); if(!hStage) return;
-    var html='';
-    HOME_CARDS.forEach(function(c,i){
-      html+='<div class="hcard" data-i="'+i+'" style="background:'+c.bg+';color:'+c.ink+'"><div class="ht">'+c.t+'</div><div class="hs">'+c.s+'</div></div>';
-    });
-    hStage.insertAdjacentHTML('afterbegin', html);
-    hEls=[].slice.call(hStage.querySelectorAll('.hcard'));
-    hEls.forEach(function(el){ el.addEventListener('click', function(){ onHomeCardTap(+el.dataset.i); }); });
-    requestAnimationFrame(applyHomeLayout);
-    window.addEventListener('resize', applyHomeLayout);
-    setTimeout(function(){ setHomeOpen(true); }, 400);
-  }
-  function applyHomeLayout(){
-    if(!hStage) return;
-    var H=hStage.clientHeight||380, openGap=(H-HCARD)/(HN-1);
-    hEls.forEach(function(el,i){
-      var y,rot,sc;
-      if(hOpen){ y=i*openGap; rot=(i%2?-0.4:0.4); sc=1; }
-      else { y=H-HCARD-(HN-1-i)*HPEEK; rot=(i%2?0.9:-1.1); sc=1-(HN-1-i)*0.012; }
-      el.style.zIndex=i+1;
-      el.style.transitionDelay=(i*22)+'ms';
-      el.style.transform='translateY('+y+'px) rotate('+rot+'deg) scale('+sc+')';
-      var hs=el.querySelector('.hs'); if(hs) hs.style.opacity=hOpen?0.85:0;
-    });
-  }
-  function setHomeOpen(v){ hOpen=v; id('hHint').style.opacity=v?0:1; applyHomeLayout(); }
-  function onHomeCardTap(i){
-    if(hBusy) return;
-    if(!hOpen){ setHomeOpen(true); return; }
-    hBusy=true;
-    var el=hEls[i];
-    el.style.transitionDelay='0ms'; el.style.zIndex=100;
-    var m=el.style.transform.match(/translateY\(([-\d.]+)px\)/), y=m?parseFloat(m[1]):0;
-    el.style.transform='translateY('+(y-4)+'px) rotate(0deg) scale(1.04)';
-    setTimeout(function(){
-      HOME_CARDS[i].go();
-      setTimeout(function(){ el.style.zIndex=i+1; applyHomeLayout(); hBusy=false; }, 260);
-    }, 200);
-  }
   /* ---------- ilerleme (halkalar + konular, gerçek veriden) ---------- */
-  var METH_KEYS=['ref','double','twins','eleven','decomp'];
-  var METH_INFO={ ref:{t:'Referans Sayılar',c:'#D65A4E'}, double:{t:'İkile-Yarıla',c:'#E59A70'}, twins:{t:'Onluk İkizler',c:'#B0862C'}, eleven:{t:'Onbir Çarpımı',c:'#5E9B93'}, decomp:{t:'Ayrıştırma',c:'#8A9A5B'} };
+  var METH_KEYS=['ref','double','twins','eleven','decomp','divide'];
+  var METH_INFO={ ref:{t:'Referans Sayılar',c:'#E24C5B'}, double:{t:'İkile-Yarıla',c:'#E8752A'}, twins:{t:'Onluk İkizler',c:'#D9A92F'}, eleven:{t:'Onbir Çarpımı',c:'#279B8E'}, decomp:{t:'Ayrıştırma',c:'#1B5C52'}, divide:{t:'Bölme',c:'#CB8A5E'} };
   var PROGRESS=[], TOPICS=[];
   function sugLine(o){ if(o.ust===0 && o.form===0) return 'Henüz başlamadın; ilk turu atmak güzel olur.'; if(o.form<40) return 'Biraz pas tutmuş; kısa bir tazeleme iyi gelir.'; if(o.ust<40) return 'Az daha pratik, bu da oturur.'; return 'Rahatsın; ara ara tazelemen yeter.'; }
   function deriveProgress(){
@@ -1586,8 +2353,8 @@
     PROGRESS=[{label:'Yöntemler',pct:yp,color:'#D65A4E'},{label:'Hafıza',pct:hp,color:'#5E9B93'},{label:'Refleks',pct:rp,color:'#C79A3C'}];
     TOPICS=[];
     METH_KEYS.forEach(function(k){ TOPICS.push({t:METH_INFO[k].t,c:METH_INFO[k].c,ust:mk[k].ust,form:mk[k].form,sug:sugLine(mk[k]),key:k,kind:'m'}); });
-    TOPICS.push({t:'Kareler',c:'#2E6480',ust:stats.mem.squares.ust,form:stats.mem.squares.form,sug:sugLine(stats.mem.squares),key:'squares',kind:'s'});
-    TOPICS.push({t:'Küpler',c:'#F088A2',ust:stats.mem.cubes.ust,form:stats.mem.cubes.form,sug:sugLine(stats.mem.cubes),key:'cubes',kind:'s'});
+    TOPICS.push({t:'Kareler',c:'#2A2521',ust:stats.mem.squares.ust,form:stats.mem.squares.form,sug:sugLine(stats.mem.squares),key:'squares',kind:'s'});
+    TOPICS.push({t:'Küpler',c:'#D98573',ust:stats.mem.cubes.ust,form:stats.mem.cubes.form,sug:sugLine(stats.mem.cubes),key:'cubes',kind:'s'});
   }
   function nextSuggestion(){
     var mk=stats.methods, lo=METH_KEYS[0], hi=METH_KEYS[0];
@@ -1612,75 +2379,93 @@
     var avg=Math.round(PROGRESS.reduce(function(a,m){return a+m.pct;},0)/PROGRESS.length);
     if(id('progRings')) id('progRings').innerHTML=ringsSVG(190,'rgba(31,28,22,.07)');
     if(id('rcNum')) id('rcNum').innerHTML=avg+'<b>%</b>';
+    if(id('homeProgPct')) id('homeProgPct').textContent='%'+avg;
+    if(id('streakN')) id('streakN').textContent=(stats.tests.count + (stats.compare?stats.compare.rounds:0));
     if(id('ringLegend')) id('ringLegend').innerHTML=PROGRESS.map(function(m){return '<span class="lgd"><span class="ld" style="background:'+m.color+'"></span>'+m.label+' <b>'+m.pct+'%</b></span>';}).join('');
     if(id('progsumRings')) id('progsumRings').innerHTML=ringsSVG(84,'rgba(255,255,255,.22)');
     var ns=nextSuggestion();
     if(id('sugText')) id('sugText').textContent=ns.text;
     if(id('sugBtn')){ id('sugBtn').textContent=ns.label; id('sugBtn').onclick=function(){ launchSession(ns.key); }; }
     if(id('progTopics')) id('progTopics').innerHTML=TOPICS.map(function(t,i){
-      return '<div class="ptopic" data-i="'+i+'"><div class="pthead" onclick="toggleTopic('+i+')"><span class="ptdot" style="background:'+t.c+'"></span><span class="ptt">'+t.t+'</span><span class="ptpct">'+Math.round((t.ust+t.form)/2)+'%</span></div>'
-        +'<div class="ptbody"><div class="ptbar"><div class="ptl">ustalık</div><div class="ptt2"><i style="width:'+t.ust+'%;background:var(--green)"></i></div></div>'
-        +'<div class="ptbar"><div class="ptl">form</div><div class="ptt2"><i style="width:'+t.form+'%;background:var(--amber)"></i></div></div>'
-        +'<div class="ptsug">'+t.sug+' <span class="go" onclick="TOPIC_GO('+i+')">pratik →</span></div></div></div>';
+      return '<div class="pbar-row" style="--c:'+t.c+'" onclick="TOPIC_GO('+i+')"><span class="pbr-t"><b>'+t.t+'</b><span>form %'+t.form+'</span></span><span class="pbr-pct" style="color:'+t.c+'">%'+t.ust+'</span></div>';
     }).join('');
   }
   function toggleTopic(i){ var el=document.querySelector('#progTopics .ptopic[data-i="'+i+'"]'); if(el) el.classList.toggle('open'); }
   function TOPIC_GO(i){ var t=TOPICS[i]; if(!t) return; if(t.kind==='s') openMem(t.key); else launchSession(t.key); }
+  /* ---------- öğren: işlem > yöntemler ---------- */
+  var OPS={
+    toplama:{t:'Toplama', methods:[{n:'Referans Sayılar',s:'yuvarla, telafi et',c:'var(--coral)',a:function(){launchSession('ref');}}]},
+    cikarma:{t:'Çıkarma', methods:[{n:'Referans Sayılar',s:'yuvarla, telafi et',c:'var(--teal)',a:function(){launchSession('ref');}}]},
+    carpma:{t:'Çarpma', methods:[
+      {n:'Referans Sayılar',s:'yakın dost sayıya yuvarla',c:'var(--dark)',a:function(){launchSession('ref');}},
+      {n:'İkile-Yarıla',s:'birini ikile, diğerini yarıla',c:'var(--dark)',a:function(){launchSession('double');}},
+      {n:'Onluk İkizler',s:'birler 10, onlar eşit',c:'var(--dark)',a:function(){launchSession('twins');}},
+      {n:'Onbir Çarpımı',s:'11 ile araya topla',c:'var(--dark)',a:function(){launchSession('eleven');}},
+      {n:'Ayrıştırma',s:'parçala ve topla',c:'var(--dark)',a:function(){launchSession('decomp');}}
+    ]},
+    bolme:{t:'Bölme', methods:[{n:'Bölme Kısayolları',s:'dost sayılarla ve yarılayarak',c:'var(--dark)',a:function(){launchSession('divide');}}]}
+  };
+  var _opCur=[];
+  function openOp(op){
+    var o=OPS[op]; if(!o) return;
+    id('opTitle').textContent=o.t;
+    var host=id('opMethods');
+    if(!o.methods.length){ host.innerHTML='<div class="pcard"><div class="pk">yakında</div>Bu işlem için kısa yollar yakında ekleniyor. Şimdilik Çarpma yöntemleri ve Referans Sayılar ile çalışabilirsin.</div>'; show('opmethods'); return; }
+    _opCur=o.methods;
+    host.innerHTML=o.methods.map(function(m,i){
+      return '<div class="opm-card" onclick="_opGo('+i+')"><span class="omi" style="background:'+m.c+'">'+(i+1)+'</span><span class="omt"><b>'+m.n+'</b><span>'+m.s+'</span></span><span class="omgo">›</span></div>';
+    }).join('');
+    show('opmethods');
+  }
+  function _opGo(i){ if(_opCur[i]) _opCur[i].a(); }
   /* ---------- hangi yol daha kolay? ---------- */
   var COMPARE=[
-    {q:"99 × 7", p1:{label:"100 × 7 − 7", res:"700 − 7 = 693"}, p2:{label:"90 × 7 + 9 × 7", res:"630 + 63 = 693"}, why:"99, 100'e bir adım uzakta; bir çarpım ve küçük bir çıkarma yeter. Parçalamak iki çarpım ve bir toplama ister."},
-    {q:"48 × 25", p1:{label:"48 × 100 ÷ 4", res:"4800 ÷ 4 = 1200"}, p2:{label:"48 × 20 + 48 × 5", res:"960 + 240 = 1200"}, why:"25, 100'ün dörtte biri. Yüzle çarpıp dörde bölmek tek yuvarlak yol; parçalamak daha çok adım."},
-    {q:"16 × 25", p1:{label:"8 × 50 → 4 × 100", res:"= 400"}, p2:{label:"16 × 20 + 16 × 5", res:"320 + 80 = 400"}, why:"İkile-yarıla ile 4 × 100 gibi yuvarlak bir çarpıma inersin; parçalama iki çarpım ister."},
-    {q:"45 × 12", p1:{label:"90 × 6", res:"= 540"}, p2:{label:"45 × 10 + 45 × 2", res:"450 + 90 = 540"}, why:"Bir ikile bir yarıla: 45 × 12, 90 × 6 olur, tek çarpım. Parçalama iki parça ister."},
-    {q:"19 × 6", p1:{label:"20 × 6 − 6", res:"120 − 6 = 114"}, p2:{label:"10 × 6 + 9 × 6", res:"60 + 54 = 114"}, why:"19, 20'ye bir adım; bir çarpım ve küçük bir çıkarma yeter."},
-    {q:"63 × 11", p1:{label:"6 _ (6+3) _ 3", res:"= 693"}, p2:{label:"63 × 10 + 63", res:"630 + 63 = 693"}, why:"11 ile çarpımda rakamları araya toplamak neredeyse anında; ×10 artı kendisi de olur ama bir toplama daha ister."},
-    {q:"35 × 35", p1:{label:"3 × 4 = 12, sona 25", res:"= 1225"}, p2:{label:"35 × 30 + 35 × 5", res:"1050 + 175 = 1225"}, why:"Birler 10'a tamamlanıp onlar eşit olunca kısa yol var: 3 × 4 = 12, sonuna 25. Parçalamak çok daha uzun."},
-    {q:"102 × 6", p1:{label:"100 × 6 + 2 × 6", res:"600 + 12 = 612"}, p2:{label:"102 × 6 basamak basamak", res:"= 612"}, why:"102, 100'e iki adım; yuvarlaktan gitmek basamak basamak çarpmaktan hafif."},
-    {q:"24 × 15", p1:{label:"12 × 30", res:"= 360"}, p2:{label:"24 × 10 + 24 × 5", res:"240 + 120 = 360"}, why:"Yarıla-ikile ile 12 × 30 gibi yuvarlak tek çarpıma inersin; parçalama iki parça ve bir toplama ister."},
-    {q:"50 × 18", p1:{label:"100 × 9", res:"= 900"}, p2:{label:"50 × 10 + 50 × 8", res:"500 + 400 = 900"}, why:"İkile-yarıla: 50 × 18, 100 × 9 olur, tek yuvarlak çarpım."}
+    {q:"99 × 7", p1:{label:"100 × 7 − 7", d:"100'e tamamla, farkı çıkar", res:"700 − 7 = 693"}, p2:{label:"90 × 7 + 9 × 7", d:"onlar ve birlere böl, topla", res:"630 + 63 = 693"}, why:"99, 100'e bir adım uzakta; bir çarpım ve küçük bir çıkarma yeter. Parçalamak iki çarpım ve bir toplama ister."},
+    {q:"48 × 25", p1:{label:"48 × 100 ÷ 4", d:"100'e tamamla, 4'e böl", res:"4800 ÷ 4 = 1200"}, p2:{label:"48 × 20 + 48 × 5", d:"onlar ve birlere böl, topla", res:"960 + 240 = 1200"}, why:"25, 100'ün dörtte biri. Yüzle çarpıp dörde bölmek tek yuvarlak yol; parçalamak daha çok adım."},
+    {q:"16 × 25", p1:{label:"8 × 50 → 4 × 100", d:"ikile-yarıla, yuvarla", res:"= 400"}, p2:{label:"16 × 20 + 16 × 5", d:"onlar ve birlere böl", res:"320 + 80 = 400"}, why:"İkile-yarıla ile 4 × 100 gibi yuvarlak bir çarpıma inersin; parçalama iki çarpım ister."},
+    {q:"45 × 12", p1:{label:"90 × 6", d:"ikile-yarıla, tek çarpım", res:"= 540"}, p2:{label:"45 × 10 + 45 × 2", d:"onlar ve birlere böl", res:"450 + 90 = 540"}, why:"Bir ikile bir yarıla: 45 × 12, 90 × 6 olur, tek çarpım. Parçalama iki parça ister."},
+    {q:"19 × 6", p1:{label:"20 × 6 − 6", d:"20'ye tamamla, çıkar", res:"120 − 6 = 114"}, p2:{label:"10 × 6 + 9 × 6", d:"onlar ve birlere böl", res:"60 + 54 = 114"}, why:"19, 20'ye bir adım; bir çarpım ve küçük bir çıkarma yeter."},
+    {q:"63 × 11", p1:{label:"6 _ (6+3) _ 3", d:"rakamları araya topla", res:"= 693"}, p2:{label:"63 × 10 + 63", d:"on katı, üstüne kendisi", res:"630 + 63 = 693"}, why:"11 ile çarpımda rakamları araya toplamak neredeyse anında; on katı artı kendisi de olur ama bir toplama daha ister."},
+    {q:"35 × 35", p1:{label:"3 × 4 = 12, sona 25", d:"onlar×(onlar+1), sona 25", res:"= 1225"}, p2:{label:"35 × 30 + 35 × 5", d:"onlar ve birlere böl", res:"1050 + 175 = 1225"}, why:"Birler 10'a tamamlanıp onlar eşit olunca kısa yol var: 3 × 4 = 12, sonuna 25. Parçalamak çok daha uzun."},
+    {q:"102 × 6", p1:{label:"100 × 6 + 2 × 6", d:"100'e tamamla, ekle", res:"600 + 12 = 612"}, p2:{label:"102 × 6", d:"basamak basamak çarp", res:"= 612"}, why:"102, 100'e iki adım; yuvarlaktan gitmek basamak basamak çarpmaktan hafif."},
+    {q:"24 × 15", p1:{label:"12 × 30", d:"yarıla-ikile, tek çarpım", res:"= 360"}, p2:{label:"24 × 10 + 24 × 5", d:"onlar ve birlere böl", res:"240 + 120 = 360"}, why:"Yarıla-ikile ile 12 × 30 gibi yuvarlak tek çarpıma inersin; parçalama iki parça ve bir toplama ister."},
+    {q:"50 × 18", p1:{label:"100 × 9", d:"ikile-yarıla, yuvarla", res:"= 900"}, p2:{label:"50 × 10 + 50 × 8", d:"onlar ve birlere böl", res:"500 + 400 = 900"}, why:"İkile-yarıla: 50 × 18, 100 × 9 olur, tek yuvarlak çarpım."}
   ];
   var cmpItems=[], cmpIdx=0, cScore=0, cmpOrder=['p1','p2'], cmpLocked=false;
+  function cmpProblem(q){ return q.replace(/×/g,'<span style="color:var(--coral)">×</span>'); }
   function startCompare(){ cmpItems=shuffle(COMPARE.slice()).slice(0,6); cmpIdx=0; cScore=0; show('compare'); renderCmp(); }
   function renderCmp(){
     cmpLocked=false;
     var it=cmpItems[cmpIdx];
     cmpOrder = Math.random()<0.5 ? ['p1','p2'] : ['p2','p1'];
-    id('cmpQ').textContent=it.q;
-    var labels=['A','B'], html='';
+    id('cmpCount').textContent=(cmpIdx+1)+' / '+cmpItems.length;
+    id('cmpQ').innerHTML=cmpProblem(it.q);
+    var cols=['var(--teal)','var(--orange)'], html='';
     cmpOrder.forEach(function(key,i){
       var pth=it[key];
-      html+='<div class="cmp-opt" data-k="'+key+'" onclick="cmpPick(\''+labels[i]+'\')"><div class="ol">'+labels[i]+'</div><div class="op">'+pth.label+'</div><div class="ores">'+pth.res+'</div></div>';
+      html+='<button class="cmp-opt" data-k="'+key+'" style="--c:'+cols[i]+'" onclick="cmpPick('+i+')"><span class="yol">Yol '+(i+1)+'</span><span class="cmp-form">'+pth.label+'</span><span class="cmp-desc">'+pth.d+'</span></button>';
     });
     id('cmpOpts').innerHTML=html;
-    var fb=id('cmpFb'); fb.classList.remove('show'); fb.innerHTML='';
-    var d=''; for(var k=0;k<cmpItems.length;k++){ d+='<i class="'+(k<cmpIdx?'done':(k===cmpIdx?'on':''))+'"></i>'; } id('cmpDots').innerHTML=d;
+    id('cmpFb').className='cmp-fb show';
+    id('cmpFb').innerHTML='<div class="cmp-hint">Hangisi daha hızlı geliyorsa onu seç.</div>';
   }
-  function cmpPick(pos){
+  function cmpPick(i){
     if(cmpLocked) return; cmpLocked=true;
-    var it=cmpItems[cmpIdx];
-    var chosenKey=(pos==='A')?cmpOrder[0]:cmpOrder[1];
-    var correct=(chosenKey==='p1');
+    var it=cmpItems[cmpIdx], chosenKey=cmpOrder[i], correct=(chosenKey==='p1');
     if(correct) cScore++;
-    document.querySelectorAll('#cmpOpts .cmp-opt').forEach(function(el){
-      el.classList.add('reveal');
-      if(el.dataset.k==='p1') el.classList.add('light'); else el.classList.add('dim');
-    });
-    var fb=id('cmpFb');
-    fb.innerHTML='<div class="fbhead">'+(correct?'Evet, en hafif yol bu.':'İkisi de doğru sonucu verir; ama diğeri genelde daha hafif.')+'</div>'
-      +'<div class="fbwhy">'+it.why+'</div>'
-      +'<button class="btn" style="margin-top:14px" onclick="cmpNext()">'+(cmpIdx===cmpItems.length-1?'Bitir':'Sonraki')+'</button>';
-    fb.classList.add('show');
+    document.querySelectorAll('#cmpOpts .cmp-opt').forEach(function(el){ el.classList.add('reveal'); el.classList.add(el.dataset.k==='p1'?'win':'lose'); });
+    id('cmpFb').innerHTML='<div class="cmp-verdict '+(correct?'good':'soft')+'">'+(correct?'Evet, en hafif yol bu.':'İkisi de doğru; ama diğeri genelde daha hafif.')+'</div>'
+      +'<div class="cmp-why">'+it.why+'</div>'
+      +'<button class="btn" onclick="cmpNext()">'+(cmpIdx===cmpItems.length-1?'Bitir':'Bir tane daha')+'</button>';
   }
   function cmpNext(){ if(cmpIdx<cmpItems.length-1){ cmpIdx++; renderCmp(); } else cmpDone(); }
   function cmpDone(){
     compareDone();
-    id('cmpDots').innerHTML=''; id('cmpQ').textContent='Tur bitti'; id('cmpOpts').innerHTML='';
-    var fb=id('cmpFb');
-    fb.innerHTML='<div class="fbhead" style="text-align:center">'+cScore+' / '+cmpItems.length+' soruda en hafif yolu sezdin.</div>'
-      +'<div class="fbwhy" style="text-align:center;margin-top:6px">Önemli olan doğru cevap değil, hangi yolun daha az adım istediğini görmek.</div>'
-      +'<button class="btn" style="margin-top:16px" onclick="startCompare()">Yeni tur</button>'
+    id('cmpCount').textContent=''; id('cmpQ').innerHTML='Tur bitti'; id('cmpOpts').innerHTML='';
+    id('cmpFb').innerHTML='<div class="cmp-verdict good">'+cScore+' / '+cmpItems.length+' soruda en hafif yolu sezdin.</div>'
+      +'<div class="cmp-why">Önemli olan doğru cevap değil, hangi yolun daha az adım istediğini görmek.</div>'
+      +'<button class="btn" onclick="startCompare()">Yeni tur</button>'
       +'<button class="btn ghost sm" style="margin-top:8px" onclick="show(\'home\')">Ana Sayfa</button>';
-    fb.classList.add('show');
   }
   function compareDone(){ if(!stats.compare) stats.compare={rounds:0}; stats.compare.rounds++; saveStats(); refreshProgress(); }
   /* ---------- ilk açılış (onboarding) ---------- */
@@ -1710,26 +2495,10 @@
   function onbSkip(){ if(!onbBusy) onbFinish(); }
   function onbFinish(){ onbBusy=false; STORE.set('onboarded',1); id('onboard').classList.remove('show'); show('home'); }
   /* ---------- açılış jeneriği ---------- */
-  var APP_NAME='MatReflex', splashDone=false;
-  function showSplash(){
-    var sp=id('splash'); id('splashName').textContent=APP_NAME; id('splashSub').textContent='zihinden hesap için kısa yollar';
-    sp.classList.add('show'); splashDone=false;
-    id('splashSkip').onclick=finishSplash; sp.onclick=finishSplash;
-    if(reduce){ sp.classList.add('impact','named','subbed'); setTimeout(finishSplash, 1100); return; }
-    setTimeout(function(){ sp.classList.add('impact'); }, 1440);
-    setTimeout(function(){ sp.classList.add('named'); }, 1760);
-    setTimeout(function(){ sp.classList.add('subbed'); }, 2360);
-    setTimeout(function(){ finishSplash(); }, 3900);
-  }
-  function finishSplash(){
-    if(splashDone) return; splashDone=true;
-    var sp=id('splash'); sp.classList.add('out');
-    setTimeout(function(){ sp.classList.remove('show','out','impact','named','subbed'); if(!STORE.get('onboarded',0)) showOnboard(); }, 520);
-  }
   decayForms();
-  buildHomeCards();
   renderProgressUI();
   if(!STORE.get('onboarded',0)) showOnboard();
+  if(typeof initSettingsRibbons==='function') initSettingsRibbons();
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script>
 </body>
