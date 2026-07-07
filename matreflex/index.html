@@ -627,6 +627,7 @@
   .flow-arrow .fa-chev{font-size:15px; line-height:1; color:var(--fc); opacity:.55}
   .flow-arrow .fa-n{font-family:'Inter'; font-size:11.5px; color:var(--ink-soft); margin-top:1px; text-align:center}
   .flow-res{background:var(--fc); color:#fff; border-radius:16px; padding:14px; font-family:'Fredoka'; font-weight:600; font-size:25px; text-align:center; box-shadow:0 6px 16px -8px rgba(25,26,23,.35); letter-spacing:.04em}
+  .flow-why{margin-top:12px; font-size:12.8px; line-height:1.55; color:var(--ink-soft); background:color-mix(in srgb, var(--fc) 7%, var(--surface)); border-left:3px solid color-mix(in srgb, var(--fc) 45%, var(--surface)); border-radius:10px; padding:9px 12px}
   .flow .fem{color:var(--fc); font-weight:600}
   /* 11 times table */
   .et-tip{display:flex; align-items:center; gap:10px; background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:13px 14px; box-shadow:var(--shadow-sm); margin-bottom:12px; font-size:13px; color:var(--ink-soft); line-height:1.45}
@@ -1570,19 +1571,28 @@
         {label:"5'e bölme", ex:"340 ÷ 5", accent:"#279B8E", steps:[
           {t:"340 × 2 = <b class='fem'>680</b>", n:"önce ikile"},
           {t:"680 ÷ 10", n:"sonra 10'a böl"}
-        ], res:"68"},
+        ], res:"68", why:"Neden? 5, 10'un yarısıdır. Bir sayıyı 5'e bölmek, 10'a bölüp 2 katını almakla aynı şeydir. Kolaylık için önce ikilersin, sonra 10'a bölersin (bir basamak kaydırmak)."},
         {label:"25'e bölme", ex:"1200 ÷ 25", accent:"#279B8E", steps:[
           {t:"1200 × 4 = <b class='fem'>4800</b>", n:"dört katını al"},
           {t:"4800 ÷ 100", n:"100'e böl"}
-        ], res:"48"},
+        ], res:"48", why:"Neden? 25, 100'ün dörtte biridir. 25'e bölmek, 100'e bölüp 4 katını almaktır. Önce 4 ile çarpar, sonra 100'e bölersin (iki basamak kaydırmak)."},
+        {label:"50'ye bölme", ex:"300 ÷ 50", accent:"#279B8E", steps:[
+          {t:"300 × 2 = <b class='fem'>600</b>", n:"önce ikile"},
+          {t:"600 ÷ 100", n:"100'e böl"}
+        ], res:"6", why:"Neden? 50, 100'ün yarısıdır. 50'ye bölmek, 100'e bölüp 2 katını almaktır."},
         {label:"4'e bölme", ex:"152 ÷ 4", accent:"#279B8E", steps:[
           {t:"152 ÷ 2 = <b class='fem'>76</b>", n:"yarıla"},
           {t:"76 ÷ 2", n:"bir daha yarıla"}
-        ], res:"38"}
+        ], res:"38", why:"Neden? 4 = 2 × 2 olduğu için 4'e bölmek iki kez yarılamaktır. Yarılamak zihinden çok kolaydır."},
+        {label:"8'e bölme", ex:"96 ÷ 8", accent:"#279B8E", steps:[
+          {t:"96 ÷ 2 = <b class='fem'>48</b>", n:"yarıla"},
+          {t:"48 ÷ 2 = <b class='fem'>24</b>", n:"bir daha yarıla"},
+          {t:"24 ÷ 2", n:"üçüncü kez yarıla"}
+        ], res:"12", why:"Neden? 8 = 2 × 2 × 2 olduğu için 8'e bölmek üç kez yarılamaktır."}
       ],
       tableLink:{label:"Dost sayılar tablosunu incele", screen:"friendTable"},
       lead:"Bölmeyi doğrudan yapmak yerine böleni dost bir sayıya çevirir, çarpma ve basamak kaydırmaya dönüştürürsün.",
-      why:"5, 25 ve 50, 10 ile 100'ün dostudur. 5'e bölmek ikileyip 10'a bölmek, 25'e bölmek dört katını alıp 100'e bölmek demektir. 4 ve 8'e bölmek ise sayıyı sırayla yarılamaktır. Hepsi zor görünen bölmeyi kısa adımlara indirir.",
+      why:"Bölmeyi doğrudan yapmak yerine kolay bir bölmeye çevirirsin. 5, 25 ve 50, 10 ile 100'ün dostudur: 5, 10'un yarısı; 50, 100'ün yarısı; 25, 100'ün dörtte biri. Bu yüzden 5'e bölmek ikileyip 10'a bölmek, 50'ye bölmek ikileyip 100'e bölmek, 25'e bölmek dört katını alıp 100'e bölmek demektir. 4 ve 8 ise 2'nin katları olduğu için (4 = 2×2, 8 = 2×2×2) sırayla yarılamaktır. 10'a ya da 100'e bölmek sadece basamak kaydırmak olduğundan her adım kolay kalır.",
       strong:"Bölen 5, 25, 50, 4 ya da 8 olduğunda.",
       strongEx:"340 ÷ 5 → 68",
       weak:"Bölen bu dost sayılardan biri değilse kısayol tutmaz.",
@@ -2201,7 +2211,9 @@
     f.steps.forEach(function(s){
       h+='<div class="flow-arrow"><span class="fa-chev">↓</span>'+(s.n?'<span class="fa-n">'+s.n+'</span>':'')+'</div><div class="flow-step">'+s.t+'</div>';
     });
-    h+='<div class="flow-arrow"><span class="fa-chev">↓</span></div><div class="flow-res">'+f.res+'</div></div>';
+    h+='<div class="flow-arrow"><span class="fa-chev">↓</span></div><div class="flow-res">'+f.res+'</div>';
+    if(f.why) h+='<div class="flow-why">'+f.why+'</div>';
+    h+='</div>';
     return h;
   }
   function startDeck(filter, count){
