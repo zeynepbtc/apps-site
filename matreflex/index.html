@@ -299,6 +299,9 @@
   .padkey:active{transform:scale(.96)}
   .padkey.ok{background:var(--green); color:#fff; border:none; font-family:'Inter'; font-weight:600; font-size:15px}
   .padkey.wide{font-family:'Inter'; font-size:14px; color:var(--ink-soft)}
+  #freeTest, #mtest{overflow:hidden}
+  #freeTest .center, #mtest .center{flex:1 1 auto; min-height:0; overflow-y:auto; padding-bottom:14px}
+  #freeTest .pad, #mtest .pad{margin-top:0; flex:none; padding-top:10px}
   .pcard.alt{border-left-color:var(--ink-faint)}
   .pcard+.pcard{margin-top:8px}
   .ppath{font-family:'Fredoka'; font-size:15px; color:var(--ink); margin-top:2px}
@@ -563,6 +566,13 @@
   .opm-card .omi{width:38px;height:38px;border-radius:11px;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fredoka';font-weight:600;font-size:17px;flex:none}
   .opm-card .omt{flex:1} .opm-card .omt b{font-family:'Fredoka';font-weight:600;font-size:16px;display:block} .opm-card .omt span{font-size:12.5px;color:var(--ink-soft)}
   .opm-card .omgo{color:var(--ink-faint);font-family:'Fredoka';font-size:20px}
+  .soonhead{font-family:'Inter'; font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); margin:22px 4px 3px}
+  .soonnote{font-size:12px; color:var(--ink-faint); margin:0 4px 11px}
+  .opm-card.soon{cursor:default; box-shadow:none; background:color-mix(in srgb, var(--ink) 3%, var(--surface)); border-style:dashed}
+  .opm-card.soon:active{transform:none}
+  .opm-card.soon .omt b{color:var(--ink-soft)}
+  .omi.soon-ic{background:color-mix(in srgb, var(--ink) 9%, var(--surface)); color:var(--ink-faint); font-size:19px}
+  .soon-tag{font-family:'Inter'; font-size:10px; font-weight:600; color:var(--ink-faint); background:color-mix(in srgb, var(--ink) 6%, var(--surface)); padding:4px 9px; border-radius:99px; flex:none; letter-spacing:.03em}
   @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
   .shake{animation:shake .35s}
   .cmp-title{font-family:'Fredoka'; font-weight:600; font-size:29px; line-height:1.12; margin-top:6px; position:relative; display:inline-block}
@@ -1430,6 +1440,11 @@
       strongEx:"156 + 98 → 254",
       weak:"İki sayı da zaten yuvarlaksa yönteme gerek kalmaz; doğrudan işlem daha kısadır.",
       weakEx:"40 + 30 (zaten kolay)",
+      examplesByOp:{
+        "+":[{q:"156 + 98", work:"156 + 100 − 2 = 254"},{q:"245 + 99", work:"245 + 100 − 1 = 344"},{q:"234 + 52", work:"234 + 50 + 2 = 286"}],
+        "−":[{q:"340 − 98", work:"340 − 100 + 2 = 242"},{q:"512 − 199", work:"512 − 200 + 1 = 313"},{q:"430 − 52", work:"430 − 50 − 2 = 378"}],
+        "×":[{q:"7 × 99", work:"7 × 100 − 7 = 693"},{q:"8 × 98", work:"8 × 100 − 16 = 784"},{q:"6 × 49", work:"6 × 50 − 6 = 294"}]
+      },
       examples:[
         {q:"156 + 98", work:"156 + 100 − 2 = 254"},
         {q:"7 × 99", work:"7 × 100 − 7 = 693"},
@@ -1566,7 +1581,7 @@
         {q:"7 × 99", fits:false, why:"99 referansa yakın; parçalamaya gerek yok."},
         {q:"16 × 25", fits:false, why:"İkile-Yarıla daha kısa."}
       ] }
-    ,divide:{ name:"Bölme Kısayolları",
+    ,divide:{ name:"Dost Bölenler",
       flow:[
         {label:"5'e bölme", ex:"340 ÷ 5", accent:"#279B8E", steps:[
           {t:"340 × 2 = <b class='fem'>680</b>", n:"önce ikile"},
@@ -1922,7 +1937,7 @@
         {a:"66",b:"8",ans:"528",recog:"Özel bir kısayol yok; parçalayarak çözersin.",recipe:"60 × 8 = <b>480</b>, 6 × 8 = <b>48</b>, topla → 528."},
         {a:"87",b:"4",ans:"348",recog:"Özel bir kısayol yok; parçalayarak çözersin.",recipe:"80 × 4 = <b>320</b>, 7 × 4 = <b>28</b>, topla → 348."}
       ]}
-    ,divide:{ name:"Bölme Kısayolları", type:"divide",
+    ,divide:{ name:"Dost Bölenler", type:"divide",
       intro:"Böleni dost bir sayıya çevirip çarpma ve basamak kaydırmaya dönüştürürüz.",
       pool:[
         {a:"340",op:"÷",b:"5",ans:"68",recog:"5'e bölme.",recipe:"İkile: 340 × 2 = 680, sonra ÷ 10 → <b>68</b>."},
@@ -1968,7 +1983,7 @@
     if(cfg.teach){ how+='<div class="msteps-k">adım adım</div><div class="msteps">'; cfg.teach.forEach(function(st,i){ how+='<div class="mstep"><span class="mstep-n">'+(i+1)+'</span><div class="mstep-c"><div class="mstep-eq">'+st.eq+'</div><div class="mstep-g">'+st.g+'</div></div></div>'; }); how+='</div>'; }
     if(t.tip) how+='<div class="mtip"><b>ipucu </b>'+t.tip+'</div>';
     id('mHow').innerHTML=how;
-    var exs=(t.examples||[]);
+    var exs=(opFilter && t.examplesByOp && t.examplesByOp[opFilter]) || t.examples || [];
     id('mEx').innerHTML = exs.length ? exs.map(function(e){ return '<div class="mex" onclick="this.classList.toggle(\'open\')"><div class="mex-q">'+e.q+'<span class="mex-tap">göster</span></div><div class="mex-w">'+e.work+'</div></div>'; }).join('') : '<p class="mprose">Alıştırmaya başlayınca örnekleri adım adım göreceksin.</p>';
     mSet('how',true); mSet('ex',false);
     show('method');
@@ -2116,7 +2131,7 @@
     var ans=(op==='×'?a*b:op==='+'?a+b:op==='÷'?a/b:a-b), out=[];
     if(op==='÷'){
       var dfit={5:1,25:1,50:1,4:1,8:1};
-      if(b && dfit[b] && a%b===0) out.push({key:'divide',name:'Bölme Kısayolları',effort:2,path:dividePath(a,b)});
+      if(b && dfit[b] && a%b===0) out.push({key:'divide',name:'Dost Bölenler',effort:2,path:dividePath(a,b)});
       out.push({key:'duz',name:'Düz işlem',effort:6,path:a+' ÷ '+b+' = '+ans+', basamak basamak'});
       out.sort(function(x,y){return x.effort-y.effort;});
       return {ans:ans, methods:out};
@@ -2192,7 +2207,7 @@
   }
 
   /* ---------- serbest / karma test (Faz C) ---------- */
-  var METHOD_NAMES={ref:'Referans Sayılar', double:'İkile-Yarıla', twins:'Onluk İkizler', eleven:'Onbir Çarpımı', decomp:'Ayrıştırma', divide:'Bölme Kısayolları', duz:'Düz işlem'};
+  var METHOD_NAMES={ref:'Referans Sayılar', double:'İkile-Yarıla', twins:'Onluk İkizler', eleven:'Onbir Çarpımı', decomp:'Ayrıştırma', divide:'Dost Bölenler', duz:'Düz işlem'};
   var ftPool, fti, ftEntered, ftAnswered, ftChosen, ftRecords, ftCount=6, ftFocus='all';
   function allRawProblems(){
     var arr=[];
@@ -2454,27 +2469,36 @@
   function TOPIC_GO(i){ var t=TOPICS[i]; if(!t) return; if(t.kind==='s') openMem(t.key); else launchSession(t.key); }
   /* ---------- öğren: işlem > yöntemler ---------- */
   var OPS={
-    toplama:{t:'Toplama', methods:[{n:'Referans Sayılar',s:'yuvarla, telafi et',c:'var(--coral)',a:function(){launchSession('ref','+');}}]},
-    cikarma:{t:'Çıkarma', methods:[{n:'Referans Sayılar',s:'yuvarla, telafi et',c:'var(--teal)',a:function(){launchSession('ref','−');}}]},
+    toplama:{t:'Toplama', methods:[{n:'Referans Sayılar',s:'yuvarla, telafi et',c:'var(--coral)',a:function(){launchSession('ref','+');}}],
+      soon:[{n:"10'a / 100'e Tamamla",s:"yakın onluğa ya da yüzlüğe tamamla"},{n:"Parçala ve Topla",s:"basamaklara böl, ayrı ayrı topla"},{n:"Dengele",s:"birinden al, öbürüne ver"}]},
+    cikarma:{t:'Çıkarma', methods:[{n:'Referans Sayılar',s:'yuvarla, farkı geri ekle',c:'var(--teal)',a:function(){launchSession('ref','−');}}],
+      soon:[{n:"Farkı Düşün",s:"iki sayı arasındaki mesafeyi say"},{n:"Parçala ve Çıkar",s:"basamaklara böl, sırayla çıkar"},{n:"Tamamla ve Geri Gel",s:"yuvarlağa çıkıp geri in"}]},
     carpma:{t:'Çarpma', methods:[
       {n:'Referans Sayılar',s:'yakın dost sayıya yuvarla',c:'var(--dark)',a:function(){launchSession('ref','×');}},
       {n:'İkile-Yarıla',s:'birini ikile, diğerini yarıla',c:'var(--dark)',a:function(){launchSession('double');}},
       {n:'Onluk İkizler',s:'birler 10, onlar eşit',c:'var(--dark)',a:function(){launchSession('twins');}},
       {n:'Onbir Çarpımı',s:'11 ile araya topla',c:'var(--dark)',a:function(){launchSession('eleven');}},
       {n:'Ayrıştırma',s:'parçala ve topla',c:'var(--dark)',a:function(){launchSession('decomp');}}
-    ]},
-    bolme:{t:'Bölme', methods:[{n:'Bölme Kısayolları',s:'dost sayılarla ve yarılayarak',c:'var(--dark)',a:function(){launchSession('divide');}}]}
+    ], soon:[]},
+    bolme:{t:'Bölme', methods:[{n:'Dost Bölenler',s:'dost sayılarla ve yarılayarak',c:'var(--dark)',a:function(){launchSession('divide');}}],
+      soon:[{n:"Yarıla Zinciri",s:"2'nin katlarında sürekli yarıla"},{n:"Ters Çarpma",s:"çarpımdan bölmeye geç"},{n:"Katlara Ayır",s:"böleni çarpanlarına ayır"}]}
   };
   var _opCur=[];
   function openOp(op){
     var o=OPS[op]; if(!o) return;
     id('opTitle').textContent=o.t;
     var host=id('opMethods');
-    if(!o.methods.length){ host.innerHTML='<div class="pcard"><div class="pk">yakında</div>Bu işlem için kısa yollar yakında ekleniyor. Şimdilik Çarpma yöntemleri ve Referans Sayılar ile çalışabilirsin.</div>'; show('opmethods'); return; }
     _opCur=o.methods;
-    host.innerHTML=o.methods.map(function(m,i){
+    var html=o.methods.map(function(m,i){
       return '<div class="opm-card" onclick="_opGo('+i+')"><span class="omi" style="background:'+m.c+'">'+(i+1)+'</span><span class="omt"><b>'+m.n+'</b><span>'+m.s+'</span></span><span class="omgo">›</span></div>';
     }).join('');
+    if(o.soon && o.soon.length){
+      html+='<div class="soonhead">Hazırlanıyor</div><div class="soonnote">Bu yöntemler sırada; adım adım ekleniyor.</div>';
+      html+=o.soon.map(function(m){
+        return '<div class="opm-card soon"><span class="omi soon-ic">◔</span><span class="omt"><b>'+m.n+'</b><span>'+m.s+'</span></span><span class="soon-tag">hazırlanıyor</span></div>';
+      }).join('');
+    }
+    host.innerHTML=html;
     show('opmethods');
   }
   function _opGo(i){ if(_opCur[i]) _opCur[i].a(); }

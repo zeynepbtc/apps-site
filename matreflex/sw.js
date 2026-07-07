@@ -1,4 +1,4 @@
-var CACHE='matreflex-v25';
+var CACHE='matreflex-v27';
 var CORE=['./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon-maskable-192.png','./icon-maskable-512.png','./apple-touch-icon.png','./favicon-32.png','./favicon-16.png','./fonts/inter-latin.woff2', './fonts/baloo2.woff2','./fonts/inter-latin-ext.woff2'];
 self.addEventListener('install',function(e){
   e.waitUntil(caches.open(CACHE).then(function(c){return c.addAll(CORE);}).then(function(){return self.skipWaiting();}));
