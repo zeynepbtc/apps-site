@@ -644,6 +644,12 @@ body{
 .gamerules .grt{font-weight:900;font-size:11px;letter-spacing:1px;color:var(--gold-ink);margin-bottom:7px}
 .gamerules ul{margin:0;padding-left:17px}
 .gamerules li{font-size:13px;line-height:1.55;color:var(--txt);margin:2px 0}
+.nf #s-games .row.g60{filter:var(--dropx-dark);transform:rotate(-0.9deg)}
+.nf #s-games .row.g60 .fill{clip-path:polygon(0 0,100% 12%,100% 100%,0 88%)}
+.nf #s-games .row.gflow{filter:var(--dropx-dark);transform:rotate(0.8deg)}
+.nf #s-games .row.gflow .fill{clip-path:polygon(0 11%,100% 0,100% 89%,0 100%)}
+.nf #s-games .row.gshiri{filter:var(--dropx-dark);transform:rotate(-1deg)}
+.nf #s-games .row.gshiri .fill{clip-path:polygon(0 0,100% 11%,100% 100%,0 89%)}
 </style>
 </head>
 <body>
@@ -695,7 +701,7 @@ body{
 
         <button class="mod row tekrar" onclick="Review.open()"><div class="fill"><div class="itile it-teal">🔁</div><div class="tx"><span class="t">Tekrar</span><span class="s" id="reviewDue">Aralıklı tekrar</span></div><span class="chev">›</span></div></button>
         <button class="mod row reflex" onclick="Reflex.open()"><div class="fill"><div class="itile it-brick">⚡</div><div class="tx"><span class="t" data-t="home.reflex.title">Refleks Dojo</span><span class="s" data-t="home.reflex.desc">Hız ve kas hafızası çalış.</span></div></div></button>
-        <button class="mod row sohbet" onclick="Chat.open()"><div class="fill"><div class="itile it-teal">💬</div><div class="tx"><span class="t" data-t="home.chat.title">Sohbet</span><span class="s" data-t="home.chat.desc">Kısa cevapları Japonca yaz.</span></div><span class="chev">›</span></div></button>
+        <!-- v1'de gizlendi (Sohbet — sonraki sürümde tam ses kütüphanesiyle geri gelecek, reopenable): <button class="mod row sohbet" onclick="Chat.open()"><div class="fill"><div class="itile it-teal">💬</div><div class="tx"><span class="t" data-t="home.chat.title">Sohbet</span><span class="s" data-t="home.chat.desc">Kısa cevapları Japonca yaz.</span></div><span class="chev">›</span></div></button> -->
         <button class="mod row serbest" onclick="Sandbox.open()"><div class="fill"><div class="itile it-orange">✍️</div><div class="tx"><span class="t" data-t="home.free.title">Serbest Yazma</span><span class="s">İstediğini dene.</span></div><span class="chev">›</span></div></button>
         <button class="mod row oyunlar" onclick="Games.open()"><div class="fill"><div class="itile it-brown">🎮</div><div class="tx"><span class="t" data-t="home.games.title">Oyunlar</span><span class="s" data-t="home.games.soon">Oyna · rekor kır</span></div><span class="chev">›</span></div></button>
       </div>

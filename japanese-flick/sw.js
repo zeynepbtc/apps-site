@@ -1,5 +1,5 @@
 /* Japanese Flick — service worker (çevrimdışı önbellek) */
-const CACHE = 'jflick-v23';
+const CACHE = 'jflick-v25';
 const ASSETS = [
   './audio/kana/kya.mp3',
   './audio/kana/kyu.mp3',
