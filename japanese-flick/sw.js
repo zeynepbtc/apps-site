@@ -1,5 +1,5 @@
 /* Japanese Flick — service worker (çevrimdışı önbellek) */
-const CACHE = 'jflick-v20';
+const CACHE = 'jflick-v23';
 const ASSETS = [
   './audio/kana/kya.mp3',
   './audio/kana/kyu.mp3',
@@ -194,8 +194,16 @@ const ASSETS = [
   './audio/phrase/toire_wa_doko_desu_ka.mp3'
 ];
 
+// Kritik dosyalar zorunlu; ses dosyaları best-effort (tek eksik dosya install'ı bozmaz)
+const CRITICAL = ['./','./index.html','./manifest.json','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon-180.png'];
+const AUDIO = ASSETS.filter(a => a.indexOf('/audio/') >= 0);
+
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
+  e.waitUntil(
+    caches.open(CACHE)
+      .then(c => c.addAll(CRITICAL).then(() => Promise.all(AUDIO.map(u => c.add(u).catch(() => {})))))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener('activate', e => {
@@ -207,10 +215,23 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
+  const req = e.request;
+  // HTML sayfaları: ÖNCE AĞ (çevrimiçiyken hep en güncel index; çevrimdışıysa önbellek)
+  if (req.mode === 'navigate' || req.destination === 'document') {
+    e.respondWith(
+      fetch(req).then(res => {
+        const copy = res.clone();
+        caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
+        return res;
+      }).catch(() => caches.match(req).then(c => c || caches.match('./index.html')))
+    );
+    return;
+  }
+  // diğer varlıklar (ses, ikon): ÖNCE ÖNBELLEK
   e.respondWith(
-    caches.match(e.request).then(cached => cached || fetch(e.request).then(res => {
+    caches.match(req).then(cached => cached || fetch(req).then(res => {
       const copy = res.clone();
-      caches.open(CACHE).then(c => c.put(e.request, copy)).catch(() => {});
+      caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
       return res;
     }).catch(() => caches.match('./index.html')))
   );

@@ -640,6 +640,10 @@ body{
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{ animation-duration:.001ms!important; animation-iteration-count:1!important; transition-duration:.001ms!important; scroll-behavior:auto!important; }
 }
+.gamerules{max-width:344px;margin:10px auto;text-align:left;background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:12px 15px}
+.gamerules .grt{font-weight:900;font-size:11px;letter-spacing:1px;color:var(--gold-ink);margin-bottom:7px}
+.gamerules ul{margin:0;padding-left:17px}
+.gamerules li{font-size:13px;line-height:1.55;color:var(--txt);margin:2px 0}
 </style>
 </head>
 <body>
@@ -673,7 +677,7 @@ body{
       <div class="board">
         <button class="mod hero" onclick="Game.start('p2')">
           <div class="fill">
-            <div class="l"><h2 data-t="home.keyboard.title">Klavye Çalışmaları</h2><div class="d" data-t="home.keyboard.desc">Kana yönlerini parmağınla öğren.</div></div>
+            <div class="l"><h2 data-t="home.keyboard.title">Klavye Çalışmaları</h2><div class="d" data-t="home.keyboard.desc">Kana yönlerini parmağınla öğren.</div><div class="d" id="homeTip" style="margin-top:9px;font-weight:800;opacity:.95"></div></div>
             <div class="flick">
               <div class="k">あ</div>
               <span class="ar u"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
@@ -709,10 +713,9 @@ body{
         <div class="gt" data-t="settings.groups.general">Genel</div>
         <div class="slist">
           <button class="sitem" onclick="Theme.toggle()"><span class="si">🌓</span><span class="sl">Tema</span><span class="sv">Gündüz / Gece</span><span class="chev">›</span></button>
-          <button class="sitem" onclick="UI.toast('Şimdilik yalnızca Türkçe · İngilizce/Japonca yakında')"><span class="si">🌐</span><span class="sl" data-t="settings.language">Dil</span><span class="sv" data-t="settings.languageValue">Türkçe</span><span class="chev">›</span></button>
+          <div class="sitem" style="cursor:default"><span class="si">🌐</span><span class="sl" data-t="settings.language">Dil</span><span class="sv" data-t="settings.languageValue">Türkçe</span></div>
           <div class="sitem"><span class="si">🔊</span><span class="sl" data-t="settings.sound">Ses</span><span class="tgl on" id="tglSound" onclick="Settings.toggleSound()"></span></div>
           <div class="sitem"><span class="si">📳</span><span class="sl" data-t="settings.haptics">Titreşim &amp; efekt</span><span class="tgl on" id="tglHaptic" onclick="Settings.toggleHaptic()"></span></div>
-          <button class="sitem" onclick="UI.toast('Erişilebilirlik ayarları yakında')"><span class="si">♿</span><span class="sl" data-t="settings.accessibility">Erişilebilirlik</span><span class="chev">›</span></button>
         </div>
       </div>
       <div class="sgroup">
@@ -732,7 +735,7 @@ body{
           <button class="sitem" onclick="UI.show('s-about')"><span class="si">ℹ️</span><span class="sl" data-t="settings.about">Hakkında</span><span class="chev">›</span></button>
         </div>
       </div>
-      <div class="sfoot">Japanese Flick · <span data-t="settings.version">sürüm</span> 1.0</div>
+      <div class="sfoot">Japanese Flick · <span data-t="settings.version">sürüm</span> 0.9</div>
     </div>
   </section>
 
@@ -765,7 +768,7 @@ body{
           <li>Kişisel veri toplamaz; hiçbir sunucuya bir şey göndermez.</li>
           <li>İlerlemeniz (seviye, rozetler, notlar) yalnızca cihazınızın yerel depolamasında (localStorage) saklanır.</li>
           <li>Reklam yok, izleme (tracking) yok, üçüncü taraf analitiği yok.</li>
-          <li>Sesli okuma, cihazınızın kendi konuşma motorunu kullanır; ses verisi kaydedilmez.</li>
+          <li>Telaffuz sesleri uygulamanın içine gömülü yerel ses dosyalarıyla çalınır. Bazı eksik veya desteklenmeyen metinlerde cihazın kendi konuşma motoru yedek olarak kullanılabilir. Ses verisi kaydedilmez, analiz edilmez ve sunucuya gönderilmez.</li>
           <li>Veriyi dışa/içe aktarma tamamen sizin kontrolünüzdedir ve cihazınızda kalır.</li>
           <li>Tarayıcı verilerini veya önbelleği silerseniz ilerlemeniz de silinir.</li>
         </ul>
@@ -798,7 +801,8 @@ body{
         <p>Bir sorun mu var, önerin mi?</p>
         <ul>
           <li>Önce <b>Ayarlar → Veriyi dışa aktar</b> ile yedek al (ilerlemen güvende olsun).</li>
-          <li>Geri bildirim ve iletişim kanalı yakında burada olacak.</li>
+          <li>Bir sorun, öneri veya geri bildirim için: <b>hello@zeynepkaya.app</b></li>
+          <li>Mesajına <b>uygulama sürümünü</b>, <b>cihaz modelini</b> ve sorunu gördüğün <b>ekranı</b> eklersen daha hızlı inceleyebilirim.</li>
         </ul>
         <p>İpucu: Klavye Çalışmaları ve Refleks Dojo ile kas hafızanı düzenli çalıştırırsan en hızlı ilerlersin.</p>
       </div>
@@ -1330,7 +1334,7 @@ const Game60 = {
     document.getElementById('game60Stage').innerHTML=
       '<div class="g60screen"><div class="g60big">60″</div>'
       +'<h3 class="g60h">Bir dakikada kaç kana?</h3>'
-      +'<p class="muted" style="max-width:300px">Ekrandaki kana\'yı flick klavyeyle yaz. Süre bitene dek olabildiğince çok doğru yaz.</p>'
+      +'<div class="gamerules"><div class="grt">NASIL OYNANIR?</div><ul><li>Ekranda bir kana belirir.</li><li>Flick klavyeyle o kanayı yaz.</li><li>Doğruysa anında yenisi gelir.</li><li><b>60 saniyede</b> en çok doğruyu yapmaya çalış.</li></ul></div>'
       +'<div class="g60best">En iyi: <b>'+best+'</b></div>'
       +'<button class="btn cy g60btn" id="g60start">Başla</button></div>';
     const b=document.getElementById('g60start'); if(b) b.onclick=()=>{ Sound.pick(); this.begin(); };
@@ -1424,7 +1428,7 @@ const Shiritori = {
     const sc=document.getElementById('shiriScore'); if(sc) sc.textContent='🔗 0';
     document.getElementById('shiriStage').innerHTML=
       '<div class="g60screen"><div class="g60big">🔗</div><h3 class="g60h">Shiritori</h3>'
-      +'<p class="muted" style="max-width:320px">Kelime zinciri! Her kelime bir öncekinin <b>son kanası</b> ile başlamalı. <b>ん</b> ile biten kaybeder. Ne kadar uzatabilirsin?</p>'
+      +'<div class="gamerules"><div class="grt">NASIL OYNANIR?</div><ul><li>Sırayla kelime yazarsınız (sen ↔ uygulama).</li><li>Her kelime öncekinin <b>son kanasıyla</b> başlar — ör. ね<b>こ</b> → <b>こ</b>ま.</li><li><b>ん</b> ile biten kelime <b>kaybeder</b>.</li><li>Zinciri ne kadar uzatabilirsin?</li></ul></div>'
       +'<div class="g60best">En uzun zincir: <b>'+best+'</b></div>'
       +'<button class="btn cy g60btn" id="shiriStart">Başla</button></div>';
     const b=document.getElementById('shiriStart'); if(b) b.onclick=()=>{ try{Sound.pick();}catch(e){} this.begin(); };
@@ -1533,7 +1537,7 @@ const Flow = {
         +'</button>';
     });
     document.getElementById('flowStage').innerHTML=
-      '<div class="flvl-wrap"><div class="flvl-head">🌊 Akış · seviye seç</div>'+cards
+      '<div class="flvl-wrap"><div class="flvl-head">🌊 Akış · seviye seç</div>'+'<div class="gamerules"><div class="grt">NASIL OYNANIR?</div><ul><li>Kana yukarıdan aşağı süzülür.</li><li>Çizgiye ulaşmadan doğru tuşu bul, yönü <b>flick</b>le.</li><li>Seviye ilerledikçe yeni yönler açılır.</li><li>Sakin — panik yok, yanlış <b>cezasız</b>.</li></ul></div>'+cards
       +'<p class="muted" style="text-align:center;margin-top:6px;font-size:12.5px">Bir seviyeyi bitir, sonraki açılır. İstediğini istediğin kadar tekrar oyna.</p></div>';
   },
   startLevel(level){
@@ -1811,6 +1815,16 @@ const Mastery = {
 /* ============================================================
    KANA SRS (aralıklı tekrar) — Mastery'yi besler, Tekrar ekranını sürer
    ============================================================ */
+function homeTip(){
+  try{
+    var rows=[['a','あ行'],['ka','か行'],['sa','さ行'],['ta','た行'],['na','な行'],['ha','は行'],['ma','ま行'],['ya','や行'],['ra','ら行'],['wa','わ行']];
+    var practiced = State.mastery && Object.keys(State.mastery).length>0;
+    if(!practiced) return 'İlk kez? Aşağıdaki büyük karttan <b>あ行</b> ile başla.';
+    for(var i=0;i<rows.length;i++){ var arr=(typeof ROWS_H!=='undefined'&&ROWS_H[rows[i][0]])||[];
+      for(var j=0;j<arr.length;j++){ var k=arr[j]; if(k&&k!=='ー'&&Mastery.level(k)<3) return 'Bugünkü öneri: <b>'+rows[i][1]+'</b> yönlerini çalış.'; } }
+    return 'Harika gidiyorsun! Bir tur <b>Tekrar</b> yap ya da <b>Oyunlar</b>a göz at.';
+  }catch(e){ return ''; }
+}
 const SRS = {
   DAYS:[0,1,3,7,16,35,75], DAY:86400000,
   ensure(){ if(!State.srs) State.srs={}; },
@@ -1907,6 +1921,7 @@ const UI = {
     try{ Daily.sync(); }catch(e){}
     try{ Reflex.syncHomeNum(); }catch(e){}
     try{ const rd=$('#reviewDue'); if(rd){ const n=(typeof SRS!=='undefined')?SRS.dueCount():0; rd.textContent = n>0? (n+' kana hazır') : 'Şimdilik güncel ✓'; } }catch(e){}
+    try{ const ht=$('#homeTip'); if(ht) ht.innerHTML=homeTip(); }catch(e){}
     this.renderBadges();
   },
   renderLessons(){
@@ -2859,6 +2874,7 @@ applyI18n();
     if(!root||root.nodeType!==1) return;
     var els=[]; try{ if(root.matches&&root.matches('button,[role="button"],.spk,.back,.dicttab')) els.push(root); if(root.querySelectorAll) root.querySelectorAll('button,[role="button"],.spk,.back,.dicttab').forEach(function(e){els.push(e);}); }catch(e){}
     els.forEach(function(b){
+      if((b.classList.contains('spk')||b.classList.contains('dicttab'))&&b.tagName!=='BUTTON'){ if(!b.getAttribute('role'))b.setAttribute('role','button'); if(!b.hasAttribute('tabindex'))b.setAttribute('tabindex','0'); }
       if(b.getAttribute('aria-label')) return;
       var tx=(b.textContent||'').trim(), oc=b.getAttribute('onclick')||'';
       if(b.classList.contains('spk')||tx.indexOf('🔊')>=0) b.setAttribute('aria-label','Dinle');
@@ -2873,6 +2889,7 @@ applyI18n();
     }catch(e){}
   }
   a11y(document.body);
+  if(!document.__a11yKeys){ document.__a11yKeys=true; document.addEventListener('keydown',function(ev){ if(ev.key==='Enter'||ev.key===' '){ var tg=ev.target; if(tg&&tg.getAttribute&&tg.getAttribute('role')==='button'&&tg.tagName!=='BUTTON'){ ev.preventDefault(); tg.click(); } } }); }
   try{ new MutationObserver(function(ms){ ms.forEach(function(m){ if(m.addedNodes) m.addedNodes.forEach(a11y); }); }).observe(document.body,{childList:true,subtree:true}); }catch(e){}
 })();
 Settings.syncToggles();
