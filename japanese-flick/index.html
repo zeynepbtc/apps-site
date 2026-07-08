@@ -663,6 +663,8 @@ body{
 .setcard.rec{box-shadow:0 0 0 3px var(--gold-ink),0 3px 12px rgba(50,35,20,.2)}
 .setcard .badge-check{position:absolute;top:7px;right:9px;font-size:14px;font-weight:900;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.22)}
 .setcard.c0{background:var(--teal)}.setcard.c1{background:var(--orange)}.setcard.c2{background:var(--brick)}.setcard.c3{background:var(--brown)}.setcard.c4{background:#a9762f}
+.mixchip{padding:9px 13px;border-radius:999px;border:1px solid var(--line);background:var(--panel2);font-weight:800;font-size:16px;cursor:pointer;font-family:var(--jp);color:var(--ink)}
+.mixchip.on{background:var(--teal);color:var(--on);border-color:var(--teal)}
 </style>
 </head>
 <body>
@@ -709,7 +711,7 @@ body{
 
         <div class="split">
           <button class="mod hira" onclick="KanaSets.open('hira')"><div class="fill"><div class="itile">あ</div><div class="tx"><span class="t" data-t="home.hiragana.title">Hiragana</span><span class="s" data-t="home.hiragana.desc">Japonca kelimeler ve gramer</span></div></div></button>
-          <button class="mod kata" onclick="Game.startTrack('p5')"><div class="fill"><div class="itile">カ</div><div class="tx"><span class="t" data-t="home.katakana.title">Katakana</span><span class="s" data-t="home.katakana.desc">Yabancı kökenli kelimeler</span></div></div></button>
+          <button class="mod kata" onclick="KanaSets.open('kata')"><div class="fill"><div class="itile">カ</div><div class="tx"><span class="t" data-t="home.katakana.title">Katakana</span><span class="s" data-t="home.katakana.desc">Yabancı kökenli kelimeler</span></div></div></button>
         </div>
 
         <button class="mod row tekrar" onclick="Review.open()"><div class="fill"><div class="itile it-teal">🔁</div><div class="tx"><span class="t">Tekrar</span><span class="s" id="reviewDue">Aralıklı tekrar</span></div><span class="chev">›</span></div></button>
@@ -860,7 +862,12 @@ body{
       <div class="shead"><button class="back" onclick="Game.home()">‹</button><h2 id="setsTitle">Kana Setleri</h2></div>
       <p class="muted" style="margin:0 16px 2px;font-size:13px">Her flick tuşu bir set. Sırayla aç; birkaç set bitince karışık çalış.</p>
       <div class="setsgrid" id="setsGrid"></div>
-      <div style="padding:2px 16px 26px"><button class="btn" id="setsMix" style="width:100%;display:none">🎲 Karışık çalış</button></div>
+      <div style="padding:2px 16px 26px"><button class="btn" id="setsMix" style="width:100%;display:none">🎲 Karışık çalış</button>
+        <div id="mixPanel" style="display:none;margin-top:10px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px">
+          <div style="font-weight:800;font-size:13px;margin-bottom:9px">Hangi setleri karıştıralım?</div>
+          <div id="mixChips" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+          <button class="btn cy" id="mixStart" style="width:100%;margin-top:12px">Karışık başla</button>
+        </div></div>
     </div>
   </section>
 
@@ -2121,6 +2128,8 @@ function Keyboard(opts){
    ============================================================ */
 const SETS_H = GOJUON.map((g,i,arr)=>({ id:'hs_'+g.r, type:'kset', script:'hira', ph:1, title:g.t, kana:g.k, need: i>0 ? ('hs_'+arr[i-1].r) : null }));
 const ALLKANA_H = GOJUON.reduce((a,g)=>a.concat(g.k),[]);
+const H2K = s => s.replace(/[\u3041-\u3096]/g, c=>String.fromCharCode(c.charCodeAt(0)+0x60));
+const SETS_K = GOJUON.map((g,i,arr)=>({ id:'ks_'+g.r, type:'kset', script:'kata', ph:5, title:H2K(g.t), kana:g.k.map(x=>[H2K(x[0]),x[1]]), need:i>0?('ks_'+arr[i-1].r):null }));
 
 const KanaSet = {
   build(L){
@@ -2184,11 +2193,22 @@ const KanaSets = {
     });
     document.getElementById('setsGrid').innerHTML=html;
     const mix=document.getElementById('setsMix');
-    if(mix){ if(passed>=2){ mix.style.display=''; mix.onclick=()=>KanaSets.startMix(); mix.textContent='🎲 Karışık çalış ('+passed+' set)'; } else { mix.style.display='none'; } }
+    const mp=document.getElementById('mixPanel'); if(mp) mp.style.display='none';
+    if(mix){ if(passed>=2){ mix.style.display=''; mix.onclick=()=>KanaSets.openMix(); mix.textContent='🎲 Karışık çalış ('+passed+' set)'; } else { mix.style.display='none'; } }
   },
-  startMix(){
-    const sets=this.sets().filter(s=>State.done[s.id]); if(sets.length<2) return;
+  openMix(){
+    const passed=this.sets().filter(s=>State.done[s.id]);
+    const chips=document.getElementById('mixChips'); if(!chips) return; chips.innerHTML='';
+    passed.forEach(s=>{ const c=document.createElement('div'); c.className='mixchip on'; c.textContent=s.kana[0][0]; c.dataset.id=s.id; c.onclick=()=>c.classList.toggle('on'); chips.appendChild(c); });
+    document.getElementById('mixPanel').style.display='';
+    document.getElementById('mixStart').onclick=()=>this.runMix();
+  },
+  runMix(){
+    const ids=Array.prototype.map.call(document.querySelectorAll('#mixChips .mixchip.on'),c=>c.dataset.id);
+    const sets=this.sets().filter(s=>ids.indexOf(s.id)>=0);
+    if(!sets.length){ UI.toast('En az bir set seç'); return; }
     const pool=[]; sets.forEach(s=>s.kana.forEach(k=>pool.push(k)));
+    document.getElementById('mixPanel').style.display='none';
     Game.cur={id:'mix_'+this.script,type:'ksetmix',title:'Karışık',script:this.script};
     Game.mode=KanaSet; KanaSet.script=this.script;
     Game.queue=shuffle(pool.slice()).map(k=>({type:'recog',k})).concat(shuffle(pool.slice()).map(k=>({type:'type',k})));
@@ -2203,7 +2223,7 @@ const Game = {
   home(){ TTS.stop(); UI.show('s-home'); UI.syncHome(); },
   reset(){ if(confirm('Tüm ilerleme silinsin mi?')){ localStorage.removeItem(SAVE_KEY); State.xp=0;State.level=1;State.done={};State.chatDone={};State.badges={};State.profile=null;State.onboarded=false;State.save();UI.syncHome();Onboard.start(); } },
   start(id){
-    const L=LESSONS.find(x=>x.id===id) || SETS_H.find(x=>x.id===id); if(!L)return; this.cur=L; this.idx=0; this.correct=0; State.hearts=5;
+    const L=LESSONS.find(x=>x.id===id) || SETS_H.find(x=>x.id===id) || SETS_K.find(x=>x.id===id); if(!L)return; this.cur=L; this.idx=0; this.correct=0; State.hearts=5;
     $('#lessonTitle').textContent=L.title; UI.show('s-lesson');
     const map={discover:Discover,flick:Flick,r2k:R2K,k2r:K2R,kata:Kata,listen:Listen,read:Read,kanji:Kanji,ime:Ime,mission:Mission,kset:KanaSet};
     this.mode=map[L.type]; this.mode.build(L); this.renderProgress();
@@ -2230,10 +2250,11 @@ const Game = {
     const bmap={p1b:'b_kana',p2:'b_flick',p4:'b_type',p5:'b_kata',p6:'b_ear',p8:'b_kanji',p9:'b_pro'};
     if(bmap[L.id]){ const bd=BADGES.find(b=>b.id===bmap[L.id]); State.giveBadge(bd.id,bd.t); }
     State.addXp(25); Sound.level(); UI.confetti();
-    if(L.type==='kset' && L.script==='hira' && SETS_H.every(s=>State.done[s.id])){ const bd=BADGES.find(b=>b.id==='b_kana'); if(bd) State.giveBadge(bd.id,bd.t); }
+    if(L.type==='kset'){ const arr=L.script==='kata'?SETS_K:SETS_H; if(arr.every(s=>State.done[s.id])){ const bid=L.script==='kata'?'b_kata':'b_kana'; const bd=BADGES.find(b=>b.id===bid); if(bd) State.giveBadge(bd.id,bd.t); } }
     const stage=$('#lessonStage');
     const isSet=(L.type==='kset'), isSetLike=(L.type==='kset'||L.type==='ksetmix');
-    const nx=isSet?SETS_H.find(l=>l.need===L.id && l.type===L.type):LESSONS.find(l=>l.need===L.id && l.type===L.type);
+    const setArr=L.script==='kata'?SETS_K:SETS_H;
+    const nx=isSet?setArr.find(l=>l.need===L.id && l.type===L.type):LESSONS.find(l=>l.need===L.id && l.type===L.type);
     const nextBtn=(isSet && nx && !State.done[nx.id]) ? '<button class="btn cy" style="max-width:280px" onclick="Game.start(\''+nx.id+'\')">Sonraki: '+nx.title+' →</button>' : '';
     const backBtn = isSetLike
       ? '<button class="btn'+(nextBtn?' ghost':'')+'" style="max-width:280px" onclick="KanaSets.open(\''+(L.script||'hira')+'\')">Setlere dön</button>'
