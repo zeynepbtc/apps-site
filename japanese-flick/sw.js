@@ -1,5 +1,5 @@
 /* Japanese Flick — service worker (çevrimdışı önbellek) */
-const CACHE = 'jflick-v18';
+const CACHE = 'jflick-v20';
 const ASSETS = [
   './audio/kana/kya.mp3',
   './audio/kana/kyu.mp3',
@@ -146,7 +146,6 @@ const ASSETS = [
   './audio/word/resutoran.mp3',
   './audio/word/takushii.mp3',
   './audio/word/pan.mp3',
-  './audio/word/biiru.mp3',
   './audio/word/yaa.mp3',
   './audio/word/ocha.mp3',
   './audio/word/hai.mp3',
@@ -173,7 +172,6 @@ const ASSETS = [
   './audio/word/suika.mp3',
   './audio/word/piza.mp3',
   './audio/word/sushi.mp3',
-  './audio/word/sake.mp3',
   './audio/word/maguro.mp3',
   './audio/word/aisu.mp3',
   './audio/word/mochi.mp3',
