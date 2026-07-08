@@ -1,724 +1,1100 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zeynep Kaya Apps</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zeynep Kaya Apps</title>
+<meta name="description" content="Zeynep Kaya Apps — Japanese Flick, Japanese Kanji Atlas, MatReflex and learning tools." />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-    :root{
-      --bg:#eee8dc;
-      --paper:#fffaf0;
-      --paper-2:#f7efe2;
-      --paper-3:#eadfce;
-      --ink:#27231f;
-      --muted:#766d61;
-      --line:#d8cbbb;
-      --teal:#2e8f83;
-      --deep:#0f625b;
-      --orange:#ed8516;
-      --coral:#eaa08f;
-      --mustard:#d7ad4c;
-      --mint:#a9d8cb;
-      --blue:#6e9dae;
-      --shadow:0 28px 55px -34px rgba(32,28,21,.55),0 4px 12px rgba(32,28,21,.06);
-      --soft:cubic-bezier(.2,.9,.25,1);
-    }
+  :root{
+    --bg:#eee8dc;
+    --paper:#fff9ee;
+    --paper2:#f7efe1;
+    --paper3:#eadfce;
+    --ink:#2b251f;
+    --muted:#746a5e;
+    --line:#d8cbbb;
+    --orange:#d3813a;
+    --orange2:#bf6f2b;
+    --teal:#4f9a8f;
+    --deep:#275f59;
+    --brick:#b5502f;
+    --gold:#d7a852;
+    --shadow:0 18px 45px rgba(82,61,38,.18);
+    --shadow2:0 9px 0 rgba(107,77,48,.14);
+    --radius:28px;
+  }
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      min-height:100vh;
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      color:var(--ink);
-      background:
-        radial-gradient(800px 480px at 86% 5%, rgba(234,160,143,.38), transparent 62%),
-        radial-gradient(740px 520px at 10% 20%, rgba(169,216,203,.34), transparent 60%),
-        linear-gradient(180deg,#f8f3ea 0%, var(--bg) 45%, #e6ddce 100%);
-      overflow-x:hidden;
-    }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    min-height:100vh;
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(800px 460px at 8% 5%, rgba(211,129,58,.20), transparent 60%),
+      radial-gradient(760px 430px at 92% 8%, rgba(79,154,143,.18), transparent 62%),
+      radial-gradient(700px 400px at 75% 95%, rgba(183,80,47,.12), transparent 60%),
+      var(--bg);
+    overflow-x:hidden;
+  }
 
-    body:before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      opacity:.42;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
-    }
+  body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.22;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    z-index:0;
+  }
 
-    a{color:inherit;text-decoration:none}
-    .page{max-width:1180px;margin:0 auto;padding:24px 20px 60px;position:relative}
+  a{color:inherit;text-decoration:none}
+  .page{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:24px 22px 60px}
 
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      position:sticky;
-      top:14px;
-      z-index:20;
-      background:rgba(255,250,240,.68);
-      border:1px solid rgba(216,203,187,.7);
-      border-radius:28px;
-      padding:10px 12px 10px 18px;
-      backdrop-filter:blur(18px);
-      box-shadow:0 12px 34px -28px rgba(32,28,21,.55);
-    }
+  .topbar{
+    position:sticky;
+    top:14px;
+    z-index:20;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:34px;
+    padding:12px 14px;
+    border:1px solid rgba(216,203,187,.75);
+    background:rgba(255,249,238,.72);
+    backdrop-filter:blur(14px);
+    border-radius:24px;
+    box-shadow:0 12px 30px rgba(69,49,30,.10);
+  }
 
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.03em}
-    .brand-mark{
-      width:34px;
-      height:34px;
-      border-radius:14px;
-      background:linear-gradient(145deg,var(--deep),var(--teal));
-      box-shadow:inset 0 1px 1px rgba(255,255,255,.35),0 10px 20px -12px rgba(15,98,91,.9);
-      position:relative;
-    }
-    .brand-mark:after{
-      content:"";
-      position:absolute;
-      width:13px;
-      height:13px;
-      border-radius:50%;
-      background:var(--orange);
-      right:-2px;
-      bottom:3px;
-      box-shadow:0 8px 12px -8px rgba(237,133,22,.9);
-    }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width:0;
+  }
 
-    nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-    nav a{
-      font-size:13px;
-      font-weight:700;
-      color:var(--muted);
-      padding:10px 13px;
-      border-radius:999px;
-      transition:.25s var(--soft);
-    }
-    nav a:hover{
-      background:#fff;
-      color:var(--ink);
-      box-shadow:0 12px 20px -18px rgba(32,28,21,.7);
-    }
+  .mark{
+    width:42px;
+    height:42px;
+    border-radius:15px;
+    background:var(--orange);
+    color:#fff;
+    display:grid;
+    place-items:center;
+    font-weight:900;
+    box-shadow:0 5px 0 rgba(111,72,38,.20);
+    transform:rotate(-4deg);
+  }
 
+  .brand b{display:block;font-size:15px;font-weight:900;letter-spacing:.2px}
+  .brand span{display:block;font-size:12px;color:var(--muted);font-weight:650;margin-top:1px}
+
+  .nav{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .nav a,.lang button{
+    border:0;
+    border-radius:999px;
+    background:rgba(255,255,255,.55);
+    color:var(--ink);
+    font-weight:800;
+    font-size:13px;
+    padding:10px 13px;
+    cursor:pointer;
+  }
+
+  .lang{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    padding:4px;
+    border-radius:999px;
+    background:rgba(234,223,206,.8);
+  }
+
+  .lang button{padding:8px 11px;color:var(--muted)}
+  .lang button.on{background:var(--ink);color:#fff}
+
+  .hero{
+    min-height:680px;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(360px,520px);
+    align-items:center;
+    gap:42px;
+    padding:18px 0 70px;
+  }
+
+  .hero-copy{
+    position:relative;
+    z-index:3;
+    max-width:620px;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 13px;
+    border-radius:999px;
+    background:rgba(79,154,143,.13);
+    color:var(--deep);
+    font-weight:900;
+    font-size:12px;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+  }
+
+  .eyebrow:before{
+    content:"";
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:var(--teal);
+    box-shadow:0 0 0 5px rgba(79,154,143,.14);
+  }
+
+  h1{
+    font-size:clamp(42px,6vw,76px);
+    line-height:.95;
+    letter-spacing:-3px;
+    font-weight:900;
+    max-width:760px;
+  }
+
+  .lead{
+    margin-top:22px;
+    max-width:560px;
+    font-size:18px;
+    line-height:1.65;
+    color:var(--muted);
+    font-weight:650;
+  }
+
+  .manifesto{
+    margin-top:22px;
+    max-width:560px;
+    padding:18px 20px;
+    border-radius:22px;
+    background:rgba(255,249,238,.68);
+    border:1px solid rgba(216,203,187,.8);
+    box-shadow:0 10px 26px rgba(78,56,34,.08);
+    color:#5e5348;
+    font-size:15px;
+    line-height:1.65;
+    font-weight:650;
+  }
+
+  .cta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:26px;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    min-height:48px;
+    padding:14px 18px;
+    border-radius:16px;
+    font-weight:900;
+    border:0;
+    cursor:pointer;
+    box-shadow:0 5px 0 rgba(92,64,39,.18);
+    transition:.18s ease;
+  }
+
+  .btn:hover{transform:translateY(-2px)}
+  .btn.primary{background:var(--orange);color:#fff}
+  .btn.secondary{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
+
+  .stage{
+    position:relative;
+    height:620px;
+    perspective:1000px;
+  }
+
+  .float-card{
+    position:absolute;
+    border-radius:var(--radius);
+    background:linear-gradient(180deg,var(--paper),var(--paper2));
+    border:1px solid rgba(216,203,187,.9);
+    box-shadow:var(--shadow),var(--shadow2);
+    overflow:hidden;
+    transform-style:preserve-3d;
+    transition:transform .18s ease-out;
+  }
+
+  .float-card:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+    opacity:.2;
+    pointer-events:none;
+  }
+
+  .jf{
+    width:370px;
+    min-height:470px;
+    right:42px;
+    top:26px;
+    transform:rotate(2deg);
+    z-index:6;
+  }
+
+  .atlas{
+    width:282px;
+    min-height:235px;
+    left:18px;
+    top:100px;
+    transform:rotate(-7deg);
+    z-index:5;
+  }
+
+  .exam{
+    width:282px;
+    min-height:230px;
+    left:54px;
+    bottom:60px;
+    transform:rotate(5deg);
+    z-index:4;
+  }
+
+  .math{
+    width:250px;
+    min-height:190px;
+    right:4px;
+    bottom:36px;
+    transform:rotate(-5deg);
+    z-index:3;
+  }
+
+  .card-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:14px 16px 0;
+  }
+
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    border-radius:999px;
+    padding:7px 10px;
+    background:rgba(211,129,58,.13);
+    color:var(--orange2);
+    font-weight:900;
+    font-size:11px;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+  }
+
+  .badge.teal{background:rgba(79,154,143,.13);color:var(--deep)}
+  .badge.brick{background:rgba(181,80,47,.12);color:var(--brick)}
+  .badge.gold{background:rgba(215,168,82,.18);color:#8b651a}
+
+  .dots{
+    display:flex;
+    gap:5px;
+  }
+
+  .dots i{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--line);
+  }
+
+  .card-body{padding:18px 18px 20px;position:relative;z-index:2}
+  .card-body h2,.card-body h3{
+    font-size:27px;
+    line-height:1.02;
+    letter-spacing:-1px;
+    font-weight:900;
+    margin-bottom:10px;
+  }
+
+  .card-body h3{font-size:21px}
+  .card-body p{
+    font-size:14px;
+    line-height:1.55;
+    color:var(--muted);
+    font-weight:650;
+  }
+
+  .mini-link{
+    display:inline-flex;
+    margin-top:15px;
+    padding:10px 12px;
+    border-radius:13px;
+    background:var(--ink);
+    color:#fff;
+    font-size:12px;
+    font-weight:900;
+  }
+
+  .phone{
+    margin:18px auto 0;
+    width:210px;
+    height:330px;
+    border-radius:34px;
+    background:#24201b;
+    padding:13px;
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.08),0 20px 40px rgba(57,37,20,.22);
+  }
+
+  .screen-shot{
+    height:100%;
+    border-radius:25px;
+    background:linear-gradient(180deg,#e4dccd,#d3cbbc);
+    padding:12px;
+    overflow:hidden;
+    position:relative;
+  }
+
+  .app-hero{
+    height:82px;
+    border-radius:19px;
+    background:var(--orange);
+    padding:14px;
+    color:#2f2118;
+    position:relative;
+  }
+
+  .app-hero b{
+    display:block;
+    max-width:120px;
+    font-size:16px;
+    line-height:1.05;
+    font-weight:900;
+  }
+
+  .flick-icon{
+    position:absolute;
+    right:10px;
+    top:12px;
+    width:56px;
+    height:56px;
+  }
+
+  .flick-icon .center{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:24px;
+    height:24px;
+    border-radius:8px;
+    transform:translate(-50%,-50%);
+    background:#fff;
+  }
+
+  .flick-icon span{
+    position:absolute;
+    width:0;
+    height:0;
+    border-style:solid;
+  }
+
+  .flick-icon .u{left:23px;top:0;border-width:0 6px 10px 6px;border-color:transparent transparent #fff transparent}
+  .flick-icon .d{left:23px;bottom:0;border-width:10px 6px 0 6px;border-color:#fff transparent transparent transparent}
+  .flick-icon .l{left:0;top:23px;border-width:6px 10px 6px 0;border-color:transparent #fff transparent transparent}
+  .flick-icon .r{right:0;top:23px;border-width:6px 0 6px 10px;border-color:transparent transparent transparent #fff}
+
+  .tiles{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-top:11px;
+  }
+
+  .tile{
+    min-height:46px;
+    border-radius:15px;
+    background:rgba(255,249,238,.82);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:9px;
+    color:#463b31;
+    font-size:12px;
+    font-weight:900;
+  }
+
+  .tile i{
+    width:26px;
+    height:26px;
+    border-radius:9px;
+    display:grid;
+    place-items:center;
+    font-style:normal;
+    color:#fff;
+    background:var(--teal);
+    font-weight:900;
+  }
+
+  .keyboard{
+    margin-top:11px;
+    border-radius:18px;
+    background:#d7cdbd;
+    padding:8px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:6px;
+  }
+
+  .key{
+    aspect-ratio:1.18;
+    border-radius:10px;
+    background:#fff7ea;
+    display:grid;
+    place-items:center;
+    font-size:14px;
+    font-weight:900;
+    color:#48392b;
+  }
+
+  .key.orange{background:var(--orange);color:#fff}
+
+  .kana-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+    margin-top:16px;
+  }
+
+  .kana{
+    aspect-ratio:1;
+    border-radius:11px;
+    background:rgba(79,154,143,.15);
+    display:grid;
+    place-items:center;
+    color:var(--deep);
+    font-weight:900;
+    font-size:18px;
+  }
+
+  .kana.hot{background:var(--teal);color:#fff}
+  .atlas-map{
+    margin-top:15px;
+    height:92px;
+    position:relative;
+  }
+
+  .node{
+    position:absolute;
+    width:42px;
+    height:42px;
+    border-radius:15px;
+    display:grid;
+    place-items:center;
+    color:#fff;
+    font-weight:900;
+    background:var(--teal);
+    box-shadow:0 5px 0 rgba(39,95,89,.18);
+  }
+
+  .node.n1{left:8px;top:20px}
+  .node.n2{left:84px;top:2px;background:var(--orange)}
+  .node.n3{left:158px;top:34px;background:var(--brick)}
+  .node.n4{left:88px;top:62px;background:var(--gold)}
+  .line{
+    position:absolute;
+    height:3px;
+    background:rgba(65,52,41,.14);
+    transform-origin:left center;
+    border-radius:4px;
+  }
+  .line.a{left:48px;top:41px;width:55px;transform:rotate(-18deg)}
+  .line.b{left:124px;top:30px;width:55px;transform:rotate(24deg)}
+  .line.c{left:110px;top:73px;width:52px;transform:rotate(-18deg)}
+
+  .exam-mini{
+    margin-top:14px;
+    display:grid;
+    gap:9px;
+  }
+
+  .exam-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px;
+    border-radius:15px;
+    background:rgba(255,249,238,.72);
+  }
+
+  .exam-row i{
+    width:32px;
+    height:32px;
+    border-radius:11px;
+    background:var(--brick);
+    color:#fff;
+    display:grid;
+    place-items:center;
+    font-style:normal;
+    font-weight:900;
+  }
+
+  .exam-row b{font-size:13px}
+  .exam-row span{display:block;font-size:11px;color:var(--muted);font-weight:700;margin-top:1px}
+
+  .math-card{
+    margin-top:12px;
+    padding:15px;
+    border-radius:18px;
+    background:#2f2a22;
+    color:#fff;
+  }
+
+  .math-card .calc{
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:-1px;
+  }
+
+  .math-card .hint{
+    margin-top:9px;
+    color:#d9cbb8;
+    font-size:12px;
+    line-height:1.45;
+    font-weight:700;
+  }
+
+  .section{
+    margin-top:56px;
+    position:relative;
+  }
+
+  .section h2{
+    font-size:clamp(28px,4vw,44px);
+    line-height:1;
+    letter-spacing:-1.5px;
+    font-weight:900;
+    margin-bottom:18px;
+  }
+
+  .updates{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:18px;
+  }
+
+  .update-card,.contact-card{
+    position:relative;
+    overflow:hidden;
+    padding:26px;
+    border-radius:30px;
+    background:rgba(255,249,238,.78);
+    border:1px solid rgba(216,203,187,.9);
+    box-shadow:var(--shadow);
+  }
+
+  .update-card strong{
+    display:inline-flex;
+    margin-bottom:14px;
+    padding:8px 12px;
+    border-radius:999px;
+    background:rgba(211,129,58,.13);
+    color:var(--orange2);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+  }
+
+  .update-card h3{
+    font-size:30px;
+    line-height:1.05;
+    letter-spacing:-1px;
+    font-weight:900;
+    max-width:620px;
+  }
+
+  .update-card p,.contact-card p{
+    margin-top:12px;
+    color:var(--muted);
+    line-height:1.65;
+    font-weight:650;
+  }
+
+  .tiny-art{
+    position:absolute;
+    right:24px;
+    bottom:20px;
+    width:130px;
+    height:130px;
+    border-radius:34px;
+    background:var(--orange);
+    opacity:.92;
+    transform:rotate(7deg);
+  }
+
+  .tiny-art:before{
+    content:"あ";
+    position:absolute;
+    inset:0;
+    display:grid;
+    place-items:center;
+    color:#fff;
+    font-size:76px;
+    font-weight:900;
+  }
+
+  .mini-timeline{
+    display:grid;
+    gap:12px;
+  }
+
+  .timeline-row{
+    padding:17px;
+    border-radius:22px;
+    background:var(--paper);
+    border:1px solid var(--line);
+  }
+
+  .timeline-row b{
+    display:block;
+    font-size:15px;
+    font-weight:900;
+  }
+
+  .timeline-row span{
+    display:block;
+    margin-top:4px;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.5;
+    font-weight:650;
+  }
+
+  .contact-card{
+    margin-top:18px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    gap:20px;
+  }
+
+  .contact-card h2{margin:0}
+  .contact-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:flex-end;
+  }
+
+  .footer{
+    margin-top:34px;
+    color:var(--muted);
+    font-size:12px;
+    font-weight:700;
+    text-align:center;
+  }
+
+  .float-note{
+    position:fixed;
+    pointer-events:none;
+    z-index:0;
+    color:rgba(43,37,31,.06);
+    font-size:120px;
+    font-weight:900;
+    line-height:1;
+  }
+
+  .float-note.a{left:3vw;bottom:10vh;transform:rotate(-12deg)}
+  .float-note.b{right:3vw;top:20vh;transform:rotate(14deg)}
+
+  [data-lang="en"] .tr{display:none!important}
+  [data-lang="tr"] .en{display:none!important}
+
+  @media (max-width:940px){
     .hero{
-      display:grid;
-      grid-template-columns:1.02fr .98fr;
-      gap:36px;
-      align-items:center;
-      padding:76px 0 54px;
-      min-height:640px;
+      grid-template-columns:1fr;
+      min-height:auto;
+      padding-bottom:26px;
     }
 
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      background:rgba(255,250,240,.72);
-      border:1px solid var(--line);
-      border-radius:999px;
-      padding:8px 12px;
-      font-size:12px;
-      font-weight:800;
-      color:var(--deep);
-      box-shadow:0 12px 22px -20px rgba(32,28,21,.5);
-    }
-    .dot{
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:var(--orange);
-      box-shadow:0 0 0 6px rgba(237,133,22,.12);
-    }
-
-    h1{
-      font-size:clamp(44px,7vw,86px);
-      line-height:.92;
-      letter-spacing:-.08em;
-      margin:20px 0 18px;
-      max-width:760px;
-    }
-    .lead{
-      font-size:clamp(17px,2vw,22px);
-      line-height:1.55;
-      color:var(--muted);
-      max-width:600px;
-    }
-
-    .hero-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:30px;
-    }
-    .pill-btn{
-      border:none;
-      cursor:pointer;
-      border-radius:24px;
-      padding:15px 20px;
-      font-weight:800;
-      background:var(--ink);
-      color:var(--paper);
-      box-shadow:0 18px 35px -22px rgba(0,0,0,.65),inset 0 1px 1px rgba(255,255,255,.2);
-      transition:transform .28s var(--soft),box-shadow .28s var(--soft);
-    }
-    .pill-btn.secondary{
-      background:var(--paper);
-      color:var(--ink);
-      border:1px solid var(--line);
-    }
-    .pill-btn:hover{
-      transform:translateY(-3px);
-      box-shadow:0 24px 42px -24px rgba(0,0,0,.7),inset 0 1px 1px rgba(255,255,255,.24);
-    }
-    .pill-btn:active{transform:translateY(1px) scale(.985)}
-
-    .road-visual{
-      position:relative;
-      min-height:560px;
-      border-radius:46px;
-      background:linear-gradient(145deg,rgba(255,250,240,.78),rgba(232,222,205,.82));
-      border:1px solid rgba(216,203,187,.75);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-      padding:28px;
-    }
-    .road-visual:before{
-      content:"";
-      position:absolute;
-      inset:-80px -40px;
-      background:
-        radial-gradient(circle at 20% 15%, rgba(255,255,255,.8), transparent 26%),
-        radial-gradient(circle at 90% 72%, rgba(169,216,203,.35), transparent 32%);
-      pointer-events:none;
-    }
-
-    .track{
-      position:absolute;
-      left:50%;
-      top:-30px;
-      bottom:-30px;
-      width:154px;
-      transform:translateX(-50%);
-      opacity:.95;
-    }
-    .track path{
-      fill:none;
-      stroke-linecap:round;
-      filter:drop-shadow(0 9px 4px rgba(32,28,21,.11));
-    }
-    .track .t1{stroke:var(--deep);stroke-width:18}
-    .track .t2{stroke:var(--teal);stroke-width:18;transform:translateX(30px)}
-    .track .t3{stroke:var(--orange);stroke-width:18;transform:translateX(-30px)}
-
-    .stop{
-      position:relative;
-      display:grid;
-      grid-template-columns:68px 1fr;
-      gap:14px;
-      align-items:center;
-      background:rgba(255,250,240,.9);
-      border:1px solid rgba(216,203,187,.8);
-      border-radius:28px;
-      padding:16px 18px;
-      margin:30px 0;
-      box-shadow:0 24px 44px -34px rgba(32,28,21,.75),inset 0 1px 1px rgba(255,255,255,.72);
-      transition:.35s var(--soft);
-    }
-    .stop:hover{
-      transform:translateY(-5px);
-      box-shadow:0 34px 58px -36px rgba(32,28,21,.85),inset 0 1px 1px rgba(255,255,255,.72);
-    }
-    .stop:nth-child(2){margin-right:70px}
-    .stop:nth-child(3){margin-left:64px}
-    .stop:nth-child(4){margin-right:42px}
-    .stop:nth-child(5){margin-left:72px}
-
-    .num{
-      width:52px;
-      height:52px;
-      border-radius:20px;
-      display:grid;
-      place-items:center;
-      background:var(--accent);
-      color:white;
-      font-weight:900;
-      font-size:18px;
-      box-shadow:inset 0 1px 1px rgba(255,255,255,.45),inset 0 -4px 10px rgba(0,0,0,.16),0 12px 22px -15px rgba(0,0,0,.8);
-    }
-    .stop h3{font-size:18px;letter-spacing:-.04em}
-    .stop p{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.4}
-    .tag{
-      display:inline-flex;
-      margin-top:9px;
-      font-size:11px;
-      font-weight:900;
-      letter-spacing:.04em;
-      text-transform:uppercase;
-      color:color-mix(in srgb,var(--accent) 65%,#17110d);
-      background:color-mix(in srgb,var(--accent) 16%,#fffaf0);
-      border:1px solid color-mix(in srgb,var(--accent) 22%,#d8cbbb);
-      padding:5px 9px;
-      border-radius:999px;
-    }
-
-    section{padding:54px 0}
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:24px;
-      margin-bottom:22px;
-    }
-    h2{
-      font-size:clamp(30px,4vw,52px);
-      letter-spacing:-.07em;
-      line-height:1;
-    }
-    .section-head p{
-      max-width:440px;
-      color:var(--muted);
-      line-height:1.55;
-      font-size:15px;
-    }
-
-    .app-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:18px;
-    }
-    .app-card{
-      position:relative;
-      min-height:310px;
-      border-radius:34px;
-      padding:22px;
-      overflow:hidden;
-      background:linear-gradient(145deg,var(--paper),var(--paper-2));
-      border:1px solid rgba(216,203,187,.78);
-      box-shadow:var(--shadow);
-      transition:.35s var(--soft);
-    }
-    .app-card:hover{
-      transform:translateY(-7px);
-      box-shadow:0 40px 74px -44px rgba(32,28,21,.75);
-    }
-    .app-card:before{
-      content:"";
-      position:absolute;
-      inset:auto -50px -52px auto;
-      width:160px;
-      height:160px;
-      border-radius:50%;
-      background:var(--accent);
-      opacity:.18;
-      filter:blur(1px);
-    }
-    .app-icon{
-      width:68px;
-      height:68px;
-      border-radius:26px;
-      background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 22%,#fffaf0),color-mix(in srgb,var(--accent) 56%,#f8f0e5));
-      box-shadow:inset 0 2px 2px rgba(255,255,255,.8),inset 0 -6px 16px rgba(0,0,0,.12),0 18px 30px -22px rgba(0,0,0,.8);
-      display:grid;
-      place-items:center;
-      margin-bottom:18px;
-      position:relative;
-    }
-    .app-icon:after{
-      content:"";
-      width:31px;
-      height:31px;
-      border-radius:14px;
-      background:var(--accent);
-      box-shadow:0 0 22px color-mix(in srgb,var(--accent) 65%,transparent);
-    }
-    .app-card h3{
-      font-size:24px;
-      letter-spacing:-.06em;
-      margin-bottom:8px;
-    }
-    .app-card p{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.55;
-    }
-
-    .card-links{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      margin-top:16px;
-      position:relative;
-      z-index:2;
-    }
-    .card-links a{
-      font-size:12px;
-      font-weight:800;
-      color:var(--deep);
-      background:rgba(255,250,240,.78);
-      border:1px solid rgba(216,203,187,.82);
-      border-radius:999px;
-      padding:8px 10px;
-      transition:.25s var(--soft);
-    }
-    .card-links a:hover{
-      background:#fff;
-      transform:translateY(-2px);
-    }
-
-    .meta{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      position:absolute;
-      left:22px;
-      right:22px;
-      bottom:20px;
-    }
-    .meta span{
-      font-size:11px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.05em;
-      border-radius:999px;
-      padding:7px 10px;
-      background:rgba(255,250,240,.72);
-      border:1px solid rgba(216,203,187,.7);
-    }
-
-    .updates{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-    }
-    .news{
-      border-radius:30px;
-      background:rgba(255,250,240,.74);
-      border:1px solid rgba(216,203,187,.75);
-      padding:20px;
-      box-shadow:0 20px 48px -42px rgba(32,28,21,.8);
-      min-height:180px;
-    }
-    .news small{
-      font-size:11px;
-      text-transform:uppercase;
-      font-weight:900;
-      letter-spacing:.08em;
-      color:var(--orange);
-    }
-    .news h3{
-      font-size:20px;
-      letter-spacing:-.05em;
-      margin:12px 0 8px;
-    }
-    .news p{
-      font-size:14px;
-      color:var(--muted);
-      line-height:1.55;
-    }
-
-    .community{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:18px;
-      align-items:stretch;
-    }
-    .panel{
-      border-radius:36px;
-      background:var(--ink);
-      color:var(--paper);
-      padding:30px;
-      box-shadow:0 34px 70px -42px rgba(0,0,0,.7);
-      position:relative;
-      overflow:hidden;
-    }
-    .panel:after{
-      content:"";
-      position:absolute;
-      right:-40px;
-      bottom:-40px;
-      width:190px;
-      height:190px;
-      border-radius:50%;
-      background:rgba(237,133,22,.22);
-      filter:blur(2px);
-    }
-    .panel p{
-      color:rgba(255,250,240,.72);
-      line-height:1.6;
-      margin-top:10px;
+    .stage{
+      height:760px;
       max-width:560px;
+      width:100%;
+      margin:0 auto;
     }
 
-    .email-box{
-      border-radius:36px;
-      background:linear-gradient(145deg,var(--paper),var(--paper-2));
-      border:1px solid var(--line);
-      padding:28px;
-      box-shadow:var(--shadow);
-    }
-    .email-box p{
-      color:var(--muted);
-      line-height:1.55;
-      margin-top:8px;
-    }
-    .email-box a{
-      display:inline-flex;
-      margin-top:18px;
-      background:var(--paper);
-      border:1px solid var(--line);
-      border-radius:999px;
-      padding:13px 16px;
-      font-weight:900;
-      box-shadow:0 18px 30px -26px rgba(32,28,21,.8);
-    }
+    .jf{right:50%;transform:translateX(50%) rotate(2deg);top:0}
+    .atlas{left:4px;top:430px}
+    .exam{left:auto;right:8px;bottom:10px}
+    .math{right:auto;left:48px;bottom:164px}
+    .updates{grid-template-columns:1fr}
+    .contact-card{grid-template-columns:1fr}
+    .contact-actions{justify-content:flex-start}
+  }
 
-    footer{
-      padding:36px 0;
-      color:var(--muted);
-      font-size:13px;
-      display:flex;
-      justify-content:space-between;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
-    .float{animation:float 7s ease-in-out infinite}
-    .float2{animation:float 8s ease-in-out infinite reverse}
-    @keyframes float{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-10px)}
-    }
-
-    @media(max-width:920px){
-      .hero{grid-template-columns:1fr;min-height:unset;padding-top:46px}
-      .road-visual{min-height:540px}
-      .app-grid{grid-template-columns:repeat(2,1fr)}
-      .updates{grid-template-columns:1fr}
-      .community{grid-template-columns:1fr}
-      .section-head{display:block}
-      .section-head p{margin-top:12px}
-    }
-
-    @media(max-width:560px){
-      .page{padding:16px 14px 40px}
-      .topbar{position:relative;top:auto;border-radius:24px;align-items:flex-start}
-      .brand span:last-child{display:none}
-      nav{gap:2px}
-      nav a{font-size:12px;padding:9px 10px}
-      .hero{padding:40px 0 34px}
-      .hero-actions{display:grid}
-      .pill-btn{text-align:center}
-      .road-visual{border-radius:36px;padding:18px;min-height:540px}
-      .track{width:125px;left:49%}
-      .track .t1,.track .t2,.track .t3{stroke-width:14}
-      .track .t2{transform:translateX(24px)}
-      .track .t3{transform:translateX(-24px)}
-      .stop{grid-template-columns:50px 1fr;border-radius:24px;padding:13px;margin:28px 0}
-      .stop:nth-child(n){margin-left:0;margin-right:0}
-      .num{width:42px;height:42px;border-radius:16px}
-      .app-grid{grid-template-columns:1fr}
-      .app-card{min-height:280px}
-      .panel,.email-box{border-radius:28px;padding:22px}
-      footer{display:block}
-      footer span{display:block;margin-bottom:8px}
-    }
-  </style>
+  @media (max-width:620px){
+    .page{padding:16px 14px 44px}
+    .topbar{top:8px;border-radius:20px}
+    .nav a{display:none}
+    .brand span{display:none}
+    .hero-copy{padding-top:16px}
+    h1{letter-spacing:-2px}
+    .lead{font-size:16px}
+    .stage{height:900px}
+    .float-card{position:absolute}
+    .jf{width:100%;max-width:370px;right:50%;top:0}
+    .atlas{width:48%;left:0;top:500px}
+    .exam{width:50%;right:0;top:520px;bottom:auto}
+    .math{width:58%;left:50%;transform:translateX(-50%) rotate(-4deg);bottom:0}
+    .phone{width:200px;height:318px}
+    .update-card,.contact-card{padding:22px}
+    .tiny-art{position:relative;right:auto;bottom:auto;margin-top:18px;width:92px;height:92px}
+    .tiny-art:before{font-size:54px}
+  }
+</style>
 </head>
-<body>
+
+<body data-lang="tr">
+  <div class="float-note a">あ</div>
+  <div class="float-note b">カ</div>
+
   <main class="page">
     <header class="topbar">
-      <a class="brand" href="#top" aria-label="Ana sayfa">
-        <span class="brand-mark"></span>
-        <span>Zeynep Kaya Apps</span>
+      <a class="brand" href="/">
+        <div class="mark">ZK</div>
+        <div>
+          <b>Zeynep Kaya Apps</b>
+          <span class="tr">oyunlaştırılmış öğrenme araçları</span>
+          <span class="en">playful learning tools</span>
+        </div>
       </a>
-      <nav>
-        <a href="#apps">Uygulamalar</a>
-        <a href="#manifesto">Manifesto</a>
-        <a href="#updates">Güncellemeler</a>
-        <a href="#contact">İletişim</a>
+
+      <nav class="nav">
+        <a href="#updates">
+          <span class="tr">Güncellemeler</span>
+          <span class="en">Updates</span>
+        </a>
+        <a href="#contact">
+          <span class="tr">İletişim</span>
+          <span class="en">Contact</span>
+        </a>
+        <div class="lang" aria-label="Language">
+          <button id="trBtn" class="on" type="button" onclick="setLang('tr')">TR</button>
+          <button id="enBtn" type="button" onclick="setLang('en')">EN</button>
+        </div>
       </nav>
     </header>
 
-    <section class="hero" id="top">
-      <div>
-        <div class="eyebrow"><span class="dot"></span> Eğitim uygulamaları · yapım aşamasında</div>
-        <h1>Küçük, sakin ve işe yarayan öğrenme araçları.</h1>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span class="tr">Bağımsız uygulama atölyesi</span>
+          <span class="en">Independent app studio</span>
+        </div>
+
+        <h1>
+          <span class="tr">Sıkıcı şeyleri biraz daha oynanabilir hale getirme denemeleri.</span>
+          <span class="en">Small attempts to make serious learning feel more playable.</span>
+        </h1>
+
         <p class="lead">
-          MatReflex, Japanese Flick, Japanese Atlas ve ileride eklenecek yeni uygulamalar için ana durak.
-          Ürünler tamamlandıkça bu sayfa gerçek uygulama linkleri, destek sayfaları ve kısa güncellemelerle genişleyecek.
+          <span class="tr">
+            Japanese Flick ile başlayan bu küçük uygulama ailesi; Japonca yazı sistemleri, zihinsel matematik ve sınav hazırlığı gibi yorucu görünen konuları daha hafif, dokunsal ve oyunlu bir öğrenme deneyimine çevirmeyi amaçlıyor.
+          </span>
+          <span class="en">
+            Starting with Japanese Flick, this small family of apps explores a softer, more tactile way to practice Japanese scripts, mental math, and exam-prep skills.
+          </span>
         </p>
-        <div class="hero-actions">
-          <a class="pill-btn" href="/matreflex/">MatReflex'i aç</a>
-          <a class="pill-btn secondary" href="#contact">İletişim</a>
+
+        <div class="manifesto">
+          <span class="tr">
+            Hayatı biraz oyun gibi görmeyi seviyorum. Zor ve sıkıcı görünen şeyler; küçük görevler, kartlar, ritimler, seviyeler ve görsel ipuçlarıyla daha yaklaşılabilir olabilir. Bu sayfadaki uygulamalar da bu fikrin sade, bağımsız ve iddiasız denemeleri.
+          </span>
+          <span class="en">
+            I like looking at life through a slightly game-like lens. Difficult or boring subjects can become more approachable through small missions, cards, rhythm, levels, and visual cues. The apps here are simple independent experiments around that idea.
+          </span>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn primary" href="/japanese-flick">
+            <span class="tr">Japanese Flick sayfası</span>
+            <span class="en">Japanese Flick page</span>
+            <span>→</span>
+          </a>
+          <a class="btn secondary" href="#updates">
+            <span class="tr">Çıkış bilgisi</span>
+            <span class="en">Release info</span>
+          </a>
         </div>
       </div>
 
-      <div class="road-visual" aria-label="Uygulama durakları görseli">
-        <svg class="track" viewBox="0 0 160 650" preserveAspectRatio="none" aria-hidden="true">
-          <path class="t1" d="M74 -20 C74 80 28 105 72 180 S130 286 74 350 S34 470 82 540 S92 650 92 690" />
-          <path class="t2" d="M74 -20 C74 80 28 105 72 180 S130 286 74 350 S34 470 82 540 S92 650 92 690" />
-          <path class="t3" d="M74 -20 C74 80 28 105 72 180 S130 286 74 350 S34 470 82 540 S92 650 92 690" />
-        </svg>
+      <div class="stage" id="parallaxStage">
+        <article class="float-card jf" data-depth="18">
+          <div class="card-head">
+            <span class="badge">Beta</span>
+            <span class="dots"><i></i><i></i><i></i></span>
+          </div>
+          <div class="card-body">
+            <h2>Japanese Flick</h2>
+            <p class="tr">
+              Hiragana ve Katakana’yı, Japonca telefon klavyesindeki flick hareketleriyle pratik et. Harfi gör, yönünü bul, yaz ve tekrar et.
+            </p>
+            <p class="en">
+              Practice Hiragana and Katakana through Japanese phone-style flick typing. See the kana, find the direction, type, and repeat.
+            </p>
 
-        <div class="stop float" style="--accent:var(--teal)">
-          <div class="num">01</div>
-          <div>
+            <div class="phone">
+              <div class="screen-shot">
+                <div class="app-hero">
+                  <b>Japanese Flick</b>
+                  <div class="flick-icon">
+                    <span class="u"></span><span class="d"></span><span class="l"></span><span class="r"></span>
+                    <div class="center"></div>
+                  </div>
+                </div>
+
+                <div class="tiles">
+                  <div class="tile"><i>あ</i><span>Hiragana</span></div>
+                  <div class="tile"><i>カ</i><span>Katakana</span></div>
+                  <div class="tile"><i>⚡</i><span>Dojo</span></div>
+                  <div class="tile"><i>💬</i><span>Chat</span></div>
+                </div>
+
+                <div class="keyboard">
+                  <div class="key">あ</div><div class="key">か</div><div class="key">さ</div><div class="key">⌫</div>
+                  <div class="key">た</div><div class="key">な</div><div class="key">は</div><div class="key">空</div>
+                  <div class="key">ま</div><div class="key">や</div><div class="key">ら</div><div class="key orange">変</div>
+                </div>
+              </div>
+            </div>
+
+            <a class="mini-link" href="/japanese-flick">
+              <span class="tr">Yakında</span>
+              <span class="en">Coming soon</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="float-card atlas" data-depth="-10">
+          <div class="card-head">
+            <span class="badge teal">Atlas</span>
+            <span class="dots"><i></i><i></i><i></i></span>
+          </div>
+          <div class="card-body">
+            <h3>Japanese Kanji Atlas</h3>
+            <p class="tr">Kanji’yi tek tek ezber listesi gibi değil, parçalar ve anlam aileleriyle keşfetmek için.</p>
+            <p class="en">Explore kanji through parts, meaning families, and visual relationships instead of flat memorization.</p>
+            <div class="atlas-map">
+              <div class="line a"></div><div class="line b"></div><div class="line c"></div>
+              <div class="node n1">日</div>
+              <div class="node n2">本</div>
+              <div class="node n3">語</div>
+              <div class="node n4">人</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="float-card exam" data-depth="12">
+          <div class="card-head">
+            <span class="badge brick">
+              <span class="tr">Anne girişimi</span>
+              <span class="en">Parent-led</span>
+            </span>
+            <span class="dots"><i></i><i></i><i></i></span>
+          </div>
+          <div class="card-body">
+            <h3>LGS–YKS Tools</h3>
+            <p class="tr">Sınav hazırlığını daha izlenebilir, küçük parçalara bölünmüş ve daha az bunaltıcı hale getirme denemesi.</p>
+            <p class="en">A calmer way to break exam prep into visible, manageable, less overwhelming pieces.</p>
+
+            <div class="exam-mini">
+              <div class="exam-row"><i>1</i><div><b>Mini görev</b><span>küçük kazanım</span></div></div>
+              <div class="exam-row"><i>2</i><div><b>Takip</b><span>ne kaldı, ne bitti</span></div></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="float-card math" data-depth="-16">
+          <div class="card-head">
+            <span class="badge gold">MatReflex</span>
+            <span class="dots"><i></i><i></i><i></i></span>
+          </div>
+          <div class="card-body">
             <h3>MatReflex</h3>
-            <p>Zihinsel matematik için yöntem refleksi.</p>
-            <span class="tag">beta</span>
+            <p class="tr">Zihinsel matematik için refleks, yöntem ve kısa antrenman fikri.</p>
+            <p class="en">Mental math practice built around reflex, method, and short training loops.</p>
+            <div class="math-card">
+              <div class="calc">48 × 25</div>
+              <div class="hint">
+                <span class="tr">Önce 100’e düşün. Sonra böl.</span>
+                <span class="en">Think in 100s first. Then divide.</span>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="stop float2" style="--accent:var(--orange)">
-          <div class="num">02</div>
-          <div>
-            <h3>Japanese Flick</h3>
-            <p>Japonca telefon klavyesini öğrenme aracı.</p>
-            <span class="tag">prototype</span>
-          </div>
-        </div>
-
-        <div class="stop float" style="--accent:var(--blue)">
-          <div class="num">03</div>
-          <div>
-            <h3>Japanese Atlas</h3>
-            <p>Kana, kanji ve kelime haritası.</p>
-            <span class="tag">planning</span>
-          </div>
-        </div>
-
-        <div class="stop float2" style="--accent:var(--mustard)">
-          <div class="num">04</div>
-          <div>
-            <h3>LGS / YKS Tools</h3>
-            <p>Sınav hazırlığı için küçük öğrenme araçları.</p>
-            <span class="tag">concept</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="apps">
-      <div class="section-head">
-        <h2>Uygulamalar</h2>
-        <p>Yayınlanan ürünler ve mağaza hazırlığı için gereken destek, gizlilik ve kullanım bağlantıları burada duracak.</p>
-      </div>
-
-      <div class="app-grid">
-        <article class="app-card" style="--accent:var(--teal)">
-          <div class="app-icon"></div>
-          <h3>MatReflex</h3>
-          <p>Zihinden matematik için yöntem refleksi geliştiren, hesapsız ve yerel çalışan eğitim uygulaması.</p>
-          <div class="card-links">
-            <a href="/matreflex/">Uygulamayı aç</a>
-            <a href="/matreflex/support/">Destek</a>
-            <a href="/matreflex/privacy/">Gizlilik</a>
-            <a href="/matreflex/terms/">Koşullar</a>
-            <a href="/matreflex/about/">Hakkında</a>
-          </div>
-          <div class="meta"><span>PWA</span><span>Beta</span></div>
-        </article>
-
-        <article class="app-card" style="--accent:var(--orange)">
-          <div class="app-icon"></div>
-          <h3>Japanese Flick</h3>
-          <p>Japonca telefon klavyesini küçük görevler ve kısa tekrarlarla öğrenme aracı.</p>
-          <div class="meta"><span>Prototype</span></div>
-        </article>
-
-        <article class="app-card" style="--accent:var(--blue)">
-          <div class="app-icon"></div>
-          <h3>Japanese Atlas</h3>
-          <p>Kana, kanji ve kelimeleri görsel bir öğrenme haritası içinde birleştiren çalışma alanı.</p>
-          <div class="meta"><span>Planning</span></div>
-        </article>
-
-        <article class="app-card" style="--accent:var(--mustard)">
-          <div class="app-icon"></div>
-          <h3>LGS / YKS Tools</h3>
-          <p>Sınav hazırlığı için sade, görev odaklı ve takip edilebilir mini öğrenme araçları.</p>
-          <div class="meta"><span>Concept</span></div>
         </article>
       </div>
     </section>
 
-    <section id="manifesto">
-      <div class="section-head">
-        <h2>Manifesto</h2>
-        <p>Bu uygulamaların ortak dili: küçük araçlar, sıcak yüzeyler, sakin ilerleme ve kullanıcıyı yormayan etkileşim.</p>
-      </div>
+    <section class="section" id="updates">
+      <h2>
+        <span class="tr">Güncellemeler</span>
+        <span class="en">Updates</span>
+      </h2>
 
       <div class="updates">
-        <article class="news">
-          <small>Arayüz</small>
-          <h3>Fiziksel his</h3>
-          <p>Kartlar, çekmeceler, yumuşak gölgeler ve hafif hareketler. Ekranda soyut bir panel değil, elde tutulur gibi duran küçük öğrenme nesneleri.</p>
+        <article class="update-card">
+          <strong>
+            <span class="tr">Çok yakında</span>
+            <span class="en">Coming soon</span>
+          </strong>
+          <h3>
+            <span class="tr">Japanese Flick, App Store ve Google Play için hazırlanıyor.</span>
+            <span class="en">Japanese Flick is being prepared for the App Store and Google Play.</span>
+          </h3>
+          <p>
+            <span class="tr">
+              Hedef çıkış: <b>Ağustos 2026</b>. İlk sürüm; Hiragana, Katakana, flick klavye pratiği, temel kelimeler, telaffuz sesleri ve küçük oyun modlarına odaklanacak.
+            </span>
+            <span class="en">
+              Target release: <b>August 2026</b>. The first version will focus on Hiragana, Katakana, flick keyboard practice, core words, pronunciation audio, and small game modes.
+            </span>
+          </p>
+          <div class="tiny-art"></div>
         </article>
 
-        <article class="news">
-          <small>Öğrenme</small>
-          <h3>Baskısız ilerleme</h3>
-          <p>Ceza, panik ve hız yarışı yerine kısa tekrarlar, yöntem fark etme ve “bunu yapabilirim” duygusu.</p>
-        </article>
-
-        <article class="news">
-          <small>Ürün</small>
-          <h3>Az ama iyi</h3>
-          <p>Her uygulama tek bir işi iyi yapmalı. Gereksiz hesap sistemi, karmaşık menüler ve dikkat dağıtan kalabalık yok.</p>
-        </article>
+        <aside class="mini-timeline">
+          <div class="timeline-row">
+            <b>Japanese Flick</b>
+            <span class="tr">Beta sürüm hazırlanıyor. Sesler, klavye pratiği ve oyun modları test ediliyor.</span>
+            <span class="en">Beta is in preparation. Audio, keyboard practice, and game modes are being tested.</span>
+          </div>
+          <div class="timeline-row">
+            <b>Japanese Kanji Atlas</b>
+            <span class="tr">Kanji aileleri, parçalar ve görsel atlas yapısı için içerik düzenleniyor.</span>
+            <span class="en">Kanji families, components, and visual atlas structure are being organized.</span>
+          </div>
+          <div class="timeline-row">
+            <b>LGS–YKS / MatReflex</b>
+            <span class="tr">Sınav ve matematik araçları, daha sonra aynı oyunlaştırılmış öğrenme diliyle ilerleyecek.</span>
+            <span class="en">Exam-prep and math tools will follow later with the same playful learning language.</span>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <section id="updates">
-      <div class="section-head">
-        <h2>Güncellemeler</h2>
-        <p>Uygulamalar hazır oldukça kısa haberler, sürüm notları ve gerçek bağlantılar burada listelenecek.</p>
-      </div>
+    <section class="section" id="contact">
+      <div class="contact-card">
+        <div>
+          <h2>
+            <span class="tr">İletişim</span>
+            <span class="en">Contact</span>
+          </h2>
+          <p>
+            <span class="tr">
+              Geri bildirim, iş birliği veya uygulamalarla ilgili notlar için bana ulaşabilirsin.
+            </span>
+            <span class="en">
+              For feedback, collaboration, or notes about the apps, you can reach me here.
+            </span>
+          </p>
+        </div>
 
-      <div class="updates">
-        <article class="news">
-          <small>MatReflex</small>
-          <h3>İlk web sürümü yayında</h3>
-          <p>MatReflex, destek, gizlilik ve kullanım koşulları sayfalarıyla birlikte web üzerinde test edilebilir hale geliyor.</p>
-        </article>
-
-        <article class="news">
-          <small>Product Hub</small>
-          <h3>Ana sayfa kuruluyor</h3>
-          <p>Bu sayfa, üzerinde çalışılan uygulamaları ve son durumlarını gösterecek renkli bir merkez olarak hazırlanıyor.</p>
-        </article>
-
-        <article class="news">
-          <small>Design Language</small>
-          <h3>Ortak dil oluşuyor</h3>
-          <p>Mat, sıcak, katmanlı ve hafif kıpırdayan bir arayüz dili bütün uygulamalar için temel alınacak.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="community" id="contact">
-      <div class="panel">
-        <h2>İletişim</h2>
-        <p>
-          Uygulamalar, destek, iş birliği veya genel notlar için buradan ulaşabilirsin.
-          MatReflex ile ilgili sorunlarda destek sayfası da kullanılabilir.
-        </p>
-      </div>
-
-      <div class="email-box">
-        <h2>Mail</h2>
-        <p>Genel iletişim ve uygulama desteği için:</p>
-        <a href="mailto:hello@zeynepkaya.app">hello@zeynepkaya.app</a>
+        <div class="contact-actions">
+          <a class="btn primary" href="mailto:hello@zeynepkaya.app">
+            hello@zeynepkaya.app
+          </a>
+          <a class="btn secondary" href="https://zeynepkaya.app" target="_blank" rel="noopener">
+            zeynepkaya.app
+          </a>
+        </div>
       </div>
     </section>
 
-    <footer>
-      <span>© 2026 Zeynep Kaya Apps</span>
-      <span>Small educational apps, built one by one.</span>
+    <footer class="footer">
+      © <span id="year"></span> Zeynep Kaya Apps · Japanese Flick · Japanese Kanji Atlas · MatReflex
     </footer>
   </main>
+
+<script>
+  function setLang(lang){
+    document.body.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang);
+    localStorage.setItem('zk_lang', lang);
+
+    document.getElementById('trBtn').classList.toggle('on', lang === 'tr');
+    document.getElementById('enBtn').classList.toggle('on', lang === 'en');
+
+    document.title = lang === 'tr'
+      ? 'Zeynep Kaya Apps'
+      : 'Zeynep Kaya Apps';
+  }
+
+  const savedLang = localStorage.getItem('zk_lang');
+  if(savedLang === 'en' || savedLang === 'tr'){
+    setLang(savedLang);
+  }
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const stage = document.getElementById('parallaxStage');
+  const cards = Array.from(document.querySelectorAll('[data-depth]'));
+
+  function parallax(x, y){
+    const rect = stage.getBoundingClientRect();
+    const cx = (x - rect.left) / rect.width - .5;
+    const cy = (y - rect.top) / rect.height - .5;
+
+    cards.forEach(card => {
+      const d = Number(card.dataset.depth || 0);
+      const base = card.classList.contains('jf') ? 'rotate(2deg)' :
+                   card.classList.contains('atlas') ? 'rotate(-7deg)' :
+                   card.classList.contains('exam') ? 'rotate(5deg)' :
+                   card.classList.contains('math') ? 'rotate(-5deg)' : '';
+
+      if(window.innerWidth <= 620 && card.classList.contains('math')){
+        card.style.transform = `translateX(-50%) rotate(-4deg) translate3d(${cx*d}px, ${cy*d}px, 0)`;
+      } else if(window.innerWidth <= 940 && card.classList.contains('jf')){
+        card.style.transform = `translateX(50%) rotate(2deg) translate3d(${cx*d}px, ${cy*d}px, 0)`;
+      } else {
+        card.style.transform = `${base} translate3d(${cx*d}px, ${cy*d}px, 0)`;
+      }
+    });
+  }
+
+  if(stage){
+    stage.addEventListener('pointermove', e => parallax(e.clientX, e.clientY));
+    stage.addEventListener('pointerleave', () => {
+      cards.forEach(card => card.style.transform = '');
+    });
+  }
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY || 0;
+      document.querySelectorAll('.float-note').forEach((el, i) => {
+        const dir = i % 2 ? -1 : 1;
+        el.style.transform = `translateY(${y * 0.04 * dir}px) rotate(${i % 2 ? 14 : -12}deg)`;
+      });
+      ticking = false;
+    });
+  }, {passive:true});
+</script>
 </body>
 </html>
