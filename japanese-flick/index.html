@@ -21,6 +21,7 @@
   --panel:#2f2a22;        /* kart */
   --panel2:#39332a;
   --line:#4a4136;
+  --glass:rgba(41,36,29,.62); --glass-line:rgba(255,255,255,.14);
   --pop:#d3813a;          /* ana vurgu (turuncu) */
   --pop-d:#bf6f2b;
   --cy:#57a99a;           /* ikincil (turkuaz) */
@@ -41,6 +42,7 @@
   --panel:#f6f2ea;        /* kart */
   --panel2:#efe9dd;
   --line:#d9d1c3;
+  --glass:rgba(255,255,255,.60); --glass-line:rgba(255,255,255,.55);
   --gold:#c1922f;--gold-ink:#8c6414;--pop-ink:#9c5217;         /* aydınlıkta okunur altın */
   --txt:#37302a;          /* koyu metin */
   --mut:#6a6155;          /* ikincil metin */
@@ -334,7 +336,7 @@ body{
   font-weight:900;font-size:13px;cursor:pointer}
 .seg button.on{background:var(--cy);color:#04221d}
 #sbMode button{flex-direction:column;gap:1px;line-height:1.15}
-#sbMode .rmj{font-size:10px;font-weight:700;opacity:.6;letter-spacing:.4px;text-transform:none}
+#sbMode .rmj{font-size:10px;font-weight:700;opacity:.6;letter-spacing:.4px;text-transform:none;margin-left:6px}
 
 /* konfeti */
 #confetti{position:absolute;inset:0;pointer-events:none;z-index:80;overflow:hidden}
@@ -663,14 +665,51 @@ body{
 .setcard.rec{box-shadow:0 0 0 3px var(--gold-ink),0 3px 12px rgba(50,35,20,.2)}
 .setcard .badge-check{position:absolute;top:7px;right:9px;font-size:14px;font-weight:900;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.22)}
 .setcard.c0{background:var(--teal)}.setcard.c1{background:var(--orange)}.setcard.c2{background:var(--brick)}.setcard.c3{background:var(--brown)}.setcard.c4{background:#a9762f}
-.mixchip{padding:9px 13px;border-radius:999px;border:1px solid var(--line);background:var(--panel2);font-weight:800;font-size:16px;cursor:pointer;font-family:var(--jp);color:var(--ink)}
+.mixchip{padding:9px 13px;border-radius:999px;border:1px solid var(--line);background:var(--panel2);font-weight:800;font-size:16px;cursor:pointer;font-family:var(--jp);color:var(--txt)}
 .mixchip.on{background:var(--teal);color:var(--on);border-color:var(--teal)}
 .dex-lvl{display:flex;justify-content:space-between;align-items:center;margin:16px 4px 8px;padding-bottom:7px;border-bottom:1px solid var(--line)}
-.dex-lvlname{font-weight:900;font-size:15px;color:var(--ink)}
+.dex-lvlname{font-weight:900;font-size:15px;color:var(--txt)}
 .dex-prog{font-size:12px;font-weight:800;color:var(--teal)}
 .dex-locked{display:flex;flex-wrap:wrap;gap:6px;margin:8px 4px 6px}
-.dex-q{width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:var(--panel2);border:1px solid var(--line);border-radius:9px;color:var(--ink);opacity:.4;font-weight:900;font-size:16px}
+.dex-q{width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:var(--panel2);border:1px solid var(--line);border-radius:9px;color:var(--txt);opacity:.4;font-weight:900;font-size:16px}
 .newword{text-align:center;color:var(--teal);font-weight:800;font-size:13px;margin-top:8px}
+.navbtn{color:var(--txt)}
+#navctrls{position:fixed;top:14px;right:14px;z-index:60;display:flex;gap:8px}
+.navbtn{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:19px;cursor:pointer;background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 3px 12px rgba(30,20,10,.14);transition:transform .1s ease}
+.navbtn:active{transform:scale(.9)}
+.dexgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px;margin:6px 0 6px}
+.dcell{aspect-ratio:1;border-radius:12px;display:grid;place-items:center;border:1px solid var(--line);padding:2px}
+.dcell.got{background:var(--teal);border-color:var(--teal);cursor:pointer;box-shadow:0 2px 8px rgba(40,28,16,.14)}
+.dcell.got .dk{color:var(--on);font-family:var(--jp);font-weight:800;font-size:15px;line-height:1.05;text-align:center;word-break:break-all;padding:3px}
+.dcell.got:active{transform:scale(.94)}
+.dcell.locked{background:var(--panel2);opacity:.5}
+.dcell.locked .dq{color:var(--txt);opacity:.55;font-weight:900;font-size:18px}
+#dexCard{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;background:rgba(20,14,8,.5);padding:20px}
+#dexCard.on{display:flex}
+.dexcard-inner{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px 24px;text-align:center;max-width:300px;position:relative;box-shadow:0 14px 44px rgba(0,0,0,.32)}
+.dexcard-x{position:absolute;top:10px;right:12px;background:none;border:none;font-size:18px;cursor:pointer;color:var(--txt);opacity:.6}
+.dexcard-k{font-family:var(--jp);font-size:52px;font-weight:800;color:var(--txt);line-height:1.1}
+.dexcard-r{color:var(--gold-ink);font-weight:800;font-size:18px;margin-top:6px}
+.dexcard-t{color:var(--txt);font-size:16px;margin-top:8px}
+#dexBanner{position:fixed;top:0;left:0;right:0;z-index:75;display:flex;justify-content:center;pointer-events:none;transform:translateY(-130%);transition:transform .35s cubic-bezier(.2,.9,.3,1.15)}
+#dexBanner.on{transform:translateY(0)}
+.dexbanner-in{margin-top:14px;background:var(--teal);color:var(--on);border-radius:16px;padding:12px 18px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 26px rgba(40,28,16,.3);max-width:92%}
+.dexbanner-ic{font-size:24px}
+.dexbanner-in b{display:block;font-size:12.5px}
+.dexbanner-in .jp{font-family:var(--jp);font-weight:800;font-size:17px}
+.badgegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:8px}
+.bg-item{text-align:center;opacity:.4;filter:grayscale(1);transition:opacity .2s,filter .2s}
+.bg-item.got{opacity:1;filter:none}
+.bg-e{width:52px;height:52px;margin:0 auto;border-radius:14px;background:var(--panel2);border:1px solid var(--line);display:grid;place-items:center;font-size:24px}
+.bg-item.got .bg-e{border-color:var(--gold-ink);box-shadow:0 0 0 3px rgba(232,189,118,.2);background:var(--panel)}
+.bg-t{font-size:11px;color:var(--txt);opacity:.85;margin-top:5px;font-weight:700}
+.flickdiag{margin:14px auto 2px;width:max-content}
+.fd-r{display:flex;gap:8px;justify-content:center;margin:4px 0}
+.fd-cell{width:54px;height:54px;border-radius:12px;display:grid;place-items:center;font-family:var(--jp);font-size:22px;font-weight:800;background:var(--panel2);border:1px solid var(--line);color:var(--txt);opacity:.5}
+.fd-cell.center{opacity:1;background:var(--panel)}
+.fd-cell.hi{opacity:1;background:var(--teal);color:var(--on);border-color:var(--teal);box-shadow:0 3px 10px rgba(40,28,16,.22)}
+.fd-cell.empty{background:transparent!important;border:none!important;opacity:0}
+.fd-hint{text-align:center;font-size:13px;color:var(--txt);opacity:.9;margin-top:10px;font-weight:800}
 </style>
 </head>
 <body>
@@ -684,16 +723,11 @@ body{
   <!-- EV -->
   <section class="screen on nf" id="s-home">
     <div class="blob a"></div><div class="blob b"></div>
-    <button class="dicttab" onclick="DictDrawer.open()" aria-label="Sözlük">📖 Sözlük</button>
     <div class="nfscroll">
       <div class="nfhead">
         <div>
           <h1 data-t="app.name">Japanese Flick</h1>
           <div class="sub" data-t="app.tagline">Japonca telefon klavyesi için parmak pratiği</div>
-        </div>
-        <div class="hactions">
-          <button class="iconbtn" data-themebtn onclick="Theme.toggle()" aria-label="Tema">🌙</button>
-          <button class="iconbtn" onclick="UI.show('s-settings')" aria-label="Ayarlar">⚙</button>
         </div>
       </div>
       <div class="statusrow">
@@ -736,6 +770,7 @@ body{
         <button class="back" onclick="UI.show('s-home')">‹</button>
         <h2 data-t="settings.title">Ayarlar</h2>
       </div>
+      <div class="sgroup"><div class="gt">Başarımlar</div><div class="badgegrid" id="badgeGrid"></div></div>
       <div class="sgroup">
         <div class="gt" data-t="settings.groups.general">Genel</div>
         <div class="slist">
@@ -877,6 +912,15 @@ body{
     </div>
   </section>
 
+  <!-- KELİME KAŞİFİ -->
+  <section class="screen nf" id="s-dex">
+    <div class="nfscroll">
+      <div class="shead"><button class="back" onclick="Game.home()">‹</button><h2>Kelime Kaşifi</h2></div>
+      <p class="muted" style="margin:0 16px 2px;font-size:13px">Serbest yazmada kelime yaz, keşfet. Her keşif burada yanar.</p>
+      <div id="dexBody" style="padding:4px 16px 30px"></div>
+    </div>
+  </section>
+
   <!-- SOHBET -->
   <section class="screen" id="s-chat">
     <div class="top">
@@ -986,6 +1030,13 @@ body{
     <div class="dd-search">🔍 <input id="dictSearch" data-tph="home.dict.search" placeholder="Kelime ara…" oninput="DictDrawer.render(this.value)"></div>
     <div id="dictDrawerList"></div>
   </aside>
+  <div id="navctrls">
+    <button class="navbtn" onclick="KanaDex.open()" aria-label="Sözlük" title="Kelime Kaşifi">📖</button>
+    <button class="navbtn" data-themebtn onclick="Theme.toggle()" aria-label="Tema" title="Tema">🌙</button>
+    <button class="navbtn" onclick="UI.show('s-settings')" aria-label="Ayarlar" title="Ayarlar">⚙</button>
+  </div>
+  <div id="dexBanner"></div>
+  <div id="dexCard"></div>
   <div id="confetti"></div>
   <div id="toast"></div>
 </div>
@@ -1237,7 +1288,7 @@ const VOCAB = [
  ['ミルク','','miruku','süt',true],
  ['サンドイッチ','','sandoicchi','sandviç',true]
 ];
-const WORDDEX = [{k:"にほんご",r:"nihongo",t:"Japonca (dil)",l:"N5"},{k:"ありがとう",r:"arigatou",t:"teşekkürler",l:"N5"},{k:"すみません",r:"sumimasen",t:"affedersiniz / pardon",l:"N5"},{k:"こんにちは",r:"konnichiwa",t:"merhaba (gündüz)",l:"N5"},{k:"おはよう",r:"ohayou",t:"günaydın",l:"N5"},{k:"おいしい",r:"oishii",t:"lezzetli",l:"N5"},{k:"すき",r:"suki",t:"sevmek / hoşlanmak",l:"N5"},{k:"えき",r:"eki",t:"istasyon",l:"N5"},{k:"みず",r:"mizu",t:"su",l:"N5"},{k:"ねこ",r:"neko",t:"kedi",l:"N5"},{k:"いぬ",r:"inu",t:"köpek",l:"N5"},{k:"やま",r:"yama",t:"dağ",l:"N5"},{k:"かわ",r:"kawa",t:"nehir",l:"N5"},{k:"ひと",r:"hito",t:"insan",l:"N5"},{k:"がくせい",r:"gakusei",t:"öğrenci",l:"N5"},{k:"なまえ",r:"namae",t:"isim",l:"N5"},{k:"カメラ",r:"kamera",t:"kamera",l:"N5"},{k:"ホテル",r:"hoteru",t:"otel",l:"N5"},{k:"コーヒー",r:"koohii",t:"kahve",l:"N5"},{k:"スマホ",r:"sumaho",t:"akıllı telefon",l:"N5"},{k:"レストラン",r:"resutoran",t:"restoran",l:"N5"},{k:"タクシー",r:"takushii",t:"taksi",l:"N5"},{k:"パン",r:"pan",t:"ekmek",l:"N5"},{k:"ジュース",r:"juusu",t:"meyve suyu",l:"N5"},{k:"おちゃ",r:"ocha",t:"çay",l:"N5"},{k:"バナナ",r:"banana",t:"muz",l:"N5"},{k:"りんご",r:"ringo",t:"elma",l:"N5"},{k:"ミルク",r:"miruku",t:"süt",l:"N5"},{k:"サンドイッチ",r:"sandoicchi",t:"sandviç",l:"N5"},{k:"とり",r:"tori",t:"kuş",l:"N5"},{k:"うま",r:"uma",t:"at",l:"N5"},{k:"うし",r:"ushi",t:"inek",l:"N5"},{k:"さかな",r:"sakana",t:"balık",l:"N5"},{k:"くま",r:"kuma",t:"ayı",l:"N5"},{k:"さる",r:"saru",t:"maymun",l:"N5"},{k:"とら",r:"tora",t:"kaplan",l:"N5"},{k:"へび",r:"hebi",t:"yılan",l:"N5"},{k:"かめ",r:"kame",t:"kaplumbağa",l:"N5"},{k:"ねずみ",r:"nezumi",t:"fare",l:"N5"},{k:"きつね",r:"kitsune",t:"tilki",l:"N5"},{k:"あり",r:"ari",t:"karınca",l:"N5"},{k:"はち",r:"hachi",t:"arı",l:"N5"},{k:"たまご",r:"tamago",t:"yumurta",l:"N5"},{k:"いちご",r:"ichigo",t:"çilek",l:"N5"},{k:"にく",r:"niku",t:"et",l:"N5"},{k:"やさい",r:"yasai",t:"sebze",l:"N5"},{k:"くだもの",r:"kudamono",t:"meyve",l:"N5"},{k:"そら",r:"sora",t:"gökyüzü",l:"N5"},{k:"うみ",r:"umi",t:"deniz",l:"N5"},{k:"はな",r:"hana",t:"çiçek",l:"N5"},{k:"つき",r:"tsuki",t:"ay",l:"N5"},{k:"ほし",r:"hoshi",t:"yıldız",l:"N5"},{k:"あめ",r:"ame",t:"yağmur",l:"N5"},{k:"ゆき",r:"yuki",t:"kar",l:"N5"},{k:"かぜ",r:"kaze",t:"rüzgâr",l:"N5"},{k:"いえ",r:"ie",t:"ev",l:"N5"},{k:"みせ",r:"mise",t:"dükkân",l:"N5"},{k:"くるま",r:"kuruma",t:"araba",l:"N5"},{k:"みち",r:"michi",t:"yol",l:"N5"},{k:"まち",r:"machi",t:"şehir",l:"N5"},{k:"へや",r:"heya",t:"oda",l:"N5"},{k:"まど",r:"mado",t:"pencere",l:"N5"},{k:"とけい",r:"tokei",t:"saat",l:"N5"},{k:"くつ",r:"kutsu",t:"ayakkabı",l:"N5"},{k:"かさ",r:"kasa",t:"şemsiye",l:"N5"},{k:"いす",r:"isu",t:"sandalye",l:"N5"},{k:"つくえ",r:"tsukue",t:"masa",l:"N5"},{k:"ともだち",r:"tomodachi",t:"arkadaş",l:"N5"},{k:"せんせい",r:"sensei",t:"öğretmen",l:"N5"},{k:"あさ",r:"asa",t:"sabah",l:"N5"},{k:"よる",r:"yoru",t:"gece",l:"N5"},{k:"あした",r:"ashita",t:"yarın",l:"N5"},{k:"あたま",r:"atama",t:"kafa",l:"N5"},{k:"みみ",r:"mimi",t:"kulak",l:"N5"},{k:"くち",r:"kuchi",t:"ağız",l:"N5"},{k:"あし",r:"ashi",t:"ayak",l:"N5"},{k:"ゆび",r:"yubi",t:"parmak",l:"N5"},{k:"あか",r:"aka",t:"kırmızı",l:"N5"},{k:"あお",r:"ao",t:"mavi",l:"N5"},{k:"しろ",r:"shiro",t:"beyaz",l:"N5"},{k:"くろ",r:"kuro",t:"siyah",l:"N5"},{k:"みどり",r:"midori",t:"yeşil",l:"N5"},{k:"おかね",r:"okane",t:"para",l:"N5"},{k:"こえ",r:"koe",t:"ses",l:"N5"},{k:"うた",r:"uta",t:"şarkı",l:"N5"},{k:"ゆめ",r:"yume",t:"rüya",l:"N5"},{k:"なつ",r:"natsu",t:"yaz",l:"N5"},{k:"ふゆ",r:"fuyu",t:"kış",l:"N5"},{k:"はる",r:"haru",t:"ilkbahar",l:"N5"},{k:"てがみ",r:"tegami",t:"mektup",l:"N5"},{k:"みせや",r:"miseya",t:"dükkâncı",l:"N5"},{k:"さかや",r:"sakaya",t:"içki dükkânı",l:"N5"},{k:"たいこ",r:"taiko",t:"davul",l:"N5"},{k:"こおり",r:"koori",t:"buz",l:"N5"},{k:"りす",r:"risu",t:"sincap",l:"N5"},{k:"すいか",r:"suika",t:"karpuz",l:"N5"},{k:"からす",r:"karasu",t:"karga",l:"N5"},{k:"すし",r:"sushi",t:"suşi",l:"N5"},{k:"しか",r:"shika",t:"geyik",l:"N5"},{k:"かに",r:"kani",t:"yengeç",l:"N5"},{k:"にわ",r:"niwa",t:"bahçe",l:"N5"},{k:"わに",r:"wani",t:"timsah",l:"N5"},{k:"めがね",r:"megane",t:"gözlük",l:"N5"},{k:"むし",r:"mushi",t:"böcek",l:"N5"},{k:"むら",r:"mura",t:"köy",l:"N5"},{k:"ぬの",r:"nuno",t:"kumaş",l:"N5"},{k:"ふね",r:"fune",t:"gemi",l:"N5"},{k:"ふく",r:"fuku",t:"kıyafet",l:"N5"},{k:"ほね",r:"hone",t:"kemik",l:"N5"},{k:"まめ",r:"mame",t:"fasulye",l:"N5"},{k:"のり",r:"nori",t:"yosun",l:"N5"},{k:"ばら",r:"bara",t:"gül",l:"N5"},{k:"ろば",r:"roba",t:"eşek",l:"N5"},{k:"れきし",r:"rekishi",t:"tarih",l:"N5"},{k:"きのこ",r:"kinoko",t:"mantar",l:"N5"},{k:"こども",r:"kodomo",t:"çocuk",l:"N5"},{k:"もり",r:"mori",t:"orman",l:"N5"},{k:"ゆか",r:"yuka",t:"zemin",l:"N5"},{k:"ふろ",r:"furo",t:"banyo",l:"N5"},{k:"まくら",r:"makura",t:"yastık",l:"N5"},{k:"らくだ",r:"rakuda",t:"deve",l:"N5"},{k:"さら",r:"sara",t:"tabak",l:"N5"},{k:"らっぱ",r:"rappa",t:"borazan",l:"N5"},{k:"ぱんだ",r:"panda",t:"panda",l:"N5"},{k:"だいこん",r:"daikon",t:"turp",l:"N5"},{k:"こま",r:"koma",t:"topaç",l:"N5"},{k:"まり",r:"mari",t:"top",l:"N5"},{k:"りぼん",r:"ribon",t:"kurdele",l:"N5"},{k:"あい",r:"ai",t:"aşk, sevgi",l:"N5"},{k:"かお",r:"kao",t:"yüz",l:"N5"},{k:"て",r:"te",t:"el",l:"N5"},{k:"め",r:"me",t:"göz",l:"N5"},{k:"き",r:"ki",t:"ağaç",l:"N5"},{k:"ひ",r:"hi",t:"güneş, gün",l:"N5"},{k:"ほん",r:"hon",t:"kitap",l:"N5"},{k:"がっこう",r:"gakkou",t:"okul",l:"N5"},{k:"でんわ",r:"denwa",t:"telefon",l:"N5"},{k:"はし",r:"hashi",t:"köprü",l:"N5"},{k:"じかん",r:"jikan",t:"zaman, saat",l:"N5"},{k:"しごと",r:"shigoto",t:"iş",l:"N5"},{k:"くも",r:"kumo",t:"bulut",l:"N5"},{k:"は",r:"ha",t:"diş",l:"N5"},{k:"ちち",r:"chichi",t:"baba (kendi)",l:"N5"},{k:"はは",r:"haha",t:"anne (kendi)",l:"N5"}];
+const WORDDEX = [{k:"にほんご",r:"nihongo",t:"Japonca (dil)",l:"N5"},{k:"ありがとう",r:"arigatou",t:"teşekkürler",l:"N5"},{k:"すみません",r:"sumimasen",t:"affedersiniz / pardon",l:"N5"},{k:"こんにちは",r:"konnichiwa",t:"merhaba (gündüz)",l:"N5"},{k:"おはよう",r:"ohayou",t:"günaydın",l:"N5"},{k:"おいしい",r:"oishii",t:"lezzetli",l:"N5"},{k:"すき",r:"suki",t:"sevmek / hoşlanmak",l:"N5"},{k:"えき",r:"eki",t:"istasyon",l:"N5"},{k:"みず",r:"mizu",t:"su",l:"N5"},{k:"ねこ",r:"neko",t:"kedi",l:"N5"},{k:"いぬ",r:"inu",t:"köpek",l:"N5"},{k:"やま",r:"yama",t:"dağ",l:"N5"},{k:"かわ",r:"kawa",t:"nehir",l:"N5"},{k:"ひと",r:"hito",t:"insan",l:"N5"},{k:"がくせい",r:"gakusei",t:"öğrenci",l:"N5"},{k:"なまえ",r:"namae",t:"isim",l:"N5"},{k:"カメラ",r:"kamera",t:"kamera",l:"N5"},{k:"ホテル",r:"hoteru",t:"otel",l:"N5"},{k:"コーヒー",r:"koohii",t:"kahve",l:"N5"},{k:"スマホ",r:"sumaho",t:"akıllı telefon",l:"N5"},{k:"レストラン",r:"resutoran",t:"restoran",l:"N5"},{k:"タクシー",r:"takushii",t:"taksi",l:"N5"},{k:"パン",r:"pan",t:"ekmek",l:"N5"},{k:"ジュース",r:"juusu",t:"meyve suyu",l:"N5"},{k:"おちゃ",r:"ocha",t:"çay",l:"N5"},{k:"バナナ",r:"banana",t:"muz",l:"N5"},{k:"りんご",r:"ringo",t:"elma",l:"N5"},{k:"ミルク",r:"miruku",t:"süt",l:"N5"},{k:"サンドイッチ",r:"sandoicchi",t:"sandviç",l:"N5"},{k:"とり",r:"tori",t:"kuş",l:"N5"},{k:"うま",r:"uma",t:"at",l:"N5"},{k:"うし",r:"ushi",t:"inek",l:"N5"},{k:"さかな",r:"sakana",t:"balık",l:"N5"},{k:"くま",r:"kuma",t:"ayı",l:"N5"},{k:"さる",r:"saru",t:"maymun",l:"N5"},{k:"とら",r:"tora",t:"kaplan",l:"N5"},{k:"へび",r:"hebi",t:"yılan",l:"N5"},{k:"かめ",r:"kame",t:"kaplumbağa",l:"N5"},{k:"ねずみ",r:"nezumi",t:"fare",l:"N5"},{k:"きつね",r:"kitsune",t:"tilki",l:"N5"},{k:"あり",r:"ari",t:"karınca",l:"N5"},{k:"はち",r:"hachi",t:"arı",l:"N5"},{k:"たまご",r:"tamago",t:"yumurta",l:"N5"},{k:"いちご",r:"ichigo",t:"çilek",l:"N5"},{k:"にく",r:"niku",t:"et",l:"N5"},{k:"やさい",r:"yasai",t:"sebze",l:"N5"},{k:"くだもの",r:"kudamono",t:"meyve",l:"N5"},{k:"そら",r:"sora",t:"gökyüzü",l:"N5"},{k:"うみ",r:"umi",t:"deniz",l:"N5"},{k:"はな",r:"hana",t:"çiçek",l:"N5"},{k:"つき",r:"tsuki",t:"ay",l:"N5"},{k:"ほし",r:"hoshi",t:"yıldız",l:"N5"},{k:"あめ",r:"ame",t:"yağmur",l:"N5"},{k:"ゆき",r:"yuki",t:"kar",l:"N5"},{k:"かぜ",r:"kaze",t:"rüzgâr",l:"N5"},{k:"いえ",r:"ie",t:"ev",l:"N5"},{k:"みせ",r:"mise",t:"dükkân",l:"N5"},{k:"くるま",r:"kuruma",t:"araba",l:"N5"},{k:"みち",r:"michi",t:"yol",l:"N5"},{k:"まち",r:"machi",t:"şehir",l:"N5"},{k:"へや",r:"heya",t:"oda",l:"N5"},{k:"まど",r:"mado",t:"pencere",l:"N5"},{k:"とけい",r:"tokei",t:"saat",l:"N5"},{k:"くつ",r:"kutsu",t:"ayakkabı",l:"N5"},{k:"かさ",r:"kasa",t:"şemsiye",l:"N5"},{k:"いす",r:"isu",t:"sandalye",l:"N5"},{k:"つくえ",r:"tsukue",t:"masa",l:"N5"},{k:"ともだち",r:"tomodachi",t:"arkadaş",l:"N5"},{k:"せんせい",r:"sensei",t:"öğretmen",l:"N5"},{k:"あさ",r:"asa",t:"sabah",l:"N5"},{k:"よる",r:"yoru",t:"gece",l:"N5"},{k:"あした",r:"ashita",t:"yarın",l:"N5"},{k:"あたま",r:"atama",t:"kafa",l:"N5"},{k:"みみ",r:"mimi",t:"kulak",l:"N5"},{k:"くち",r:"kuchi",t:"ağız",l:"N5"},{k:"あし",r:"ashi",t:"ayak",l:"N5"},{k:"ゆび",r:"yubi",t:"parmak",l:"N5"},{k:"あか",r:"aka",t:"kırmızı",l:"N5"},{k:"あお",r:"ao",t:"mavi",l:"N5"},{k:"しろ",r:"shiro",t:"beyaz",l:"N5"},{k:"くろ",r:"kuro",t:"siyah",l:"N5"},{k:"みどり",r:"midori",t:"yeşil",l:"N5"},{k:"おかね",r:"okane",t:"para",l:"N5"},{k:"こえ",r:"koe",t:"ses",l:"N5"},{k:"うた",r:"uta",t:"şarkı",l:"N5"},{k:"ゆめ",r:"yume",t:"rüya",l:"N5"},{k:"なつ",r:"natsu",t:"yaz",l:"N5"},{k:"ふゆ",r:"fuyu",t:"kış",l:"N5"},{k:"はる",r:"haru",t:"ilkbahar",l:"N5"},{k:"てがみ",r:"tegami",t:"mektup",l:"N5"},{k:"みせや",r:"miseya",t:"dükkâncı",l:"N5"},{k:"さかや",r:"sakaya",t:"içki dükkânı",l:"N5"},{k:"たいこ",r:"taiko",t:"davul",l:"N5"},{k:"こおり",r:"koori",t:"buz",l:"N5"},{k:"りす",r:"risu",t:"sincap",l:"N5"},{k:"すいか",r:"suika",t:"karpuz",l:"N5"},{k:"からす",r:"karasu",t:"karga",l:"N5"},{k:"すし",r:"sushi",t:"suşi",l:"N5"},{k:"しか",r:"shika",t:"geyik",l:"N5"},{k:"かに",r:"kani",t:"yengeç",l:"N5"},{k:"にわ",r:"niwa",t:"bahçe",l:"N5"},{k:"わに",r:"wani",t:"timsah",l:"N5"},{k:"めがね",r:"megane",t:"gözlük",l:"N5"},{k:"むし",r:"mushi",t:"böcek",l:"N5"},{k:"むら",r:"mura",t:"köy",l:"N5"},{k:"ぬの",r:"nuno",t:"kumaş",l:"N5"},{k:"ふね",r:"fune",t:"gemi",l:"N5"},{k:"ふく",r:"fuku",t:"kıyafet",l:"N5"},{k:"ほね",r:"hone",t:"kemik",l:"N5"},{k:"まめ",r:"mame",t:"fasulye",l:"N5"},{k:"のり",r:"nori",t:"yosun",l:"N5"},{k:"ばら",r:"bara",t:"gül",l:"N5"},{k:"ろば",r:"roba",t:"eşek",l:"N5"},{k:"れきし",r:"rekishi",t:"tarih",l:"N5"},{k:"きのこ",r:"kinoko",t:"mantar",l:"N5"},{k:"こども",r:"kodomo",t:"çocuk",l:"N5"},{k:"もり",r:"mori",t:"orman",l:"N5"},{k:"ゆか",r:"yuka",t:"zemin",l:"N5"},{k:"ふろ",r:"furo",t:"banyo",l:"N5"},{k:"まくら",r:"makura",t:"yastık",l:"N5"},{k:"らくだ",r:"rakuda",t:"deve",l:"N5"},{k:"さら",r:"sara",t:"tabak",l:"N5"},{k:"らっぱ",r:"rappa",t:"borazan",l:"N5"},{k:"ぱんだ",r:"panda",t:"panda",l:"N5"},{k:"だいこん",r:"daikon",t:"turp",l:"N5"},{k:"こま",r:"koma",t:"topaç",l:"N5"},{k:"まり",r:"mari",t:"top",l:"N5"},{k:"りぼん",r:"ribon",t:"kurdele",l:"N5"},{k:"あい",r:"ai",t:"aşk, sevgi",l:"N5"},{k:"かお",r:"kao",t:"yüz",l:"N5"},{k:"て",r:"te",t:"el",l:"N5"},{k:"め",r:"me",t:"göz",l:"N5"},{k:"き",r:"ki",t:"ağaç",l:"N5"},{k:"ひ",r:"hi",t:"güneş, gün",l:"N5"},{k:"ほん",r:"hon",t:"kitap",l:"N5"},{k:"がっこう",r:"gakkou",t:"okul",l:"N5"},{k:"でんわ",r:"denwa",t:"telefon",l:"N5"},{k:"はし",r:"hashi",t:"köprü",l:"N5"},{k:"じかん",r:"jikan",t:"zaman, saat",l:"N5"},{k:"しごと",r:"shigoto",t:"iş",l:"N5"},{k:"くも",r:"kumo",t:"bulut",l:"N5"},{k:"は",r:"ha",t:"diş",l:"N5"},{k:"ちち",r:"chichi",t:"baba (kendi)",l:"N5"},{k:"はは",r:"haha",t:"anne (kendi)",l:"N5"},{k:"でんしゃ",r:"densha",t:"tren",l:"N4"},{k:"びょういん",r:"byouin",t:"hastane",l:"N4"},{k:"ぎんこう",r:"ginkou",t:"banka",l:"N4"},{k:"としょかん",r:"toshokan",t:"kütüphane",l:"N4"},{k:"くうこう",r:"kuukou",t:"havaalanı",l:"N4"},{k:"えいが",r:"eiga",t:"film",l:"N4"},{k:"おんがく",r:"ongaku",t:"müzik",l:"N4"},{k:"りょこう",r:"ryokou",t:"seyahat",l:"N4"},{k:"しゅくだい",r:"shukudai",t:"ödev",l:"N4"},{k:"しけん",r:"shiken",t:"sınav",l:"N4"},{k:"かいしゃ",r:"kaisha",t:"şirket",l:"N4"},{k:"しんぶん",r:"shinbun",t:"gazete",l:"N4"},{k:"でんき",r:"denki",t:"elektrik, ışık",l:"N4"},{k:"ちず",r:"chizu",t:"harita",l:"N4"},{k:"せかい",r:"sekai",t:"dünya",l:"N4"},{k:"しゃしん",r:"shashin",t:"fotoğraf",l:"N4"},{k:"りょうり",r:"ryouri",t:"yemek (pişirme)",l:"N4"},{k:"かぞく",r:"kazoku",t:"aile",l:"N4"},{k:"たべる",r:"taberu",t:"yemek (fiil)",l:"N4"},{k:"のむ",r:"nomu",t:"içmek",l:"N4"},{k:"みる",r:"miru",t:"görmek, izlemek",l:"N4"},{k:"きく",r:"kiku",t:"duymak, dinlemek",l:"N4"},{k:"いく",r:"iku",t:"gitmek",l:"N4"},{k:"くる",r:"kuru",t:"gelmek",l:"N4"},{k:"する",r:"suru",t:"yapmak",l:"N4"},{k:"はなす",r:"hanasu",t:"konuşmak",l:"N4"},{k:"よむ",r:"yomu",t:"okumak",l:"N4"},{k:"かく",r:"kaku",t:"yazmak",l:"N4"},{k:"あるく",r:"aruku",t:"yürümek",l:"N4"},{k:"ねる",r:"neru",t:"uyumak",l:"N4"},{k:"かう",r:"kau",t:"satın almak",l:"N4"},{k:"たかい",r:"takai",t:"pahalı, yüksek",l:"N4"},{k:"やすい",r:"yasui",t:"ucuz",l:"N4"},{k:"あたらしい",r:"atarashii",t:"yeni",l:"N4"},{k:"ふるい",r:"furui",t:"eski",l:"N4"},{k:"はやい",r:"hayai",t:"hızlı, erken",l:"N4"}];
 function wdget(kana){ return WORDDEX.find(w=>w.k===kana); }
 function vget(kana){ return VOCAB.find(v=>v[0]===kana || (v[1]&&v[1]===kana)); }
 // IME sözlüğü: kana okuma -> aday listesi (kanji + katakana + kana)
@@ -1515,7 +1566,7 @@ const Shiritori = {
     if(this.lastKana(w)==='ん'){ this.pushChain('me',[w,'…ん!']); this.gameOver('「ん」 ile bitti — zincir koptu! 💥'); return; }
     // kabul (esnek: gerçek kelime olduğuna güveniyoruz)
     const meaning=(this.WORDS.find(x=>x[0]===w)||[])[1]||'';
-    this.used.add(w); this.score++;
+    this.used.add(w); this.score++; try{ discoverWord(w); }catch(e){}
     try{ Sound.correct(); }catch(e){}
     this.pushChain('me',[w, meaning||'kelime']);
     const scE=document.getElementById('shiriScore'); if(scE) scE.textContent='🔗 '+this.score;
@@ -1964,8 +2015,72 @@ const DictDrawer = {
   }
 };
 
+/* ---- Kelime Kaşifi (ızgara sözlük) ---- */
+const KanaDex = {
+  open(){ UI.show('s-dex'); this.render(); },
+  render(){
+    const body=document.getElementById('dexBody'); if(!body) return;
+    const levels=['N5','N4','N3','N2','N1']; let html='';
+    levels.forEach(lvl=>{
+      let words=WORDDEX.filter(w=>w.l===lvl).slice().sort((a,b)=>a.k.localeCompare(b.k,'ja'));
+      const total=words.length, found=words.filter(w=>State.dex[w.k]).length;
+      html+='<div class="dex-lvl"><span class="dex-lvlname">'+lvl+'</span><span class="dex-prog">'+(total?(found+' / '+total+' keşfedildi'):'yakında')+'</span></div>';
+      if(!total){ html+='<div class="dd-empty" style="padding:4px 2px 14px">Bu seviye ileride açılacak.</div>'; return; }
+      html+='<div class="dexgrid">';
+      words.forEach(w=>{
+        html+= State.dex[w.k]
+          ? '<button class="dcell got" data-k="'+w.k+'"><span class="dk jp">'+w.k+'</span></button>'
+          : '<div class="dcell locked"><span class="dq">？</span></div>';
+      });
+      html+='</div>';
+    });
+    body.innerHTML=html;
+    body.querySelectorAll('.dcell.got').forEach(c=> c.onclick=()=>KanaDex.card(c.dataset.k));
+  },
+  card(k){
+    const w=WORDDEX.find(x=>x.k===k); if(!w) return;
+    const el=document.getElementById('dexCard'); if(!el) return;
+    el.innerHTML='<div class="dexcard-inner"><button class="dexcard-x" onclick="KanaDex.closeCard()" aria-label="Kapat">✕</button>'
+      +'<div class="dexcard-k jp">'+w.k+'</div><div class="dexcard-r">'+w.r+'</div><div class="dexcard-t">'+(w.t||'')+'</div>'
+      +'<button class="btn cy" style="margin-top:16px" onclick="TTS.speak(\''+w.k+'\',.85)">🔊 Dinle</button></div>';
+    el.classList.add('on');
+  },
+  celebrate(w){
+    const el=document.getElementById('dexBanner'); if(!el) return;
+    el.innerHTML='<div class="dexbanner-in"><span class="dexbanner-ic">✨</span><div><b>Yeni kelime kilidi açıldı!</b><span class="jp">'+w.k+'</span> · '+w.t+'</div></div>';
+    el.classList.add('on'); clearTimeout(this._bt); this._bt=setTimeout(function(){ el.classList.remove('on'); },2200);
+    try{ UI.confetti(); }catch(e){}
+  },
+  closeCard(){ const el=document.getElementById('dexCard'); if(el) el.classList.remove('on'); }
+};
+
+/* ---- Kelime keşif başarımları ---- */
+function dexCount(){ return Object.keys(State.dex||{}).length; }
+function dexRowDone(start){ const ws=WORDDEX.filter(w=>w.k[0]===start); return ws.length>0 && ws.every(w=>State.dex[w.k]); }
+const DEXACH = [
+  {id:'d_first',e:'🌱',t:'İlk Keşif',chk:()=>dexCount()>=1},
+  {id:'d_10',e:'📖',t:'On Kelime',chk:()=>dexCount()>=10},
+  {id:'d_50',e:'📚',t:'Elli Kelime',chk:()=>dexCount()>=50},
+  {id:'d_100',e:'🎓',t:'Yüz Kelime',chk:()=>dexCount()>=100},
+  {id:'d_a',e:'あ',t:'あ Serisi',chk:()=>dexRowDone('あ')},
+  {id:'d_ka',e:'か',t:'か Serisi',chk:()=>dexRowDone('か')},
+  {id:'d_sa',e:'さ',t:'さ Serisi',chk:()=>dexRowDone('さ')},
+  {id:'d_n5',e:'🏆',t:'N5 Tamam',chk:()=>WORDDEX.filter(w=>w.l==='N5').every(w=>State.dex[w.k])}
+];
+function checkDexAch(){ DEXACH.forEach(function(a){ if(!State.badges[a.id] && a.chk()){ State.badges[a.id]=true; State.save(); try{ UI.toast('🏅 Başarım: '+a.t); }catch(e){} } }); }
+function discoverWord(k){ if(!k || typeof wdget!=='function') return; const w=wdget(k); if(w && !State.dex[w.k]){ State.dex[w.k]=true; State.save(); try{ KanaDex.celebrate(w); }catch(e){} try{ checkDexAch(); }catch(e){} } }
+function renderBadgeGrid(){ const g=document.getElementById('badgeGrid'); if(!g) return;
+  const all=BADGES.concat(DEXACH);
+  g.innerHTML=all.map(function(b){ var got=!!State.badges[b.id];
+    return '<div class="bg-item'+(got?' got':'')+'"><div class="bg-e">'+b.e+'</div><div class="bg-t">'+b.t+'</div></div>'; }).join('');
+}
+
+
 const UI = {
-  show(id){ $$('.screen').forEach(e=>e.classList.remove('on')); $('#'+id).classList.add('on'); },
+  show(id){ $$('.screen').forEach(e=>e.classList.remove('on')); $('#'+id).classList.add('on');
+    const focus=['s-lesson','s-game60','s-flow','s-shiri','s-reflex','s-drill','s-chat'].indexOf(id)>=0;
+    const nc=document.getElementById('navctrls'); if(nc) nc.style.display=focus?'none':'flex';
+    if(id==='s-settings'){ try{ renderBadgeGrid(); }catch(e){} } },
   toast(t){ const e=$('#toast'); e.textContent=t; e.classList.add('on'); clearTimeout(this._t); this._t=setTimeout(()=>e.classList.remove('on'),1900); },
   confetti(){ const wrap=$('#confetti'); const cols=['#d3813a','#57a99a','#e8bd76','#6bb39d','#a68fc4'];
     for(let i=0;i<70;i++){ const c=document.createElement('i'); c.className='cf';
@@ -2150,11 +2265,47 @@ function Keyboard(opts){
 /* ============================================================
    KANA SETLERİ — her flick tuşu bir set (gojūon)
    ============================================================ */
-const SETS_H = GOJUON.map((g,i,arr)=>({ id:'hs_'+g.r, type:'kset', script:'hira', ph:1, title:g.t, kana:g.k, need: i>0 ? ('hs_'+arr[i-1].r) : null }));
-const ALLKANA_H = GOJUON.reduce((a,g)=>a.concat(g.k),[]);
 const H2K = s => s.replace(/[\u3041-\u3096]/g, c=>String.fromCharCode(c.charCodeAt(0)+0x60));
-const SETS_K = GOJUON.map((g,i,arr)=>({ id:'ks_'+g.r, type:'kset', script:'kata', ph:5, title:H2K(g.t), kana:g.k.map(x=>[H2K(x[0]),x[1]]), need:i>0?('ks_'+arr[i-1].r):null }));
+const EXTRA_ROWS = [
+  {r:'ga',t:'が行',k:[['が','ga'],['ぎ','gi'],['ぐ','gu'],['げ','ge'],['ご','go']]},
+  {r:'za',t:'ざ行',k:[['ざ','za'],['じ','ji'],['ず','zu'],['ぜ','ze'],['ぞ','zo']]},
+  {r:'da',t:'だ行',k:[['だ','da'],['で','de'],['ど','do']]},
+  {r:'ba',t:'ば行',k:[['ば','ba'],['び','bi'],['ぶ','bu'],['べ','be'],['ぼ','bo']]},
+  {r:'pa',t:'ぱ行',k:[['ぱ','pa'],['ぴ','pi'],['ぷ','pu'],['ぺ','pe'],['ぽ','po']]},
+  {r:'kya',t:'きゃ',k:[['きゃ','kya'],['きゅ','kyu'],['きょ','kyo']]},
+  {r:'sha',t:'しゃ',k:[['しゃ','sha'],['しゅ','shu'],['しょ','sho']]},
+  {r:'cha',t:'ちゃ',k:[['ちゃ','cha'],['ちゅ','chu'],['ちょ','cho']]},
+  {r:'nya',t:'にゃ',k:[['にゃ','nya'],['にゅ','nyu'],['にょ','nyo']]},
+  {r:'hya',t:'ひゃ',k:[['ひゃ','hya'],['ひゅ','hyu'],['ひょ','hyo']]},
+  {r:'mya',t:'みゃ',k:[['みゃ','mya'],['みゅ','myu'],['みょ','myo']]},
+  {r:'rya',t:'りゃ',k:[['りゃ','rya'],['りゅ','ryu'],['りょ','ryo']]},
+  {r:'gya',t:'ぎゃ',k:[['ぎゃ','gya'],['ぎゅ','gyu'],['ぎょ','gyo']]},
+  {r:'ja',t:'じゃ',k:[['じゃ','ja'],['じゅ','ju'],['じょ','jo']]},
+  {r:'bya',t:'びゃ',k:[['びゃ','bya'],['びゅ','byu'],['びょ','byo']]},
+  {r:'pya',t:'ぴゃ',k:[['ぴゃ','pya'],['ぴゅ','pyu'],['ぴょ','pyo']]}
+];
+const ALLROWS_H = GOJUON.concat(EXTRA_ROWS);
+const SETS_H = ALLROWS_H.map((g,i,arr)=>({ id:'hs_'+g.r, type:'kset', script:'hira', ph:1, title:g.t, kana:g.k, need: i>0 ? ('hs_'+arr[i-1].r) : null }));
+const SETS_K = ALLROWS_H.map((g,i,arr)=>({ id:'ks_'+g.r, type:'kset', script:'kata', ph:5, title:H2K(g.t), kana:g.k.map(x=>[H2K(x[0]),x[1]]), need:i>0?('ks_'+arr[i-1].r):null }));
+const ALLKANA_H = ALLROWS_H.reduce((a,g)=>a.concat(g.k),[]);
 
+function flickDiagram(kana){
+  const isKata=/[\u30A1-\u30F6]/.test(kana);
+  const hk=isKata? kana.replace(/[\u30A1-\u30F6]/g,c=>String.fromCharCode(c.charCodeAt(0)-0x60)) : kana;
+  let row=null, idx=-1;
+  for(const code in ROWS_H){ const arr=ROWS_H[code]; const i=arr.indexOf(hk); if(i>=0){ row=arr; idx=i; break; } }
+  if(!row||idx<0) return '';
+  const disp=isKata? row.map(k=> k? H2K(k):k) : row;
+  const dirName={0:'dokun',1:'sola kaydır',2:'yukarı kaydır',3:'sağa kaydır',4:'aşağı kaydır'};
+  const map={c:0,l:1,u:2,r:3,d:4};
+  function cell(pos){ const i=map[pos]; const k=disp[i]||''; if(!k) return '<div class="fd-cell empty"></div>';
+    const hi=(i===idx); return '<div class="fd-cell'+(pos==='c'?' center':'')+(hi?' hi':'')+'">'+k+'</div>'; }
+  return '<div class="flickdiag">'
+    +'<div class="fd-r"><div class="fd-cell empty"></div>'+cell('u')+'<div class="fd-cell empty"></div></div>'
+    +'<div class="fd-r">'+cell('l')+cell('c')+cell('r')+'</div>'
+    +'<div class="fd-r"><div class="fd-cell empty"></div>'+cell('d')+'<div class="fd-cell empty"></div></div>'
+    +'<div class="fd-hint"><b>'+disp[0]+'</b> tuşuna '+(idx===0?'dokun':('bas, '+dirName[idx]))+'</div></div>';
+}
 const KanaSet = {
   build(L){
     Game.mode=this; this.kana=L.kana; this.script=L.script||'hira';
@@ -2168,6 +2319,7 @@ const KanaSet = {
     if(q.type==='learn'){
       const mn=(typeof MNEMO!=='undefined'&&MNEMO[kana])||('Romaji: '+romaji);
       stage.innerHTML='<div class="prompt"><div class="tag">Yeni kana</div><div class="big kana jp">'+kana+'</div><div class="romaji">'+romaji+'</div></div>'
+        +flickDiagram(kana)
         +'<div class="hint">💡 <b>İpucu:</b> '+mn+'</div>'
         +'<div class="acts"><button class="btn ghost" id="bSpeak">🔊 Dinle</button><button class="btn cy" id="bNext">Anladım</button></div>';
       document.getElementById('bSpeak').onclick=()=>TTS.speak(kana,.7);
@@ -2274,7 +2426,7 @@ const Game = {
     const bmap={p1b:'b_kana',p2:'b_flick',p4:'b_type',p5:'b_kata',p6:'b_ear',p8:'b_kanji',p9:'b_pro'};
     if(bmap[L.id]){ const bd=BADGES.find(b=>b.id===bmap[L.id]); State.giveBadge(bd.id,bd.t); }
     State.addXp(25); Sound.level(); UI.confetti();
-    if(L.type==='kset'){ const arr=L.script==='kata'?SETS_K:SETS_H; if(arr.every(s=>State.done[s.id])){ const bid=L.script==='kata'?'b_kata':'b_kana'; const bd=BADGES.find(b=>b.id===bid); if(bd) State.giveBadge(bd.id,bd.t); } }
+    if(L.type==='kset'){ const pre=L.script==='kata'?'ks_':'hs_'; if(GOJUON.every(g=>State.done[pre+g.r])){ const bid=L.script==='kata'?'b_kata':'b_kana'; const bd=BADGES.find(b=>b.id===bid); if(bd) State.giveBadge(bd.id,bd.t); } }
     const stage=$('#lessonStage');
     const isSet=(L.type==='kset'), isSetLike=(L.type==='kset'||L.type==='ksetmix');
     const setArr=L.script==='kata'?SETS_K:SETS_H;
@@ -2426,7 +2578,7 @@ function typingLesson(L,opts){
       f.innerHTML=(c?'<span>'+c+'</span>':'')+(comp?'<span class="compose">'+comp+'</span>':'')+'<span class="caret"></span>'; }
     function check(){
       Game.kb.forceCommit(); const got=Game.kb.getCommitted().trim();
-      if(kEq(got,target)){ Mastery.rec(target,true); Game.hit(); Game.feedback(true,'Doğru!', opts.detail?opts.detail(it):'', ()=>Game.next()); }
+      if(kEq(got,target)){ Mastery.rec(target,true); try{discoverWord(target);}catch(e){} Game.hit(); Game.feedback(true,'Doğru!', opts.detail?opts.detail(it):'', ()=>Game.next()); }
       else { Mastery.rec(target,false); Game.miss(); Game.feedback(false,'Tekrar bak', answerDiff(got,target), ()=>Game.next()); }
     }
     stage.innerHTML+='';
@@ -2788,7 +2940,7 @@ const Sandbox = {
       if(w){ const isNew=!State.dex[w.k]; if(isNew){ State.dex[w.k]=true; State.save(); }
         box.innerHTML='<div class="dword"><div class="jpw jp">'+w.k+'</div><div class="info"><b>'+w.t+'</b><span class="jp">'+w.k+' · '+w.r+'</span></div><div class="spk" onclick="TTS.speak(\''+w.k+'\',.85)">🔊</div></div>'
           + (isNew?'<div class="newword">✨ Yeni kelime! Sözlüğe eklendi.</div>':'');
-        if(isNew){ try{ Sound.correct(); }catch(e){} try{ UI.toast('✨ Sözlüğe eklendi: '+w.t); }catch(e){} } }
+        if(isNew){ try{ Sound.correct(); }catch(e){} try{ KanaDex.celebrate(w); }catch(e){} try{ checkDexAch(); }catch(e){} } }
       else if(raw){ box.innerHTML='<div class="muted" style="text-align:center;padding:10px">romaji: '+kanaToRomaji(hira)+'</div>'; }
       else box.innerHTML=''; }
     stage.appendChild(kb.el);
