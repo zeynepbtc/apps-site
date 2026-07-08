@@ -699,8 +699,8 @@ body{
         </button>
 
         <div class="split">
-          <button class="mod hira" onclick="Game.start('p1')"><div class="fill"><div class="itile">あ</div><div class="tx"><span class="t" data-t="home.hiragana.title">Hiragana</span><span class="s" data-t="home.hiragana.desc">Japonca kelimeler ve gramer</span></div></div></button>
-          <button class="mod kata" onclick="Game.start('p5')"><div class="fill"><div class="itile">カ</div><div class="tx"><span class="t" data-t="home.katakana.title">Katakana</span><span class="s" data-t="home.katakana.desc">Yabancı kökenli kelimeler</span></div></div></button>
+          <button class="mod hira" onclick="Game.startTrack('p1')"><div class="fill"><div class="itile">あ</div><div class="tx"><span class="t" data-t="home.hiragana.title">Hiragana</span><span class="s" data-t="home.hiragana.desc">Japonca kelimeler ve gramer</span></div></div></button>
+          <button class="mod kata" onclick="Game.startTrack('p5')"><div class="fill"><div class="itile">カ</div><div class="tx"><span class="t" data-t="home.katakana.title">Katakana</span><span class="s" data-t="home.katakana.desc">Yabancı kökenli kelimeler</span></div></div></button>
         </div>
 
         <button class="mod row tekrar" onclick="Review.open()"><div class="fill"><div class="itile it-teal">🔁</div><div class="tx"><span class="t">Tekrar</span><span class="s" id="reviewDue">Aralıklı tekrar</span></div><span class="chev">›</span></div></button>
@@ -2107,6 +2107,13 @@ const Game = {
     const map={discover:Discover,flick:Flick,r2k:R2K,k2r:K2R,kata:Kata,listen:Listen,read:Read,kanji:Kanji,ime:Ime,mission:Mission};
     this.mode=map[L.type]; this.mode.build(L); this.renderProgress();
   },
+  startTrack(firstId){
+    const L0=LESSONS.find(l=>l.id===firstId); if(!L0){ this.start(firstId); return; }
+    const track=[]; let id=firstId;
+    while(id){ track.push(id); const nxt=LESSONS.find(l=>l.need===id && l.type===L0.type); id=nxt?nxt.id:null; }
+    for(const cid of track){ if(!State.done[cid]){ this.start(cid); return; } }
+    this.start(firstId);
+  },
   renderProgress(){
     const total=this.queue.length||1; $('#lessonPb').style.width=(this.idx/total*100)+'%';
     $('#lessonCnt').textContent=Math.min(this.idx+1,total)+'/'+total;
@@ -2123,9 +2130,12 @@ const Game = {
     if(bmap[L.id]){ const bd=BADGES.find(b=>b.id===bmap[L.id]); State.giveBadge(bd.id,bd.t); }
     State.addXp(25); Sound.level(); UI.confetti();
     const stage=$('#lessonStage');
+    const nx=LESSONS.find(l=>l.need===L.id && l.type===L.type);
+    const nextBtn=(nx && !State.done[nx.id]) ? '<button class="btn cy" style="max-width:280px" onclick="Game.start(\''+nx.id+'\')">Sonraki: '+nx.title+' →</button>' : '';
     stage.innerHTML='<div class="center"><div class="big-emoji">🎉</div><h2 style="font-size:24px;font-weight:900">Ders tamam!</h2>'
       +'<p class="muted">'+this.correct+'/'+this.queue.length+' doğru · +'+(this.correct*10+25)+' XP</p>'
-      +'<button class="btn" style="max-width:280px" onclick="Game.home()">Devam et</button></div>';
+      +nextBtn
+      +'<button class="btn'+(nextBtn?' ghost':'')+'" style="max-width:280px" onclick="Game.home()">'+(nextBtn?'Sonra devam':'Devam et')+'</button></div>';
     $('#feed').classList.remove('on');
   },
   feedback(win,title,detail,onNext){
