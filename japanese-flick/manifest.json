@@ -1,8 +1,8 @@
 {
-  "name": "Japonca Flick Klavye",
-  "short_name": "Japonca Flick",
-  "id": "/japanese-flick/",
-  "description": "Japonca kana (hiragana + katakana) yazmayı gerçek flick klavyede öğren. Flick = tuşa basıp yönüne kaydırarak yazılan Japon telefon klavyesi.",
+  "name": "Japanese Flick",
+"short_name": "Japanese Flick",
+"lang": "en",
+"description": "Finger practice for the Japanese phone keyboard. Learn kana, flick directions and word discovery."
   "categories": [
     "education",
     "utilities"
