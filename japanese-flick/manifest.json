@@ -7,7 +7,6 @@
     "education",
     "utilities"
   ],
-  "lang": "tr",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
