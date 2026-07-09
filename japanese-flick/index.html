@@ -3175,7 +3175,7 @@ const Sandbox = {
         box.innerHTML='<div class="dword"><div class="jpw jp">'+w.k+'</div><div class="info"><b>'+wmean(w)+'</b><span class="jp">'+w.k+' · '+w.r+'</span></div><div class="spk" onclick="TTS.speak(\''+w.k+'\',.85)">🔊</div></div>'
           + (isNew?'<div class="newword">✨ '+t('sb.newWord')+'</div>':'');
         if(isNew){ try{ Sound.correct(); }catch(e){} try{ KanaDex.celebrate(w); }catch(e){} try{ checkDexAch(); }catch(e){} try{ checkSetBadges(); }catch(e){} try{ checkOpenBadges(); }catch(e){} } }
-      else if(raw){ box.innerHTML='<div class="muted" style="text-align:center;padding:10px">romaji: '+kanaToRomaji(hira)+'</div>'; }
+      else if(raw){ box.innerHTML='<div class="muted" style="text-align:center;padding:10px">romaji: '+kanaToRomaji(kataToHira(raw))+'</div>'; }
       else box.innerHTML=''; }
     stage.appendChild(kb.el);
   }
