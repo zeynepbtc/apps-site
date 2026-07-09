@@ -1414,6 +1414,7 @@ var _WDNORM=null;
 function wnorm(s){ s=kataToHira((s||'').replace(/[\s\u3001\u3002!?\uFF01\uFF1F]/g,'')); var out=''; for(var i=0;i<s.length;i++){ var ch=s[i]; if(ch==='\u30FC'||ch==='\u30FC'){ var r=(kanaToRomaji(out.slice(-1))||''); out+=({a:'\u3042',i:'\u3044',u:'\u3046',e:'\u3048',o:'\u304A'}[r.slice(-1)]||''); } else out+=ch; } return out; }
 function wdgetFlex(s){ if(!s) return null; var w=wdget(s); if(w) return w; w=wdget(kataToHira(s)); if(w) return w; if(!_WDNORM){ _WDNORM={}; WORDDEX.forEach(function(x){ var n=wnorm(x.k); if(!(n in _WDNORM)) _WDNORM[n]=x; }); } return _WDNORM[wnorm(s)]||null; }
 function wmean(w){ return (I18N.lang==='en' && w && w.te) ? w.te : (w? (w.t||'') : ''); }
+function pctS(n){ return I18N.lang==='en' ? (n+'%') : ('%'+n); }
 function lastKana(w){ if(!w) return ''; w=w.replace(/ー+$/,''); const small='ぁぃぅぇぉゃゅょっゎ'; let c=w.slice(-1); if(small.indexOf(c)>=0) c=w.slice(-2,-1); return c; }
 const SHIRITORI_WORDS = WORDDEX.filter(function(w){ return w.k && lastKana(w.k)!=='ん'; }).map(function(w){ return [w.k, w.t]; });
 function vget(kana){ return VOCAB.find(v=>v[0]===kana || (v[1]&&v[1]===kana)); }
@@ -1968,7 +1969,7 @@ const KanaCard = {
     const lvl = Mastery.level(kana);
     const m = State.mastery && State.mastery[kana];
     const names=[t('lesson.mL0'),t('lesson.mL1'),t('lesson.mL2'),t('lesson.mL3'),t('lesson.mL4')];
-    const masteryTxt = (m&&m.n) ? (m.n+' '+t('lesson.attempts')+' · %'+Math.round(m.c/m.n*100)+' '+t('lesson.hitRate')+' · '+names[lvl]) : t('lesson.mL0');
+    const masteryTxt = (m&&m.n) ? (m.n+' '+t('lesson.attempts')+' · '+pctS(Math.round(m.c/m.n*100))+' '+t('lesson.hitRate')+' · '+names[lvl]) : t('lesson.mL0');
     const dirs=[t('dir.tapC'),t('dir.leftC'),t('dir.upC'),t('dir.rightC'),t('dir.downC')];
     let crossHtml='', posTxt='';
     if(p){
@@ -2070,8 +2071,8 @@ const Mastery = {
       }});
     H.innerHTML=hc; K.innerHTML=kc;
     const hp=document.getElementById('mHpct'), kp=document.getElementById('mKpct');
-    if(hp) hp.textContent=(hTot?Math.round(hStrong/hTot*100):0)+'%';
-    if(kp) kp.textContent=(kTot?Math.round(kStrong/kTot*100):0)+'%';
+    if(hp) hp.textContent=pctS(hTot?Math.round(hStrong/hTot*100):0);
+    if(kp) kp.textContent=pctS(kTot?Math.round(kStrong/kTot*100):0);
   }
 };
 
@@ -2137,7 +2138,7 @@ const Review = {
   end(){ try{State.save();}catch(e){} const s=$('#reviewStage'); if(!s)return;
     const total=this.queue.length, pct=total?Math.round(this.ok/total*100):0;
     s.innerHTML='<div class="g60screen"><div class="g60big">'+this.ok+'/'+total+'</div>'
-      +'<div class="muted">'+t('review.done')+' · %'+pct+' '+t('common.correctLabel')+'</div>'
+      +'<div class="muted">'+t('review.done')+' · '+pctS(pct)+' '+t('common.correctLabel')+'</div>'
       +'<div class="g60acts"><button class="btn cy g60btn" id="rvAgain">'+t('common.continueB')+'</button><button class="btn ghost g60btn" onclick="Game.home()">'+t('common.finish')+'</button></div></div>';
     const a=$('#rvAgain'); if(a) a.onclick=()=>this.open();
   }
@@ -3046,7 +3047,7 @@ const Reflex = (()=>{
       + '<div class="sechead" style="margin:14px 0 6px">'+t('reflex.stages')+'</div><div class="lessons" style="padding-bottom:24px">';
     STAGES.forEach((s,i)=>{
       const locked=i>st.unlocked, best=st.best[i];
-      const desc = tk(s.sub) || (best?('★ %'+Math.round(best.acc*100)+' · '+best.rt+'ms'):t('reflex.notPlayed'));
+      const desc = tk(s.sub) || (best?('★ '+pctS(Math.round(best.acc*100))+' · '+best.rt+'ms'):t('reflex.notPlayed'));
       html+='<div class="lcard'+(locked?' lock':'')+'" '+(locked?'':'onclick="Reflex.start('+i+')"')+'>'
         +'<div class="ic '+(s.mix?'dotr':'dotc')+'" style="font-size:18px;font-weight:900">'+(locked?'🔒':(i+1))+'</div>'
         +'<div class="meta"><b>'+tk(s.t)+'</b><span>'+desc+'</span></div>'
@@ -3138,7 +3139,7 @@ const Reflex = (()=>{
       +'<div class="big-emoji">'+(passed?'🎉':'💪')+'</div>'
       +'<h2 style="font-size:22px;font-weight:900">'+(passed?t('rf2.stagePassed'):t('rf2.almost'))+'</h2>'
       +'<div style="display:flex;gap:18px;justify-content:center;margin:14px 0">'
-      + statBox('%'+Math.round(acc*100),t('rf2.accuracy')) + statBox(avgRt+'ms',t('rf2.avgSpeed')) + statBox(cur.bestCombo,t('rf2.bestCombo')) +'</div>'
+      + statBox(pctS(Math.round(acc*100)),t('rf2.accuracy')) + statBox(avgRt+'ms',t('rf2.avgSpeed')) + statBox(cur.bestCombo,t('rf2.bestCombo')) +'</div>'
       + weakHtml
       +'<div style="display:flex;flex-direction:column;gap:10px;margin-top:20px;width:100%;max-width:300px">'
       + (passed && st.unlocked>cur.i ? '<button class="btn cy" onclick="Reflex.start('+(cur.i+1)+')">'+t('reflex.nextStage')+' →</button>':'')
