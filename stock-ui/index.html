@@ -69,7 +69,11 @@
   }
 
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none;}
-  html,body{ margin:0; padding:0; height:100%; background:#05070c; font-family:'Inter', -apple-system, sans-serif; overflow:hidden; }
+  html,body{
+    margin:0; padding:0; height:100%; background:#05070c;
+    font-family:'Inter', -apple-system, sans-serif; overflow:hidden;
+    overscroll-behavior:none; position:fixed; inset:0; width:100%;
+  }
   .stage{ display:flex; align-items:center; justify-content:center; width:100%; height:100vh; height:100dvh; }
   .phone{
     position:relative; width:390px; height:844px; background:var(--bg-deep);
@@ -79,14 +83,16 @@
   }
   /* On real phone viewports the app fills the true screen and respects the
      device's safe area (Dynamic Island / notch on top, home indicator on
-     bottom). Since every .screen uses inset:0 relative to this positioned
-     ancestor, padding added here automatically insets ALL screens — no
-     per-screen safe-area code needed. */
+     bottom). position:fixed + inset:0 tracks the true visible viewport on
+     iOS Safari regardless of toolbar show/hide state — far more reliable
+     than vh/dvh alone, and eliminates the "black gap at the bottom" bug.
+     Since every .screen uses inset:0 relative to this positioned ancestor,
+     padding added here automatically insets ALL screens — no per-screen
+     safe-area code needed. */
   @media (max-width: 520px){
-    html, body{ height:100%; overflow:hidden; }
-    .stage{ padding:0; }
+    .stage{ display:block; padding:0; width:auto; height:auto; }
     .phone{
-      width:100vw; width:100dvw; height:100vh; height:100dvh;
+      position:fixed; inset:0; width:auto; height:auto;
       border-radius:0; box-shadow:none;
       box-sizing:border-box;
       padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
@@ -105,7 +111,7 @@
   }
   .statusbar .icons{ display:flex; gap:6px; align-items:center; }
 
-  .topbar{ display:flex; align-items:center; gap:12px; padding:30px 22px 0; }
+  .topbar{ display:flex; align-items:center; gap:12px; padding:44px 22px 0; }
   .topbar .grow{ flex:1; }
   .icon-btn{
     width:38px; height:38px; border-radius:12px; background:var(--bg-card);
@@ -120,7 +126,7 @@
   }
   .page-title{ font-family:'Space Grotesk'; font-weight:700; font-size:19px; color:var(--text-primary); }
 
-  .scroll{ flex:1; overflow-y:auto; padding: 34px 26px 110px; }
+  .scroll{ flex:1; overflow-y:auto; padding: 44px 26px 110px; }
   .scroll::-webkit-scrollbar{ display:none; }
   .scroll.no-nav{ padding-bottom:34px; }
 
@@ -525,7 +531,8 @@
   .ai-tag .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); box-shadow:0 0 6px var(--accent); }
   .ai-tag span{ font-size:11.5px; font-weight:800; color:var(--text-primary); letter-spacing:0.01em; }
   .ai-center{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; padding-bottom:0; min-height:0; }
-  .ai-bot-label{ display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--text-primary); font-size:28px; font-weight:800; letter-spacing:0.02em; text-transform:none; text-align:center; margin-top:6px; }
+  .ai-bottom-spacer{ flex:0 1 0%; min-height:0; }
+  .ai-bot-label{ display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--text-primary); font-size:28px; font-weight:800; letter-spacing:0.02em; text-transform:none; text-align:center; margin-top:22px; }
   .ai-bot-icon{
     width:86px; height:86px; border-radius:25px; flex-shrink:0;
     background: linear-gradient(155deg, var(--accent-soft), transparent);
@@ -545,7 +552,7 @@
     0%, 100%{ transform: rotate(-11deg); }
     50%{ transform: rotate(13deg); }
   }
-  .ring-wrap{ position:relative; width:270px; height:270px; display:flex; align-items:center; justify-content:center; perspective:600px; flex-shrink:0; }
+  .ring-wrap{ position:relative; width:270px; height:270px; display:flex; align-items:center; justify-content:center; perspective:600px; flex-shrink:0; overflow:hidden; border-radius:50%; z-index:1; }
   .ring-glow{ position:absolute; width:232px; height:232px; border-radius:50%; background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%); filter:blur(11px); transition: background 0.4s ease; }
   .vortex{ position:relative; width:232px; height:232px; transform-style:preserve-3d; }
   .vring{
@@ -583,7 +590,7 @@
   .core{ position:absolute; width:138px; height:138px; border-radius:50%; background: linear-gradient(160deg, var(--bg-card), var(--bg-card-2)); border:1px solid var(--divider); display:flex; align-items:center; justify-content:center; box-shadow: inset 0 0 30px rgba(255,255,255,0.03), 0 0 0 1px var(--divider); z-index:2; }
   .core-wave{ display:flex; align-items:center; justify-content:center; gap:4px; width:89px; height:55px; }
   .core-wave .wbar{ width:4.5px; min-height:4.5px; border-radius:4.5px; background:linear-gradient(180deg, var(--accent), var(--accent-2)); box-shadow:0 0 7px var(--accent); transition: background 0.3s ease; }
-  .ai-state-text{ font-family:'Space Grotesk'; font-weight:700; font-size:20px; color:var(--text-primary); letter-spacing:0.01em; height:26px; text-align:center; margin-top:2px; }
+  .ai-state-text{ font-family:'Space Grotesk'; font-weight:700; font-size:20px; color:var(--text-primary); letter-spacing:0.01em; height:26px; text-align:center; margin-top:2px; position:relative; z-index:2; }
 
   .ai-response-card{
     background:var(--bg-card); border:1px solid var(--divider); border-radius:18px; padding:14px 16px;
@@ -596,8 +603,8 @@
   .ai-response-text{ font-size:13px; color:var(--text-primary); font-weight:500; line-height:1.5; }
 
   .quick-row{
-    display:flex; gap:10px; overflow-x:auto; padding: 6px 22px 4px; flex-shrink:0;
-    scroll-snap-type: x proximity; margin-top:-28px;
+    display:flex; gap:10px; overflow-x:auto; padding: 0 22px 4px; flex-shrink:0;
+    scroll-snap-type: x proximity; margin-top:10px; position:relative; z-index:2;
   }
   .quick-row::-webkit-scrollbar{ display:none; }
   .quick-btn{
@@ -615,10 +622,11 @@
 
   .hold-speak-label{
     text-align:center; font-size:12.5px; font-weight:700; color:var(--text-tertiary);
-    text-transform:uppercase; letter-spacing:0.06em; flex-shrink:0; margin: 14px 0 10px;
+    text-transform:uppercase; letter-spacing:0.06em; flex-shrink:0; margin: 18px 0 12px;
+    position:relative; z-index:2;
   }
 
-  .mic-wrap{ display:flex; flex-direction:column; align-items:center; gap:0; padding-bottom:16px; margin-top:0; flex-shrink:0; }
+  .mic-wrap{ display:flex; flex-direction:column; align-items:center; gap:0; padding-bottom:16px; margin-top:0; flex-shrink:0; position:relative; z-index:2; }
   .mic-btn{
     width:76px; height:76px; border-radius:50%; position:relative; cursor:pointer; border:none;
     background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.10), rgba(255,255,255,0.02) 60%), var(--bg-card);
@@ -643,7 +651,7 @@
     .vortex{ width:192px; height:192px; }
     .core{ width:114px; height:114px; }
     .core-wave{ width:74px; height:46px; }
-    .ai-bot-label{ margin-top:0; }
+    .ai-bot-label{ margin-top:10px; }
     .ai-bot-icon{ width:46px; height:46px; }
     .ai-bot-icon svg{ width:27px; height:27px; }
     .quick-btn{ min-height:50px; padding:10px 12px; }
@@ -1248,6 +1256,7 @@
       <div class="mic-wrap">
         <button class="mic-btn" id="micBtn"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 013 3v6a3 3 0 01-6 0V5a3 3 0 013-3z"/><path d="M19 11a7 7 0 01-14 0"/><line x1="12" y1="18" x2="12" y2="22"/></svg></button>
       </div>
+      <div class="ai-bottom-spacer"></div>
     </div>
 
     <!-- ============ AI INSIGHTS ============ -->
