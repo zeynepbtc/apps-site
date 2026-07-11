@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Destek / İletişim · Japonca Flick Klavye</title>
-<meta name="description" content="Destek / İletişim — Japonca Flick Klavye uygulaması.">
+<title>Destek · Japanese Flick</title>
+<meta name="description" content="Destek / İletişim — Japonca Flick Klavye. Support / Contact — Japanese Flick.">
 <style>*{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#F4EEE3;--panel:#FBF7EF;--ink:#2E2119;--muted:#6a6155;--line:#E4DACB;--accent:#C0562B;--accent2:#A4392C;--gold:#8c6414}
 html{-webkit-text-size-adjust:100%}
@@ -15,7 +15,10 @@ header{padding:40px 0 26px;border-bottom:1px solid var(--line)}
 .mark{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:900;flex:none}
 .brand h1{font-family:"Shippori Mincho",Georgia,serif;font-size:22px;font-weight:800;letter-spacing:.3px}
 .brand .sub{font-size:13px;color:var(--muted);margin-top:2px}
-main{padding:32px 0 8px}
+main{padding:22px 0 8px}
+.langbar{display:flex;gap:8px;margin:0 0 22px;position:sticky;top:0;background:var(--bg);padding:12px 0;z-index:5}
+.langbar button{flex:1;max-width:150px;padding:9px;border-radius:11px;border:1px solid var(--line);background:var(--panel);color:var(--muted);font-weight:800;font-size:13px;cursor:pointer}
+.langbar button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
 .doc-title{font-family:"Shippori Mincho",Georgia,serif;font-size:30px;font-weight:800;line-height:1.15;margin-bottom:6px}
 .updated{font-size:13px;color:var(--muted);margin-bottom:26px}
 h2{font-family:"Shippori Mincho",Georgia,serif;font-size:20px;font-weight:800;margin:30px 0 10px;color:var(--ink)}
@@ -41,13 +44,20 @@ footer .fine{font-size:12.5px}
   <header>
     <div class="brand">
       <div class="mark">あ</div>
-      <div><h1>Japonca Flick Klavye</h1><div class="sub">Japonca kana yazmayı öğreten uygulama</div></div>
+      <div>
+        <h1><span class="tr">Japonca Flick Klavye</span><span class="en" hidden>Japanese Flick</span></h1>
+        <div class="sub"><span class="tr">Japonca kana yazmayı öğreten uygulama</span><span class="en" hidden>An app that teaches Japanese kana writing</span></div>
+      </div>
     </div>
   </header>
   <main>
+    <div class="langbar"><button id="btr" class="on" onclick="sl('tr')">Türkçe</button><button id="ben" onclick="sl('en')">English</button></div>
+
+    <!-- ================= TÜRKÇE ================= -->
+    <div class="tr">
     <div class="doc-title">Destek / İletişim</div>
     <div class="updated">Son güncelleme: 8 Temmuz 2026</div>
-    
+
 <p>Japonca Flick Klavye’yi kullanırken bir sorun mu yaşıyorsun, bir önerin mi var? Doğru yerdesin. Aşağıda en sık sorulanları ve bize nasıl ulaşacağını bulabilirsin.</p>
 
 <div class="note">
@@ -75,13 +85,60 @@ footer .fine{font-size:12.5px}
 <p>Flick, Japon telefonlarının standart klavyesidir. 12 tuş vardır ve her tuş bir kana satırını temsil eder. Tuşa dokunursan temel sesi (か) yazarsın; tuşa basıp yukarı, aşağı, sağ veya sola kaydırırsan o satırın diğer kanalarını (き, く, け, こ) yazarsın.</p>
 
 <h2>Gizlilik</h2>
-<p>Uygulama hiçbir kişisel veri toplamaz. Ayrıntılar için <a href="/privacy/">Gizlilik Politikası</a> sayfasına bakabilirsin.</p>
+<p>Uygulama hiçbir kişisel veri toplamaz. Ayrıntılar için <a href="../privacy/">Gizlilik Politikası</a> sayfasına bakabilirsin.</p>
+    </div>
+
+    <!-- ================= ENGLISH ================= -->
+    <div class="en" hidden>
+    <div class="doc-title">Support / Contact</div>
+    <div class="updated">Last updated: 8 July 2026</div>
+
+<p>Having a problem using Japanese Flick, or have a suggestion? You're in the right place. Below you'll find the most common questions and how to reach us.</p>
+
+<div class="note">
+  <div class="nt">CONTACT</div>
+  <p style="margin-top:2px">For a problem, suggestion or feedback:</p>
+  <a class="mail" href="mailto:hello@zeynepkaya.app">hello@zeynepkaya.app</a>
+  <p style="margin-bottom:0">If you include your <strong>app version</strong>, <strong>device model</strong> and the <strong>screen</strong> where you saw the issue, we can look into it much faster.</p>
+</div>
+
+<h2>Common questions</h2>
+
+<h3>Will my progress be lost?</h3>
+<p>Your progress is stored only on your device. If you switch devices or clear your browser/app data, your progress is deleted. That's why we recommend backing up now and then via <strong>Settings → Export data</strong>; you can restore it on a new device via <strong>Settings → Import data</strong>.</p>
+
+<h3>The sounds are sometimes mechanical/robotic</h3>
+<p>Pronunciation sounds are played from local files bundled into the app. When a word doesn't yet have a recorded sound, your device's own speech engine (TTS) kicks in and may sound different. We're expanding the audio library version by version.</p>
+
+<h3>How do I update the app?</h3>
+<p>When opened online, the app automatically gets the latest version; you don't need to do anything extra.</p>
+
+<h3>How do I reset progress?</h3>
+<p>You can use <strong>Settings → Reset progress</strong>. This action can't be undone; we recommend backing up first.</p>
+
+<h3>What exactly does “flick” mean?</h3>
+<p>Flick is the standard keyboard on Japanese phones. It has 12 keys, and each key represents a row of kana. Tapping a key types its base sound (か); pressing and flicking up, down, right or left types the other kana in that row (き, く, け, こ).</p>
+
+<h2>Privacy</h2>
+<p>The app collects no personal data. For details, see the <a href="../privacy/">Privacy Policy</a> page.</p>
+    </div>
 
   </main>
   <footer>
-    <nav><a href="/privacy/">Gizlilik</a><a href="/terms/">Kullanım Şartları</a><a href="/support/" aria-current="page">Destek</a></nav>
-    <div class="fine">© 2026 Zeynep Kaya · Japonca Flick Klavye · İletişim: <a href="mailto:hello@zeynepkaya.app">hello@zeynepkaya.app</a></div>
+    <nav>
+      <a href="../privacy/"><span class="tr">Gizlilik</span><span class="en" hidden>Privacy</span></a>
+      <a href="../terms/"><span class="tr">Kullanım Şartları</span><span class="en" hidden>Terms</span></a>
+      <a href="../support/" aria-current="page"><span class="tr">Destek</span><span class="en" hidden>Support</span></a>
+    </nav>
+    <div class="fine">© 2026 Zeynep Kaya · <span class="tr">Japonca Flick Klavye · İletişim:</span><span class="en" hidden>Japanese Flick · Contact:</span> <a href="mailto:hello@zeynepkaya.app">hello@zeynepkaya.app</a></div>
   </footer>
 </div>
+<script>
+function sl(l){document.documentElement.lang=l;
+ document.querySelectorAll('.tr').forEach(function(e){e.hidden=(l!=='tr');});
+ document.querySelectorAll('.en').forEach(function(e){e.hidden=(l!=='en');});
+ document.getElementById('btr').classList.toggle('on',l==='tr');
+ document.getElementById('ben').classList.toggle('on',l==='en');}
+</script>
 </body>
 </html>
