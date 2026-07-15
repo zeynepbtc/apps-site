@@ -6,7 +6,7 @@
 <link rel="apple-touch-icon" href="/japanese-flick/icons/appicon-rounded-512.png" />
 <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Shippori+Mincho:wght@600;700;800&display=swap');
 
-:root{--bg:#eee8dc;--card:#faf6ee;--line:#e2d9c8;--ink:#2f2820;--mut:#7d7264;--accent:#c4722e}
+:root{--bg:#eee8dc;--card:#fff9ee;--line:#d8cbbb;--ink:#2b251f;--mut:#746a5e;--accent:#d3813a}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,system-ui,sans-serif;line-height:1.6}
 .wrap{max-width:720px;margin:0 auto;padding:28px 20px 60px}
@@ -25,9 +25,12 @@ details>div{padding:0 16px 15px;color:var(--mut);font-size:14px}
 details>div b{color:var(--ink)}
 .foot{margin-top:30px;color:var(--mut);font-size:12px;text-align:center}
 a{color:var(--accent)}
+  .backlink{display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;padding:8px 14px;border-radius:999px;background:#fff9ee;border:1px solid #d8cbbb;color:#2b251f;font-weight:800;font-size:13px;text-decoration:none;transition:color .15s}
+  .backlink:hover{color:#bf6f2b}
 </style></head>
 <body><div class="wrap">
 <h1>Japanese Flick</h1>
+    <a class="backlink" href="/apps/japanese-flick/">← Japanese Flick</a>
 <p class="sub"><span class="tr">Sıkça Sorulan Sorular & Yardım</span><span class="en" hidden>Frequently Asked Questions & Help</span></p>
 <div class="langbar"><button id="btr" class="on" onclick="sl('tr')">Türkçe</button><button id="ben" onclick="sl('en')">English</button></div>
 <h2 class="tr">Ne'yiz / ne değiliz</h2><h2 class="en" hidden>What we are / aren't</h2>

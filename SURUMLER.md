@@ -27,6 +27,10 @@
 
 ## Geçmiş
 
+### v1.3.2 — 2026-07-15
+- 🔙 Yasal sayfalara (Gizlilik/Şartlar/Destek/SSS) **Japanese Flick'e dönüş** butonu.
+- 🎨 Eski bordo/terracotta renkler → **turuncu tonlarımız** (#d3813a / #bf6f2b); あ gradient işareti → **gerçek Flick logosu**.
+
 ### v1.3.1 — 2026-07-15
 - 🎨 Yasal sayfalar (Gizlilik/Şartlar/Destek/SSS) tasarım diline hizalandı: **favicon (app logosu)** eklendi, gövde fontu **Inter**'e çekildi, palet token'ları siteyle eşitlendi (Shippori başlıklar + terracotta aksan korundu). Artık aynı dil.
 

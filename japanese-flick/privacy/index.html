@@ -9,7 +9,7 @@
 <meta name="description" content="Gizlilik Politikası — Japonca Flick Klavye uygulaması. Privacy Policy — Japanese Flick.">
 <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Shippori+Mincho:wght@600;700;800&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#eee8dc;--panel:#fff9ee;--ink:#2b251f;--muted:#6a6155;--line:#E4DACB;--accent:#C0562B;--accent2:#A4392C;--gold:#8c6414}
+:root{--bg:#eee8dc;--panel:#fff9ee;--ink:#2b251f;--muted:#746a5e;--line:#d8cbbb;--accent:#d3813a;--accent2:#bf6f2b;--gold:#8c6414}
 html{-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px}
 .wrap{max-width:760px;margin:0 auto;padding:0 20px}
@@ -40,13 +40,15 @@ footer nav a{color:var(--ink);font-weight:700;text-decoration:none}
 footer nav a:hover{color:var(--accent2)}
 footer .fine{font-size:12.5px}
 @media(max-width:560px){.doc-title{font-size:25px}body{font-size:15.5px}}
+  .backlink{display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;padding:8px 14px;border-radius:999px;background:#fff9ee;border:1px solid #d8cbbb;color:#2b251f;font-weight:800;font-size:13px;text-decoration:none;transition:color .15s}
+  .backlink:hover{color:#bf6f2b}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <div class="brand">
-      <div class="mark">あ</div>
+      <img class="mark" src="/japanese-flick/icons/logo-square.svg" alt="Japanese Flick" />
       <div>
         <h1><span class="tr">Japonca Flick Klavye</span><span class="en" hidden>Japanese Flick</span></h1>
         <div class="sub"><span class="tr">Japonca kana yazmayı öğreten uygulama</span><span class="en" hidden>An app that teaches Japanese kana writing</span></div>
@@ -54,6 +56,7 @@ footer .fine{font-size:12.5px}
     </div>
   </header>
   <main>
+    <a class="backlink" href="/apps/japanese-flick/">← Japanese Flick</a>
     <div class="langbar"><button id="btr" class="on" onclick="sl('tr')">Türkçe</button><button id="ben" onclick="sl('en')">English</button></div>
 
     <!-- ================= TÜRKÇE ================= -->
