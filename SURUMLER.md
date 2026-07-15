@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.3.5 — 2026-07-15
+- 📊 **Cloudflare Web Analytics** eklendi (8 sayfa, oyunlar dahil): çerezsiz, bannersız ziyaretçi + sayfa + kaynak ölçümü. Test fazını artık ölçebiliriz.
+
 ### v1.3.4 — 2026-07-15
 - 🦶 Footer sadeleşti: **Japanese Flick linki kaldırıldı** (footer = Ana sayfa + SSS + yasal sayfalar; uygulama linkleri footer'a girmez). Aralık sıkıştırıldı, alt satıra taşma azaldı.
 
