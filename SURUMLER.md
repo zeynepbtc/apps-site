@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.1.5 — 2026-07-15
+- 🎮 Ana sayfaya **oyun bölümü** eklendi (hero altı): süzülen (floating) kartlar — Kana Yağmuru, Kana Kartları, "yakında" + Kanji Atlas'a yol. "İndirmeden oyna, hazır olunca app'le yaz" kancasıyla.
+
 ### v1.1.4 — 2026-07-15
 - 🏷️ **Zeynep Kaya Apps stüdyo logosu**: topbar'daki "ZK" yer tutucu yerine gerçek mark (fırça/hareket, palet renkleri: kiremit + sarı + tatlı mavi, krem zemin). Ana sayfa faviconu da bu logo oldu.
 
