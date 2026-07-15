@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.3.4 — 2026-07-15
+- 🦶 Footer sadeleşti: **Japanese Flick linki kaldırıldı** (footer = Ana sayfa + SSS + yasal sayfalar; uygulama linkleri footer'a girmez). Aralık sıkıştırıldı, alt satıra taşma azaldı.
+
 ### v1.3.3 — 2026-07-15
 - 🦶 **Tek ortak footer** tüm içerik sayfalarında (ana sayfa, JF, Gizlilik/Şartlar/Destek/SSS): Ana sayfa · Japanese Flick · SSS · Destek · Gizlilik · Şartlar. Aynı stil, aynı linkler, home dahil.
 
