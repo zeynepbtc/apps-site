@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
+<title>Kana Yağmuru — Japanese Flick</title>
+<meta name="description" content="Bedava hiragana & katakana okuma oyunu. Düşen kanayı doğru okunuşuyla yakala. Seviye ve sonsuz mod. Japanese Flick'in ücretsiz web oyunu." />
+<link rel="canonical" href="https://zeynepkaya.app/apps/japanese-flick/oyunlar/kana-yagmuru/" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Shippori+Mincho:wght@500;700&family=Klee+One:wght@400;600&display=swap');
+
+  :root{
+    --bg:#eee8dc;--paper:#fff9ee;--paper2:#f7efe1;--paper3:#eadfce;
+    --ink:#2b251f;--muted:#746a5e;--line:#d8cbbb;
+    --orange:#d3813a;--orange2:#bf6f2b;--teal:#4f9a8f;--deep:#275f59;--brick:#b5502f;--gold:#d7a852;
+    --shadow:0 18px 45px rgba(82,61,38,.18);--radius:26px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    min-height:100vh;min-height:100dvh;
+    display:flex;align-items:center;justify-content:center;
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(800px 460px at 8% 5%, rgba(211,129,58,.20), transparent 60%),
+      radial-gradient(760px 430px at 92% 8%, rgba(79,154,143,.18), transparent 62%),
+      radial-gradient(700px 400px at 75% 95%, rgba(183,80,47,.12), transparent 60%),
+      var(--bg);
+    overflow-x:hidden;-webkit-tap-highlight-color:transparent;
+  }
+  body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");z-index:0;}
+  a{color:inherit;text-decoration:none}
+  .page{position:relative;z-index:1;width:100%;max-width:440px;margin:0 auto;padding:14px 15px 20px;display:flex;flex-direction:column;height:100dvh;height:min(780px,100dvh)}
+  @media (min-width:600px){
+    body{padding:22px 22px 30px}
+    .page{height:min(680px,86dvh);margin-block:auto;border:1px solid rgba(216,203,187,.9);border-radius:32px;
+      background:linear-gradient(180deg, rgba(255,249,238,.55), rgba(247,239,225,.4));
+      box-shadow:0 34px 80px rgba(82,61,38,.24), inset 0 1px 0 rgba(255,255,255,.5);}
+  }
+
+  .topbar{position:sticky;top:8px;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;
+    margin-bottom:14px;padding:9px 12px;border:1px solid rgba(216,203,187,.75);
+    background:rgba(255,249,238,.72);backdrop-filter:blur(14px);border-radius:20px;box-shadow:0 12px 30px rgba(69,49,30,.10);}
+  .brand{display:flex;align-items:center;gap:10px;min-width:0}
+  .mark{width:36px;height:36px;border-radius:12px;background:var(--orange);color:#fff;display:grid;place-items:center;font-weight:900;box-shadow:0 5px 0 rgba(111,72,38,.20);transform:rotate(-4deg)}
+  .brand b{display:block;font-size:14px;font-weight:900;line-height:1.1}
+  .brand small{display:block;font-size:11px;color:var(--muted);font-weight:650;margin-top:1px}
+  .lang{display:flex;align-items:center;gap:4px;padding:4px;border-radius:999px;background:rgba(255,255,255,.55);border:1px solid var(--line)}
+  .lang button{border:0;border-radius:999px;background:transparent;color:var(--muted);font-weight:800;font-size:12px;padding:6px 10px;cursor:pointer}
+  .lang button.on{background:var(--orange);color:#fff}
+
+  .en{display:none}
+  body.lang-en .tr{display:none}
+  body.lang-en .en{display:inline}
+  body.lang-en .en.block{display:block}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;font-weight:800;font-size:15px;padding:14px 18px;cursor:pointer;transition:transform .12s ease;font-family:inherit}
+  .btn:hover{transform:translateY(-2px)}.btn:active{transform:translateY(0)}
+  .btn.primary{background:var(--orange);color:#fff;box-shadow:0 8px 0 rgba(111,72,38,.18)}
+  .btn.secondary{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
+  .btn.block{width:100%}
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;padding:5px 11px;border-radius:999px;background:rgba(79,154,143,.13);color:var(--deep)}
+
+  .screen{display:none;flex:1;flex-direction:column}
+  .screen.active{display:flex}
+
+  /* ---------- start ---------- */
+  #startScreen{justify-content:center;gap:2px}
+  .hero-title{font-family:'Shippori Mincho',serif;font-size:clamp(30px,8vw,42px);font-weight:700;line-height:1.05;margin:10px 0 4px}
+  .hero-kana{color:var(--orange);font-family:'Klee One','Shippori Mincho',serif}
+  .hero-sub{color:var(--muted);font-size:14.5px;line-height:1.5;margin-bottom:4px}
+  .note{display:inline-flex;gap:7px;align-items:center;font-size:12.5px;color:var(--deep);background:rgba(79,154,143,.12);border-radius:999px;padding:7px 12px;font-weight:700;margin:10px 0 14px}
+  .label{font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin:12px 0 7px}
+  .opts{display:flex;gap:9px;flex-wrap:wrap}
+  .opt{flex:1;min-width:96px;text-align:center;border:1.5px solid var(--line);background:var(--paper2);border-radius:15px;padding:12px 8px;cursor:pointer;font-weight:800;color:var(--ink);font-size:14px;transition:.15s;user-select:none}
+  .opt small{display:block;font-weight:600;color:var(--muted);font-size:11px;margin-top:3px}
+  .opt.on{border-color:var(--orange);background:rgba(211,129,58,.12);color:var(--orange2)}
+  .opt .big{font-size:18px}
+  #setWrap{display:none}
+  body.mode-endless #setWrap{display:block}
+
+  /* ---------- game ---------- */
+  .hud{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}
+  .hud .stat{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:7px 11px;font-weight:800;font-size:14px;text-align:center;min-width:56px}
+  .hud .stat small{display:block;font-size:9.5px;color:var(--muted);font-weight:700;letter-spacing:.3px;text-transform:uppercase}
+  .lives{font-size:17px;letter-spacing:1px;line-height:1}
+  .pausebtn{border:0;background:var(--orange);border-radius:13px;width:46px;height:46px;font-size:18px;font-weight:900;cursor:pointer;color:#fff;box-shadow:0 5px 0 rgba(111,72,38,.22)}
+  .pausebtn:active{transform:translateY(2px);box-shadow:0 3px 0 rgba(111,72,38,.22)}
+  .levelbar{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+  .levelname{font-size:12.5px;font-weight:800;color:var(--deep);white-space:nowrap}
+  .prog{flex:1;height:9px;border-radius:999px;background:var(--paper3);border:1px solid var(--line);overflow:hidden}
+  .prog > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--orange));transition:width .3s ease}
+
+  .field{position:relative;flex:1;min-height:240px;border-radius:22px;border:1px solid var(--line);overflow:hidden;
+    background:linear-gradient(180deg, rgba(255,249,238,.9), rgba(234,223,206,.7));box-shadow:inset 0 2px 20px rgba(107,77,48,.08);margin-bottom:11px}
+  .field .goal{position:absolute;left:0;right:0;bottom:0;height:56px;background:linear-gradient(180deg,transparent,rgba(211,129,58,.14));border-top:2px dashed rgba(211,129,58,.5)}
+  .drop{position:absolute;top:-84px;display:grid;place-items:center;width:clamp(64px,17vw,84px);height:clamp(64px,17vw,84px);border-radius:22px;
+    background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);
+    font-family:'Klee One','Shippori Mincho',serif;font-size:clamp(36px,10vw,46px);font-weight:600;color:var(--ink);will-change:transform}
+  .drop.good{animation:pop .3s ease forwards}
+  .drop.bad{animation:shake .3s ease}
+  @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.25);background:rgba(79,154,143,.2);border-color:var(--teal)}100%{transform:scale(0);opacity:0}}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+  .flash{position:absolute;inset:0;pointer-events:none;opacity:0}
+  .flash.miss{background:radial-gradient(circle at 50% 90%, rgba(181,80,47,.28), transparent 60%);animation:flash .4s ease}
+  @keyframes flash{0%{opacity:1}100%{opacity:0}}
+
+  /* pause / overlay inside field */
+  .overlay{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;
+    background:rgba(244,238,227,.86);backdrop-filter:blur(3px);padding:22px;z-index:5}
+  .overlay.show{display:flex}
+  .overlay h3{font-family:'Shippori Mincho',serif;font-size:26px}
+  .overlay p{color:var(--muted);font-size:13.5px;line-height:1.5;max-width:300px}
+
+  .choices{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .choice{border:1px solid var(--line);border-radius:17px;background:var(--paper);color:var(--ink);
+    font-weight:800;font-size:clamp(18px,5vw,22px);padding:16px 8px;cursor:pointer;font-family:inherit;box-shadow:0 4px 0 rgba(107,77,48,.10);transition:transform .1s ease}
+  .choice:active{transform:translateY(2px);box-shadow:0 2px 0 rgba(107,77,48,.10)}
+  .choice.right{background:rgba(79,154,143,.18);border-color:var(--teal);color:var(--deep)}
+  .choice.wrong{background:rgba(181,80,47,.14);border-color:var(--brick);color:var(--brick)}
+  .choice[disabled]{opacity:.55}
+
+  /* ---------- over ---------- */
+  #overScreen{justify-content:center;text-align:center}
+  .big-score{font-family:'Shippori Mincho',serif;font-size:56px;font-weight:700;color:var(--orange);line-height:1}
+  .cta{margin-top:16px;padding:16px;border-radius:20px;background:linear-gradient(180deg,rgba(79,154,143,.12),rgba(255,249,238,.6));border:1px solid var(--line)}
+  .cta b{display:block;font-size:15px;margin-bottom:2px}
+  .cta p{color:var(--muted);font-size:13px;line-height:1.45;margin-bottom:12px}
+  .foot{text-align:center;color:var(--muted);font-size:12px;margin-top:14px;line-height:1.5}
+  .foot a{color:var(--orange2);font-weight:700}
+</style>
+</head>
+<body class="lang-tr mode-journey">
+  <main class="page">
+    <header class="topbar">
+      <a class="brand" href="/apps/japanese-flick/">
+        <div class="mark">ZK</div>
+        <div>
+          <b>Kana Yağmuru</b>
+          <small class="tr">Japanese Flick · bedava oyun</small>
+          <small class="en">Japanese Flick · free game</small>
+        </div>
+      </a>
+      <div class="lang" aria-label="Language">
+        <button id="trBtn" class="on" type="button" onclick="setLang('tr')">TR</button>
+        <button id="enBtn" type="button" onclick="setLang('en')">EN</button>
+      </div>
+    </header>
+
+    <!-- START -->
+    <section id="startScreen" class="screen active">
+      <span class="badge">🌧️ <span class="tr">Okuma oyunu</span><span class="en">Reading game</span></span>
+      <h1 class="hero-title"><span class="hero-kana">あ</span> Kana Yağmuru</h1>
+      <p class="hero-sub">
+        <span class="tr">Kana düşüyor. Doğru okunuşunu yere değmeden yakala. Hızını sen seç, seviyeler seni ustalığa taşısın.</span>
+        <span class="en block">Kana falls. Catch its reading before it lands. Pick your speed; the levels carry you to mastery.</span>
+      </p>
+      <span class="note">✍️ <span class="tr">Sadece okuma — <b>yazmayı</b> uygulamada flick klavyeyle öğreniyorsun.</span><span class="en">Reading only — you learn to <b>type</b> with the flick keyboard in the app.</span></span>
+
+      <div class="label"><span class="tr">Mod</span><span class="en">Mode</span></div>
+      <div class="opts" id="modeRow">
+        <div class="opt on" data-mode="journey"><span class="big">🗺️</span> <span class="tr">Seviye Yolculuğu</span><span class="en">Level Journey</span><small class="tr">dalga dalga öğret · bitirilebilir</small><small class="en">learn in waves · beatable</small></div>
+        <div class="opt" data-mode="endless"><span class="big">♾️</span> <span class="tr">Sonsuz</span><span class="en">Endless</span><small class="tr">yanana kadar · 3 hata</small><small class="en">until you burn out · 3 misses</small></div>
+      </div>
+
+      <div class="label"><span class="tr">Taban hız</span><span class="en">Base speed</span></div>
+      <div class="opts" id="speedRow">
+        <div class="opt" data-speed="slow">🐢 <span class="tr">Yavaş</span><span class="en">Slow</span></div>
+        <div class="opt on" data-speed="normal">🚶 <span class="tr">Normal</span><span class="en">Normal</span></div>
+        <div class="opt" data-speed="fast">🐇 <span class="tr">Hızlı</span><span class="en">Fast</span></div>
+      </div>
+
+      <div id="setWrap">
+        <div class="label"><span class="tr">Karakter seti (sonsuz)</span><span class="en">Character set (endless)</span></div>
+        <div class="opts" id="setRow">
+          <div class="opt on" data-set="hira">あ <span class="tr">Hiragana</span><span class="en">Hiragana</span></div>
+          <div class="opt" data-set="kata">ア <span class="tr">Katakana</span><span class="en">Katakana</span></div>
+          <div class="opt" data-set="mix">あ/ア <span class="tr">Karışık</span><span class="en">Mixed</span></div>
+        </div>
+      </div>
+
+      <button class="btn primary block" style="margin-top:16px" onclick="startGame()"><span class="tr">Oyna ▶</span><span class="en">Play ▶</span></button>
+      <p class="foot"><span class="tr">Klavye: 1–4 seç · P duraklat.</span><span class="en">Keys: 1–4 choose · P pause.</span></p>
+    </section>
+
+    <!-- GAME -->
+    <section id="gameScreen" class="screen">
+      <div class="hud">
+        <div class="stat"><small><span class="tr">Puan</span><span class="en">Score</span></small><span id="scoreVal">0</span></div>
+        <div class="stat"><small><span class="tr">Seri</span><span class="en">Streak</span></small><span id="streakVal">0</span></div>
+        <div class="stat"><small><span class="tr">Can</span><span class="en">Lives</span></small><span class="lives" id="livesVal">❤️❤️❤️</span></div>
+        <button class="pausebtn" id="pauseBtn" onclick="togglePause()" aria-label="Pause">⏸</button>
+      </div>
+      <div class="levelbar" id="levelbar">
+        <span class="levelname" id="levelName">—</span>
+        <div class="prog"><i id="progFill"></i></div>
+        <span class="levelname" id="progText">0/0</span>
+      </div>
+      <div class="field" id="field">
+        <div class="goal"></div>
+        <div class="flash" id="flash"></div>
+        <div class="overlay" id="overlay">
+          <h3 id="ovTitle">—</h3>
+          <p id="ovText"></p>
+          <button class="btn primary" id="ovBtn" onclick="overlayAction()">—</button>
+        </div>
+      </div>
+      <div class="choices" id="choices"></div>
+    </section>
+
+    <!-- OVER -->
+    <section id="overScreen" class="screen">
+      <span class="badge" style="align-self:center">🌧️ <span class="tr">Bitti</span><span class="en">Game over</span></span>
+      <div style="margin:16px 0 4px">
+        <div class="big-score" id="finalScore">0</div>
+        <div style="color:var(--muted);font-weight:700;margin-top:4px" id="finalSub">—</div>
+      </div>
+      <div class="cta">
+        <b class="tr">Okumayı çözdün. Sıra yazmakta.</b>
+        <b class="en">You can read it. Now type it.</b>
+        <p class="tr">Japonlar telefonda flick klavyeyle yazıyor. Japanese Flick sana onu öğretiyor — kana, refleks dojo ve kelimelerle.</p>
+        <p class="en">Japanese people type with the flick keyboard. Japanese Flick teaches you exactly that — kana, reflex dojo and words.</p>
+        <a class="btn primary block" href="/apps/japanese-flick/"><span class="tr">Uygulamaya bak →</span><span class="en">See the app →</span></a>
+      </div>
+      <button class="btn secondary block" style="margin-top:10px" onclick="toStart()"><span class="tr">Tekrar oyna</span><span class="en">Play again</span></button>
+      <p class="foot">© <span id="yr"></span> Zeynep Kaya Apps · <a href="/apps/japanese-flick/">Japanese Flick</a></p>
+    </section>
+  </main>
+
+<script>
+/* ================= data ================= */
+var H={
+ a:[["あ","a"],["い","i"],["う","u"],["え","e"],["お","o"]],
+ ka:[["か","ka"],["き","ki"],["く","ku"],["け","ke"],["こ","ko"]],
+ sa:[["さ","sa"],["し","shi"],["す","su"],["せ","se"],["そ","so"]],
+ ta:[["た","ta"],["ち","chi"],["つ","tsu"],["て","te"],["と","to"]],
+ na:[["な","na"],["に","ni"],["ぬ","nu"],["ね","ne"],["の","no"]],
+ ha:[["は","ha"],["ひ","hi"],["ふ","fu"],["へ","he"],["ほ","ho"]],
+ ma:[["ま","ma"],["み","mi"],["む","mu"],["め","me"],["も","mo"]],
+ ya:[["や","ya"],["ゆ","yu"],["よ","yo"]],
+ ra:[["ら","ra"],["り","ri"],["る","ru"],["れ","re"],["ろ","ro"]],
+ wa:[["わ","wa"],["を","wo"],["ん","n"]]
+};
+var K={
+ a:[["ア","a"],["イ","i"],["ウ","u"],["エ","e"],["オ","o"]],
+ ka:[["カ","ka"],["キ","ki"],["ク","ku"],["ケ","ke"],["コ","ko"]],
+ sa:[["サ","sa"],["シ","shi"],["ス","su"],["セ","se"],["ソ","so"]],
+ ta:[["タ","ta"],["チ","chi"],["ツ","tsu"],["テ","te"],["ト","to"]],
+ na:[["ナ","na"],["ニ","ni"],["ヌ","nu"],["ネ","ne"],["ノ","no"]],
+ ha:[["ハ","ha"],["ヒ","hi"],["フ","fu"],["ヘ","he"],["ホ","ho"]],
+ ma:[["マ","ma"],["ミ","mi"],["ム","mu"],["メ","me"],["モ","mo"]],
+ ya:[["ヤ","ya"],["ユ","yu"],["ヨ","yo"]],
+ ra:[["ラ","ra"],["リ","ri"],["ル","ru"],["レ","re"],["ロ","ro"]],
+ wa:[["ワ","wa"],["ヲ","wo"],["ン","n"]]
+};
+function cum(){var a=[];for(var i=0;i<arguments.length;i++)a=a.concat(arguments[i]);return a;}
+var HIRA=cum(H.a,H.ka,H.sa,H.ta,H.na,H.ha,H.ma,H.ya,H.ra,H.wa);
+var KATA=cum(K.a,K.ka,K.sa,K.ta,K.na,K.ha,K.ma,K.ya,K.ra,K.wa);
+var CONFUS=[["ね","ne"],["れ","re"],["わ","wa"],["ぬ","nu"],["め","me"],["さ","sa"],["き","ki"],["ち","chi"],["は","ha"],["ほ","ho"],["シ","shi"],["ツ","tsu"],["ソ","so"],["ン","n"],["ノ","no"],["ク","ku"],["フ","fu"],["ワ","wa"],["ル","ru"],["ロ","ro"]];
+
+/* 12 levels: zero -> master */
+var LEVELS=[
+ {n:{tr:"あ satırı",en:"あ row"}, set:cum(H.a), target:15, f:1.00},
+ {n:{tr:"あ–こ",en:"あ–こ"}, set:cum(H.a,H.ka), target:18, f:0.97},
+ {n:{tr:"あ–そ",en:"あ–そ"}, set:cum(H.a,H.ka,H.sa), target:20, f:0.94},
+ {n:{tr:"あ–と",en:"あ–と"}, set:cum(H.a,H.ka,H.sa,H.ta), target:20, f:0.90},
+ {n:{tr:"あ–ほ",en:"あ–ほ"}, set:cum(H.a,H.ka,H.sa,H.ta,H.na,H.ha), target:22, f:0.86},
+ {n:{tr:"Tüm hiragana",en:"All hiragana"}, set:HIRA, target:25, f:0.82},
+ {n:{tr:"Hiragana · hızlı",en:"Hiragana · fast"}, set:HIRA, target:25, f:0.72},
+ {n:{tr:"Katakana ア–ソ",en:"Katakana ア–ソ"}, set:cum(K.a,K.ka,K.sa), target:20, f:0.82},
+ {n:{tr:"Katakana ア–ホ",en:"Katakana ア–ホ"}, set:cum(K.a,K.ka,K.sa,K.ta,K.na,K.ha), target:22, f:0.76},
+ {n:{tr:"Tüm katakana",en:"All katakana"}, set:KATA, target:25, f:0.72},
+ {n:{tr:"Karışık · hızlı",en:"Mixed · fast"}, set:cum(HIRA,KATA), target:28, f:0.64},
+ {n:{tr:"Benzeyenler · usta",en:"Look-alikes · master"}, set:CONFUS, target:30, f:0.58}
+];
+var BASE={slow:5200, normal:4200, fast:3300};
+
+/* ================= state ================= */
+var S={mode:'journey',speed:'normal',setKey:'hira',
+  score:0,streak:0,lives:3,level:0,cleared:0,
+  phase:'start',current:null,dropEl:null,dropStart:null,dur:4200,answered:false,
+  pauseAt:0,pausedAcc:0,pendingOverlay:null,rafId:0};
+
+function $(id){return document.getElementById(id);}
+function rand(n){return Math.floor(Math.random()*n);}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=rand(i+1);var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function now(){return (window.performance&&performance.now)?performance.now():Date.now();}
+
+function setLang(l){document.body.classList.remove('lang-tr','lang-en');document.body.classList.add('lang-'+l);
+  $('trBtn').classList.toggle('on',l==='tr');$('enBtn').classList.toggle('on',l==='en');}
+function T(o){return document.body.classList.contains('lang-en')?o.en:o.tr;}
+
+/* option pickers */
+function wireOpts(rowId,attr,cb){
+  document.querySelectorAll('#'+rowId+' .opt').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('#'+rowId+' .opt').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');cb(b.getAttribute(attr));
+    });
+  });
+}
+wireOpts('modeRow','data-mode',function(v){S.mode=v;document.body.classList.toggle('mode-endless',v==='endless');document.body.classList.toggle('mode-journey',v==='journey');});
+wireOpts('speedRow','data-speed',function(v){S.speed=v;});
+wireOpts('setRow','data-set',function(v){S.setKey=v;});
+
+function showScreen(id){['startScreen','gameScreen','overScreen'].forEach(function(s){$(s).classList.toggle('active',s===id);});}
+
+/* localStorage best (safe) */
+function bestKey(){return S.mode==='endless'?('kanaRain_endless_'+S.setKey):'kanaRain_journey';}
+function loadBest(){try{return parseInt(localStorage.getItem(bestKey())||'0',10)||0;}catch(e){return 0;}}
+function saveBest(v){try{localStorage.setItem(bestKey(),String(v));}catch(e){}}
+
+/* ================= flow ================= */
+function startGame(){
+  S.score=0;S.streak=0;S.level=0;S.cleared=0;S.pausedAcc=0;
+  S.lives=3;S.phase='playing';
+  $('levelbar').style.display=(S.mode==='journey')?'flex':'none';
+  hideOverlay();$('pauseBtn').textContent='⏸';
+  showScreen('gameScreen');
+  updateHUD();
+  nextKana();
+}
+function toStart(){S.phase='start';showScreen('startScreen');}
+
+function activeSet(){
+  if(S.mode==='journey') return LEVELS[S.level].set;
+  if(S.setKey==='hira') return HIRA;
+  if(S.setKey==='kata') return KATA;
+  return cum(HIRA,KATA);
+}
+function baseDur(){
+  var b=BASE[S.speed];
+  if(S.mode==='journey'){ return Math.max(1100, Math.round(b*LEVELS[S.level].f)); }
+  return Math.max(1100, Math.round(b*0.95 - S.score*40));
+}
+
+function updateHUD(){
+  $('scoreVal').textContent=S.score;
+  $('streakVal').textContent=S.streak;
+  var h='';for(var i=0;i<3;i++){h+=i<S.lives?'❤️':'🤍';}
+  $('livesVal').textContent=h;
+  if(S.mode==='journey'){
+    var lv=LEVELS[S.level];
+    $('levelName').textContent=(document.body.classList.contains('lang-en')?('Lv '+(S.level+1)+' · '):('Sv '+(S.level+1)+' · '))+T(lv.n);
+    $('progText').textContent=S.cleared+'/'+lv.target;
+    $('progFill').style.width=Math.min(100,Math.round(S.cleared/lv.target*100))+'%';
+  }
+}
+
+function nextKana(){
+  if(S.phase!=='playing') return;
+  S.answered=false;
+  var pool=activeSet();
+  S.current=pool[rand(pool.length)];
+  var others=pool.filter(function(k){return k[1]!==S.current[1];});
+  shuffle(others);
+  var opts=[S.current[1]];
+  for(var i=0;i<others.length&&opts.length<4;i++){if(opts.indexOf(others[i][1])===-1)opts.push(others[i][1]);}
+  shuffle(opts);
+  renderChoices(opts);
+
+  var field=$('field');
+  if(S.dropEl&&S.dropEl.parentNode)S.dropEl.parentNode.removeChild(S.dropEl);
+  S.dropEl=document.createElement('div');
+  S.dropEl.className='drop';
+  S.dropEl.textContent=S.current[0];
+  var w=S.dropEl.offsetWidth||80;
+  var maxLeft=field.clientWidth-84-14;
+  S.dropEl.style.left=(8+rand(Math.max(1,maxLeft)))+'px';
+  S.dropEl.style.transform='translateY(0px)';
+  field.appendChild(S.dropEl);
+
+  S.dur=baseDur();
+  S.dropStart=null;S.pausedAcc=0;
+  S.rafId=requestAnimationFrame(fall);
+}
+
+function fall(ts){
+  if(S.phase!=='playing'||S.answered)return;
+  if(S.dropStart===null)S.dropStart=ts;
+  var field=$('field');
+  var travel=field.clientHeight-90;
+  var p=(ts-S.dropStart-S.pausedAcc)/S.dur;
+  if(p>=1){S.dropEl.style.transform='translateY('+travel+'px)';miss();return;}
+  S.dropEl.style.transform='translateY('+(travel*p)+'px)';
+  S.rafId=requestAnimationFrame(fall);
+}
+
+function renderChoices(opts){
+  var c=$('choices');c.innerHTML='';
+  opts.forEach(function(r){
+    var b=document.createElement('button');
+    b.className='choice';b.textContent=r;b.setAttribute('data-r',r);
+    b.onclick=function(){pick(r,b);};
+    c.appendChild(b);
+  });
+}
+function lockChoices(){document.querySelectorAll('.choice').forEach(function(b){b.disabled=true;});}
+function revealCorrect(){document.querySelectorAll('.choice').forEach(function(b){if(b.getAttribute('data-r')===S.current[1])b.classList.add('right');});}
+
+function pick(r,btn){
+  if(S.answered||S.phase!=='playing')return;
+  S.answered=true;lockChoices();
+  if(S.rafId)cancelAnimationFrame(S.rafId);
+  if(r===S.current[1]){
+    S.score++;S.streak++;if(S.mode==='journey')S.cleared++;
+    if(S.dropEl)S.dropEl.className='drop good';
+    if(btn)btn.classList.add('right');
+    updateHUD();
+    if(S.mode==='journey'&&S.cleared>=LEVELS[S.level].target){setTimeout(levelClear,330);}
+    else{setTimeout(nextKana,300);}
+  }else{
+    S.streak=0;if(btn)btn.classList.add('wrong');revealCorrect();
+    if(S.dropEl)S.dropEl.className='drop bad';
+    loseLife();
+  }
+}
+function miss(){
+  if(S.answered)return;S.answered=true;lockChoices();
+  S.streak=0;$('flash').className='flash miss';revealCorrect();
+  loseLife();
+}
+function loseLife(){
+  S.lives--;updateHUD();
+  if(S.lives<=0){setTimeout(gameOver,650);}else{setTimeout(nextKana,650);}
+}
+
+/* level / overlay */
+function levelClear(){
+  S.phase='paused';
+  if(S.level+1>=LEVELS.length){
+    showOverlay(T({tr:"🎉 Tüm seviyeler tamam!",en:"🎉 All levels cleared!"}),
+      T({tr:"Ustalaştın. Şimdi Sonsuz mod'da rekor kır ya da uygulamada yazmayı öğren.",en:"You've mastered it. Chase a record in Endless, or learn to type in the app."}),
+      T({tr:"Bitir",en:"Finish"}),'finish');
+  }else{
+    showOverlay(T({tr:"Seviye "+(S.level+1)+" tamam! ✅",en:"Level "+(S.level+1)+" clear! ✅"}),
+      T({tr:"Sıradaki: "+T(LEVELS[S.level+1].n)+". Biraz daha hızlanıyor.",en:"Next: "+T(LEVELS[S.level+1].n)+". A little faster now."}),
+      T({tr:"Devam →",en:"Continue →"}),'next');
+  }
+}
+function showOverlay(title,text,btn,action){
+  $('ovTitle').textContent=title;$('ovText').textContent=text;$('ovBtn').textContent=btn;
+  S.pendingOverlay=action;$('overlay').classList.add('show');
+}
+function hideOverlay(){$('overlay').classList.remove('show');}
+function overlayAction(){
+  var a=S.pendingOverlay;hideOverlay();
+  if(a==='resume'){resumePlay();}
+  else if(a==='next'){S.level++;S.cleared=0;S.lives=3;S.phase='playing';updateHUD();nextKana();}
+  else if(a==='finish'){gameOver();}
+}
+
+/* pause */
+function togglePause(){
+  if(S.phase==='playing'){
+    S.phase='paused';S.pauseAt=now();if(S.rafId)cancelAnimationFrame(S.rafId);
+    $('pauseBtn').textContent='▶';
+    showOverlay(T({tr:"Duraklatıldı",en:"Paused"}),T({tr:"Hazır olduğunda devam et.",en:"Resume when you're ready."}),T({tr:"Devam ▶",en:"Resume ▶"}),'resume');
+  }else if(S.phase==='paused'&&S.pendingOverlay==='resume'){
+    resumePlay();
+  }
+}
+function resumePlay(){
+  if(S.pauseAt){S.pausedAcc+=now()-S.pauseAt;S.pauseAt=0;}
+  $('pauseBtn').textContent='⏸';S.phase='playing';hideOverlay();
+  if(!S.answered)S.rafId=requestAnimationFrame(fall);
+}
+
+function gameOver(){
+  S.phase='over';if(S.rafId)cancelAnimationFrame(S.rafId);
+  var best=loadBest();if(S.score>best){best=S.score;saveBest(best);}
+  $('finalScore').textContent=S.score;
+  var sub;
+  if(S.mode==='journey'){sub=T({tr:"Seviye "+(S.level+1)+" · en iyi puan: "+best,en:"Level "+(S.level+1)+" · best: "+best});}
+  else{sub=T({tr:"Sonsuz · en iyi: "+best,en:"Endless · best: "+best});}
+  $('finalSub').textContent=sub;
+  showScreen('overScreen');
+}
+
+/* keyboard */
+document.addEventListener('keydown',function(e){
+  if(e.key==='p'||e.key==='P'){if(S.phase==='playing'||(S.phase==='paused'&&S.pendingOverlay==='resume'))togglePause();return;}
+  if(S.phase!=='playing'||S.answered)return;
+  var n=parseInt(e.key,10);
+  if(n>=1&&n<=4){var b=document.querySelectorAll('.choice');if(b[n-1])b[n-1].click();}
+});
+
+/* init */
+$('yr').textContent=(new Date()).getFullYear();
+</script>
+</body>
+</html>
