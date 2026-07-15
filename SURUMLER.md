@@ -27,6 +27,10 @@
 
 ## Geçmiş
 
+### v1.2.0 — 2026-07-15
+- 🧭 **Birleşik navigasyon.** Dağınık oyun linkleri kaldırıldı (JF hero butonu, ayrı nav linkleri, kart pill'leri). Artık her sayfada tek tutarlı **"Oyunlar & Araçlar"** bileşeni + tek **"Oyunlar"** nav linki (ana sayfa + Japanese Flick; Atlas geldiğinde aynı düzen). Amaç: kimse kaybolmasın, 5 yaşında bile yolunu bulsun.
+- 🏷️ Stüdyo logosu PNG faviconlarla da geliyor (adres çubuğu + tarayıcı kısayolları): favicon-32, apple-touch-180.
+
 ### v1.1.5 — 2026-07-15
 - 🎮 Ana sayfaya **oyun bölümü** eklendi (hero altı): süzülen (floating) kartlar — Kana Yağmuru, Kana Kartları, "yakında" + Kanji Atlas'a yol. "İndirmeden oyna, hazır olunca app'le yaz" kancasıyla.
 

@@ -969,6 +969,24 @@
 .app-logo{width:46px;height:46px;border-radius:13px;border:1px solid rgba(216,203,187,.9);box-shadow:0 8px 20px rgba(82,61,38,.16);display:block;flex-shrink:0}
 .hero-head{display:flex;align-items:center;gap:11px;margin-bottom:20px;flex-wrap:wrap}
 .hero-head .eyebrow{margin-bottom:0}
+  .oyun-sub{color:#746a5e;font-size:14.5px;line-height:1.55;max-width:560px;margin-top:6px}
+  .oyun-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:22px}
+  .oyun-card{position:relative;display:flex;flex-direction:column;gap:9px;padding:20px 18px;border-radius:24px;background:#fff9ee;border:1px solid #d8cbbb;box-shadow:0 18px 45px rgba(82,61,38,.16);text-decoration:none;color:#2b251f;animation:oyunbob 5s ease-in-out infinite;transition:transform .18s ease,box-shadow .18s ease}
+  .oyun-card:hover{transform:translateY(-7px)!important;box-shadow:0 28px 58px rgba(82,61,38,.22)}
+  .oyun-card:nth-child(2){animation-delay:.7s}
+  .oyun-card:nth-child(3){animation-delay:1.4s}
+  .oyun-card.soon{opacity:.7;animation:none;cursor:default;box-shadow:0 10px 24px rgba(82,61,38,.10)}
+  @keyframes oyunbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  @media (prefers-reduced-motion:reduce){.oyun-card{animation:none!important}}
+  .oyun-emoji{font-size:32px;line-height:1}
+  .oyun-tag{align-self:flex-start;font-size:11px;font-weight:800;letter-spacing:.3px;padding:4px 10px;border-radius:999px;background:rgba(79,154,143,.13);color:#275f59}
+  .oyun-card h3{font-size:19px;font-weight:900;margin:0}
+  .oyun-card > p{font-size:13px;color:#746a5e;line-height:1.5;margin:0;flex:1}
+  .oyun-go{font-weight:800;font-size:13.5px;color:#bf6f2b}
+  .atlas-line{margin-top:18px;padding:15px 17px;border-radius:18px;background:#f7efe1;border:1px solid #d8cbbb;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .atlas-line .ic{font-size:24px}
+  .atlas-line b{font-size:14px}
+  .atlas-line span.mut{color:#746a5e;font-size:13px}
 </style>
 </head>
 
@@ -999,14 +1017,9 @@
         <span class="en">Release status</span>
       </a>
 
-      <a class="nav-link" href="/apps/japanese-flick/oyunlar/kana-yagmuru/">
-        <span class="tr">🎮 Oyun</span>
-        <span class="en">🎮 Game</span>
-      </a>
-
-      <a class="nav-link" href="/apps/japanese-flick/oyunlar/kana-kartlari/">
-        <span class="tr">🃏 Kartlar</span>
-        <span class="en">🃏 Cards</span>
+      <a class="nav-link" href="#oyunlar">
+        <span class="tr">Oyunlar</span>
+        <span class="en">Games</span>
       </a>
 
       <div class="lang" aria-label="Language">
@@ -1075,12 +1088,6 @@
         <a class="btn secondary" href="mailto:hello@zeynepkaya.app?subject=Japanese%20Flick">
           <span class="tr">Geri bildirim gönder</span>
           <span class="en">Send feedback</span>
-        </a>
-
-        <a class="btn secondary" href="/apps/japanese-flick/oyunlar/kana-yagmuru/">
-          <span class="tr">🎮 Tarayıcıda dene: Kana Yağmuru</span>
-          <span class="en">🎮 Try in browser: Kana Rain</span>
-          <span>→</span>
         </a>
 
       </div>
@@ -1385,6 +1392,33 @@
 
     </div>
 
+  </section>
+
+  <section class="section" id="oyunlar">
+    <h2><span class="tr">Oyunlar &amp; Araçlar</span><span class="en">Games &amp; Tools</span></h2>
+    <p class="oyun-sub"><span class="tr">İndirmeden dene. Kana'yı oyna oyna öğren, hazır olunca flick klavyeyle gerçekten yazmaya geç.</span><span class="en">Try it with no install. Learn kana by playing, then move on to typing with the flick keyboard.</span></p>
+    <div class="oyun-grid">
+      <a class="oyun-card" href="/apps/japanese-flick/oyunlar/kana-yagmuru/">
+        <div class="oyun-emoji">🌧️</div>
+        <span class="oyun-tag"><span class="tr">Kana · Oyun</span><span class="en">Kana · Game</span></span>
+        <h3>Kana Yağmuru</h3>
+        <p><span class="tr">Düşen kanayı doğru okunuşuyla yakala. Sakura melodisi, seviyeler, sonsuz mod.</span><span class="en">Catch the falling kana with its reading. Sakura melody, levels, endless mode.</span></p>
+        <span class="oyun-go"><span class="tr">Oyna →</span><span class="en">Play →</span></span>
+      </a>
+      <a class="oyun-card" href="/apps/japanese-flick/oyunlar/kana-kartlari/">
+        <div class="oyun-emoji">🃏</div>
+        <span class="oyun-tag"><span class="tr">Kana · Kart</span><span class="en">Kana · Cards</span></span>
+        <h3>Kana Kartları</h3>
+        <p><span class="tr">Dokun, kart çevrilsin: okunuşunu ve katakana eşini gör. Isı-haritası ızgarası.</span><span class="en">Tap to flip: see the reading and its katakana twin. Heat-map grid.</span></p>
+        <span class="oyun-go"><span class="tr">Aç →</span><span class="en">Open →</span></span>
+      </a>
+      <div class="oyun-card soon">
+        <div class="oyun-emoji">🧩</div>
+        <span class="oyun-tag"><span class="tr">Yakında</span><span class="en">Soon</span></span>
+        <h3><span class="tr">Yeni oyunlar</span><span class="en">New games</span></h3>
+        <p><span class="tr">Eşini seç, Kana Tetris ve daha fazlası yolda.</span><span class="en">Match pairs, Kana Tetris and more on the way.</span></p>
+      </div>
+    </div>
   </section>
 
   <section class="section" id="release">
