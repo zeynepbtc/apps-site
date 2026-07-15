@@ -27,6 +27,10 @@
 
 ## Geçmiş
 
+### v1.3.0 — 2026-07-15
+- 📄 Japanese Flick sayfası footer'ına yasal/yardım linkleri: **SSS · Destek · Gizlilik · Şartlar** (sade satır, en altta; güven verir, öne çıkmaz).
+- 🔎 **SEO temeli:** sitemap.xml + robots.txt; ana sayfa ve JF sayfasına canonical + tam Open Graph + Twitter kartı + JSON-LD (Organization/WebSite + SoftwareApplication). Google artık siteyi doğru okuyabilir.
+
 ### v1.2.0 — 2026-07-15
 - 🧭 **Birleşik navigasyon.** Dağınık oyun linkleri kaldırıldı (JF hero butonu, ayrı nav linkleri, kart pill'leri). Artık her sayfada tek tutarlı **"Oyunlar & Araçlar"** bileşeni + tek **"Oyunlar"** nav linki (ana sayfa + Japanese Flick; Atlas geldiğinde aynı düzen). Amaç: kimse kaybolmasın, 5 yaşında bile yolunu bulsun.
 - 🏷️ Stüdyo logosu PNG faviconlarla da geliyor (adres çubuğu + tarayıcı kısayolları): favicon-32, apple-touch-180.
