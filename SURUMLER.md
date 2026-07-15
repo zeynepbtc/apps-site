@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.0.4 — 2026-07-15
+- 🔊 Kana Yağmuru'na **ses & juice**: doğru yakalayınca seri büyüdükçe skalada tırmanan koto/pentatonik tını, nazik hata sesi, seviye geçişinde minik koto koşusu. Yakalama dalgası (ripple) + **combo (×N)** göstergesi. **Ses aç/kapa** düğmesi (tercih hatırlanır). Sakin, elit, Japon esintili.
+
 ### v1.0.3 — 2026-07-15
 - 🎮 **Kana Yağmuru** web oyunu eklendi — `/apps/japanese-flick/oyunlar/kana-yagmuru/`. Seviye Yolculuğu + Sonsuz mod, 12 seviye (あ satırı → tüm hiragana → katakana → benzeyenler tuzağı), hız seçimi, pause, okul-el-yazısı kana fontu (Klee One). Sadece okuma; yazma app'e saklı.
 - 🔗 Ana sayfa ve Japanese Flick sayfasına oyun linki eklendi.

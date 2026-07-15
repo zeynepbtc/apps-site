@@ -130,6 +130,12 @@
   .cta p{color:var(--muted);font-size:13px;line-height:1.45;margin-bottom:12px}
   .foot{text-align:center;color:var(--muted);font-size:12px;margin-top:14px;line-height:1.5}
   .foot a{color:var(--orange2);font-weight:700}
+  .sndbtn{border:1px solid var(--line);background:var(--paper);border-radius:12px;width:42px;height:42px;font-size:16px;cursor:pointer;color:var(--ink)}
+  .sndbtn.off{opacity:.5}
+  .combo{position:absolute;top:12px;left:50%;transform:translateX(-50%);font-family:'Klee One','Shippori Mincho',serif;font-weight:600;font-size:17px;color:var(--orange2);opacity:0;pointer-events:none;transition:opacity .2s;z-index:4}
+  .combo.show{opacity:1}
+  .ripple{position:absolute;border:2px solid var(--teal);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);animation:rip .55s ease-out forwards;z-index:3}
+  @keyframes rip{from{width:12px;height:12px;opacity:.55}to{width:130px;height:130px;opacity:0}}
 </style>
 </head>
 <body class="lang-tr mode-journey">
@@ -191,6 +197,7 @@
         <div class="stat"><small><span class="tr">Puan</span><span class="en">Score</span></small><span id="scoreVal">0</span></div>
         <div class="stat"><small><span class="tr">Seri</span><span class="en">Streak</span></small><span id="streakVal">0</span></div>
         <div class="stat"><small><span class="tr">Can</span><span class="en">Lives</span></small><span class="lives" id="livesVal">❤️❤️❤️</span></div>
+        <button class="sndbtn" id="sndBtn" type="button" onclick="toggleSound()" aria-label="Ses">🔊</button>
         <button class="pausebtn" id="pauseBtn" onclick="togglePause()" aria-label="Pause">⏸</button>
       </div>
       <div class="levelbar" id="levelbar">
@@ -200,6 +207,7 @@
       </div>
       <div class="field" id="field">
         <div class="goal"></div>
+        <div class="combo" id="combo"></div>
         <div class="flash" id="flash"></div>
         <div class="overlay" id="overlay">
           <h3 id="ovTitle">—</h3>
@@ -314,6 +322,7 @@ function saveBest(v){try{localStorage.setItem(bestKey(),String(v));}catch(e){}}
 
 /* ================= flow ================= */
 function startGame(){
+  ensureAudio();
   S.score=0;S.streak=0;S.level=0;S.cleared=0;S.pausedAcc=0;
   S.lives=3;S.phase='playing';
   $('levelbar').style.display=(S.mode==='journey')?'flex':'none';
@@ -406,20 +415,21 @@ function pick(r,btn){
   if(S.rafId)cancelAnimationFrame(S.rafId);
   if(r===S.current[1]){
     S.score++;S.streak++;if(S.mode==='journey')S.cleared++;
+    sfxCorrect(S.streak);rippleAt(S.dropEl);showCombo(S.streak);
     if(S.dropEl)S.dropEl.className='drop good';
     if(btn)btn.classList.add('right');
     updateHUD();
     if(S.mode==='journey'&&S.cleared>=LEVELS[S.level].target){setTimeout(levelClear,330);}
     else{setTimeout(nextKana,300);}
   }else{
-    S.streak=0;if(btn)btn.classList.add('wrong');revealCorrect();
+    S.streak=0;if(btn)btn.classList.add('wrong');revealCorrect();sfxWrong();showCombo(0);
     if(S.dropEl)S.dropEl.className='drop bad';
     loseLife();
   }
 }
 function miss(){
   if(S.answered)return;S.answered=true;lockChoices();
-  S.streak=0;$('flash').className='flash miss';revealCorrect();
+  S.streak=0;$('flash').className='flash miss';revealCorrect();sfxWrong();showCombo(0);
   loseLife();
 }
 function loseLife(){
@@ -429,6 +439,7 @@ function loseLife(){
 
 /* level / overlay */
 function levelClear(){
+  sfxLevel();
   S.phase='paused';
   if(S.level+1>=LEVELS.length){
     showOverlay(T({tr:"🎉 Tüm seviyeler tamam!",en:"🎉 All levels cleared!"}),
@@ -479,6 +490,59 @@ function gameOver(){
   showScreen('overScreen');
 }
 
+/* ---------- ses (sakin, elit, Japon esintili koto/pentatonik) ---------- */
+var AC=null, sndOn=true;
+try{ sndOn = localStorage.getItem('kanaRainSnd')!=='0'; }catch(e){}
+var YO=[261.63,293.66,329.63,392.00,440.00,523.25,587.33,659.25,783.99,880.00,1046.50];
+function ensureAudio(){ if(!AC){ try{ AC=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ AC=null; } } if(AC&&AC.state==='suspended'){ AC.resume(); } }
+function tone(freq,dur,type,vol,when){
+  if(!AC) return;
+  var t=(when||AC.currentTime);
+  var o=AC.createOscillator(), g=AC.createGain(), lp=AC.createBiquadFilter();
+  o.type=type||'triangle'; o.frequency.value=freq;
+  lp.type='lowpass'; lp.frequency.value=Math.min(6500,freq*4);
+  g.gain.setValueAtTime(0.0001,t);
+  g.gain.exponentialRampToValueAtTime(vol||0.13,t+0.006);
+  g.gain.exponentialRampToValueAtTime(0.0001,t+(dur||0.4));
+  o.connect(lp); lp.connect(g); g.connect(AC.destination);
+  o.start(t); o.stop(t+(dur||0.4)+0.03);
+}
+function sfxCorrect(streak){
+  if(!sndOn) return; ensureAudio(); if(!AC) return;
+  var i=Math.min((streak||1)-1,YO.length-1); if(i<0)i=0;
+  var f=YO[i];
+  tone(f,0.42,'triangle',0.13);
+  tone(f*2,0.5,'sine',0.045,AC.currentTime+0.012);
+}
+function sfxWrong(){
+  if(!sndOn) return; ensureAudio(); if(!AC) return;
+  tone(196.00,0.16,'sine',0.09);
+  tone(174.61,0.22,'sine',0.055,AC.currentTime+0.05);
+}
+function sfxLevel(){
+  if(!sndOn) return; ensureAudio(); if(!AC) return;
+  var seq=[523.25,659.25,783.99,1046.50], t=AC.currentTime;
+  for(var i=0;i<seq.length;i++){ tone(seq[i],0.42,'triangle',0.12,t+i*0.10); }
+}
+function toggleSound(){
+  sndOn=!sndOn; ensureAudio();
+  var b=document.getElementById('sndBtn'); if(b){ b.textContent=sndOn?'\u{1F50A}':'\u{1F507}'; b.classList.toggle('off',!sndOn); }
+  try{ localStorage.setItem('kanaRainSnd',sndOn?'1':'0'); }catch(e){}
+  if(sndOn) sfxCorrect(1);
+}
+function rippleAt(el){
+  if(!el||!el.parentNode) return;
+  var f=document.getElementById('field'); if(!f) return;
+  var r=document.createElement('div'); r.className='ripple';
+  r.style.left=(el.offsetLeft+el.offsetWidth/2)+'px';
+  r.style.top=(el.offsetTop+el.offsetHeight/2)+'px';
+  f.appendChild(r); setTimeout(function(){ if(r.parentNode)r.parentNode.removeChild(r); },560);
+}
+function showCombo(streak){
+  var c=document.getElementById('combo'); if(!c) return;
+  if(streak>=3){ c.textContent='\u00D7'+streak; c.classList.add('show'); }
+  else { c.classList.remove('show'); }
+}
 /* keyboard */
 document.addEventListener('keydown',function(e){
   if(e.key==='p'||e.key==='P'){if(S.phase==='playing'||(S.phase==='paused'&&S.pendingOverlay==='resume'))togglePause();return;}
@@ -488,6 +552,7 @@ document.addEventListener('keydown',function(e){
 });
 
 /* init */
+if(document.getElementById('sndBtn')){document.getElementById('sndBtn').textContent=sndOn?'\u{1F50A}':'\u{1F507}';document.getElementById('sndBtn').classList.toggle('off',!sndOn);}
 $('yr').textContent=(new Date()).getFullYear();
 </script>
 </body>
