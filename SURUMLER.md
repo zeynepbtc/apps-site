@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.1.2 — 2026-07-15
+- 🩹 Logo yerleşim düzeltmesi: ana sayfadaki JF kartında gerçek logo, telefon maketinin içinde yazıyla çakışıyordu → logo **kart başlığına** (Beta rozetinin yanına) taşındı; maket kendi çizili ikonuna döndü.
+
 ### v1.1.1 — 2026-07-15
 - 🎨 Japanese Flick **gerçek logosu** sitede: JF sayfası hero'suna logo rozeti, ana sayfadaki JF kartındaki çizili ikon → gerçek app logosu (vektör SVG). Ayrıca favicon + apple-touch ikonu + sosyal paylaşım görseli (feature graphic, og:image + twitter card).
 
