@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kana Yılanı · Japanese Flick</title>
+<meta name="description" content="Bedava Japonca oyunu: yılanı yönet, kelimenin kanalarını doğru sırada ye, yanlıştan kaç. Hiragana heceleme pratiği. Japanese Flick'in ücretsiz web oyunu." />
+<link rel="canonical" href="https://zeynepkaya.app/apps/japanese-flick/oyunlar/kana-yilani/" />
+<link rel="icon" type="image/png" sizes="32x32" href="/japanese-flick/icons/appicon-rounded-512.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Shippori+Mincho:wght@500;600;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#efe7d6;--paper:#fbf6ec;--ink:#3a2f28;--soft:#6d6055;--line:#e2d8c6;
+    --accent:#d3813a;--teal:#4f9a8f;--brick:#b5502f;--deep:#275f59;--gold:#c99a3f;--ok:#4f9a8f}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:radial-gradient(130% 70% at 50% -10%,#f3ecdd 0,var(--bg) 58%);color:var(--ink);min-height:100%;
+    font-family:"Nunito","Klee One",-apple-system,system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;
+    display:flex;justify-content:center;padding:max(14px,env(safe-area-inset-top)) 13px 34px;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+  .en{display:none}
+  body.enmode .tr{display:none}
+  body.enmode .en{display:inline}
+  .phone{width:100%;max-width:430px}
+  .siteback{display:inline-flex;align-items:center;gap:6px;margin:2px 0 12px;padding:8px 14px;border-radius:12px;
+    background:var(--paper);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:13px;font-weight:700;
+    box-shadow:0 4px 0 rgba(92,64,39,.09);transition:transform .15s}
+  .siteback:hover{transform:translateY(-1px)}
+  .top{display:flex;align-items:center;gap:10px;margin:4px 2px 14px}
+  .logo{width:40px;height:40px;border-radius:12px;background:var(--deep);color:#fff;display:grid;place-items:center;
+    font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:20px;box-shadow:0 6px 16px rgba(58,47,40,.22)}
+  .brand{flex:1;min-width:0;font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:18px}
+  .brand small{display:block;font-family:"Nunito";font-weight:400;font-size:11px;color:var(--soft)}
+  .lang{display:flex;gap:3px;padding:3px;border-radius:999px;background:#e7ddca}
+  .lang button{border:0;background:none;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:700;color:var(--soft);cursor:pointer;font-family:"Nunito"}
+  .lang button.on{background:var(--ink);color:#fff}
+  .box{background:var(--paper);border:1px solid var(--line);border-radius:20px;box-shadow:0 12px 30px -18px rgba(58,47,40,.5)}
+  .pad{padding:20px 18px}
+  h1{font-family:"Shippori Mincho","Nunito",serif;font-size:26px;margin:6px 0 4px}
+  .hero-kana{color:var(--deep)}
+  .sub{color:var(--soft);font-size:14.5px;margin:0 0 16px}
+  .badge{display:inline-flex;align-items:center;gap:6px;background:#efe7d6;border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:12.5px;font-weight:700;color:var(--soft);margin-bottom:12px}
+  .eico{display:inline-block;vertical-align:-.16em;width:1.1em;height:1.1em}
+  .eico path,.eico line,.eico polyline,.eico circle,.eico polygon{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .eico.fill path{fill:currentColor;stroke:none}
+  .how{margin:0 0 18px;padding:0;list-style:none;font-size:14px}
+  .how li{display:flex;gap:9px;align-items:flex-start;margin-bottom:9px}
+  .how .n{flex-shrink:0;width:22px;height:22px;border-radius:7px;background:var(--deep);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+  .btn{display:block;width:100%;border:0;border-radius:15px;padding:15px;font-size:16px;font-weight:800;cursor:pointer;font-family:"Nunito";
+    background:var(--deep);color:#fff;box-shadow:0 6px 0 rgba(21,49,45,.35);transition:transform .12s}
+  .btn:active{transform:translateY(3px);box-shadow:0 3px 0 rgba(21,49,45,.35)}
+  .btn.ghost{background:var(--paper);color:var(--ink);border:1px solid var(--line);box-shadow:0 4px 0 rgba(92,64,39,.09);margin-top:10px}
+  .foot{text-align:center;color:var(--soft);font-size:12px;margin-top:14px}
+
+  .hud{display:flex;justify-content:space-between;align-items:center;margin:0 2px 10px}
+  .hud .cell{text-align:center}.hud small{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.4px;color:var(--soft)}
+  .hud b{font-size:18px;color:var(--ink);font-family:"Shippori Mincho","Nunito",serif}
+  .hud .sc b{color:var(--accent)}
+  .lives .eico{width:17px;height:17px;color:var(--brick);margin:0 1px;vertical-align:-3px}
+  .wordbar{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:10px 14px;margin:0 2px 10px;display:flex;align-items:center;gap:12px;justify-content:center}
+  .wordbar .prog{font-family:"Klee One","Shippori Mincho",sans-serif;font-size:26px;letter-spacing:3px}
+  .wordbar .prog .done{color:var(--teal)}
+  .wordbar .prog .next{color:var(--brick);border-bottom:3px solid var(--brick)}
+  .wordbar .prog .todo{color:#cdbfa9}
+  .wordbar .mn{font-size:12.5px;color:var(--soft)}
+  .spk{border:1px solid var(--line);background:var(--paper);border-radius:11px;padding:7px 11px;font-size:13px;cursor:pointer;color:var(--ink)}
+  .wrap{position:relative;margin:0 auto;width:100%;max-width:392px}
+  canvas{width:100%;display:block;border-radius:18px;background:#f0e7d5;border:1px solid var(--line);box-shadow:inset 0 2px 10px rgba(58,47,40,.06);touch-action:none}
+  .flash{text-align:center;height:20px;font-weight:800;font-size:14px;margin:8px 0 0}
+  .flash.ok{color:var(--teal)}.flash.bad{color:var(--brick)}
+  .hint{text-align:center;color:var(--soft);font-size:12px;margin-top:8px}
+
+  .screen{display:none}.screen.on{display:block}
+  .ov{position:fixed;inset:0;background:rgba(40,30,22,.5);display:none;align-items:center;justify-content:center;padding:22px;z-index:40}
+  .ov.show{display:flex}
+  .ovcard{background:var(--paper);border-radius:22px;padding:24px 20px;max-width:340px;width:100%;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+  .lbl{color:var(--soft);font-size:13px}
+  .big{font-size:44px;font-weight:800;color:var(--accent);font-family:"Shippori Mincho","Nunito",serif;line-height:1.1}
+  .best{color:var(--gold);font-weight:800;margin:8px 0 16px;font-size:14px}
+</style>
+</head>
+<body>
+<div class="phone">
+  <a class="siteback" href="/#oyunlar"><span class="tr">← Oyunlar</span><span class="en">← Games</span></a>
+  <div class="top">
+    <div class="logo">蛇</div>
+    <div class="brand">Kana Yılanı<small><span class="tr">kelimeyi doğru sırada ye</span><span class="en">eat the word in order</span></small></div>
+    <div class="lang"><button id="trBtn" class="on" onclick="setLang('tr')">TR</button><button id="enBtn" onclick="setLang('en')">EN</button></div>
+  </div>
+
+  <!-- START -->
+  <section id="startScreen" class="screen on">
+    <div class="box pad">
+      <span class="badge"><svg class="eico" viewBox="0 0 24 24"><path d="M5 7h9a3 3 0 0 1 0 6H8a3 3 0 0 0 0 6h8"/><circle cx="18" cy="6" r="1.4" fill="currentColor" stroke="none"/></svg> <span class="tr">Heceleme oyunu</span><span class="en">Spelling game</span></span>
+      <h1><span class="hero-kana">蛇</span> Kana Yılanı</h1>
+      <p class="sub"><span class="tr">Yılanı sürükle. Kelimenin kanalarını <b>doğru sırada</b> ye, yanlış kanaya değme. Yedikçe uzarsın.</span><span class="en">Steer the snake. Eat the word's kana <b>in order</b>, avoid the wrong ones. You grow as you eat.</span></p>
+      <ul class="how">
+        <li><span class="n">1</span><div><span class="tr">Üstte hedef kelime var; sıradaki kana <b style="color:var(--brick)">kırmızı</b> gösterilir.</span><span class="en">The target word is on top; the next kana is shown in <b style="color:var(--brick)">red</b>.</span></div></li>
+        <li><span class="n">2</span><div><span class="tr">Kaydır (veya ok tuşları) ile o kanaya git. Doğru = uzarsın.</span><span class="en">Swipe (or arrow keys) to that kana. Correct = you grow.</span></div></li>
+        <li><span class="n">3</span><div><span class="tr">Yanlış kana veya kendine çarpma = 1 can. Duvarlardan geçersin.</span><span class="en">Wrong kana or hitting yourself = 1 life. Walls wrap around.</span></div></li>
+      </ul>
+      <button class="btn" onclick="startGame()"><span class="tr">Başla</span><span class="en">Start</span></button>
+      <p class="foot"><span class="tr">Mobilde kaydır · masaüstünde ok tuşları / WASD</span><span class="en">Swipe on mobile · arrow keys / WASD on desktop</span></p>
+    </div>
+  </section>
+
+  <!-- GAME -->
+  <section id="gameScreen" class="screen">
+    <div class="hud">
+      <div class="cell sc"><small><span class="tr">Puan</span><span class="en">Score</span></small><b id="scoreV">0</b></div>
+      <div class="cell"><small><span class="tr">Kelime</span><span class="en">Words</span></small><b id="wordsV">0</b></div>
+      <div class="cell"><small><span class="tr">Can</span><span class="en">Lives</span></small><b class="lives" id="livesV"></b></div>
+    </div>
+    <div class="wordbar">
+      <div class="prog" id="prog">—</div>
+      <div class="mn" id="mean"></div>
+      <button class="spk" onclick="sayWord()" aria-label="Ses"><svg class="eico" viewBox="0 0 24 24"><polygon points="4,9 8,9 13,5 13,19 8,15 4,15"/><path d="M16 9a4 4 0 0 1 0 6"/></svg></button>
+    </div>
+    <div class="wrap"><canvas id="cv" width="392" height="392"></canvas></div>
+    <div class="flash" id="flash"></div>
+    <div class="hint"><span class="tr">İpucu: kırmızı kanayı ye.</span><span class="en">Tip: eat the red kana.</span></div>
+  </section>
+</div>
+
+<div class="ov" id="ov">
+  <div class="ovcard">
+    <div class="lbl"><span class="tr">Oyun bitti · puanın</span><span class="en">Game over · your score</span></div>
+    <div class="big" id="ovScore">0</div>
+    <div class="best" id="ovBest"></div>
+    <button class="btn" onclick="startGame()"><span class="tr">Tekrar oyna</span><span class="en">Play again</span></button>
+    <a class="btn ghost" href="/#oyunlar"><span class="tr">Oyunlara dön</span><span class="en">Back to games</span></a>
+  </div>
+</div>
+
+<script>
+/* ---- shared shell ---- */
+let LANG='tr';
+try{LANG=(localStorage.getItem('zk_lang')==='en')?'en':'tr';}catch(e){}
+function t(tr,en){return LANG==='en'?en:tr;}
+function setLang(l){LANG=l;try{localStorage.setItem('zk_lang',l);}catch(e){}
+  document.body.classList.toggle('enmode',l==='en');
+  document.getElementById('trBtn').classList.toggle('on',l==='tr');
+  document.getElementById('enBtn').classList.toggle('on',l==='en');
+  if(running) drawWord();
+}
+function speak(str){try{const u=new SpeechSynthesisUtterance(str);u.lang='ja-JP';u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
+let _actx;
+function tone(f0,f1,dur,vol){try{_actx=_actx||new(window.AudioContext||window.webkitAudioContext)();const c=_actx,t0=c.currentTime;
+  const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(f0,t0);o.frequency.exponentialRampToValueAtTime(f1,t0+dur*.7);
+  g.gain.setValueAtTime(0.0001,t0);g.gain.exponentialRampToValueAtTime(vol,t0+0.02);g.gain.exponentialRampToValueAtTime(0.0001,t0+dur);
+  o.connect(g);g.connect(c.destination);o.start(t0);o.stop(t0+dur+0.02);}catch(e){}}
+function softError(){tone(340,240,0.3,0.11);}
+function eatOk(){tone(500,720,0.13,0.12);}
+function wordDone(){tone(560,900,0.22,0.13);}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+/* ---- words (hiragana) ---- */
+const WORDS=[
+  {w:'ねこ',ro:'neko',tr:'kedi',en:'cat'},
+  {w:'いぬ',ro:'inu',tr:'köpek',en:'dog'},
+  {w:'みず',ro:'mizu',tr:'su',en:'water'},
+  {w:'やま',ro:'yama',tr:'dağ',en:'mountain'},
+  {w:'そら',ro:'sora',tr:'gökyüzü',en:'sky'},
+  {w:'はな',ro:'hana',tr:'çiçek',en:'flower'},
+  {w:'つき',ro:'tsuki',tr:'ay',en:'moon'},
+  {w:'ほし',ro:'hoshi',tr:'yıldız',en:'star'},
+  {w:'うみ',ro:'umi',tr:'deniz',en:'sea'},
+  {w:'とり',ro:'tori',tr:'kuş',en:'bird'},
+  {w:'あめ',ro:'ame',tr:'yağmur',en:'rain'},
+  {w:'さかな',ro:'sakana',tr:'balık',en:'fish'},
+  {w:'みかん',ro:'mikan',tr:'mandalina',en:'mandarin'},
+  {w:'たまご',ro:'tamago',tr:'yumurta',en:'egg'},
+  {w:'くるま',ro:'kuruma',tr:'araba',en:'car'},
+  {w:'ともだち',ro:'tomodachi',tr:'arkadaş',en:'friend'}
+];
+const KANAPOOL='あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわ'.split('');
+
+/* ---- board ---- */
+const N=13;               // grid cells per side
+let cell=30, cv, ctx;
+let snake=[], dir={x:1,y:0}, nextDir={x:1,y:0}, tiles=[], running=false;
+let score=0, words=0, lives=3, wordObj=null, needIdx=0, tickMs=170, acc=0, lastT=0, raf=null;
+
+function initCanvas(){
+  cv=document.getElementById('cv');ctx=cv.getContext('2d');
+  const w=Math.min(392,cv.parentElement.clientWidth);
+  cv.width=w;cv.height=w;cell=Math.floor(w/N);
+}
+function freeCells(){
+  const occ=new Set(snake.map(s=>s.x+','+s.y));
+  tiles.forEach(tl=>occ.add(tl.x+','+tl.y));
+  const f=[];for(let y=0;y<N;y++)for(let x=0;x<N;x++){if(!occ.has(x+','+y))f.push({x,y});}
+  return f;
+}
+function placeTiles(){
+  tiles=[];
+  const need=wordObj.w[needIdx];
+  // distractors: other kana not equal to need
+  const distr=shuffle(KANAPOOL.filter(k=>k!==need)).slice(0,3);
+  const set=shuffle([need,...distr]);
+  const free=shuffle(freeCells());
+  set.forEach((k,i)=>{ if(free[i]) tiles.push({x:free[i].x,y:free[i].y,k:k,correct:k===need}); });
+}
+function newWord(){
+  let nw;do{nw=WORDS[Math.floor(Math.random()*WORDS.length)];}while(nw===wordObj&&WORDS.length>1);
+  wordObj=nw;needIdx=0;placeTiles();drawWord();sayWord();
+}
+function sayWord(){ if(wordObj) speak(wordObj.w); }
+function drawWord(){
+  const w=wordObj.w;let html='';
+  for(let i=0;i<w.length;i++){
+    const cls=i<needIdx?'done':(i===needIdx?'next':'todo');
+    html+='<span class="'+cls+'">'+w[i]+'</span>';
+  }
+  document.getElementById('prog').innerHTML=html;
+  document.getElementById('mean').textContent=LANG==='en'?wordObj.en:wordObj.tr;
+}
+function drawLives(){
+  const hf='<svg class="eico fill" viewBox="0 0 24 24"><path d="M12 20s-6.5-4.4-6.5-9.2A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 6.5 2.8C18.5 15.6 12 20 12 20z"/></svg>';
+  const he='<svg class="eico" viewBox="0 0 24 24"><path d="M12 20s-6.5-4.4-6.5-9.2A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 6.5 2.8C18.5 15.6 12 20 12 20z"/></svg>';
+  let h='';for(let i=0;i<3;i++)h+=i<lives?hf:he;document.getElementById('livesV').innerHTML=h;
+}
+
+function draw(){
+  ctx.clearRect(0,0,cv.width,cv.height);
+  // subtle grid dots
+  ctx.fillStyle='rgba(58,47,40,.05)';
+  for(let y=0;y<N;y++)for(let x=0;x<N;x++){ctx.beginPath();ctx.arc(x*cell+cell/2,y*cell+cell/2,1.1,0,7);ctx.fill();}
+  // tiles
+  tiles.forEach(tl=>{
+    const px=tl.x*cell,py=tl.y*cell,pad=Math.max(2,cell*0.09);
+    roundRect(px+pad,py+pad,cell-pad*2,cell-pad*2,7);
+    ctx.fillStyle=tl.correct?'#fff4e6':'#fbf6ec';ctx.fill();
+    ctx.lineWidth=2;ctx.strokeStyle=tl.correct?'#d3813a':'#e2d8c6';ctx.stroke();
+    ctx.fillStyle='#3a2f28';ctx.font='600 '+Math.floor(cell*0.6)+'px Klee One, Shippori Mincho, sans-serif';
+    ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(tl.k,px+cell/2,py+cell/2+1);
+  });
+  // snake
+  for(let i=snake.length-1;i>=0;i--){
+    const s=snake[i],px=s.x*cell,py=s.y*cell,pad=Math.max(1.5,cell*0.08);
+    const head=i===0;
+    roundRect(px+pad,py+pad,cell-pad*2,cell-pad*2,head?9:7);
+    ctx.fillStyle=head?'#275f59':(i%2?'#4f9a8f':'#59a498');ctx.fill();
+    if(head){
+      ctx.fillStyle='#fff';const e=Math.max(2,cell*0.09);
+      const cx=px+cell/2,cy=py+cell/2;
+      const ox=dir.x*cell*0.14,oy=dir.y*cell*0.14, sx=dir.x!==0?0:cell*0.16, sy=dir.y!==0?0:cell*0.16;
+      ctx.beginPath();ctx.arc(cx+ox-sx,cy+oy-sy,e,0,7);ctx.arc(cx+ox+sx,cy+oy+sy,e,0,7);ctx.fill();
+      ctx.fillStyle='#16302c';const e2=e*0.5;
+      ctx.beginPath();ctx.arc(cx+ox-sx,cy+oy-sy,e2,0,7);ctx.arc(cx+ox+sx,cy+oy+sy,e2,0,7);ctx.fill();
+    }
+  }
+}
+function roundRect(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+
+function step(){
+  dir=nextDir;
+  let hx=(snake[0].x+dir.x+N)%N, hy=(snake[0].y+dir.y+N)%N;
+  // self collision
+  if(snake.some((s,i)=>i>0&&s.x===hx&&s.y===hy)){ loseLife('self'); return; }
+  snake.unshift({x:hx,y:hy});
+  const ti=tiles.findIndex(tl=>tl.x===hx&&tl.y===hy);
+  if(ti>=0){
+    const tl=tiles[ti];
+    if(tl.correct){
+      eatOk();score+=10+needIdx*2;needIdx++;
+      document.getElementById('scoreV').textContent=score;
+      if(needIdx>=wordObj.w.length){
+        words++;score+=25;document.getElementById('wordsV').textContent=words;document.getElementById('scoreV').textContent=score;
+        wordDone();flash(t('Kelime tamam! +25','Word done! +25'),'ok');
+        if(tickMs>95)tickMs-=6;
+        newWord();
+      }else{
+        flash('+'+(10+(needIdx-1)*2),'ok');placeTiles();drawWord();
+      }
+      // grew: don't pop tail (snake grows by 1)
+    }else{
+      snake.pop();loseLife('wrong');flash(t('Yanlış kana','Wrong kana'),'bad');placeTiles();return;
+    }
+  }else{
+    snake.pop();
+  }
+  draw();
+}
+function loseLife(kind){
+  lives--;drawLives();softError();
+  if(kind==='self'){ snake=snake.slice(0,3); }
+  if(lives<=0){ endGame(); return; }
+  draw();
+}
+let flashTimer=null;
+function flash(txt,cls){const f=document.getElementById('flash');f.textContent=txt;f.className='flash '+cls;clearTimeout(flashTimer);flashTimer=setTimeout(()=>{f.textContent='';f.className='flash';},700);}
+
+function loop(ts){
+  if(!running)return;
+  if(!lastT)lastT=ts;acc+=ts-lastT;lastT=ts;
+  while(acc>=tickMs){acc-=tickMs;step();if(!running)return;}
+  raf=requestAnimationFrame(loop);
+}
+function setDir(x,y){ if(x===-dir.x&&y===-dir.y)return; nextDir={x,y}; }
+
+function startGame(){
+  score=0;words=0;lives=3;tickMs=170;acc=0;lastT=0;
+  snake=[{x:3,y:6},{x:2,y:6},{x:1,y:6}];dir={x:1,y:0};nextDir={x:1,y:0};
+  wordObj=null;
+  document.getElementById('ov').classList.remove('show');
+  document.getElementById('startScreen').classList.remove('on');
+  document.getElementById('gameScreen').classList.add('on');
+  document.getElementById('scoreV').textContent='0';
+  document.getElementById('wordsV').textContent='0';
+  initCanvas();               // measure AFTER gameScreen is visible
+  drawLives();
+  newWord();draw();
+  running=true;cancelAnimationFrame(raf);raf=requestAnimationFrame(loop);
+}
+function endGame(){
+  running=false;cancelAnimationFrame(raf);
+  let best=0;try{best=parseInt(localStorage.getItem('zk_yilani_best')||'0',10);}catch(e){}
+  const isNew=score>best;if(isNew){try{localStorage.setItem('zk_yilani_best',String(score));}catch(e){}}
+  document.getElementById('ovScore').textContent=score;
+  document.getElementById('ovBest').textContent=isNew?t('★ yeni rekor!','★ new best!'):t('en iyi: ','best: ')+Math.max(best,score);
+  document.getElementById('ov').classList.add('show');
+  document.getElementById('gameScreen').classList.remove('on');
+  document.getElementById('startScreen').classList.add('on');
+}
+
+/* controls */
+document.addEventListener('keydown',e=>{
+  const k=e.key.toLowerCase();
+  if(k==='arrowup'||k==='w')setDir(0,-1);
+  else if(k==='arrowdown'||k==='s')setDir(0,1);
+  else if(k==='arrowleft'||k==='a')setDir(-1,0);
+  else if(k==='arrowright'||k==='d')setDir(1,0);
+  else return;
+  e.preventDefault();
+},{passive:false});
+let tsx=0,tsy=0;
+function bindTouch(){
+  const el=document.getElementById('cv');
+  el.addEventListener('touchstart',e=>{const t0=e.touches[0];tsx=t0.clientX;tsy=t0.clientY;},{passive:true});
+  el.addEventListener('touchmove',e=>{e.preventDefault();},{passive:false});
+  el.addEventListener('touchend',e=>{
+    const t0=e.changedTouches[0];const dx=t0.clientX-tsx,dy=t0.clientY-tsy;
+    if(Math.abs(dx)<18&&Math.abs(dy)<18)return;
+    if(Math.abs(dx)>Math.abs(dy))setDir(dx>0?1:-1,0);else setDir(0,dy>0?1:-1);
+  },{passive:true});
+}
+window.addEventListener('resize',()=>{if(running){initCanvas();draw();}});
+
+/* init */
+setLang(LANG);bindTouch();
+</script>
+</body>
+</html>

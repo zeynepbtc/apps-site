@@ -27,6 +27,13 @@
 
 ## Geçmiş
 
+### v1.10.0 — 2026-07-16
+- 🎮 **Üç yeni retro/aksiyon oyunu** (retro/2D araştırması sonrası — sıralı: Köstebek → Yılanı → Uzay). Üçü de brand standardına uygun: tek dosya, TR/EN, pill geri-dönüş, oyun logosu, çizgi-ikon, `speak()` TTS, yumuşak hata sesi, en-iyi skoru localStorage'da.
+  - **Kana Köstebek** (`/oyunlar/kana-kostebek/`) — Whack-a-Mole. Okunuş seslenir+yazılır → doğru kanayı taşıyan köstebeğe vur. 60 sn, kombo, 5 seviye (sesli→hepsi). **Dinleme** boşluğunu doldurur (ses→kana).
+  - **Kana Yılanı** (`/oyunlar/kana-yilani/`) — Snake (canvas). Yılanı kaydır, kelimenin kanalarını **doğru sırada** ye, yanlıştan kaç; yedikçe uzar. Duvarlar sarmalı, 3 can, kelime bitince +bonus & hızlanır. **Sıralı heceleme.**
+  - **Kana Uzay** (`/oyunlar/kana-uzay/`) — Space Invaders (canvas). Gemi oto-ateş; kaydırarak doğru kananın altına gel, yere inmeden vur. Kombo, 3 can, 5 seviye. **Hızlı tanıma + refleks.**
+- Home + Japanese Flick oyun ızgaralarına 3 kart (brand `.gi` ikon), sitemap'e 3 URL eklendi. Doğrulama: 3 oyunda 0 JS hatası, oynanış + skor + can + ses akışları Playwright ile test, ekran görüntüleriyle onaylandı.
+
 ### v1.9.10 — 2026-07-16
 - 🐞 **Kana oyunları — dil hatası düzeltildi.** TR modunda üst topbar marka alt-yazısı + mod alt-metinleri **hem TR hem EN** gösteriyordu (`.brand small` / `.opt small` kuralları `.en{display:none}`'ı specificity ile eziyordu). Çözüm: `body:not(.lang-en) .en{display:none}` (specificity 0,2,0 → container kurallarını yener, `!important` yok). 3 kana oyununa uygulandı. Doğrulama: TR modunda yalnız TR, EN modunda yalnız EN görünüyor (brand + mod alt-metinleri), 0 JS hatası. (Not: Takımyıldızı `ICON` kelime-emoji haritası Zeynep kararıyla şimdilik olduğu gibi bırakıldı.)
 
