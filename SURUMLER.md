@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.9.8 — 2026-07-16
+- 🛒 **Konbini — vitrin çeşitliliği + görünür yenileme** (Zeynep: "2 müşteride bir vitrin yenilenecek gibi değiştir, ürün çeşidini de arttır"). (1) **Ürün havuzu 14 → 24** (yeni: balık, et, çilek, mandalina, sandviç, ramen, puding, salata, pirinç krakeri, çikolata — her biri TR/EN + kendi SVG glifi). (2) **Vitrin her 2 müşteride TAM yenileniyor:** yeni raf, önceki raftaki ürünlerin **dışından** seçiliyor (`buildShelf()` + `prevIds`) → art arda raflarda **0 örtüşme**, bir vardiyada **~22 farklı ürün** görülüyor (eski halde tekrar hissi vardı). Doğrulama: JS geçerli, 24 ürünün hepsi tam, art arda raf örtüşmesi 0, 0 hata. **İleriye not:** "N seviyesine göre vitrin" fikri kaydedildi (JLPT kademeli havuz).
+
 ### v1.9.7 — 2026-07-16
 - ↩️ **Kana oyunlarına "← Oyunlar" geri-dönüş butonu** (Zeynep: "Kana Yağmuru ve Takımyıldızında hâlâ oyunlara dönüş yok"). Üç kana oyununa (Kana Yağmuru, Kana Takımyıldızı, Kana Kartları) diğer oyunlarla aynı **kenarlıklı/gölgeli pill** buton eklendi → `/#oyunlar` (ana sayfa oyun ızgarası), TR/EN çift dilli ("← Oyunlar / ← Games"). Takımyıldızı gece temasına uygun koyu varyant. Doğrulama: 3 oyunda buton görünür, doğru hedef, TR/EN geçişi, 0 JS hatası. (Not: bu oyunların topbar'ındaki marka linki hâlâ Japanese Flick sayfasına gidiyor; emoji temizliği + tam standart hizalaması ayrı bir bekleyen iş.)
 
