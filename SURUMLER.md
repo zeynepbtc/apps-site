@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.10.1 — 2026-07-16
+- ⏪ **Üç yeni oyun listeden çıkarıldı** (Zeynep testi). **Kana Yılanı** — yönlendirme aşırı zor → **silindi**. **Kana Uzay** — tasarım amaca hizmet etmiyor (oto-ateş yanlış kanaları da vuruyor; vurmanın/vurmamanın anlamlı farkı yok, tanıma becerisi ölçülmüyor) → **silindi**. **Kana Köstebek** — "tam aradığım kalitede değil ama geliştirilir" → **listeden çıkarıldı, dosyası korundu** (`/oyunlar/kana-kostebek/` erişilebilir ama linksiz; ileride geliştirilecek). Home + JF ızgaralarından 3 kart, sitemap'ten 3 URL kaldırıldı. Tasarım dersleri günlüğe işlendi (bkz. GUNLUK/FIKIRLER).
+
 ### v1.10.0 — 2026-07-16
 - 🎮 **Üç yeni retro/aksiyon oyunu** (retro/2D araştırması sonrası — sıralı: Köstebek → Yılanı → Uzay). Üçü de brand standardına uygun: tek dosya, TR/EN, pill geri-dönüş, oyun logosu, çizgi-ikon, `speak()` TTS, yumuşak hata sesi, en-iyi skoru localStorage'da.
   - **Kana Köstebek** (`/oyunlar/kana-kostebek/`) — Whack-a-Mole. Okunuş seslenir+yazılır → doğru kanayı taşıyan köstebeğe vur. 60 sn, kombo, 5 seviye (sesli→hepsi). **Dinleme** boşluğunu doldurur (ses→kana).
