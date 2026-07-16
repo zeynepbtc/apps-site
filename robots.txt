@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /stock-ui/
 
 Sitemap: https://zeynepkaya.app/sitemap.xml

@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.6.5 — 2026-07-16
+- 🧹 **Temizlik (içerik ağacı kararları):** eski/linksiz `japanese-flick/sss-yardim.html` **silindi** (yeni /sss/ zaten var; hiçbir yerde referans yok, sw.js cache'lemiyor → güvenli). **stock-ui** (Zeynep'in stock çekimleri için hazırladığı telifsiz mobil arayüz görselleri; ürün değil) `robots.txt`'te **Disallow** → aramada çıkmaz ama URL ile erişilir (çekimde kullanılıyor). MatReflex: şimdilik gizli dursun (değişiklik yok).
+
 ### v1.6.4 — 2026-07-16
 - ⬆️ **Japanese Flick canlı web (PWA) v76 → v79 güncellendi** (`/japanese-flick/`). HDD kaynağındaki (Capacitor `www`) v79 uygulama çekirdeği deploy edildi: `index.html` (385 KB) + `sw.js` (jflick-v79) + ~280 yeni ses/ikon varlığı (409 → 689). **Yasal sayfalar (SSS/Destek/Gizlilik/Şartlar) reskin'li hâlleriyle korundu**, dokunulmadı. Notlar: Play native app zaten Capacitor (gömülü assetler) → bu web PWA'sı ondan bağımsız ayrı yayındır; iOS build hâlâ v76 (ayrı iş). App index'inde em-dash var (Zeynep'in ürün kodu, native ile eşleşsin diye deploy sadık tutuldu).
 
