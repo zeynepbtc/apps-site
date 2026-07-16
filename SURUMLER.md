@@ -27,6 +27,11 @@
 
 ## Geçmiş
 
+### v1.6.2 — 2026-07-16
+- 🔁 **Japanese Flick ana sayfasına Oyunlar/Araçlar sistemi taşındı** (ana sayfayla birebir aynı): uniform oyun kartları + Araçlar "çalışma panosu" + Flick ikon dili; nav'a Araçlar linki. Bütün sayfaların iskeleti tek dilde.
+- 🐛 **Dil bug'ı düzeltildi:** JF hero'daki telefon maketi (Klavye Pratiği başlığı, Hiragana/Katakana panelleri, Tekrar/Reflex Dojo/Serbest Yazma satırları) sabit İngilizceydi → TR modda Türkçe çıkacak şekilde dil-duyarlı yapıldı.
+- 🐛 **JF `#year` null hatası** giderildi (footer'a `<span id="year">`) → JS hatası bitti, device parallax çalışıyor (ana sayfadaki v1.4.2 fix'inin JF karşılığı).
+
 ### v1.6.1 — 2026-07-16
 - ✍️ **/hakkimda metni yenilendi** (Zeynep'in genişlettiği sürüm): "hayat ilginç yollar çiziyor", doğuş hikâyesi diyaloğu ("Bu kadar da zor olamaz herhalde." / "Meğer olabiliyormuş."), "yapay zekâ dostlarım", "bir arka kapıdan girmeyi başardım", "bazı şeylerin doğru zamanı yokmuş". TR + EN, em-dash yok.
 - 🧭 **Kana Kartları'na "← Araçlar" geri linki** eklendi (panoya döner, ana sayfaya değil) → araçlar arası kolay dolaşım.

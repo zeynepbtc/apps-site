@@ -986,6 +986,38 @@
   .oyun-card h3{font-size:19px;font-weight:900;margin:0}
   .oyun-card > p{font-size:13px;color:#746a5e;line-height:1.5;margin:0;flex:1}
   .oyun-go{font-weight:800;font-size:13.5px;color:#bf6f2b}
+
+  /* --- yeni sistem: Flick ikon dili + uniform oyun kartları + Araçlar panosu (ana sayfayla aynı) --- */
+  .gi .gl{fill:none;stroke:#3a2f28;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  .gi .gd{fill:#3a2f28}
+  .kanaglyph{font-family:'Klee One','Shippori Mincho',serif;font-size:19px;fill:#3a2f28}
+  .game-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:22px;max-width:760px;margin-left:auto;margin-right:auto}
+  .game-card{display:flex;align-items:center;gap:14px;padding:15px 16px;border-radius:22px;background:var(--paper);border:1px solid var(--line);box-shadow:0 10px 24px rgba(82,61,38,.08);text-decoration:none;color:var(--ink);transition:transform .18s,box-shadow .18s}
+  .game-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .game-card .badge{flex:0 0 auto;width:58px;height:58px;border-radius:16px;background:var(--paper2);border:1px solid var(--line);display:grid;place-items:center}
+  .game-card .badge svg{width:42px;height:42px}
+  .game-card .gt{text-align:left;min-width:0}
+  .game-card .gt b{display:block;font-size:15px;font-weight:900;line-height:1.12}
+  .game-card .gt p{font-size:12px;color:var(--muted);line-height:1.4;margin-top:3px}
+  .game-card .gt .go{font-size:12px;font-weight:800;color:var(--orange2);margin-top:5px;display:inline-block}
+  .game-card.soon{opacity:.68;box-shadow:none;background:repeating-linear-gradient(135deg,var(--paper),var(--paper) 8px,var(--paper2) 8px,var(--paper2) 16px)}
+  .game-card.soon:hover{transform:none}
+  .pano{position:relative;margin:18px auto 0;max-width:680px;border-radius:28px;padding:24px 16px 20px;background:radial-gradient(circle at 14% 12%,rgba(255,255,255,.4),transparent 42%),linear-gradient(160deg,#e7cfa6,#dcb782);border:1px solid #d3b284;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 18px 42px rgba(82,61,38,.16)}
+  .pano .tab{position:absolute;top:-12px;left:20px;background:var(--deep);color:#f4eee3;font-size:11px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;padding:5px 12px;border-radius:999px;box-shadow:0 6px 14px rgba(39,95,89,.3)}
+  .pano-grid{position:relative;display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:11px}
+  .pin{position:relative;background:var(--paper);border-radius:15px;padding:13px 6px 9px;text-decoration:none;color:var(--ink);text-align:center;box-shadow:0 7px 16px rgba(82,61,38,.15);transition:transform .16s,box-shadow .16s;border:1px solid rgba(216,203,187,.7)}
+  .pin:hover{transform:translateY(-3px) rotate(-.5deg);box-shadow:0 12px 22px rgba(82,61,38,.22)}
+  .pin:after{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d8b25e,#9d7327);box-shadow:0 2px 3px rgba(82,61,38,.4)}
+  .pin .ico{width:40px;height:40px;margin:5px auto 7px}
+  .pin b{display:block;font-size:11.5px;font-weight:800;line-height:1.12}
+  .pin.soon{cursor:default;opacity:.75}
+  .pin.soon:after{background:radial-gradient(circle at 35% 30%,#c9bda8,#9a8f7c)}
+  .pin.wide{grid-column:1/-1;display:flex;align-items:center;gap:11px;text-align:left;padding:11px 14px;border-radius:16px}
+  .pin.wide:after{display:none}
+  .pin.wide .ico{width:34px;height:34px;margin:0;flex:0 0 auto}
+  .pin.wide .wtx b{font-size:13px}
+  .pin.wide .wtx small{display:block;font-size:11px;color:var(--muted);font-weight:700;margin-top:1px}
+  .pin.wide .go{margin-left:auto;font-size:11.5px;font-weight:800;color:var(--deep);white-space:nowrap}
   .atlas-line{margin-top:18px;padding:15px 17px;border-radius:18px;background:#f7efe1;border:1px solid #d8cbbb;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
   .atlas-line .ic{font-size:24px}
   .atlas-line b{font-size:14px}
@@ -1031,6 +1063,11 @@
       <a class="nav-link" href="#oyunlar">
         <span class="tr">Oyunlar</span>
         <span class="en">Games</span>
+      </a>
+
+      <a class="nav-link" href="#araclar">
+        <span class="tr">Araçlar</span>
+        <span class="en">Tools</span>
       </a>
 
       <div class="lang" aria-label="Language">
@@ -1144,19 +1181,19 @@
           </div>
 
           <div class="practice-card">
-            <small>Keyboard Practice</small>
-            <strong>Learn kana directions with your finger.</strong>
+            <small><span class="tr">Klavye Pratiği</span><span class="en">Keyboard Practice</span></small>
+            <strong><span class="tr">Kana yönlerini parmağınla öğren.</span><span class="en">Learn kana directions with your finger.</span></strong>
           </div>
 
           <div class="kana-panels">
             <div class="kana-panel teal">
               <b>あ Hiragana</b>
-              <span>Japanese words and grammar</span>
+              <span><span class="tr">Japonca kelimeler ve gramer</span><span class="en">Japanese words and grammar</span></span>
             </div>
 
             <div class="kana-panel">
               <b>カ Katakana</b>
-              <span>Words of foreign origin</span>
+              <span><span class="tr">Yabancı kökenli kelimeler</span><span class="en">Words of foreign origin</span></span>
             </div>
           </div>
 
@@ -1164,8 +1201,8 @@
             <div class="menu-icon">↪️</div>
 
             <div>
-              <b>Review</b>
-              <span>kana ready for review</span>
+              <b><span class="tr">Tekrar</span><span class="en">Review</span></b>
+              <span><span class="tr">tekrara hazır kana</span><span class="en">kana ready for review</span></span>
             </div>
           </div>
 
@@ -1174,7 +1211,7 @@
 
             <div>
               <b>Reflex Dojo</b>
-              <span>speed and muscle memory</span>
+              <span><span class="tr">hız ve kas hafızası</span><span class="en">speed and muscle memory</span></span>
             </div>
           </div>
 
@@ -1182,8 +1219,8 @@
             <div class="menu-icon">✍️</div>
 
             <div>
-              <b>Free Writing</b>
-              <span>discover words as you type</span>
+              <b><span class="tr">Serbest Yazma</span><span class="en">Free Writing</span></b>
+              <span><span class="tr">yazarken kelimeleri keşfet</span><span class="en">discover words as you type</span></span>
             </div>
           </div>
 
@@ -1408,36 +1445,53 @@
   <section class="section" id="oyunlar">
     <div class="section-title">
       <span class="kicker"><span class="tr">Bedava · Tarayıcıda</span><span class="en">Free · In your browser</span></span>
-      <h2><span class="tr">Oyunlar &amp; Araçlar</span><span class="en">Games &amp; Tools</span></h2>
-      <p><span class="tr">İndirmeden dene. Kana'yı oyna oyna öğren, hazır olunca flick klavyeyle gerçekten yazmaya geç.</span><span class="en">Try it with no install. Learn kana by playing, then move on to typing with the flick keyboard.</span></p>
+      <h2><span class="tr">Oyunlar</span><span class="en">Games</span></h2>
     </div>
-    <div class="oyun-grid">
-      <a class="oyun-card" href="/apps/japanese-flick/oyunlar/kana-yagmuru/">
-        <div class="oyun-emoji">🌧️</div>
-        <span class="oyun-tag"><span class="tr">Kana · Oyun</span><span class="en">Kana · Game</span></span>
-        <h3>Kana Yağmuru</h3>
-        <p><span class="tr">Düşen kanayı doğru okunuşuyla yakala. Sakura melodisi, seviyeler, sonsuz mod.</span><span class="en">Catch the falling kana with its reading. Sakura melody, levels, endless mode.</span></p>
-        <span class="oyun-go"><span class="tr">Oyna →</span><span class="en">Play →</span></span>
+    <div class="game-grid">
+      <a class="game-card" href="/apps/japanese-flick/oyunlar/kana-takimyildizi/">
+        <div class="badge"><svg class="gi" viewBox="0 0 44 44"><polygon points="9,13 31,10 34,31 12,34" fill="var(--brick)"/><g class="gl"><polyline points="12,29 19,15 28,22 33,12"/></g><circle class="gd" cx="12" cy="29" r="2"/><circle class="gd" cx="19" cy="15" r="2"/><circle class="gd" cx="28" cy="22" r="2"/><circle class="gd" cx="33" cy="12" r="2"/></svg></div>
+        <div class="gt"><b><span class="tr">Kana Takımyıldızı</span><span class="en">Kana Constellation</span></b><p><span class="tr">Kanaları gökyüzünde sırayla birleştir, çiz.</span><span class="en">Connect a word's kana across the sky, in order.</span></p><span class="go"><span class="tr">Oyna →</span><span class="en">Play →</span></span></div>
       </a>
-      <a class="oyun-card" href="/apps/japanese-flick/oyunlar/kana-kartlari/">
-        <div class="oyun-emoji">🃏</div>
-        <span class="oyun-tag"><span class="tr">Kana · Kart</span><span class="en">Kana · Cards</span></span>
-        <h3>Kana Kartları</h3>
-        <p><span class="tr">Dokun, kart çevrilsin: okunuşunu ve katakana eşini gör. Isı-haritası ızgarası.</span><span class="en">Tap to flip: see the reading and its katakana twin. Heat-map grid.</span></p>
-        <span class="oyun-go"><span class="tr">Aç →</span><span class="en">Open →</span></span>
+      <a class="game-card" href="/apps/japanese-flick/oyunlar/kana-yagmuru/">
+        <div class="badge"><svg class="gi" viewBox="0 0 44 44"><polygon points="9,13 31,10 34,31 12,34" fill="var(--orange)"/><g class="gl"><path d="M15 12 L12 21"/><path d="M22 11 L19 20"/><path d="M29 13 L26 22"/></g><circle class="gd" cx="12" cy="23" r="1.6"/><circle class="gd" cx="19" cy="22" r="1.6"/><circle class="gd" cx="26" cy="24" r="1.6"/></svg></div>
+        <div class="gt"><b>Kana Yağmuru</b><p><span class="tr">Düşen kanayı okunuşuyla yakala.</span><span class="en">Catch the falling kana by its reading.</span></p><span class="go"><span class="tr">Oyna →</span><span class="en">Play →</span></span></div>
       </a>
-      <a class="oyun-card" href="/apps/japanese-flick/oyunlar/kana-takimyildizi/">
-        <div class="oyun-emoji">✦</div>
-        <span class="oyun-tag"><span class="tr">Kana · Oyun</span><span class="en">Kana · Game</span></span>
-        <h3><span class="tr">Kana Takımyıldızı</span><span class="en">Kana Constellation</span></h3>
-        <p><span class="tr">Kelimenin kanalarını gökyüzünde sırayla birleştir; takımyıldız parlasın, kelime sesli okunsun.</span><span class="en">Connect a word's kana across the sky, in order; light the constellation, hear the word.</span></p>
-        <span class="oyun-go"><span class="tr">Oyna →</span><span class="en">Play →</span></span>
-      </a>
-      <div class="oyun-card soon">
-        <div class="oyun-emoji">🧩</div>
-        <span class="oyun-tag"><span class="tr">Yakında</span><span class="en">Soon</span></span>
-        <h3><span class="tr">Yeni oyunlar</span><span class="en">New games</span></h3>
-        <p><span class="tr">Eşini seç, Kana Tetris ve daha fazlası yolda.</span><span class="en">Match pairs, Kana Tetris and more on the way.</span></p>
+      <div class="game-card soon">
+        <div class="badge"><svg class="gi" viewBox="0 0 44 44"><polygon points="9,13 31,10 34,31 12,34" fill="none" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="3 3"/><g class="gl" stroke="var(--muted)"><path d="M22 15 V29"/><path d="M15 22 H29"/></g></svg></div>
+        <div class="gt"><b><span class="tr">Yeni oyunlar</span><span class="en">New games</span></b><p><span class="tr">Eşini seç, Kana Tetris ve daha fazlası.</span><span class="en">Match pairs, Kana Tetris and more.</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="araclar">
+    <div class="section-title">
+      <span class="kicker"><span class="tr">Çalışma kâğıtları</span><span class="en">Study sheets</span></span>
+      <h2><span class="tr">Araçlar</span><span class="en">Tools</span></h2>
+      <p><span class="tr">Kendim için hazırladığım küçük çalışma kâğıtları. Buyur, senin de olsun.</span><span class="en">Little study sheets I made for myself. Help yourself.</span></p>
+    </div>
+    <div class="pano">
+      <span class="tab"><span class="tr">Çalışma panosu</span><span class="en">Study board</span></span>
+      <div class="pano-grid">
+        <a class="pin" href="/apps/japanese-flick/araclar/hiragana/">
+          <svg class="gi ico" viewBox="0 0 44 44"><polygon points="9,13 31,10 34,31 12,34" fill="var(--orange)"/><text x="21.5" y="29" text-anchor="middle" class="kanaglyph">あ</text></svg><b>Hiragana</b>
+        </a>
+        <a class="pin" href="/apps/japanese-flick/araclar/katakana/">
+          <svg class="gi ico" viewBox="0 0 44 44"><polygon points="9,13 31,10 34,31 12,34" fill="var(--teal)"/><text x="21.5" y="29" text-anchor="middle" class="kanaglyph">ア</text></svg><b>Katakana</b>
+        </a>
+        <a class="pin" href="/apps/japanese-flick/oyunlar/kana-kartlari/">
+          <svg class="gi ico" viewBox="0 0 44 44"><polygon points="9,13 31,10 34,31 12,34" fill="var(--brick)"/><g class="gl"><rect x="17" y="15" width="13" height="17" rx="2.5"/><path d="M15 18 L12 30 L23 32" opacity=".9"/></g></svg><b>Kana Kartları</b>
+        </a>
+        <div class="pin soon">
+          <svg class="gi ico" viewBox="0 0 44 44"><polygon points="9,13 31,10 34,31 12,34" fill="var(--gold)"/><g class="gl"><circle cx="19" cy="20" r="7"/><path d="M24 25 L31 32"/></g></svg><b><span class="tr">Benzeyenler</span><span class="en">Look-alikes</span></b>
+        </div>
+        <div class="pin soon">
+          <svg class="gi ico" viewBox="0 0 44 44"><polygon points="9,13 31,10 34,31 12,34" fill="var(--deep)"/><g class="gl"><path d="M16 16 L16 22"/><path d="M20 16 L20 22"/><circle cx="27" cy="18" r="2.4"/><path d="M14 29 H30"/></g></svg><b>Dakuten</b>
+        </div>
+        <div class="pin wide">
+          <svg class="gi ico" viewBox="0 0 44 44"><polygon points="10,13 30,11 33,30 13,33" fill="var(--deep)" opacity=".9"/><text x="21" y="29" text-anchor="middle" font-family="'Shippori Mincho',serif" font-size="20" fill="var(--paper)">木</text></svg>
+          <div class="wtx"><b>Japanese Kanji Atlas</b><small><span class="tr">kanji'yi aileler ve anlam bağlarıyla keşfet</span><span class="en">explore kanji through families and meaning links</span></small></div>
+          <span class="go"><span class="tr">yakında</span><span class="en">soon</span></span>
+        </div>
       </div>
     </div>
   </section>
@@ -1491,7 +1545,7 @@
       <a href="/japanese-flick/privacy/"><span class="tr">Gizlilik</span><span class="en">Privacy</span></a>
       <a href="/japanese-flick/terms/"><span class="tr">Şartlar</span><span class="en">Terms</span></a>
     </nav>
-    <div class="zk-fine">© 2026 Zeynep Kaya Apps</div>
+    <div class="zk-fine">© <span id="year">2026</span> Zeynep Kaya Apps</div>
   </footer>
 
 </main>
