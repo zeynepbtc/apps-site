@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.5.0 — 2026-07-16
+- 🙋‍♀️ **/hakkimda sayfası** eklendi (iki dilli TR/EN) — Zeynep'in kendi sesinden, sade & samimi bir tanıtım: fotoğrafçı-videograf (Getty Images, 13 yıl), Sanat Tarihi + NYFA sinematografi; çocukluğundan beri oyun yapma hayali; Japanese Flick'in doğuş hikâyesi; "tasarım bana ait, kodda yapay zekâ desteği" dürüstlüğü. **Japandi** atmosferi: dar sütun, bol boşluk, tek aksan, ikon dilinde küçük "oyun/zar" işareti + はじめまして dokunuşu. Nav + footer + sitemap linklendi; canonical/OG/JSON-LD (ProfilePage/Person) + Cloudflare beacon.
+
 ### v1.4.3 — 2026-07-16
 - 🔄 Kana Takımyıldızı: **döndürme/adres çubuğu bug'ı** giderildi. Telefonda kelime ortasında ekran yeniden boyutlanınca (adres çubuğu gizlenmesi / oryantasyon) gökyüzü sıfırdan çiziliyor, çizgiler ve yanan yıldızlar kayboluyordu → artık yıldızlar oransal konuma göre **yerinde taşınıyor**, ilerleme hiç bozulmuyor.
 - 📱 **Çentik/safe-area** desteği: `env(safe-area-inset-*)` ile üst bar ve alttaki CTA çentikli iPhone'larda kesilmiyor.
