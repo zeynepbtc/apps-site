@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.9.3 — 2026-07-16
+- 🌐 **Konbini Shift — iki dilli (TR/EN) + ortak oyun dili.** Oyun tasarım standardı (claude/oyun-tasarim-standardi.md) doğrultusunda: ince "← Oyunlar / ← Games" geri-dönüş → `/#oyunlar`, TR/EN dil hapı (`zk_lang` ile kalıcı, site ile aynı), tüm statik + dinamik metinler çift dilli (intro/adımlar/HUD/yardım/kelime defteri/bitiş), 14 ürüne EN anlamlar. Emoji temizliği (dekoratif 🏮 kaldırıldı; sadece işlevsel 🔊 kaldı). Diğer oyunlara da (Yokai + kana oyunları) aynı desen uygulanıyor.
+
 ### v1.9.2 — 2026-07-16
 - 🛒 **Konbini Shift — iki düzeltme** (Zeynep bildirdi). **(1) Ses kesilmesi:** müşteri "ありがとうございました" derken sonraki müşterinin sesi araya girip "arigatoug" gibi kesiyordu → artık teşekkür sesi bitince (`utterance.onend`) sıradaki müşteriye geçiliyor (2.4sn fallback). **(2) Ürün çeşitliliği:** her vardiyada aynı 8 ürün dönüyordu → ürün havuzu 8→**14**'e çıkarıldı (süt, elma, muz, meyve suyu, kek, atıştırmalık eklendi) ve her vardiya rastgele **8 farklı ürün** seçiyor; vardiyalar artık birbirinden farklı. Doğrulama: iki vardiyanın rafı farklı, 0 JS hatası.
 
