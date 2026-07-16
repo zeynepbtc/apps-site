@@ -111,6 +111,19 @@
   .cc.empty{border-style:dashed;opacity:.5;display:grid;place-items:center;min-height:96px;font-size:22px;color:var(--soft)}
   .cempty{text-align:center;color:var(--soft);font-size:14px;padding:30px 10px}
 
+  .intro{text-align:center}
+  .ihero{width:58px;height:58px;border-radius:16px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:"Shippori Mincho",serif;font-weight:700;font-size:31px;margin:8px auto 10px;box-shadow:0 8px 18px rgba(58,47,40,.24)}
+  .ititle{font-family:"Shippori Mincho",serif;font-size:24px;margin:0 0 8px}
+  .ilead{font-size:14.5px;color:var(--ink);margin:0 0 18px;line-height:1.55}
+  .ilead b{color:var(--accent)}
+  .steps{text-align:left;display:grid;gap:13px;margin:0 0 18px}
+  .step{display:flex;gap:12px;align-items:flex-start}
+  .step .sn{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px}
+  .step b{font-size:14.5px}
+  .step p{font-size:12.5px;color:var(--soft);margin:2px 0 0;line-height:1.5}
+  .igoal{background:#f3ede0;border:1px dashed var(--gold);border-radius:12px;padding:11px 13px;font-size:13px;color:#4a4038;margin:0 0 16px}
+  .helpbtn{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:#efe7d6;color:var(--soft);font-weight:700;cursor:pointer;font-size:15px;flex-shrink:0}
+  .hint{font-size:12px;color:var(--soft);text-align:center;margin:12px 2px 0}
   .hidden{display:none}
   .end{text-align:center;padding:24px 16px}
   .end .big{font-family:"Shippori Mincho",serif;font-size:20px;margin:0 0 8px}
@@ -123,8 +136,23 @@
   <div class="top">
     <div class="logo">妖</div>
     <div class="brand">Yōkai Mail<small>bugün sana kim yazmış?</small></div>
+    <button class="helpbtn" onclick="showIntro()" title="Nasıl oynanır?">?</button>
     <button class="booknav" id="booknav" onclick="showCollection()">📖 Defter <b id="colcount">0</b></button>
   </div>
+
+  <!-- INTRO / NASIL OYNANIR -->
+  <div id="intro" class="box hidden"><div class="pad intro">
+    <div class="ihero">妖</div>
+    <h2 class="ititle">Yōkai Mail</h2>
+    <p class="ilead">Japon folklorunda <b>yokai</b>'ler vardır: tuhaf, tatlı ruhlar ve yaratıklar. Bu oyunda yokai'ler sana mektup yazar; sen de mektupları okurken Japonca kelimeler öğrenirsin.</p>
+    <div class="steps">
+      <div class="step"><span class="sn">1</span><div><b>Mektubu oku</b><p>Yokai sana kısa bir Japonca mektup yazmış. Takıldıysan "okunuş + anlam"a dokun, romaji ve Türkçesi çıksın.</p></div></div>
+      <div class="step"><span class="sn">2</span><div><b>Eksik kelimeyi yaz</b><p>Mektupta bir kelime eksiktir. Aşağıdaki kana karolarına dokunarak o kelimeyi hece hece yazarsın.</p></div></div>
+      <div class="step"><span class="sn">3</span><div><b>Kelimeni topla</b><p>Doğru yazınca yokai sana cevap verir; öğrendiğin kelime sesiyle birlikte Kelime Defteri'ne eklenir.</p></div></div>
+    </div>
+    <p class="igoal">🎯 Amaç: yokai'lerin mektuplarını oku, kelime defterini doldur. Her gün yeni bir yokai yazar.</p>
+    <button class="btn" onclick="startGame()">Başla →</button>
+  </div></div>
 
   <!-- INBOX -->
   <div id="inbox" class="box hidden"><div class="pad">
@@ -145,9 +173,10 @@
       <div class="help" id="lhelp"><div class="ro" id="lro"></div><div class="tr" id="ltr"></div></div>
     </div>
     <div class="compose" id="compose">
-      <p class="prompt">Eksik kelimeyi kana ile yaz:</p>
+      <p class="prompt">Mektupta boşluğa gelen kelimeyi bul, kana karolarına dokunarak yaz:</p>
       <div class="slots" id="slots"></div>
       <div class="tray" id="tray"></div>
+      <p class="hint">İpucu: kelimeyi bilemezsen yukarıdaki "okunuş + anlam"a dokun.</p>
     </div>
     <div class="reward" id="reward">
       <h4>Kelime defterine eklendi</h4>
@@ -217,7 +246,9 @@ let cur=0, filled=[];
 
 function speak(t){try{const u=new SpeechSynthesisUtterance(t);u.lang='ja-JP';u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
 
-function show(id){['inbox','letter','collection','end'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));window.scrollTo(0,0);}
+function show(id){['intro','inbox','letter','collection','end'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));window.scrollTo(0,0);}
+function startGame(){try{localStorage.setItem('yokaimail_seen','1');}catch(e){}renderInbox();}
+function showIntro(){show('intro');}
 function isSolved(i){return store.solved.includes(i);}
 
 function renderInbox(){
@@ -348,7 +379,7 @@ function showCollection(){
   show('collection');
 }
 
-renderInbox();
+(function(){let seen=false;try{seen=localStorage.getItem('yokaimail_seen')==='1';}catch(e){}if(seen)renderInbox();else show('intro');})();
 </script>
 </body>
 </html>

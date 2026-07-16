@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.7.1 — 2026-07-16
+- 🧭 **Yōkai Mail — onboarding.** Zeynep testte "ne yapılacağı, yokai'lerin kim olduğu, amaç anlaşılmıyor" dedi → oyuna **açılış/nasıl oynanır ekranı** eklendi (yokai nedir + 3 adım: mektubu oku · eksik kelimeyi kana ile yaz · kelimeni topla + amaç), ilk açılışta gelir (localStorage `yokaimail_seen`), üstteki **"?"** düğmesiyle tekrar açılır. Mektup ekranında yönerge netleştirildi + "okunuş+anlam" ipucu satırı. Doğrulandı (açılış→başla→oyna akışı, 0 JS hatası).
+
 ### v1.7.0 — 2026-07-16
 - 🎮 **Yeni web oyunu: Yōkai Mail** (`/apps/japanese-flick/oyunlar/yokai-mail/`). Merak temelli Japonca kelime oyunu: yokai'lerden gelen N5 mektuplarında eksik kelimeyi **kana karolarını dokunarak yaz** (şık seçme değil — Flick'in "yazma" ruhu web'de); doğruda yokai cevap verir + kelime **Kelime Defteri**'ne eklenir (kanji + kana + anlam + ja-JP ses). 5 yokai (Nekomata/Karakasa/Yuki-onna/Kappa/Kitsune), koleksiyon + seri sayacı (localStorage), "yarın gelir" kilitli zarf. Ana sayfa + JF tanıtım Oyunlar ızgarasına kart (Flick ikon dili, zarf glyph + teal blok), sitemap + canonical. Okuma web / cevap Flick köprüsü ileride. Doğrulama: baştan sona oynanış (kana-yaz → ödül → defter), 0 JS hatası.
 
