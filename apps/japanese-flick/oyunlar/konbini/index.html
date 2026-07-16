@@ -173,12 +173,10 @@ function setLang(l){LANG=l;try{localStorage.setItem('zk_lang',l);}catch(e){}
 function speak(t,cb){try{const u=new SpeechSynthesisUtterance(t);u.lang='ja-JP';u.rate=.9;if(cb){u.onend=cb;u.onerror=cb;}speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){if(cb)cb();}}
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
-let shelfItems=[], shift=[], idx=0, yen=0, combo=0, learned=[], busy=false, curItem=null;
-
+let shelfItems=[], idx=0, yen=0, combo=0, learned=[], busy=false, curItem=null;
+const SHIFT_LEN=8;
 function startShift(){
-  shelfItems=shuffle(ITEMS).slice(0,8);
-  shift=[];for(let i=0;i<8;i++) shift.push(shelfItems[Math.floor(Math.random()*shelfItems.length)].id);
-  idx=0;yen=0;combo=0;learned=[];busy=false;
+  idx=0;yen=0;combo=0;learned=[];busy=false;shelfItems=[];
   show('play');renderCustomer();
 }
 function applyHelp(it){
@@ -187,7 +185,8 @@ function applyHelp(it){
 }
 function renderCustomer(){
   busy=false;
-  const it=ITEMS.find(x=>x.id===shift[idx]);curItem=it;
+  if(idx%4===0) shelfItems=shuffle(ITEMS).slice(0,8);
+  const it=shelfItems[Math.floor(Math.random()*shelfItems.length)];curItem=it;
   document.getElementById('cnum').textContent=idx+1;
   document.getElementById('yen').textContent='¥'+yen;
   document.getElementById('combo').textContent=combo;
@@ -214,7 +213,7 @@ function pick(x,btn,target){
     document.getElementById('yen').textContent='¥'+yen;
     const f=document.getElementById('flash');f.className='flash good';f.textContent=`ありがとう！ +¥${tip}`;
     let advanced=false;
-    const go=()=>{if(advanced)return;advanced=true;idx++; if(idx>=shift.length) endShift(); else renderCustomer();};
+    const go=()=>{if(advanced)return;advanced=true;idx++; if(idx>=SHIFT_LEN) endShift(); else renderCustomer();};
     speak("ありがとうございました", go);
     setTimeout(go, 2400);
   }else{

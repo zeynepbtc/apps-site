@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.9.4 — 2026-07-16
+- 🔁 **Konbini — raf her 4 müşteride yenileniyor** (Zeynep: "sıkıcı olmasın"). Vardiya artık iki bölüm: müşteri 1-4 bir raf, 5-8 yeni bir raf (rastgele 8 ürün) → vardiya içinde de çeşitlilik. Hedef ürün her müşteride güncel raftan seçiliyor.
+
 ### v1.9.3 — 2026-07-16
 - 🌐 **Konbini Shift — iki dilli (TR/EN) + ortak oyun dili.** Oyun tasarım standardı (claude/oyun-tasarim-standardi.md) doğrultusunda: ince "← Oyunlar / ← Games" geri-dönüş → `/#oyunlar`, TR/EN dil hapı (`zk_lang` ile kalıcı, site ile aynı), tüm statik + dinamik metinler çift dilli (intro/adımlar/HUD/yardım/kelime defteri/bitiş), 14 ürüne EN anlamlar. Emoji temizliği (dekoratif 🏮 kaldırıldı; sadece işlevsel 🔊 kaldı). Diğer oyunlara da (Yokai + kana oyunları) aynı desen uygulanıyor.
 
