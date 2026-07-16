@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.6.3 — 2026-07-16
+- ⚖️ **Yasal sayfalar (SSS · Destek · Gizlilik · Şartlar) tek iskelete çekildi:** site topbar (Zeynep Kaya Apps markası + TR/EN dil hapı), **dil kalıcılığı** (`zk_lang` → dil artık sayfalar arası hatırlanıyor), footer'a Hakkımda linki + fikri mülkiyet/haklar notu. Sayfa içerikleri (SSS akordeonları, metinler) **aynen korundu**. **Em-dash'ler temizlendi** (meta açıklamalar + gizlilik metni). Test: TR/EN geçişi + kalıcılık ✓, 0 JS hatası.
+
 ### v1.6.2 — 2026-07-16
 - 🔁 **Japanese Flick ana sayfasına Oyunlar/Araçlar sistemi taşındı** (ana sayfayla birebir aynı): uniform oyun kartları + Araçlar "çalışma panosu" + Flick ikon dili; nav'a Araçlar linki. Bütün sayfaların iskeleti tek dilde.
 - 🐛 **Dil bug'ı düzeltildi:** JF hero'daki telefon maketi (Klavye Pratiği başlığı, Hiragana/Katakana panelleri, Tekrar/Reflex Dojo/Serbest Yazma satırları) sabit İngilizceydi → TR modda Türkçe çıkacak şekilde dil-duyarlı yapıldı.

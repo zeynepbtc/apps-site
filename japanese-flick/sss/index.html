@@ -32,12 +32,25 @@ a{color:var(--accent)}
   .zk-footer nav a{color:#746a5e;font-size:13px;font-weight:700;text-decoration:none;transition:color .15s}
   .zk-footer nav a:hover{color:#bf6f2b}
   .zk-fine{color:#a99a86;font-size:12.5px;font-weight:700}
+
+  .topbar{position:sticky;top:12px;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 18px;padding:11px 13px;border:1px solid rgba(216,203,187,.75);background:rgba(255,249,238,.82);backdrop-filter:blur(14px);border-radius:20px;box-shadow:0 12px 30px rgba(69,49,30,.10)}
+  .topbar .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#2b251f;min-width:0}
+  .topbar .mark{width:38px;height:38px;border-radius:13px;background:#d3813a;box-shadow:0 5px 0 rgba(111,72,38,.2);transform:rotate(-4deg)}
+  .topbar .brand b{display:block;font-size:14px;font-weight:900;line-height:1.1}
+  .topbar .brand small{display:block;font-size:11px;color:#746a5e;font-weight:650}
+  .topbar .lang{display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(234,223,206,.85)}
+  .topbar .lang button{border:0;border-radius:999px;background:transparent;color:#746a5e;font-weight:800;font-size:12px;padding:7px 11px;cursor:pointer;font-family:inherit}
+  .topbar .lang button.on{background:#2b251f;color:#fff}
+  .zk-rights{margin-top:6px;color:#a99a86;font-size:11.5px;font-weight:600;line-height:1.5}
 </style></head>
 <body><div class="wrap">
-<h1>Japanese Flick</h1>
+<header class="topbar">
+  <a class="brand" href="/"><img class="mark" src="/zk-logo.svg" alt="Zeynep Kaya Apps" /><div><b>Zeynep Kaya Apps</b><small class="tr">öğrenme araçları</small><small class="en" hidden>learning tools</small></div></a>
+  <div class="lang" aria-label="Language"><button id="trBtn" class="on" type="button" onclick="setLang('tr')">TR</button><button id="enBtn" type="button" onclick="setLang('en')">EN</button></div>
+</header>
+
     <a class="backlink" href="/apps/japanese-flick/">← Japanese Flick</a>
 <p class="sub"><span class="tr">Sıkça Sorulan Sorular & Yardım</span><span class="en" hidden>Frequently Asked Questions & Help</span></p>
-<div class="langbar"><button id="btr" class="on" onclick="sl('tr')">Türkçe</button><button id="ben" onclick="sl('en')">English</button></div>
 <h2 class="tr">Ne'yiz / ne değiliz</h2><h2 class="en" hidden>What we are / aren't</h2>
 <details><summary><span class="tr">Bu uygulama ne öğretir?</span><span class="en" hidden>What does this app teach?</span></summary><div class="tr">Üç şey: <b>hiragana ve katakana</b> (Japon hecelerini) tanıma, <b>flick klavye</b> parmak hareketleri, ve tanıdıkça açılan bir <b>kelime dağarcığı</b>. Odak: yazıyı tanımak ve telefonda Japonca yazabilmek.</div><div class="en" hidden>Three things: recognizing <b>hiragana and katakana</b> (the Japanese syllabaries), the <b>flick keyboard</b> finger gestures, and a <b>vocabulary</b> that unlocks as you go. The focus is reading the script and typing Japanese on a phone.</div></details>
 <details><summary><span class="tr">Bu bir Japonca kursu mu?</span><span class="en" hidden>Is this a Japanese course?</span></summary><div class="tr">Hayır. Tam bir dil kursu değil; dürüst olmak gerekirse gramer, cümle kurma veya konuşma öğretmez. Yazı ve klavye için bir <b>pratik dojosu</b> olarak düşün.</div><div class="en" hidden>No. It isn't a full language course; it doesn't teach grammar, sentence building or speaking. Think of it as a <b>practice dojo</b> for the script and keyboard.</div></details>
@@ -96,20 +109,27 @@ a{color:var(--accent)}
 <footer class="zk-footer">
     <nav>
       <a href="/"><span class="tr">Ana sayfa</span><span class="en" hidden>Home</span></a>
+      <a href="/hakkimda/"><span class="tr">Hakkımda</span><span class="en" hidden>About</span></a>
       <a href="/japanese-flick/sss/"><span class="tr">SSS</span><span class="en" hidden>FAQ</span></a>
       <a href="/japanese-flick/support/"><span class="tr">Destek</span><span class="en" hidden>Support</span></a>
       <a href="/japanese-flick/privacy/"><span class="tr">Gizlilik</span><span class="en" hidden>Privacy</span></a>
       <a href="/japanese-flick/terms/"><span class="tr">Şartlar</span><span class="en" hidden>Terms</span></a>
     </nav>
-    <div class="zk-fine">© 2026 Zeynep Kaya Apps</div>
+    <div class="zk-fine">© <span id="year">2026</span> Zeynep Kaya Apps</div>
+    <div class="zk-rights"><span class="tr">Tüm tasarım, görsel dil ve fikirler Zeynep Kaya'ya aittir. Tüm hakları saklıdır.</span><span class="en" hidden>All design, visual language and ideas belong to Zeynep Kaya. All rights reserved.</span></div>
   </footer>
 </div>
 <script>
-function sl(l){document.documentElement.lang=l;
- document.querySelectorAll('.tr').forEach(function(e){e.hidden=(l!=='tr');});
- document.querySelectorAll('.en').forEach(function(e){e.hidden=(l!=='en');});
- document.getElementById('btr').classList.toggle('on',l==='tr');
- document.getElementById('ben').classList.toggle('on',l==='en');}
+function setLang(l){
+  document.documentElement.lang=l;
+  document.querySelectorAll('.tr').forEach(function(e){e.hidden=(l!=='tr');});
+  document.querySelectorAll('.en').forEach(function(e){e.hidden=(l!=='en');});
+  var t=document.getElementById('trBtn'),n=document.getElementById('enBtn');
+  if(t)t.classList.toggle('on',l==='tr'); if(n)n.classList.toggle('on',l==='en');
+  try{localStorage.setItem('zk_lang',l);}catch(err){}
+}
+try{var s=localStorage.getItem('zk_lang'); if(s==='en'||s==='tr') setLang(s);}catch(err){}
+var yy=document.getElementById('year'); if(yy) yy.textContent=new Date().getFullYear();
 </script>
 <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "c0c1eb8c7e0f4cd48413deedf5cf28bf"}'></script><!-- End Cloudflare Web Analytics -->
 </body></html>
