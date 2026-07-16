@@ -27,6 +27,10 @@
 
 ## Geçmiş
 
+### v1.6.1 — 2026-07-16
+- ✍️ **/hakkimda metni yenilendi** (Zeynep'in genişlettiği sürüm): "hayat ilginç yollar çiziyor", doğuş hikâyesi diyaloğu ("Bu kadar da zor olamaz herhalde." / "Meğer olabiliyormuş."), "yapay zekâ dostlarım", "bir arka kapıdan girmeyi başardım", "bazı şeylerin doğru zamanı yokmuş". TR + EN, em-dash yok.
+- 🧭 **Kana Kartları'na "← Araçlar" geri linki** eklendi (panoya döner, ana sayfaya değil) → araçlar arası kolay dolaşım.
+
 ### v1.6.0 — 2026-07-16
 - 🎮🧰 **Ana sayfa Oyunlar/Araçlar yeniden tasarımı** yayında. Oyunlar: öne çıkan poster yok, **hepsi aynı boyda uniform kart** (Takımyıldızı, Yağmuru, +yeni). Araçlar: yeni **"çalışma panosu"** (sıcak zeminli pano, küçük pinli ikonlar). **Kana Kartları oyun→araç** olarak panoya taşındı. Giriş paragrafı kalktı. Tüm ikonlar **Flick ikon dilinde** (emoji yok). Nav'a Araçlar linki.
 - 📄 **Hiragana & Katakana çalışma kâğıtları** eklendi (`/apps/japanese-flick/araclar/hiragana|katakana/`) — gojūon + dakuten + yōon tam tablolar, okunuşlu, iki dilli; sitemap + canonical/OG.
