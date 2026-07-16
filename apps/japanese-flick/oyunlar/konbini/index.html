@@ -23,7 +23,10 @@
   body.enmode .tr{display:none}
   body.enmode .en{display:inline}
   .phone{width:100%;max-width:430px}
-  .siteback{display:inline-block;margin:0 0 8px 2px;color:var(--soft);text-decoration:none;font-size:13px}
+  .siteback{display:inline-flex;align-items:center;gap:6px;margin:2px 0 12px;padding:8px 14px;border-radius:12px;
+    background:var(--paper);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:13px;font-weight:700;
+    box-shadow:0 4px 0 rgba(92,64,39,.09);transition:transform .15s}
+  .siteback:hover{transform:translateY(-1px)}
   .top{display:flex;align-items:center;gap:10px;margin:4px 2px 14px}
   .logo{width:40px;height:40px;border-radius:12px;background:var(--brick);color:#fff;display:grid;place-items:center;
     font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:20px;box-shadow:0 6px 16px rgba(58,47,40,.22)}
@@ -171,6 +174,12 @@ function setLang(l){LANG=l;try{localStorage.setItem('zk_lang',l);}catch(e){}
   refreshEnd();
 }
 function speak(t,cb){try{const u=new SpeechSynthesisUtterance(t);u.lang='ja-JP';u.rate=.9;if(cb){u.onend=cb;u.onerror=cb;}speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){if(cb)cb();}}
+let _actx;
+function softError(){try{_actx=_actx||new (window.AudioContext||window.webkitAudioContext)();const c=_actx,t0=c.currentTime;
+  const o=c.createOscillator(),g=c.createGain();o.type='sine';
+  o.frequency.setValueAtTime(340,t0);o.frequency.exponentialRampToValueAtTime(240,t0+0.16);
+  g.gain.setValueAtTime(0.0001,t0);g.gain.exponentialRampToValueAtTime(0.11,t0+0.02);g.gain.exponentialRampToValueAtTime(0.0001,t0+0.28);
+  o.connect(g);g.connect(c.destination);o.start(t0);o.stop(t0+0.3);}catch(e){}}
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
 let shelfItems=[], idx=0, yen=0, combo=0, learned=[], busy=false, curItem=null;
@@ -185,7 +194,7 @@ function applyHelp(it){
 }
 function renderCustomer(){
   busy=false;
-  if(idx%4===0) shelfItems=shuffle(ITEMS).slice(0,8);
+  if(idx%2===0) shelfItems=shuffle(ITEMS).slice(0,8);
   const it=shelfItems[Math.floor(Math.random()*shelfItems.length)];curItem=it;
   document.getElementById('cnum').textContent=idx+1;
   document.getElementById('yen').textContent='¥'+yen;
@@ -217,6 +226,7 @@ function pick(x,btn,target){
     speak("ありがとうございました", go);
     setTimeout(go, 2400);
   }else{
+    softError();
     btn.classList.add('bad');combo=0;document.getElementById('combo').textContent=0;
     const f=document.getElementById('flash');f.className='flash bad';f.textContent=t('hmm… tekrar bak','hmm… look again');
     setTimeout(()=>btn.classList.remove('bad'),350);

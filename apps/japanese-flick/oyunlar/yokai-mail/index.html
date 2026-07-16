@@ -25,6 +25,10 @@
     display:flex;justify-content:center;padding:max(14px,env(safe-area-inset-top)) 13px 34px;
   }
   .phone{width:100%;max-width:430px}
+  .siteback{display:inline-flex;align-items:center;gap:6px;margin:2px 0 12px;padding:8px 14px;border-radius:12px;
+    background:var(--paper);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:13px;font-weight:700;
+    box-shadow:0 4px 0 rgba(92,64,39,.09);transition:transform .15s}
+  .siteback:hover{transform:translateY(-1px)}
   .top{display:flex;align-items:center;gap:10px;margin:4px 2px 16px}
   .logo{width:40px;height:40px;border-radius:12px;background:var(--ink);color:var(--paper);
     display:grid;place-items:center;font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:21px;
@@ -132,7 +136,7 @@
 </head>
 <body>
 <div class="phone">
-  <a href="/#oyunlar" style="display:inline-block;margin:0 0 10px 2px;color:var(--soft);text-decoration:none;font-size:13px">← Oyunlar</a>
+  <a class="siteback" href="/#oyunlar">← Oyunlar</a>
   <div class="top">
     <div class="logo">妖</div>
     <div class="brand">Yōkai Mail<small>bugün sana kim yazmış?</small></div>

@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.9.5 — 2026-07-16
+- 🎛️ **Oyun cilası (Zeynep geri bildirimi).** (1) **"← Oyunlar" dönüşü belirgin buton** oldu (ince link yerine kenarlıklı/gölgeli pill) — Konbini + Yokai Mail. (2) **Konbini rafı daha sık yenileniyor:** her 4 → **her 2 müşteride** (vardiya boyunca 4 kez değişir). (3) **Yanlış cevapta yumuşak ses** (Web Audio, alçak sesli nazik "boop", kırıcı değil) — Konbini. Standart: dönüş butonu + nazik hata sesi diğer oyunlara da taşınacak.
+
 ### v1.9.4 — 2026-07-16
 - 🔁 **Konbini — raf her 4 müşteride yenileniyor** (Zeynep: "sıkıcı olmasın"). Vardiya artık iki bölüm: müşteri 1-4 bir raf, 5-8 yeni bir raf (rastgele 8 ürün) → vardiya içinde de çeşitlilik. Hedef ürün her müşteride güncel raftan seçiliyor.
 
