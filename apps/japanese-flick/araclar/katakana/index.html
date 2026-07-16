@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Katakana · Zeynep Kaya Apps</title>
+<meta name="description" content="Katakana çalışma kâğıdı: gojūon, dakuten ve yōon tek sayfada, okunuşlarıyla." />
+<link rel="icon" type="image/svg+xml" href="/zk-logo.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" href="/zk-logo-180.png" />
+<link rel="canonical" href="https://zeynepkaya.app/apps/japanese-flick/araclar/katakana/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zeynep Kaya Apps" />
+<meta property="og:title" content="Katakana · Zeynep Kaya Apps" />
+<meta property="og:description" content="Katakana çalışma kâğıdı: gojūon, dakuten ve yōon tek sayfada, okunuşlarıyla." />
+<meta property="og:url" content="https://zeynepkaya.app/apps/japanese-flick/araclar/katakana/" />
+<meta property="og:image" content="https://zeynepkaya.app/zk-logo-512.png" />
+<meta name="twitter:card" content="summary" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Shippori+Mincho:wght@500;700&family=Klee+One:wght@400;600&display=swap');
+  :root{--bg:#eee8dc;--paper:#fff9ee;--paper2:#f7efe1;--ink:#2b251f;--inkx:#3a2f28;--muted:#746a5e;--line:#d8cbbb;--orange:#d3813a;--orange2:#bf6f2b;--teal:#468a80;--deep:#275f59;--brick:#b5502f;--gold:#d7a852;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{min-height:100vh;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);line-height:1.5;overflow-x:hidden;
+    background:radial-gradient(800px 460px at 8% 5%, rgba(211,129,58,.18), transparent 60%),radial-gradient(760px 430px at 92% 8%, rgba(70,138,128,.16), transparent 62%),var(--bg);}
+  a{color:inherit;text-decoration:none}
+  [data-lang="en"] .tr{display:none!important}
+  [data-lang="tr"] .en{display:none!important}
+  .page{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:22px 18px 40px}
+  .topbar{position:sticky;top:12px;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px;padding:11px 13px;border:1px solid rgba(216,203,187,.75);background:rgba(255,249,238,.75);backdrop-filter:blur(14px);border-radius:22px;box-shadow:0 12px 30px rgba(69,49,30,.10)}
+  .brand{display:flex;align-items:center;gap:11px;min-width:0}
+  .mark{width:40px;height:40px;border-radius:14px;background:var(--orange);color:#fff;display:grid;place-items:center;font-weight:900;box-shadow:0 5px 0 rgba(111,72,38,.20);transform:rotate(-4deg)}
+  .brand b{display:block;font-size:14px;font-weight:900}
+  .brand small{display:block;font-size:11px;color:var(--muted);font-weight:650}
+  .lang{display:flex;align-items:center;gap:4px;padding:4px;border-radius:999px;background:rgba(234,223,206,.85)}
+  .lang button{border:0;border-radius:999px;background:transparent;color:var(--muted);font-weight:800;font-size:12px;padding:7px 11px;cursor:pointer;font-family:inherit}
+  .lang button.on{background:var(--ink);color:#fff}
+  .backlink{display:inline-flex;align-items:center;gap:6px;margin-bottom:14px;padding:8px 14px;border-radius:999px;background:var(--paper);border:1px solid var(--line);color:var(--ink);font-weight:800;font-size:12.5px}
+  .backlink:hover{color:var(--orange2)}
+  .amark{width:50px;height:50px;display:block;margin:6px auto 16px}
+  .amark .bk{}
+  .kanabig{font-family:'Klee One',serif;font-size:19px;fill:var(--inkx)}
+  .title{font-family:'Shippori Mincho',serif;font-size:26px;font-weight:700;text-align:center}
+  .title .k{display:block;font-family:'Klee One',serif;font-size:13px;color:var(--orange);font-weight:600;letter-spacing:2px;margin-bottom:6px}
+  .sub{text-align:center;color:var(--muted);font-size:13.5px;line-height:1.55;max-width:460px;margin:10px auto 4px;font-family:'Shippori Mincho',serif;font-style:italic}
+  .kana-sec{margin-top:30px}
+  .kana-sec h2{font-family:'Shippori Mincho',serif;font-size:16px;font-weight:700;margin-bottom:4px;display:flex;align-items:baseline;gap:8px}
+  .kana-sec .lbl{font-size:11.5px;color:var(--muted);font-weight:700;margin-bottom:12px}
+  .vhead{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-bottom:7px;padding:0 2px}
+  .vhead span{text-align:center;font-size:11px;font-weight:800;color:var(--orange2);text-transform:uppercase;letter-spacing:1.5px}
+  .ktable{display:grid;gap:7px}
+  .ktable.g5{grid-template-columns:repeat(5,1fr)}
+  .ktable.g3{grid-template-columns:repeat(3,1fr);max-width:400px}
+  .kcell{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:9px 4px 8px;text-align:center;box-shadow:0 3px 8px rgba(82,61,38,.05)}
+  .kcell .kk{font-family:'Klee One',serif;font-size:23px;line-height:1;color:var(--ink)}
+  .kcell .kr{font-size:10px;color:var(--muted);font-weight:700;margin-top:6px;letter-spacing:.3px}
+  .kcell.empty{background:transparent;border:0;box-shadow:none}
+  .zk-footer{margin:40px auto 0;padding:22px 0 20px;border-top:1px solid var(--line);text-align:center}
+  .zk-footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 14px;margin-bottom:12px}
+  .zk-footer nav a{color:var(--muted);font-size:13px;font-weight:700}
+  .zk-footer nav a:hover{color:var(--orange2)}
+  .zk-fine{color:#a99a86;font-size:12.5px;font-weight:700}
+  @media(max-width:560px){.kcell .kk{font-size:21px}.title{font-size:23px}}
+</style>
+</head>
+<body data-lang="tr">
+  <main class="page">
+    <header class="topbar">
+      <a class="brand" href="/">
+        <img class="mark" src="/zk-logo.svg" alt="Zeynep Kaya Apps" />
+        <div><b>Zeynep Kaya Apps</b><small class="tr">çalışma kâğıtları</small><small class="en">study sheets</small></div>
+      </a>
+      <div class="lang" aria-label="Language">
+        <button id="trBtn" class="on" type="button" onclick="setLang('tr')">TR</button>
+        <button id="enBtn" type="button" onclick="setLang('en')">EN</button>
+      </div>
+    </header>
+
+    <a class="backlink" href="/#araclar">← <span class="tr">Araçlar</span><span class="en">Tools</span></a>
+
+    <svg class="amark" viewBox="0 0 44 44" aria-hidden="true">
+      <polygon points="9,13 31,10 34,31 12,34" fill="var(--teal)"/>
+      <text x="21.5" y="29" text-anchor="middle" class="kanabig">ア</text>
+    </svg>
+    <div class="title"><span class="k">カタカナ</span>Katakana</div>
+    <p class="sub tr">Tüm katakana tek sayfada. İstediğinde bak, göz aşinalığı kendiliğinden gelsin.</p>
+    <p class="sub en">All of katakana on one page. Glance whenever you like and let it sink in.</p>
+
+    <div class="kana-sec">
+      <h2><span class="tr">Temel · Gojūon</span><span class="en">Basic · Gojūon</span></h2>
+      <div class="lbl"><span class="tr">46 temel kana.</span><span class="en">The 46 basic kana.</span></div>
+      <div class="vhead"><span>a</span><span>i</span><span>u</span><span>e</span><span>o</span></div>
+      <div class="ktable g5"><div class="kcell"><div class="kk">ア</div><div class="kr">a</div></div><div class="kcell"><div class="kk">イ</div><div class="kr">i</div></div><div class="kcell"><div class="kk">ウ</div><div class="kr">u</div></div><div class="kcell"><div class="kk">エ</div><div class="kr">e</div></div><div class="kcell"><div class="kk">オ</div><div class="kr">o</div></div><div class="kcell"><div class="kk">カ</div><div class="kr">ka</div></div><div class="kcell"><div class="kk">キ</div><div class="kr">ki</div></div><div class="kcell"><div class="kk">ク</div><div class="kr">ku</div></div><div class="kcell"><div class="kk">ケ</div><div class="kr">ke</div></div><div class="kcell"><div class="kk">コ</div><div class="kr">ko</div></div><div class="kcell"><div class="kk">サ</div><div class="kr">sa</div></div><div class="kcell"><div class="kk">シ</div><div class="kr">shi</div></div><div class="kcell"><div class="kk">ス</div><div class="kr">su</div></div><div class="kcell"><div class="kk">セ</div><div class="kr">se</div></div><div class="kcell"><div class="kk">ソ</div><div class="kr">so</div></div><div class="kcell"><div class="kk">タ</div><div class="kr">ta</div></div><div class="kcell"><div class="kk">チ</div><div class="kr">chi</div></div><div class="kcell"><div class="kk">ツ</div><div class="kr">tsu</div></div><div class="kcell"><div class="kk">テ</div><div class="kr">te</div></div><div class="kcell"><div class="kk">ト</div><div class="kr">to</div></div><div class="kcell"><div class="kk">ナ</div><div class="kr">na</div></div><div class="kcell"><div class="kk">ニ</div><div class="kr">ni</div></div><div class="kcell"><div class="kk">ヌ</div><div class="kr">nu</div></div><div class="kcell"><div class="kk">ネ</div><div class="kr">ne</div></div><div class="kcell"><div class="kk">ノ</div><div class="kr">no</div></div><div class="kcell"><div class="kk">ハ</div><div class="kr">ha</div></div><div class="kcell"><div class="kk">ヒ</div><div class="kr">hi</div></div><div class="kcell"><div class="kk">フ</div><div class="kr">fu</div></div><div class="kcell"><div class="kk">ヘ</div><div class="kr">he</div></div><div class="kcell"><div class="kk">ホ</div><div class="kr">ho</div></div><div class="kcell"><div class="kk">マ</div><div class="kr">ma</div></div><div class="kcell"><div class="kk">ミ</div><div class="kr">mi</div></div><div class="kcell"><div class="kk">ム</div><div class="kr">mu</div></div><div class="kcell"><div class="kk">メ</div><div class="kr">me</div></div><div class="kcell"><div class="kk">モ</div><div class="kr">mo</div></div><div class="kcell"><div class="kk">ヤ</div><div class="kr">ya</div></div><div class="kcell empty"></div><div class="kcell"><div class="kk">ユ</div><div class="kr">yu</div></div><div class="kcell empty"></div><div class="kcell"><div class="kk">ヨ</div><div class="kr">yo</div></div><div class="kcell"><div class="kk">ラ</div><div class="kr">ra</div></div><div class="kcell"><div class="kk">リ</div><div class="kr">ri</div></div><div class="kcell"><div class="kk">ル</div><div class="kr">ru</div></div><div class="kcell"><div class="kk">レ</div><div class="kr">re</div></div><div class="kcell"><div class="kk">ロ</div><div class="kr">ro</div></div><div class="kcell"><div class="kk">ワ</div><div class="kr">wa</div></div><div class="kcell empty"></div><div class="kcell empty"></div><div class="kcell empty"></div><div class="kcell"><div class="kk">ヲ</div><div class="kr">wo</div></div><div class="kcell"><div class="kk">ン</div><div class="kr">n</div></div><div class="kcell empty"></div><div class="kcell empty"></div><div class="kcell empty"></div><div class="kcell empty"></div></div>
+    </div>
+
+    <div class="kana-sec">
+      <h2><span class="tr">Dakuten &amp; Handakuten · ゛ ゜</span><span class="en">Dakuten &amp; Handakuten · ゛ ゜</span></h2>
+      <div class="lbl"><span class="tr">İşaretle değişen sesler (g, z, d, b, p).</span><span class="en">Sounds changed by the marks (g, z, d, b, p).</span></div>
+      <div class="vhead"><span>a</span><span>i</span><span>u</span><span>e</span><span>o</span></div>
+      <div class="ktable g5"><div class="kcell"><div class="kk">ガ</div><div class="kr">ga</div></div><div class="kcell"><div class="kk">ギ</div><div class="kr">gi</div></div><div class="kcell"><div class="kk">グ</div><div class="kr">gu</div></div><div class="kcell"><div class="kk">ゲ</div><div class="kr">ge</div></div><div class="kcell"><div class="kk">ゴ</div><div class="kr">go</div></div><div class="kcell"><div class="kk">ザ</div><div class="kr">za</div></div><div class="kcell"><div class="kk">ジ</div><div class="kr">ji</div></div><div class="kcell"><div class="kk">ズ</div><div class="kr">zu</div></div><div class="kcell"><div class="kk">ゼ</div><div class="kr">ze</div></div><div class="kcell"><div class="kk">ゾ</div><div class="kr">zo</div></div><div class="kcell"><div class="kk">ダ</div><div class="kr">da</div></div><div class="kcell"><div class="kk">ヂ</div><div class="kr">ji</div></div><div class="kcell"><div class="kk">ヅ</div><div class="kr">zu</div></div><div class="kcell"><div class="kk">デ</div><div class="kr">de</div></div><div class="kcell"><div class="kk">ド</div><div class="kr">do</div></div><div class="kcell"><div class="kk">バ</div><div class="kr">ba</div></div><div class="kcell"><div class="kk">ビ</div><div class="kr">bi</div></div><div class="kcell"><div class="kk">ブ</div><div class="kr">bu</div></div><div class="kcell"><div class="kk">ベ</div><div class="kr">be</div></div><div class="kcell"><div class="kk">ボ</div><div class="kr">bo</div></div><div class="kcell"><div class="kk">パ</div><div class="kr">pa</div></div><div class="kcell"><div class="kk">ピ</div><div class="kr">pi</div></div><div class="kcell"><div class="kk">プ</div><div class="kr">pu</div></div><div class="kcell"><div class="kk">ペ</div><div class="kr">pe</div></div><div class="kcell"><div class="kk">ポ</div><div class="kr">po</div></div></div>
+    </div>
+
+    <div class="kana-sec">
+      <h2><span class="tr">Yōon · birleşik sesler</span><span class="en">Yōon · combined sounds</span></h2>
+      <div class="lbl"><span class="tr">Küçük ya/yu/yo ile birleşenler.</span><span class="en">Combinations with small ya/yu/yo.</span></div>
+      <div class="ktable g3"><div class="kcell"><div class="kk">キャ</div><div class="kr">kya</div></div><div class="kcell"><div class="kk">キュ</div><div class="kr">kyu</div></div><div class="kcell"><div class="kk">キョ</div><div class="kr">kyo</div></div><div class="kcell"><div class="kk">シャ</div><div class="kr">sha</div></div><div class="kcell"><div class="kk">シュ</div><div class="kr">shu</div></div><div class="kcell"><div class="kk">ショ</div><div class="kr">sho</div></div><div class="kcell"><div class="kk">チャ</div><div class="kr">cha</div></div><div class="kcell"><div class="kk">チュ</div><div class="kr">chu</div></div><div class="kcell"><div class="kk">チョ</div><div class="kr">cho</div></div><div class="kcell"><div class="kk">ニャ</div><div class="kr">nya</div></div><div class="kcell"><div class="kk">ニュ</div><div class="kr">nyu</div></div><div class="kcell"><div class="kk">ニョ</div><div class="kr">nyo</div></div><div class="kcell"><div class="kk">ヒャ</div><div class="kr">hya</div></div><div class="kcell"><div class="kk">ヒュ</div><div class="kr">hyu</div></div><div class="kcell"><div class="kk">ヒョ</div><div class="kr">hyo</div></div><div class="kcell"><div class="kk">ミャ</div><div class="kr">mya</div></div><div class="kcell"><div class="kk">ミュ</div><div class="kr">myu</div></div><div class="kcell"><div class="kk">ミョ</div><div class="kr">myo</div></div><div class="kcell"><div class="kk">リャ</div><div class="kr">rya</div></div><div class="kcell"><div class="kk">リュ</div><div class="kr">ryu</div></div><div class="kcell"><div class="kk">リョ</div><div class="kr">ryo</div></div><div class="kcell"><div class="kk">ギャ</div><div class="kr">gya</div></div><div class="kcell"><div class="kk">ギュ</div><div class="kr">gyu</div></div><div class="kcell"><div class="kk">ギョ</div><div class="kr">gyo</div></div><div class="kcell"><div class="kk">ジャ</div><div class="kr">ja</div></div><div class="kcell"><div class="kk">ジュ</div><div class="kr">ju</div></div><div class="kcell"><div class="kk">ジョ</div><div class="kr">jo</div></div><div class="kcell"><div class="kk">ビャ</div><div class="kr">bya</div></div><div class="kcell"><div class="kk">ビュ</div><div class="kr">byu</div></div><div class="kcell"><div class="kk">ビョ</div><div class="kr">byo</div></div><div class="kcell"><div class="kk">ピャ</div><div class="kr">pya</div></div><div class="kcell"><div class="kk">ピュ</div><div class="kr">pyu</div></div><div class="kcell"><div class="kk">ピョ</div><div class="kr">pyo</div></div></div>
+    </div>
+
+    <footer class="zk-footer">
+      <nav>
+        <a href="/"><span class="tr">Ana sayfa</span><span class="en">Home</span></a>
+        <a href="/#araclar"><span class="tr">Araçlar</span><span class="en">Tools</span></a>
+        <a href="/hakkimda/"><span class="tr">Hakkımda</span><span class="en">About</span></a>
+      </nav>
+      <div class="zk-fine">© <span id="year">2026</span> Zeynep Kaya Apps</div>
+    </footer>
+  </main>
+<script>
+  function setLang(l){document.body.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l);
+    try{localStorage.setItem('zk_lang',l);}catch(e){}
+    document.getElementById('trBtn').classList.toggle('on',l==='tr');document.getElementById('enBtn').classList.toggle('on',l==='en');}
+  try{var s=localStorage.getItem('zk_lang');if(s==='en'||s==='tr')setLang(s);}catch(e){}
+  document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "c0c1eb8c7e0f4cd48413deedf5cf28bf"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

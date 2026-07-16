@@ -27,6 +27,12 @@
 
 ## Geçmiş
 
+### v1.6.0 — 2026-07-16
+- 🎮🧰 **Ana sayfa Oyunlar/Araçlar yeniden tasarımı** yayında. Oyunlar: öne çıkan poster yok, **hepsi aynı boyda uniform kart** (Takımyıldızı, Yağmuru, +yeni). Araçlar: yeni **"çalışma panosu"** (sıcak zeminli pano, küçük pinli ikonlar). **Kana Kartları oyun→araç** olarak panoya taşındı. Giriş paragrafı kalktı. Tüm ikonlar **Flick ikon dilinde** (emoji yok). Nav'a Araçlar linki.
+- 📄 **Hiragana & Katakana çalışma kâğıtları** eklendi (`/apps/japanese-flick/araclar/hiragana|katakana/`) — gojūon + dakuten + yōon tam tablolar, okunuşlu, iki dilli; sitemap + canonical/OG.
+- 🙋‍♀️ **/hakkimda:** EN metindeki uzun tireler (—) kaldırıldı; sona **İletişim** (hello@zeynepkaya.app); footer'a **fikri mülkiyet / tasarım hakları** notu.
+- ⚖️ Ana sayfa footer'ına "tüm tasarım, görsel dil ve fikirler Zeynep Kaya'ya aittir, tüm hakları saklıdır" notu.
+
 ### v1.5.0 — 2026-07-16
 - 🙋‍♀️ **/hakkimda sayfası** eklendi (iki dilli TR/EN) — Zeynep'in kendi sesinden, sade & samimi bir tanıtım: fotoğrafçı-videograf (Getty Images, 13 yıl), Sanat Tarihi + NYFA sinematografi; çocukluğundan beri oyun yapma hayali; Japanese Flick'in doğuş hikâyesi; "tasarım bana ait, kodda yapay zekâ desteği" dürüstlüğü. **Japandi** atmosferi: dar sütun, bol boşluk, tek aksan, ikon dilinde küçük "oyun/zar" işareti + はじめまして dokunuşu. Nav + footer + sitemap linklendi; canonical/OG/JSON-LD (ProfilePage/Person) + Cloudflare beacon.
 
