@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.8.1 — 2026-07-16
+- 📣 **App Store duyurusu netleştirme** (Zeynep geri bildirimi). Ana sayfa hero JF kartındaki siyah **"Yakında" rozeti** → "App Store'da yayında · Google Play yakında" (App Store linkine bağlı). Hero CTA'ya **"App Store'da İndir"** birincil düğmesi (indirme yukarı taşındı). Mini-zaman çizelgesindeki "Kapalı beta test aşamasında" → "App Store'da yayında (16 Tem); Google Play (Android) yakında". JF hero durum satırı "App Store'da yayında · Google Play'de yakında"; og:description güncellendi. Artık hiçbir yerde yanıltıcı "kapalı beta/yakında" yok.
+
 ### v1.8.0 — 2026-07-16
 - 🎉 **Japanese Flick App Store'da YAYINDA** (16 Tem 2026, ilk sürüm). Site duyurusu güncellendi: JF hero eyebrow "App Store'da Yayında", hero + duyuru bölümünde **"App Store'da İndir"** düğmesi (link: apps.apple.com/app/japanese-flick/id6789942860, yeni sekme), durum satırı + release kartı metni yenilendi. Ana sayfa "Güncellemeler" kartı "artık App Store'da" oldu + indir düğmesi. **QR kod** eklendi (`/apps/japanese-flick/appstore-qr.svg`, ink renkli) hero/duyuruya. Ton: sakin, iddiasız. Not: resmi Apple "Download on the App Store" rozeti yerine şimdilik sitenin dilinde metin düğme (Apple rozeti sonra eklenebilir). Google Play hâlâ kapalı beta.
 
