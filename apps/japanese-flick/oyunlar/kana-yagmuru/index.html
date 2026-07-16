@@ -136,10 +136,13 @@
   .combo.show{opacity:1}
   .ripple{position:absolute;border:2px solid var(--teal);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);animation:rip .55s ease-out forwards;z-index:3}
   @keyframes rip{from{width:12px;height:12px;opacity:.55}to{width:130px;height:130px;opacity:0}}
+  .siteback{display:inline-flex;align-items:center;gap:6px;margin:0 2px 12px;padding:8px 14px;border-radius:12px;background:var(--paper);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:13px;font-weight:700;box-shadow:0 4px 0 rgba(92,64,39,.09);transition:transform .15s}
+  .siteback:hover{transform:translateY(-1px)}
 </style>
 </head>
 <body class="lang-tr mode-journey">
   <main class="page">
+    <a class="siteback" href="/#oyunlar"><span class="tr">← Oyunlar</span><span class="en">← Games</span></a>
     <header class="topbar">
       <a class="brand" href="/apps/japanese-flick/">
         <img class="mark" src="/japanese-flick/icons/logo-square.svg" alt="Japanese Flick" />

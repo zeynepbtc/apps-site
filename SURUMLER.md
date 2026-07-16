@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.9.7 — 2026-07-16
+- ↩️ **Kana oyunlarına "← Oyunlar" geri-dönüş butonu** (Zeynep: "Kana Yağmuru ve Takımyıldızında hâlâ oyunlara dönüş yok"). Üç kana oyununa (Kana Yağmuru, Kana Takımyıldızı, Kana Kartları) diğer oyunlarla aynı **kenarlıklı/gölgeli pill** buton eklendi → `/#oyunlar` (ana sayfa oyun ızgarası), TR/EN çift dilli ("← Oyunlar / ← Games"). Takımyıldızı gece temasına uygun koyu varyant. Doğrulama: 3 oyunda buton görünür, doğru hedef, TR/EN geçişi, 0 JS hatası. (Not: bu oyunların topbar'ındaki marka linki hâlâ Japanese Flick sayfasına gidiyor; emoji temizliği + tam standart hizalaması ayrı bir bekleyen iş.)
+
 ### v1.9.6 — 2026-07-16
 - 🌐 **Yokai Mail — iki dilli (TR/EN) + ortak oyun dili.** Konbini ile aynı desen: TR/EN dil hapı (`zk_lang` ile kalıcı, dil değişince açık ekran yeniden çiziliyor), kenarlıklı/gölgeli **"← Oyunlar / ← Games" geri-dönüş** butonu, tüm statik + dinamik metinler çift dilli (giriş/yardım adımları/gelen kutusu/mektup türü-anlam/ödül/bitiş), her yokai için EN tür+anlam+yanıt çevirisi. **Yanlış cevapta yumuşak ses** (`softError`, Web Audio) eklendi. Doğrulama: JS geçerli (bir apostrof kaynaklı sözdizimi hatası düzeltildi), TR/EN geçişi + oynanış + hata sesi çalışıyor, 0 sayfa hatası.
 
