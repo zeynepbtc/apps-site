@@ -11,41 +11,38 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Shippori+Mincho:wght@500;600;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#efe7d6;--paper:#fbf6ec;--ink:#3a2f28;--soft:#6d6055;--line:#e2d8c6;
-    --accent:#d3813a;--teal:#4f9a8f;--brick:#b5502f;--deep:#275f59;--gold:#c99a3f;--pink:#e08fb0;--ok:#4f9a8f;
-  }
+  :root{--bg:#efe7d6;--paper:#fbf6ec;--ink:#3a2f28;--soft:#6d6055;--line:#e2d8c6;
+    --accent:#d3813a;--teal:#4f9a8f;--brick:#b5502f;--deep:#275f59;--gold:#c99a3f;--pink:#e08fb0;--ok:#4f9a8f;}
   *{box-sizing:border-box}
   html,body{margin:0;height:100%}
-  body{
-    background:radial-gradient(130% 70% at 50% -10%,#f3ecdd 0,var(--bg) 58%);
-    color:var(--ink);min-height:100%;
-    font-family:"Nunito","Klee One",-apple-system,system-ui,sans-serif;line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-    display:flex;justify-content:center;padding:max(14px,env(safe-area-inset-top)) 13px 34px;
-  }
+  body{background:radial-gradient(130% 70% at 50% -10%,#f3ecdd 0,var(--bg) 58%);color:var(--ink);min-height:100%;
+    font-family:"Nunito","Klee One",-apple-system,system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;
+    display:flex;justify-content:center;padding:max(14px,env(safe-area-inset-top)) 13px 34px;}
+  .en{display:none}
+  body.enmode .tr{display:none}
+  body.enmode .en{display:inline}
   .phone{width:100%;max-width:430px}
   .siteback{display:inline-flex;align-items:center;gap:6px;margin:2px 0 12px;padding:8px 14px;border-radius:12px;
     background:var(--paper);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:13px;font-weight:700;
     box-shadow:0 4px 0 rgba(92,64,39,.09);transition:transform .15s}
   .siteback:hover{transform:translateY(-1px)}
-  .top{display:flex;align-items:center;gap:10px;margin:4px 2px 16px}
+  .top{display:flex;align-items:center;gap:9px;margin:4px 2px 16px}
   .logo{width:40px;height:40px;border-radius:12px;background:var(--ink);color:var(--paper);
-    display:grid;place-items:center;font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:21px;
-    box-shadow:0 6px 16px rgba(58,47,40,.22)}
-  .brand{flex:1;font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:18px;letter-spacing:.02em}
-  .brand small{display:block;font-family:"Nunito","Klee One";font-weight:400;font-size:11px;color:var(--soft);letter-spacing:.05em}
-  .booknav{background:#efe7d6;border:1px solid var(--line);border-radius:11px;padding:8px 12px;font-size:13px;
-    font-weight:600;cursor:pointer;color:var(--ink);display:flex;gap:6px;align-items:center}
+    display:grid;place-items:center;font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:21px;box-shadow:0 6px 16px rgba(58,47,40,.22)}
+  .brand{flex:1;min-width:0;font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:18px;letter-spacing:.02em}
+  .brand small{display:block;font-family:"Nunito";font-weight:400;font-size:11px;color:var(--soft);letter-spacing:.05em}
+  .lang{display:flex;gap:3px;padding:3px;border-radius:999px;background:#e7ddca}
+  .lang button{border:0;background:none;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:700;color:var(--soft);cursor:pointer;font-family:"Nunito"}
+  .lang button.on{background:var(--ink);color:#fff}
+  .helpbtn{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:#efe7d6;color:var(--soft);font-weight:700;cursor:pointer;font-size:15px;flex-shrink:0}
+  .booknav{background:#efe7d6;border:1px solid var(--line);border-radius:11px;padding:8px 10px;font-size:13px;font-weight:600;cursor:pointer;color:var(--ink);display:flex;gap:5px;align-items:center;flex-shrink:0}
   .booknav b{background:var(--accent);color:#fff;border-radius:20px;padding:0 7px;font-size:11px}
 
-  .box{background:var(--paper);border:1px solid var(--line);border-radius:20px;
-    box-shadow:0 12px 30px -18px rgba(58,47,40,.5)}
+  .box{background:var(--paper);border:1px solid var(--line);border-radius:20px;box-shadow:0 12px 30px -18px rgba(58,47,40,.5)}
   .pad{padding:18px 17px}
   .row-h{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--soft);margin:0 2px 12px}
   .streak{font-weight:600;color:var(--accent)}
 
-  /* inbox */
   .env{display:flex;align-items:center;gap:13px;padding:14px 4px;border-bottom:1px solid var(--line);cursor:pointer;transition:.15s}
   .env:last-child{border-bottom:none}
   .env:hover{background:#f5eede;border-radius:12px;padding-left:10px}
@@ -61,32 +58,28 @@
   .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex-shrink:0}
   .check{color:var(--ok);font-weight:700;font-size:15px}
 
-  /* letter */
-  .back{background:none;border:none;color:var(--soft);font-family:"Nunito","Klee One";font-size:13px;cursor:pointer;padding:4px 2px;margin-bottom:8px}
+  .back{background:none;border:none;color:var(--soft);font-family:"Nunito";font-size:13px;cursor:pointer;padding:4px 2px;margin-bottom:8px}
   .from{display:flex;align-items:center;gap:12px;margin-bottom:15px}
   .from .who b{font-family:"Shippori Mincho","Nunito",serif;font-size:16px}
-  .paper-note{background:#fffdf7;border:1px solid #efe4cf;border-radius:14px;padding:17px 16px;
-    background-image:repeating-linear-gradient(#fffdf7 0 29px,#f6edda 29px 30px)}
+  .paper-note{background:#fffdf7;border:1px solid #efe4cf;border-radius:14px;padding:17px 16px;background-image:repeating-linear-gradient(#fffdf7 0 29px,#f6edda 29px 30px)}
   .jp{font-family:"Shippori Mincho","Nunito",serif;font-size:19px;line-height:1.95;letter-spacing:.02em}
   .blank{display:inline-block;min-width:2.4em;text-align:center;border-bottom:2.5px dashed var(--accent);color:var(--accent);font-weight:700}
   .blank.filled{border-bottom-color:var(--ok);color:var(--ok)}
-  .rd{background:none;border:1px solid var(--line);border-radius:9px;padding:4px 9px;font-size:12px;color:var(--soft);cursor:pointer;margin-top:11px;font-family:"Nunito","Klee One"}
+  .rd{background:none;border:1px solid var(--line);border-radius:9px;padding:4px 9px;font-size:12px;color:var(--soft);cursor:pointer;margin-top:11px;font-family:"Nunito"}
   .help{margin-top:10px;font-size:13px;color:var(--soft);display:none}
   .help.show{display:block}
-  .help .ro{font-style:italic}.help .tr{color:var(--ink);margin-top:2px}
+  .help .ro{font-style:italic}.help .mn{color:var(--ink);margin-top:2px}
 
   .compose{margin-top:16px}
   .prompt{font-size:13.5px;color:var(--soft);margin:0 2px 9px}
   .slots{display:flex;gap:8px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
-  .slot{width:52px;height:58px;border-radius:12px;border:2px dashed #d9ccb6;background:#fff;
-    display:grid;place-items:center;font-family:"Shippori Mincho","Nunito",serif;font-size:26px;cursor:pointer}
+  .slot{width:52px;height:58px;border-radius:12px;border:2px dashed #d9ccb6;background:#fff;display:grid;place-items:center;font-family:"Shippori Mincho","Nunito",serif;font-size:26px;cursor:pointer}
   .slot.full{border-style:solid;border-color:var(--accent);background:#fbf1e2}
   .slot.ok{border-color:var(--ok);background:#e8f2ef}
   .slot.bad{border-color:var(--brick);background:#f7e9e4;animation:sh .3s}
   @keyframes sh{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
   .tray{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
-  .key{width:54px;height:54px;border-radius:13px;border:1.5px solid var(--line);background:#fff;
-    font-family:"Shippori Mincho","Nunito",serif;font-size:24px;cursor:pointer;transition:.12s;color:var(--ink)}
+  .key{width:54px;height:54px;border-radius:13px;border:1.5px solid var(--line);background:#fff;font-family:"Shippori Mincho","Nunito",serif;font-size:24px;cursor:pointer;transition:.12s;color:var(--ink)}
   .key:hover{border-color:var(--accent);transform:translateY(-2px)}
   .key.used{opacity:.28;pointer-events:none}
 
@@ -102,10 +95,8 @@
   .reply-tr{font-size:12.5px;color:var(--soft)}
   .flick{margin-top:12px;font-size:12px;color:var(--soft);background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 11px}
   .flick b{color:var(--accent)}
-  .btn{width:100%;margin-top:13px;background:var(--accent);color:#fff;border:none;border-radius:12px;padding:13px;
-    font-family:"Nunito","Klee One";font-weight:600;font-size:15px;cursor:pointer}
+  .btn{width:100%;margin-top:13px;background:var(--accent);color:#fff;border:none;border-radius:12px;padding:13px;font-family:"Nunito";font-weight:700;font-size:15px;cursor:pointer}
 
-  /* collection */
   .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:4px}
   .cc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px;text-align:center;position:relative}
   .cc .k{font-family:"Shippori Mincho","Nunito",serif;font-size:30px;display:block}
@@ -126,7 +117,6 @@
   .step b{font-size:14.5px}
   .step p{font-size:12.5px;color:var(--soft);margin:2px 0 0;line-height:1.5}
   .igoal{background:#f3ede0;border:1px dashed var(--gold);border-radius:12px;padding:11px 13px;font-size:13px;color:#4a4038;margin:0 0 16px}
-  .helpbtn{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:#efe7d6;color:var(--soft);font-weight:700;cursor:pointer;font-size:15px;flex-shrink:0}
   .hint{font-size:12px;color:var(--soft);text-align:center;margin:12px 2px 0}
   .hidden{display:none}
   .end{text-align:center;padding:24px 16px}
@@ -136,54 +126,55 @@
 </head>
 <body>
 <div class="phone">
-  <a class="siteback" href="/#oyunlar">← Oyunlar</a>
+  <a class="siteback" href="/#oyunlar"><span class="tr">← Oyunlar</span><span class="en">← Games</span></a>
   <div class="top">
     <div class="logo">妖</div>
-    <div class="brand">Yōkai Mail<small>bugün sana kim yazmış?</small></div>
-    <button class="helpbtn" onclick="showIntro()" title="Nasıl oynanır?">?</button>
-    <button class="booknav" id="booknav" onclick="showCollection()">📖 Defter <b id="colcount">0</b></button>
+    <div class="brand">Yōkai Mail<small><span class="tr">bugün sana kim yazmış?</span><span class="en">who wrote to you today?</span></small></div>
+    <div class="lang"><button id="trBtn" class="on" onclick="setLang('tr')">TR</button><button id="enBtn" onclick="setLang('en')">EN</button></div>
+    <button class="helpbtn" onclick="showIntro()" title="Nasıl oynanır? / How to play">?</button>
+    <button class="booknav" id="booknav" onclick="showCollection()">📖<span class="tr">Defter</span><span class="en">Notebook</span> <b id="colcount">0</b></button>
   </div>
 
-  <!-- INTRO / NASIL OYNANIR -->
+  <!-- INTRO -->
   <div id="intro" class="box hidden"><div class="pad intro">
     <div class="ihero">妖</div>
     <h2 class="ititle">Yōkai Mail</h2>
-    <p class="ilead">Japon folklorunda <b>yokai</b>'ler vardır: tuhaf, tatlı ruhlar ve yaratıklar. Bu oyunda yokai'ler sana mektup yazar; sen de mektupları okurken Japonca kelimeler öğrenirsin.</p>
+    <p class="ilead"><span class="tr">Japon folklorunda <b>yokai</b>'ler vardır: tuhaf, tatlı ruhlar ve yaratıklar. Bu oyunda yokai'ler sana mektup yazar; sen de mektupları okurken Japonca kelimeler öğrenirsin.</span><span class="en">In Japanese folklore there are <b>yokai</b>: strange, charming spirits and creatures. In this game the yokai write you letters, and you learn Japanese words while reading them.</span></p>
     <div class="steps">
-      <div class="step"><span class="sn">1</span><div><b>Mektubu oku</b><p>Yokai sana kısa bir Japonca mektup yazmış. Takıldıysan "okunuş + anlam"a dokun, romaji ve Türkçesi çıksın.</p></div></div>
-      <div class="step"><span class="sn">2</span><div><b>Eksik kelimeyi yaz</b><p>Mektupta bir kelime eksiktir. Aşağıdaki kana karolarına dokunarak o kelimeyi hece hece yazarsın.</p></div></div>
-      <div class="step"><span class="sn">3</span><div><b>Kelimeni topla</b><p>Doğru yazınca yokai sana cevap verir; öğrendiğin kelime sesiyle birlikte Kelime Defteri'ne eklenir.</p></div></div>
+      <div class="step"><span class="sn">1</span><div><b><span class="tr">Mektubu oku</span><span class="en">Read the letter</span></b><p><span class="tr">Yokai sana kısa bir Japonca mektup yazmış. Takıldıysan "okunuş + anlam"a dokun.</span><span class="en">A yokai wrote you a short Japanese letter. Tap "reading + meaning" if you're stuck.</span></p></div></div>
+      <div class="step"><span class="sn">2</span><div><b><span class="tr">Eksik kelimeyi yaz</span><span class="en">Type the missing word</span></b><p><span class="tr">Mektupta bir kelime eksiktir. Aşağıdaki kana karolarına dokunarak o kelimeyi hece hece yazarsın.</span><span class="en">One word is missing. Tap the kana tiles below to spell it, one syllable at a time.</span></p></div></div>
+      <div class="step"><span class="sn">3</span><div><b><span class="tr">Kelimeni topla</span><span class="en">Collect the word</span></b><p><span class="tr">Doğru yazınca yokai sana cevap verir; öğrendiğin kelime sesiyle birlikte Kelime Defteri'ne eklenir.</span><span class="en">Get it right and the yokai replies; the word joins your Word Notebook with its audio.</span></p></div></div>
     </div>
-    <p class="igoal">🎯 Amaç: yokai'lerin mektuplarını oku, kelime defterini doldur. Her gün yeni bir yokai yazar.</p>
-    <button class="btn" onclick="startGame()">Başla →</button>
+    <p class="igoal"><span class="tr">Amaç: yokai'lerin mektuplarını oku, kelime defterini doldur. Her gün yeni bir yokai yazar.</span><span class="en">Goal: read the yokai's letters and fill your notebook. A new yokai writes every day.</span></p>
+    <button class="btn" onclick="startGame()"><span class="tr">Başla →</span><span class="en">Start →</span></button>
   </div></div>
 
   <!-- INBOX -->
   <div id="inbox" class="box hidden"><div class="pad">
-    <div class="row-h"><span id="inboxsub">Posta kutusu</span><span class="streak" id="streak"></span></div>
+    <div class="row-h"><span id="inboxsub"></span><span class="streak" id="streak"></span></div>
     <div id="envlist"></div>
   </div></div>
 
   <!-- LETTER -->
   <div id="letter" class="box hidden"><div class="pad">
-    <button class="back" onclick="goInbox()">← Posta kutusu</button>
+    <button class="back" onclick="goInbox()"><span class="tr">← Posta kutusu</span><span class="en">← Mailbox</span></button>
     <div class="from">
       <div class="stamp" id="lstamp"></div>
       <div class="who"><b id="lname"></b><span id="lspecies"></span></div>
     </div>
     <div class="paper-note">
       <div class="jp" id="ljp"></div>
-      <button class="rd" id="rdbtn" onclick="toggleHelp()">okunuş + anlam</button>
-      <div class="help" id="lhelp"><div class="ro" id="lro"></div><div class="tr" id="ltr"></div></div>
+      <button class="rd" id="rdbtn" onclick="toggleHelp()"><span class="tr">okunuş + anlam</span><span class="en">reading + meaning</span></button>
+      <div class="help" id="lhelp"><div class="ro" id="lro"></div><div class="mn" id="lmn"></div></div>
     </div>
     <div class="compose" id="compose">
-      <p class="prompt">Mektupta boşluğa gelen kelimeyi bul, kana karolarına dokunarak yaz:</p>
+      <p class="prompt"><span class="tr">Mektupta boşluğa gelen kelimeyi bul, kana karolarına dokunarak yaz:</span><span class="en">Find the missing word and spell it by tapping the kana tiles:</span></p>
       <div class="slots" id="slots"></div>
       <div class="tray" id="tray"></div>
-      <p class="hint">İpucu: kelimeyi bilemezsen yukarıdaki "okunuş + anlam"a dokun.</p>
+      <p class="hint"><span class="tr">İpucu: kelimeyi bilemezsen yukarıdaki "okunuş + anlam"a dokun.</span><span class="en">Tip: if you don't know the word, tap "reading + meaning" above.</span></p>
     </div>
     <div class="reward" id="reward">
-      <h4>Kelime defterine eklendi</h4>
+      <h4><span class="tr">Kelime defterine eklendi</span><span class="en">Added to your notebook</span></h4>
       <div class="wcard">
         <span class="k" id="rk"></span>
         <span class="mm"><b id="rr"></b><span id="rm"></span></span>
@@ -191,64 +182,87 @@
       </div>
       <div class="reply" id="ryjp"></div>
       <div class="reply-tr" id="rytr"></div>
-      <div class="flick">Cevabı gerçek sürümde yokai'ye <b>Flick klavyesiyle</b> yazarsın — okuma burada, yazma uygulamada.</div>
-      <button class="btn" id="nextbtn" onclick="nextLetter()">Sıradaki mektup →</button>
+      <div class="flick"><span class="tr">Cevabı gerçek sürümde yokai'ye <b>Flick klavyesiyle</b> yazarsın — okuma burada, yazma uygulamada.</span><span class="en">In the full version you reply to the yokai with the <b>Flick keyboard</b> — reading here, writing in the app.</span></div>
+      <button class="btn" id="nextbtn" onclick="nextLetter()"><span class="tr">Sıradaki mektup →</span><span class="en">Next letter →</span></button>
     </div>
   </div></div>
 
   <!-- COLLECTION -->
   <div id="collection" class="box hidden"><div class="pad">
-    <button class="back" onclick="goInbox()">← Posta kutusu</button>
-    <div class="row-h"><span>Kelime Defteri</span><span id="colprog"></span></div>
+    <button class="back" onclick="goInbox()"><span class="tr">← Posta kutusu</span><span class="en">← Mailbox</span></button>
+    <div class="row-h"><span><span class="tr">Kelime Defteri</span><span class="en">Word Notebook</span></span><span id="colprog"></span></div>
     <div id="cgrid" class="cgrid"></div>
-    <div id="cempty" class="cempty hidden">Henüz kelime yok. Yokai'lerden mektup oku, kelimeleri topla!</div>
+    <div id="cempty" class="cempty hidden"><span class="tr">Henüz kelime yok. Yokai'lerden mektup oku, kelimeleri topla!</span><span class="en">No words yet. Read the yokai's letters and collect words!</span></div>
   </div></div>
 
   <!-- END -->
   <div id="end" class="box hidden"><div class="end">
-    <p class="big" id="endbig">Bugünlük posta bu kadar 🌙</p>
-    <p>Yeni yokai mektupları yarın gelir. Topladığın kelimeler defterinde.</p>
-    <button class="btn" style="max-width:220px;margin:16px auto 0" onclick="showCollection()">Kelime defterini aç</button>
+    <p class="big" id="endbig"></p>
+    <p><span class="tr">Yeni yokai mektupları yarın gelir. Topladığın kelimeler defterinde.</span><span class="en">New yokai letters arrive tomorrow. Your collected words are in the notebook.</span></p>
+    <button class="btn" style="max-width:240px;margin:16px auto 0" onclick="showCollection()"><span class="tr">Kelime defterini aç</span><span class="en">Open your notebook</span></button>
   </div></div>
 </div>
 
 <script>
 const DATA=[
- {name:"Nekomata",species:"ねこまた · iki kuyruklu kedi",kanji:"猫",color:"#b5502f",
+ {name:"Nekomata",species:"ねこまた · iki kuyruklu kedi",speciesEn:"ねこまた · two-tailed cat",kanji:"猫",color:"#b5502f",
   parts:["こんにちは！きょうは あめ です。","わたしは ","BLANK"," を たべました。おいしかった！"],
-  ans:["さ","か","な"],extra:["み","ぬ"],word:"魚",romaji:"sakana",mean:"balık",say:"さかな",
-  ro:"Konnichiwa! Kyō wa ame desu. Watashi wa ___ o tabemashita.",tr:"Merhaba! Bugün hava yağmurlu. Ben ___ yedim. Çok lezzetliydi!",
-  reply:"にゃー、ありがとう！",replyTr:"Miyav, teşekkürler!"},
- {name:"Karakasa",species:"からかさ · şemsiye hayaleti",kanji:"傘",color:"#4f9a8f",
+  ans:["さ","か","な"],extra:["み","ぬ"],word:"魚",romaji:"sakana",mean:"balık",meanEn:"fish",say:"さかな",
+  ro:"Konnichiwa! Kyō wa ame desu. Watashi wa ___ o tabemashita.",
+  tr:"Merhaba! Bugün hava yağmurlu. Ben ___ yedim. Çok lezzetliydi!",en:"Hi! It's rainy today. I ate ___. It was delicious!",
+  reply:"にゃー、ありがとう！",replyTr:"Miyav, teşekkürler!",replyEn:"Meow, thank you!"},
+ {name:"Karakasa",species:"からかさ · şemsiye hayaleti",speciesEn:"からかさ · umbrella ghost",kanji:"傘",color:"#4f9a8f",
   parts:["あめ の ひ が すき！","きょう ","BLANK"," を さして さんぽ した。"],
-  ans:["か","さ"],extra:["く","つ","ね"],word:"傘",romaji:"kasa",mean:"şemsiye",say:"かさ",
-  ro:"Ame no hi ga suki! Kyō ___ o sashite sanpo shita.",tr:"Yağmurlu günleri severim! Bugün ___ açıp yürüyüşe çıktım.",
-  reply:"うれしい！",replyTr:"Çok sevindim!"},
- {name:"Yuki-onna",species:"ゆきおんな · kar kadını",kanji:"雪",color:"#8aa0b8",
+  ans:["か","さ"],extra:["く","つ","ね"],word:"傘",romaji:"kasa",mean:"şemsiye",meanEn:"umbrella",say:"かさ",
+  ro:"Ame no hi ga suki! Kyō ___ o sashite sanpo shita.",
+  tr:"Yağmurlu günleri severim! Bugün ___ açıp yürüyüşe çıktım.",en:"I love rainy days! Today I opened ___ and went for a walk.",
+  reply:"うれしい！",replyTr:"Çok sevindim!",replyEn:"So happy!"},
+ {name:"Yuki-onna",species:"ゆきおんな · kar kadını",speciesEn:"ゆきおんな · snow woman",kanji:"雪",color:"#8aa0b8",
   parts:["さむい ね。","そとは ","BLANK"," が いっぱい です。"],
-  ans:["ゆ","き"],extra:["や","ま","こ"],word:"雪",romaji:"yuki",mean:"kar",say:"ゆき",
-  ro:"Samui ne. Soto wa ___ ga ippai desu.",tr:"Soğuk, değil mi? Dışarısı ___ dolu.",
-  reply:"きれい でしょう？",replyTr:"Güzel değil mi?"},
- {name:"Kappa",species:"かっぱ · su cini",kanji:"水",color:"#275f59",
+  ans:["ゆ","き"],extra:["や","ま","こ"],word:"雪",romaji:"yuki",mean:"kar",meanEn:"snow",say:"ゆき",
+  ro:"Samui ne. Soto wa ___ ga ippai desu.",
+  tr:"Soğuk, değil mi? Dışarısı ___ dolu.",en:"It's cold, isn't it? Outside is full of ___.",
+  reply:"きれい でしょう？",replyTr:"Güzel değil mi?",replyEn:"Beautiful, right?"},
+ {name:"Kappa",species:"かっぱ · su cini",speciesEn:"かっぱ · water sprite",kanji:"水",color:"#275f59",
   parts:["こんにちは。ぼくは ","BLANK"," の なか に すんで います。"],
-  ans:["み","ず"],extra:["さ","か","ゆ"],word:"水",romaji:"mizu",mean:"su",say:"みず",
-  ro:"Konnichiwa. Boku wa ___ no naka ni sunde imasu.",tr:"Merhaba. Ben ___ içinde yaşıyorum.",
-  reply:"あそびに きてね！",replyTr:"Oynamaya gel!"},
- {name:"Kitsune",species:"きつね · tilki",kanji:"山",color:"#d3813a",
+  ans:["み","ず"],extra:["さ","か","ゆ"],word:"水",romaji:"mizu",mean:"su",meanEn:"water",say:"みず",
+  ro:"Konnichiwa. Boku wa ___ no naka ni sunde imasu.",
+  tr:"Merhaba. Ben ___ içinde yaşıyorum.",en:"Hello. I live in the ___.",
+  reply:"あそびに きてね！",replyTr:"Oynamaya gel!",replyEn:"Come and play!"},
+ {name:"Kitsune",species:"きつね · tilki",speciesEn:"きつね · fox",kanji:"山",color:"#d3813a",
   parts:["わたしは たかい ","BLANK"," に すんで います。"],
-  ans:["や","ま"],extra:["か","さ","み"],word:"山",romaji:"yama",mean:"dağ",say:"やま",
-  ro:"Watashi wa takai ___ ni sunde imasu.",tr:"Ben yüksek bir ___da yaşıyorum.",
-  reply:"また ね！",replyTr:"Görüşürüz!"},
+  ans:["や","ま"],extra:["か","さ","み"],word:"山",romaji:"yama",mean:"dağ",meanEn:"mountain",say:"やま",
+  ro:"Watashi wa takai ___ ni sunde imasu.",
+  tr:"Ben yüksek bir ___da yaşıyorum.",en:"I live on a tall ___.",
+  reply:"また ね！",replyTr:"Görüşürüz!",replyEn:"See you!"},
 ];
 
-// ---- persistence (guarded) ----
+let LANG='tr';
+try{LANG=(localStorage.getItem('zk_lang')==='en')?'en':'tr';}catch(e){}
+function t(tr,en){return LANG==='en'?en:tr;}
+function setLang(l){LANG=l;try{localStorage.setItem('zk_lang',l);}catch(e){}
+  document.body.classList.toggle('enmode',l==='en');
+  document.getElementById('trBtn').classList.toggle('on',l==='tr');
+  document.getElementById('enBtn').classList.toggle('on',l==='en');
+  const vis=['inbox','letter','collection','end'].find(id=>!document.getElementById(id).classList.contains('hidden'));
+  if(vis==='inbox') renderInbox();
+  else if(vis==='letter') refreshLetter();
+  else if(vis==='collection') showCollection();
+  else if(vis==='end') refreshEnd();
+}
+
 let store={solved:[],streak:0};
 try{const s=localStorage.getItem('yokaimail');if(s)store=JSON.parse(s);}catch(e){}
 function save(){try{localStorage.setItem('yokaimail',JSON.stringify(store));}catch(e){}}
 
 let cur=0, filled=[];
-
 function speak(t){try{const u=new SpeechSynthesisUtterance(t);u.lang='ja-JP';u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
+let _actx;
+function softError(){try{_actx=_actx||new (window.AudioContext||window.webkitAudioContext)();const c=_actx,t0=c.currentTime;
+  const o=c.createOscillator(),g=c.createGain();o.type='sine';
+  o.frequency.setValueAtTime(340,t0);o.frequency.exponentialRampToValueAtTime(240,t0+0.16);
+  g.gain.setValueAtTime(0.0001,t0);g.gain.exponentialRampToValueAtTime(0.11,t0+0.02);g.gain.exponentialRampToValueAtTime(0.0001,t0+0.28);
+  o.connect(g);g.connect(c.destination);o.start(t0);o.stop(t0+0.3);}catch(e){}}
 
 function show(id){['intro','inbox','letter','collection','end'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));window.scrollTo(0,0);}
 function startGame(){try{localStorage.setItem('yokaimail_seen','1');}catch(e){}renderInbox();}
@@ -258,19 +272,20 @@ function isSolved(i){return store.solved.includes(i);}
 function renderInbox(){
   document.getElementById('colcount').textContent=store.solved.length;
   const n=DATA.filter((_,i)=>!isSolved(i)).length;
-  document.getElementById('inboxsub').textContent=n?`${n} yeni mektup`:'hepsi okundu';
-  document.getElementById('streak').textContent=store.solved.length?`🔥 ${store.solved.length} kelime`:'';
+  document.getElementById('inboxsub').textContent=n?t(n+' yeni mektup',n+' new letters'):t('hepsi okundu','all read');
+  document.getElementById('streak').textContent=store.solved.length?t(store.solved.length+' kelime',store.solved.length+' words'):'';
   const list=document.getElementById('envlist');list.innerHTML='';
   DATA.forEach((y,i)=>{
     const d=document.createElement('div');d.className='env';d.onclick=()=>openLetter(i);
+    const st=isSolved(i)?t('✓ okundu · kelime toplandı','✓ read · word collected'):t('yeni mektup · dokun ve oku','new letter · tap to read');
     d.innerHTML=`<div class="stamp" style="background:${y.color}">${y.kanji}</div>
-      <div class="who"><b>${y.name}</b><span>${isSolved(i)?'✓ okundu · kelime toplandı':'yeni mektup · dokun ve oku'}</span></div>
+      <div class="who"><b>${y.name}</b><span>${st}</span></div>
       ${isSolved(i)?'<span class="check">✓</span>':'<span class="dot"></span>'}`;
     list.appendChild(d);
   });
   const lock=document.createElement('div');lock.className='env locked';
   lock.innerHTML=`<div class="stamp" style="background:#a99a86">？</div>
-    <div class="who"><b>？？？</b><span>yeni yokai · yarın gelir</span></div>`;
+    <div class="who"><b>？？？</b><span>${t('yeni yokai · yarın gelir','new yokai · comes tomorrow')}</span></div>`;
   list.appendChild(lock);
   show('inbox');
 }
@@ -283,22 +298,27 @@ function buildLetterText(fillWord){
     return `<span class="blank" id="blankspot">${'◯'.repeat(y.ans.length)}</span>`;
   }).join('');
 }
-
+function refreshLetter(){
+  const y=DATA[cur];
+  document.getElementById('lspecies').textContent=t(y.species,y.speciesEn);
+  document.getElementById('lmn').textContent='"'+(LANG==='en'?y.meanEn:y.mean)+'"';
+  if(document.getElementById('reward').classList.contains('show')){
+    document.getElementById('rm').textContent=LANG==='en'?y.meanEn:y.mean;
+    document.getElementById('rytr').textContent=LANG==='en'?y.replyEn:y.replyTr;
+  }
+}
 function openLetter(i){
   cur=i;const y=DATA[i];
   document.getElementById('lstamp').style.background=y.color;
   document.getElementById('lstamp').textContent=y.kanji;
   document.getElementById('lname').textContent=y.name;
-  document.getElementById('lspecies').textContent=y.species;
   document.getElementById('ljp').innerHTML=buildLetterText(false);
   document.getElementById('lro').textContent=y.ro;
-  document.getElementById('ltr').textContent=y.tr;
   document.getElementById('lhelp').classList.remove('show');
-  document.getElementById('rdbtn').textContent='okunuş + anlam';
   document.getElementById('reward').classList.remove('show');
   document.getElementById('compose').style.display='block';
-  filled=[];
-  renderCompose();
+  refreshLetter();
+  filled=[];renderCompose();
   show('letter');
 }
 
@@ -313,17 +333,15 @@ function renderCompose(){
   }
   const slots=document.getElementById('slots');slots.innerHTML='';
   for(let s=0;s<y.ans.length;s++){
-    const el=document.createElement('div');
-    const t=filled[s];
-    el.className='slot'+(t!=null?' full':'');
-    el.textContent=t!=null?t.k:'';
+    const el=document.createElement('div');const tl=filled[s];
+    el.className='slot'+(tl!=null?' full':'');el.textContent=tl!=null?tl.k:'';
     el.onclick=()=>{if(filled[s]!=null){trayTiles.find(x=>x.id===filled[s].id).used=false;filled[s]=null;renderCompose();}};
     slots.appendChild(el);
   }
   const tray=document.getElementById('tray');tray.innerHTML='';
-  trayTiles.forEach(t=>{
-    const b=document.createElement('button');b.className='key'+(t.used?' used':'');b.textContent=t.k;
-    b.onclick=()=>{const s=filled.findIndex(x=>x==null||x===undefined);const empty=nextEmpty();if(empty<0)return;t.used=true;filled[empty]=t;renderCompose();if(filled.filter(Boolean).length===y.ans.length)setTimeout(check,180);};
+  trayTiles.forEach(tl=>{
+    const b=document.createElement('button');b.className='key'+(tl.used?' used':'');b.textContent=tl.k;
+    b.onclick=()=>{const empty=nextEmpty();if(empty<0)return;tl.used=true;filled[empty]=tl;renderCompose();if(filled.filter(Boolean).length===y.ans.length)setTimeout(check,180);};
     tray.appendChild(b);
   });
 }
@@ -332,15 +350,15 @@ function nextEmpty(){const y=DATA[cur];for(let s=0;s<y.ans.length;s++)if(filled[
 function check(){
   const y=DATA[cur];
   const guess=filled.map(t=>t?t.k:'').join('');
-  const answer=y.ans.join('');
   const slotEls=document.querySelectorAll('#slots .slot');
-  if(guess===answer){
+  if(guess===y.ans.join('')){
     slotEls.forEach(e=>e.classList.add('ok'));
     speak(y.say);
     if(!isSolved(cur)){store.solved.push(cur);save();}
     document.getElementById('ljp').innerHTML=buildLetterText(true);
     setTimeout(showReward,450);
   }else{
+    softError();
     slotEls.forEach(e=>e.classList.add('bad'));
     setTimeout(()=>{filled=[];trayTiles.forEach(t=>t.used=false);renderCompose();},600);
   }
@@ -351,20 +369,25 @@ function showReward(){
   document.getElementById('compose').style.display='none';
   document.getElementById('rk').textContent=y.word;
   document.getElementById('rr').textContent=`${y.say} · ${y.romaji}`;
-  document.getElementById('rm').textContent=y.mean;
+  document.getElementById('rm').textContent=LANG==='en'?y.meanEn:y.mean;
   document.getElementById('ryjp').textContent='「'+y.reply+'」';
-  document.getElementById('rytr').textContent=y.replyTr;
+  document.getElementById('rytr').textContent=LANG==='en'?y.replyEn:y.replyTr;
   document.getElementById('rspk').onclick=()=>speak(y.say);
   document.getElementById('colcount').textContent=store.solved.length;
   document.getElementById('reward').classList.add('show');
 }
 
+function refreshEnd(){
+  const allRead=DATA.every((_,i)=>isSolved(i));
+  document.getElementById('endbig').textContent=allRead?t('Bütün mektuplar okundu','All letters read'):t('Bugünlük posta bu kadar',"That's all the mail for today");
+}
 function nextLetter(){
   const nx=DATA.findIndex((_,i)=>!isSolved(i));
-  if(nx<0){document.getElementById('endbig').textContent='Bütün mektuplar okundu 🌙';show('end');}
+  if(nx<0){refreshEnd();show('end');}
   else openLetter(nx);
 }
-function toggleHelp(){const h=document.getElementById('lhelp');h.classList.toggle('show');document.getElementById('rdbtn').textContent=h.classList.contains('show')?'gizle':'okunuş + anlam';}
+function toggleHelp(){const h=document.getElementById('lhelp');h.classList.toggle('show');
+  document.getElementById('rdbtn').innerHTML=h.classList.contains('show')?'<span class="tr">gizle</span><span class="en">hide</span>':'<span class="tr">okunuş + anlam</span><span class="en">reading + meaning</span>';}
 function goInbox(){trayTiles=[];renderInbox();}
 
 function showCollection(){
@@ -374,15 +397,17 @@ function showCollection(){
   document.getElementById('cempty').classList.toggle('hidden',solved.length>0);
   solved.forEach(i=>{
     const y=DATA[i];const c=document.createElement('div');c.className='cc';
-    c.innerHTML=`<button class="spk">🔊</button><span class="k">${y.word}</span><span class="r">${y.say} · ${y.romaji}</span><span class="m">${y.mean}</span>`;
+    c.innerHTML=`<button class="spk">🔊</button><span class="k">${y.word}</span><span class="r">${y.say} · ${y.romaji}</span><span class="m">${LANG==='en'?y.meanEn:y.mean}</span>`;
     c.querySelector('.spk').onclick=()=>speak(y.say);
     grid.appendChild(c);
   });
-  // placeholders for locked
   for(let k=solved.length;k<DATA.length;k++){const e=document.createElement('div');e.className='cc empty';e.textContent='？';grid.appendChild(e);}
   show('collection');
 }
 
+document.body.classList.toggle('enmode',LANG==='en');
+document.getElementById('trBtn').classList.toggle('on',LANG==='tr');
+document.getElementById('enBtn').classList.toggle('on',LANG==='en');
 (function(){let seen=false;try{seen=localStorage.getItem('yokaimail_seen')==='1';}catch(e){}if(seen)renderInbox();else show('intro');})();
 </script>
 </body>

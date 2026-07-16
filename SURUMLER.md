@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.9.6 — 2026-07-16
+- 🌐 **Yokai Mail — iki dilli (TR/EN) + ortak oyun dili.** Konbini ile aynı desen: TR/EN dil hapı (`zk_lang` ile kalıcı, dil değişince açık ekran yeniden çiziliyor), kenarlıklı/gölgeli **"← Oyunlar / ← Games" geri-dönüş** butonu, tüm statik + dinamik metinler çift dilli (giriş/yardım adımları/gelen kutusu/mektup türü-anlam/ödül/bitiş), her yokai için EN tür+anlam+yanıt çevirisi. **Yanlış cevapta yumuşak ses** (`softError`, Web Audio) eklendi. Doğrulama: JS geçerli (bir apostrof kaynaklı sözdizimi hatası düzeltildi), TR/EN geçişi + oynanış + hata sesi çalışıyor, 0 sayfa hatası.
+
 ### v1.9.5 — 2026-07-16
 - 🎛️ **Oyun cilası (Zeynep geri bildirimi).** (1) **"← Oyunlar" dönüşü belirgin buton** oldu (ince link yerine kenarlıklı/gölgeli pill) — Konbini + Yokai Mail. (2) **Konbini rafı daha sık yenileniyor:** her 4 → **her 2 müşteride** (vardiya boyunca 4 kez değişir). (3) **Yanlış cevapta yumuşak ses** (Web Audio, alçak sesli nazik "boop", kırıcı değil) — Konbini. Standart: dönüş butonu + nazik hata sesi diğer oyunlara da taşınacak.
 
