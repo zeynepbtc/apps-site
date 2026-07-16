@@ -7,7 +7,7 @@
 <meta name="description" content="Bedava hiragana & katakana okuma oyunu. Düşen kanayı doğru okunuşuyla yakala. Seviye ve sonsuz mod. Japanese Flick'in ücretsiz web oyunu." />
 <link rel="canonical" href="https://zeynepkaya.app/apps/japanese-flick/oyunlar/kana-yagmuru/" />
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Shippori+Mincho:wght@500;700&family=Klee+One:wght@400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&family=Shippori+Mincho:wght@500;700&family=Klee+One:wght@400;600&display=swap');
 
   :root{
     --bg:#eee8dc;--paper:#fff9ee;--paper2:#f7efe1;--paper3:#eadfce;
@@ -68,8 +68,8 @@
 
   /* ---------- start ---------- */
   #startScreen{justify-content:center;gap:2px}
-  .hero-title{font-family:'Shippori Mincho',serif;font-size:clamp(30px,8vw,42px);font-weight:700;line-height:1.05;margin:10px 0 4px}
-  .hero-kana{color:var(--orange);font-family:'Klee One','Shippori Mincho',serif}
+  .hero-title{font-family:'Shippori Mincho','Nunito',serif;font-size:clamp(30px,8vw,42px);font-weight:700;line-height:1.05;margin:10px 0 4px}
+  .hero-kana{color:var(--orange);font-family:'Nunito','Klee One','Shippori Mincho','Nunito',serif}
   .hero-sub{color:var(--muted);font-size:14.5px;line-height:1.5;margin-bottom:4px}
   .note{display:inline-flex;gap:7px;align-items:center;font-size:12.5px;color:var(--deep);background:rgba(79,154,143,.12);border-radius:999px;padding:7px 12px;font-weight:700;margin:10px 0 14px}
   .label{font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin:12px 0 7px}
@@ -98,7 +98,7 @@
   .field .goal{position:absolute;left:0;right:0;bottom:0;height:56px;background:linear-gradient(180deg,transparent,rgba(211,129,58,.14));border-top:2px dashed rgba(211,129,58,.5)}
   .drop{position:absolute;top:-84px;display:grid;place-items:center;width:clamp(64px,17vw,84px);height:clamp(64px,17vw,84px);border-radius:22px;
     background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);
-    font-family:'Klee One','Shippori Mincho',serif;font-size:clamp(36px,10vw,46px);font-weight:600;color:var(--ink);will-change:transform}
+    font-family:'Nunito','Klee One','Shippori Mincho','Nunito',serif;font-size:clamp(36px,10vw,46px);font-weight:600;color:var(--ink);will-change:transform}
   .drop.good{animation:pop .3s ease forwards}
   .drop.bad{animation:shake .3s ease}
   @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.25);background:rgba(79,154,143,.2);border-color:var(--teal)}100%{transform:scale(0);opacity:0}}
@@ -111,7 +111,7 @@
   .overlay{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;
     background:rgba(244,238,227,.86);backdrop-filter:blur(3px);padding:22px;z-index:5}
   .overlay.show{display:flex}
-  .overlay h3{font-family:'Shippori Mincho',serif;font-size:26px}
+  .overlay h3{font-family:'Shippori Mincho','Nunito',serif;font-size:26px}
   .overlay p{color:var(--muted);font-size:13.5px;line-height:1.5;max-width:300px}
 
   .choices{display:grid;grid-template-columns:1fr 1fr;gap:9px}
@@ -124,7 +124,7 @@
 
   /* ---------- over ---------- */
   #overScreen{justify-content:center;text-align:center}
-  .big-score{font-family:'Shippori Mincho',serif;font-size:56px;font-weight:700;color:var(--orange);line-height:1}
+  .big-score{font-family:'Shippori Mincho','Nunito',serif;font-size:56px;font-weight:700;color:var(--orange);line-height:1}
   .cta{margin-top:16px;padding:16px;border-radius:20px;background:linear-gradient(180deg,rgba(79,154,143,.12),rgba(255,249,238,.6));border:1px solid var(--line)}
   .cta b{display:block;font-size:15px;margin-bottom:2px}
   .cta p{color:var(--muted);font-size:13px;line-height:1.45;margin-bottom:12px}
@@ -132,7 +132,7 @@
   .foot a{color:var(--orange2);font-weight:700}
   .sndbtn{border:1px solid var(--line);background:var(--paper);border-radius:12px;width:42px;height:42px;font-size:16px;cursor:pointer;color:var(--ink)}
   .sndbtn.off{opacity:.5}
-  .combo{position:absolute;top:12px;left:50%;transform:translateX(-50%);font-family:'Klee One','Shippori Mincho',serif;font-weight:600;font-size:17px;color:var(--orange2);opacity:0;pointer-events:none;transition:opacity .2s;z-index:4}
+  .combo{position:absolute;top:12px;left:50%;transform:translateX(-50%);font-family:'Nunito','Klee One','Shippori Mincho','Nunito',serif;font-weight:600;font-size:17px;color:var(--orange2);opacity:0;pointer-events:none;transition:opacity .2s;z-index:4}
   .combo.show{opacity:1}
   .ripple{position:absolute;border:2px solid var(--teal);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);animation:rip .55s ease-out forwards;z-index:3}
   @keyframes rip{from{width:12px;height:12px;opacity:.55}to{width:130px;height:130px;opacity:0}}

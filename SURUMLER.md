@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.9.1 — 2026-07-16
+- 🔤 **Türkçe karakter (ş/ğ/İ/ı) düzeltmesi** (Zeynep bildirdi). Oyun/araç/hakkımda sayfalarındaki **Klee One** ve **Shippori Mincho** fontları Türkçe özel harfleri taşımıyor, o harfler sistem fontuna düşüp kelime ortasında bozuk görünüyordu. Çözüm: **Nunito** (tam Türkçe destekli, sıcak) eklendi; font yığınları `"Nunito","Klee One"` ve `"Shippori Mincho","Nunito"` yapıldı → Latin/Türkçe harfler Nunito'da tutarlı, Japonca kana/kanji hâlâ Klee One/Shippori'de. 8 sayfa: 5 oyun (Konbini, Yokai Mail, Kana Yağmuru/Takımyıldızı/Kartları) + 2 araç (Hiragana/Katakana) + /hakkimda. Ana sayfa/JF/yasal sayfalar Inter kullandığı için zaten sorunsuzdu.
+
 ### v1.9.0 — 2026-07-16
 - 🎮 **Yeni web oyunu: Konbini Shift** (`/apps/japanese-flick/oyunlar/konbini/`). Japonca alışveriş/servis oyunu: konbinide tezgâhtasın, müşteri "〜を ください" der, raftan doğru ürünü verirsin → müşteri "ありがとうございました", kasaya ¥ + seri bonusu, kelime defteri. 8 ürün (おにぎり/パン/お茶/水/コーヒー/たまご/べんとう/アイス, sade SVG glifleri), vardiya = 8 müşteri, ja-JP ses, "okunuş+anlam" ipucu, açılış/nasıl-oynanır ekranı. Ana sayfa + JF Oyunlar ızgarasına kart (alışveriş poşeti glyph + gold blok), sitemap + canonical. Zeynep'in 12 mini oyun listesindeki 1 numara. Doğrulama: 8 müşteri servis + yanlış cevap testi, 0 JS hatası.
 

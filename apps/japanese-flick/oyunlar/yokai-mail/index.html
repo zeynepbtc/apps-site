@@ -9,7 +9,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/japanese-flick/icons/appicon-rounded-512.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Shippori+Mincho:wght@500;600;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#efe7d6;--paper:#fbf6ec;--ink:#3a2f28;--soft:#6d6055;--line:#e2d8c6;
@@ -20,17 +20,17 @@
   body{
     background:radial-gradient(130% 70% at 50% -10%,#f3ecdd 0,var(--bg) 58%);
     color:var(--ink);min-height:100%;
-    font-family:"Klee One",-apple-system,system-ui,sans-serif;line-height:1.55;
+    font-family:"Nunito","Klee One",-apple-system,system-ui,sans-serif;line-height:1.55;
     -webkit-font-smoothing:antialiased;
     display:flex;justify-content:center;padding:max(14px,env(safe-area-inset-top)) 13px 34px;
   }
   .phone{width:100%;max-width:430px}
   .top{display:flex;align-items:center;gap:10px;margin:4px 2px 16px}
   .logo{width:40px;height:40px;border-radius:12px;background:var(--ink);color:var(--paper);
-    display:grid;place-items:center;font-family:"Shippori Mincho",serif;font-weight:700;font-size:21px;
+    display:grid;place-items:center;font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:21px;
     box-shadow:0 6px 16px rgba(58,47,40,.22)}
-  .brand{flex:1;font-family:"Shippori Mincho",serif;font-weight:700;font-size:18px;letter-spacing:.02em}
-  .brand small{display:block;font-family:"Klee One";font-weight:400;font-size:11px;color:var(--soft);letter-spacing:.05em}
+  .brand{flex:1;font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:18px;letter-spacing:.02em}
+  .brand small{display:block;font-family:"Nunito","Klee One";font-weight:400;font-size:11px;color:var(--soft);letter-spacing:.05em}
   .booknav{background:#efe7d6;border:1px solid var(--line);border-radius:11px;padding:8px 12px;font-size:13px;
     font-weight:600;cursor:pointer;color:var(--ink);display:flex;gap:6px;align-items:center}
   .booknav b{background:var(--accent);color:#fff;border-radius:20px;padding:0 7px;font-size:11px}
@@ -48,7 +48,7 @@
   .env.locked{opacity:.45;cursor:default}
   .env.locked:hover{background:none;padding-left:4px}
   .stamp{width:52px;height:52px;border-radius:14px;flex-shrink:0;display:grid;place-items:center;
-    font-family:"Shippori Mincho",serif;font-weight:700;font-size:22px;color:#fff;position:relative;
+    font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:22px;color:#fff;position:relative;
     box-shadow:inset 0 0 0 2px rgba(255,255,255,.35),0 5px 12px rgba(58,47,40,.2)}
   .stamp::after{content:"";position:absolute;inset:5px;border:1px dashed rgba(255,255,255,.5);border-radius:9px}
   .who{flex:1;min-width:0}
@@ -58,15 +58,15 @@
   .check{color:var(--ok);font-weight:700;font-size:15px}
 
   /* letter */
-  .back{background:none;border:none;color:var(--soft);font-family:"Klee One";font-size:13px;cursor:pointer;padding:4px 2px;margin-bottom:8px}
+  .back{background:none;border:none;color:var(--soft);font-family:"Nunito","Klee One";font-size:13px;cursor:pointer;padding:4px 2px;margin-bottom:8px}
   .from{display:flex;align-items:center;gap:12px;margin-bottom:15px}
-  .from .who b{font-family:"Shippori Mincho",serif;font-size:16px}
+  .from .who b{font-family:"Shippori Mincho","Nunito",serif;font-size:16px}
   .paper-note{background:#fffdf7;border:1px solid #efe4cf;border-radius:14px;padding:17px 16px;
     background-image:repeating-linear-gradient(#fffdf7 0 29px,#f6edda 29px 30px)}
-  .jp{font-family:"Shippori Mincho",serif;font-size:19px;line-height:1.95;letter-spacing:.02em}
+  .jp{font-family:"Shippori Mincho","Nunito",serif;font-size:19px;line-height:1.95;letter-spacing:.02em}
   .blank{display:inline-block;min-width:2.4em;text-align:center;border-bottom:2.5px dashed var(--accent);color:var(--accent);font-weight:700}
   .blank.filled{border-bottom-color:var(--ok);color:var(--ok)}
-  .rd{background:none;border:1px solid var(--line);border-radius:9px;padding:4px 9px;font-size:12px;color:var(--soft);cursor:pointer;margin-top:11px;font-family:"Klee One"}
+  .rd{background:none;border:1px solid var(--line);border-radius:9px;padding:4px 9px;font-size:12px;color:var(--soft);cursor:pointer;margin-top:11px;font-family:"Nunito","Klee One"}
   .help{margin-top:10px;font-size:13px;color:var(--soft);display:none}
   .help.show{display:block}
   .help .ro{font-style:italic}.help .tr{color:var(--ink);margin-top:2px}
@@ -75,14 +75,14 @@
   .prompt{font-size:13.5px;color:var(--soft);margin:0 2px 9px}
   .slots{display:flex;gap:8px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
   .slot{width:52px;height:58px;border-radius:12px;border:2px dashed #d9ccb6;background:#fff;
-    display:grid;place-items:center;font-family:"Shippori Mincho",serif;font-size:26px;cursor:pointer}
+    display:grid;place-items:center;font-family:"Shippori Mincho","Nunito",serif;font-size:26px;cursor:pointer}
   .slot.full{border-style:solid;border-color:var(--accent);background:#fbf1e2}
   .slot.ok{border-color:var(--ok);background:#e8f2ef}
   .slot.bad{border-color:var(--brick);background:#f7e9e4;animation:sh .3s}
   @keyframes sh{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
   .tray{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
   .key{width:54px;height:54px;border-radius:13px;border:1.5px solid var(--line);background:#fff;
-    font-family:"Shippori Mincho",serif;font-size:24px;cursor:pointer;transition:.12s;color:var(--ink)}
+    font-family:"Shippori Mincho","Nunito",serif;font-size:24px;cursor:pointer;transition:.12s;color:var(--ink)}
   .key:hover{border-color:var(--accent);transform:translateY(-2px)}
   .key.used{opacity:.28;pointer-events:none}
 
@@ -91,20 +91,20 @@
   @keyframes pop{from{transform:scale(.97);opacity:0}to{transform:scale(1);opacity:1}}
   .reward h4{margin:0 0 8px;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--soft)}
   .wcard{display:flex;align-items:center;gap:11px}
-  .wcard .k{font-family:"Shippori Mincho",serif;font-size:30px}
+  .wcard .k{font-family:"Shippori Mincho","Nunito",serif;font-size:30px}
   .wcard .mm{flex:1}.wcard .mm b{font-size:15px}.wcard .mm span{display:block;font-size:12.5px;color:var(--soft)}
   .spk{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:17px}
-  .reply{margin:13px 0 4px;font-family:"Shippori Mincho",serif;font-size:16px}
+  .reply{margin:13px 0 4px;font-family:"Shippori Mincho","Nunito",serif;font-size:16px}
   .reply-tr{font-size:12.5px;color:var(--soft)}
   .flick{margin-top:12px;font-size:12px;color:var(--soft);background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 11px}
   .flick b{color:var(--accent)}
   .btn{width:100%;margin-top:13px;background:var(--accent);color:#fff;border:none;border-radius:12px;padding:13px;
-    font-family:"Klee One";font-weight:600;font-size:15px;cursor:pointer}
+    font-family:"Nunito","Klee One";font-weight:600;font-size:15px;cursor:pointer}
 
   /* collection */
   .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:4px}
   .cc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px;text-align:center;position:relative}
-  .cc .k{font-family:"Shippori Mincho",serif;font-size:30px;display:block}
+  .cc .k{font-family:"Shippori Mincho","Nunito",serif;font-size:30px;display:block}
   .cc .r{display:block;font-size:12px;color:var(--soft);margin-top:2px}
   .cc .m{display:block;font-size:13.5px;margin-top:3px;font-weight:600}
   .cc .spk{position:absolute;top:8px;right:8px;width:30px;height:30px;font-size:14px}
@@ -112,8 +112,8 @@
   .cempty{text-align:center;color:var(--soft);font-size:14px;padding:30px 10px}
 
   .intro{text-align:center}
-  .ihero{width:58px;height:58px;border-radius:16px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:"Shippori Mincho",serif;font-weight:700;font-size:31px;margin:8px auto 10px;box-shadow:0 8px 18px rgba(58,47,40,.24)}
-  .ititle{font-family:"Shippori Mincho",serif;font-size:24px;margin:0 0 8px}
+  .ihero{width:58px;height:58px;border-radius:16px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:31px;margin:8px auto 10px;box-shadow:0 8px 18px rgba(58,47,40,.24)}
+  .ititle{font-family:"Shippori Mincho","Nunito",serif;font-size:24px;margin:0 0 8px}
   .ilead{font-size:14.5px;color:var(--ink);margin:0 0 18px;line-height:1.55}
   .ilead b{color:var(--accent)}
   .steps{text-align:left;display:grid;gap:13px;margin:0 0 18px}
@@ -126,7 +126,7 @@
   .hint{font-size:12px;color:var(--soft);text-align:center;margin:12px 2px 0}
   .hidden{display:none}
   .end{text-align:center;padding:24px 16px}
-  .end .big{font-family:"Shippori Mincho",serif;font-size:20px;margin:0 0 8px}
+  .end .big{font-family:"Shippori Mincho","Nunito",serif;font-size:20px;margin:0 0 8px}
   .end p{color:var(--soft);font-size:13.5px;margin:0 0 4px}
 </style>
 </head>
