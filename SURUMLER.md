@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.12.1 — 2026-07-16
+- 💰 **İlanlar — "Kazancım" (kalıcı toplam kazanç)** (Zeynep isteği). Her satış/masadan kazanılan ¥ artık **kalıcı toplam cüzdanda** birikiyor (localStorage `zk_ilanlar_yen`): Sakin bahşişler + Restoran ¥200/masa; Acele'de de ufak ¥ (satış 90, masa 140) → cüzdan her modda büyür. Gazete panosunun üstünde **財 "Kazancım ¥X"** kartı; Kelime Defterim ekranının en üstünde de "Toplam kazancım". Cihaza özel, kalıcı (rekorlar/kelimeler gibi). Doğrulama: 3 satış ¥360 + 1 restoran masası ¥560, panoda görünür, sayfa yenilenince kalıcı, 0 JS hatası.
+
 ### v1.12.0 — 2026-07-16
 - 🍜 **İlanlar — Restoran dükkânı (4 adımlı diyalog akışı)** (Zeynep tasarımı, önce örnek sahne onaylandı). Konbini/Daiso'nun "raftan seç" mantığından farklı: bir masa gelir, **adım adım diyalog** — ① 何名様ですか (kaç kişi → ひとり/ふたり/さんにん/よにん, masa+müşteri sayısı görselle) ② 店内/お持ち帰り (içeri/paket) ③ sipariş (menüden doğru yemek: ラーメン/すし/カレー/ぎゅうどん/てんぷら/おちゃ/みず/コーヒー) ④ お箸は？ (çubuk はい/いいえ). Her adım aynı öğrenme döngüsü: Japonca'yı oku/duy → doğru cevabı seç. Öğretir: **sayı sayaçları (人), içeri/paket, yemek isimleri, kibar rica/ret.** Restoran görünümü ayrı (noren 食堂 + fener + masa + müşteriler; müşteri sayısı parti büyüklüğüne göre). Tek sipariş (Zeynep tercihi). Sakin (6 masa) + Acele (süreli, adım başına, 3 hata). Kelime defteri + rekorlar + peş-peşe-aynı-yemek-yok entegre. Ana sayfa/JF/sitemap'te zaten İlanlar kartı var; restoran "yakında"dan çıkıp aktif oldu (kalan yakında: Müzik Mağazası). Doğrulama: 4 adım akışı + acele timer + kelime kaydı Playwright + ekran görüntüsü, 0 JS hatası. Sıradaki: hız testi (Zeynep) + yeni dükkânlar/komik işler.
 

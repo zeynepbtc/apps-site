@@ -105,6 +105,11 @@
   .lchip{background:#f2ead9;border-radius:999px;padding:6px 12px;font-size:13px;font-family:"Shippori Mincho","Nunito",serif;cursor:pointer}
   .btn{width:100%;margin-top:8px;background:var(--ink);color:#fff;border:none;border-radius:12px;padding:13px;font-family:"Nunito";font-weight:800;font-size:15px;cursor:pointer}
   .btn.ghost{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
+  .kasa{display:flex;align-items:center;gap:11px;margin:0 0 10px;padding:12px 14px;border-radius:14px;
+    background:linear-gradient(180deg,#2f5d54,#275f59);color:#f4efe3;box-shadow:0 8px 20px -12px rgba(39,95,89,.7)}
+  .kasa .kicon{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.14);display:grid;place-items:center;font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:17px;flex:0 0 auto}
+  .kasa small{display:block;font-size:10.5px;opacity:.85;text-transform:uppercase;letter-spacing:.5px}
+  .kasa .kasaval{font-family:"Shippori Mincho","Nunito",serif;font-weight:800;font-size:20px}
   .wordsbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;margin:0 0 12px;padding:11px;border-radius:12px;
     background:#fffbf1;border:1px solid #e3d6bd;color:var(--ink);font-family:"Nunito";font-weight:800;font-size:14px;cursor:pointer}
   .wordsbtn b{background:var(--ink);color:#fff;border-radius:999px;padding:1px 9px;font-size:12px}
@@ -179,6 +184,7 @@
       </div>
       <div class="paperline"><span>アルバイト情報</span><span><span class="tr">bugünün ilanları</span><span class="en">today's openings</span></span></div>
       <p class="lead"><span class="tr">Japonya'da part-time iş arıyorsun. Bir dükkân seç, vardiyaya gir: müşteri Japonca bir şey ister, sen raftan <b>doğru ürünü</b> verirsin. <b>Sakin</b> = kendi hızında; <b>Acele</b> = süreli, hızlanır.</span><span class="en">You're job-hunting in Japan. Pick a shop, work a shift: a customer asks for something in Japanese, you give the <b>right item</b>. <b>Calm</b> = your pace; <b>Hurry</b> = timed, speeds up.</span></p>
+      <div class="kasa"><div class="kicon">財</div><div style="flex:1"><small><span class="tr">Kazancım</span><span class="en">My earnings</span></small><b class="kasaval">¥0</b></div></div>
       <button class="wordsbtn" onclick="openWords()"><span class="tr">Kelime Defterim</span><span class="en">My Words</span> <b id="wordsCount">0</b></button>
       <div class="ads" id="ads"></div>
     </div>
@@ -419,6 +425,9 @@ function custSVG(i){const c=CUSTCOLORS[i%CUSTCOLORS.length];
 
 /* ===== board ===== */
 /* ===== kalıcı kelime defteri (localStorage, cihaza özel) ===== */
+function totalYen(){try{return parseInt(localStorage.getItem('zk_ilanlar_yen')||'0',10);}catch(e){return 0;}}
+function addYen(n){try{localStorage.setItem('zk_ilanlar_yen',String(totalYen()+n));}catch(e){}updateEarnings();}
+function updateEarnings(){const v='¥'+totalYen().toLocaleString('en-US');document.querySelectorAll('.kasaval').forEach(e=>e.textContent=v);}
 function loadWords(){try{return JSON.parse(localStorage.getItem('zk_ilanlar_words')||'{}')||{};}catch(e){return {};}}
 function markWord(sid,id){try{const w=loadWords();(w[sid]=w[sid]||{})[id]=1;localStorage.setItem('zk_ilanlar_words',JSON.stringify(w));}catch(e){}}
 function totalWords(){const w=loadWords();let n=0;for(const k in w)n+=Object.keys(w[k]).length;return n;}
@@ -438,7 +447,9 @@ function renderBests(){
   return rows?`<div class="bblock"><div class="bhead">${t('Rekorlarım','My Bests')}</div>${rows}</div>`:'';
 }
 function renderWords(){
-  const w=loadWords();const body=document.getElementById('wordsBody');body.innerHTML=renderBests();let any=false;
+  const w=loadWords();const body=document.getElementById('wordsBody');
+  body.innerHTML=`<div class="kasa" style="margin-bottom:16px"><div class="kicon">財</div><div style="flex:1"><small>${t('Toplam kazancım','Total earnings')}</small><b class="kasaval">¥0</b></div></div>`+renderBests();
+  updateEarnings();let any=false;
   STORES.forEach(s=>{
     if(!w[s.id])return;
     const found=s.items.filter(it=>w[s.id][it.id]);
@@ -541,13 +552,13 @@ function pick(x,btn,target){
     markWord(store.id,target.id);updateWordsCount();
     const f=document.getElementById('flash');f.className='flash good';
     if(mode==='acele'){
-      served++;combo++;score=served;
+      served++;combo++;score=served;addYen(90);
       f.textContent='ありがとう！';
       document.getElementById('score').textContent=t('servis','served')+' '+served;
       speak("はい！");
       setTimeout(nextCustomer,420);
     }else{
-      combo++;const tip=110+(combo>1?(combo-1)*10:0);score+=tip;
+      combo++;const tip=110+(combo>1?(combo-1)*10:0);score+=tip;addYen(tip);
       document.getElementById('score').textContent='¥'+score;
       f.textContent=`ありがとう！ +¥${tip}`;
       let advanced=false;const go=()=>{if(advanced)return;advanced=true;idx++; if(idx>=SAKIN_LEN) endShift(); else nextCustomer();};
@@ -693,8 +704,8 @@ function rPick(id,el){
     if(rStep===2){markWord(store.id,table.dish.id);updateWordsCount();if(!learned.includes(table.dish.id))learned.push(table.dish.id);}
     const f=document.getElementById('rFlash');f.className='flash good';f.textContent='はい！';
     if(rStep>=3){ busy=true;served++;
-      if(mode!=='acele'){score+=200;document.getElementById('rScore').textContent='¥'+score;}
-      else document.getElementById('rScore').textContent=t('masa','tables')+' '+served;
+      if(mode!=='acele'){score+=200;addYen(200);document.getElementById('rScore').textContent='¥'+score;}
+      else {addYen(140);document.getElementById('rScore').textContent=t('masa','tables')+' '+served;}
       f.textContent='ありがとうございました！';speak('ありがとうございました');
       setTimeout(nextTable, mode==='acele'?500:1400);
     } else { rStep++;busy=true;setTimeout(()=>{busy=false;renderStep();},420); }
@@ -732,7 +743,7 @@ function show(id){['board','play','end','words','resto'].forEach(x=>{const el=do
 document.body.classList.toggle('enmode',LANG==='en');
 document.getElementById('trBtn').classList.toggle('on',LANG==='tr');
 document.getElementById('enBtn').classList.toggle('on',LANG==='en');
-renderAds();updateWordsCount();show('board');
+renderAds();updateWordsCount();updateEarnings();show('board');
 </script>
 </body>
 </html>
