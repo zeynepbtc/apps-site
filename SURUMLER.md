@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.12.4 — 2026-07-17
+- 🎨 **Baito Days logosu Flick görsel diline bağlandı** (Zeynep tercihi: B yönü + Flick benzerliği). Dikey **バイト hanko**, artık Flick app ikonunun tam paletinde: terracotta `#d2604d` (Flick'in ortadaki yuvarlağıyla aynı) + Flick paper `#fbf5ef` + **offset renk-gölgesi** `#eeb9a8` (Flick'in yuvarlağının altındaki yumuşak halo gibi). Önceki 求人 mühür (A) yerine geçti. Ana sayfa duyuru kartındaki `baito-days-logo.png` güncellendi. Alternatif B2 (yuvarlak hanko) hazır — tek kelimeyle değişir.
+
 ### v1.12.3 — 2026-07-17
 - 📣 **Ana sayfa — "Baito Days · Part-Time Japan" yapım aşamasında duyurusu + ayrı logo** (Zeynep isteği; bu session yalnız web/pazarlama şeridi). Güncellemeler bölümüne yeni bir duyuru kartı: "YAPIM AŞAMASINDA · YENİ UYGULAMA" etiketi, **求人 hanko (kırmızı mühür) app-logosu** (`baito-days-logo.png`, sıcak kâğıt zemin + krem 求人 — İlanlar oyununun 求人 gazete başlığıyla bağ kurar), "Baito Days · Part-Time Japan" başlığı, sıcak/hikâye-tabanlı kısa TR+EN açıklama, "ÇOK YAKINDA / COMING SOON" rozeti. Sağdaki mini zaman çizelgesine de Baito Days satırı eklendi. Uygulama geliştirme ayrı session'da; burada yalnız duyuru. Doğrulama: #updates ekran görüntüsü — kart + logo + etiketler doğru render, 0 JS hatası.
 
