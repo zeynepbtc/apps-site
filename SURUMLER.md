@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.11.1 — 2026-07-16
+- 🎨 **İlanlar — Daiso varyant sistemi + iki düzeltme** (Zeynep testi). (1) **Renk/boyut varyantları:** ürünler artık **sıfat + isim** (赤いペン = kırmızı kalem, 大きいノート = büyük defter). Renk çizimleri **gerçek renkte** görünür (kırmızı boya kırmızı). Rafta aynı ismin farklı renkleri yan yana → doğru olanı seçmek için hem rengi (赤い/青い/黄色い…) hem ismi okuman gerekir → **い-sıfat öğretir.** 6 aile (kalem, boya, şemsiye, kalın kalem, pastel, defter) → 26 varyant; Daiso havuzu **44 ürün.** (2) **Peş peşe aynı istek gelmiyor:** hedef önce seçilir (öncekiyle aynıysa yeniden), raf hedefin etrafında kurulur (varyantsa 1-2 kardeş renk + farklı ürünler). Doğrulama: 40 müşteride 0 tekrar, varyant hedefte rafta kardeş var, renkler doğru, 0 JS hatası. **JLPT etiketleri eklenmedi (Zeynep vazgeçti).** Sıradaki: restoran diyalog akışı.
+
 ### v1.11.0 — 2026-07-16
 - 📰 **İlanlar · Baito — Konbini "iş arama" evrenine büyütüldü** (`/oyunlar/ilanlar/`). Giriş artık bir **gazete iş-ilanı panosu** ("İLANLAR / 求人 / Listings · Baito バイト"): bir dükkân seç, vardiyaya gir. Konbini'nin motoru **genelleştirildi** (dükkân paketi = ürün seti + renk + selam); tek motor, çok dükkân.
   - **Dükkânlar:** Market/Konbini (24 yemek-içecek ürünü) + **Hobi & Kırtasiye / Daiso** (24 yeni ürün: kalem, silgi, defter, makas, boya, fırça, cetvel, bant, çıkartma, oyun hamuru, boncuk, pil, şemsiye, zarf, origami, ataç… her biri kendi SVG çizimi). Restoran + Müzik Mağazası "yakında".

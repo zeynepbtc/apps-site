@@ -218,32 +218,70 @@ const KONBINI=[
  {id:"senbei",jp:"せんべい",ro:"senbei",tr:"pirinç krakeri",en:"rice cracker",g:'<circle cx="22" cy="24" r="12" fill="#d9b46a" stroke="#3a2f28" stroke-width="2"/><rect x="14" y="21" width="16" height="6" rx="1" fill="#3a2f28" opacity=".55"/>'},
  {id:"choko",jp:"チョコ",ro:"choko",tr:"çikolata",en:"chocolate",g:'<rect x="12" y="14" width="20" height="22" rx="2" fill="#5a3722" stroke="#3a2f28" stroke-width="2"/><line x1="22" y1="14" x2="22" y2="36" stroke="#3a2f28" stroke-width="1.4"/><line x1="12" y1="22" x2="32" y2="22" stroke="#3a2f28" stroke-width="1.4"/><line x1="12" y1="29" x2="32" y2="29" stroke="#3a2f28" stroke-width="1.4"/>'}
 ];
-const DAISO=[
+const DAISO_PLAIN=[
  {id:"enpitsu",jp:"えんぴつ",ro:"enpitsu",tr:"kurşun kalem",en:"pencil",g:'<path d="M11 33 L28 16 L32 20 L15 37 Z" fill="#e8c25a" stroke="#3a2f28" stroke-width="2"/><path d="M28 16 L32 20 L34 12 Z" fill="#c0705f" stroke="#3a2f28" stroke-width="2"/><path d="M11 33 L15 37 L10 37.5 Z" fill="#3a2f28"/>'},
  {id:"keshigomu",jp:"けしゴム",ro:"keshigomu",tr:"silgi",en:"eraser",g:'<rect x="11" y="18" width="22" height="12" rx="2" fill="#f0a5b5" stroke="#3a2f28" stroke-width="2"/><rect x="11" y="18" width="22" height="5" rx="2" fill="#8fc3d6" stroke="#3a2f28" stroke-width="2"/>'},
- {id:"noto",jp:"ノート",ro:"nōto",tr:"defter",en:"notebook",g:'<rect x="13" y="9" width="18" height="26" rx="2" fill="#fbf6ec" stroke="#3a2f28" stroke-width="2"/><line x1="17" y1="16" x2="27" y2="16" stroke="#8fc3d6" stroke-width="1.6"/><line x1="17" y1="21" x2="27" y2="21" stroke="#8fc3d6" stroke-width="1.6"/><line x1="17" y1="26" x2="27" y2="26" stroke="#8fc3d6" stroke-width="1.6"/><line x1="13" y1="9" x2="13" y2="35" stroke="#c0392b" stroke-width="2.4"/>'},
- {id:"pen",jp:"ペン",ro:"pen",tr:"tükenmez kalem",en:"pen",g:'<path d="M13 33 L26 13 a3 3 0 0 1 5 3 L18 36 L12 37 Z" fill="#4f9a8f" stroke="#3a2f28" stroke-width="2"/><line x1="24" y1="16" x2="29" y2="19" stroke="#3a2f28" stroke-width="2"/>'},
  {id:"hasami",jp:"はさみ",ro:"hasami",tr:"makas",en:"scissors",g:'<circle cx="14" cy="30" r="4" fill="none" stroke="#3a2f28" stroke-width="2"/><circle cx="24" cy="30" r="4" fill="none" stroke="#3a2f28" stroke-width="2"/><path d="M16 27 L33 12M22 27 L11 13" fill="none" stroke="#7a8a99" stroke-width="2.6"/>'},
  {id:"nori",jp:"のり",ro:"nori",tr:"yapıştırıcı",en:"glue",g:'<rect x="16" y="14" width="12" height="21" rx="2" fill="#e0965a" stroke="#3a2f28" stroke-width="2"/><rect x="17" y="9" width="10" height="6" rx="1" fill="#fbf6ec" stroke="#3a2f28" stroke-width="2"/>'},
  {id:"tepu",jp:"テープ",ro:"tēpu",tr:"bant",en:"tape",g:'<circle cx="22" cy="24" r="12" fill="none" stroke="#3a2f28" stroke-width="2"/><circle cx="22" cy="24" r="5" fill="none" stroke="#3a2f28" stroke-width="2"/><path d="M22 12 h11" stroke="#8fc3d6" stroke-width="3.4"/>'},
  {id:"jogi",jp:"じょうぎ",ro:"jōgi",tr:"cetvel",en:"ruler",g:'<rect x="7" y="18" width="30" height="9" rx="1" fill="#c9e0a0" stroke="#3a2f28" stroke-width="2"/><path d="M12 18 v4M17 18 v4M22 18 v4M27 18 v4M32 18 v4" stroke="#3a2f28" stroke-width="1.4"/>'},
- {id:"enogu",jp:"えのぐ",ro:"enogu",tr:"boya",en:"paint",g:'<rect x="13" y="16" width="14" height="19" rx="2" fill="#5aa0d0" stroke="#3a2f28" stroke-width="2"/><path d="M27 20 l6 -3 v10 l-6 -3 z" fill="#5aa0d0" stroke="#3a2f28" stroke-width="2"/><rect x="16" y="10" width="8" height="6" rx="1" fill="#3a2f28"/>'},
  {id:"fude",jp:"ふで",ro:"fude",tr:"fırça",en:"brush",g:'<rect x="20" y="9" width="4" height="15" fill="#c9a06a" stroke="#3a2f28" stroke-width="1.6"/><rect x="18.5" y="23" width="7" height="4" fill="#9aa6b0" stroke="#3a2f28" stroke-width="1.4"/><path d="M19 27 L25 27 L23 38 L21 38 Z" fill="#3a2f28"/>'},
  {id:"kami",jp:"かみ",ro:"kami",tr:"kâğıt",en:"paper",g:'<path d="M14 8 h12 l6 6 v22 h-18 z" fill="#fbf6ec" stroke="#3a2f28" stroke-width="2"/><path d="M26 8 v6 h6" fill="none" stroke="#3a2f28" stroke-width="2"/>'},
  {id:"shiru",jp:"シール",ro:"shīru",tr:"çıkartma",en:"sticker",g:'<polygon points="22,10 25,19 34,19 27,25 29,34 22,28 15,34 17,25 10,19 19,19" fill="#f2c14e" stroke="#3a2f28" stroke-width="2"/>'},
  {id:"nendo",jp:"ねんど",ro:"nendo",tr:"oyun hamuru",en:"clay",g:'<ellipse cx="22" cy="29" rx="13" ry="7" fill="#c9a06a" stroke="#3a2f28" stroke-width="2"/><ellipse cx="21" cy="22" rx="9" ry="6" fill="#d9b47a" stroke="#3a2f28" stroke-width="2"/>'},
  {id:"ito",jp:"いと",ro:"ito",tr:"ip",en:"yarn",g:'<circle cx="22" cy="24" r="11" fill="#e08fb0" stroke="#3a2f28" stroke-width="2"/><path d="M14 20 q8 6 16 0M14 27 q8 6 16 0M18 15 q2 9 0 18M26 15 q2 9 0 18" fill="none" stroke="#3a2f28" stroke-width="1" opacity=".45"/>'},
  {id:"bizu",jp:"ビーズ",ro:"bīzu",tr:"boncuk",en:"beads",g:'<circle cx="15" cy="20" r="4" fill="#c0392b" stroke="#3a2f28" stroke-width="1.6"/><circle cx="25" cy="17" r="4" fill="#4f9a8f" stroke="#3a2f28" stroke-width="1.6"/><circle cx="29" cy="26" r="4" fill="#e0965a" stroke="#3a2f28" stroke-width="1.6"/><circle cx="18" cy="28" r="4" fill="#7a5aa0" stroke="#3a2f28" stroke-width="1.6"/>'},
- {id:"kureyon",jp:"クレヨン",ro:"kureyon",tr:"pastel boya",en:"crayon",g:'<rect x="18" y="13" width="8" height="23" rx="2" fill="#7aa35a" stroke="#3a2f28" stroke-width="2"/><path d="M18 13 l4 -5 l4 5 z" fill="#e8c25a" stroke="#3a2f28" stroke-width="2"/>'},
- {id:"maka",jp:"マーカー",ro:"mākā",tr:"kalın kalem",en:"marker",g:'<rect x="15" y="15" width="14" height="20" rx="3" fill="#e08fb0" stroke="#3a2f28" stroke-width="2"/><rect x="18" y="9" width="8" height="6" rx="1" fill="#3a2f28"/>'},
  {id:"futo",jp:"ふうとう",ro:"fūtō",tr:"zarf",en:"envelope",g:'<rect x="9" y="14" width="26" height="18" rx="2" fill="#fbf6ec" stroke="#3a2f28" stroke-width="2"/><path d="M9 15 L22 25 L35 15" fill="none" stroke="#3a2f28" stroke-width="2"/>'},
- {id:"kasa",jp:"かさ",ro:"kasa",tr:"şemsiye",en:"umbrella",g:'<path d="M8 23 a14 14 0 0 1 28 0 z" fill="#c0392b" stroke="#3a2f28" stroke-width="2"/><path d="M22 23 v10 a3 3 0 0 0 5 0" fill="none" stroke="#3a2f28" stroke-width="2"/>'},
  {id:"denchi",jp:"でんち",ro:"denchi",tr:"pil",en:"battery",g:'<rect x="14" y="12" width="14" height="23" rx="2" fill="#f2c14e" stroke="#3a2f28" stroke-width="2"/><rect x="18" y="9" width="6" height="3" fill="#3a2f28"/><path d="M22 17 l-3 7 h6 l-3 7" fill="none" stroke="#3a2f28" stroke-width="2"/>'},
  {id:"origami",jp:"おりがみ",ro:"origami",tr:"origami kâğıdı",en:"origami paper",g:'<polygon points="22,9 35,22 22,35 9,22" fill="#e08fb0" stroke="#3a2f28" stroke-width="2"/><path d="M9 22 L22 22 L22 9M22 22 L35 22" stroke="#3a2f28" stroke-width="1" opacity=".5"/>'},
  {id:"karenda",jp:"カレンダー",ro:"karendā",tr:"takvim",en:"calendar",g:'<rect x="11" y="13" width="22" height="21" rx="2" fill="#fbf6ec" stroke="#3a2f28" stroke-width="2"/><rect x="11" y="13" width="22" height="6" fill="#c0392b" stroke="#3a2f28" stroke-width="2"/><line x1="17" y1="10" x2="17" y2="16" stroke="#3a2f28" stroke-width="2"/><line x1="27" y1="10" x2="27" y2="16" stroke="#3a2f28" stroke-width="2"/>'},
  {id:"hocchikisu",jp:"ホッチキス",ro:"hocchikisu",tr:"zımba",en:"stapler",g:'<path d="M9 28 h26 v5 h-26 z" fill="#4f9a8f" stroke="#3a2f28" stroke-width="2"/><path d="M12 28 v-4 a2 2 0 0 1 2-2 h15 l3 6" fill="#59a498" stroke="#3a2f28" stroke-width="2"/>'},
  {id:"kurippu",jp:"クリップ",ro:"kurippu",tr:"ataç",en:"paper clip",g:'<path d="M18 13 v15 a4 4 0 0 0 8 0 v-12 a2.5 2.5 0 0 0 -5 0 v11" fill="none" stroke="#7a8a99" stroke-width="2.6"/>'}
 ];
+/* variant glyph templates (renk gerçekten görünsün) */
+function gPen(c){return '<path d="M13 33 L26 13 a3 3 0 0 1 5 3 L18 36 L12 37 Z" fill="'+c+'" stroke="#3a2f28" stroke-width="2"/><line x1="24" y1="16" x2="29" y2="19" stroke="#3a2f28" stroke-width="2"/>';}
+function gPaint(c){return '<rect x="13" y="16" width="14" height="19" rx="2" fill="'+c+'" stroke="#3a2f28" stroke-width="2"/><path d="M27 20 l6 -3 v10 l-6 -3 z" fill="'+c+'" stroke="#3a2f28" stroke-width="2"/><rect x="16" y="10" width="8" height="6" rx="1" fill="#3a2f28"/>';}
+function gUmbrella(c){return '<path d="M8 23 a14 14 0 0 1 28 0 z" fill="'+c+'" stroke="#3a2f28" stroke-width="2"/><path d="M22 23 v10 a3 3 0 0 0 5 0" fill="none" stroke="#3a2f28" stroke-width="2"/>';}
+function gMarker(c){return '<rect x="15" y="15" width="14" height="20" rx="3" fill="'+c+'" stroke="#3a2f28" stroke-width="2"/><rect x="18" y="9" width="8" height="6" rx="1" fill="#3a2f28"/>';}
+function gCrayon(c){return '<rect x="18" y="13" width="8" height="23" rx="2" fill="'+c+'" stroke="#3a2f28" stroke-width="2"/><path d="M18 13 l4 -5 l4 5 z" fill="#efe3cf" stroke="#3a2f28" stroke-width="2"/>';}
+function gNotebook(s){return '<g transform="translate(22,22) scale('+s+') translate(-22,-22)"><rect x="13" y="9" width="18" height="26" rx="2" fill="#e8c98a" stroke="#3a2f28" stroke-width="2"/><line x1="17" y1="16" x2="27" y2="16" stroke="#fbf6ec" stroke-width="1.8"/><line x1="17" y1="21" x2="27" y2="21" stroke="#fbf6ec" stroke-width="1.8"/><line x1="17" y1="26" x2="27" y2="26" stroke="#fbf6ec" stroke-width="1.8"/><line x1="13" y1="9" x2="13" y2="35" stroke="#c0392b" stroke-width="2.4"/></g>';}
+/* JP renk sıfatları (い-sıfat düz; renk-isim -no ile) */
+const COLORS=[
+ {id:'aka',jp:'赤い',ro:'akai',tr:'kırmızı',en:'red',hex:'#c0392b'},
+ {id:'ao',jp:'青い',ro:'aoi',tr:'mavi',en:'blue',hex:'#3f74c0'},
+ {id:'ki',jp:'黄色い',ro:'kiiroi',tr:'sarı',en:'yellow',hex:'#e6b93a'},
+ {id:'midori',jp:'緑の',ro:'midori no',tr:'yeşil',en:'green',hex:'#4f9a5a'},
+ {id:'kuro',jp:'黒い',ro:'kuroi',tr:'siyah',en:'black',hex:'#3a2f28'},
+ {id:'pink',jp:'ピンクの',ro:'pinku no',tr:'pembe',en:'pink',hex:'#e08fb0'},
+ {id:'murasaki',jp:'紫の',ro:'murasaki no',tr:'mor',en:'purple',hex:'#7a5aa0'},
+ {id:'orange',jp:'オレンジの',ro:'orenji no',tr:'turuncu',en:'orange',hex:'#d3813a'}
+];
+const SIZES=[
+ {id:'ooki',jp:'大きい',ro:'ōkii',tr:'büyük',en:'big',scale:1.05},
+ {id:'chiisai',jp:'小さい',ro:'chiisai',tr:'küçük',en:'small',scale:0.58}
+];
+const DAISO_FAM=[
+ {base:'pen',jp:'ペン',ro:'pen',tr:'kalem',en:'pen',variant:'color',set:['aka','ao','kuro','midori','murasaki'],gf:gPen},
+ {base:'enogu',jp:'えのぐ',ro:'enogu',tr:'boya',en:'paint',variant:'color',set:['aka','ao','ki','midori','orange','murasaki'],gf:gPaint},
+ {base:'kasa',jp:'かさ',ro:'kasa',tr:'şemsiye',en:'umbrella',variant:'color',set:['aka','ao','kuro','pink'],gf:gUmbrella},
+ {base:'maka',jp:'マーカー',ro:'mākā',tr:'kalın kalem',en:'marker',variant:'color',set:['aka','ao','ki','midori'],gf:gMarker},
+ {base:'kureyon',jp:'クレヨン',ro:'kureyon',tr:'pastel',en:'crayon',variant:'color',set:['aka','ao','ki','midori','orange'],gf:gCrayon},
+ {base:'noto',jp:'ノート',ro:'nōto',tr:'defter',en:'notebook',variant:'size',gf:gNotebook}
+];
+function expandFamilies(fams){
+  const out=[];
+  fams.forEach(f=>{
+    if(f.variant==='color'){
+      f.set.forEach(cid=>{const c=COLORS.find(x=>x.id===cid);if(!c)return;
+        out.push({base:f.base,id:f.base+'_'+c.id,jp:c.jp+f.jp,ro:c.ro+' '+f.ro,tr:c.tr+' '+f.tr,en:c.en+' '+f.en,g:f.gf(c.hex)});});
+    }else if(f.variant==='size'){
+      SIZES.forEach(s=>out.push({base:f.base,id:f.base+'_'+s.id,jp:s.jp+f.jp,ro:s.ro+' '+f.ro,tr:s.tr+' '+f.tr,en:s.en+' '+f.en,g:f.gf(s.scale)}));
+    }
+  });
+  return out;
+}
+const DAISO=DAISO_PLAIN.concat(expandFamilies(DAISO_FAM));
+
 const STORES=[
  {id:"konbini",kanji:"店",color:"var(--gold)",jp:"コンビニ",tr:"Market (Konbini)",en:"Konbini",
   tag:{tr:"Yemek & içecek — günlük alışveriş kelimeleri.",en:"Food & drinks — everyday shopping words."},wage:"¥1000/s",items:KONBINI},
@@ -260,7 +298,7 @@ const SAKIN_LEN=10, SHELF_SIZE=8;
 const ACELE={start:7000, step:150, min:3600, strikes:3};
 
 /* ===== state ===== */
-let store=null, mode='sakin', items=[], shelfItems=[], prevIds=[], idx=0, score=0, combo=0,
+let store=null, mode='sakin', items=[], shelfItems=[], prevTargetId=null, idx=0, score=0, combo=0,
     learned=[], busy=false, curItem=null, strikes=0, served=0;
 let timeLeft=0, timerRAF=null, lastTs=0, custDeadline=0;
 const CUSTCOLORS=["#4f9a8f","#d3813a","#b5502f","#275f59","#c99a3f","#8a5a3a","#7a5aa0","#e08fb0"];
@@ -293,18 +331,27 @@ function renderAds(){
 }
 function startJob(sid,m){
   store=STORES.find(x=>x.id===sid);mode=m;items=store.items;
-  idx=0;score=0;combo=0;learned=[];busy=false;shelfItems=[];prevIds=[];strikes=0;served=0;
+  idx=0;score=0;combo=0;learned=[];busy=false;shelfItems=[];prevTargetId=null;strikes=0;served=0;
   document.getElementById('shopName').innerHTML=`<b>${LANG==='en'?store.en:store.tr}</b>`;
   document.getElementById('timebar').classList.toggle('hidden',mode!=='acele');
   show('play');nextCustomer();
 }
 
 /* ===== shift engine ===== */
-function buildShelf(){
-  const fresh=shuffle(items.filter(x=>!prevIds.includes(x.id)));
-  const old=shuffle(items.filter(x=>prevIds.includes(x.id)));
-  shelfItems=shuffle(fresh.concat(old).slice(0,SHELF_SIZE));
-  prevIds=shelfItems.map(x=>x.id);
+// Her item bir 'base'e sahip (varyantlar aynı base'i paylaşır); düz ürünlerde base=id.
+STORES.forEach(s=>s.items.forEach(it=>{ if(!it.base) it.base=it.id; }));
+// Hedefi seç (peş peşe AYNI istek gelmesin), rafı hedefin etrafında kur (varsa 1-2 kardeş varyant + farklı ürünler).
+function composeShelf(){
+  let tgt,tries=0;
+  do{ tgt=items[Math.floor(Math.random()*items.length)];tries++; }
+  while(items.length>1 && tgt.id===prevTargetId && tries<15);
+  prevTargetId=tgt.id;curItem=tgt;
+  const shelf=[tgt];
+  const sibs=shuffle(items.filter(x=>x.base===tgt.base && x.id!==tgt.id));
+  for(let i=0;i<Math.min(sibs.length,2);i++)shelf.push(sibs[i]);
+  const others=shuffle(items.filter(x=>x.base!==tgt.base));
+  for(const o of others){ if(shelf.length>=SHELF_SIZE)break; shelf.push(o); }
+  shelfItems=shuffle(shelf.slice(0,SHELF_SIZE));
 }
 function applyHelp(it){
   document.getElementById('ro').textContent=it.ro+" o kudasai.";
@@ -317,9 +364,8 @@ function updateRight(){
 }
 function nextCustomer(){
   busy=false;
-  // shelf: sakin her 2 müşteride, acele her müşteride (sürekli değişsin)
-  if(mode==='acele' || idx%2===0) buildShelf();
-  const it=shelfItems[Math.floor(Math.random()*shelfItems.length)];curItem=it;
+  composeShelf();          // her müşteride hedef + raf yenilenir, peş peşe aynı istek gelmez
+  const it=curItem;
   document.getElementById('score').textContent = mode==='acele' ? (t('servis','served')+' '+served) : ('¥'+score);
   updateRight();
   document.getElementById('cust').innerHTML=custSVG(mode==='acele'?served:idx);
