@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>İlanlar (Baito) · Japanese Flick</title>
+<meta name="description" content="Bedava Japonca iş oyunu: gazeteden bir dükkân seç, vardiyaya gir, müşterinin Japonca isteğini raftan tanı. Konbini + Daiso hobi mağazası. Japanese Flick'in ücretsiz web oyunu." />
+<link rel="canonical" href="https://zeynepkaya.app/apps/japanese-flick/oyunlar/ilanlar/" />
+<link rel="icon" type="image/png" sizes="32x32" href="/japanese-flick/icons/appicon-rounded-512.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Shippori+Mincho:wght@500;600;700;800&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#efe7d6;--paper:#fbf6ec;--ink:#3a2f28;--soft:#6d6055;--line:#e2d8c6;
+    --accent:#d3813a;--teal:#4f9a8f;--brick:#b5502f;--deep:#275f59;--gold:#c99a3f;--ok:#4f9a8f}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:radial-gradient(130% 70% at 50% -10%,#f3ecdd 0,var(--bg) 58%);color:var(--ink);min-height:100%;
+    font-family:"Nunito","Klee One",-apple-system,system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;
+    display:flex;justify-content:center;padding:max(14px,env(safe-area-inset-top)) 13px 34px}
+  .en{display:none}
+  body:not(.enmode) .en{display:none}
+  body.enmode .tr{display:none}
+  body.enmode .en{display:inline}
+  .phone{width:100%;max-width:430px}
+  .siteback{display:inline-flex;align-items:center;gap:6px;margin:2px 0 12px;padding:8px 14px;border-radius:12px;
+    background:var(--paper);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:13px;font-weight:700;
+    box-shadow:0 4px 0 rgba(92,64,39,.09);transition:transform .15s}
+  .siteback:hover{transform:translateY(-1px)}
+  .top{display:flex;align-items:center;gap:10px;margin:4px 2px 14px}
+  .logo{width:40px;height:40px;border-radius:12px;background:var(--ink);color:#fff;display:grid;place-items:center;
+    font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:20px;box-shadow:0 6px 16px rgba(58,47,40,.22)}
+  .brand{flex:1;min-width:0;font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:18px}
+  .brand small{display:block;font-family:"Nunito";font-weight:400;font-size:11px;color:var(--soft)}
+  .lang{display:flex;gap:3px;padding:3px;border-radius:999px;background:#e7ddca}
+  .lang button{border:0;background:none;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:700;color:var(--soft);cursor:pointer;font-family:"Nunito"}
+  .lang button.on{background:var(--ink);color:#fff}
+  .helpbtn{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:#efe7d6;color:var(--soft);font-weight:700;font-size:15px;cursor:pointer}
+  .box{background:var(--paper);border:1px solid var(--line);border-radius:20px;box-shadow:0 12px 30px -18px rgba(58,47,40,.5)}
+  .pad{padding:18px 17px}
+  .eico{display:inline-block;vertical-align:-.16em;width:1.05em;height:1.05em}
+  .eico path,.eico line,.eico polyline,.eico circle,.eico polygon{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  /* NEWSPAPER / job board */
+  .paper{background:#f6efe0;border:1px solid #d8cbb5;border-radius:16px;padding:16px 15px;box-shadow:0 12px 30px -18px rgba(58,47,40,.5)}
+  .masthead{text-align:center;border-bottom:3px double var(--ink);padding-bottom:10px;margin-bottom:6px}
+  .masthead h1{font-family:"Shippori Mincho","Nunito",serif;font-weight:800;font-size:34px;letter-spacing:2px;margin:0}
+  .masthead .jp{font-family:"Shippori Mincho","Nunito",serif;font-size:15px;color:var(--brick);letter-spacing:6px;margin-top:2px}
+  .masthead .sub{font-size:11.5px;color:var(--soft);letter-spacing:.5px;margin-top:3px;text-transform:uppercase}
+  .paperline{display:flex;justify-content:space-between;font-size:10.5px;color:var(--soft);margin:6px 2px 12px;font-style:italic}
+  .lead{font-size:13px;color:var(--ink);margin:0 2px 14px;line-height:1.5}
+  .ads{display:grid;gap:11px}
+  .ad{display:flex;gap:12px;align-items:center;background:#fffbf1;border:1px solid #e3d6bd;border-radius:14px;padding:12px 13px;text-align:left;width:100%;cursor:pointer;transition:transform .14s,box-shadow .14s;font-family:inherit}
+  .ad:hover{transform:translateY(-2px);box-shadow:0 10px 22px -14px rgba(58,47,40,.5)}
+  .ad .ic{flex:0 0 auto;width:48px;height:48px;border-radius:13px;display:grid;place-items:center;color:#fff;font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:22px}
+  .ad .body{flex:1;min-width:0}
+  .ad .body b{font-size:15px;display:block}
+  .ad .body .jpn{font-family:"Shippori Mincho","Nunito",serif;font-size:12px;color:var(--brick)}
+  .ad .body p{font-size:11.5px;color:var(--soft);margin:3px 0 0;line-height:1.4}
+  .ad .wage{font-size:11px;color:var(--deep);font-weight:800;white-space:nowrap;margin-top:4px;display:inline-block}
+  .ad .modes{display:flex;gap:6px;margin-top:8px}
+  .mbtn{border:1px solid var(--line);background:#fff;border-radius:9px;padding:6px 10px;font-size:11.5px;font-weight:800;cursor:pointer;color:var(--ink);font-family:"Nunito";display:inline-flex;align-items:center;gap:4px}
+  .mbtn.hot{background:var(--brick);color:#fff;border-color:var(--brick)}
+  .ad.soon{opacity:.6;cursor:default;background:repeating-linear-gradient(135deg,#fffbf1,#fffbf1 7px,#f4ecdb 7px,#f4ecdb 14px)}
+  .ad.soon:hover{transform:none;box-shadow:none}
+  .soontag{font-size:10.5px;color:var(--soft);font-weight:800;border:1px dashed var(--line);border-radius:8px;padding:4px 8px}
+
+  /* PLAY */
+  .hud{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--soft);margin:0 2px 8px}
+  .hud b{color:var(--ink)}
+  .yen{font-weight:700;color:var(--accent)}
+  .strikes{color:var(--brick);font-weight:800;letter-spacing:2px}
+  .timebar{height:8px;border-radius:99px;background:#e7ddca;overflow:hidden;margin:0 2px 12px}
+  .timebar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--teal),var(--accent))}
+  .counter{display:flex;gap:12px;align-items:flex-start;margin-bottom:6px}
+  .cust{width:60px;height:60px;border-radius:50%;flex-shrink:0}
+  .cust svg{width:60px;height:60px}
+  .bubbles{flex:1;min-width:0}
+  .clerk{font-size:12px;color:var(--teal);font-family:"Shippori Mincho","Nunito",serif;margin-bottom:6px}
+  .bubble{background:#fffdf7;border:1px solid #efe4cf;border-radius:14px;border-top-left-radius:4px;padding:12px 14px}
+  .req{font-family:"Shippori Mincho","Nunito",serif;font-size:21px;line-height:1.5}
+  .req .want{color:var(--brick);font-weight:700}
+  .rd{background:none;border:1px solid var(--line);border-radius:9px;padding:4px 10px;font-size:12px;color:var(--soft);cursor:pointer;margin-top:9px;font-family:"Nunito"}
+  .spk{background:none;border:1px solid var(--line);border-radius:9px;padding:4px 9px;font-size:13px;cursor:pointer;margin-top:9px;margin-left:6px}
+  .help{margin-top:9px;font-size:13px;color:var(--soft);display:none}
+  .help.show{display:block}.help .ro{font-style:italic}
+  .shelf-label{font-size:12.5px;color:var(--soft);margin:16px 2px 9px}
+  .shelf{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+  .item{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:10px 5px 8px;cursor:pointer;text-align:center;transition:.13s}
+  .item:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .item .g{width:42px;height:42px;margin:0 auto}
+  .item .nm{font-family:"Shippori Mincho","Nunito",serif;font-size:13px;margin-top:3px;display:block}
+  .item.ok{border-color:var(--ok);background:#e8f2ef}
+  .item.bad{border-color:var(--brick);background:#f7e9e4;animation:sh .3s}
+  @keyframes sh{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+  .flash{margin-top:13px;text-align:center;min-height:24px;font-family:"Shippori Mincho","Nunito",serif;font-size:16px}
+  .flash.good{color:var(--ok)}.flash.bad{color:var(--brick)}
+
+  /* END */
+  .end{text-align:center;padding:20px 8px}
+  .end .big{font-family:"Shippori Mincho","Nunito",serif;font-size:21px;margin:0 0 6px}
+  .end .yenbig{font-size:34px;font-weight:800;color:var(--accent);margin:6px 0;font-family:"Shippori Mincho","Nunito",serif}
+  .end .best{color:var(--gold);font-weight:800;font-size:13px;margin-bottom:4px}
+  .learned{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin:14px 0 4px}
+  .lchip{background:#f2ead9;border-radius:999px;padding:6px 12px;font-size:13px;font-family:"Shippori Mincho","Nunito",serif;cursor:pointer}
+  .btn{width:100%;margin-top:8px;background:var(--ink);color:#fff;border:none;border-radius:12px;padding:13px;font-family:"Nunito";font-weight:800;font-size:15px;cursor:pointer}
+  .btn.ghost{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+<div class="phone">
+  <a class="siteback" href="/#oyunlar"><span class="tr">← Oyunlar</span><span class="en">← Games</span></a>
+  <div class="top">
+    <div class="logo">求</div>
+    <div class="brand">İlanlar<small><span class="tr">Baito · bir iş seç, vardiyaya gir</span><span class="en">Baito · pick a job, work the shift</span></small></div>
+    <div class="lang"><button id="trBtn" class="on" onclick="setLang('tr')">TR</button><button id="enBtn" onclick="setLang('en')">EN</button></div>
+    <button class="helpbtn" onclick="show('board')" title="İlanlar">≡</button>
+  </div>
+
+  <!-- BOARD (newspaper job listings) -->
+  <div id="board">
+    <div class="paper">
+      <div class="masthead">
+        <h1><span class="tr">İLANLAR</span><span class="en">LISTINGS</span></h1>
+        <div class="jp">求人</div>
+        <div class="sub">Baito バイト · Japanese Flick</div>
+      </div>
+      <div class="paperline"><span>アルバイト情報</span><span><span class="tr">bugünün ilanları</span><span class="en">today's openings</span></span></div>
+      <p class="lead"><span class="tr">Japonya'da part-time iş arıyorsun. Bir dükkân seç, vardiyaya gir: müşteri Japonca bir şey ister, sen raftan <b>doğru ürünü</b> verirsin. <b>Sakin</b> = kendi hızında; <b>Acele</b> = süreli, hızlanır.</span><span class="en">You're job-hunting in Japan. Pick a shop, work a shift: a customer asks for something in Japanese, you give the <b>right item</b>. <b>Calm</b> = your pace; <b>Hurry</b> = timed, speeds up.</span></p>
+      <div class="ads" id="ads"></div>
+    </div>
+  </div>
+
+  <!-- PLAY -->
+  <div id="play" class="box hidden"><div class="pad">
+    <div class="hud">
+      <span><span id="shopName"></span></span>
+      <span class="yen" id="score">¥0</span>
+      <span id="rightslot"></span>
+    </div>
+    <div class="timebar hidden" id="timebar"><i id="timefill"></i></div>
+    <div class="counter">
+      <div class="cust" id="cust"></div>
+      <div class="bubbles">
+        <div class="clerk" id="greet">いらっしゃいませ！</div>
+        <div class="bubble">
+          <div class="req" id="req"></div>
+          <button class="rd" id="rdbtn" onclick="toggleHelp()"><span class="tr">okunuş + anlam</span><span class="en">reading + meaning</span></button>
+          <button class="spk" onclick="speakReq()" aria-label="Ses"><svg class="eico" viewBox="0 0 24 24"><polygon points="4,9 8,9 13,5 13,19 8,15 4,15"/><path d="M16 9a4 4 0 0 1 0 6"/></svg></button>
+          <div class="help" id="help"><div class="ro" id="ro"></div><div id="mean"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="shelf-label"><span class="tr">Raf — istenen ürüne dokun:</span><span class="en">Shelf — tap the item asked for:</span></div>
+    <div class="shelf" id="shelf"></div>
+    <div class="flash" id="flash"></div>
+    <button class="btn ghost" style="margin-top:16px" onclick="quitShift()"><span class="tr">← İlanlara dön</span><span class="en">← Back to listings</span></button>
+  </div></div>
+
+  <!-- END -->
+  <div id="end" class="box hidden"><div class="end">
+    <p class="big" id="endTitle"></p>
+    <div class="yenbig" id="endScore">¥0</div>
+    <div class="best" id="endBest"></div>
+    <p style="color:var(--soft);font-size:13.5px" id="endmsg"></p>
+    <div class="learned" id="learned"></div>
+    <button class="btn" style="max-width:260px;margin:16px auto 0" onclick="restart()"><span class="tr">Tekrar</span><span class="en">Again</span></button>
+    <button class="btn ghost" style="max-width:260px;margin:8px auto 0" onclick="show('board')"><span class="tr">Başka iş seç</span><span class="en">Pick another job</span></button>
+  </div></div>
+</div>
+
+<script>
+/* ===== shell ===== */
+let LANG='tr';
+try{LANG=(localStorage.getItem('zk_lang')==='en')?'en':'tr';}catch(e){}
+function t(tr,en){return LANG==='en'?en:tr;}
+function setLang(l){LANG=l;try{localStorage.setItem('zk_lang',l);}catch(e){}
+  document.body.classList.toggle('enmode',l==='en');
+  document.getElementById('trBtn').classList.toggle('on',l==='tr');
+  document.getElementById('enBtn').classList.toggle('on',l==='en');
+  renderAds();
+  if(curItem){applyHelp(curItem);}
+}
+function speak(str,cb){try{const u=new SpeechSynthesisUtterance(str);u.lang='ja-JP';u.rate=.95;if(cb){u.onend=cb;u.onerror=cb;}speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){if(cb)cb();}}
+let _actx;
+function tone(f0,f1,dur,vol){try{_actx=_actx||new(window.AudioContext||window.webkitAudioContext)();const c=_actx,t0=c.currentTime;
+  const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(f0,t0);o.frequency.exponentialRampToValueAtTime(f1,t0+dur*.7);
+  g.gain.setValueAtTime(0.0001,t0);g.gain.exponentialRampToValueAtTime(vol,t0+0.02);g.gain.exponentialRampToValueAtTime(0.0001,t0+dur);
+  o.connect(g);g.connect(c.destination);o.start(t0);o.stop(t0+dur+0.02);}catch(e){}}
+function softError(){tone(340,240,0.3,0.11);}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+/* ===== stores ===== */
+const KONBINI=[
+ {id:"onigiri",jp:"おにぎり",ro:"onigiri",tr:"pirinç topu",en:"rice ball",g:'<path d="M22 8 L36 34 Q37 36.5 33.5 36.5 L10.5 36.5 Q7 36.5 8 34 Z" fill="#fbf6ec" stroke="#3a2f28" stroke-width="2"/><rect x="16" y="26" width="12" height="10.5" rx="1" fill="#3a5a40"/>'},
+ {id:"pan",jp:"パン",ro:"pan",tr:"ekmek",en:"bread",g:'<path d="M8 27 Q8 14 22 14 Q36 14 36 27 L36 32 Q36 34 34 34 L10 34 Q8 34 8 32 Z" fill="#d9a55c" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"ocha",jp:"お茶",ro:"ocha",tr:"çay",en:"tea",g:'<rect x="17.5" y="7" width="9" height="6" rx="1.5" fill="#3a2f28"/><path d="M16.5 13 Q16.5 16 15.5 18 L15.5 34 Q15.5 37 18.5 37 L25.5 37 Q28.5 37 28.5 34 L28.5 18 Q27.5 16 27.5 13 Z" fill="#5c8a4a" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"mizu",jp:"水",ro:"mizu",tr:"su",en:"water",g:'<rect x="17.5" y="7" width="9" height="6" rx="1.5" fill="#3a2f28"/><path d="M16.5 13 Q16.5 16 15.5 18 L15.5 34 Q15.5 37 18.5 37 L25.5 37 Q28.5 37 28.5 34 L28.5 18 Q27.5 16 27.5 13 Z" fill="#8fc3d6" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"coffee",jp:"コーヒー",ro:"kōhī",tr:"kahve",en:"coffee",g:'<path d="M13 16 L31 16 L29 34 Q29 36 27 36 L17 36 Q15 36 15 34 Z" fill="#8a5a3a" stroke="#3a2f28" stroke-width="2"/><path d="M31 20 Q37 20 37 25 Q37 30 30.5 30" fill="none" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"tamago",jp:"たまご",ro:"tamago",tr:"yumurta",en:"egg",g:'<ellipse cx="22" cy="24" rx="11" ry="14" fill="#fbf6ec" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"bento",jp:"べんとう",ro:"bentō",tr:"hazır yemek",en:"lunch box",g:'<rect x="8" y="14" width="28" height="18" rx="3" fill="#b5502f" stroke="#3a2f28" stroke-width="2"/><line x1="22" y1="14" x2="22" y2="32" stroke="#3a2f28" stroke-width="1.4"/><line x1="8" y1="23" x2="36" y2="23" stroke="#3a2f28" stroke-width="1.4"/>'},
+ {id:"aisu",jp:"アイス",ro:"aisu",tr:"dondurma",en:"ice cream",g:'<path d="M14 22 Q14 11 22 11 Q30 11 30 22 Z" fill="#efe3cf" stroke="#3a2f28" stroke-width="2"/><path d="M16 22 L28 22 L24 36 L20 36 Z" fill="#d9a55c" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"gyunyu",jp:"牛乳",ro:"gyūnyū",tr:"süt",en:"milk",g:'<path d="M15 15 L29 15 L29 34 Q29 36 27 36 L17 36 Q15 36 15 34 Z" fill="#fbf6ec" stroke="#3a2f28" stroke-width="2"/><path d="M15 15 L22 8 L29 15" fill="#fbf6ec" stroke="#3a2f28" stroke-width="2"/><rect x="17" y="24" width="10" height="6" fill="#8fc3d6"/>'},
+ {id:"ringo",jp:"りんご",ro:"ringo",tr:"elma",en:"apple",g:'<circle cx="22" cy="26" r="11" fill="#c0392b" stroke="#3a2f28" stroke-width="2"/><path d="M22 15 L22 11" stroke="#5a3a2a" stroke-width="2"/><path d="M22 13 Q26 9 29 11" fill="none" stroke="#5c8a4a" stroke-width="2.5"/>'},
+ {id:"banana",jp:"バナナ",ro:"banana",tr:"muz",en:"banana",g:'<path d="M13 15 Q15 31 29 33 Q35 33 34 28 Q23 28 19 16 Q18 13 15 14 Z" fill="#e0b23a" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"juice",jp:"ジュース",ro:"jūsu",tr:"meyve suyu",en:"juice",g:'<rect x="14" y="15" width="16" height="21" rx="2" fill="#d3813a" stroke="#3a2f28" stroke-width="2"/><rect x="24" y="9" width="2.6" height="7" rx="1" fill="#3a2f28"/>'},
+ {id:"keeki",jp:"ケーキ",ro:"kēki",tr:"kek",en:"cake",g:'<path d="M12 34 L22 15 L32 34 Z" fill="#efe3cf" stroke="#3a2f28" stroke-width="2"/><path d="M13.5 30 L30.5 30 L32 34 L12 34 Z" fill="#e08fb0" stroke="#3a2f28" stroke-width="2"/><circle cx="22" cy="19" r="2.4" fill="#c0392b"/>'},
+ {id:"okashi",jp:"おかし",ro:"okashi",tr:"atıştırmalık",en:"snack",g:'<rect x="16" y="18" width="12" height="10" rx="3" fill="#7a5aa0" stroke="#3a2f28" stroke-width="2"/><path d="M16 23 L10 19 L11 27 Z" fill="#7a5aa0" stroke="#3a2f28" stroke-width="2"/><path d="M28 23 L34 19 L33 27 Z" fill="#7a5aa0" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"sakana",jp:"さかな",ro:"sakana",tr:"balık",en:"fish",g:'<path d="M9 24 Q18 13 29 24 Q18 35 9 24 Z" fill="#8fc3d6" stroke="#3a2f28" stroke-width="2"/><path d="M29 24 L37 17 L37 31 Z" fill="#8fc3d6" stroke="#3a2f28" stroke-width="2"/><circle cx="15" cy="22" r="1.6" fill="#3a2f28"/>'},
+ {id:"niku",jp:"にく",ro:"niku",tr:"et",en:"meat",g:'<path d="M10 25 Q10 14 21 14 Q34 14 34 25 Q34 35 22 35 Q10 35 10 25 Z" fill="#c0705f" stroke="#3a2f28" stroke-width="2"/><path d="M27 20 Q30 25 27 29" fill="none" stroke="#fbf0ec" stroke-width="2.4"/>'},
+ {id:"ichigo",jp:"いちご",ro:"ichigo",tr:"çilek",en:"strawberry",g:'<path d="M13 19 Q22 15 31 19 Q31 30 22 37 Q13 30 13 19 Z" fill="#c0392b" stroke="#3a2f28" stroke-width="2"/><path d="M15 17 L22 12 L29 17 L22 20 Z" fill="#5c8a4a" stroke="#3a2f28" stroke-width="2"/><circle cx="19" cy="25" r="1" fill="#fbf6ec"/><circle cx="25" cy="25" r="1" fill="#fbf6ec"/><circle cx="22" cy="30" r="1" fill="#fbf6ec"/>'},
+ {id:"mikan",jp:"みかん",ro:"mikan",tr:"mandalina",en:"mandarin",g:'<circle cx="22" cy="25" r="12" fill="#e8892b" stroke="#3a2f28" stroke-width="2"/><path d="M22 15 Q24 12 27 13" fill="none" stroke="#5c8a4a" stroke-width="2.4"/>'},
+ {id:"sandoicchi",jp:"サンド",ro:"sando",tr:"sandviç",en:"sandwich",g:'<path d="M10 30 L22 12 L34 30 Z" fill="#e8c98a" stroke="#3a2f28" stroke-width="2"/><path d="M13 26 L31 26 L34 30 L10 30 Z" fill="#7aa35a" stroke="#3a2f28" stroke-width="2"/><path d="M15 22 L29 22" stroke="#c0392b" stroke-width="2.6"/>'},
+ {id:"ramen",jp:"ラーメン",ro:"rāmen",tr:"ramen",en:"ramen",g:'<path d="M9 20 L35 20 Q33 35 22 35 Q11 35 9 20 Z" fill="#b5502f" stroke="#3a2f28" stroke-width="2"/><path d="M13 20 Q22 15 31 20" fill="none" stroke="#efe3cf" stroke-width="2.4"/><circle cx="18" cy="18" r="2" fill="#efe3cf" stroke="#3a2f28" stroke-width="1.4"/>'},
+ {id:"purin",jp:"プリン",ro:"purin",tr:"puding",en:"pudding",g:'<path d="M13 20 L31 20 L28 34 Q28 36 26 36 L18 36 Q16 36 16 34 Z" fill="#e8c25a" stroke="#3a2f28" stroke-width="2"/><path d="M13 20 Q22 14 31 20" fill="#8a5a3a" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"sarada",jp:"サラダ",ro:"sarada",tr:"salata",en:"salad",g:'<path d="M9 22 L35 22 Q33 34 22 34 Q11 34 9 22 Z" fill="#fbf6ec" stroke="#3a2f28" stroke-width="2"/><circle cx="17" cy="21" r="4" fill="#7aa35a" stroke="#3a2f28" stroke-width="1.6"/><circle cx="26" cy="20" r="4" fill="#5c8a4a" stroke="#3a2f28" stroke-width="1.6"/><circle cx="22" cy="24" r="2.4" fill="#c0392b"/>'},
+ {id:"senbei",jp:"せんべい",ro:"senbei",tr:"pirinç krakeri",en:"rice cracker",g:'<circle cx="22" cy="24" r="12" fill="#d9b46a" stroke="#3a2f28" stroke-width="2"/><rect x="14" y="21" width="16" height="6" rx="1" fill="#3a2f28" opacity=".55"/>'},
+ {id:"choko",jp:"チョコ",ro:"choko",tr:"çikolata",en:"chocolate",g:'<rect x="12" y="14" width="20" height="22" rx="2" fill="#5a3722" stroke="#3a2f28" stroke-width="2"/><line x1="22" y1="14" x2="22" y2="36" stroke="#3a2f28" stroke-width="1.4"/><line x1="12" y1="22" x2="32" y2="22" stroke="#3a2f28" stroke-width="1.4"/><line x1="12" y1="29" x2="32" y2="29" stroke="#3a2f28" stroke-width="1.4"/>'}
+];
+const DAISO=[
+ {id:"enpitsu",jp:"えんぴつ",ro:"enpitsu",tr:"kurşun kalem",en:"pencil",g:'<path d="M11 33 L28 16 L32 20 L15 37 Z" fill="#e8c25a" stroke="#3a2f28" stroke-width="2"/><path d="M28 16 L32 20 L34 12 Z" fill="#c0705f" stroke="#3a2f28" stroke-width="2"/><path d="M11 33 L15 37 L10 37.5 Z" fill="#3a2f28"/>'},
+ {id:"keshigomu",jp:"けしゴム",ro:"keshigomu",tr:"silgi",en:"eraser",g:'<rect x="11" y="18" width="22" height="12" rx="2" fill="#f0a5b5" stroke="#3a2f28" stroke-width="2"/><rect x="11" y="18" width="22" height="5" rx="2" fill="#8fc3d6" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"noto",jp:"ノート",ro:"nōto",tr:"defter",en:"notebook",g:'<rect x="13" y="9" width="18" height="26" rx="2" fill="#fbf6ec" stroke="#3a2f28" stroke-width="2"/><line x1="17" y1="16" x2="27" y2="16" stroke="#8fc3d6" stroke-width="1.6"/><line x1="17" y1="21" x2="27" y2="21" stroke="#8fc3d6" stroke-width="1.6"/><line x1="17" y1="26" x2="27" y2="26" stroke="#8fc3d6" stroke-width="1.6"/><line x1="13" y1="9" x2="13" y2="35" stroke="#c0392b" stroke-width="2.4"/>'},
+ {id:"pen",jp:"ペン",ro:"pen",tr:"tükenmez kalem",en:"pen",g:'<path d="M13 33 L26 13 a3 3 0 0 1 5 3 L18 36 L12 37 Z" fill="#4f9a8f" stroke="#3a2f28" stroke-width="2"/><line x1="24" y1="16" x2="29" y2="19" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"hasami",jp:"はさみ",ro:"hasami",tr:"makas",en:"scissors",g:'<circle cx="14" cy="30" r="4" fill="none" stroke="#3a2f28" stroke-width="2"/><circle cx="24" cy="30" r="4" fill="none" stroke="#3a2f28" stroke-width="2"/><path d="M16 27 L33 12M22 27 L11 13" fill="none" stroke="#7a8a99" stroke-width="2.6"/>'},
+ {id:"nori",jp:"のり",ro:"nori",tr:"yapıştırıcı",en:"glue",g:'<rect x="16" y="14" width="12" height="21" rx="2" fill="#e0965a" stroke="#3a2f28" stroke-width="2"/><rect x="17" y="9" width="10" height="6" rx="1" fill="#fbf6ec" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"tepu",jp:"テープ",ro:"tēpu",tr:"bant",en:"tape",g:'<circle cx="22" cy="24" r="12" fill="none" stroke="#3a2f28" stroke-width="2"/><circle cx="22" cy="24" r="5" fill="none" stroke="#3a2f28" stroke-width="2"/><path d="M22 12 h11" stroke="#8fc3d6" stroke-width="3.4"/>'},
+ {id:"jogi",jp:"じょうぎ",ro:"jōgi",tr:"cetvel",en:"ruler",g:'<rect x="7" y="18" width="30" height="9" rx="1" fill="#c9e0a0" stroke="#3a2f28" stroke-width="2"/><path d="M12 18 v4M17 18 v4M22 18 v4M27 18 v4M32 18 v4" stroke="#3a2f28" stroke-width="1.4"/>'},
+ {id:"enogu",jp:"えのぐ",ro:"enogu",tr:"boya",en:"paint",g:'<rect x="13" y="16" width="14" height="19" rx="2" fill="#5aa0d0" stroke="#3a2f28" stroke-width="2"/><path d="M27 20 l6 -3 v10 l-6 -3 z" fill="#5aa0d0" stroke="#3a2f28" stroke-width="2"/><rect x="16" y="10" width="8" height="6" rx="1" fill="#3a2f28"/>'},
+ {id:"fude",jp:"ふで",ro:"fude",tr:"fırça",en:"brush",g:'<rect x="20" y="9" width="4" height="15" fill="#c9a06a" stroke="#3a2f28" stroke-width="1.6"/><rect x="18.5" y="23" width="7" height="4" fill="#9aa6b0" stroke="#3a2f28" stroke-width="1.4"/><path d="M19 27 L25 27 L23 38 L21 38 Z" fill="#3a2f28"/>'},
+ {id:"kami",jp:"かみ",ro:"kami",tr:"kâğıt",en:"paper",g:'<path d="M14 8 h12 l6 6 v22 h-18 z" fill="#fbf6ec" stroke="#3a2f28" stroke-width="2"/><path d="M26 8 v6 h6" fill="none" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"shiru",jp:"シール",ro:"shīru",tr:"çıkartma",en:"sticker",g:'<polygon points="22,10 25,19 34,19 27,25 29,34 22,28 15,34 17,25 10,19 19,19" fill="#f2c14e" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"nendo",jp:"ねんど",ro:"nendo",tr:"oyun hamuru",en:"clay",g:'<ellipse cx="22" cy="29" rx="13" ry="7" fill="#c9a06a" stroke="#3a2f28" stroke-width="2"/><ellipse cx="21" cy="22" rx="9" ry="6" fill="#d9b47a" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"ito",jp:"いと",ro:"ito",tr:"ip",en:"yarn",g:'<circle cx="22" cy="24" r="11" fill="#e08fb0" stroke="#3a2f28" stroke-width="2"/><path d="M14 20 q8 6 16 0M14 27 q8 6 16 0M18 15 q2 9 0 18M26 15 q2 9 0 18" fill="none" stroke="#3a2f28" stroke-width="1" opacity=".45"/>'},
+ {id:"bizu",jp:"ビーズ",ro:"bīzu",tr:"boncuk",en:"beads",g:'<circle cx="15" cy="20" r="4" fill="#c0392b" stroke="#3a2f28" stroke-width="1.6"/><circle cx="25" cy="17" r="4" fill="#4f9a8f" stroke="#3a2f28" stroke-width="1.6"/><circle cx="29" cy="26" r="4" fill="#e0965a" stroke="#3a2f28" stroke-width="1.6"/><circle cx="18" cy="28" r="4" fill="#7a5aa0" stroke="#3a2f28" stroke-width="1.6"/>'},
+ {id:"kureyon",jp:"クレヨン",ro:"kureyon",tr:"pastel boya",en:"crayon",g:'<rect x="18" y="13" width="8" height="23" rx="2" fill="#7aa35a" stroke="#3a2f28" stroke-width="2"/><path d="M18 13 l4 -5 l4 5 z" fill="#e8c25a" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"maka",jp:"マーカー",ro:"mākā",tr:"kalın kalem",en:"marker",g:'<rect x="15" y="15" width="14" height="20" rx="3" fill="#e08fb0" stroke="#3a2f28" stroke-width="2"/><rect x="18" y="9" width="8" height="6" rx="1" fill="#3a2f28"/>'},
+ {id:"futo",jp:"ふうとう",ro:"fūtō",tr:"zarf",en:"envelope",g:'<rect x="9" y="14" width="26" height="18" rx="2" fill="#fbf6ec" stroke="#3a2f28" stroke-width="2"/><path d="M9 15 L22 25 L35 15" fill="none" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"kasa",jp:"かさ",ro:"kasa",tr:"şemsiye",en:"umbrella",g:'<path d="M8 23 a14 14 0 0 1 28 0 z" fill="#c0392b" stroke="#3a2f28" stroke-width="2"/><path d="M22 23 v10 a3 3 0 0 0 5 0" fill="none" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"denchi",jp:"でんち",ro:"denchi",tr:"pil",en:"battery",g:'<rect x="14" y="12" width="14" height="23" rx="2" fill="#f2c14e" stroke="#3a2f28" stroke-width="2"/><rect x="18" y="9" width="6" height="3" fill="#3a2f28"/><path d="M22 17 l-3 7 h6 l-3 7" fill="none" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"origami",jp:"おりがみ",ro:"origami",tr:"origami kâğıdı",en:"origami paper",g:'<polygon points="22,9 35,22 22,35 9,22" fill="#e08fb0" stroke="#3a2f28" stroke-width="2"/><path d="M9 22 L22 22 L22 9M22 22 L35 22" stroke="#3a2f28" stroke-width="1" opacity=".5"/>'},
+ {id:"karenda",jp:"カレンダー",ro:"karendā",tr:"takvim",en:"calendar",g:'<rect x="11" y="13" width="22" height="21" rx="2" fill="#fbf6ec" stroke="#3a2f28" stroke-width="2"/><rect x="11" y="13" width="22" height="6" fill="#c0392b" stroke="#3a2f28" stroke-width="2"/><line x1="17" y1="10" x2="17" y2="16" stroke="#3a2f28" stroke-width="2"/><line x1="27" y1="10" x2="27" y2="16" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"hocchikisu",jp:"ホッチキス",ro:"hocchikisu",tr:"zımba",en:"stapler",g:'<path d="M9 28 h26 v5 h-26 z" fill="#4f9a8f" stroke="#3a2f28" stroke-width="2"/><path d="M12 28 v-4 a2 2 0 0 1 2-2 h15 l3 6" fill="#59a498" stroke="#3a2f28" stroke-width="2"/>'},
+ {id:"kurippu",jp:"クリップ",ro:"kurippu",tr:"ataç",en:"paper clip",g:'<path d="M18 13 v15 a4 4 0 0 0 8 0 v-12 a2.5 2.5 0 0 0 -5 0 v11" fill="none" stroke="#7a8a99" stroke-width="2.6"/>'}
+];
+const STORES=[
+ {id:"konbini",kanji:"店",color:"var(--gold)",jp:"コンビニ",tr:"Market (Konbini)",en:"Konbini",
+  tag:{tr:"Yemek & içecek — günlük alışveriş kelimeleri.",en:"Food & drinks — everyday shopping words."},wage:"¥1000/s",items:KONBINI},
+ {id:"daiso",kanji:"手",color:"var(--teal)",jp:"100円ショップ",tr:"Hobi & Kırtasiye (Daiso)",en:"¥100 Hobby Shop",
+  tag:{tr:"Boya, fırça, kalem, hobi — hepsi 100 yen.",en:"Paint, brushes, pens, crafts — all ¥100."},wage:"¥100",items:DAISO}
+];
+const SOON=[
+ {kanji:"食",color:"var(--brick)",jp:"レストラン",tr:"Restoran",en:"Restaurant"},
+ {kanji:"音",color:"var(--deep)",jp:"楽器店",tr:"Müzik Mağazası",en:"Music Store"}
+];
+
+/* ===== tuning (Zeynep test edip ayarlayacak) ===== */
+const SAKIN_LEN=10, SHELF_SIZE=8;
+const ACELE={start:7000, step:150, min:3600, strikes:3};
+
+/* ===== state ===== */
+let store=null, mode='sakin', items=[], shelfItems=[], prevIds=[], idx=0, score=0, combo=0,
+    learned=[], busy=false, curItem=null, strikes=0, served=0;
+let timeLeft=0, timerRAF=null, lastTs=0, custDeadline=0;
+const CUSTCOLORS=["#4f9a8f","#d3813a","#b5502f","#275f59","#c99a3f","#8a5a3a","#7a5aa0","#e08fb0"];
+function custSVG(i){const c=CUSTCOLORS[i%CUSTCOLORS.length];
+  return `<svg viewBox="0 0 60 60"><circle cx="30" cy="28" r="24" fill="${c}" opacity=".18"/><circle cx="30" cy="24" r="10" fill="${c}"/><path d="M13 49 Q13 36 30 36 Q47 36 47 49 Z" fill="${c}"/><circle cx="26" cy="23" r="1.7" fill="#fff"/><circle cx="34" cy="23" r="1.7" fill="#fff"/></svg>`;}
+
+/* ===== board ===== */
+function renderAds(){
+  const wrap=document.getElementById('ads');wrap.innerHTML='';
+  STORES.forEach(s=>{
+    const d=document.createElement('div');d.className='ad';
+    d.innerHTML=`<div class="ic" style="background:${s.color}">${s.kanji}</div>
+      <div class="body"><b>${LANG==='en'?s.en:s.tr}</b><span class="jpn">${s.jp}</span>
+      <p>${LANG==='en'?s.tag.en:s.tag.tr}</p><span class="wage">${s.wage}</span>
+      <div class="modes">
+        <button class="mbtn" data-s="${s.id}" data-m="sakin">${t('Sakin','Calm')}</button>
+        <button class="mbtn hot" data-s="${s.id}" data-m="acele">${t('Acele ⏱','Hurry ⏱')}</button>
+      </div></div>`;
+    wrap.appendChild(d);
+  });
+  SOON.forEach(s=>{
+    const d=document.createElement('div');d.className='ad soon';
+    d.innerHTML=`<div class="ic" style="background:${s.color};opacity:.7">${s.kanji}</div>
+      <div class="body"><b>${LANG==='en'?s.en:s.tr}</b><span class="jpn">${s.jp}</span>
+      <p>${t('yakında açılıyor','opening soon')}</p></div>
+      <span class="soontag">${t('yakında','soon')}</span>`;
+    wrap.appendChild(d);
+  });
+  wrap.querySelectorAll('.mbtn').forEach(b=>b.onclick=()=>startJob(b.dataset.s,b.dataset.m));
+}
+function startJob(sid,m){
+  store=STORES.find(x=>x.id===sid);mode=m;items=store.items;
+  idx=0;score=0;combo=0;learned=[];busy=false;shelfItems=[];prevIds=[];strikes=0;served=0;
+  document.getElementById('shopName').innerHTML=`<b>${LANG==='en'?store.en:store.tr}</b>`;
+  document.getElementById('timebar').classList.toggle('hidden',mode!=='acele');
+  show('play');nextCustomer();
+}
+
+/* ===== shift engine ===== */
+function buildShelf(){
+  const fresh=shuffle(items.filter(x=>!prevIds.includes(x.id)));
+  const old=shuffle(items.filter(x=>prevIds.includes(x.id)));
+  shelfItems=shuffle(fresh.concat(old).slice(0,SHELF_SIZE));
+  prevIds=shelfItems.map(x=>x.id);
+}
+function applyHelp(it){
+  document.getElementById('ro').textContent=it.ro+" o kudasai.";
+  document.getElementById('mean').textContent='"'+(LANG==='en'?it.en:it.tr)+'" '+t('lütfen.','please.');
+}
+function updateRight(){
+  const el=document.getElementById('rightslot');
+  if(mode==='acele'){ el.innerHTML=`<span class="tr">hata</span><span class="en">strikes</span> <b class="strikes">${'✕'.repeat(strikes)||'—'}</b>`; }
+  else { el.innerHTML=`<span class="tr">müşteri</span><span class="en">customer</span> <b>${Math.min(idx+1,SAKIN_LEN)}</b>/${SAKIN_LEN}`; }
+}
+function nextCustomer(){
+  busy=false;
+  // shelf: sakin her 2 müşteride, acele her müşteride (sürekli değişsin)
+  if(mode==='acele' || idx%2===0) buildShelf();
+  const it=shelfItems[Math.floor(Math.random()*shelfItems.length)];curItem=it;
+  document.getElementById('score').textContent = mode==='acele' ? (t('servis','served')+' '+served) : ('¥'+score);
+  updateRight();
+  document.getElementById('cust').innerHTML=custSVG(mode==='acele'?served:idx);
+  document.getElementById('req').innerHTML=`<span class="want">${it.jp}</span> を ください。`;
+  applyHelp(it);
+  document.getElementById('help').classList.remove('show');
+  document.getElementById('rdbtn').innerHTML='<span class="tr">okunuş + anlam</span><span class="en">reading + meaning</span>';
+  document.getElementById('flash').textContent='';document.getElementById('flash').className='flash';
+  const shelf=document.getElementById('shelf');shelf.innerHTML='';
+  shelfItems.forEach(x=>{
+    const b=document.createElement('button');b.className='item';
+    b.innerHTML=`<div class="g"><svg viewBox="0 0 44 44">${x.g}</svg></div><span class="nm">${x.jp}</span>`;
+    b.onclick=()=>pick(x,b,it);
+    shelf.appendChild(b);
+  });
+  setTimeout(()=>speak(it.jp+"をください"),300);
+  if(mode==='acele') startTimer();
+}
+function pick(x,btn,target){
+  if(busy)return;
+  if(x.id===target.id){
+    busy=true;btn.classList.add('ok');stopTimer();
+    if(!learned.includes(target.id))learned.push(target.id);
+    const f=document.getElementById('flash');f.className='flash good';
+    if(mode==='acele'){
+      served++;combo++;score=served;
+      f.textContent='ありがとう！';
+      document.getElementById('score').textContent=t('servis','served')+' '+served;
+      speak("はい！");
+      setTimeout(nextCustomer,420);
+    }else{
+      combo++;const tip=110+(combo>1?(combo-1)*10:0);score+=tip;
+      document.getElementById('score').textContent='¥'+score;
+      f.textContent=`ありがとう！ +¥${tip}`;
+      let advanced=false;const go=()=>{if(advanced)return;advanced=true;idx++; if(idx>=SAKIN_LEN) endShift(); else nextCustomer();};
+      speak("ありがとうございました", go);setTimeout(go,2400);
+    }
+  }else{
+    softError();btn.classList.add('bad');combo=0;
+    const f=document.getElementById('flash');f.className='flash bad';f.textContent=t('hmm… tekrar bak','hmm… look again');
+    setTimeout(()=>btn.classList.remove('bad'),350);
+    if(mode==='acele'){ addStrike(); }
+  }
+}
+function addStrike(){
+  strikes++;updateRight();
+  if(strikes>=ACELE.strikes){ stopTimer();busy=true;setTimeout(endShift,500); }
+}
+/* acele timer */
+function custTime(){ return Math.max(ACELE.min, ACELE.start - served*ACELE.step); }
+function startTimer(){
+  stopTimer();
+  const dur=custTime();custDeadline=perfNow()+dur;
+  document.getElementById('timefill').style.width='100%';
+  lastTs=0;timerRAF=requestAnimationFrame(tickTimer);
+}
+function perfNow(){ try{return performance.now();}catch(e){return 0;} }
+function tickTimer(){
+  const now=perfNow();const dur=custTime();const left=custDeadline-now;
+  const pct=Math.max(0,Math.min(1,left/dur));
+  document.getElementById('timefill').style.width=(pct*100)+'%';
+  if(left<=0){ timeUp(); return; }
+  timerRAF=requestAnimationFrame(tickTimer);
+}
+function stopTimer(){ if(timerRAF){cancelAnimationFrame(timerRAF);timerRAF=null;} }
+function timeUp(){
+  if(busy)return;busy=true;stopTimer();softError();
+  const f=document.getElementById('flash');f.className='flash bad';f.textContent=t('geç kaldın!','too slow!');
+  combo=0;strikes++;updateRight();
+  if(strikes>=ACELE.strikes){ setTimeout(endShift,500); }
+  else { setTimeout(()=>{busy=false;nextCustomer();},650); }
+}
+function toggleHelp(){const h=document.getElementById('help');h.classList.toggle('show');
+  document.getElementById('rdbtn').innerHTML=h.classList.contains('show')?'<span class="tr">gizle</span><span class="en">hide</span>':'<span class="tr">okunuş + anlam</span><span class="en">reading + meaning</span>';}
+function speakReq(){ if(curItem) speak(curItem.jp+"をください"); }
+function quitShift(){ stopTimer();curItem=null;show('board'); }
+
+/* ===== end ===== */
+function bestKey(){ return 'zk_ilanlar_'+store.id+'_'+mode; }
+function endShift(){
+  stopTimer();curItem=null;
+  const acele=mode==='acele';
+  const scoreVal=acele?served:score;
+  let best=0;try{best=parseInt(localStorage.getItem(bestKey())||'0',10);}catch(e){}
+  const isNew=scoreVal>best;if(isNew){try{localStorage.setItem(bestKey(),String(scoreVal));}catch(e){}}
+  document.getElementById('endTitle').textContent = acele ? t('Süre doldu!','Time up!') : t('Vardiya bitti!','Shift over!');
+  document.getElementById('endScore').textContent = acele ? (served+' '+t('müşteri','served')) : ('¥'+score);
+  document.getElementById('endBest').textContent = isNew ? t('★ yeni rekor!','★ new best!') : t('en iyi: ','best: ')+Math.max(best,scoreVal)+(acele?' '+t('müşteri',''):'');
+  document.getElementById('endmsg').textContent = acele
+    ? (served>=8?t('Şimşek gibisin!','Lightning fast!'):t('Fena değil — biraz daha hız!','Not bad — a bit faster!'))
+    : (score>=1000?t('Harika vardiya! Müdür gurur duyuyor.','Great shift! The manager is proud.'):t('İyi iş! Bir vardiya daha?','Nice work! One more shift?'));
+  const L=document.getElementById('learned');L.innerHTML='';
+  [...new Set(learned)].forEach(id=>{const it=items.find(x=>x.id===id);
+    const c=document.createElement('span');c.className='lchip';c.textContent=`${it.jp} · ${LANG==='en'?it.en:it.tr}`;c.onclick=()=>speak(it.jp);L.appendChild(c);});
+  show('end');
+}
+function restart(){ startJob(store.id,mode); }
+
+function show(id){['board','play','end'].forEach(x=>{const el=document.getElementById(x);if(el)el.classList.toggle('hidden',x!==id);});
+  if(id!=='play')stopTimer();window.scrollTo(0,0);}
+
+/* init */
+document.body.classList.toggle('enmode',LANG==='en');
+document.getElementById('trBtn').classList.toggle('on',LANG==='tr');
+document.getElementById('enBtn').classList.toggle('on',LANG==='en');
+renderAds();show('board');
+</script>
+</body>
+</html>

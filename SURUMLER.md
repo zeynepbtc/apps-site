@@ -27,6 +27,12 @@
 
 ## Geçmiş
 
+### v1.11.0 — 2026-07-16
+- 📰 **İlanlar · Baito — Konbini "iş arama" evrenine büyütüldü** (`/oyunlar/ilanlar/`). Giriş artık bir **gazete iş-ilanı panosu** ("İLANLAR / 求人 / Listings · Baito バイト"): bir dükkân seç, vardiyaya gir. Konbini'nin motoru **genelleştirildi** (dükkân paketi = ürün seti + renk + selam); tek motor, çok dükkân.
+  - **Dükkânlar:** Market/Konbini (24 yemek-içecek ürünü) + **Hobi & Kırtasiye / Daiso** (24 yeni ürün: kalem, silgi, defter, makas, boya, fırça, cetvel, bant, çıkartma, oyun hamuru, boncuk, pil, şemsiye, zarf, origami, ataç… her biri kendi SVG çizimi). Restoran + Müzik Mağazası "yakında".
+  - **İki mod:** **Sakin** (süre yok, 10 müşteri, kendi hızında) + **Acele** (süreli, sürekli müşteri, vitrin her müşteride yenilenir, giderek hızlanır, 3 hata hakkı). Hız sabitleri kod başında (`SAKIN_LEN`, `ACELE`) — Zeynep test edip ayarlayacak.
+  - Ana sayfa + JF ızgarasında "Konbini Shift" kartı → **"İlanlar · Baito"** oldu (gazete ikonu). Sitemap güncellendi (eski `/konbini/` dizini yedek olarak duruyor, linksiz). Doğrulama: 0 JS hatası, 48 ürün tam, iki mod + iki dükkân Playwright + ekran görüntüsüyle test.
+
 ### v1.10.1 — 2026-07-16
 - ⏪ **Üç yeni oyun listeden çıkarıldı** (Zeynep testi). **Kana Yılanı** — yönlendirme aşırı zor → **silindi**. **Kana Uzay** — tasarım amaca hizmet etmiyor (oto-ateş yanlış kanaları da vuruyor; vurmanın/vurmamanın anlamlı farkı yok, tanıma becerisi ölçülmüyor) → **silindi**. **Kana Köstebek** — "tam aradığım kalitede değil ama geliştirilir" → **listeden çıkarıldı, dosyası korundu** (`/oyunlar/kana-kostebek/` erişilebilir ama linksiz; ileride geliştirilecek). Home + JF ızgaralarından 3 kart, sitemap'ten 3 URL kaldırıldı. Tasarım dersleri günlüğe işlendi (bkz. GUNLUK/FIKIRLER).
 
