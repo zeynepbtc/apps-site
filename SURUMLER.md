@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.11.3 — 2026-07-16
+- 🏆 **İlanlar — Rekorlarım (skor kaydı) + kelime defteri başlık düzeltmesi.** Kelime Defterim ekranının başına **"Rekorlarım"** eklendi: her dükkân için Sakin (¥) ve Acele (müşteri) en iyi skorların listeli görünür (localStorage'dan). **Bug fix:** kelime grubu başlıklarındaki CSS `.words .` (class) seçicisi ekranın `id="words"`'üne uymuyordu → mağaza ikonu tam-genişlik bar gibi görünüyordu; seçiciler `.whead/.wgroup`'a çekildi, artık küçük ikon + sağda sayaç. Doğrulama: rekorlar + kelimeler + varyantlar doğru, 0 JS hatası.
+
 ### v1.11.2 — 2026-07-16
 - 📓 **İlanlar — Kelime Defterim (kalıcı ilerleme)** (Zeynep isteği: "kayıt tutsa, geri gelen kaldığı/öğrendiği kelimeleri görse"). Oyuncunun **keşfettiği her kelime otomatik kaydediliyor** (localStorage `zk_ilanlar_words`, dükkâna göre). Gazete panosunda **"Kelime Defterim (N)"** butonu → keşfedilen kelimeler dükkâna göre gruplu liste (okunuş + anlam + dokun-dinle + sayaç N/toplam). **Cihaza/tarayıcıya özel; veriler silinmediği sürece kalır** (bulut senkronu yok — sayfada dürüstçe belirtildi). Doğrulama: kelimeler kaydediliyor, sayfa yenilenince kalıcı, varyantlar dahil (kureyon_aka vb.), 0 JS hatası. Not: aynı desen ileride diğer oyunlara da taşınabilir.
 

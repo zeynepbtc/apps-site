@@ -108,16 +108,22 @@
   .wordsbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;margin:0 0 12px;padding:11px;border-radius:12px;
     background:#fffbf1;border:1px solid #e3d6bd;color:var(--ink);font-family:"Nunito";font-weight:800;font-size:14px;cursor:pointer}
   .wordsbtn b{background:var(--ink);color:#fff;border-radius:999px;padding:1px 9px;font-size:12px}
-  .words .wgroup{margin:0 0 16px}
-  .words .whead{display:flex;align-items:center;gap:9px;margin:2px 2px 10px}
-  .words .whead .ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;color:#fff;font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:15px}
-  .words .whead b{font-size:14.5px}
-  .words .whead b{flex:1}
-  .words .whead .cnt{margin-left:auto;padding-left:10px;white-space:nowrap;font-size:12px;color:var(--soft);font-weight:700}
+  .wgroup{margin:0 0 16px}
+  .whead{display:flex;align-items:center;gap:9px;margin:2px 2px 10px}
+  .whead .ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;color:#fff;font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:15px}
+  .whead b{font-size:14.5px}
+  .whead b{flex:1}
+  .whead .cnt{margin-left:auto;padding-left:10px;white-space:nowrap;font-size:12px;color:var(--soft);font-weight:700}
   .wchips{display:flex;flex-wrap:wrap;gap:7px}
   .wchip{background:#f2ead9;border:1px solid #e3d6bd;border-radius:12px;padding:7px 11px;cursor:pointer;text-align:left;font-family:"Nunito"}
   .wchip .jp{font-family:"Shippori Mincho","Nunito",serif;font-size:15px;display:block}
   .wchip .mn{font-size:11px;color:var(--soft)}
+  .bblock{margin:0 0 18px;padding:12px 13px;background:#fffbf1;border:1px solid #e3d6bd;border-radius:14px}
+  .bhead{font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:14px;margin-bottom:6px}
+  .brow{display:flex;align-items:center;gap:10px;padding:5px 0}
+  .brow .ic{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;color:#fff;font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:13px;flex:0 0 auto}
+  .brow b{font-size:13px;display:block}
+  .brow span{font-size:12px;color:var(--soft)}
   .wempty{color:var(--soft);font-size:12.5px;font-style:italic}
   .wnote{font-size:11.5px;color:var(--soft);text-align:center;margin-top:6px;line-height:1.45}
   .hidden{display:none}
@@ -338,8 +344,21 @@ function markWord(sid,id){try{const w=loadWords();(w[sid]=w[sid]||{})[id]=1;loca
 function totalWords(){const w=loadWords();let n=0;for(const k in w)n+=Object.keys(w[k]).length;return n;}
 function updateWordsCount(){const el=document.getElementById('wordsCount');if(el)el.textContent=totalWords();}
 function openWords(){renderWords();show('words');}
+function getBest(sid,mode){try{return parseInt(localStorage.getItem('zk_ilanlar_'+sid+'_'+mode)||'0',10);}catch(e){return 0;}}
+function renderBests(){
+  let rows='';
+  STORES.forEach(s=>{
+    const sk=getBest(s.id,'sakin'),ac=getBest(s.id,'acele');
+    if(sk<=0&&ac<=0)return;
+    const parts=[];
+    if(sk>0)parts.push(t('Sakin','Calm')+': ¥'+sk);
+    if(ac>0)parts.push(t('Acele','Hurry')+': '+ac+' '+t('müşteri','served'));
+    rows+=`<div class="brow"><div class="ic" style="background:${s.color}">${s.kanji}</div><div><b>${LANG==='en'?s.en:s.tr}</b><span>${parts.join(' · ')}</span></div></div>`;
+  });
+  return rows?`<div class="bblock"><div class="bhead">${t('Rekorlarım','My Bests')}</div>${rows}</div>`:'';
+}
 function renderWords(){
-  const w=loadWords();const body=document.getElementById('wordsBody');body.innerHTML='';let any=false;
+  const w=loadWords();const body=document.getElementById('wordsBody');body.innerHTML=renderBests();let any=false;
   STORES.forEach(s=>{
     if(!w[s.id])return;
     const found=s.items.filter(it=>w[s.id][it.id]);
@@ -352,7 +371,7 @@ function renderWords(){
       c.onclick=()=>speak(it.jp);chips.appendChild(c);});
     g.appendChild(chips);body.appendChild(g);
   });
-  if(!any) body.innerHTML=`<p class="wempty">${t('Henüz kelime keşfetmedin. Bir işe girip başla!','No words discovered yet. Take a job and start!')}</p>`;
+  if(!any) body.insertAdjacentHTML('beforeend',`<p class="wempty">${t('Henüz kelime keşfetmedin. Bir işe girip başla!','No words discovered yet. Take a job and start!')}</p>`);
 }
 function renderAds(){
   const wrap=document.getElementById('ads');wrap.innerHTML='';
