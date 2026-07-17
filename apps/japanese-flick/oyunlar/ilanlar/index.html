@@ -105,6 +105,21 @@
   .lchip{background:#f2ead9;border-radius:999px;padding:6px 12px;font-size:13px;font-family:"Shippori Mincho","Nunito",serif;cursor:pointer}
   .btn{width:100%;margin-top:8px;background:var(--ink);color:#fff;border:none;border-radius:12px;padding:13px;font-family:"Nunito";font-weight:800;font-size:15px;cursor:pointer}
   .btn.ghost{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
+  .wordsbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;margin:0 0 12px;padding:11px;border-radius:12px;
+    background:#fffbf1;border:1px solid #e3d6bd;color:var(--ink);font-family:"Nunito";font-weight:800;font-size:14px;cursor:pointer}
+  .wordsbtn b{background:var(--ink);color:#fff;border-radius:999px;padding:1px 9px;font-size:12px}
+  .words .wgroup{margin:0 0 16px}
+  .words .whead{display:flex;align-items:center;gap:9px;margin:2px 2px 10px}
+  .words .whead .ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;color:#fff;font-family:"Shippori Mincho","Nunito",serif;font-weight:700;font-size:15px}
+  .words .whead b{font-size:14.5px}
+  .words .whead b{flex:1}
+  .words .whead .cnt{margin-left:auto;padding-left:10px;white-space:nowrap;font-size:12px;color:var(--soft);font-weight:700}
+  .wchips{display:flex;flex-wrap:wrap;gap:7px}
+  .wchip{background:#f2ead9;border:1px solid #e3d6bd;border-radius:12px;padding:7px 11px;cursor:pointer;text-align:left;font-family:"Nunito"}
+  .wchip .jp{font-family:"Shippori Mincho","Nunito",serif;font-size:15px;display:block}
+  .wchip .mn{font-size:11px;color:var(--soft)}
+  .wempty{color:var(--soft);font-size:12.5px;font-style:italic}
+  .wnote{font-size:11.5px;color:var(--soft);text-align:center;margin-top:6px;line-height:1.45}
   .hidden{display:none}
 </style>
 </head>
@@ -128,9 +143,20 @@
       </div>
       <div class="paperline"><span>アルバイト情報</span><span><span class="tr">bugünün ilanları</span><span class="en">today's openings</span></span></div>
       <p class="lead"><span class="tr">Japonya'da part-time iş arıyorsun. Bir dükkân seç, vardiyaya gir: müşteri Japonca bir şey ister, sen raftan <b>doğru ürünü</b> verirsin. <b>Sakin</b> = kendi hızında; <b>Acele</b> = süreli, hızlanır.</span><span class="en">You're job-hunting in Japan. Pick a shop, work a shift: a customer asks for something in Japanese, you give the <b>right item</b>. <b>Calm</b> = your pace; <b>Hurry</b> = timed, speeds up.</span></p>
+      <button class="wordsbtn" onclick="openWords()"><span class="tr">Kelime Defterim</span><span class="en">My Words</span> <b id="wordsCount">0</b></button>
       <div class="ads" id="ads"></div>
     </div>
   </div>
+
+  <!-- WORDS (kelime defteri) -->
+  <div id="words" class="box hidden"><div class="pad">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+      <b style="font-family:'Shippori Mincho',serif;font-size:19px;flex:1"><span class="tr">Kelime Defterim</span><span class="en">My Words</span></b>
+      <button class="mbtn" onclick="show('board')"><span class="tr">← İlanlar</span><span class="en">← Listings</span></button>
+    </div>
+    <div id="wordsBody"></div>
+    <p class="wnote"><span class="tr">Kelimeler bu cihaz/tarayıcıda otomatik saklanır — verilerini (çerezleri) silmediğin sürece kalır. Dokun, sesini dinle.</span><span class="en">Words auto-save on this device/browser — they stay unless you clear your data. Tap to hear.</span></p>
+  </div></div>
 
   <!-- PLAY -->
   <div id="play" class="box hidden"><div class="pad">
@@ -306,6 +332,28 @@ function custSVG(i){const c=CUSTCOLORS[i%CUSTCOLORS.length];
   return `<svg viewBox="0 0 60 60"><circle cx="30" cy="28" r="24" fill="${c}" opacity=".18"/><circle cx="30" cy="24" r="10" fill="${c}"/><path d="M13 49 Q13 36 30 36 Q47 36 47 49 Z" fill="${c}"/><circle cx="26" cy="23" r="1.7" fill="#fff"/><circle cx="34" cy="23" r="1.7" fill="#fff"/></svg>`;}
 
 /* ===== board ===== */
+/* ===== kalıcı kelime defteri (localStorage, cihaza özel) ===== */
+function loadWords(){try{return JSON.parse(localStorage.getItem('zk_ilanlar_words')||'{}')||{};}catch(e){return {};}}
+function markWord(sid,id){try{const w=loadWords();(w[sid]=w[sid]||{})[id]=1;localStorage.setItem('zk_ilanlar_words',JSON.stringify(w));}catch(e){}}
+function totalWords(){const w=loadWords();let n=0;for(const k in w)n+=Object.keys(w[k]).length;return n;}
+function updateWordsCount(){const el=document.getElementById('wordsCount');if(el)el.textContent=totalWords();}
+function openWords(){renderWords();show('words');}
+function renderWords(){
+  const w=loadWords();const body=document.getElementById('wordsBody');body.innerHTML='';let any=false;
+  STORES.forEach(s=>{
+    if(!w[s.id])return;
+    const found=s.items.filter(it=>w[s.id][it.id]);
+    if(found.length===0)return;any=true;
+    const g=document.createElement('div');g.className='wgroup';
+    g.innerHTML=`<div class="whead"><div class="ic" style="background:${s.color}">${s.kanji}</div><b>${LANG==='en'?s.en:s.tr}</b><span class="cnt">${found.length}/${s.items.length}</span></div>`;
+    const chips=document.createElement('div');chips.className='wchips';
+    found.forEach(it=>{const c=document.createElement('button');c.className='wchip';
+      c.innerHTML=`<span class="jp">${it.jp}</span><span class="mn">${it.ro} · ${LANG==='en'?it.en:it.tr}</span>`;
+      c.onclick=()=>speak(it.jp);chips.appendChild(c);});
+    g.appendChild(chips);body.appendChild(g);
+  });
+  if(!any) body.innerHTML=`<p class="wempty">${t('Henüz kelime keşfetmedin. Bir işe girip başla!','No words discovered yet. Take a job and start!')}</p>`;
+}
 function renderAds(){
   const wrap=document.getElementById('ads');wrap.innerHTML='';
   STORES.forEach(s=>{
@@ -389,6 +437,7 @@ function pick(x,btn,target){
   if(x.id===target.id){
     busy=true;btn.classList.add('ok');stopTimer();
     if(!learned.includes(target.id))learned.push(target.id);
+    markWord(store.id,target.id);updateWordsCount();
     const f=document.getElementById('flash');f.className='flash good';
     if(mode==='acele'){
       served++;combo++;score=served;
@@ -464,14 +513,14 @@ function endShift(){
 }
 function restart(){ startJob(store.id,mode); }
 
-function show(id){['board','play','end'].forEach(x=>{const el=document.getElementById(x);if(el)el.classList.toggle('hidden',x!==id);});
+function show(id){['board','play','end','words'].forEach(x=>{const el=document.getElementById(x);if(el)el.classList.toggle('hidden',x!==id);});
   if(id!=='play')stopTimer();window.scrollTo(0,0);}
 
 /* init */
 document.body.classList.toggle('enmode',LANG==='en');
 document.getElementById('trBtn').classList.toggle('on',LANG==='tr');
 document.getElementById('enBtn').classList.toggle('on',LANG==='en');
-renderAds();show('board');
+renderAds();updateWordsCount();show('board');
 </script>
 </body>
 </html>

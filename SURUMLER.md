@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.11.2 — 2026-07-16
+- 📓 **İlanlar — Kelime Defterim (kalıcı ilerleme)** (Zeynep isteği: "kayıt tutsa, geri gelen kaldığı/öğrendiği kelimeleri görse"). Oyuncunun **keşfettiği her kelime otomatik kaydediliyor** (localStorage `zk_ilanlar_words`, dükkâna göre). Gazete panosunda **"Kelime Defterim (N)"** butonu → keşfedilen kelimeler dükkâna göre gruplu liste (okunuş + anlam + dokun-dinle + sayaç N/toplam). **Cihaza/tarayıcıya özel; veriler silinmediği sürece kalır** (bulut senkronu yok — sayfada dürüstçe belirtildi). Doğrulama: kelimeler kaydediliyor, sayfa yenilenince kalıcı, varyantlar dahil (kureyon_aka vb.), 0 JS hatası. Not: aynı desen ileride diğer oyunlara da taşınabilir.
+
 ### v1.11.1 — 2026-07-16
 - 🎨 **İlanlar — Daiso varyant sistemi + iki düzeltme** (Zeynep testi). (1) **Renk/boyut varyantları:** ürünler artık **sıfat + isim** (赤いペン = kırmızı kalem, 大きいノート = büyük defter). Renk çizimleri **gerçek renkte** görünür (kırmızı boya kırmızı). Rafta aynı ismin farklı renkleri yan yana → doğru olanı seçmek için hem rengi (赤い/青い/黄色い…) hem ismi okuman gerekir → **い-sıfat öğretir.** 6 aile (kalem, boya, şemsiye, kalın kalem, pastel, defter) → 26 varyant; Daiso havuzu **44 ürün.** (2) **Peş peşe aynı istek gelmiyor:** hedef önce seçilir (öncekiyle aynıysa yeniden), raf hedefin etrafında kurulur (varyantsa 1-2 kardeş renk + farklı ürünler). Doğrulama: 40 müşteride 0 tekrar, varyant hedefte rafta kardeş var, renkler doğru, 0 JS hatası. **JLPT etiketleri eklenmedi (Zeynep vazgeçti).** Sıradaki: restoran diyalog akışı.
 
