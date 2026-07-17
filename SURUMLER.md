@@ -27,6 +27,9 @@
 
 ## Geçmiş
 
+### v1.12.0 — 2026-07-16
+- 🍜 **İlanlar — Restoran dükkânı (4 adımlı diyalog akışı)** (Zeynep tasarımı, önce örnek sahne onaylandı). Konbini/Daiso'nun "raftan seç" mantığından farklı: bir masa gelir, **adım adım diyalog** — ① 何名様ですか (kaç kişi → ひとり/ふたり/さんにん/よにん, masa+müşteri sayısı görselle) ② 店内/お持ち帰り (içeri/paket) ③ sipariş (menüden doğru yemek: ラーメン/すし/カレー/ぎゅうどん/てんぷら/おちゃ/みず/コーヒー) ④ お箸は？ (çubuk はい/いいえ). Her adım aynı öğrenme döngüsü: Japonca'yı oku/duy → doğru cevabı seç. Öğretir: **sayı sayaçları (人), içeri/paket, yemek isimleri, kibar rica/ret.** Restoran görünümü ayrı (noren 食堂 + fener + masa + müşteriler; müşteri sayısı parti büyüklüğüne göre). Tek sipariş (Zeynep tercihi). Sakin (6 masa) + Acele (süreli, adım başına, 3 hata). Kelime defteri + rekorlar + peş-peşe-aynı-yemek-yok entegre. Ana sayfa/JF/sitemap'te zaten İlanlar kartı var; restoran "yakında"dan çıkıp aktif oldu (kalan yakında: Müzik Mağazası). Doğrulama: 4 adım akışı + acele timer + kelime kaydı Playwright + ekran görüntüsü, 0 JS hatası. Sıradaki: hız testi (Zeynep) + yeni dükkânlar/komik işler.
+
 ### v1.11.3 — 2026-07-16
 - 🏆 **İlanlar — Rekorlarım (skor kaydı) + kelime defteri başlık düzeltmesi.** Kelime Defterim ekranının başına **"Rekorlarım"** eklendi: her dükkân için Sakin (¥) ve Acele (müşteri) en iyi skorların listeli görünür (localStorage'dan). **Bug fix:** kelime grubu başlıklarındaki CSS `.words .` (class) seçicisi ekranın `id="words"`'üne uymuyordu → mağaza ikonu tam-genişlik bar gibi görünüyordu; seçiciler `.whead/.wgroup`'a çekildi, artık küçük ikon + sağda sayaç. Doğrulama: rekorlar + kelimeler + varyantlar doğru, 0 JS hatası.
 
