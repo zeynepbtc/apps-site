@@ -34,7 +34,7 @@ const consumers = (h.match(/AUDIO_MANIFEST/g) || []).length;
 A("bu adımda tüketici yok (2 anchor + 1 bildirim = 3)", consumers === 3, `${consumers} geçiş`);
 
 // entries bütünlüğü (harness ile örtüşür)
-A("entries 339 kayıt", embedded && embedded.entries.length === 339);
+A("entries 335 kayıt", embedded && embedded.entries.length === 335);
 A("_meta.pedagojik_hukum gömülü", !!(embedded && embedded._meta && embedded._meta.pedagojik_hukum));
 
 console.log(fail === 0 ? "\n✅ GÖMME KAPILARI GEÇTİ (Gate 7 & 10)" : "\n❌ " + fail + " başarısız");

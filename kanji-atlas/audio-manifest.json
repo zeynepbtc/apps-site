@@ -3052,15 +3052,6 @@
       "durum": "tts"
     },
     {
-      "id": "sentence_ikimasu",
-      "kategori": "sentence",
-      "metin": "学校へ行きます。",
-      "okunus": "Gakkou e ikimasu.",
-      "ses_dosyasi": null,
-      "kaynak": "yeni",
-      "durum": "tts"
-    },
-    {
       "id": "sentence_kimasu",
       "kategori": "sentence",
       "metin": "友達が来ます。",
@@ -3101,33 +3092,6 @@
       "kategori": "sentence",
       "metin": "名前を書きます。",
       "okunus": "Namae o kakimasu.",
-      "ses_dosyasi": null,
-      "kaynak": "yeni",
-      "durum": "tts"
-    },
-    {
-      "id": "sentence_tabemasu",
-      "kategori": "sentence",
-      "metin": "ご飯を食べます。",
-      "okunus": "Gohan o tabemasu.",
-      "ses_dosyasi": null,
-      "kaynak": "yeni",
-      "durum": "tts"
-    },
-    {
-      "id": "sentence_nomimasu",
-      "kategori": "sentence",
-      "metin": "水を飲みます。",
-      "okunus": "Mizu o nomimasu.",
-      "ses_dosyasi": null,
-      "kaynak": "yeni",
-      "durum": "tts"
-    },
-    {
-      "id": "sentence_hanashimasu",
-      "kategori": "sentence",
-      "metin": "日本語を話します。",
-      "okunus": "Nihongo o hanashimasu.",
       "ses_dosyasi": null,
       "kaynak": "yeni",
       "durum": "tts"

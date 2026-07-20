@@ -68,12 +68,17 @@ for w in d["words"]:
         "dogrulanmali": in_flick,
     })
 
-# --- SENTENCE (şimdilik TTS) ---
+# --- SENTENCE (şimdilik TTS) — metne göre TEKİL (kategori-içi duplicate=0) ---
+_seen_sent = set()
 for w in d["words"]:
+    _s = w.get("example_sentence_jp", "")
+    if not _s or _s in _seen_sent:   # aynı cümleyi paylaşan kelimeler tek entry
+        continue
+    _seen_sent.add(_s)
     entries.append({
         "id": f"sentence_{w['id']}",
         "kategori": "sentence",
-        "metin": w.get("example_sentence_jp", ""),
+        "metin": _s,
         "okunus": w.get("example_sentence_romaji", ""),
         "ses_dosyasi": None,
         "kaynak": "yeni",
