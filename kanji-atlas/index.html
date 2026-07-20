@@ -1157,6 +1157,41 @@ function resolveAudioPolicy(res, mode){
 function assertReleaseAudioMode(mode){ return mode === "release"; }
 if(typeof window!=="undefined") window.__audio = { get AUDIO_MODE(){ return AUDIO_MODE; }, buildAudioIndex, resolveAudioEntry, resolveAudioPolicy, assertReleaseAudioMode };
 /* FAZ2_AUDIO_POLICY_END */
+/* FAZ2_AUDIO_PLAY_START — adım 6b: çalma katmanı. speak() ÇEKİRDEĞİ yeniden yazılmadı (tts eylemi speak'i çağırır).
+   Dosya hatası TTS'ye KAÇMAZ (policy delinmez). Kategori tahmini YOK. modeOverride yalnız test içindir. */
+let AUDIO_INDEX = null;
+function _audioIndex(){ if(!AUDIO_INDEX) AUDIO_INDEX = buildAudioIndex((typeof AUDIO_MANIFEST!=="undefined")?AUDIO_MANIFEST:{entries:[]}); return AUDIO_INDEX; }
+function _onAudioFileFail(url, res){
+  /* Koşul 3: dosya açılmazsa dev diagnostic, release sessiz; İKİNCİ KEZ TTS'ye kaçma yok. */
+  if(AUDIO_MODE==="development"){ try{ console.warn("[audio] file-open-failed (dev diagnostic)", url, res&&res.entry&&res.entry.id); }catch(e){} }
+}
+function _playAudioFile(url, el, res){
+  try{
+    const a=new Audio(url);
+    if(el) el.classList.add("playing");
+    a.addEventListener("ended", function(){ if(el)el.classList.remove("playing"); });
+    a.addEventListener("error", function(){ if(el)el.classList.remove("playing"); _onAudioFileFail(url,res); });
+    a.play().catch(function(){ if(el)el.classList.remove("playing"); _onAudioFileFail(url,res); });
+  }catch(e){ _onAudioFileFail(url,res); }
+}
+/* playAudio — çağrı yüzeyinin TEK giriş noktası. surfaceKind ("fixed"|"dynamic") yalnız fallback/diagnostic'i etkiler,
+   KİMLİK ÇÖZÜMÜNE karışmaz (resolver yalnız açık id veya kategori+metin). */
+function playAudio(text, category, el, surfaceKind, modeOverride){
+  if(!text) return;
+  if(state.settings.audioMode==="off"){ toast("Ses kapalı — Profil'den açabilirsin"); return; }
+  const mode = modeOverride || AUDIO_MODE;
+  const res = resolveAudioEntry(_audioIndex(), { category: category||null, text: text });
+  const action = resolveAudioPolicy(res, mode);
+  if(res.kind==="not-found"){
+    if(surfaceKind==="fixed"){ try{ console.warn("[audio] fixed-not-found (manifest bütünlük)", res.diagnostic); }catch(e){} }
+    /* dynamic: beklenen fallback — hata değil (diagnostic'te ayrışır) */
+  }
+  if(action==="file" && res.entry && res.entry.ses_dosyasi){ _playAudioFile(res.entry.ses_dosyasi, el, res); return; }
+  if(action==="tts"){ speak(text, el); return; }   // mevcut TTS çekirdeği (url yok → useSpeech). speak yeniden yazılmadı.
+  /* silent → hiçbir şey (release'te TTS kaçağı YOK) */
+}
+if(typeof window!=="undefined") window.__play = { playAudio: playAudio, resetIndex: function(){ AUDIO_INDEX=null; } };
+/* FAZ2_AUDIO_PLAY_END */
 </script>
 <script>
 /* ============================ STATE ============================ */
@@ -1767,7 +1802,7 @@ function speak(text, el, url){
   useSpeech();
 }
 const AUDIO_ICON='<svg viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4zM15.5 8.5a5 5 0 0 1 0 7M18 6a8 8 0 0 1 0 12"/></svg>';
-function audioBtn(text, cls="", url=""){ return `<button class="audio-btn ${cls}" data-speak="${esc(text)}" ${url?`data-audio="${esc(url)}"`:""} aria-label="Sesli oku">${AUDIO_ICON}</button>`; }
+function audioBtn(text, category, cls=""){ return `<button class="audio-btn ${cls}" data-speak="${esc(text)}" data-audio-cat="${esc(category||"")}" aria-label="Sesli oku">${AUDIO_ICON}</button>`; }
 
 /* ============================ MNEMONIC INK LAYER ============================ */
 // subtle, low-opacity conceptual illustrations drawn behind a kanji on its detail card
@@ -3000,7 +3035,7 @@ function Detail(){
       </div>
       <div class="center" style="display:flex;gap:8px;justify-content:center;align-items:center">
         <button class="btn soft sm" data-act="play">▷ Vuruş sırasını oynat</button>
-        ${audioBtn(c.character)}
+        ${audioBtn(c.character, "kanji")}
       </div>
       <div class="divider"></div>
       <div class="h2 jp" style="text-align:center;font-size:20px">${c.meaning_tr}</div>
@@ -3034,7 +3069,7 @@ function Detail(){
       <div class="lead" style="flex:1">${v[1]==='sol'?'Solda':v[1]==='alt'?'Altta':v[1]} kullanıldığında şekil değiştirir.</div><span style="color:var(--accent)">›</span></div></div>`:''}
 
     <div class="section-t"><h3>Örnek kelimeler</h3></div>
-    <div class="card flat">${(c.examples||[]).map(e=>`<div class="ex"><div class="w jp">${e[0]}</div><div class="ro">${e[1]}</div><div class="m" style="flex:1">${e[2]}</div>${audioBtn(e[0],"sm")}</div>`).join("")||'<div class="lead">Yakında.</div>'}</div>
+    <div class="card flat">${(c.examples||[]).map(e=>`<div class="ex"><div class="w jp">${e[0]}</div><div class="ro">${e[1]}</div><div class="m" style="flex:1">${e[2]}</div>${audioBtn(e[0], "word", "sm")}</div>`).join("")||'<div class="lead">Yakında.</div>'}</div>
 
     ${(c.n5_words&&c.n5_words.length)?`<div class="section-t"><h3>Bu kanjiyi içeren N5 kelimeler</h3></div>
       <div class="card flat">${c.n5_words.map(wid=>{ const w=wordById(wid); if(!w)return''; return `<div class="ex" data-go="worddetail" data-param="${wid}" style="cursor:pointer">
@@ -3878,7 +3913,7 @@ function KanaDetail(){
       </div>
       <div class="kid-actions">
         <button class="btn soft sm" data-act="play">▷ Vuruş sırası</button>
-        ${audioBtn(k.character)}
+        ${audioBtn(k.character, "kana")}
       </div>
     </div>
 
@@ -3886,7 +3921,7 @@ function KanaDetail(){
     ${k.example ? `<div class="kana-ex-card">
       <div class="kex-head">
         <div class="kex-label">Örnek kelime</div>
-        ${audioBtn(k.example.word,"sm")}
+        ${audioBtn(k.example.word, "word", "sm")}
       </div>
       <div class="kex-word">${exHL}</div>
       <div class="kex-romaji">${k.example.romaji}</div>
@@ -4016,7 +4051,7 @@ function wordCard(w){
       <div class="wjp jp">${w.word_jp}</div>
       <div class="wmid"><div class="wread jp">${w.reading_kana}</div><div class="wmean">${w.meaning_tr}</div>
         <div class="wro">${w.romaji}</div>${kj?`<div class="wkanji">${kj}</div>`:''}</div>
-      ${audioBtn(w.word_jp,"sm",(w.audio&&w.audio.word)||"")}
+      ${audioBtn(w.word_jp, "word", "sm")}
     </div>
   </div>`;
 }
@@ -4042,7 +4077,7 @@ function WordDetail(){
       <div class="lead" style="margin-top:2px">${w.romaji}</div>
       <div class="h2" style="margin-top:10px">${w.meaning_tr}</div>
       <div class="lead">${w.meaning_en}</div>
-      <div style="margin-top:12px">${audioBtn(w.word_jp,"",(w.audio&&w.audio.word)||"")}</div>
+      <div style="margin-top:12px">${audioBtn(w.word_jp, "word", "")}</div>
     </div>
     ${breakdown?`<div class="section-t"><h3>İçindeki kanjiler</h3></div>
       <div class="card flat"><div class="comp-mean">${breakdown}</div>
@@ -4050,7 +4085,7 @@ function WordDetail(){
       `<div class="section-t"><h3>Yazım</h3></div><div class="card flat"><div class="lead">Bu kelime yalnızca kana ile yazılır.</div></div>`}
     <div class="section-t"><h3>Örnek kullanım</h3></div>
     <div class="sent">
-      <div class="row between"><div class="sjp jp">${w.example_sentence_jp}</div>${audioBtn(w.example_sentence_jp,"sm",(w.audio&&w.audio.sentence)||"")}</div>
+      <div class="row between"><div class="sjp jp">${w.example_sentence_jp}</div>${audioBtn(w.example_sentence_jp, "sentence", "sm")}</div>
       <div class="srom">${w.example_sentence_romaji}</div>
       <div class="str">${w.example_sentence_tr}</div>
     </div>
@@ -4705,7 +4740,7 @@ function matchTap(rightI){
   G.moves++;
   if(rightI===G.sel){
     G.matched[rightI]=true; G.sel=null; G._wrong=null;
-    const p=G.pairs[rightI]; if(p&&state.settings.audioMode!=="off") speak(p.leftKey);
+    const p=G.pairs[rightI]; if(p&&state.settings.audioMode!=="off") playAudio(p.leftKey, null, null, "dynamic");
     render();
   } else {
     G._wrong=["data-mleft"+G.sel,"data-mright"+rightI]; render();
@@ -4864,7 +4899,7 @@ function strokeGameView(G){
   return `<div class="stagger center">${hud}
     ${levelBar}
     <div class="row wrap" style="justify-content:center;gap:6px;margin-bottom:8px">
-      <span class="chip accent">${name}</span><span class="chip">${(c.stroke_order_steps||[]).length} vuruş</span>${audioBtn(c.character,"sm")}
+      <span class="chip accent">${name}</span><span class="chip">${(c.stroke_order_steps||[]).length} vuruş</span>${audioBtn(c.character, "kanji", "sm")}
     </div>
     ${tipCard}
     ${drillStage(c)}
@@ -4890,7 +4925,7 @@ function gameChoiceAnswer(idx){
   // record SRS against the involved item (word id for word games, else character)
   if(R.wkey){ srsRecord(R.wkey, correct); }
   else { const key=R.speak||R.result; if(key){ const cid=charIdOf(key); srsRecord(cid||key, correct); } }
-  if(R.speak && (state.settings.audioMode!=="off") && correct) speak(R.speak, null, R.audio||"");
+  if(R.speak && (state.settings.audioMode!=="off") && correct) playAudio(R.speak, null, null, "dynamic");
   // Faz 9-B v2: katakana-cipher için lastSeen + kural keşif + öğrenilen kelime koleksiyonu
   let justUnlocked = false;
   let justUnlockedRule = null;
@@ -5038,7 +5073,7 @@ function memoryFlip(idx){
     const [a,b]=G.flipped.map(i=>G.cards[i]);
     if(a.key===b.key && a.id!==b.id){
       G.matched[a.id]=true; G.matched[b.id]=true; G.flipped=[];
-      if(state.settings.audioMode!=="off"){ const lab=G.id==="kana-mahjong"?a.label:(ch(a.key)?ch(a.key).character:a.label); speak(lab); }
+      if(state.settings.audioMode!=="off"){ const lab=G.id==="kana-mahjong"?a.label:(ch(a.key)?ch(a.key).character:a.label); playAudio(lab, null, null, "dynamic"); }
       // SRS credit
       const key=G.id==="kana-mahjong"? a.label : a.key; srsRecord(charIdOf(key)||key, true);
       render();
@@ -5296,7 +5331,7 @@ document.addEventListener("click",e=>{
   if(el.dataset.wcat!==undefined){ state._wCat=el.dataset.wcat; if(state.screen!=="words") go("words"); else render(); return; }
   if(el.dataset.ptab!==undefined){ state._progTab=el.dataset.ptab; render(); return; }
   if(el.dataset.gstart!==undefined){ const a=el.dataset.arg; const id=el.dataset.gstart; state._gamePick=null; const e=GAMES[id].engine; startGame(id, e==="match"?{mode:a}:e==="memory"?{diff:a}:{set:a}); return; }
-  if(el.dataset.speak!==undefined){ speak(el.dataset.speak, el, el.dataset.audio||""); return; }
+  if(el.dataset.speak!==undefined){ playAudio(el.dataset.speak, el.dataset.audioCat, el, "fixed"); return; }
   if(el.dataset.game!==undefined){ openGame(el.dataset.game); return; }
   if(el.dataset.gopt!==undefined){ gameChoiceAnswer(parseInt(el.dataset.gopt)); return; }
   if(el.dataset.gsel!==undefined){ el.classList.toggle("on"); return; }
