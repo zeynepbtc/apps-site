@@ -250,21 +250,7 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 
 /* ============ GAMES ============ */
 .gsec-t{font-family:var(--serif);font-size:14px;font-weight:600;color:var(--accent-deep);margin:20px 2px 10px;display:flex;align-items:center;gap:8px}
-.gsec-hi{font-size:15px;font-weight:700;border-left:3px solid var(--gold);padding-left:9px;margin-left:-2px}
 .gsec-t::before{content:"";width:18px;height:1.5px;background:var(--accent-soft)}
-.gcard{display:flex;gap:13px;align-items:center;background:var(--card);border:1px solid var(--line);
-  border-radius:var(--r);padding:14px;box-shadow:var(--shadow);margin-bottom:10px;cursor:pointer;transition:transform .12s}
-.gcard:active{transform:scale(.985)}
-.gcard .gglyph{width:50px;height:50px;flex:none;border-radius:14px;display:grid;place-items:center;
-  font-family:var(--serif);font-size:27px;background:var(--accent-soft);color:var(--accent-deep)}
-.gcard.kanji .gglyph{background:var(--gold-soft);color:var(--gold)}
-.gcard .gbody{flex:1;min-width:0}
-.gcard .gbody .gt{font-weight:700;font-size:14.5px}
-.gcard .gbody .gd{font-size:12px;color:var(--muted);margin-top:2px;line-height:1.45}
-.gcard .gmeta{display:flex;gap:6px;margin-top:7px;flex-wrap:wrap}
-.gcard .gmeta .mtag{font-size:10px;font-weight:700;letter-spacing:.2px;color:var(--faint);
-  background:var(--card2);padding:3px 8px;border-radius:999px}
-.gcard .garrow{color:var(--accent);font-size:20px;flex:none}
 /* Faz 11: oyun app-icon ızgarası */
 .gappgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:4px}
 .gapp{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);
@@ -400,15 +386,6 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 
 /* tap-to-match */
 .matchwrap{display:flex;gap:12px}
-.matchcol{flex:1;display:flex;flex-direction:column;gap:9px}
-.matchcol .ch{font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--faint);font-weight:700;text-align:center;margin-bottom:2px}
-.mtile{border:1.5px solid var(--line);background:var(--surface);border-radius:13px;padding:14px 8px;
-  text-align:center;font-family:var(--serif);font-size:24px;transition:.12s;min-height:52px;display:flex;align-items:center;justify-content:center}
-.mtile.sm{font-size:15px;font-family:var(--sans);font-weight:700}
-.mtile:active{transform:scale(.96)}
-.mtile.sel{border-color:var(--accent);background:var(--accent-tint);color:var(--accent-deep)}
-.mtile.done{opacity:.35;border-color:var(--ok);background:var(--ok-soft);pointer-events:none}
-.mtile.miss{border-color:var(--accent);animation:shake .3s}
 @keyframes shake{0%,100%{transform:none}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
 
 /* multi-select chips */
@@ -604,23 +581,8 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 .audio-seg{display:flex;gap:5px;background:var(--card2);padding:4px;border-radius:11px}
 .audio-seg button{flex:1;padding:8px 4px;border-radius:8px;font-size:11.5px;font-weight:700;color:var(--muted)}
 .audio-seg button.on{background:var(--surface);color:var(--accent-deep);box-shadow:var(--shadow)}
-.qgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
 /* Faz 7-B: Öğrenme Araçları için 2 sütun varyantı (Kana + N5) */
-.qgrid-2{grid-template-columns:repeat(2,1fr)}
 /* Faz 7-B: Home kompakt ilerleme kartı (eski büyük ring + 'Devam et' yerine) */
-.home-progress-compact{display:flex;align-items:center;gap:14px;padding:12px 14px;margin-top:14px;
-  background:linear-gradient(135deg,#fff,#FBF4EC);border:1px solid var(--line);border-radius:14px;
-  cursor:pointer;transition:border-color .15s, transform .08s}
-.home-progress-compact:hover{border-color:var(--accent-soft)}
-.home-progress-compact:active{transform:scale(.995)}
-.hpc-ring{position:relative;width:52px;height:52px;flex:none}
-.hpc-ring svg{transform:rotate(-90deg)}
-.hpc-val{position:absolute;inset:0;display:grid;place-items:center;font-size:11px;font-weight:800;
-  color:var(--accent-deep);font-family:var(--sans);font-variant-numeric:tabular-nums}
-.hpc-meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
-.hpc-label{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.3px;text-transform:uppercase}
-.hpc-value{font-size:14px;font-weight:600;color:var(--ink)}
-.hpc-cta{flex:none;font-size:12px;padding:7px 11px}
 /* Faz 7-B: küçük buton varyantı (Devam et için) */
 .btn.xs{font-size:12px;padding:7px 12px;letter-spacing:.2px}
 /* Faz 8: 'Kana nedir?' / 'Kanji nedir?' sade okuma sayfaları (Apple-tarzı) */
@@ -686,18 +648,6 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 .rule-unlock-desc{font-family:var(--sans);font-size:13px;line-height:1.45;color:var(--muted);margin-bottom:8px}
 .rule-unlock-examples{display:flex;flex-direction:column;gap:3px}
 .rule-ex{font-family:var(--sans);font-size:13px;color:var(--ink);opacity:.85;font-feature-settings:"tnum" 1}
-.hero-atlas{display:block;width:100%;text-align:left;border:1px solid var(--line);border-radius:20px;
-  background:linear-gradient(135deg,#fff 0%,#FBF1E6 58%,#F4E6D2 100%);
-  box-shadow:var(--shadow);padding:17px 18px 16px;position:relative;overflow:hidden;cursor:pointer}
-.hero-atlas:active{transform:scale(.99)}
-.hero-atlas .ha-top{display:flex;gap:8px;align-items:flex-start;justify-content:space-between}
-.hero-atlas .ha-text{min-width:0;flex:1}
-.hero-atlas .ha-kicker{font-size:10px;font-weight:800;letter-spacing:1.4px;color:var(--gold);text-transform:uppercase}
-.hero-atlas .ha-title{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--ink);margin-top:4px;line-height:1.18}
-.hero-atlas .ha-sub{font-size:12.5px;color:var(--muted);margin-top:6px;max-width:200px;line-height:1.45}
-.hero-atlas .ha-mini{flex:none;width:118px;height:94px}
-.hero-atlas .ha-cta{display:inline-flex;align-items:center;gap:6px;margin-top:14px;
-  background:var(--accent);color:#fff;font-weight:700;font-size:13px;padding:9px 17px;border-radius:999px}
 .qtile{display:flex;flex-direction:column;align-items:center;gap:3px;padding:14px 6px;border-radius:15px;
   background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);text-align:center}
 .qtile:active{transform:scale(.96)}
@@ -705,7 +655,6 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 .qtile .qt{font-size:12.5px;font-weight:700;margin-top:4px}
 .qtile .qs{font-size:10px;color:var(--muted)}
 /* === Onboarding & profile (Faz 4) === */
-.ob-wrap{max-width:440px;margin:0 auto;padding:32px 12px 24px}
 .ob-input{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:var(--card);
   font-size:15px;font-family:var(--sans);outline:none;color:var(--ink);box-sizing:border-box}
 .ob-input:focus{border-color:var(--accent);background:#fff}
@@ -737,7 +686,6 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 @keyframes obFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .ob-step{display:flex;flex-direction:column;gap:18px}
 .ob-step-welcome{text-align:center;gap:22px;padding:8px 0}
-.ob-step-quiet{gap:22px}
 .ob-step-final{text-align:center;gap:18px;padding:8px 0}
 .ob-seal{font-family:var(--serif);font-size:56px;color:var(--accent);line-height:1;margin:0 auto 4px;
   width:88px;height:88px;display:flex;align-items:center;justify-content:center;
@@ -818,14 +766,6 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 .ob-three-name{font-family:var(--sans);font-weight:700;font-size:14px;color:var(--ink)}
 .ob-three-sub{font-family:var(--sans);font-size:12px;color:var(--muted);line-height:1.4}
 /* Kanji demo (ekran 8) — 木 + 木 + 木 → 森 */
-.ob-kanji-demo{display:flex;align-items:center;justify-content:center;gap:8px;margin:8px 0 2px;
-  padding:14px 8px;background:var(--card);border:1px solid var(--line);border-radius:12px;flex-wrap:wrap}
-.ob-kanji-tree{font-family:var(--serif);font-size:26px;color:var(--ink);line-height:1}
-.ob-kanji-plus{font-family:var(--sans);font-size:14px;color:var(--muted);font-weight:300}
-.ob-kanji-arr{font-family:var(--sans);font-size:18px;color:var(--muted);margin:0 2px}
-.ob-kanji-result{font-family:var(--serif);font-size:36px;color:var(--accent-deep);line-height:1}
-.ob-kanji-cap{font-family:var(--sans);font-size:12.5px;color:var(--muted);text-align:center;
-  margin-top:2px;line-height:1.5}
 /* Final ekran (10) */
 .ob-final-glyph{font-family:var(--serif);font-size:96px;color:var(--accent);line-height:1;margin:8px auto;
   animation:obSealIn .65s cubic-bezier(.2,.7,.3,1.2) .15s both}
@@ -838,18 +778,6 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 .resume-card .rc-title{font-weight:700;font-size:13.5px;color:var(--ink)}
 .resume-card .rc-acts{display:flex;gap:8px;margin-top:10px}
 /* Learn cards on home (Faz 4B) */
-.learn-grid{display:flex;flex-direction:column;gap:8px;margin:2px 0 6px}
-.learn-card{display:flex;align-items:center;gap:13px;width:100%;text-align:left;
-  padding:11px 13px;border:1px solid var(--line);border-radius:13px;background:var(--card);
-  font-family:var(--sans);color:var(--ink);cursor:pointer;transition:border-color .14s, background .14s, transform .1s;
-  box-shadow:var(--shadow)}
-.learn-card:active{transform:scale(.99)}
-.learn-card:hover{border-color:var(--accent-soft);background:var(--accent-tint)}
-.learn-card .lc-glyph{font-family:var(--serif);font-size:30px;color:var(--accent);line-height:1;width:42px;text-align:center;flex:none}
-.learn-card .lc-body{flex:1;min-width:0}
-.learn-card .lc-title{font-weight:700;font-size:13.5px;line-height:1.25}
-.learn-card .lc-sub{font-size:11.5px;color:var(--muted);margin-top:2px;line-height:1.4}
-.learn-card .lc-arr{color:var(--muted);font-size:18px;flex:none;line-height:1}
 /* Writing system lesson screen */
 .ws-progress{display:flex;gap:5px;margin:8px 2px 16px}
 .ws-progress i{flex:1;height:3px;border-radius:2px;background:var(--line);transition:background .2s}
@@ -884,11 +812,6 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 .kvg-faint{opacity:.25 !important}
 .kvg-hidden{opacity:0 !important}
 /* Stroke helpers — Faz 5B (kademeli yardımlar) */
-.stroke-start-dot{fill:#fff;stroke:var(--gold);stroke-width:1.2}
-.stroke-num-label{fill:var(--accent);font-family:var(--sans);font-size:7.5px;font-weight:800;
-  text-anchor:middle;dominant-baseline:middle;paint-order:stroke;stroke:#fff;stroke-width:1.5;stroke-linejoin:round}
-.stroke-arrow{fill:var(--accent);stroke:none}
-.stroke-arrow-curve{fill:var(--gold)}
 /* Context layer for stroke-stroke sub-flow (previous strokes faintly visible) */
 .kvg.kvg-context path{opacity:.18;stroke:var(--ink);fill:none}
 .canvas-stage svg.kvg-context{position:absolute;inset:0;pointer-events:none}
@@ -972,66 +895,20 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
   70%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(1)}}
 
 /* Faz 5C — Sonuç (mini result) ekranı */
-.result-meta{margin:10px 0 6px;width:100%;max-width:280px}
-.result-row{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--line)}
-.result-row:last-child{border-bottom:0}
-.result-lab{font-size:11px;letter-spacing:.6px;color:var(--muted);text-transform:uppercase;font-weight:700}
-.result-val{font-size:16px;color:var(--ink);font-weight:600}
-.result-val.jp{font-family:var(--serif);font-size:20px;color:var(--accent-deep)}
-.result-badge{margin-top:14px;display:inline-flex;align-items:center;gap:8px;
-  background:var(--gold);color:#fff;padding:6px 14px;border-radius:18px;
-  font-size:13px;font-weight:700;letter-spacing:.3px}
-.result-tick{font-size:14px;font-weight:800}
 .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
 .btn.extra-toggle{display:flex;align-items:center;justify-content:center;gap:6px}
 .btn.extra-toggle .extra-arr{font-size:11px;opacity:.65}
 .btn.extra-toggle.open{background:#FAF3E6;border-color:var(--gold)}
-.result-extra-panel{padding:10px 4px 2px;display:flex;flex-direction:column}
 /* MochiKana stage UI */
-.mk-progress{display:flex;gap:4px;margin:8px 2px 14px}
-.mk-progress i{flex:1;height:4px;border-radius:2px;background:var(--line);transition:background .25s}
-.mk-progress i.on{background:var(--accent)}
-.mk-progress i.done{background:var(--gold)}
-.mk-stage-head{display:flex;align-items:center;justify-content:space-between;margin:2px 2px 6px}
-.mk-stage-head .mk-num{font-size:11px;font-weight:800;letter-spacing:.7px;color:var(--gold);text-transform:uppercase}
-.mk-stage-head .mk-name{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--ink);margin-top:2px}
-.mk-target-big{font-family:var(--serif);font-size:96px;line-height:1;text-align:center;color:var(--accent-deep);margin:14px 0 6px}
-.mk-target-hidden{font-family:var(--serif);font-size:96px;line-height:1;text-align:center;color:var(--card2);margin:14px 0 6px;letter-spacing:6px}
-.mk-mini-row{display:flex;justify-content:center;gap:7px;margin:8px 0 4px}
-.mk-mini-row .mc{font-family:var(--serif);font-size:24px;color:var(--muted);width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:9px;background:var(--card)}
-.mk-mini-row .mc.on{color:var(--accent);border-color:var(--accent);background:var(--accent-tint)}
-.mk-mini-row .mc.done{color:var(--gold);border-color:var(--gold);background:#fff}
 /* Cross-set peer (hiragana ↔ katakana companion) */
-.mk-peer{display:flex;align-items:center;gap:10px;padding:9px 11px;border:1px solid var(--line);border-radius:11px;
-  background:var(--card2);cursor:pointer;margin:2px 0 10px;transition:border-color .15s, background .15s}
-.mk-peer:hover{border-color:var(--accent-soft);background:var(--accent-tint)}
-.mk-peer.open{border-color:var(--accent-soft);background:var(--accent-tint);border-bottom-left-radius:0;border-bottom-right-radius:0}
-.mk-peer .mp-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.4px;flex:1}
-.mk-peer .mp-glyph{font-family:var(--serif);font-size:22px;color:var(--accent-deep);width:26px;text-align:center}
-.mk-peer .mp-romaji{font-weight:700;color:var(--ink);font-size:13px;min-width:32px}
-.mk-peer .mp-arr{color:var(--muted);font-size:16px}
-.mk-peer-panel{padding:11px;border:1px solid var(--accent-soft);border-top:none;border-radius:0 0 11px 11px;background:var(--card);margin:-10px 0 10px}
 /* Stage controls */
 .mk-controls{margin-top:14px}
 .mk-controls-row{display:flex;gap:7px;justify-content:center;flex-wrap:wrap}
 .mk-controls-row .btn{flex:0 1 auto}
 /* Test progress dot */
-.mk-dot{width:9px;height:9px;border-radius:50%;display:inline-block}
-.mk-locked{opacity:.55}
-.mk-locked:active{transform:none}
 /* Kana Okulu redesign: highlighted character in example word */
 .hl-kana{color:var(--accent-deep);font-weight:800;background:var(--accent-tint);border-radius:5px;padding:0 5px;margin:0 1px;display:inline-block;border:1px solid var(--accent-soft)}
 /* Cross-kana peer card on main detail */
-.kana-peer{display:block;width:100%;text-align:left;background:var(--card2);border:1px solid var(--accent-soft);border-radius:13px;padding:11px 13px;margin-top:12px;cursor:pointer;font-family:var(--sans);color:var(--ink);transition:background .15s, border-color .15s, transform .1s;box-shadow:var(--shadow)}
-.kana-peer:active{transform:scale(.99)}
-.kana-peer:hover{background:var(--accent-tint);border-color:var(--accent)}
-.kana-peer .kp-label{font-size:10.5px;font-weight:800;letter-spacing:.7px;color:var(--accent);text-transform:uppercase;margin-bottom:6px}
-.kana-peer .kp-row{display:flex;align-items:center;gap:13px}
-.kana-peer .kp-glyph{font-family:var(--serif);font-size:32px;color:var(--accent-deep);width:40px;text-align:center;line-height:1;flex:none}
-.kana-peer .kp-info{flex:1;min-width:0}
-.kana-peer .kp-romaji{font-weight:700;font-size:14.5px;color:var(--ink)}
-.kana-peer .kp-set{font-size:11.5px;color:var(--muted);margin-top:1px}
-.kana-peer .kp-arr{color:var(--muted);font-size:20px;line-height:1;flex:none}
 /* === Kana Kimlik Kartı (3 saniye kuralı: 5 esas bilgi tek bakışta) === */
 .kana-id-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 14px 14px;
   box-shadow:var(--shadow);text-align:center;position:relative}
@@ -1214,10 +1091,6 @@ const EDGES = [
   ["hi","akarui"],["tsuki","akarui"],["hi","toki"],["hi","hareru"],
   ["ko","manabu"],["ko","ki2"],
   ["kuchi","ta"],
-];
-const FAM_LABELS = [
-  {t:"Sayılar",y:62},{t:"İnsan",y:206},{t:"Ağaç",y:386},
-  {t:"Güneş · Ay",y:606},{t:"Çocuk · Kadın",y:794},{t:"Doğa",y:946}
 ];
 const PARENTS = {}; EDGES.forEach(([a,b])=>{ (PARENTS[b]=PARENTS[b]||[]).push(a); });
 
@@ -1691,11 +1564,6 @@ function srsRecord(key, correct){
   save();
   return r;
 }
-function masteryOf(key){ return state.srs[key]? state.srs[key].mastery : (state.learned[key]?2:0); }
-function dueItems(){
-  const now=Date.now();
-  return Object.keys(state.srs).filter(k=>state.srs[k].next && state.srs[k].next<=now);
-}
 /* FAZ 2 · Kana Review / SRS tutarlılığı — TEK kanonik due kaynağı (kapsam A: yalnız kanji, kesin zaman-temelli).
    SAF: state+data+now ENJEKTE; yan etki yok, giriş mutasyonu yok. Test edilen fonksiyon buildKanjiReviewQueue. */
 function inKanjiReviewScope(data, key){
@@ -1839,8 +1707,6 @@ function mnemonicSVG(type){
   return W+P[type]+E;
 }
 function learnedCount(){ return Object.keys(state.learned).length; }
-function compCount(){ return Object.keys(state.learned).filter(id=>ch(id)&&ch(id).type==="radical").length
-  + ["ichi","ni","san","ki","hi","tsuki","kuchi","hito","mizu","hi2"].filter(id=>state.learned[id]).length>6?0:0; }
 function masteredComponents(){ return Object.values(DATA.chars).filter(c=>c.type==="radical"&&state.learned[c.id]).length; }
 function reviewQueue(){
   return Object.keys(state.status).filter(id=>["learning","soon"].includes(state.status[id])&&ch(id));
@@ -1868,32 +1734,6 @@ function recommendedStart(){
 function homeGameIcon(id){
   const g=GAMES[id]; if(!g) return ""; const rec=state.games[id];
   return `<div class="gapp ${g.cat}" data-game="${id}"><div class="gi jp">${g.glyph}</div><div class="gtt">${g.title}</div><div class="gsc">${rec?`Son: ${rec.lastScore}${rec.lastMax?'/'+rec.lastMax:''}`:(g.time||'')}</div></div>`;
-}
-function homeReviewSection(stage){
-  if(stage==="kanji"){
-    let due=Object.keys(state.status).filter(id=>["learning","soon"].includes(state.status[id])&&ch(id)&&ch(id).type==="kanji");
-    if(!due.length) due=Object.keys(state.learned).filter(id=>ch(id)&&ch(id).type==="kanji");
-    const head=`<div class="section-t"><h3>Tekrar sırası</h3><span class="link" data-go="map">Atlas bağlantıları ›</span></div>`;
-    if(!due.length) return head+`<div class="card flat center" style="padding:22px"><div class="lead">Henüz tekrar edilecek kanji yok. Atlas'tan yeni bir kök öğren.</div></div>`;
-    const rows=due.slice(0,4).map(id=>{const c=ch(id);return `<div class="ex" data-go="detail" data-param="${id}" style="cursor:pointer"><div class="w jp">${c.character}</div><div class="ro">${c.romaji||c.meaning_tr}</div><div class="m" style="flex:1">${c.meaning_tr}</div><span class="dot" style="background:${STATUS_COLOR[state.status[id]]||STATUS_COLOR.learning}"></span></div>`;}).join("");
-    return head+`<div class="card flat" style="padding:6px 10px">${rows}</div>`;
-  }
-  const set=stage==="katakana"?DATA.katakana:DATA.hiragana;
-  const chars=set.flat().filter(x=>x&&x.character);
-  const learned=chars.filter(x=>state.kana[x.character]);
-  const label=stage==="katakana"?"katakana":"hiragana";
-  const recent=learned.slice(-8); // gojūon sırası ≈ öğrenme sırası; en son öğrenilenler
-  const grid=recent.length
-    ? `<div class="lead" style="margin:0 0 8px">Son öğrendiğin ${label} karakterleri — dokun, tazele.</div>
-    <div class="kgrid kgrid-row">${recent.map(x=>`<div class="kcell done" data-go="kanadetail" data-param="${x.character}"><div class="c jp">${x.character}</div><div class="r">${x.romaji}</div></div>`).join("")}</div>
-    <div class="lead" style="margin:14px 0 8px">Oyunla pekiştir</div>`
-    : `<div class="lead" style="margin:0 0 9px">Henüz kana öğrenmedin. Kana Okulu'ndan ilk grupla başla; öğrendikçe burada oyunlarla tazeleyebilirsin.</div>`;
-  const games=stage==="katakana"?["katakana-cipher"]:["kana-match","confuse"];
-  return `<div class="section-t"><h3>Pekiştir</h3><span class="link" data-go="kana">Kana Okulu ›</span></div>
-  <div class="card flat" style="padding:12px">
-    ${grid}
-    <div class="gappgrid">${games.map(homeGameIcon).join("")}</div>
-  </div>`;
 }
 function isLocked(id){
   const ps=PARENTS[id]; if(!ps) return false;
@@ -2666,19 +2506,6 @@ function Home(){
 }
 function qtile(go,glyph,title,sub){
   return `<button class="qtile" data-go="${go}"><span class="qg jp">${glyph}</span><span class="qt">${title}</span><span class="qs">${sub}</span></button>`;
-}
-function suggestionCard(nc,next){
-  if(!nc) return `<div class="card center" style="padding:22px"><div class="lead">Bugün için harika gidiyorsun.</div></div>`;
-  const comps=(nc.components||[]).slice(0,3);
-  return `<div class="card" data-go="detail" data-param="${next}" style="cursor:pointer;display:flex;gap:14px;align-items:center">
-    <div style="width:78px;height:78px;flex:none">${kanjiSVG(nc.stroke_order_steps,"kvg thin")}</div>
-    <div style="flex:1;min-width:0">
-      <div class="row wrap" style="gap:6px;margin-bottom:5px"><span class="chip accent">${nc.jlpt_level||"Kanji"}</span><span class="chip">${nc.stroke_count||"-"} vuruş</span></div>
-      <div style="font-weight:700;font-size:15px"><span class="jp" style="font-size:22px">${nc.character}</span> · ${nc.meaning_tr}</div>
-      <div class="lead" style="margin-top:3px">${comps.length?`Parçalar: ${comps.join(" · ")}`:nc.pictogram_note}</div>
-    </div>
-    <span style="color:var(--accent);font-size:22px">›</span>
-  </div>`;
 }
 function firstAvailableNode(){
   // prefer an active (unlocked, not learned) node in family order

@@ -113,12 +113,13 @@ const FILE = "file:///home/claude/atlas_drive_may30.html";
   const preserved = await page.evaluate(() => ({
     hasReviewQueue: typeof reviewQueue === "function",
     hasFirstAvail: typeof firstAvailableNode === "function",
-    hasDueItems: typeof dueItems === "function"
+    hasDueItems: typeof dueItems !== "undefined"
   }));
   console.log("=== 9: korunan fonksiyonlar ===");
   A("reviewQueue() korundu", preserved.hasReviewQueue);
   A("firstAvailableNode() korundu", preserved.hasFirstAvail);
-  A("dueItems() korundu (silinmedi)", preserved.hasDueItems);
+  // dueItems() Faz 2 ölü-kod temizliğinde SİLİNDİ (0 çağıran; buildKanjiReviewQueue kanonik). Artık yok olmalı.
+  A("dueItems() temizlikte silindi (kanonik: buildKanjiReviewQueue)", preserved.hasDueItems === false);
 
   // canlı ekran render (çökme yok)
   const renders = await page.evaluate(() => {
