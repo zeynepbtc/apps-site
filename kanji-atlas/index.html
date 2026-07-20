@@ -1588,6 +1588,38 @@ function dueItems(){
   const now=Date.now();
   return Object.keys(state.srs).filter(k=>state.srs[k].next && state.srs[k].next<=now);
 }
+/* FAZ 2 · Kana Review / SRS tutarlılığı — TEK kanonik due kaynağı (kapsam A: yalnız kanji, kesin zaman-temelli).
+   SAF: state+data+now ENJEKTE; yan etki yok, giriş mutasyonu yok. Test edilen fonksiyon buildKanjiReviewQueue. */
+function inKanjiReviewScope(data, key){
+  const item = data && data.chars ? data.chars[key] : null;
+  return Boolean(item && item.type === "kanji");
+}
+function buildKanjiReviewQueue(state, data, now){
+  if(!Number.isFinite(now)) return [];                          // now doğrulaması → risksiz boş kuyruk
+  return Object.entries((state && state.srs) || {})
+    .filter(([id, rec]) =>
+      inKanjiReviewScope(data, id) &&
+      Number.isFinite(rec && rec.next) &&                       // string/null/NaN/Infinity ELENİR
+      rec.next <= now)
+    .sort(([idA, a], [idB, b]) =>
+      (a.next - b.next) ||                                      // 1) en eski next önce
+      ((Number.isFinite(a.mastery) ? a.mastery : 0) -
+       (Number.isFinite(b.mastery) ? b.mastery : 0)) ||         // 2) düşük mastery önce
+      idA.localeCompare(idB))                                   // 3) ID tie-break → deterministik
+    .map(([id]) => id);
+}
+function currentKanjiReviewQueue(now){ return buildKanjiReviewQueue(state, DATA, (now===undefined?Date.now():now)); }
+function dueCount(now){ return currentKanjiReviewQueue(now).length; }
+/* Yan etkisiz teşhis — storage'dan SİLMEZ, yalnız raporlar (harness/debug). */
+function inspectKanjiReviewData(state, data){
+  const unknownKeys=[], invalidNext=[];
+  for(const [id, rec] of Object.entries((state && state.srs) || {})){
+    if(!inKanjiReviewScope(data, id)) unknownKeys.push(id);
+    else if(!Number.isFinite(rec && rec.next)) invalidNext.push(id);
+  }
+  return { unknownKeys, invalidNext };
+}
+if(typeof window!=="undefined") window.__srs = { inKanjiReviewScope, buildKanjiReviewQueue, currentKanjiReviewQueue, dueCount, inspectKanjiReviewData };
 function srsStats(){
   let correct=0,wrong=0; Object.values(state.srs).forEach(r=>{correct+=r.correct;wrong+=r.wrong;});
   return {correct,wrong,total:correct+wrong, acc: (correct+wrong)?Math.round(correct/(correct+wrong)*100):0};
@@ -3352,10 +3384,11 @@ function QuizCard(){
 function Review(){
   const groups={}; STATUS_ORDER.forEach(s=>groups[s]=[]);
   Object.keys(state.status).forEach(id=>{ if(ch(id)) groups[state.status[id]].push(id); });
-  const due=[...new Set([...dueItems().filter(k=>ch(k)), ...reviewQueue()])];
+  const now=Date.now();
+  const due=buildKanjiReviewQueue(state, DATA, now);   // TEK kanonik kaynak (kapsam A · kesin zaman-temelli)
   return `<div class="stagger">
   <div class="card" style="background:linear-gradient(135deg,#fff,#FBF4EC)">
-    <div class="row between"><div><div style="font-weight:700;font-size:15px">${due.length} karakter tekrar bekliyor</div>
+    <div class="row between"><div><div style="font-weight:700;font-size:15px">${due.length} kanji tekrar bekliyor</div>
     <div class="lead" style="margin-top:2px">Yanlış yaptıkların daha sık döner.</div></div>
     <div class="jp" style="font-size:34px;color:var(--accent)">復</div></div>
     <button class="btn full" style="margin-top:12px" ${due.length?'':'disabled style="opacity:.5;margin-top:12px"'} data-act="review-start">${due.length?"Tekrara başla":"Şimdilik temiz"}</button>
@@ -3429,7 +3462,7 @@ function Profile(){
     ${stats.total?`<div class="statline" style="margin-top:9px">
       <div class="s"><div class="n">${stats.acc}%</div><div class="l">İsabet</div></div>
       <div class="s"><div class="n">${stats.correct}</div><div class="l">Doğru</div></div>
-      <div class="s"><div class="n">${dueItems().length}</div><div class="l">Bugün tekrar</div></div>
+      <div class="s"><div class="n">${dueCount()}</div><div class="l">Kanji tekrarı</div></div>
     </div>`:''}
     <div class="section-t"><h3>Ayarlar</h3></div>
     <div class="card flat">
@@ -4025,11 +4058,10 @@ function Progress(){
   // Faz 7-B: Home'dan taşınan statline (Karakter / Kök / Tekrar / Seri)
   const allKanji = Object.values(DATA.chars).filter(c=>c.type!=="radical");
   const learnedCount = Object.keys(state.learned).filter(id=>ch(id)&&ch(id).type!=="radical").length;
-  const q = reviewQueue();
   const statlineHtml = `<div class="statline" style="margin-top:6px">
     <div class="s"><div class="n">${learnedCount}</div><div class="l">Karakter</div></div>
     <div class="s"><div class="n">${masteredComponents()}</div><div class="l">Kök</div></div>
-    <div class="s"><div class="n">${q.length}</div><div class="l">Tekrar</div></div>
+    <div class="s"><div class="n">${dueCount()}</div><div class="l">Tekrar</div></div>
     <div class="s"><div class="n">${state.streak}<span style="font-size:13px">g</span></div><div class="l">Seri</div></div>
   </div>`;
   // Faz 7-B: Home'dan taşınan Öğrenme Yolu widget'ı (Path screen'ine link)
@@ -5286,8 +5318,8 @@ document.addEventListener("click",e=>{
   else if(act==="drill-reset"){ const pad=$("#pad"); if(pad&&pad._clear) pad._clear(); }
   else if(act==="quiz-retry"){ const f = state.param || (state._quiz && state._quiz.focusId); state._quiz=buildQuiz(f); render(); }
   else if(act==="review-start"){
-    const due=reviewQueue(); if(!due.length) return;
-    state.param=due[0]; go("quiz",due[0]); 
+    const due=currentKanjiReviewQueue(); if(!due.length) return;   // tıklama anında kanonik snapshot
+    state.param=due[0]; go("quiz",due[0]);
   }
   else if(act==="setting"){ const key=el.dataset.key; state.settings[key]=!state.settings[key]; el.classList.toggle("on"); save(); }
   else if(act==="toggle"){ el.classList.toggle("on"); }
