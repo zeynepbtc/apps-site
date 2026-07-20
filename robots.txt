@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /stock-ui/
+Disallow: /kanji-atlas-preview/
 
 Sitemap: https://zeynepkaya.app/sitemap.xml
