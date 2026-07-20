@@ -4743,7 +4743,7 @@ function matchTap(rightI){
   G.moves++;
   if(rightI===G.sel){
     G.matched[rightI]=true; G.sel=null; G._wrong=null;
-    const p=G.pairs[rightI]; if(p&&state.settings.audioMode!=="off") playAudio(p.leftKey, null, null, "dynamic");
+    const p=G.pairs[rightI]; if(p&&state.settings.audioMode!=="off") playAudio(p.leftKey, _charAudioCat(p.leftKey), null, "dynamic");
     render();
   } else {
     G._wrong=["data-mleft"+G.sel,"data-mright"+rightI]; render();
@@ -4928,7 +4928,7 @@ function gameChoiceAnswer(idx){
   // record SRS against the involved item (word id for word games, else character)
   if(R.wkey){ srsRecord(R.wkey, correct); }
   else { const key=R.speak||R.result; if(key){ const cid=charIdOf(key); srsRecord(cid||key, correct); } }
-  if(R.speak && (state.settings.audioMode!=="off") && correct) playAudio(R.speak, null, null, "dynamic");
+  if(R.speak && (state.settings.audioMode!=="off") && correct) playAudio(R.speak, roundAudioCat(R), null, "dynamic");
   // Faz 9-B v2: katakana-cipher için lastSeen + kural keşif + öğrenilen kelime koleksiyonu
   let justUnlocked = false;
   let justUnlockedRule = null;
@@ -4982,6 +4982,18 @@ function charIdOf(charOrId){
   const found=Object.keys(DATA.chars).find(id=>DATA.chars[id].character===charOrId);
   return found||null;
 }
+/* Dinamik/oyun yüzeyinde ÜRETİLEN metnin manifest kategorisi. Yüzey tipi ("dynamic") kimlik çözümüne KARIŞMAZ;
+   metin manifestte kayıtlıysa uygulamanın her yerinde AYNI ses kimliği kullanılır (Zeynep/GPT kararı 2026-07-20).
+   chars = kanji+radikal (kana DEĞİL) → charIdOf kana'da null döner → "kana". */
+function _charAudioCat(text){ const cid=charIdOf(text); const c=cid&&DATA.chars[cid]; return (c&&c.type==="kanji")?"kanji":"kana"; }
+function roundAudioCat(R){ if(!R) return null; if(R.ptype==="cloze") return "sentence"; if(R.wkey) return "word"; return _charAudioCat(R.speak); }
+function memoryCardAudio(G, card){
+  if(!G||!card) return null;
+  if(G.id==="kana-mahjong") return { text:card.label, cat:"kana" };
+  const c=ch(card.key);
+  return c ? { text:c.character, cat:_charAudioCat(c.character) } : { text:card.label, cat:"word" };
+}
+if(typeof window!=="undefined" && window.__play){ window.__play._charAudioCat=_charAudioCat; window.__play.roundAudioCat=roundAudioCat; window.__play.memoryCardAudio=memoryCardAudio; }
 function showGameFeedback(correct, explain){
   const fb=$("#gfb"); if(!fb) return;
   const G=state._game; const last=G.i>=G.rounds.length-1;
@@ -5076,7 +5088,7 @@ function memoryFlip(idx){
     const [a,b]=G.flipped.map(i=>G.cards[i]);
     if(a.key===b.key && a.id!==b.id){
       G.matched[a.id]=true; G.matched[b.id]=true; G.flipped=[];
-      if(state.settings.audioMode!=="off"){ const lab=G.id==="kana-mahjong"?a.label:(ch(a.key)?ch(a.key).character:a.label); playAudio(lab, null, null, "dynamic"); }
+      if(state.settings.audioMode!=="off"){ const ma=memoryCardAudio(G,a); if(ma) playAudio(ma.text, ma.cat, null, "dynamic"); }
       // SRS credit
       const key=G.id==="kana-mahjong"? a.label : a.key; srsRecord(charIdOf(key)||key, true);
       render();
