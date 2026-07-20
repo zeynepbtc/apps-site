@@ -56,7 +56,9 @@ const fs = require("fs");
 
   // 4) speak() ÇAĞRILARI DEĞİŞMEDİ (kaynak sayımı) + 5/6) oynatma/fetch YOK
   const src = fs.readFileSync("/home/claude/apps-deploy/kanji-atlas/index.html","utf-8");
-  A("4) resolveAudioPolicy hiçbir yerde ÇAĞRILMIYOR (2 geçiş = tanım + window; speak entegrasyonu yok)", src.match(/resolveAudioPolicy/g).length===2, (src.match(/resolveAudioPolicy/g)||[]).length+" geçiş");
+  const cc=(f)=>(src.match(new RegExp(f.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"g"))||[]).length;
+  A("4) speak() ses politikasını TÜKETMİYOR (resolveAudioPolicy yalnız decideAudioAction'dan; decideAudioAction'ın çağıranı yok → speak bağlı değil)",
+    cc("resolveAudioPolicy(")===2 && cc("decideAudioAction(")===1);
   A("5) ses dosyası oynatma eklenmedi (yeni new Audio yok — mevcut speak dışında)", (src.match(/new Audio/g)||[]).length===1);
   A("6) runtime manifest fetch yok", !/fetch[^;\n]{0,80}manifest/i.test(src));
 
