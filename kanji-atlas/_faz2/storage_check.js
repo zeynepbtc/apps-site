@@ -30,7 +30,7 @@ console.log("# Storage kabul testleri\n");
 // 3) geçerli v1 state → değişmez
 { const v1 = S.safeMerge(S.migrate({ schemaVersion: 1, learned: { hi: true } }));
   const raw = JSON.stringify(v1); const { state } = S.createStorage(mockLS({ kana_state: raw })).read();
-  A("3) v1 state okundu, learned korundu", state.schemaVersion === 1 && eq(state.learned, { hi: true })); }
+  const _st=S.createStorage(mockLS({kana_state:raw})); _st.read(); const _r=_st.save({learned:{}}); A("3) v1 state okundu, learned korundu", state.schemaVersion === 1 && eq(state.learned, { hi: true })); A("3b) normal save → {ok:true}", _r.ok===true); }
 
 // 4) migration İKİ KEZ → aynı (idempotent)
 { const raw = JSON.stringify({ learned: { ki: true }, userHints: { a: "x" } });
@@ -64,14 +64,14 @@ console.log("# Storage kabul testleri\n");
 
 // 9) recovery modunda save() kana_state'i EZMİYOR
 { const ls = mockLS({ kana_state: 'BOZUK{{{' }); const st = S.createStorage(ls, { now: () => 9 });
-  const { state } = st.read(); const wrote = st.save(state);
-  A("9) recovery modunda save reddedildi", wrote === false);
+  const { state } = st.read(); const r = st.save(state);
+  A("9) recovery save → {ok:false, reason:storage-recovery}", r.ok === false && r.reason === "storage-recovery");
   A("9) bozuk orijinal payload hâlâ yerinde", ls._get("kana_state") === "BOZUK{{{"); }
 
 // 10) setItem exception → eski payload yerinde, save false
 { const ls = mockLS({ kana_state: JSON.stringify({ schemaVersion: 1, learned: { ki: true } }) }, { failSet: true });
-  const st = S.createStorage(ls); const { state } = st.read(); const wrote = st.save(state);
-  A("10) setItem hata → save false", wrote === false);
+  const st = S.createStorage(ls); const { state } = st.read(); const r = st.save(state);
+  A("10) setItem hata → {ok:false, reason:write-error}", r.ok === false && r.reason === "write-error");
   A("10) eski payload yerinde", JSON.parse(ls._get("kana_state")).learned.ki === true); }
 
 // 11) kullanıcı verisi migration boyunca DERİN EŞİT

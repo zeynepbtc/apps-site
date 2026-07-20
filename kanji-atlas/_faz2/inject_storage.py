@@ -18,7 +18,7 @@ function load(){
   state.screen = (state.onboarding&&state.onboarding.completed) ? "home" : "onboarding";
   state.stack=[]; state.param=null; state._game=null; state._gamePick=null;
 }
-function save(){ STORE.save(state); }""")
+function save(){ return STORE.save(state); }""")
 
 pat = re.compile(r'function load\(\)\{.*?function save\(\)\{ try\{ localStorage\.setItem\("kana_state",JSON\.stringify\(state\)\); \}catch\(e\)\{\} \}', re.S)
 assert len(pat.findall(h)) == 1, "load/save block not unique: %d" % len(pat.findall(h))

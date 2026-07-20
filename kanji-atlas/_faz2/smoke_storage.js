@@ -28,13 +28,14 @@ const FILE = "file:///home/claude/atlas_drive_may30.html";
   await page.evaluate((c) => localStorage.setItem("kana_state", c), CORRUPT);
   await page.reload(); await page.waitForFunction(() => typeof window.STORE !== "undefined");
   const Abefore = await page.evaluate(() => ({ rec: window.STORE.recoveryMode, raw: localStorage.getItem("kana_state"), recKey: Object.keys(localStorage).some(k => k.startsWith("kana_state_recovery_")), rendered: document.body.children.length > 0 }));
-  const Asave = await page.evaluate(() => { window.save(); return localStorage.getItem("kana_state"); });
+  const Asave = await page.evaluate(() => { const r = window.save(); return { kana: localStorage.getItem("kana_state"), ok: r.ok, reason: r.reason }; });
   console.log("=== A: bozuk JSON recovery ===");
   A("recovery modu aktif", Abefore.rec === true);
   A("bozuk kana_state YERİNDE (ezilmedi)", Abefore.raw === CORRUPT, Abefore.raw);
   A("recovery kopyası oluştu (kana_state_recovery_*)", Abefore.recKey);
   A("uygulama açıldı (çökmedi)", Abefore.rendered);
-  A("recovery modunda save() bozuk kaydı EZMEDİ", Asave === CORRUPT);
+  A("recovery save() bozuk kaydı EZMEDİ", Asave.kana === CORRUPT);
+  A("recovery save() görünür sözleşme döndü {ok:false, reason:storage-recovery}", Asave.ok === false && Asave.reason === "storage-recovery");
 
   console.log("=== SAĞLIK ===");
   A("yeni JS exception yok", errors.length === 0, errors.slice(0, 2).join(" | "));

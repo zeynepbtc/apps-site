@@ -95,9 +95,16 @@ function createStorage(ls, opts = {}) {
       return { state, recoveryRequired };
     },
     save(state) {
-      if (recoveryMode) return false;                       // recovery: kana_state ezilmez
-      try { state.schemaVersion = SCHEMA_VERSION; ls.setItem(KEY, JSON.stringify(state)); return true; }
-      catch (e) { return false; }                           // setItem hata → eski payload yerinde
+      // GÖRÜNÜR SÖZLEŞME: {ok, reason}. Sessiz başarısızlık yok.
+      if (recoveryMode) {
+        try { if (typeof console !== "undefined") console.warn("[storage] save reddedildi — recovery modu (kana_state korunuyor)"); } catch (e) {}
+        return { ok: false, reason: "storage-recovery" };   // recovery: kana_state ezilmez
+      }
+      try { state.schemaVersion = SCHEMA_VERSION; ls.setItem(KEY, JSON.stringify(state)); return { ok: true, reason: null }; }
+      catch (e) {
+        try { if (typeof console !== "undefined") console.warn("[storage] save başarısız — yazma hatası (eski kayıt yerinde)"); } catch (_) {}
+        return { ok: false, reason: "write-error" };         // setItem hata → eski payload yerinde
+      }
     },
     get recoveryMode() { return recoveryMode; }
   };
