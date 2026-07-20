@@ -1111,6 +1111,52 @@ function resolveAudioPolicy(entry, mode){
 function assertReleaseAudioMode(mode){ return mode === "release"; }
 if(typeof window!=="undefined") window.__audio = { get AUDIO_MODE(){ return AUDIO_MODE; }, resolveAudioPolicy, assertReleaseAudioMode };
 /* FAZ2_AUDIO_POLICY_END */
+/* FAZ2_AUDIO_RESOLVER_START — adım 6a: çözüm anahtarı (kategori+metin) + karar. SAF; speak() ile HENÜZ bağlı değil. */
+/* Çözüm anahtarı = kategori + metin (pedagojik id VE dosya adından AYRI). */
+function _audioKey(kategori, metin){ return kategori + "\u0000" + metin; }
+/* buildAudioIndex — manifest'ten (kategori+metin)->[entries] haritası. Duplicate defansif toplanır (sözleşme: 0 olmalı). */
+function buildAudioIndex(manifest){
+  const idx = Object.create(null);
+  const entries = (manifest && manifest.entries) || [];
+  for(const e of entries){
+    if(!e || typeof e.kategori!=="string" || typeof e.metin!=="string") continue;
+    const k = _audioKey(e.kategori, e.metin);
+    (idx[k] || (idx[k]=[])).push(e);
+  }
+  return idx;
+}
+/* resolveAudioEntry — kategori+metin -> {status:"found",entry} | {status:"not-found"} | {status:"duplicate",ids}.
+   Kategori yoksa çözmez (metinden kategori TAHMİN ETMEZ). */
+function resolveAudioEntry(index, kategori, metin){
+  if(!kategori || !metin || !index) return { status:"not-found" };
+  const hits = index[_audioKey(kategori, metin)];
+  if(!hits || hits.length===0) return { status:"not-found" };
+  if(hits.length>1) return { status:"duplicate", ids: hits.map(function(e){return e.id;}) };
+  return { status:"found", entry: hits[0] };
+}
+/* decideAudioAction — çözüm sonucu + mode + surfaceKind ("fixed"|"dynamic") -> {action:"file"|"tts"|"silent", diagnostic:[]}.
+   SAF. Adım-5 resolveAudioPolicy çekirdeğini yeniden kullanır; üstüne çözüm + qa-onay katmanı ekler. */
+function decideAudioAction(resolution, mode, surfaceKind){
+  const isDev = (mode === "development");   // release + tanınmayan mode → release (güvenli)
+  const diag = [];
+  if(!resolution || resolution.status==="duplicate"){
+    diag.push("duplicate");                  // çözüm anahtarı >1 entry: İLK SEÇİLMEZ
+    return { action: isDev ? "tts" : "silent", diagnostic: diag };
+  }
+  if(resolution.status==="not-found"){
+    if(surfaceKind==="fixed") diag.push("fixed-not-found");   // sabit eğitim yüzeyi: manifest bütünlük sinyali
+    return { action: isDev ? "tts" : "silent", diagnostic: diag };   // dinamik not-found: beklenen
+  }
+  const e = resolution.entry;
+  /* qa-onay: recorded + geçerli dosya ama dogrulanmali(pending) → release'te SESSİZ (onaysız oynatma yok; release-gate borcu). */
+  if(e && e.durum==="recorded" && e.dogrulanmali===true){
+    const hasFile = typeof e.ses_dosyasi==="string" && e.ses_dosyasi.length>0;
+    if(hasFile){ diag.push("qa-pending"); return { action: isDev ? "file" : "silent", diagnostic: diag }; }
+  }
+  return { action: resolveAudioPolicy(e, mode), diagnostic: diag };   // recorded/tts/missing/invalid + savunmacı (adım 5)
+}
+if(typeof window!=="undefined") window.__audio2 = { buildAudioIndex, resolveAudioEntry, decideAudioAction };
+/* FAZ2_AUDIO_RESOLVER_END */
 </script>
 <script>
 /* ============================ STATE ============================ */
