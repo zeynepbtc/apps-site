@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>Kanji Atlas — jel nav v5 (gömülü)</title>
+<title>Kanji Atlas — jel nav v6 (jiggle yok, iki doz)</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{ --bg:#EFE7D6; --paper:#FBF5EF; --card:#FFFFFF; --line:#E6DCCB;
@@ -12,135 +12,124 @@
     --serif:'Shippori Mincho',serif; --sans:'Nunito',system-ui,sans-serif;}
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;
-    padding:34px 16px 50px;display:flex;flex-direction:column;align-items:center;min-height:100vh}
+    padding:30px 16px 50px;display:flex;flex-direction:column;align-items:center;min-height:100vh}
   .eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-weight:800;text-align:center}
-  h1{font-family:var(--serif);font-weight:700;font-size:24px;margin:8px 0 6px;text-align:center}
-  .lead{color:var(--muted);font-size:13.5px;text-align:center;max-width:420px;margin:0 auto 4px;line-height:1.55}
-  .phone{width:336px;max-width:100%;margin:26px auto 0;background:var(--paper);border-radius:36px;overflow:hidden;
-    box-shadow:0 2px 5px rgba(58,47,40,.12),0 30px 55px -26px rgba(58,47,40,.5);border:1px solid rgba(0,0,0,.05);
-    display:flex;flex-direction:column;height:540px}
-  .screen{flex:1;padding:24px 22px 6px;display:flex;flex-direction:column;gap:12px}
-  .st{font-family:var(--serif);font-size:20px;font-weight:600}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;height:58px;box-shadow:0 8px 18px -15px rgba(58,47,40,.3)}
-  .card.sm{height:40px;opacity:.7}
-  .hint{margin-top:auto;text-align:center;font-size:12px;color:var(--faint);padding-bottom:4px}
-  .nav{position:relative;height:90px;flex:none;user-select:none;-webkit-user-select:none;touch-action:none}
-  .nav svg{position:absolute;left:0;bottom:0;width:100%;height:90px;overflow:visible}
+  h1{font-family:var(--serif);font-weight:700;font-size:23px;margin:8px 0 6px;text-align:center}
+  .lead{color:var(--muted);font-size:13px;text-align:center;max-width:420px;margin:0 auto;line-height:1.5}
+  .block{width:340px;max-width:100%;margin:22px auto 0}
+  .btag{font-size:12px;font-weight:800;letter-spacing:.4px;color:var(--amber-deep);margin:0 0 8px 4px}
+  .btag span{color:var(--muted);font-weight:600}
+  .dev{background:var(--paper);border:1px solid var(--line);border-radius:26px 26px 30px 30px;padding:15px 0 0;
+    box-shadow:0 2px 5px rgba(58,47,40,.1),0 22px 44px -26px rgba(58,47,40,.5);overflow:hidden}
+  .filler{padding:0 20px 12px}
+  .filler .l{height:11px;border-radius:6px;background:var(--card);border:1px solid var(--line);margin-bottom:8px}
+  .filler .l.a{width:58%} .filler .l.b{width:84%} .filler .l.c{width:38%}
+  .nav{position:relative;height:88px;user-select:none;-webkit-user-select:none;touch-action:none}
+  .nav svg{position:absolute;left:0;bottom:0;width:100%;height:88px;overflow:visible}
   .icon{position:absolute;pointer-events:none;transform:translate(-50%,-50%)}
   .icon svg{position:static;width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
-  .tabs{position:absolute;left:0;bottom:0;width:100%;height:56px;display:flex;align-items:flex-end;padding-bottom:11px;z-index:3}
+  .tabs{position:absolute;left:0;bottom:0;width:100%;height:54px;display:flex;align-items:flex-end;padding-bottom:10px;z-index:3}
   .tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;pointer-events:none}
   .tab .ic{width:22px;height:22px;color:var(--muted);transition:opacity .14s ease}
   .tab .ic svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .tab .lb{font-size:11px;font-weight:700;color:var(--muted);transition:color .16s ease}
-  .tab.on .ic{opacity:0}
-  .tab.on .lb{color:var(--amber-deep)}
+  .tab.on .ic{opacity:0} .tab.on .lb{color:var(--amber-deep)}
   .foot{margin-top:24px;font-size:11.5px;color:var(--muted);text-align:center;max-width:440px;line-height:1.55}
   .foot b{color:var(--amber-deep)}
 </style>
 </head>
 <body>
-  <div class="eyebrow">Kanji Atlas · alt nav · v5 · gömülü + sabit ikon</div>
-  <h1>Cebe gömülü jel</h1>
-  <p class="lead">Top artık barın üst kenarındaki yumuşak cebe yarı gömülü. İkon sabit ve net — titreme yok. Sekmeye dokun ya da topu sürükle.</p>
+  <div class="eyebrow">Kanji Atlas · alt nav · v6 · jiggle yok</div>
+  <h1>İki doz — magnetik, jiggle'sız</h1>
+  <p class="lead">İkisi de: jiggle yok, hafif esneme, magnetik yerleşme, sabit ikon, gömülü top. Fark yalnız esneme dozu.</p>
 
-  <div class="phone">
-    <div class="screen">
-      <div class="st">Kana</div>
-      <div class="card"></div><div class="card sm"></div><div class="card sm"></div>
-      <div class="hint">↓ dokun ya da sürükle</div>
-    </div>
-    <div class="nav" id="nav">
-      <svg id="svg" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="gel" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#E6A45C"/><stop offset="1" stop-color="#C9762F"/>
-          </linearGradient>
-          <filter id="sh" x="-50%" y="-50%" width="200%" height="200%">
-            <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#B5651F" flood-opacity="0.42"/>
-          </filter>
-        </defs>
-        <path id="bar" fill="var(--card)" stroke="var(--line)" stroke-width="1"></path>
-        <g filter="url(#sh)">
-          <ellipse id="ball" fill="url(#gel)"></ellipse>
-        </g>
-        <ellipse id="hl" fill="#fff" opacity="0.34"></ellipse>
-      </svg>
-      <div class="icon" id="icon"></div>
-      <div class="tabs" id="tabs"></div>
-    </div>
+  <div class="block">
+    <div class="btag">SAKİN <span>· çok hafif esneme</span></div>
+    <div class="dev"><div class="filler"><div class="l a"></div><div class="l b"></div><div class="l c"></div></div><div class="nav" id="navA"></div></div>
   </div>
-  <p class="foot"><b>Değişen:</b> ikon sabit/net (titreme gitti) · top cebe gömülü · net SVG oyuk (goo yok) · yumuşatılmış jel deformasyonu. Dokunma birincil, sürükleme bonus. Doz (canlılık) buradan ince ayarlanır. İkonlar geçici.</p>
+  <div class="block">
+    <div class="btag">CANLI <span>· biraz daha esneme</span></div>
+    <div class="dev"><div class="filler"><div class="l a"></div><div class="l b"></div><div class="l c"></div></div><div class="nav" id="navB"></div></div>
+  </div>
+
+  <p class="foot"><b>Dokun</b> → topu o sekmeye magnetik çeker · <b>sürükle</b> → parmağı takip eder, bırakınca en yakına oturur. Overshoot/jiggle YOK. Android'de hafif titreşim. İkonlar geçici.</p>
 
   <script>
-  (function(){
-    var ICONS=[
-      '<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5.5"/><path d="M9.5 9c2.2 0 3.6 1.1 3.6 2.8 0 1.6-1.4 2.4-2.3 3.4"/></svg>',
-      '<svg viewBox="0 0 24 24"><circle cx="7" cy="8" r="1.9"/><circle cx="16.5" cy="7" r="1.9"/><circle cx="12" cy="16.5" r="1.9"/><path d="M8.7 9.4l2.4 5M14.6 8.5l-1.8 6M9 8h5.6"/></svg>',
-      '<svg viewBox="0 0 24 24"><path d="M5 19l1.8-4.8L16 5l3 3-9.2 9.2L5 19z"/><path d="M14 7l3 3"/></svg>',
-      '<svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="9.5" rx="4.5"/><path d="M8 12.7h3.2M9.6 11.1v3.2"/><circle cx="16" cy="12.3" r="1.05"/><circle cx="18" cy="14.3" r="1.05"/></svg>'
-    ];
-    var LB=['Kana','Kanji','Yazı','Oyunlar'], N=4;
-    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var nav=document.getElementById('nav'), svg=document.getElementById('svg'),
-        bar=document.getElementById('bar'), ball=document.getElementById('ball'),
-        hl=document.getElementById('hl'), icon=document.getElementById('icon'),
-        tabsEl=document.getElementById('tabs');
+  var ICONS=[
+    '<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5.5"/><path d="M9.5 9c2.2 0 3.6 1.1 3.6 2.8 0 1.6-1.4 2.4-2.3 3.4"/></svg>',
+    '<svg viewBox="0 0 24 24"><circle cx="7" cy="8" r="1.9"/><circle cx="16.5" cy="7" r="1.9"/><circle cx="12" cy="16.5" r="1.9"/><path d="M8.7 9.4l2.4 5M14.6 8.5l-1.8 6M9 8h5.6"/></svg>',
+    '<svg viewBox="0 0 24 24"><path d="M5 19l1.8-4.8L16 5l3 3-9.2 9.2L5 19z"/><path d="M14 7l3 3"/></svg>',
+    '<svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="9.5" rx="4.5"/><path d="M8 12.7h3.2M9.6 11.1v3.2"/><circle cx="16" cy="12.3" r="1.05"/><circle cx="18" cy="14.3" r="1.05"/></svg>'
+  ];
+  var LB=['Kana','Kanji','Yazı','Oyunlar'], N=4;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function now(){ return (window.performance&&performance.now)?performance.now():Date.now(); }
+  function easeOut(t){ return 1-Math.pow(1-t,3); }   // monoton — overshoot/jiggle YOK
+
+  function createNav(root, id, P){
+    var H=88, EDGE=32, DEPTH=25, HALF=32, R=22, BALLY=EDGE+4;
+    root.innerHTML =
+      '<svg id="'+id+'svg" preserveAspectRatio="none"><defs>'+
+        '<linearGradient id="'+id+'g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6A45C"/><stop offset="1" stop-color="#C9762F"/></linearGradient>'+
+        '<filter id="'+id+'s" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#B5651F" flood-opacity="0.4"/></filter>'+
+      '</defs>'+
+      '<path id="'+id+'bar" fill="#fff" stroke="#E6DCCB" stroke-width="1"></path>'+
+      '<g filter="url(#'+id+'s)"><ellipse id="'+id+'ball" fill="url(#'+id+'g)"></ellipse></g>'+
+      '<ellipse id="'+id+'hl" fill="#fff" opacity="0.32"></ellipse>'+
+      '<div></div>';
+    var svg=document.getElementById(id+'svg'), bar=document.getElementById(id+'bar'),
+        ball=document.getElementById(id+'ball'), hl=document.getElementById(id+'hl');
+    var icon=document.createElement('div'); icon.className='icon';
+    var tabsEl=document.createElement('div'); tabsEl.className='tabs';
     tabsEl.innerHTML=LB.map(function(l,i){return '<div class="tab"><span class="ic">'+ICONS[i]+'</span><span class="lb">'+l+'</span></div>';}).join('');
+    root.appendChild(icon); root.appendChild(tabsEl);
     var tabs=tabsEl.children;
 
-    var H=90, EDGE=34, DEPTH=26, HALF=33, R=23;   // geometri: bar üst kenarı, cep derinliği/yarıçap, top R
-    var BALLY=EDGE+4;                              // top merkezi kenarın hafif ALTINDA → gömülü
-    var W=0, slot=0, cx=0, v=0, svel=0, active=-1, dragging=false, prevCx=0, raf=null, target=0;
-
+    var W=0, slot=0, cx=0, prevCx=0, svel=0, active=-1;
+    var dragging=false, startX=0, moved=false, tw=null;
     function center(i){ return slot*i+slot/2; }
     function clamp(x){ return Math.max(slot/2, Math.min(W-slot/2, x)); }
-    function layout(){ W=nav.clientWidth; slot=W/N; svg.setAttribute('viewBox','0 0 '+W+' '+H);
-      cx=center(0); target=cx; prevCx=cx; draw(0); setActive(0); }
-    function setActive(i){ if(i===active)return; active=i;
-      for(var k=0;k<N;k++) tabs[k].classList.toggle('on',k===i);
-      icon.innerHTML=ICONS[i]; try{if(navigator.vibrate)navigator.vibrate(reduce?0:9);}catch(e){} }
+    function nearest(){ return Math.max(0,Math.min(N-1,Math.round((cx-slot/2)/slot))); }
+    function layout(){ W=root.clientWidth; slot=W/N; svg.setAttribute('viewBox','0 0 '+W+' '+H); cx=center(0); prevCx=cx; render(0); setActive(0); }
+    function setActive(i){ if(i===active)return; active=i; for(var k=0;k<N;k++) tabs[k].classList.toggle('on',k===i);
+      icon.innerHTML=ICONS[i]; try{if(navigator.vibrate)navigator.vibrate(reduce?0:8);}catch(e){} }
 
-    function draw(vel){
-      // yumuşatılmış hız → titreme yok; ölü bölge küçük hareketleri yutar
-      svel = svel*0.82 + vel*0.18;
-      var av=Math.abs(svel); if(av<0.5) av=0;
-      var stretch=Math.min(0.16, av*0.010);       // yalnız TOP deforme; ikon değil
+    function render(vel){
+      svel=svel*0.8+vel*0.2; var av=Math.abs(svel); if(av<0.5)av=0;
+      var stretch=Math.min(P.maxS, av*P.k);
       var rx=R*(1+stretch), ry=R*(1-stretch*0.6);
-      // bar: cx'te yumuşak aşağı cep (crisp SVG)
-      var pb=EDGE+DEPTH, lagX=cx - svel*0.14;      // cep hafif geride (drip hissi)
-      var d='M0,'+EDGE
-        +' L'+(lagX-HALF)+','+EDGE
+      var pb=EDGE+DEPTH, lagX=cx-svel*P.lag;
+      bar.setAttribute('d','M0,'+EDGE+' L'+(lagX-HALF)+','+EDGE
         +' C'+(lagX-HALF*0.42)+','+EDGE+' '+(lagX-R*0.82)+','+pb+' '+lagX+','+pb
         +' C'+(lagX+R*0.82)+','+pb+' '+(lagX+HALF*0.42)+','+EDGE+' '+(lagX+HALF)+','+EDGE
-        +' L'+W+','+EDGE+' L'+W+','+H+' L0,'+H+' Z';
-      bar.setAttribute('d',d);
-      ball.setAttribute('cx',cx); ball.setAttribute('cy',BALLY);
-      ball.setAttribute('rx',rx); ball.setAttribute('ry',ry);
-      hl.setAttribute('cx',cx); hl.setAttribute('cy',BALLY-ry*0.42);
-      hl.setAttribute('rx',rx*0.52); hl.setAttribute('ry',ry*0.30);
-      icon.style.left=cx+'px'; icon.style.top=BALLY+'px';   // İKON SABİT (scale yok)
-      var near=Math.max(0,Math.min(N-1,Math.round((cx-slot/2)/slot)));
-      setActive(near);
+        +' L'+W+','+EDGE+' L'+W+','+H+' L0,'+H+' Z');
+      ball.setAttribute('cx',cx); ball.setAttribute('cy',BALLY); ball.setAttribute('rx',rx); ball.setAttribute('ry',ry);
+      hl.setAttribute('cx',cx); hl.setAttribute('cy',BALLY-ry*0.42); hl.setAttribute('rx',rx*0.52); hl.setAttribute('ry',ry*0.30);
+      icon.style.left=cx+'px'; icon.style.top=BALLY+'px';   // ikon SABİT
+      setActive(nearest());
     }
-
-    function tick(){
-      if(!dragging){ v+=(target-cx)*(reduce?0.22:0.17); v*=(reduce?0.78:0.80); cx+=v;
-        if(Math.abs(v)<0.04 && Math.abs(target-cx)<0.4){ cx=target; v=0; svel=0; draw(0); raf=null; return; } }
-      else v=cx-prevCx;
-      prevCx=cx; draw(v); raf=requestAnimationFrame(tick);
+    function tweenTo(tx){
+      var from=cx, t0=now(), dur=P.dur; if(tw)cancelAnimationFrame(tw);
+      (function step(){
+        var t=Math.min(1,(now()-t0)/dur), nx=from+(tx-from)*easeOut(t);
+        var vel=nx-cx; cx=nx; render(vel);
+        if(t<1) tw=requestAnimationFrame(step); else { cx=tx; svel=0; render(0); tw=null; }
+      })();
     }
-    function kick(){ if(!raf) raf=requestAnimationFrame(tick); }
-    function xOf(e){ return (e.touches?e.touches[0].clientX:e.clientX)-nav.getBoundingClientRect().left; }
-    function down(e){ dragging=true; cx=clamp(xOf(e)); prevCx=cx; kick(); e.preventDefault(); }
-    function move(e){ if(!dragging)return; cx=clamp(xOf(e)); kick(); e.preventDefault(); }
-    function up(){ if(!dragging)return; dragging=false;
-      target=center(Math.max(0,Math.min(N-1,Math.round((cx-slot/2)/slot)))); kick(); }
-    nav.addEventListener('pointerdown',down); window.addEventListener('pointermove',move); window.addEventListener('pointerup',up);
-    nav.addEventListener('touchstart',down,{passive:false}); window.addEventListener('touchmove',move,{passive:false}); window.addEventListener('touchend',up);
+    function xOf(e){ return (e.touches?e.touches[0].clientX:e.clientX)-root.getBoundingClientRect().left; }
+    function down(e){ dragging=true; moved=false; startX=xOf(e); prevCx=cx; if(tw){cancelAnimationFrame(tw);tw=null;} }
+    function move(e){ if(!dragging)return; var x=xOf(e); if(Math.abs(x-startX)>7)moved=true;
+      if(moved){ cx=clamp(x); var vel=cx-prevCx; prevCx=cx; render(vel); e.preventDefault(); } }
+    function up(e){ if(!dragging)return; dragging=false;
+      if(moved){ tweenTo(center(nearest())); }
+      else { var i=Math.max(0,Math.min(N-1,Math.floor(startX/slot))); tweenTo(center(i)); } }  // tap → magnetik
+    root.addEventListener('pointerdown',down); window.addEventListener('pointermove',move); window.addEventListener('pointerup',up);
+    root.addEventListener('touchstart',down,{passive:false}); window.addEventListener('touchmove',move,{passive:false}); window.addEventListener('touchend',up);
     window.addEventListener('resize',layout);
     layout();
-  })();
+  }
+  createNav(document.getElementById('navA'),'A', reduce?{dur:180,maxS:0,k:0,lag:0}:{dur:330,maxS:0.07,k:0.008,lag:0.06});
+  createNav(document.getElementById('navB'),'B', reduce?{dur:180,maxS:0,k:0,lag:0}:{dur:300,maxS:0.15,k:0.015,lag:0.14});
   </script>
 </body>
 </html>
