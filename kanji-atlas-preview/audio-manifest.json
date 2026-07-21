@@ -21,7 +21,7 @@
  },
  "entries": [
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_a",
    "kategori": "kana",
@@ -31,7 +31,7 @@
    "ses_dosyasi": "audio/kana/a.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_i",
    "kategori": "kana",
@@ -41,7 +41,7 @@
    "ses_dosyasi": "audio/kana/i.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_u",
    "kategori": "kana",
@@ -51,7 +51,7 @@
    "ses_dosyasi": "audio/kana/u.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_e",
    "kategori": "kana",
@@ -61,7 +61,7 @@
    "ses_dosyasi": "audio/kana/e.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_o",
    "kategori": "kana",
@@ -71,7 +71,7 @@
    "ses_dosyasi": "audio/kana/o.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_ka",
    "kategori": "kana",
@@ -87,10 +87,11 @@
    "kaynak": "yeni",
    "metin": "き",
    "okunus": "ki",
-   "ses_dosyasi": "audio/kana/ki.mp3"
+   "ses_dosyasi": "audio/kana/ki.mp3",
+   "dogrulanmali": false
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_ku",
    "kategori": "kana",
@@ -100,7 +101,7 @@
    "ses_dosyasi": "audio/kana/ku.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_ke",
    "kategori": "kana",
@@ -116,10 +117,11 @@
    "kaynak": "yeni",
    "metin": "こ",
    "okunus": "ko",
-   "ses_dosyasi": "audio/kana/ko.mp3"
+   "ses_dosyasi": "audio/kana/ko.mp3",
+   "dogrulanmali": false
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_sa",
    "kategori": "kana",
@@ -129,7 +131,7 @@
    "ses_dosyasi": "audio/kana/sa.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_shi",
    "kategori": "kana",
@@ -139,7 +141,7 @@
    "ses_dosyasi": "audio/kana/shi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_su",
    "kategori": "kana",
@@ -149,7 +151,7 @@
    "ses_dosyasi": "audio/kana/su.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_se",
    "kategori": "kana",
@@ -159,7 +161,7 @@
    "ses_dosyasi": "audio/kana/se.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_so",
    "kategori": "kana",
@@ -175,10 +177,11 @@
    "kaynak": "yeni",
    "metin": "た",
    "okunus": "ta",
-   "ses_dosyasi": "audio/kana/ta.mp3"
+   "ses_dosyasi": "audio/kana/ta.mp3",
+   "dogrulanmali": false
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_chi",
    "kategori": "kana",
@@ -188,7 +191,7 @@
    "ses_dosyasi": "audio/kana/chi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_tsu",
    "kategori": "kana",
@@ -204,10 +207,11 @@
    "kaynak": "yeni",
    "metin": "て",
    "okunus": "te",
-   "ses_dosyasi": "audio/kana/te.mp3"
+   "ses_dosyasi": "audio/kana/te.mp3",
+   "dogrulanmali": false
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_to",
    "kategori": "kana",
@@ -223,7 +227,8 @@
    "kaynak": "yeni",
    "metin": "な",
    "okunus": "na",
-   "ses_dosyasi": "audio/kana/na.mp3"
+   "ses_dosyasi": "audio/kana/na.mp3",
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -232,10 +237,11 @@
    "kaynak": "yeni",
    "metin": "に",
    "okunus": "ni",
-   "ses_dosyasi": "audio/kana/ni.mp3"
+   "ses_dosyasi": "audio/kana/ni.mp3",
+   "dogrulanmali": false
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_nu",
    "kategori": "kana",
@@ -245,7 +251,7 @@
    "ses_dosyasi": "audio/kana/nu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_ne",
    "kategori": "kana",
@@ -255,7 +261,7 @@
    "ses_dosyasi": "audio/kana/ne.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_no",
    "kategori": "kana",
@@ -271,7 +277,8 @@
    "kaynak": "yeni",
    "metin": "は",
    "okunus": "ha",
-   "ses_dosyasi": "audio/kana/ha.mp3"
+   "ses_dosyasi": "audio/kana/ha.mp3",
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -280,10 +287,11 @@
    "kaynak": "yeni",
    "metin": "ひ",
    "okunus": "hi",
-   "ses_dosyasi": "audio/kana/hi.mp3"
+   "ses_dosyasi": "audio/kana/hi.mp3",
+   "dogrulanmali": false
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_fu",
    "kategori": "kana",
@@ -293,7 +301,7 @@
    "ses_dosyasi": "audio/kana/fu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_he",
    "kategori": "kana",
@@ -303,7 +311,7 @@
    "ses_dosyasi": "audio/kana/he.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_ho",
    "kategori": "kana",
@@ -313,7 +321,7 @@
    "ses_dosyasi": "audio/kana/ho.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_ma",
    "kategori": "kana",
@@ -323,7 +331,7 @@
    "ses_dosyasi": "audio/kana/ma.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_mi",
    "kategori": "kana",
@@ -333,7 +341,7 @@
    "ses_dosyasi": "audio/kana/mi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_mu",
    "kategori": "kana",
@@ -349,10 +357,11 @@
    "kaynak": "yeni",
    "metin": "め",
    "okunus": "me",
-   "ses_dosyasi": "audio/kana/me.mp3"
+   "ses_dosyasi": "audio/kana/me.mp3",
+   "dogrulanmali": false
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_mo",
    "kategori": "kana",
@@ -362,7 +371,7 @@
    "ses_dosyasi": "audio/kana/mo.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_ya",
    "kategori": "kana",
@@ -372,7 +381,7 @@
    "ses_dosyasi": "audio/kana/ya.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_yu",
    "kategori": "kana",
@@ -382,7 +391,7 @@
    "ses_dosyasi": "audio/kana/yu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_yo",
    "kategori": "kana",
@@ -392,7 +401,7 @@
    "ses_dosyasi": "audio/kana/yo.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_ra",
    "kategori": "kana",
@@ -402,7 +411,7 @@
    "ses_dosyasi": "audio/kana/ra.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_ri",
    "kategori": "kana",
@@ -412,7 +421,7 @@
    "ses_dosyasi": "audio/kana/ri.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_ru",
    "kategori": "kana",
@@ -422,7 +431,7 @@
    "ses_dosyasi": "audio/kana/ru.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_re",
    "kategori": "kana",
@@ -432,7 +441,7 @@
    "ses_dosyasi": "audio/kana/re.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_ro",
    "kategori": "kana",
@@ -442,7 +451,7 @@
    "ses_dosyasi": "audio/kana/ro.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_wa",
    "kategori": "kana",
@@ -452,7 +461,7 @@
    "ses_dosyasi": "audio/kana/wa.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_wo",
    "kategori": "kana",
@@ -462,7 +471,7 @@
    "ses_dosyasi": "audio/kana/wo.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_hira_n",
    "kategori": "kana",
@@ -472,7 +481,7 @@
    "ses_dosyasi": "audio/kana/n.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_a",
    "kategori": "kana",
@@ -482,7 +491,7 @@
    "ses_dosyasi": "audio/kana/a.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_i",
    "kategori": "kana",
@@ -492,7 +501,7 @@
    "ses_dosyasi": "audio/kana/i.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_u",
    "kategori": "kana",
@@ -502,7 +511,7 @@
    "ses_dosyasi": "audio/kana/u.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_e",
    "kategori": "kana",
@@ -512,7 +521,7 @@
    "ses_dosyasi": "audio/kana/e.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_o",
    "kategori": "kana",
@@ -522,7 +531,7 @@
    "ses_dosyasi": "audio/kana/o.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_ka",
    "kategori": "kana",
@@ -538,10 +547,11 @@
    "kaynak": "yeni",
    "metin": "キ",
    "okunus": "ki",
-   "ses_dosyasi": "audio/kana/ki.mp3"
+   "ses_dosyasi": "audio/kana/ki.mp3",
+   "dogrulanmali": false
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_ku",
    "kategori": "kana",
@@ -551,7 +561,7 @@
    "ses_dosyasi": "audio/kana/ku.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_ke",
    "kategori": "kana",
@@ -567,10 +577,11 @@
    "kaynak": "yeni",
    "metin": "コ",
    "okunus": "ko",
-   "ses_dosyasi": "audio/kana/ko.mp3"
+   "ses_dosyasi": "audio/kana/ko.mp3",
+   "dogrulanmali": false
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_sa",
    "kategori": "kana",
@@ -580,7 +591,7 @@
    "ses_dosyasi": "audio/kana/sa.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_shi",
    "kategori": "kana",
@@ -590,7 +601,7 @@
    "ses_dosyasi": "audio/kana/shi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_su",
    "kategori": "kana",
@@ -600,7 +611,7 @@
    "ses_dosyasi": "audio/kana/su.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_se",
    "kategori": "kana",
@@ -610,7 +621,7 @@
    "ses_dosyasi": "audio/kana/se.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_so",
    "kategori": "kana",
@@ -626,10 +637,11 @@
    "kaynak": "yeni",
    "metin": "タ",
    "okunus": "ta",
-   "ses_dosyasi": "audio/kana/ta.mp3"
+   "ses_dosyasi": "audio/kana/ta.mp3",
+   "dogrulanmali": false
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_chi",
    "kategori": "kana",
@@ -639,7 +651,7 @@
    "ses_dosyasi": "audio/kana/chi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_tsu",
    "kategori": "kana",
@@ -655,10 +667,11 @@
    "kaynak": "yeni",
    "metin": "テ",
    "okunus": "te",
-   "ses_dosyasi": "audio/kana/te.mp3"
+   "ses_dosyasi": "audio/kana/te.mp3",
+   "dogrulanmali": false
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_to",
    "kategori": "kana",
@@ -674,7 +687,8 @@
    "kaynak": "yeni",
    "metin": "ナ",
    "okunus": "na",
-   "ses_dosyasi": "audio/kana/na.mp3"
+   "ses_dosyasi": "audio/kana/na.mp3",
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -683,10 +697,11 @@
    "kaynak": "yeni",
    "metin": "ニ",
    "okunus": "ni",
-   "ses_dosyasi": "audio/kana/ni.mp3"
+   "ses_dosyasi": "audio/kana/ni.mp3",
+   "dogrulanmali": false
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_nu",
    "kategori": "kana",
@@ -696,7 +711,7 @@
    "ses_dosyasi": "audio/kana/nu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_ne",
    "kategori": "kana",
@@ -706,7 +721,7 @@
    "ses_dosyasi": "audio/kana/ne.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_no",
    "kategori": "kana",
@@ -722,7 +737,8 @@
    "kaynak": "yeni",
    "metin": "ハ",
    "okunus": "ha",
-   "ses_dosyasi": "audio/kana/ha.mp3"
+   "ses_dosyasi": "audio/kana/ha.mp3",
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -731,10 +747,11 @@
    "kaynak": "yeni",
    "metin": "ヒ",
    "okunus": "hi",
-   "ses_dosyasi": "audio/kana/hi.mp3"
+   "ses_dosyasi": "audio/kana/hi.mp3",
+   "dogrulanmali": false
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_fu",
    "kategori": "kana",
@@ -744,7 +761,7 @@
    "ses_dosyasi": "audio/kana/fu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_he",
    "kategori": "kana",
@@ -754,7 +771,7 @@
    "ses_dosyasi": "audio/kana/he.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_ho",
    "kategori": "kana",
@@ -764,7 +781,7 @@
    "ses_dosyasi": "audio/kana/ho.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_ma",
    "kategori": "kana",
@@ -774,7 +791,7 @@
    "ses_dosyasi": "audio/kana/ma.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_mi",
    "kategori": "kana",
@@ -784,7 +801,7 @@
    "ses_dosyasi": "audio/kana/mi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_mu",
    "kategori": "kana",
@@ -800,10 +817,11 @@
    "kaynak": "yeni",
    "metin": "メ",
    "okunus": "me",
-   "ses_dosyasi": "audio/kana/me.mp3"
+   "ses_dosyasi": "audio/kana/me.mp3",
+   "dogrulanmali": false
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_mo",
    "kategori": "kana",
@@ -813,7 +831,7 @@
    "ses_dosyasi": "audio/kana/mo.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_ya",
    "kategori": "kana",
@@ -823,7 +841,7 @@
    "ses_dosyasi": "audio/kana/ya.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_yu",
    "kategori": "kana",
@@ -833,7 +851,7 @@
    "ses_dosyasi": "audio/kana/yu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_yo",
    "kategori": "kana",
@@ -843,7 +861,7 @@
    "ses_dosyasi": "audio/kana/yo.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_ra",
    "kategori": "kana",
@@ -853,7 +871,7 @@
    "ses_dosyasi": "audio/kana/ra.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_ri",
    "kategori": "kana",
@@ -863,7 +881,7 @@
    "ses_dosyasi": "audio/kana/ri.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_ru",
    "kategori": "kana",
@@ -873,7 +891,7 @@
    "ses_dosyasi": "audio/kana/ru.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_re",
    "kategori": "kana",
@@ -883,7 +901,7 @@
    "ses_dosyasi": "audio/kana/re.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_ro",
    "kategori": "kana",
@@ -893,7 +911,7 @@
    "ses_dosyasi": "audio/kana/ro.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_wa",
    "kategori": "kana",
@@ -903,7 +921,7 @@
    "ses_dosyasi": "audio/kana/wa.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_wo",
    "kategori": "kana",
@@ -913,7 +931,7 @@
    "ses_dosyasi": "audio/kana/wo.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kana_kata_n",
    "kategori": "kana",
@@ -923,7 +941,7 @@
    "ses_dosyasi": "audio/kana/n.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_ichi",
    "kategori": "kanji",
@@ -933,7 +951,7 @@
    "ses_dosyasi": "audio/word/ichi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_ni",
    "kategori": "kanji",
@@ -943,7 +961,7 @@
    "ses_dosyasi": "audio/kana/ni.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_san",
    "kategori": "kanji",
@@ -953,7 +971,7 @@
    "ses_dosyasi": "audio/word/san.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_hito",
    "kategori": "kanji",
@@ -993,7 +1011,7 @@
    "ses_dosyasi": "audio/kanji/otto.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_ki",
    "kategori": "kanji",
@@ -1013,7 +1031,7 @@
    "ses_dosyasi": "audio/kanji/hayashi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_mori",
    "kategori": "kanji",
@@ -1023,7 +1041,7 @@
    "ses_dosyasi": "audio/word/mori.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_hon",
    "kategori": "kanji",
@@ -1033,7 +1051,7 @@
    "ses_dosyasi": "audio/word/hon.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_yasumu",
    "kategori": "kanji",
@@ -1043,7 +1061,7 @@
    "ses_dosyasi": "audio/word/yasumu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_hi",
    "kategori": "kanji",
@@ -1053,7 +1071,7 @@
    "ses_dosyasi": "audio/kana/hi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_tsuki",
    "kategori": "kanji",
@@ -1063,7 +1081,7 @@
    "ses_dosyasi": "audio/word/tsuki.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_akarui",
    "kategori": "kanji",
@@ -1083,7 +1101,7 @@
    "ses_dosyasi": "audio/kanji/toki.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_hareru",
    "kategori": "kanji",
@@ -1093,7 +1111,7 @@
    "ses_dosyasi": "audio/kana/ha.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_ko",
    "kategori": "kanji",
@@ -1113,7 +1131,7 @@
    "ses_dosyasi": "audio/kanji/gaku.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_ki2",
    "kategori": "kanji",
@@ -1133,7 +1151,7 @@
    "ses_dosyasi": "audio/kanji/onna.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_mizu",
    "kategori": "kanji",
@@ -1143,7 +1161,7 @@
    "ses_dosyasi": "audio/word/mizu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_hi2",
    "kategori": "kanji",
@@ -1153,7 +1171,7 @@
    "ses_dosyasi": "audio/kana/hi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_yama",
    "kategori": "kanji",
@@ -1163,7 +1181,7 @@
    "ses_dosyasi": "audio/word/yama.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_kawa",
    "kategori": "kanji",
@@ -1173,7 +1191,7 @@
    "ses_dosyasi": "audio/word/kawa.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_kuchi",
    "kategori": "kanji",
@@ -1183,7 +1201,7 @@
    "ses_dosyasi": "audio/word/kuchi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_ta",
    "kategori": "kanji",
@@ -1213,7 +1231,7 @@
    "ses_dosyasi": "audio/kanji/tama.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_yon",
    "kategori": "kanji",
@@ -1223,7 +1241,7 @@
    "ses_dosyasi": "audio/word/yon.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_go",
    "kategori": "kanji",
@@ -1233,7 +1251,7 @@
    "ses_dosyasi": "audio/kana/go.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_roku",
    "kategori": "kanji",
@@ -1243,7 +1261,7 @@
    "ses_dosyasi": "audio/word/roku.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_nana",
    "kategori": "kanji",
@@ -1253,7 +1271,7 @@
    "ses_dosyasi": "audio/word/nana.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_hachi",
    "kategori": "kanji",
@@ -1263,7 +1281,7 @@
    "ses_dosyasi": "audio/word/hachi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_kyuu",
    "kategori": "kanji",
@@ -1273,7 +1291,7 @@
    "ses_dosyasi": "audio/word/kyuu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_juu",
    "kategori": "kanji",
@@ -1283,7 +1301,7 @@
    "ses_dosyasi": "audio/word/juu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_hyaku",
    "kategori": "kanji",
@@ -1293,7 +1311,7 @@
    "ses_dosyasi": "audio/word/hyaku.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_sen",
    "kategori": "kanji",
@@ -1303,7 +1321,7 @@
    "ses_dosyasi": "audio/word/sen.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_man",
    "kategori": "kanji",
@@ -1333,7 +1351,7 @@
    "ses_dosyasi": "audio/kanji/kin.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_do",
    "kategori": "kanji",
@@ -1373,7 +1391,7 @@
    "ses_dosyasi": "audio/kanji/han.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_ima",
    "kategori": "kanji",
@@ -1383,7 +1401,7 @@
    "ses_dosyasi": "audio/word/ima.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_ame",
    "kategori": "kanji",
@@ -1393,7 +1411,7 @@
    "ses_dosyasi": "audio/word/ame.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_ki3",
    "kategori": "kanji",
@@ -1413,7 +1431,7 @@
    "ses_dosyasi": "audio/kanji/otoko.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_haha",
    "kategori": "kanji",
@@ -1423,7 +1441,7 @@
    "ses_dosyasi": "audio/word/haha.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_chichi",
    "kategori": "kanji",
@@ -1443,7 +1461,7 @@
    "ses_dosyasi": "audio/kanji/tomo.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_me",
    "kategori": "kanji",
@@ -1453,7 +1471,7 @@
    "ses_dosyasi": "audio/kana/me.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_mimi",
    "kategori": "kanji",
@@ -1463,7 +1481,7 @@
    "ses_dosyasi": "audio/word/mimi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_te",
    "kategori": "kanji",
@@ -1473,7 +1491,7 @@
    "ses_dosyasi": "audio/kana/te.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_ashi",
    "kategori": "kanji",
@@ -1483,7 +1501,7 @@
    "ses_dosyasi": "audio/word/ashi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_ue",
    "kategori": "kanji",
@@ -1493,7 +1511,7 @@
    "ses_dosyasi": "audio/word/ue.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_shita",
    "kategori": "kanji",
@@ -1503,7 +1521,7 @@
    "ses_dosyasi": "audio/word/shita.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_naka",
    "kategori": "kanji",
@@ -1523,7 +1541,7 @@
    "ses_dosyasi": "audio/kanji/shou.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_migi",
    "kategori": "kanji",
@@ -1533,7 +1551,7 @@
    "ses_dosyasi": "audio/word/migi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_hidari",
    "kategori": "kanji",
@@ -1543,7 +1561,7 @@
    "ses_dosyasi": "audio/word/hidari.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_mae",
    "kategori": "kanji",
@@ -1563,7 +1581,7 @@
    "ses_dosyasi": "audio/kanji/ato.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_higashi",
    "kategori": "kanji",
@@ -1573,7 +1591,7 @@
    "ses_dosyasi": "audio/word/higashi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_nishi",
    "kategori": "kanji",
@@ -1583,7 +1601,7 @@
    "ses_dosyasi": "audio/word/nishi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_minami",
    "kategori": "kanji",
@@ -1593,7 +1611,7 @@
    "ses_dosyasi": "audio/word/minami.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_kita",
    "kategori": "kanji",
@@ -1603,7 +1621,7 @@
    "ses_dosyasi": "audio/word/kita.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_shiro",
    "kategori": "kanji",
@@ -1613,7 +1631,7 @@
    "ses_dosyasi": "audio/word/shiro.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_aka",
    "kategori": "kanji",
@@ -1623,7 +1641,7 @@
    "ses_dosyasi": "audio/word/aka.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_ao",
    "kategori": "kanji",
@@ -1633,7 +1651,7 @@
    "ses_dosyasi": "audio/word/ao.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_saki",
    "kategori": "kanji",
@@ -1663,7 +1681,7 @@
    "ses_dosyasi": "audio/kanji/kou.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_na",
    "kategori": "kanji",
@@ -1673,7 +1691,7 @@
    "ses_dosyasi": "audio/kana/na.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_gengo",
    "kategori": "kanji",
@@ -1683,7 +1701,7 @@
    "ses_dosyasi": "audio/kana/go.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_iku",
    "kategori": "kanji",
@@ -1693,7 +1711,7 @@
    "ses_dosyasi": "audio/word/iku.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_kuru",
    "kategori": "kanji",
@@ -1703,7 +1721,7 @@
    "ses_dosyasi": "audio/word/kuru.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_miru",
    "kategori": "kanji",
@@ -1713,7 +1731,7 @@
    "ses_dosyasi": "audio/word/miru.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_kiku",
    "kategori": "kanji",
@@ -1723,7 +1741,7 @@
    "ses_dosyasi": "audio/word/kiku.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_yomu",
    "kategori": "kanji",
@@ -1733,7 +1751,7 @@
    "ses_dosyasi": "audio/word/yomu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_kaku",
    "kategori": "kanji",
@@ -1743,7 +1761,7 @@
    "ses_dosyasi": "audio/word/kaku.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_taberu",
    "kategori": "kanji",
@@ -1753,7 +1771,7 @@
    "ses_dosyasi": "audio/word/taberu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_nomu",
    "kategori": "kanji",
@@ -1763,7 +1781,7 @@
    "ses_dosyasi": "audio/word/nomu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_hanasu",
    "kategori": "kanji",
@@ -1773,7 +1791,7 @@
    "ses_dosyasi": "audio/word/hanasu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_kau",
    "kategori": "kanji",
@@ -1783,7 +1801,7 @@
    "ses_dosyasi": "audio/word/kau.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_soto",
    "kategori": "kanji",
@@ -1793,7 +1811,7 @@
    "ses_dosyasi": "audio/word/soto.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_kuni",
    "kategori": "kanji",
@@ -1803,7 +1821,7 @@
    "ses_dosyasi": "audio/word/kuni.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_kuruma",
    "kategori": "kanji",
@@ -1823,7 +1841,7 @@
    "ses_dosyasi": "audio/kanji/den.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "kanji_nani",
    "kategori": "kanji",
@@ -1833,7 +1851,7 @@
    "ses_dosyasi": "audio/word/nani.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_ohayou",
    "kategori": "word",
@@ -1843,7 +1861,7 @@
    "ses_dosyasi": "audio/word/ohayou.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_konnichiwa",
    "kategori": "word",
@@ -1853,7 +1871,7 @@
    "ses_dosyasi": "audio/word/konnichiwa.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_konbanwa",
    "kategori": "word",
@@ -1863,7 +1881,7 @@
    "ses_dosyasi": "audio/word/konbanwa.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_arigatou",
    "kategori": "word",
@@ -1873,7 +1891,7 @@
    "ses_dosyasi": "audio/word/arigatou.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_sumimasen",
    "kategori": "word",
@@ -1883,7 +1901,7 @@
    "ses_dosyasi": "audio/word/sumimasen.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_sayounara",
    "kategori": "word",
@@ -1893,7 +1911,7 @@
    "ses_dosyasi": "audio/word/sayounara.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_hai",
    "kategori": "word",
@@ -1903,7 +1921,7 @@
    "ses_dosyasi": "audio/word/hai.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_iie",
    "kategori": "word",
@@ -1943,7 +1961,7 @@
    "ses_dosyasi": "audio/word/mittsu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_hyaku_w",
    "kategori": "word",
@@ -1953,7 +1971,7 @@
    "ses_dosyasi": "audio/word/hyaku.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_sen_w",
    "kategori": "word",
@@ -1963,7 +1981,7 @@
    "ses_dosyasi": "audio/word/sen.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_man_w",
    "kategori": "word",
@@ -1973,7 +1991,7 @@
    "ses_dosyasi": "audio/word/man.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_ima_w",
    "kategori": "word",
@@ -2013,7 +2031,7 @@
    "ses_dosyasi": "audio/word/han.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_mainichi",
    "kategori": "word",
@@ -2023,7 +2041,7 @@
    "ses_dosyasi": "audio/word/mainichi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_kyou",
    "kategori": "word",
@@ -2033,7 +2051,7 @@
    "ses_dosyasi": "audio/word/kyou.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_getsuyoubi",
    "kategori": "word",
@@ -2043,7 +2061,7 @@
    "ses_dosyasi": "audio/word/getsuyoubi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_suiyoubi",
    "kategori": "word",
@@ -2053,7 +2071,7 @@
    "ses_dosyasi": "audio/word/suiyoubi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_kinyoubi",
    "kategori": "word",
@@ -2063,7 +2081,7 @@
    "ses_dosyasi": "audio/word/kinyoubi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_nichiyoubi",
    "kategori": "word",
@@ -2073,7 +2091,7 @@
    "ses_dosyasi": "audio/word/nichiyoubi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_haha_w",
    "kategori": "word",
@@ -2083,7 +2101,7 @@
    "ses_dosyasi": "audio/word/haha.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_chichi_w",
    "kategori": "word",
@@ -2093,7 +2111,7 @@
    "ses_dosyasi": "audio/word/chichi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_tomodachi",
    "kategori": "word",
@@ -2123,7 +2141,7 @@
    "ses_dosyasi": "audio/word/otokonoko.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_hito_w",
    "kategori": "word",
@@ -2133,7 +2151,7 @@
    "ses_dosyasi": "audio/word/hito.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_sensei",
    "kategori": "word",
@@ -2143,7 +2161,7 @@
    "ses_dosyasi": "audio/word/sensei.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_gakusei",
    "kategori": "word",
@@ -2153,7 +2171,7 @@
    "ses_dosyasi": "audio/word/gakusei.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_namae",
    "kategori": "word",
@@ -2163,7 +2181,7 @@
    "ses_dosyasi": "audio/word/namae.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_gakkou",
    "kategori": "word",
@@ -2173,7 +2191,7 @@
    "ses_dosyasi": "audio/word/gakkou.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_hon_w",
    "kategori": "word",
@@ -2183,7 +2201,7 @@
    "ses_dosyasi": "audio/word/hon.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_nihongo",
    "kategori": "word",
@@ -2193,7 +2211,7 @@
    "ses_dosyasi": "audio/word/nihongo.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_mizu_w",
    "kategori": "word",
@@ -2203,7 +2221,7 @@
    "ses_dosyasi": "audio/word/mizu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_denwa",
    "kategori": "word",
@@ -2213,7 +2231,7 @@
    "ses_dosyasi": "audio/word/denwa.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_okane",
    "kategori": "word",
@@ -2223,7 +2241,7 @@
    "ses_dosyasi": "audio/word/okane.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_tokei",
    "kategori": "word",
@@ -2233,7 +2251,7 @@
    "ses_dosyasi": "audio/word/tokei.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_ocha",
    "kategori": "word",
@@ -2243,7 +2261,7 @@
    "ses_dosyasi": "audio/word/ocha.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_gohan",
    "kategori": "word",
@@ -2253,7 +2271,7 @@
    "ses_dosyasi": "audio/word/gohan.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_pan",
    "kategori": "word",
@@ -2263,7 +2281,7 @@
    "ses_dosyasi": "audio/word/pan.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_sakana",
    "kategori": "word",
@@ -2273,7 +2291,7 @@
    "ses_dosyasi": "audio/word/sakana.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_miruku",
    "kategori": "word",
@@ -2283,7 +2301,7 @@
    "ses_dosyasi": "audio/word/miruku.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_yama_w",
    "kategori": "word",
@@ -2293,7 +2311,7 @@
    "ses_dosyasi": "audio/word/yama.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_kawa_w",
    "kategori": "word",
@@ -2303,7 +2321,7 @@
    "ses_dosyasi": "audio/word/kawa.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_ame_w",
    "kategori": "word",
@@ -2333,7 +2351,7 @@
    "ses_dosyasi": "audio/word/ki.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_kuni_w",
    "kategori": "word",
@@ -2353,7 +2371,7 @@
    "ses_dosyasi": "audio/word/nihon.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_soto_w",
    "kategori": "word",
@@ -2363,7 +2381,7 @@
    "ses_dosyasi": "audio/word/soto.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_ue_w",
    "kategori": "word",
@@ -2373,7 +2391,7 @@
    "ses_dosyasi": "audio/word/ue.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_shita_w",
    "kategori": "word",
@@ -2383,7 +2401,7 @@
    "ses_dosyasi": "audio/word/shita.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_kuruma_w",
    "kategori": "word",
@@ -2393,7 +2411,7 @@
    "ses_dosyasi": "audio/word/kuruma.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_densha",
    "kategori": "word",
@@ -2513,7 +2531,7 @@
    "ses_dosyasi": "audio/word/yasumimasu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_ookii",
    "kategori": "word",
@@ -2523,7 +2541,7 @@
    "ses_dosyasi": "audio/word/ookii.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_chiisai",
    "kategori": "word",
@@ -2563,7 +2581,7 @@
    "ses_dosyasi": "audio/word/aoi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_nani_w",
    "kategori": "word",
@@ -2573,7 +2591,7 @@
    "ses_dosyasi": "audio/word/nani.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_dare",
    "kategori": "word",
@@ -2583,7 +2601,7 @@
    "ses_dosyasi": "audio/word/dare.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_doko",
    "kategori": "word",
@@ -2593,7 +2611,7 @@
    "ses_dosyasi": "audio/word/doko.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_itsu",
    "kategori": "word",
@@ -2620,7 +2638,7 @@
    "metin": "おはよう。",
    "okunus": "Ohayou.",
    "ses_dosyasi": "audio/sentence/ohayou.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2630,7 +2648,7 @@
    "metin": "こんにちは。",
    "okunus": "Konnichiwa.",
    "ses_dosyasi": "audio/sentence/konnichiwa.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2640,7 +2658,7 @@
    "metin": "こんばんは。",
    "okunus": "Konbanwa.",
    "ses_dosyasi": "audio/sentence/konbanwa.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2650,7 +2668,7 @@
    "metin": "ありがとう。",
    "okunus": "Arigatou.",
    "ses_dosyasi": "audio/sentence/arigatou.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2660,7 +2678,7 @@
    "metin": "すみません。",
    "okunus": "Sumimasen.",
    "ses_dosyasi": "audio/sentence/sumimasen.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2670,7 +2688,7 @@
    "metin": "さようなら。",
    "okunus": "Sayounara.",
    "ses_dosyasi": "audio/sentence/sayounara.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2680,7 +2698,7 @@
    "metin": "はい、そうです。",
    "okunus": "Hai, sou desu.",
    "ses_dosyasi": "audio/sentence/hai.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2690,7 +2708,7 @@
    "metin": "いいえ。",
    "okunus": "Iie.",
    "ses_dosyasi": "audio/sentence/iie.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2700,7 +2718,7 @@
    "metin": "一つください。",
    "okunus": "Hitotsu kudasai.",
    "ses_dosyasi": "audio/sentence/hitotsu.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2710,7 +2728,7 @@
    "metin": "二つあります。",
    "okunus": "Futatsu arimasu.",
    "ses_dosyasi": "audio/sentence/futatsu.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2720,7 +2738,7 @@
    "metin": "三つほしいです。",
    "okunus": "Mittsu hoshii desu.",
    "ses_dosyasi": "audio/sentence/mittsu.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2730,7 +2748,7 @@
    "metin": "百円です。",
    "okunus": "Hyaku en desu.",
    "ses_dosyasi": "audio/sentence/hyaku_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2740,7 +2758,7 @@
    "metin": "千円です。",
    "okunus": "Sen en desu.",
    "ses_dosyasi": "audio/sentence/sen_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2750,7 +2768,7 @@
    "metin": "一万円です。",
    "okunus": "Ichiman en desu.",
    "ses_dosyasi": "audio/sentence/man_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2760,7 +2778,7 @@
    "metin": "今、何時ですか。",
    "okunus": "Ima, nanji desu ka.",
    "ses_dosyasi": "audio/sentence/ima_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2770,7 +2788,7 @@
    "metin": "午前九時です。",
    "okunus": "Gozen kuji desu.",
    "ses_dosyasi": "audio/sentence/gozen.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2780,7 +2798,7 @@
    "metin": "午後三時です。",
    "okunus": "Gogo sanji desu.",
    "ses_dosyasi": "audio/sentence/gogo.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2790,7 +2808,7 @@
    "metin": "二時半です。",
    "okunus": "Niji han desu.",
    "ses_dosyasi": "audio/sentence/han_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2800,7 +2818,7 @@
    "metin": "毎日水を飲みます。",
    "okunus": "Mainichi mizu o nomimasu.",
    "ses_dosyasi": "audio/sentence/mainichi.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2810,7 +2828,7 @@
    "metin": "今日は金曜日です。",
    "okunus": "Kyou wa kinyoubi desu.",
    "ses_dosyasi": "audio/sentence/kyou.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2820,7 +2838,7 @@
    "metin": "月曜日に学校へ行きます。",
    "okunus": "Getsuyoubi ni gakkou e ikimasu.",
    "ses_dosyasi": "audio/sentence/getsuyoubi.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2830,7 +2848,7 @@
    "metin": "水曜日は休みです。",
    "okunus": "Suiyoubi wa yasumi desu.",
    "ses_dosyasi": "audio/sentence/suiyoubi.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2840,7 +2858,7 @@
    "metin": "金曜日に友達と話します。",
    "okunus": "Kinyoubi ni tomodachi to hanashimasu.",
    "ses_dosyasi": "audio/sentence/kinyoubi.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2850,7 +2868,7 @@
    "metin": "日曜日に休みます。",
    "okunus": "Nichiyoubi ni yasumimasu.",
    "ses_dosyasi": "audio/sentence/nichiyoubi.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2860,7 +2878,7 @@
    "metin": "母は先生です。",
    "okunus": "Haha wa sensei desu.",
    "ses_dosyasi": "audio/sentence/haha_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2870,7 +2888,7 @@
    "metin": "父は車で行きます。",
    "okunus": "Chichi wa kuruma de ikimasu.",
    "ses_dosyasi": "audio/sentence/chichi_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2880,7 +2898,7 @@
    "metin": "友達と話します。",
    "okunus": "Tomodachi to hanashimasu.",
    "ses_dosyasi": "audio/sentence/tomodachi.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2890,7 +2908,7 @@
    "metin": "女の子が本を読みます。",
    "okunus": "Onnanoko ga hon o yomimasu.",
    "ses_dosyasi": "audio/sentence/onnanoko.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2900,7 +2918,7 @@
    "metin": "男の子が来ます。",
    "okunus": "Otokonoko ga kimasu.",
    "ses_dosyasi": "audio/sentence/otokonoko.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2910,7 +2928,7 @@
    "metin": "あの人は学生です。",
    "okunus": "Ano hito wa gakusei desu.",
    "ses_dosyasi": "audio/sentence/hito_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2920,7 +2938,7 @@
    "metin": "先生はやさしいです。",
    "okunus": "Sensei wa yasashii desu.",
    "ses_dosyasi": "audio/sentence/sensei.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2930,7 +2948,7 @@
    "metin": "私は学生です。",
    "okunus": "Watashi wa gakusei desu.",
    "ses_dosyasi": "audio/sentence/gakusei.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2940,7 +2958,7 @@
    "metin": "お名前は何ですか。",
    "okunus": "Onamae wa nan desu ka.",
    "ses_dosyasi": "audio/sentence/namae.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2950,7 +2968,7 @@
    "metin": "学校へ行きます。",
    "okunus": "Gakkou e ikimasu.",
    "ses_dosyasi": "audio/sentence/gakkou.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2960,7 +2978,7 @@
    "metin": "これは本です。",
    "okunus": "Kore wa hon desu.",
    "ses_dosyasi": "audio/sentence/hon_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2970,7 +2988,7 @@
    "metin": "日本語を話します。",
    "okunus": "Nihongo o hanashimasu.",
    "ses_dosyasi": "audio/sentence/nihongo.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2980,7 +2998,7 @@
    "metin": "水を飲みます。",
    "okunus": "Mizu o nomimasu.",
    "ses_dosyasi": "audio/sentence/mizu_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -2990,7 +3008,7 @@
    "metin": "電話で話します。",
    "okunus": "Denwa de hanashimasu.",
    "ses_dosyasi": "audio/sentence/denwa.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3000,7 +3018,7 @@
    "metin": "お金がありません。",
    "okunus": "Okane ga arimasen.",
    "ses_dosyasi": "audio/sentence/okane.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3010,7 +3028,7 @@
    "metin": "時計を見ます。",
    "okunus": "Tokei o mimasu.",
    "ses_dosyasi": "audio/sentence/tokei.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3020,7 +3038,7 @@
    "metin": "お茶を飲みます。",
    "okunus": "Ocha o nomimasu.",
    "ses_dosyasi": "audio/sentence/ocha.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3030,7 +3048,7 @@
    "metin": "ご飯を食べます。",
    "okunus": "Gohan o tabemasu.",
    "ses_dosyasi": "audio/sentence/gohan.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3040,7 +3058,7 @@
    "metin": "パンを買います。",
    "okunus": "Pan o kaimasu.",
    "ses_dosyasi": "audio/sentence/pan.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3050,7 +3068,7 @@
    "metin": "魚を食べます。",
    "okunus": "Sakana o tabemasu.",
    "ses_dosyasi": "audio/sentence/sakana.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3060,7 +3078,7 @@
    "metin": "ミルクを飲みます。",
    "okunus": "Miruku o nomimasu.",
    "ses_dosyasi": "audio/sentence/miruku.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3070,7 +3088,7 @@
    "metin": "山を見ます。",
    "okunus": "Yama o mimasu.",
    "ses_dosyasi": "audio/sentence/yama_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3080,7 +3098,7 @@
    "metin": "川は大きいです。",
    "okunus": "Kawa wa ookii desu.",
    "ses_dosyasi": "audio/sentence/kawa_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3090,7 +3108,7 @@
    "metin": "今日は雨です。",
    "okunus": "Kyou wa ame desu.",
    "ses_dosyasi": "audio/sentence/ame_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3100,7 +3118,7 @@
    "metin": "いい天気です。",
    "okunus": "Ii tenki desu.",
    "ses_dosyasi": "audio/sentence/tenki.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3110,7 +3128,7 @@
    "metin": "木を見ます。",
    "okunus": "Ki o mimasu.",
    "ses_dosyasi": "audio/sentence/ki_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3120,7 +3138,7 @@
    "metin": "どこの国ですか。",
    "okunus": "Doko no kuni desu ka.",
    "ses_dosyasi": "audio/sentence/kuni_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3130,7 +3148,7 @@
    "metin": "日本へ行きます。",
    "okunus": "Nihon e ikimasu.",
    "ses_dosyasi": "audio/sentence/nihon.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3140,7 +3158,7 @@
    "metin": "外は雨です。",
    "okunus": "Soto wa ame desu.",
    "ses_dosyasi": "audio/sentence/soto_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3150,7 +3168,7 @@
    "metin": "机の上に本があります。",
    "okunus": "Tsukue no ue ni hon ga arimasu.",
    "ses_dosyasi": "audio/sentence/ue_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3160,7 +3178,7 @@
    "metin": "下を見ます。",
    "okunus": "Shita o mimasu.",
    "ses_dosyasi": "audio/sentence/shita_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3170,7 +3188,7 @@
    "metin": "車で行きます。",
    "okunus": "Kuruma de ikimasu.",
    "ses_dosyasi": "audio/sentence/kuruma_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3180,7 +3198,7 @@
    "metin": "電車で行きます。",
    "okunus": "Densha de ikimasu.",
    "ses_dosyasi": "audio/sentence/densha.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3190,7 +3208,7 @@
    "metin": "友達が来ます。",
    "okunus": "Tomodachi ga kimasu.",
    "ses_dosyasi": "audio/sentence/kimasu.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3200,7 +3218,7 @@
    "metin": "テレビを見ます。",
    "okunus": "Terebi o mimasu.",
    "ses_dosyasi": "audio/sentence/mimasu.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3210,7 +3228,7 @@
    "metin": "話を聞きます。",
    "okunus": "Hanashi o kikimasu.",
    "ses_dosyasi": "audio/sentence/kikimasu.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3220,7 +3238,7 @@
    "metin": "本を読みます。",
    "okunus": "Hon o yomimasu.",
    "ses_dosyasi": "audio/sentence/yomimasu.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3230,7 +3248,7 @@
    "metin": "名前を書きます。",
    "okunus": "Namae o kakimasu.",
    "ses_dosyasi": "audio/sentence/kakimasu.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3240,7 +3258,7 @@
    "metin": "本を買います。",
    "okunus": "Hon o kaimasu.",
    "ses_dosyasi": "audio/sentence/kaimasu.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3250,7 +3268,7 @@
    "metin": "今日は休みます。",
    "okunus": "Kyou wa yasumimasu.",
    "ses_dosyasi": "audio/sentence/yasumimasu.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3260,7 +3278,7 @@
    "metin": "大きい山です。",
    "okunus": "Ookii yama desu.",
    "ses_dosyasi": "audio/sentence/ookii.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3270,7 +3288,7 @@
    "metin": "小さい子です。",
    "okunus": "Chiisai ko desu.",
    "ses_dosyasi": "audio/sentence/chiisai.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3280,7 +3298,7 @@
    "metin": "白い車です。",
    "okunus": "Shiroi kuruma desu.",
    "ses_dosyasi": "audio/sentence/shiroi.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3290,7 +3308,7 @@
    "metin": "赤い花です。",
    "okunus": "Akai hana desu.",
    "ses_dosyasi": "audio/sentence/akai.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3300,7 +3318,7 @@
    "metin": "青い空です。",
    "okunus": "Aoi sora desu.",
    "ses_dosyasi": "audio/sentence/aoi.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3310,7 +3328,7 @@
    "metin": "これは何ですか。",
    "okunus": "Kore wa nan desu ka.",
    "ses_dosyasi": "audio/sentence/nani_w.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3320,7 +3338,7 @@
    "metin": "あの人はだれですか。",
    "okunus": "Ano hito wa dare desu ka.",
    "ses_dosyasi": "audio/sentence/dare.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3330,7 +3348,7 @@
    "metin": "トイレはどこですか。",
    "okunus": "Toire wa doko desu ka.",
    "ses_dosyasi": "audio/sentence/doko.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3340,7 +3358,7 @@
    "metin": "いつ来ますか。",
    "okunus": "Itsu kimasu ka.",
    "ses_dosyasi": "audio/sentence/itsu.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "durum": "recorded",
@@ -3350,10 +3368,10 @@
    "metin": "いくらですか。",
    "okunus": "Ikura desu ka.",
    "ses_dosyasi": "audio/sentence/ikura.mp3",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_ichigatsu",
    "kategori": "word",
@@ -3363,7 +3381,7 @@
    "ses_dosyasi": "audio/word/ichigatsu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_hitori",
    "kategori": "word",
@@ -3373,7 +3391,7 @@
    "ses_dosyasi": "audio/word/hitori.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_nigatsu",
    "kategori": "word",
@@ -3383,7 +3401,7 @@
    "ses_dosyasi": "audio/word/nigatsu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_sangatsu",
    "kategori": "word",
@@ -3393,7 +3411,7 @@
    "ses_dosyasi": "audio/word/sangatsu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_hitobito",
    "kategori": "word",
@@ -3403,7 +3421,7 @@
    "ses_dosyasi": "audio/word/hitobito.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_nihonjin",
    "kategori": "word",
@@ -3413,7 +3431,7 @@
    "ses_dosyasi": "audio/word/nihonjin.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_otona",
    "kategori": "word",
@@ -3423,7 +3441,7 @@
    "ses_dosyasi": "audio/word/otona.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_daigaku",
    "kategori": "word",
@@ -3433,7 +3451,7 @@
    "ses_dosyasi": "audio/word/daigaku.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_tengoku",
    "kategori": "word",
@@ -3443,7 +3461,7 @@
    "ses_dosyasi": "audio/word/tengoku.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_fuufu",
    "kategori": "word",
@@ -3453,7 +3471,7 @@
    "ses_dosyasi": "audio/word/fuufu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_kufuu",
    "kategori": "word",
@@ -3463,7 +3481,7 @@
    "ses_dosyasi": "audio/word/kufuu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_mokuyoubi",
    "kategori": "word",
@@ -3473,7 +3491,7 @@
    "ses_dosyasi": "audio/word/mokuyoubi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_shinrin",
    "kategori": "word",
@@ -3483,7 +3501,7 @@
    "ses_dosyasi": "audio/word/shinrin.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_hontou",
    "kategori": "word",
@@ -3493,7 +3511,7 @@
    "ses_dosyasi": "audio/word/hontou.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_yasumu",
    "kategori": "word",
@@ -3503,7 +3521,7 @@
    "ses_dosyasi": "audio/word/yasumu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_kyuujitsu",
    "kategori": "word",
@@ -3513,7 +3531,7 @@
    "ses_dosyasi": "audio/word/kyuujitsu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_akarui",
    "kategori": "word",
@@ -3523,7 +3541,7 @@
    "ses_dosyasi": "audio/word/akarui.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_ashita",
    "kategori": "word",
@@ -3533,7 +3551,7 @@
    "ses_dosyasi": "audio/word/ashita.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_setsumei",
    "kategori": "word",
@@ -3543,7 +3561,7 @@
    "ses_dosyasi": "audio/word/setsumei.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_jikan",
    "kategori": "word",
@@ -3553,7 +3571,7 @@
    "ses_dosyasi": "audio/word/jikan.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_hare",
    "kategori": "word",
@@ -3563,7 +3581,7 @@
    "ses_dosyasi": "audio/word/hare.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_seiten",
    "kategori": "word",
@@ -3573,7 +3591,7 @@
    "ses_dosyasi": "audio/word/seiten.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_kodomo",
    "kategori": "word",
@@ -3583,7 +3601,7 @@
    "ses_dosyasi": "audio/word/kodomo.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_joshi",
    "kategori": "word",
@@ -3593,7 +3611,7 @@
    "ses_dosyasi": "audio/word/joshi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_kisetsu",
    "kategori": "word",
@@ -3603,7 +3621,7 @@
    "ses_dosyasi": "audio/word/kisetsu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_shiki",
    "kategori": "word",
@@ -3613,7 +3631,7 @@
    "ses_dosyasi": "audio/word/shiki.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_josei",
    "kategori": "word",
@@ -3623,7 +3641,7 @@
    "ses_dosyasi": "audio/word/josei.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_kanojo",
    "kategori": "word",
@@ -3633,7 +3651,7 @@
    "ses_dosyasi": "audio/word/kanojo.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_kayoubi",
    "kategori": "word",
@@ -3643,7 +3661,7 @@
    "ses_dosyasi": "audio/word/kayoubi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_fujisan",
    "kategori": "word",
@@ -3653,7 +3671,7 @@
    "ses_dosyasi": "audio/word/fujisan.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_kawagishi",
    "kategori": "word",
@@ -3663,7 +3681,7 @@
    "ses_dosyasi": "audio/word/kawagishi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_iriguchi",
    "kategori": "word",
@@ -3673,7 +3691,7 @@
    "ses_dosyasi": "audio/word/iriguchi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_jinkou",
    "kategori": "word",
@@ -3683,7 +3701,7 @@
    "ses_dosyasi": "audio/word/jinkou.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_tanbo",
    "kategori": "word",
@@ -3693,7 +3711,7 @@
    "ses_dosyasi": "audio/word/tanbo.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_tanaka",
    "kategori": "word",
@@ -3703,7 +3721,7 @@
    "ses_dosyasi": "audio/word/tanaka.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_ouji",
    "kategori": "word",
@@ -3713,7 +3731,7 @@
    "ses_dosyasi": "audio/word/ouji.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_joou",
    "kategori": "word",
@@ -3723,7 +3741,7 @@
    "ses_dosyasi": "audio/word/joou.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_medama",
    "kategori": "word",
@@ -3733,7 +3751,7 @@
    "ses_dosyasi": "audio/word/medama.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_tai",
    "kategori": "word",
@@ -3743,7 +3761,7 @@
    "ses_dosyasi": "audio/word/tai.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_shi",
    "kategori": "word",
@@ -3753,7 +3771,7 @@
    "ses_dosyasi": "audio/word/shi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_umi",
    "kategori": "word",
@@ -3763,7 +3781,7 @@
    "ses_dosyasi": "audio/word/umi.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_ike",
    "kategori": "word",
@@ -3773,7 +3791,7 @@
    "ses_dosyasi": "audio/word/ike.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_oyo",
    "kategori": "word",
@@ -3783,7 +3801,7 @@
    "ses_dosyasi": "audio/word/oyo.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_kuro",
    "kategori": "word",
@@ -3793,7 +3811,7 @@
    "ses_dosyasi": "audio/word/kuro.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_ten",
    "kategori": "word",
@@ -3803,7 +3821,7 @@
    "ses_dosyasi": "audio/word/ten.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_netsu",
    "kategori": "word",
@@ -3813,7 +3831,7 @@
    "ses_dosyasi": "audio/word/netsu.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_jou",
    "kategori": "word",
@@ -3823,7 +3841,7 @@
    "ses_dosyasi": "audio/word/jou.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_sei",
    "kategori": "word",
@@ -3833,7 +3851,7 @@
    "ses_dosyasi": "audio/word/sei.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_kai",
    "kategori": "word",
@@ -3843,7 +3861,7 @@
    "ses_dosyasi": "audio/word/kai.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_mo",
    "kategori": "word",
@@ -3853,7 +3871,7 @@
    "ses_dosyasi": "audio/word/mo.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_u",
    "kategori": "word",
@@ -3863,7 +3881,7 @@
    "ses_dosyasi": "audio/word/u.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_o",
    "kategori": "word",
@@ -3873,7 +3891,7 @@
    "ses_dosyasi": "audio/word/o.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_hana",
    "kategori": "word",
@@ -3883,7 +3901,7 @@
    "ses_dosyasi": "audio/word/hana.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_kusa",
    "kategori": "word",
@@ -3893,7 +3911,7 @@
    "ses_dosyasi": "audio/word/kusa.mp3"
   },
   {
-   "dogrulanmali": true,
+   "dogrulanmali": false,
    "durum": "recorded",
    "id": "word_cha",
    "kategori": "word",
@@ -3910,7 +3928,7 @@
    "ses_dosyasi": "audio/kanji/hayashi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_mori",
@@ -3920,7 +3938,7 @@
    "ses_dosyasi": "audio/word/mori.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_hi",
@@ -3930,7 +3948,7 @@
    "ses_dosyasi": "audio/kana/hi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_tsuki",
@@ -3940,7 +3958,7 @@
    "ses_dosyasi": "audio/word/tsuki.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_onna",
@@ -3950,7 +3968,7 @@
    "ses_dosyasi": "audio/kanji/onna.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_hi_2",
@@ -3960,7 +3978,7 @@
    "ses_dosyasi": "audio/kana/hi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_kuchi",
@@ -3970,7 +3988,7 @@
    "ses_dosyasi": "audio/word/kuchi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_ou",
@@ -3980,7 +3998,7 @@
    "ses_dosyasi": "audio/kanji/ou.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_tama",
@@ -3990,7 +4008,7 @@
    "ses_dosyasi": "audio/kanji/tama.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_go",
@@ -4000,7 +4018,7 @@
    "ses_dosyasi": "audio/kana/go.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_hana",
@@ -4010,7 +4028,7 @@
    "ses_dosyasi": "audio/word/hana.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_yo",
@@ -4020,7 +4038,7 @@
    "ses_dosyasi": "audio/kana/yo.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_juu",
@@ -4030,7 +4048,7 @@
    "ses_dosyasi": "audio/word/juu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_en",
@@ -4040,7 +4058,7 @@
    "ses_dosyasi": "audio/kanji/en.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_kin",
@@ -4050,7 +4068,7 @@
    "ses_dosyasi": "audio/kanji/kin.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_otoko",
@@ -4060,7 +4078,7 @@
    "ses_dosyasi": "audio/kanji/otoko.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_me",
@@ -4070,7 +4088,7 @@
    "ses_dosyasi": "audio/kana/me.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_mimi",
@@ -4080,7 +4098,7 @@
    "ses_dosyasi": "audio/word/mimi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_te",
@@ -4090,7 +4108,7 @@
    "ses_dosyasi": "audio/kana/te.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_ashi",
@@ -4100,7 +4118,7 @@
    "ses_dosyasi": "audio/word/ashi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_naka",
@@ -4110,7 +4128,7 @@
    "ses_dosyasi": "audio/word/naka.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_migi",
@@ -4120,7 +4138,7 @@
    "ses_dosyasi": "audio/word/migi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_hidari",
@@ -4130,7 +4148,7 @@
    "ses_dosyasi": "audio/word/hidari.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_mae",
@@ -4140,7 +4158,7 @@
    "ses_dosyasi": "audio/word/mae.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_higashi",
@@ -4150,7 +4168,7 @@
    "ses_dosyasi": "audio/word/higashi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_nishi",
@@ -4160,7 +4178,7 @@
    "ses_dosyasi": "audio/word/nishi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_minami",
@@ -4170,7 +4188,7 @@
    "ses_dosyasi": "audio/word/minami.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_kita",
@@ -4180,7 +4198,7 @@
    "ses_dosyasi": "audio/word/kita.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_shiro",
@@ -4190,7 +4208,7 @@
    "ses_dosyasi": "audio/word/shiro.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_aka",
@@ -4200,7 +4218,7 @@
    "ses_dosyasi": "audio/word/aka.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_ao",
@@ -4210,7 +4228,7 @@
    "ses_dosyasi": "audio/word/ao.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_iku",
@@ -4220,7 +4238,7 @@
    "ses_dosyasi": "audio/word/iku.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_kuru",
@@ -4230,7 +4248,7 @@
    "ses_dosyasi": "audio/word/kuru.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_miru",
@@ -4240,7 +4258,7 @@
    "ses_dosyasi": "audio/word/miru.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_kiku",
@@ -4250,7 +4268,7 @@
    "ses_dosyasi": "audio/word/kiku.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_yomu",
@@ -4260,7 +4278,7 @@
    "ses_dosyasi": "audio/word/yomu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_kaku",
@@ -4270,7 +4288,7 @@
    "ses_dosyasi": "audio/word/kaku.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_taberu",
@@ -4280,7 +4298,7 @@
    "ses_dosyasi": "audio/word/taberu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_nomu",
@@ -4290,7 +4308,7 @@
    "ses_dosyasi": "audio/word/nomu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_hanasu",
@@ -4300,7 +4318,7 @@
    "ses_dosyasi": "audio/word/hanasu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_kau",
@@ -4310,7 +4328,7 @@
    "ses_dosyasi": "audio/word/kau.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_ame",
@@ -4320,7 +4338,7 @@
    "ses_dosyasi": "audio/word/ame.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_umi",
@@ -4330,7 +4348,7 @@
    "ses_dosyasi": "audio/word/umi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_ocha",
@@ -4340,7 +4358,7 @@
    "ses_dosyasi": "audio/word/ocha.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_kuruma",
@@ -4350,7 +4368,7 @@
    "ses_dosyasi": "audio/word/kuruma.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_kodomo",
@@ -4360,7 +4378,7 @@
    "ses_dosyasi": "audio/word/kodomo.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_sakana",
@@ -4370,7 +4388,7 @@
    "ses_dosyasi": "audio/word/sakana.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_tsuki_2",
@@ -4380,7 +4398,7 @@
    "ses_dosyasi": "audio/word/tsuki.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_te_2",
@@ -4390,7 +4408,7 @@
    "ses_dosyasi": "audio/kana/te.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_hana_2",
@@ -4400,7 +4418,7 @@
    "ses_dosyasi": "audio/word/hana.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_hito",
@@ -4410,7 +4428,7 @@
    "ses_dosyasi": "audio/word/hito.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_mizu",
@@ -4420,7 +4438,7 @@
    "ses_dosyasi": "audio/word/mizu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_me_2",
@@ -4430,7 +4448,7 @@
    "ses_dosyasi": "audio/kana/me.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_mori_2",
@@ -4440,7 +4458,7 @@
    "ses_dosyasi": "audio/word/mori.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_yama",
@@ -4450,7 +4468,7 @@
    "ses_dosyasi": "audio/word/yama.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_roku",
@@ -4460,7 +4478,7 @@
    "ses_dosyasi": "audio/word/roku.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_hon",
@@ -4470,7 +4488,7 @@
    "ses_dosyasi": "audio/word/hon.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_x_wo",
@@ -4480,7 +4498,7 @@
    "ses_dosyasi": "audio/kana/wo.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_yasu",
@@ -4490,7 +4508,7 @@
    "ses_dosyasi": "audio/word/yasu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_shigatsu",
@@ -4500,7 +4518,7 @@
    "ses_dosyasi": "audio/word/shigatsu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_yottsu",
@@ -4510,7 +4528,7 @@
    "ses_dosyasi": "audio/word/yottsu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_yoji",
@@ -4520,7 +4538,7 @@
    "ses_dosyasi": "audio/word/yoji.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_gogatsu",
@@ -4530,7 +4548,7 @@
    "ses_dosyasi": "audio/word/gogatsu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_itsutsu",
@@ -4540,7 +4558,7 @@
    "ses_dosyasi": "audio/word/itsutsu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_goji",
@@ -4550,7 +4568,7 @@
    "ses_dosyasi": "audio/word/goji.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_rokugatsu",
@@ -4560,7 +4578,7 @@
    "ses_dosyasi": "audio/word/rokugatsu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_muttsu",
@@ -4570,7 +4588,7 @@
    "ses_dosyasi": "audio/word/muttsu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_rokuji",
@@ -4580,7 +4598,7 @@
    "ses_dosyasi": "audio/word/rokuji.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_shichigatsu",
@@ -4590,7 +4608,7 @@
    "ses_dosyasi": "audio/word/shichigatsu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_nanatsu",
@@ -4600,7 +4618,7 @@
    "ses_dosyasi": "audio/word/nanatsu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_shichiji",
@@ -4610,7 +4628,7 @@
    "ses_dosyasi": "audio/word/shichiji.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_hachigatsu",
@@ -4620,7 +4638,7 @@
    "ses_dosyasi": "audio/word/hachigatsu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_yattsu",
@@ -4630,7 +4648,7 @@
    "ses_dosyasi": "audio/word/yattsu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_hachiji",
@@ -4640,7 +4658,7 @@
    "ses_dosyasi": "audio/word/hachiji.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_kugatsu",
@@ -4650,7 +4668,7 @@
    "ses_dosyasi": "audio/word/kugatsu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_kokonotsu",
@@ -4660,7 +4678,7 @@
    "ses_dosyasi": "audio/word/kokonotsu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_kuji",
@@ -4670,7 +4688,7 @@
    "ses_dosyasi": "audio/word/kuji.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_juugatsu",
@@ -4680,7 +4698,7 @@
    "ses_dosyasi": "audio/word/juugatsu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_juuji",
@@ -4690,7 +4708,7 @@
    "ses_dosyasi": "audio/word/juuji.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_sanbyaku",
@@ -4700,7 +4718,7 @@
    "ses_dosyasi": "audio/word/sanbyaku.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_hyakuen",
@@ -4710,7 +4728,7 @@
    "ses_dosyasi": "audio/word/hyakuen.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_senen",
@@ -4720,7 +4738,7 @@
    "ses_dosyasi": "audio/word/senen.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_sanzen",
@@ -4730,7 +4748,7 @@
    "ses_dosyasi": "audio/word/sanzen.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_ichiman",
@@ -4740,7 +4758,7 @@
    "ses_dosyasi": "audio/word/ichiman.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_juuman",
@@ -4750,7 +4768,7 @@
    "ses_dosyasi": "audio/word/juuman.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_hyakuman",
@@ -4760,7 +4778,7 @@
    "ses_dosyasi": "audio/word/hyakuman.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_doyoubi",
@@ -4770,7 +4788,7 @@
    "ses_dosyasi": "audio/word/doyoubi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_tsuchi",
@@ -4780,7 +4798,7 @@
    "ses_dosyasi": "audio/word/tsuchi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_kotoshi",
@@ -4790,7 +4808,7 @@
    "ses_dosyasi": "audio/word/kotoshi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_rainen",
@@ -4800,7 +4818,7 @@
    "ses_dosyasi": "audio/word/rainen.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_kyonen",
@@ -4810,7 +4828,7 @@
    "ses_dosyasi": "audio/word/kyonen.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_ippun",
@@ -4820,7 +4838,7 @@
    "ses_dosyasi": "audio/word/ippun.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_gofun",
@@ -4830,7 +4848,7 @@
    "ses_dosyasi": "audio/word/gofun.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_hanbun",
@@ -4840,7 +4858,7 @@
    "ses_dosyasi": "audio/word/hanbun.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_sanjihan",
@@ -4850,7 +4868,7 @@
    "ses_dosyasi": "audio/word/sanjihan.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_hantoshi",
@@ -4860,7 +4878,7 @@
    "ses_dosyasi": "audio/word/hantoshi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_konshuu",
@@ -4870,7 +4888,7 @@
    "ses_dosyasi": "audio/word/konshuu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_ooame",
@@ -4880,7 +4898,7 @@
    "ses_dosyasi": "audio/word/ooame.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_genki",
@@ -4890,7 +4908,7 @@
    "ses_dosyasi": "audio/word/genki.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_denki",
@@ -4900,7 +4918,7 @@
    "ses_dosyasi": "audio/word/denki.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_otoko_no_hito",
@@ -4910,7 +4928,7 @@
    "ses_dosyasi": "audio/word/otoko_no_hito.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_danshi",
@@ -4920,7 +4938,7 @@
    "ses_dosyasi": "audio/word/danshi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_okaasan",
@@ -4930,7 +4948,7 @@
    "ses_dosyasi": "audio/word/okaasan.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_otousan",
@@ -4940,7 +4958,7 @@
    "ses_dosyasi": "audio/word/otousan.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_yuujin",
@@ -4950,7 +4968,7 @@
    "ses_dosyasi": "audio/word/yuujin.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_tegami",
@@ -4960,7 +4978,7 @@
    "ses_dosyasi": "audio/word/tegami.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_jouzu",
@@ -4970,7 +4988,7 @@
    "ses_dosyasi": "audio/word/jouzu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_tariru",
@@ -4980,7 +4998,7 @@
    "ses_dosyasi": "audio/word/tariru.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_heta",
@@ -4990,7 +5008,7 @@
    "ses_dosyasi": "audio/word/heta.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_chika",
@@ -5000,7 +5018,7 @@
    "ses_dosyasi": "audio/word/chika.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_chuugoku",
@@ -5010,7 +5028,7 @@
    "ses_dosyasi": "audio/word/chuugoku.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_shougakkou",
@@ -5020,7 +5038,7 @@
    "ses_dosyasi": "audio/word/shougakkou.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_shougakusei",
@@ -5030,7 +5048,7 @@
    "ses_dosyasi": "audio/word/shougakusei.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_migite",
@@ -5040,7 +5058,7 @@
    "ses_dosyasi": "audio/word/migite.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_hidarite",
@@ -5050,7 +5068,7 @@
    "ses_dosyasi": "audio/word/hidarite.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_ushiro",
@@ -5060,7 +5078,7 @@
    "ses_dosyasi": "audio/word/ushiro.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_toukyou",
@@ -5070,7 +5088,7 @@
    "ses_dosyasi": "audio/word/toukyou.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_omoshiroi",
@@ -5080,7 +5098,7 @@
    "ses_dosyasi": "audio/word/omoshiroi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_senshuu",
@@ -5090,7 +5108,7 @@
    "ses_dosyasi": "audio/word/senshuu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_sengetsu",
@@ -5100,7 +5118,7 @@
    "ses_dosyasi": "audio/word/sengetsu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_umareru",
@@ -5110,7 +5128,7 @@
    "ses_dosyasi": "audio/word/umareru.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_koukou",
@@ -5120,7 +5138,7 @@
    "ses_dosyasi": "audio/word/koukou.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_yuumei",
@@ -5130,7 +5148,7 @@
    "ses_dosyasi": "audio/word/yuumei.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_eigo",
@@ -5140,7 +5158,7 @@
    "ses_dosyasi": "audio/word/eigo.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_ryokou",
@@ -5150,7 +5168,7 @@
    "ses_dosyasi": "audio/word/ryokou.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_ginkou",
@@ -5160,7 +5178,7 @@
    "ses_dosyasi": "audio/word/ginkou.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_raishuu",
@@ -5170,7 +5188,7 @@
    "ses_dosyasi": "audio/word/raishuu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_miseru",
@@ -5180,7 +5198,7 @@
    "ses_dosyasi": "audio/word/miseru.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_shinbun",
@@ -5190,7 +5208,7 @@
    "ses_dosyasi": "audio/word/shinbun.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_dokusho",
@@ -5200,7 +5218,7 @@
    "ses_dosyasi": "audio/word/dokusho.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_jisho",
@@ -5210,7 +5228,7 @@
    "ses_dosyasi": "audio/word/jisho.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_toshokan",
@@ -5220,7 +5238,7 @@
    "ses_dosyasi": "audio/word/toshokan.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_shokuji",
@@ -5230,7 +5248,7 @@
    "ses_dosyasi": "audio/word/shokuji.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_shokudou",
@@ -5240,7 +5258,7 @@
    "ses_dosyasi": "audio/word/shokudou.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_nomimono",
@@ -5250,7 +5268,7 @@
    "ses_dosyasi": "audio/word/nomimono.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_kaimono",
@@ -5260,7 +5278,7 @@
    "ses_dosyasi": "audio/word/kaimono.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_gaikoku",
@@ -5270,7 +5288,7 @@
    "ses_dosyasi": "audio/word/gaikoku.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_gaikokujin",
@@ -5280,7 +5298,7 @@
    "ses_dosyasi": "audio/word/gaikokujin.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_jitensha",
@@ -5290,7 +5308,7 @@
    "ses_dosyasi": "audio/word/jitensha.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_nanji",
@@ -5300,7 +5318,7 @@
    "ses_dosyasi": "audio/word/nanji.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_nannin",
@@ -5310,7 +5328,7 @@
    "ses_dosyasi": "audio/word/nannin.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_inu",
@@ -5320,7 +5338,7 @@
    "ses_dosyasi": "audio/word/inu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_eki",
@@ -5330,7 +5348,7 @@
    "ses_dosyasi": "audio/word/eki.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_kasa",
@@ -5340,7 +5358,7 @@
    "ses_dosyasi": "audio/word/kasa.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_kitte",
@@ -5350,7 +5368,7 @@
    "ses_dosyasi": "audio/word/kitte.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_kesa",
@@ -5360,7 +5378,7 @@
    "ses_dosyasi": "audio/word/kesa.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_shio",
@@ -5370,7 +5388,7 @@
    "ses_dosyasi": "audio/word/shio.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_sushi",
@@ -5380,7 +5398,7 @@
    "ses_dosyasi": "audio/word/sushi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_sekai",
@@ -5390,7 +5408,7 @@
    "ses_dosyasi": "audio/word/sekai.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_sora",
@@ -5400,7 +5418,7 @@
    "ses_dosyasi": "audio/word/sora.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_tamago",
@@ -5410,7 +5428,7 @@
    "ses_dosyasi": "audio/word/tamago.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_chizu",
@@ -5420,7 +5438,7 @@
    "ses_dosyasi": "audio/word/chizu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_tori",
@@ -5430,7 +5448,7 @@
    "ses_dosyasi": "audio/word/tori.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_natsu",
@@ -5440,7 +5458,7 @@
    "ses_dosyasi": "audio/word/natsu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_niku",
@@ -5450,7 +5468,7 @@
    "ses_dosyasi": "audio/word/niku.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_nuno",
@@ -5460,7 +5478,7 @@
    "ses_dosyasi": "audio/word/nuno.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_neko",
@@ -5470,7 +5488,7 @@
    "ses_dosyasi": "audio/word/neko.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_nori",
@@ -5480,7 +5498,7 @@
    "ses_dosyasi": "audio/word/nori.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_fuyu",
@@ -5490,7 +5508,7 @@
    "ses_dosyasi": "audio/word/fuyu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_heya",
@@ -5500,7 +5518,7 @@
    "ses_dosyasi": "audio/word/heya.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_hoshi",
@@ -5510,7 +5528,7 @@
    "ses_dosyasi": "audio/word/hoshi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_mado",
@@ -5520,7 +5538,7 @@
    "ses_dosyasi": "audio/word/mado.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_mushi",
@@ -5530,7 +5548,7 @@
    "ses_dosyasi": "audio/word/mushi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_yuki",
@@ -5540,7 +5558,7 @@
    "ses_dosyasi": "audio/word/yuki.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_yoru",
@@ -5550,7 +5568,7 @@
    "ses_dosyasi": "audio/word/yoru.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_raku",
@@ -5560,7 +5578,7 @@
    "ses_dosyasi": "audio/word/raku.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_ringo",
@@ -5570,7 +5588,7 @@
    "ses_dosyasi": "audio/word/ringo.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_haru",
@@ -5580,7 +5598,7 @@
    "ses_dosyasi": "audio/word/haru.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_rekishi",
@@ -5590,7 +5608,7 @@
    "ses_dosyasi": "audio/word/rekishi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_watashi",
@@ -5600,7 +5618,7 @@
    "ses_dosyasi": "audio/word/watashi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_hon_o_yomu",
@@ -5610,7 +5628,7 @@
    "ses_dosyasi": "audio/word/hon_o_yomu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_aisu",
@@ -5620,7 +5638,7 @@
    "ses_dosyasi": "audio/word/aisu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_inku",
@@ -5630,7 +5648,7 @@
    "ses_dosyasi": "audio/word/inku.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_ūru",
@@ -5640,7 +5658,7 @@
    "ses_dosyasi": "audio/word/ūru.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_eakon",
@@ -5650,7 +5668,7 @@
    "ses_dosyasi": "audio/word/eakon.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_orenji",
@@ -5660,7 +5678,7 @@
    "ses_dosyasi": "audio/word/orenji.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_kamera",
@@ -5670,7 +5688,7 @@
    "ses_dosyasi": "audio/word/kamera.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_kī",
@@ -5680,7 +5698,7 @@
    "ses_dosyasi": "audio/word/kī.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_kurasu",
@@ -5690,7 +5708,7 @@
    "ses_dosyasi": "audio/word/kurasu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_kēki",
@@ -5700,7 +5718,7 @@
    "ses_dosyasi": "audio/word/kēki.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_kōhī",
@@ -5710,7 +5728,7 @@
    "ses_dosyasi": "audio/word/kōhī.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_sarada",
@@ -5720,7 +5738,7 @@
    "ses_dosyasi": "audio/word/sarada.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_shatsu",
@@ -5730,7 +5748,7 @@
    "ses_dosyasi": "audio/word/shatsu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_supūn",
@@ -5740,7 +5758,7 @@
    "ses_dosyasi": "audio/word/supūn.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_sētā",
@@ -5750,7 +5768,7 @@
    "ses_dosyasi": "audio/word/sētā.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_sofa",
@@ -5760,7 +5778,7 @@
    "ses_dosyasi": "audio/word/sofa.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_takushī",
@@ -5770,7 +5788,7 @@
    "ses_dosyasi": "audio/word/takushī.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_chīzu",
@@ -5780,7 +5798,7 @@
    "ses_dosyasi": "audio/word/chīzu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_tsuā",
@@ -5790,7 +5808,7 @@
    "ses_dosyasi": "audio/word/tsuā.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_terebi",
@@ -5800,7 +5818,7 @@
    "ses_dosyasi": "audio/word/terebi.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_tomato",
@@ -5810,7 +5828,7 @@
    "ses_dosyasi": "audio/word/tomato.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_naifu",
@@ -5820,7 +5838,7 @@
    "ses_dosyasi": "audio/word/naifu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_nyūsu",
@@ -5830,7 +5848,7 @@
    "ses_dosyasi": "audio/word/nyūsu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_nūdoru",
@@ -5840,7 +5858,7 @@
    "ses_dosyasi": "audio/word/nūdoru.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_nekutai",
@@ -5850,7 +5868,7 @@
    "ses_dosyasi": "audio/word/nekutai.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_nōto",
@@ -5860,7 +5878,7 @@
    "ses_dosyasi": "audio/word/nōto.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_hamu",
@@ -5870,7 +5888,7 @@
    "ses_dosyasi": "audio/word/hamu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_hītā",
@@ -5880,7 +5898,7 @@
    "ses_dosyasi": "audio/word/hītā.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_fōku",
@@ -5890,7 +5908,7 @@
    "ses_dosyasi": "audio/word/fōku.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_herikoputā",
@@ -5900,7 +5918,7 @@
    "ses_dosyasi": "audio/word/herikoputā.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_hoteru",
@@ -5910,7 +5928,7 @@
    "ses_dosyasi": "audio/word/hoteru.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_masuku",
@@ -5920,7 +5938,7 @@
    "ses_dosyasi": "audio/word/masuku.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_gēmu",
@@ -5930,7 +5948,7 @@
    "ses_dosyasi": "audio/word/gēmu.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_menyū",
@@ -5940,7 +5958,7 @@
    "ses_dosyasi": "audio/word/menyū.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_memo",
@@ -5950,7 +5968,7 @@
    "ses_dosyasi": "audio/word/memo.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_taiya",
@@ -5960,7 +5978,7 @@
    "ses_dosyasi": "audio/word/taiya.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_yūmoa",
@@ -5970,7 +5988,7 @@
    "ses_dosyasi": "audio/word/yūmoa.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_yoga",
@@ -5980,7 +5998,7 @@
    "ses_dosyasi": "audio/word/yoga.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_rajio",
@@ -5990,7 +6008,7 @@
    "ses_dosyasi": "audio/word/rajio.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_risuto",
@@ -6000,7 +6018,7 @@
    "ses_dosyasi": "audio/word/risuto.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_rūru",
@@ -6010,7 +6028,7 @@
    "ses_dosyasi": "audio/word/rūru.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_remon",
@@ -6020,7 +6038,7 @@
    "ses_dosyasi": "audio/word/remon.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_robotto",
@@ -6030,7 +6048,7 @@
    "ses_dosyasi": "audio/word/robotto.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   },
   {
    "id": "word_f_wain",
@@ -6040,7 +6058,7 @@
    "ses_dosyasi": "audio/word/wain.mp3",
    "kaynak": "yeni",
    "durum": "recorded",
-   "dogrulanmali": true
+   "dogrulanmali": false
   }
  ]
 }
