@@ -2881,7 +2881,13 @@ function Detail(){
       <div class="center lead" style="margin-top:2px">${c.meaning_en}</div>
     </div>
 
-    <div class="kv" style="margin-top:12px">
+    <div class="row" style="gap:10px;margin-top:12px">
+      <button class="btn ghost" style="flex:1" data-go="drill" data-param="${id}">✎ Çiz</button>
+      <button class="btn ghost" style="flex:1" data-go="quiz" data-param="${id}">◇ Mini test</button>
+    </div>
+    <button class="btn full" style="margin-top:10px" data-act="addreview" data-param="${id}">＋ Tekrara ekle & öğrenildi işaretle</button>
+
+    <div class="kv" style="margin-top:16px">
       ${c.onyomi&&c.onyomi!=="-"?`<div class="it"><div class="lab">Onyomi</div><div class="v jp">${c.onyomi}</div></div>`:''}
       ${c.kunyomi&&c.kunyomi!=="-"?`<div class="it"><div class="lab">Kunyomi</div><div class="v jp">${c.kunyomi}</div></div>`:''}
       ${c.romaji?`<div class="it"><div class="lab">Romaji</div><div class="v">${c.romaji}</div></div>`:''}
@@ -2918,13 +2924,6 @@ function Detail(){
     ${familyStrip(c,id) || (related?`<div class="section-t"><h3>İlgili kanjiler</h3></div>
       <div class="kgrid">${related}</div>
       <small class="note" style="margin-top:8px">Bu karakteri öğrenince bu kanjileri daha kolay anlayacaksın.</small>`:'')}
-
-    <div class="divider"></div>
-    <div class="row" style="gap:10px">
-      <button class="btn ghost" style="flex:1" data-go="drill" data-param="${id}">✎ Çiz</button>
-      <button class="btn ghost" style="flex:1" data-go="quiz" data-param="${id}">◇ Mini test</button>
-    </div>
-    <button class="btn full" style="margin-top:10px" data-act="addreview" data-param="${id}">＋ Tekrara ekle & öğrenildi işaretle</button>
   </div>`;
 }
 
