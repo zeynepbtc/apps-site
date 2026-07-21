@@ -1,0 +1,8 @@
+# STAGING ONLY — faz2-kalem1 (P0-5A dev). Ayrı origin; production zeynepkaya.app'e DOKUNMAZ.
+# Netlify: yeni site → repo bağla → production branch = faz2-kalem1 → otomatik bu config'i kullanır.
+[build]
+  publish = "kanji-atlas"
+  command = ""
+
+[build.environment]
+  NODE_VERSION = "20"
