@@ -4,137 +4,160 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>Kanji Atlas — jel nav v3 (sürüklenebilir)</title>
+<title>Kanji Atlas — jel nav v4 (Pixar)</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet">
 <style>
-  :root{ --bg:#EFE7D6; --paper:#FBF5EF; --card:#FFFFFF; --card2:#F1E8D8; --line:#E6DCCB;
+  :root{ --bg:#EFE7D6; --paper:#FBF5EF; --card:#FFFFFF; --line:#E6DCCB;
     --ink:#3A2F28; --muted:#7C746A; --faint:#A9A095;
-    --amber:#D3813A; --amber-deep:#A65E22; --amber-lite:#E6A45C;
+    --amber:#D3813A; --amber-deep:#A65E22;
     --serif:'Shippori Mincho',serif; --sans:'Nunito',system-ui,sans-serif;}
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
   body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px 16px;min-height:100%}
+    padding:30px 16px 50px;display:flex;flex-direction:column;align-items:center;min-height:100vh}
   .eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-weight:800;text-align:center}
-  h1{font-family:var(--serif);font-weight:700;font-size:22px;margin:8px 0 4px;text-align:center}
-  .lead{color:var(--muted);font-size:13px;text-align:center;max-width:400px;margin:0 auto 18px;line-height:1.5}
-  .phone{width:330px;max-width:100%;background:var(--paper);border-radius:36px;overflow:hidden;
-    box-shadow:0 2px 5px rgba(58,47,40,.12),0 30px 55px -26px rgba(58,47,40,.5);border:1px solid rgba(0,0,0,.05);
-    display:flex;flex-direction:column;height:540px}
-  .screen{flex:1;padding:24px 22px 8px;display:flex;flex-direction:column;gap:12px}
-  .st{font-family:var(--serif);font-size:20px;font-weight:600}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;height:58px;box-shadow:0 8px 18px -15px rgba(58,47,40,.3)}
-  .card.sm{height:40px;opacity:.7}
-  .hint{margin-top:auto;text-align:center;font-size:12px;color:var(--faint);padding-bottom:4px}
+  h1{font-family:var(--serif);font-weight:700;font-size:23px;margin:8px 0 6px;text-align:center}
+  .lead{color:var(--muted);font-size:13px;text-align:center;max-width:420px;margin:0 auto 8px;line-height:1.5}
+  .block{width:340px;max-width:100%;margin:22px auto 0}
+  .btag{font-size:12px;font-weight:800;letter-spacing:.4px;color:var(--amber-deep);margin:0 0 8px 4px}
+  .btag span{color:var(--muted);font-weight:600}
+  /* device bottom card */
+  .dev{background:var(--paper);border:1px solid var(--line);border-radius:26px 26px 30px 30px;padding:16px 0 0;
+    box-shadow:0 2px 5px rgba(58,47,40,.1),0 22px 44px -26px rgba(58,47,40,.5);overflow:hidden}
+  .filler{padding:0 20px 14px}
+  .filler .l{height:12px;border-radius:6px;background:var(--card);border:1px solid var(--line);margin-bottom:8px}
+  .filler .l.a{width:60%} .filler .l.b{width:85%} .filler .l.c{width:40%}
   /* NAV */
-  .nav{position:relative;height:88px;flex:none;user-select:none;-webkit-user-select:none;touch-action:none}
-  .nav svg.bar{position:absolute;left:0;bottom:0;width:100%;height:88px;overflow:visible;
-    filter:drop-shadow(0 -6px 16px rgba(58,47,40,.10))}
-  .nav svg.bar path{fill:var(--card);stroke:var(--line);stroke-width:1}
-  .bubble{position:absolute;width:50px;height:50px;border-radius:50%;pointer-events:none;
-    background:radial-gradient(120% 120% at 40% 30%,var(--amber-lite),var(--amber) 60%,var(--amber-deep));
-    box-shadow:0 9px 16px -5px rgba(211,129,58,.6),0 3px 6px rgba(160,80,20,.32),inset 0 2px 1px rgba(255,255,255,.5),inset 0 -3px 6px rgba(140,66,18,.32);
-    display:grid;place-items:center;transform:translate(-50%,-50%)}
-  .bubble svg{width:23px;height:23px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  .tabs{position:absolute;left:0;bottom:0;width:100%;height:88px;display:flex;align-items:flex-end;padding-bottom:16px;z-index:2}
+  .nav{position:relative;height:94px;user-select:none;-webkit-user-select:none;touch-action:none}
+  .barbg{position:absolute;left:0;bottom:0;width:100%;height:62px;background:var(--card);border-top:1px solid var(--line)}
+  .goo{position:absolute;left:0;bottom:0;width:100%;height:94px;pointer-events:none}
+  .goo circle,.goo ellipse{fill:var(--amber)}
+  .icon{position:absolute;pointer-events:none;color:#fff;transform:translate(-50%,-50%)}
+  .icon svg{width:23px;height:23px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:block}
+  .tabs{position:absolute;left:0;bottom:0;width:100%;height:62px;display:flex;align-items:flex-end;padding-bottom:12px;z-index:3}
   .tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;pointer-events:none}
-  .tab .ic{width:23px;height:23px;color:var(--muted);transition:opacity .16s ease}
+  .tab .ic{width:23px;height:23px;color:var(--muted);transition:opacity .14s ease}
   .tab .ic svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  .tab .lb{font-size:11px;font-weight:700;color:var(--muted);transition:color .18s ease}
-  .tab.active .ic{opacity:0}
-  .tab.active .lb{color:var(--amber-deep)}
-  .foot{margin-top:16px;font-size:11.5px;color:var(--muted);text-align:center;max-width:420px;line-height:1.5}
+  .tab .lb{font-size:11px;font-weight:700;color:var(--muted);transition:color .16s ease}
+  .tab.on .ic{opacity:0}
+  .tab.on .lb{color:var(--amber-deep)}
+  .foot{margin-top:26px;font-size:11.5px;color:var(--muted);text-align:center;max-width:440px;line-height:1.55}
+  .foot b{color:var(--amber-deep)}
 </style>
 </head>
 <body>
-  <div class="eyebrow">Kanji Atlas · alt nav · v3 · sürüklenebilir</div>
-  <h1>Jel navigasyon</h1>
-  <p class="lead">Baloncuğu <b>parmağınla sürükle</b> ya da bir sekmeye dokun. Bar kenarı kabararak takip eder, bırakınca en yakın sekmeye spring ile oturur.</p>
+  <div class="eyebrow">Kanji Atlas · alt nav · v4 · Pixar</div>
+  <h1>İki doz — yan yana</h1>
+  <p class="lead">Sekmeye <b>dokun</b> (birincil) ya da damlayı <b>sürükle</b> (bonus). Gooey sıvı, squash-stretch, bırakınca jiggle. İkisini karşılaştır.</p>
 
-  <div class="phone">
-    <div class="screen">
-      <div class="st">Kana</div>
-      <div class="card"></div><div class="card sm"></div><div class="card sm"></div>
-      <div class="hint">↓ baloncuğu sürükle</div>
-    </div>
-    <div class="nav" id="nav">
-      <svg class="bar" id="bar" preserveAspectRatio="none"><path id="barpath" d=""></path></svg>
-      <div class="tabs" id="tabs">
-        <div class="tab"><span class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5.5"/><path d="M9.5 9c2.2 0 3.6 1.1 3.6 2.8 0 1.6-1.4 2.4-2.3 3.4"/></svg></span><span class="lb">Kana</span></div>
-        <div class="tab"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="7" cy="8" r="1.9"/><circle cx="16.5" cy="7" r="1.9"/><circle cx="12" cy="16.5" r="1.9"/><path d="M8.7 9.4l2.4 5M14.6 8.5l-1.8 6M9 8h5.6"/></svg></span><span class="lb">Kanji</span></div>
-        <div class="tab"><span class="ic"><svg viewBox="0 0 24 24"><path d="M5 19l1.8-4.8L16 5l3 3-9.2 9.2L5 19z"/><path d="M14 7l3 3"/></svg></span><span class="lb">Yazı</span></div>
-        <div class="tab"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="9.5" rx="4.5"/><path d="M8 12.7h3.2M9.6 11.1v3.2"/><circle cx="16" cy="12.3" r="1.05"/><circle cx="18" cy="14.3" r="1.05"/></svg></span><span class="lb">Oyunlar</span></div>
-      </div>
-      <div class="bubble" id="bubble"></div>
+  <div class="block">
+    <div class="btag">İNCE PIXAR <span>· sakin premium çizgi</span></div>
+    <div class="dev">
+      <div class="filler"><div class="l a"></div><div class="l b"></div><div class="l c"></div></div>
+      <div class="nav" id="navA"></div>
     </div>
   </div>
-  <p class="foot">SVG ile net kenar · parmakla sürükleme · bırakınca spring · Android'de hafif titreşim (iPhone web'de haptik yok — native sürümde gelir). İkonlar geçici.</p>
+
+  <div class="block">
+    <div class="btag">BELİRGİN OYUNCU <span>· daha canlı, oyuncak sınırına yakın</span></div>
+    <div class="dev">
+      <div class="filler"><div class="l a"></div><div class="l b"></div><div class="l c"></div></div>
+      <div class="nav" id="navB"></div>
+    </div>
+  </div>
+
+  <p class="foot"><b>İkisi de:</b> dokunma her zaman çalışır (erişilebilir) · sürükleme bonus · reduced-motion açıksa sadeleşir · Android'de hafif titreşim (iPhone web'de haptik yok). Hangisi karakteri koruyor sence? İkonlar geçici.</p>
 
   <script>
-  (function(){
-    var TABS=['Kana','Kanji','Yazı','Oyunlar'], N=4;
-    var ICONS=[
-      '<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5.5"/><path d="M9.5 9c2.2 0 3.6 1.1 3.6 2.8 0 1.6-1.4 2.4-2.3 3.4"/></svg>',
-      '<svg viewBox="0 0 24 24"><circle cx="7" cy="8" r="1.9"/><circle cx="16.5" cy="7" r="1.9"/><circle cx="12" cy="16.5" r="1.9"/><path d="M8.7 9.4l2.4 5M14.6 8.5l-1.8 6M9 8h5.6"/></svg>',
-      '<svg viewBox="0 0 24 24"><path d="M5 19l1.8-4.8L16 5l3 3-9.2 9.2L5 19z"/><path d="M14 7l3 3"/></svg>',
-      '<svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="9.5" rx="4.5"/><path d="M8 12.7h3.2M9.6 11.1v3.2"/><circle cx="16" cy="12.3" r="1.05"/><circle cx="18" cy="14.3" r="1.05"/></svg>'
-    ];
-    var nav=document.getElementById('nav'), bar=document.getElementById('bar'),
-        path=document.getElementById('barpath'), bubble=document.getElementById('bubble'),
-        tabs=document.getElementById('tabs').children;
-    var H=88, TOP=30, PEAK=18, HALF=46;   // bar geometrisi (px)
-    var W=0, slot=0, cx=0, active=0, dragging=false, raf=null;
-    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ICONS=[
+    '<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5.5"/><path d="M9.5 9c2.2 0 3.6 1.1 3.6 2.8 0 1.6-1.4 2.4-2.3 3.4"/></svg>',
+    '<svg viewBox="0 0 24 24"><circle cx="7" cy="8" r="1.9"/><circle cx="16.5" cy="7" r="1.9"/><circle cx="12" cy="16.5" r="1.9"/><path d="M8.7 9.4l2.4 5M14.6 8.5l-1.8 6M9 8h5.6"/></svg>',
+    '<svg viewBox="0 0 24 24"><path d="M5 19l1.8-4.8L16 5l3 3-9.2 9.2L5 19z"/><path d="M14 7l3 3"/></svg>',
+    '<svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="9.5" rx="4.5"/><path d="M8 12.7h3.2M9.6 11.1v3.2"/><circle cx="16" cy="12.3" r="1.05"/><circle cx="18" cy="14.3" r="1.05"/></svg>'
+  ];
+  var LB=['Kana','Kanji','Yazı','Oyunlar'];
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function layout(){ W=nav.clientWidth; slot=W/N; bar.setAttribute('viewBox','0 0 '+W+' '+H);
-      cx = slot*active + slot/2; draw(cx); }
-    function center(i){ return slot*i + slot/2; }
-    function clamp(v){ return Math.max(slot/2, Math.min(W-slot/2, v)); }
-    function draw(x){
-      // beyaz bar + x konumunda yukarı kabaran hump
-      var d='M0,'+TOP
-        +' L'+(x-HALF)+','+TOP
-        +' C'+(x-HALF+16)+','+TOP+' '+(x-24)+','+(TOP-PEAK)+' '+x+','+(TOP-PEAK)
-        +' C'+(x+24)+','+(TOP-PEAK)+' '+(x+HALF-16)+','+TOP+' '+(x+HALF)+','+TOP
-        +' L'+W+','+TOP+' L'+W+','+H+' L0,'+H+' Z';
-      path.setAttribute('d',d);
-      bubble.style.left = x+'px';
-      bubble.style.top  = (TOP-PEAK+4)+'px';
-      var near = Math.max(0, Math.min(N-1, Math.round((x-slot/2)/slot)));
-      if(near!==active){ active=near; setActive(near); vibrate(); }
-    }
-    function setActive(i){
-      for(var k=0;k<N;k++) tabs[k].classList.toggle('active', k===i);
-      bubble.innerHTML = ICONS[i];
-    }
-    function vibrate(){ try{ if(navigator.vibrate) navigator.vibrate(10); }catch(e){} }
+  function createNav(root, id, P){
+    var N=4, BAR=62, H=94, BARTOP=H-BAR;         // bar üst kenarı y
+    // DOM
+    root.innerHTML =
+      '<div class="barbg"></div>'+
+      '<svg class="goo" id="'+id+'"><defs><filter id="f-'+id+'" x="-60%" y="-60%" width="220%" height="220%">'+
+        '<feGaussianBlur in="SourceGraphic" stdDeviation="'+(reduce?0.01:5.5)+'" result="b"/>'+
+        '<feColorMatrix in="b" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9"/>'+
+      '</filter></defs>'+
+      '<g filter="url(#f-'+id+')">'+
+        '<ellipse id="'+id+'-base" rx="20" ry="9"></ellipse>'+
+        '<ellipse id="'+id+'-drop" rx="22" ry="22"></ellipse>'+
+      '</g></svg>'+
+      '<div class="icon" id="'+id+'-icon"></div>'+
+      '<div class="tabs" id="'+id+'-tabs">'+
+        LB.map(function(l,i){return '<div class="tab"><span class="ic">'+ICONS[i]+'</span><span class="lb">'+l+'</span></div>';}).join('')+
+      '</div>';
 
-    // spring tween (ease-out-back) — bırakınca oturma
-    function tweenTo(target){
-      cancelAnimationFrame(raf);
-      var from=cx, dur=reduce?170:360, t0=performance.now();
-      var c1=reduce?0:1.5, c3=c1+1;
-      function ease(t){ return reduce ? (1-Math.pow(1-t,2)) : (1 + c3*Math.pow(t-1,3) + c1*Math.pow(t-1,2)); }
-      (function step(now){
-        var t=Math.min(1,(now-t0)/dur);
-        cx = from + (target-from)*ease(t);
-        draw(cx);
-        if(t<1) raf=requestAnimationFrame(step);
-      })(t0);
-    }
+    var goo=document.getElementById(id), base=document.getElementById(id+'-base'),
+        drop=document.getElementById(id+'-drop'), icon=document.getElementById(id+'-icon'),
+        tabs=document.getElementById(id+'-tabs').children;
+    var W=0, slot=0, cx=0, v=0, active=-1, dragging=false, prevCx=0, raf=null;
 
-    function px(e){ return (e.touches?e.touches[0].clientX:e.clientX) - nav.getBoundingClientRect().left; }
-    function down(e){ dragging=true; cancelAnimationFrame(raf); cx=clamp(px(e)); draw(cx); e.preventDefault(); }
-    function move(e){ if(!dragging)return; cx=clamp(px(e)); draw(cx); e.preventDefault(); }
+    function layout(){ W=root.clientWidth; slot=W/N; goo.setAttribute('viewBox','0 0 '+W+' '+H);
+      goo.setAttribute('width',W); goo.setAttribute('height',H); cx=center(0); prevCx=cx; render(0); setActive(0);}
+    function center(i){ return slot*i+slot/2; }
+    function clamp(x){ return Math.max(slot/2, Math.min(W-slot/2, x)); }
+    function setActive(i){ if(i===active)return; active=i;
+      for(var k=0;k<N;k++) tabs[k].classList.toggle('on',k===i);
+      icon.innerHTML=ICONS[i]; vibrate(); }
+
+    function render(vel){
+      var av=Math.abs(vel);
+      var stretch=Math.min(P.maxS, av*P.stretchK);
+      var rise=P.rise + av*P.riseK;
+      var dropY=BARTOP - rise;
+      var rx=P.R*(1+stretch), ry=P.R*(1-stretch*0.66);
+      // baloncuk hareket yönünde eğilir/uzar; taban hafif geride kalır (drip)
+      var dropX=cx, baseX=cx - vel*P.lag;
+      drop.setAttribute('cx',dropX); drop.setAttribute('cy',dropY);
+      drop.setAttribute('rx',rx); drop.setAttribute('ry',ry);
+      base.setAttribute('cx',baseX); base.setAttribute('cy',BARTOP-1);
+      icon.style.left=dropX+'px'; icon.style.top=dropY+'px';
+      icon.style.transform='translate(-50%,-50%) scale('+(1+stretch*0.4)+','+(1-stretch*0.5)+')';
+      var near=Math.max(0,Math.min(N-1,Math.round((cx-slot/2)/slot)));
+      setActive(near);
+    }
+    function vibrate(){ try{ if(navigator.vibrate) navigator.vibrate(reduce?0:9); }catch(e){} }
+
+    var target=center(0);
+    function tick(){
+      if(!dragging){
+        v += (target-cx)*P.stiff; v *= P.damp; cx += v;
+        if(Math.abs(v)<0.03 && Math.abs(target-cx)<0.3){ cx=target; v=0; render(0); raf=null; return; }
+      }else{ v=cx-prevCx; }
+      prevCx=cx; render(v); raf=requestAnimationFrame(tick);
+    }
+    function kick(){ if(!raf) raf=requestAnimationFrame(tick); }
+
+    function xOf(e){ return (e.touches?e.touches[0].clientX:e.clientX) - root.getBoundingClientRect().left; }
+    function down(e){ dragging=true; cx=clamp(xOf(e)); prevCx=cx; kick(); e.preventDefault(); }
+    function move(e){ if(!dragging)return; cx=clamp(xOf(e)); kick(); e.preventDefault(); }
     function up(){ if(!dragging)return; dragging=false;
-      var i=Math.max(0,Math.min(N-1,Math.round((cx-slot/2)/slot)));
-      tweenTo(center(i)); }
-
-    nav.addEventListener('pointerdown',down); window.addEventListener('pointermove',move); window.addEventListener('pointerup',up);
-    nav.addEventListener('touchstart',down,{passive:false}); window.addEventListener('touchmove',move,{passive:false}); window.addEventListener('touchend',up);
+      target=center(Math.max(0,Math.min(N-1,Math.round((cx-slot/2)/slot)))); kick(); }
+    root.addEventListener('pointerdown',down); window.addEventListener('pointermove',move); window.addEventListener('pointerup',up);
+    root.addEventListener('touchstart',down,{passive:false}); window.addEventListener('touchmove',move,{passive:false}); window.addEventListener('touchend',up);
+    // tap: pointerdown+up aynı yer → nearest zaten target olur (down cx set, up snap)
     window.addEventListener('resize',layout);
-    layout(); setActive(0);
-  })();
+    layout();
+    // dış API: bir sekmeye programatik git (tap testi)
+    return { go:function(i){ target=center(i); kick(); } };
+  }
+
+  // İNCE: yüksek damping, az stretch/rise
+  var A=createNav(document.getElementById('navA'),'A', reduce
+    ? {stiff:.20,damp:.80,stretchK:0,maxS:0,riseK:0,lag:0,rise:20,R:22}
+    : {stiff:.155,damp:.82,stretchK:.010,maxS:.17,riseK:.10,lag:.16,rise:20,R:22});
+  // BELİRGİN: düşük damping (daha bounce), çok stretch/rise/lag
+  var B=createNav(document.getElementById('navB'),'B', reduce
+    ? {stiff:.20,damp:.80,stretchK:0,maxS:0,riseK:0,lag:0,rise:20,R:22}
+    : {stiff:.195,damp:.71,stretchK:.017,maxS:.32,riseK:.24,lag:.34,rise:21,R:22});
   </script>
 </body>
 </html>
