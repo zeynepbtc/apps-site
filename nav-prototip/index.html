@@ -40,9 +40,9 @@
 </style>
 </head>
 <body>
-  <div class="eyebrow">Kanji Atlas · alt nav · v20 · düz kare köşeler</div>
-  <h1>Köşeler dümdüz · bevel yok</h1>
-  <p class="lead">Bar üst kenarı tamamen düz ve köşeler kare — yuvarlak/beveled köşe yok, o yüzden kenar sekmelerinde (Kana/Oyunlar) eğiş büğüş sivrilme oluşmaz. Kenar payı 10px. Yumuşak groove, 5px negatif alan, küçülmeden batan gömülme aynı.</p>
+  <div class="eyebrow">Kanji Atlas · alt nav · v21 · net ince yuva yayı</div>
+  <h1>Yuva yayı net · blur yok</h1>
+  <p class="lead">Yuva yayı artık çerçeve inceliğinde net bir çizgi — blur/bulanıklık yok. Köşeler düz kare, kenar payı 10px, 5px negatif alan, küçülmeden batan gömülme aynı.</p>
 
   <div class="phone">
     <div class="topbar">
@@ -60,8 +60,7 @@
       <svg class="bar" id="svg" preserveAspectRatio="none">
         <defs>
           <filter id="sh" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#8f5322" flood-opacity="0.26"/></filter>
-          <filter id="soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.3"/></filter>
-          <filter id="ringsoft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.1"/></filter>
+          <filter id="soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="0.5"/></filter>
           <mask id="socket">
             <rect id="mrect" x="0" y="0" width="100%" height="100%" fill="#fff"></rect>
             <ellipse id="mhole" fill="#000" filter="url(#soft)"></ellipse>
@@ -74,12 +73,12 @@
         <!-- BAR: düz panel, mask ile yuvarlak delik -->
         <path id="bar" fill="#fff" stroke="#E6DCCB" stroke-width="1" mask="url(#socket)"></path>
         <!-- YUVA KENARI: tanımlı ince çizgi, yalnız bar içinde (üstü clip'lenir) -->
-        <circle id="rim" fill="none" stroke="#C9BAA0" stroke-width="2" filter="url(#ringsoft)" clip-path="url(#belowbar)"></circle>
+        <circle id="rim" fill="none" stroke="#DCCFB9" stroke-width="1.2" clip-path="url(#belowbar)"></circle>
       </svg>
       <div class="tabs" id="tabs"></div>
     </div>
   </div>
-  <p class="foot"><b>v20:</b> bar üst köşeleri kare/düz (bevel yok → eğiş büğüş sivrilme yok) · kenar payı 10px · yumuşak groove · daire küçülmeden batar, pencere mühürlenir · gap 5px. İkonlar geçici — sıradaki iş bunlar.</p>
+  <p class="foot"><b>v21:</b> yuva yayı net ince çizgi (çerçeve kalınlığında, blur yok) · köşeler kare/düz · kenar payı 10px · gap 5px · daire küçülmeden batar. İkonlar geçici — sıradaki iş bunlar.</p>
 
   <script>
   (function(){
