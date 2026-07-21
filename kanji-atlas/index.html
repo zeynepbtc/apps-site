@@ -2574,7 +2574,13 @@ function Home(){
     </div>
   </div>`:''}
 
-  <!-- 2. Genel İlerleme (P0-1 Dilim 2: İlerleme ekranına ANA erişim — Progress tab'dan çıktı) -->
+  <!-- Öneri: HER ZAMAN görünür, progress'ten ÖNCE ve baskın (P0-1 Dilim 3.5 · D1) — 10 karakterden sonra kaybolmaz -->
+  <div class="rec-hint" data-go="${rec.go}" role="button">
+    <span>Senin için öneri: <b>${rec.label}</b> — ${rec.reason}</span>
+    <span class="ra">›</span>
+  </div>
+
+  <!-- Genel İlerleme: İKİNCİL erişim (öneriden sonra) -->
   <div class="prog-strip" data-go="progress" role="button">
     <div class="ring">
       <svg width="46" height="46"><circle cx="23" cy="23" r="19" fill="none" stroke="var(--card2)" stroke-width="4.5"/>
@@ -2589,12 +2595,8 @@ function Home(){
     <span class="pa">›</span>
   </div>
 
-  <!-- 3. Bugün ne öğrenmek istiyorsun? — ana araçlar (eşit ağırlık) -->
+  <!-- Dört kalıcı ve doğrudan giriş (Kana/Kanji/Yazı/Oyunlar) — D1: eşit erişim -->
   <div class="sec-head"><div class="eb">Başla</div><div class="ti">Bugün ne öğrenmek istiyorsun?</div></div>
-  ${established?'':`<div class="rec-hint" data-go="${rec.go}" role="button">
-    <span>Senin için öneri: <b>${rec.label}</b> — ${rec.reason}</span>
-    <span class="ra">›</span>
-  </div>`}
   <div class="big-cards">
     <button class="bigcard" data-go="kana">
       <div class="bg" style="background:none;box-shadow:none;overflow:visible">${iconBadge('あ',IC.terra,IC.amber,64)}</div>
@@ -2611,6 +2613,22 @@ function Home(){
         <div class="bt">Kanji Atlası</div>
         <div class="bs">Anlam taşıyan işaretler — N5'in 83 kanjisi</div>
         <div class="bp"><span class="bar"><i style="width:${kanjiPct}%"></i></span><span class="pc">${learnedKanji}/${kanjiChars.length}</span></div>
+      </div>
+      <span class="ba">›</span>
+    </button>
+    <button class="bigcard" data-go="practice">
+      <div class="bg" style="background:none;box-shadow:none;overflow:visible">${iconBadge('書',IC.teal,IC.gold,64)}</div>
+      <div class="bd">
+        <div class="bt">Yazı</div>
+        <div class="bs">Karakterleri elle çiz — vuruş sırası ve rehberli iz</div>
+      </div>
+      <span class="ba">›</span>
+    </button>
+    <button class="bigcard" data-go="games">
+      <div class="bg" style="background:none;box-shadow:none;overflow:visible">${iconBadge('遊',IC.gold,IC.terra,64)}</div>
+      <div class="bd">
+        <div class="bt">Oyunlar</div>
+        <div class="bs">Eğlenerek pekiştir — tanı, eşleştir, hatırla</div>
       </div>
       <span class="ba">›</span>
     </button>
