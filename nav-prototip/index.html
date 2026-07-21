@@ -43,9 +43,9 @@
 </style>
 </head>
 <body>
-  <div class="eyebrow">Kanji Atlas · alt nav · v12 · top gömülü + yazılar yukarı</div>
-  <h1>Kompakt ↔ açık · içeriğe göre</h1>
-  <p class="lead">1) Home: sadece ikonlar. 2) Sekmeye dokun → menü yükselir, yazılar gelir, ikon topa girer. 3) Sayfada karta dokun → menü yuvasına iner, yazılar gizlenir, ikon+top kalır.</p>
+  <div class="eyebrow">Kanji Atlas · alt nav · v13 · kaynaşma (damla) · sade top</div>
+  <h1>Top yuvaya kaynaşır · sade</h1>
+  <p class="lead">Top düz tek renk (parlama yok), yuvaya dikişsiz oturur. Home'a dönünce fade değil — top ve yuva birlikte küçülüp bara erir (damla gibi). Sekmeye dokun → doğar; Ana Sayfa → kaynaşır.</p>
 
   <div class="phone">
     <div class="topbar">
@@ -64,19 +64,17 @@
     <div class="nav" id="nav">
       <svg class="bar" id="svg" preserveAspectRatio="none">
         <defs>
-          <linearGradient id="gel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E7A860"/><stop offset="1" stop-color="#CB7A31"/></linearGradient>
-          <filter id="sh" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#B5651F" flood-opacity="0.38"/></filter>
+          <filter id="sh" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#9A5A2A" flood-opacity="0.18"/></filter>
         </defs>
         <path id="bar" fill="#fff" stroke="#E6DCCB" stroke-width="1"></path>
         <rect id="handle" rx="2" ry="2" height="4" fill="#E0D4BE"></rect>
-        <g filter="url(#sh)"><ellipse id="ball" fill="url(#gel)"></ellipse></g>
-        <ellipse id="hl" fill="#fff"></ellipse>
+        <g filter="url(#sh)"><ellipse id="ball" fill="#D3813A"></ellipse></g>
         <g id="aicon" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></g>
       </svg>
       <div class="tabs" id="tabs"></div>
     </div>
   </div>
-  <p class="foot"><b>v12:</b> top artık uçmuyor — bar üst kenarına yarıya gömülü oturuyor, barla birlikte yükseliyor. Yazılar ikonların hemen altında (dibe yapışmadı). Menü hiç kaybolmaz; Doz Canlı. İkonlar geçici.</p>
+  <p class="foot"><b>v13:</b> top ve yuva ortak yarıçapla birlikte doğar/erir → gerçek kaynaşma (fade yok). Top düz, tek renk, ışık yansıması yok. Referanstaki gibi dikişsiz oturuyor mu? İkonlar geçici.</p>
 
   <script>
   (function(){
@@ -114,22 +112,24 @@
       var stretch=Math.min(0.13, av*0.013), rx=R*(1+stretch), ry=R*(1-stretch*0.5);
       var barTop=lerp(COMPACT_TOP,EXP_TOP,ex);
       var iconY=barTop+ICON_K, labelY=iconY+LABEL_GAP;
-      // top: yarıya gömülü (merkez = barTop+EMBED) · home'da bara gömülüp solar (uçmaz)
-      var ballRest=barTop+EMBED, submerged=barTop+R+4;
-      var by=lerp(submerged, ballRest, em), op=Math.max(0,Math.min(1,em*1.2));
-      var bx=cx - svel*0.11, bot=barTop+(EMBED+R*0.42)*em, HW=R+13;   // sığ yuva topun altını kucaklar
-      // bar: üst kenar barTop; aktif topun altında içbükey yuva
-      bar.setAttribute('d','M0,'+barTop+' L'+(bx-HW)+','+barTop
-        +' C'+(bx-HW*0.46)+','+barTop+' '+(bx-R*0.86)+','+bot+' '+bx+','+bot
-        +' C'+(bx+R*0.86)+','+bot+' '+(bx+HW*0.46)+','+barTop+' '+(bx+HW)+','+barTop
+      // KAYNAŞMA modeli: top ve yuva ORTAK yarıçapla birlikte doğar/erir (damla gibi, fade yok)
+      var rr=R*em;                                   // em=1 tam top · em→0 yuvayla birlikte erir
+      var by=(barTop - R*0.15) + (1-em)*(R*0.55);    // dururken çoğu görünür/altı gömülü · erirken sinip bata
+      var bx=cx - svel*0.11;
+      var bottomY=by+rr, half=rr*1.02, Kf=0.5523;    // yuva topun alt yarısını birebir sarar (dikişsiz)
+      var rx=rr*(1+stretch), ry=rr*(1-stretch*0.5);
+      // bar: düz → aktif topun altını saran yuva (topla kaynaşır) → düz
+      bar.setAttribute('d','M0,'+barTop+' L'+(bx-half)+','+barTop
+        +' C'+(bx-half)+','+(barTop+rr*Kf)+' '+(bx-half*Kf)+','+bottomY+' '+bx+','+bottomY
+        +' C'+(bx+half*Kf)+','+bottomY+' '+(bx+half)+','+(barTop+rr*Kf)+' '+(bx+half)+','+barTop
         +' L'+W+','+barTop+' L'+W+','+H+' L0,'+H+' Z');
       // handle (çentik) — açıkken solar, kompaktta belirgin
       handle.setAttribute('x',W/2-14); handle.setAttribute('y',barTop-8); handle.setAttribute('width',28);
       handle.setAttribute('opacity',0.5*(1-ex));
-      // top
-      ball.setAttribute('cx',cx); ball.setAttribute('cy',by); ball.setAttribute('rx',rx); ball.setAttribute('ry',ry); ball.setAttribute('opacity',op);
-      hl.setAttribute('cx',cx); hl.setAttribute('cy',by-ry*0.42); hl.setAttribute('rx',rx*0.5); hl.setAttribute('ry',ry*0.28); hl.setAttribute('opacity',0.3*op);
-      aicon.setAttribute('transform','translate('+(cx-12)+','+(by-12)+')'); aicon.setAttribute('opacity',op);
+      // top — düz, sade, tek renk (ışık yansıması / emboss yok)
+      ball.setAttribute('cx',cx); ball.setAttribute('cy',by); ball.setAttribute('rx',rx); ball.setAttribute('ry',ry);
+      aicon.setAttribute('transform','translate('+cx+','+by+') scale('+Math.max(0.001,em)+') translate(-12,-12)');
+      aicon.setAttribute('opacity',Math.max(0,Math.min(1,(em-0.2)/0.6)));
       var nr=nearest();
       for(var k=0;k<N;k++){
         var icE=tabs[k].querySelector('.ic'), lbE=tabs[k].querySelector('.lb');
