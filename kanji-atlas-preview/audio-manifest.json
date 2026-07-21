@@ -26,8 +26,9 @@
    "metin": "あ",
    "okunus": "a",
    "ses_dosyasi": "audio/kana/a.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_i",
@@ -35,8 +36,9 @@
    "metin": "い",
    "okunus": "i",
    "ses_dosyasi": "audio/kana/i.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_u",
@@ -44,8 +46,9 @@
    "metin": "う",
    "okunus": "u",
    "ses_dosyasi": "audio/kana/u.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_e",
@@ -53,8 +56,9 @@
    "metin": "え",
    "okunus": "e",
    "ses_dosyasi": "audio/kana/e.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_o",
@@ -62,8 +66,9 @@
    "metin": "お",
    "okunus": "o",
    "ses_dosyasi": "audio/kana/o.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_ka",
@@ -71,8 +76,9 @@
    "metin": "か",
    "okunus": "ka",
    "ses_dosyasi": "audio/kana/ka.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_ki",
@@ -80,7 +86,7 @@
    "metin": "き",
    "okunus": "ki",
    "ses_dosyasi": "audio/kana/ki.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -89,8 +95,9 @@
    "metin": "く",
    "okunus": "ku",
    "ses_dosyasi": "audio/kana/ku.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_ke",
@@ -98,8 +105,9 @@
    "metin": "け",
    "okunus": "ke",
    "ses_dosyasi": "audio/kana/ke.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_ko",
@@ -107,7 +115,7 @@
    "metin": "こ",
    "okunus": "ko",
    "ses_dosyasi": "audio/kana/ko.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -116,8 +124,9 @@
    "metin": "さ",
    "okunus": "sa",
    "ses_dosyasi": "audio/kana/sa.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_shi",
@@ -125,8 +134,9 @@
    "metin": "し",
    "okunus": "shi",
    "ses_dosyasi": "audio/kana/shi.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_su",
@@ -134,8 +144,9 @@
    "metin": "す",
    "okunus": "su",
    "ses_dosyasi": "audio/kana/su.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_se",
@@ -143,8 +154,9 @@
    "metin": "せ",
    "okunus": "se",
    "ses_dosyasi": "audio/kana/se.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_so",
@@ -152,8 +164,9 @@
    "metin": "そ",
    "okunus": "so",
    "ses_dosyasi": "audio/kana/so.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_ta",
@@ -161,7 +174,7 @@
    "metin": "た",
    "okunus": "ta",
    "ses_dosyasi": "audio/kana/ta.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -170,8 +183,9 @@
    "metin": "ち",
    "okunus": "chi",
    "ses_dosyasi": "audio/kana/chi.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_tsu",
@@ -179,8 +193,9 @@
    "metin": "つ",
    "okunus": "tsu",
    "ses_dosyasi": "audio/kana/tsu.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_te",
@@ -188,7 +203,7 @@
    "metin": "て",
    "okunus": "te",
    "ses_dosyasi": "audio/kana/te.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -197,8 +212,9 @@
    "metin": "と",
    "okunus": "to",
    "ses_dosyasi": "audio/kana/to.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_na",
@@ -206,7 +222,7 @@
    "metin": "な",
    "okunus": "na",
    "ses_dosyasi": "audio/kana/na.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -215,7 +231,7 @@
    "metin": "に",
    "okunus": "ni",
    "ses_dosyasi": "audio/kana/ni.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -224,8 +240,9 @@
    "metin": "ぬ",
    "okunus": "nu",
    "ses_dosyasi": "audio/kana/nu.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_ne",
@@ -233,8 +250,9 @@
    "metin": "ね",
    "okunus": "ne",
    "ses_dosyasi": "audio/kana/ne.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_no",
@@ -242,8 +260,9 @@
    "metin": "の",
    "okunus": "no",
    "ses_dosyasi": "audio/kana/no.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_ha",
@@ -251,7 +270,7 @@
    "metin": "は",
    "okunus": "ha",
    "ses_dosyasi": "audio/kana/ha.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -260,7 +279,7 @@
    "metin": "ひ",
    "okunus": "hi",
    "ses_dosyasi": "audio/kana/hi.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -269,8 +288,9 @@
    "metin": "ふ",
    "okunus": "fu",
    "ses_dosyasi": "audio/kana/fu.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_he",
@@ -278,8 +298,9 @@
    "metin": "へ",
    "okunus": "he",
    "ses_dosyasi": "audio/kana/he.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_ho",
@@ -287,8 +308,9 @@
    "metin": "ほ",
    "okunus": "ho",
    "ses_dosyasi": "audio/kana/ho.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_ma",
@@ -296,8 +318,9 @@
    "metin": "ま",
    "okunus": "ma",
    "ses_dosyasi": "audio/kana/ma.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_mi",
@@ -305,8 +328,9 @@
    "metin": "み",
    "okunus": "mi",
    "ses_dosyasi": "audio/kana/mi.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_mu",
@@ -314,8 +338,9 @@
    "metin": "む",
    "okunus": "mu",
    "ses_dosyasi": "audio/kana/mu.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_me",
@@ -323,7 +348,7 @@
    "metin": "め",
    "okunus": "me",
    "ses_dosyasi": "audio/kana/me.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -332,8 +357,9 @@
    "metin": "も",
    "okunus": "mo",
    "ses_dosyasi": "audio/kana/mo.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_ya",
@@ -341,8 +367,9 @@
    "metin": "や",
    "okunus": "ya",
    "ses_dosyasi": "audio/kana/ya.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_yu",
@@ -350,8 +377,9 @@
    "metin": "ゆ",
    "okunus": "yu",
    "ses_dosyasi": "audio/kana/yu.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_yo",
@@ -359,8 +387,9 @@
    "metin": "よ",
    "okunus": "yo",
    "ses_dosyasi": "audio/kana/yo.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_ra",
@@ -368,8 +397,9 @@
    "metin": "ら",
    "okunus": "ra",
    "ses_dosyasi": "audio/kana/ra.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_ri",
@@ -377,8 +407,9 @@
    "metin": "り",
    "okunus": "ri",
    "ses_dosyasi": "audio/kana/ri.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_ru",
@@ -386,8 +417,9 @@
    "metin": "る",
    "okunus": "ru",
    "ses_dosyasi": "audio/kana/ru.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_re",
@@ -395,8 +427,9 @@
    "metin": "れ",
    "okunus": "re",
    "ses_dosyasi": "audio/kana/re.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_ro",
@@ -404,8 +437,9 @@
    "metin": "ろ",
    "okunus": "ro",
    "ses_dosyasi": "audio/kana/ro.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_wa",
@@ -413,8 +447,9 @@
    "metin": "わ",
    "okunus": "wa",
    "ses_dosyasi": "audio/kana/wa.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_wo",
@@ -422,8 +457,9 @@
    "metin": "を",
    "okunus": "wo",
    "ses_dosyasi": "audio/kana/wo.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_hira_n",
@@ -431,8 +467,9 @@
    "metin": "ん",
    "okunus": "n",
    "ses_dosyasi": "audio/kana/n.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_a",
@@ -440,8 +477,9 @@
    "metin": "ア",
    "okunus": "a",
    "ses_dosyasi": "audio/kana/a.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_i",
@@ -449,8 +487,9 @@
    "metin": "イ",
    "okunus": "i",
    "ses_dosyasi": "audio/kana/i.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_u",
@@ -458,8 +497,9 @@
    "metin": "ウ",
    "okunus": "u",
    "ses_dosyasi": "audio/kana/u.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_e",
@@ -467,8 +507,9 @@
    "metin": "エ",
    "okunus": "e",
    "ses_dosyasi": "audio/kana/e.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_o",
@@ -476,8 +517,9 @@
    "metin": "オ",
    "okunus": "o",
    "ses_dosyasi": "audio/kana/o.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_ka",
@@ -485,8 +527,9 @@
    "metin": "カ",
    "okunus": "ka",
    "ses_dosyasi": "audio/kana/ka.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_ki",
@@ -494,7 +537,7 @@
    "metin": "キ",
    "okunus": "ki",
    "ses_dosyasi": "audio/kana/ki.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -503,8 +546,9 @@
    "metin": "ク",
    "okunus": "ku",
    "ses_dosyasi": "audio/kana/ku.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_ke",
@@ -512,8 +556,9 @@
    "metin": "ケ",
    "okunus": "ke",
    "ses_dosyasi": "audio/kana/ke.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_ko",
@@ -521,7 +566,7 @@
    "metin": "コ",
    "okunus": "ko",
    "ses_dosyasi": "audio/kana/ko.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -530,8 +575,9 @@
    "metin": "サ",
    "okunus": "sa",
    "ses_dosyasi": "audio/kana/sa.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_shi",
@@ -539,8 +585,9 @@
    "metin": "シ",
    "okunus": "shi",
    "ses_dosyasi": "audio/kana/shi.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_su",
@@ -548,8 +595,9 @@
    "metin": "ス",
    "okunus": "su",
    "ses_dosyasi": "audio/kana/su.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_se",
@@ -557,8 +605,9 @@
    "metin": "セ",
    "okunus": "se",
    "ses_dosyasi": "audio/kana/se.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_so",
@@ -566,8 +615,9 @@
    "metin": "ソ",
    "okunus": "so",
    "ses_dosyasi": "audio/kana/so.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_ta",
@@ -575,7 +625,7 @@
    "metin": "タ",
    "okunus": "ta",
    "ses_dosyasi": "audio/kana/ta.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -584,8 +634,9 @@
    "metin": "チ",
    "okunus": "chi",
    "ses_dosyasi": "audio/kana/chi.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_tsu",
@@ -593,8 +644,9 @@
    "metin": "ツ",
    "okunus": "tsu",
    "ses_dosyasi": "audio/kana/tsu.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_te",
@@ -602,7 +654,7 @@
    "metin": "テ",
    "okunus": "te",
    "ses_dosyasi": "audio/kana/te.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -611,8 +663,9 @@
    "metin": "ト",
    "okunus": "to",
    "ses_dosyasi": "audio/kana/to.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_na",
@@ -620,7 +673,7 @@
    "metin": "ナ",
    "okunus": "na",
    "ses_dosyasi": "audio/kana/na.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -629,7 +682,7 @@
    "metin": "ニ",
    "okunus": "ni",
    "ses_dosyasi": "audio/kana/ni.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -638,8 +691,9 @@
    "metin": "ヌ",
    "okunus": "nu",
    "ses_dosyasi": "audio/kana/nu.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_ne",
@@ -647,8 +701,9 @@
    "metin": "ネ",
    "okunus": "ne",
    "ses_dosyasi": "audio/kana/ne.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_no",
@@ -656,8 +711,9 @@
    "metin": "ノ",
    "okunus": "no",
    "ses_dosyasi": "audio/kana/no.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_ha",
@@ -665,7 +721,7 @@
    "metin": "ハ",
    "okunus": "ha",
    "ses_dosyasi": "audio/kana/ha.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -674,7 +730,7 @@
    "metin": "ヒ",
    "okunus": "hi",
    "ses_dosyasi": "audio/kana/hi.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -683,8 +739,9 @@
    "metin": "フ",
    "okunus": "fu",
    "ses_dosyasi": "audio/kana/fu.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_he",
@@ -692,8 +749,9 @@
    "metin": "ヘ",
    "okunus": "he",
    "ses_dosyasi": "audio/kana/he.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_ho",
@@ -701,8 +759,9 @@
    "metin": "ホ",
    "okunus": "ho",
    "ses_dosyasi": "audio/kana/ho.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_ma",
@@ -710,8 +769,9 @@
    "metin": "マ",
    "okunus": "ma",
    "ses_dosyasi": "audio/kana/ma.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_mi",
@@ -719,8 +779,9 @@
    "metin": "ミ",
    "okunus": "mi",
    "ses_dosyasi": "audio/kana/mi.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_mu",
@@ -728,8 +789,9 @@
    "metin": "ム",
    "okunus": "mu",
    "ses_dosyasi": "audio/kana/mu.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_me",
@@ -737,7 +799,7 @@
    "metin": "メ",
    "okunus": "me",
    "ses_dosyasi": "audio/kana/me.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded"
   },
   {
@@ -746,8 +808,9 @@
    "metin": "モ",
    "okunus": "mo",
    "ses_dosyasi": "audio/kana/mo.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_ya",
@@ -755,8 +818,9 @@
    "metin": "ヤ",
    "okunus": "ya",
    "ses_dosyasi": "audio/kana/ya.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_yu",
@@ -764,8 +828,9 @@
    "metin": "ユ",
    "okunus": "yu",
    "ses_dosyasi": "audio/kana/yu.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_yo",
@@ -773,8 +838,9 @@
    "metin": "ヨ",
    "okunus": "yo",
    "ses_dosyasi": "audio/kana/yo.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_ra",
@@ -782,8 +848,9 @@
    "metin": "ラ",
    "okunus": "ra",
    "ses_dosyasi": "audio/kana/ra.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_ri",
@@ -791,8 +858,9 @@
    "metin": "リ",
    "okunus": "ri",
    "ses_dosyasi": "audio/kana/ri.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_ru",
@@ -800,8 +868,9 @@
    "metin": "ル",
    "okunus": "ru",
    "ses_dosyasi": "audio/kana/ru.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_re",
@@ -809,8 +878,9 @@
    "metin": "レ",
    "okunus": "re",
    "ses_dosyasi": "audio/kana/re.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_ro",
@@ -818,8 +888,9 @@
    "metin": "ロ",
    "okunus": "ro",
    "ses_dosyasi": "audio/kana/ro.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_wa",
@@ -827,8 +898,9 @@
    "metin": "ワ",
    "okunus": "wa",
    "ses_dosyasi": "audio/kana/wa.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_wo",
@@ -836,8 +908,9 @@
    "metin": "ヲ",
    "okunus": "wo",
    "ses_dosyasi": "audio/kana/wo.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kana_kata_n",
@@ -845,8 +918,9 @@
    "metin": "ン",
    "okunus": "n",
    "ses_dosyasi": "audio/kana/n.mp3",
-   "kaynak": "flick",
-   "durum": "recorded"
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   },
   {
    "id": "kanji_ichi",
@@ -1874,7 +1948,7 @@
    "metin": "百",
    "okunus": "hyaku",
    "ses_dosyasi": "audio/word/hyaku.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -1884,7 +1958,7 @@
    "metin": "千",
    "okunus": "sen",
    "ses_dosyasi": "audio/word/sen.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -1894,7 +1968,7 @@
    "metin": "万",
    "okunus": "man",
    "ses_dosyasi": "audio/word/man.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2004,7 +2078,7 @@
    "metin": "母",
    "okunus": "haha",
    "ses_dosyasi": "audio/word/haha.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2014,7 +2088,7 @@
    "metin": "父",
    "okunus": "chichi",
    "ses_dosyasi": "audio/word/chichi.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2054,7 +2128,7 @@
    "metin": "人",
    "okunus": "hito",
    "ses_dosyasi": "audio/word/hito.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2104,7 +2178,7 @@
    "metin": "本",
    "okunus": "hon",
    "ses_dosyasi": "audio/word/hon.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2124,7 +2198,7 @@
    "metin": "水",
    "okunus": "mizu",
    "ses_dosyasi": "audio/word/mizu.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2214,7 +2288,7 @@
    "metin": "山",
    "okunus": "yama",
    "ses_dosyasi": "audio/word/yama.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2224,7 +2298,7 @@
    "metin": "川",
    "okunus": "kawa",
    "ses_dosyasi": "audio/word/kawa.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2234,7 +2308,7 @@
    "metin": "雨",
    "okunus": "ame",
    "ses_dosyasi": "audio/word/ame.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2264,7 +2338,7 @@
    "metin": "国",
    "okunus": "kuni",
    "ses_dosyasi": "audio/word/kuni.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2284,7 +2358,7 @@
    "metin": "外",
    "okunus": "soto",
    "ses_dosyasi": "audio/word/soto.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2294,7 +2368,7 @@
    "metin": "上",
    "okunus": "ue",
    "ses_dosyasi": "audio/word/ue.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2304,7 +2378,7 @@
    "metin": "下",
    "okunus": "shita",
    "ses_dosyasi": "audio/word/shita.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2314,7 +2388,7 @@
    "metin": "車",
    "okunus": "kuruma",
    "ses_dosyasi": "audio/word/kuruma.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2494,7 +2568,7 @@
    "metin": "何",
    "okunus": "nani",
    "ses_dosyasi": "audio/word/nani.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
