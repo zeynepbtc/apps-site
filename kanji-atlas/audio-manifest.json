@@ -1838,7 +1838,7 @@
    "metin": "おはよう",
    "okunus": "ohayou",
    "ses_dosyasi": "audio/word/ohayou.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -1848,7 +1848,7 @@
    "metin": "こんにちは",
    "okunus": "konnichiwa",
    "ses_dosyasi": "audio/word/konnichiwa.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -1858,7 +1858,7 @@
    "metin": "こんばんは",
    "okunus": "konbanwa",
    "ses_dosyasi": "audio/word/konbanwa.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -1868,7 +1868,7 @@
    "metin": "ありがとう",
    "okunus": "arigatou",
    "ses_dosyasi": "audio/word/arigatou.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -1878,7 +1878,7 @@
    "metin": "すみません",
    "okunus": "sumimasen",
    "ses_dosyasi": "audio/word/sumimasen.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -1888,7 +1888,7 @@
    "metin": "さようなら",
    "okunus": "sayounara",
    "ses_dosyasi": "audio/word/sayounara.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -1898,7 +1898,7 @@
    "metin": "はい",
    "okunus": "hai",
    "ses_dosyasi": "audio/word/hai.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -1908,7 +1908,7 @@
    "metin": "いいえ",
    "okunus": "iie",
    "ses_dosyasi": "audio/word/iie.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2038,7 +2038,7 @@
    "metin": "月曜日",
    "okunus": "getsuyoubi",
    "ses_dosyasi": "audio/word/getsuyoubi.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2048,7 +2048,7 @@
    "metin": "水曜日",
    "okunus": "suiyoubi",
    "ses_dosyasi": "audio/word/suiyoubi.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2058,7 +2058,7 @@
    "metin": "金曜日",
    "okunus": "kinyoubi",
    "ses_dosyasi": "audio/word/kinyoubi.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2068,7 +2068,7 @@
    "metin": "日曜日",
    "okunus": "nichiyoubi",
    "ses_dosyasi": "audio/word/nichiyoubi.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2148,7 +2148,7 @@
    "metin": "学生",
    "okunus": "gakusei",
    "ses_dosyasi": "audio/word/gakusei.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2158,7 +2158,7 @@
    "metin": "名前",
    "okunus": "namae",
    "ses_dosyasi": "audio/word/namae.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2168,7 +2168,7 @@
    "metin": "学校",
    "okunus": "gakkou",
    "ses_dosyasi": "audio/word/gakkou.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2188,7 +2188,7 @@
    "metin": "日本語",
    "okunus": "nihongo",
    "ses_dosyasi": "audio/word/nihongo.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2208,7 +2208,7 @@
    "metin": "電話",
    "okunus": "denwa",
    "ses_dosyasi": "audio/word/denwa.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2228,7 +2228,7 @@
    "metin": "時計",
    "okunus": "tokei",
    "ses_dosyasi": "audio/word/tokei.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2238,7 +2238,7 @@
    "metin": "お茶",
    "okunus": "ocha",
    "ses_dosyasi": "audio/word/ocha.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2248,7 +2248,7 @@
    "metin": "ご飯",
    "okunus": "gohan",
    "ses_dosyasi": "audio/word/gohan.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2258,7 +2258,7 @@
    "metin": "パン",
    "okunus": "pan",
    "ses_dosyasi": "audio/word/pan.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2268,7 +2268,7 @@
    "metin": "魚",
    "okunus": "sakana",
    "ses_dosyasi": "audio/word/sakana.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2278,7 +2278,7 @@
    "metin": "ミルク",
    "okunus": "miruku",
    "ses_dosyasi": "audio/word/miruku.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2398,7 +2398,7 @@
    "metin": "電車",
    "okunus": "densha",
    "ses_dosyasi": "audio/word/densha.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2518,7 +2518,7 @@
    "metin": "大きい",
    "okunus": "ookii",
    "ses_dosyasi": "audio/word/ookii.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2528,7 +2528,7 @@
    "metin": "小さい",
    "okunus": "chiisai",
    "ses_dosyasi": "audio/word/chiisai.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2578,7 +2578,7 @@
    "metin": "だれ",
    "okunus": "dare",
    "ses_dosyasi": "audio/word/dare.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2588,7 +2588,7 @@
    "metin": "どこ",
    "okunus": "doko",
    "ses_dosyasi": "audio/word/doko.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
@@ -2598,7 +2598,7 @@
    "metin": "いつ",
    "okunus": "itsu",
    "ses_dosyasi": "audio/word/itsu.mp3",
-   "kaynak": "flick",
+   "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
   },
