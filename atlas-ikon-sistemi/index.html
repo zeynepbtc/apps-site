@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Atlas — Flick İkon Sistemi (önizleme)</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EFE7D6; --paper:#FBF5EF; --card:#FFFFFF; --line:#E6DCCB;
+    --ink:#3A2F28; --mut:#8A7F72; --faint:#A9A095;
+    --amber:#D3813A; --teal:#468A80; --terra:#B5502F; --brown:#3C2F28; --on:#F6F0E6; --gold:#C99A3F;
+    --serif:'Shippori Mincho',serif; --sans:'Nunito',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;padding:34px 16px 60px}
+  .wrap{max-width:440px;margin:0 auto}
+  .eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-weight:800;text-align:center}
+  h1{font-family:var(--serif);font-weight:700;font-size:25px;margin:8px 0 6px;text-align:center}
+  .lead{color:var(--mut);font-size:13.5px;text-align:center;line-height:1.55;margin:0 auto 8px;max-width:410px}
+  .sec{margin-top:30px}
+  .sechd{font-family:var(--serif);font-size:17px;font-weight:600;margin:0 0 3px}
+  .secsub{font-size:12px;color:var(--faint);margin:0 0 14px}
+
+  /* Flick tile */
+  .tile{width:46px;height:46px;flex:0 0 46px;border-radius:14px;display:grid;place-items:center;box-shadow:0 6px 14px -8px rgba(58,47,40,.5)}
+  .tile svg{width:26px;height:26px;fill:none;stroke:var(--on);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .tile svg .fill{fill:var(--on);stroke:none}
+  .t-teal{background:var(--teal)} .t-amber{background:var(--amber)} .t-terra{background:var(--terra)} .t-brown{background:var(--brown)} .t-gold{background:var(--gold)}
+
+  /* home rows */
+  .row{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:13px 15px;margin-bottom:11px;box-shadow:0 10px 22px -18px rgba(58,47,40,.4)}
+  .row .tx{flex:1;min-width:0}
+  .row .tt{font-size:16px;font-weight:800;letter-spacing:.1px}
+  .row .ss{font-size:12.5px;color:var(--mut);margin-top:1px}
+  .row .chev{color:var(--faint);font-weight:800;font-size:18px}
+
+  /* quick grid */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px 6px;text-align:center}
+  .gi{display:flex;flex-direction:column;align-items:center;gap:7px}
+  .gi .lab{font-size:11px;font-weight:700;color:var(--mut);line-height:1.2}
+
+  /* settings stamp list */
+  .slist{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .si{display:flex;align-items:center;gap:13px;padding:12px 15px;border-bottom:1px solid var(--line)}
+  .si:last-child{border-bottom:0}
+  .si .stamp{width:34px;height:34px;flex:0 0 34px}
+  .si .stamp svg{width:100%;height:100%}
+  .si .sl{flex:1;font-size:14.5px;font-weight:700}
+  .si .sv{font-size:12.5px;color:var(--mut)}
+  .si .chev{color:var(--faint);font-weight:800}
+  .note{font-size:11.5px;color:var(--mut);text-align:center;line-height:1.6;margin-top:26px;max-width:420px;margin-left:auto;margin-right:auto}
+  .note b{color:var(--terra)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Atlas · aile ikon sistemi · Flick ruhu</div>
+  <h1>Flick İkon Sistemi — Atlas</h1>
+  <p class="lead">Flick'in iki imzası Atlas'a taşındı: renkli yuvarlak <b>tile</b> + beyaz çizgi glif (home/menü), ve el-çizimi <b>damga</b> + ink glif (ayarlar). Palet zaten aile ile aynı. Bu dili onaylarsan tüm app'e yayarım.</p>
+
+  <!-- HOME ROWS -->
+  <div class="sec">
+    <div class="sechd">Ana hedefler — tile + glif</div>
+    <div class="secsub">home kartları ve menü öğeleri bu sisteme geçer</div>
+
+    <div class="row"><div class="tile t-teal"><svg viewBox="0 0 24 24"><path d="M12 6.7C9.7 5.2 6.7 4.9 4.3 5.6v11.5c2.4-.7 5.4-.4 7.7 1.1 2.3-1.5 5.3-1.8 7.7-1.1V5.6c-2.4-.7-5.4-.4-7.7 1.1z"/><path d="M12 6.7v11.5"/></svg></div><div class="tx"><div class="tt">Kana Rehberi</div><div class="ss">Hiragana + katakana</div></div><div class="chev">›</div></div>
+
+    <div class="row"><div class="tile t-amber"><svg viewBox="0 0 24 24"><rect x="4.6" y="4.6" width="14.8" height="14.8" rx="2.4"/><path d="M12 4.6v14.8M4.6 12h14.8"/></svg></div><div class="tx"><div class="tt">Kanji Atlası</div><div class="ss">Parçalar · aileler · anlam</div></div><div class="chev">›</div></div>
+
+    <div class="row"><div class="tile t-terra"><svg viewBox="0 0 24 24"><path d="M5.6 18.4l1.7-4.4L16 5.3l2.9 2.9-8.7 8.7z"/><path d="M13.8 7.5l2.9 2.9"/><path d="M7.3 14l2.7 2.7"/></svg></div><div class="tx"><div class="tt">Yazı</div><div class="ss">Çizim · stroke pratiği</div></div><div class="chev">›</div></div>
+
+    <div class="row"><div class="tile t-brown"><svg viewBox="0 0 24 24"><rect x="3.6" y="3.6" width="16.8" height="16.8" rx="4.7"/><path class="fill" d="M12 6.6 L14.2 10.1 L9.8 10.1 Z"/><path class="fill" d="M12 17.4 L9.8 13.9 L14.2 13.9 Z"/><path class="fill" d="M6.6 12 L10.1 9.8 L10.1 14.2 Z"/><path class="fill" d="M17.4 12 L13.9 9.8 L13.9 14.2 Z"/></svg></div><div class="tx"><div class="tt">Oyunlar</div><div class="ss">Oyna · rekor kır</div></div><div class="chev">›</div></div>
+  </div>
+
+  <!-- QUICK GRID -->
+  <div class="sec">
+    <div class="sechd">İkincil ikonlar — aynı dil</div>
+    <div class="secsub">yol, kelimeler, katakana şifreleri, tekrar, ilerleme, ayarlar</div>
+    <div class="grid">
+      <div class="gi"><div class="tile t-amber"><svg viewBox="0 0 24 24"><path d="M6.5 20V5.5"/><path class="fill" d="M6.5 5.4c3-1.4 6-0 9 .3c-.9 1.3-.9 3.1 0 4.4c-3-.3-6-1.1-9 .3z"/></svg></div><div class="lab">Öğrenme<br>Yolu</div></div>
+      <div class="gi"><div class="tile t-terra"><svg viewBox="0 0 24 24"><path d="M4.6 6.7a2 2 0 0 1 2-2h10.8a2 2 0 0 1 2 2v6.6a2 2 0 0 1-2 2H10l-4 3v-3H6.6a2 2 0 0 1-2-2z"/><path d="M8 8.6h8M8 11.4h5"/></svg></div><div class="lab">Kelimeler</div></div>
+      <div class="gi"><div class="tile t-brown"><svg viewBox="0 0 24 24"><path d="M6 8.5h10l-3-3"/><path d="M18 15.5H8l3 3"/></svg></div><div class="lab">Katakana<br>Şifreleri</div></div>
+      <div class="gi"><div class="tile t-teal"><svg viewBox="0 0 24 24"><path d="M6 11A6 6 0 0 1 16.5 7.4"/><path d="M16.5 4V7.5H13"/><path d="M18 13A6 6 0 0 1 7.5 16.6"/><path d="M7.5 20V16.5H11"/></svg></div><div class="lab">Tekrar</div></div>
+      <div class="gi"><div class="tile t-teal"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.3"/><circle class="fill" cx="12" cy="12" r="1.6"/></svg></div><div class="lab">İlerleme</div></div>
+      <div class="gi"><div class="tile t-amber"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.1"/><path d="M12 4v2.4M12 17.6V20M4 12h2.4M17.6 12H20M6.3 6.3l1.7 1.7M16 16l1.7 1.7M17.7 6.3L16 8M8 16l-1.7 1.7"/></svg></div><div class="lab">Ayarlar</div></div>
+      <div class="gi"><div class="tile t-terra"><svg viewBox="0 0 24 24"><path d="M12 4.5l2.3 4.6 5.1.7-3.7 3.6.9 5.1L12 16.7 7.4 18.6l.9-5.1-3.7-3.6 5.1-.7z"/></svg></div><div class="lab">Başarımlar</div></div>
+      <div class="gi"><div class="tile t-brown"><svg viewBox="0 0 24 24"><rect x="4.5" y="4.5" width="15" height="15" rx="3"/><path d="M8.5 12l2.4 2.4 4.6-4.8"/></svg></div><div class="lab">Sınav</div></div>
+    </div>
+  </div>
+
+  <!-- SETTINGS STAMP -->
+  <div class="sec">
+    <div class="sechd">Ayarlar — damga (hanko) stili</div>
+    <div class="secsub">liste ikonları: el-çizimi eğik damga + ink glif</div>
+    <div class="slist">
+      <div class="si"><span class="stamp"><svg viewBox="0 0 44 44"><polygon points="8,12 32,9 35,32 11,35" fill="#D3813A"/><circle cx="22" cy="22" r="8.5" fill="none" stroke="#3A2F28" stroke-width="2"/><path d="M22 13.5 A8.5 8.5 0 0 0 22 30.5 Z" fill="#3A2F28"/></svg></span><span class="sl">Tema</span><span class="sv">Gündüz / Gece&nbsp;›</span></div>
+      <div class="si"><span class="stamp"><svg viewBox="0 0 44 44"><polygon points="8,12 32,9 35,32 11,35" fill="#468A80"/><circle cx="22" cy="22" r="8.5" fill="none" stroke="#3A2F28" stroke-width="2"/><path d="M13.5 22H30.5" stroke="#3A2F28" stroke-width="2"/><path d="M22 13.5C17 16.5 17 27.5 22 30.5 27 27.5 27 16.5 22 13.5Z" fill="none" stroke="#3A2F28" stroke-width="2"/></svg></span><span class="sl">Dil</span><span class="sv">Türkçe&nbsp;⇄</span></div>
+      <div class="si"><span class="stamp"><svg viewBox="0 0 44 44"><polygon points="8,12 32,9 35,32 11,35" fill="#B5502F"/><path d="M15 19H19L24 15V29L19 25H15Z" fill="none" stroke="#3A2F28" stroke-width="2" stroke-linejoin="round"/><path d="M28 18Q31 22 28 26" fill="none" stroke="#3A2F28" stroke-width="2" stroke-linecap="round"/></svg></span><span class="sl">Ses</span><span class="sv">Açık</span></div>
+      <div class="si"><span class="stamp"><svg viewBox="0 0 44 44"><polygon points="8,12 32,9 35,32 11,35" fill="#D3813A"/><rect x="17" y="13" width="10" height="18" rx="2.5" fill="none" stroke="#3A2F28" stroke-width="2"/><path d="M13 18V26M31 18V26" fill="none" stroke="#3A2F28" stroke-width="2" stroke-linecap="round"/></svg></span><span class="sl">Titreşim &amp; efekt</span><span class="sv">Açık</span></div>
+      <div class="si"><span class="stamp"><svg viewBox="0 0 44 44"><polygon points="8,12 32,9 35,32 11,35" fill="#468A80"/><path d="M22 12V26M17 21L22 26L27 21" fill="none" stroke="#3A2F28" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 26V31H30V26" fill="none" stroke="#3A2F28" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="sl">Veriyi dışa aktar</span><span class="sv">›</span></div>
+      <div class="si"><span class="stamp"><svg viewBox="0 0 44 44"><polygon points="8,12 32,9 35,32 11,35" fill="#B5502F"/><path d="M31 22A9 9 0 1 1 27 14.5" fill="none" stroke="#3A2F28" stroke-width="2" stroke-linecap="round"/><path d="M31 13V19H25" fill="none" stroke="#3A2F28" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="sl">İlerlemeyi sıfırla</span><span class="sv">›</span></div>
+    </div>
+  </div>
+
+  <p class="note"><b>Not:</b> Bu bir dil önizlemesi — glifler placeholder değil, aday final. Onaylarsan tüm Atlas'a (home, tüm menüler, ayarlar, boş durumlar) sistemli yayarım. Renkler: teal · amber · terra · brown; tile 46px/r14; damga eğik hanko + ink glif.</p>
+</div>
+</body>
+</html>
