@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Atlas — Fırça Daire İkon Denemesi</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Shippori+Mincho:wght@600;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EFE7D6; --paper:#FBF5EF; --card:#FFFFFF; --line:#E6DCCB;
+    --ink:#2A211C; --mut:#8A7F72; --faint:#A9A095;
+    --amber:#D3813A; --teal:#468A80; --terra:#B5502F; --brown:#3C2F28; --gold:#C99A3F;
+    --serif:'Shippori Mincho',serif; --sans:'Nunito',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:#3A2F28;font-family:var(--sans);-webkit-font-smoothing:antialiased;padding:34px 16px 60px}
+  .wrap{max-width:440px;margin:0 auto}
+  .eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-weight:800;text-align:center}
+  h1{font-family:var(--serif);font-weight:700;font-size:24px;margin:8px 0 6px;text-align:center}
+  .lead{color:var(--mut);font-size:13.5px;text-align:center;line-height:1.55;margin:0 auto 6px;max-width:410px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 8px;margin-top:26px}
+  .cell{display:flex;flex-direction:column;align-items:center;gap:8px}
+  .fr{width:104px;height:104px;overflow:visible}
+  .cap{font-size:12px;font-weight:700;color:var(--mut)}
+  .rows{margin-top:34px}
+  .row{display:flex;align-items:center;gap:15px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:11px 16px 11px 12px;margin-bottom:11px;box-shadow:0 10px 22px -18px rgba(58,47,40,.4)}
+  .row .fr{width:60px;height:60px;flex:0 0 60px}
+  .row .tt{font-size:16px;font-weight:800}
+  .row .ss{font-size:12.5px;color:var(--mut);margin-top:1px}
+  .row .chev{margin-left:auto;color:var(--faint);font-weight:800;font-size:18px}
+  .note{font-size:11.5px;color:var(--mut);text-align:center;line-height:1.6;margin-top:30px;max-width:420px;margin-left:auto;margin-right:auto}
+  .note b{color:var(--terra)}
+  .jp{font-family:'Klee One','Shippori Mincho',serif}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Atlas · fırça daire ikon denemesi</div>
+  <h1>Fırça daire + mürekkep ikon</h1>
+  <p class="lead">Keskin kare çerçeve değil — el-fırçası daire (enso/hinomaru), bizim renklerimizde. İçindeki ikon mürekkep dolu, çerçeveden hafif taşıyor. Sadece "nasıl olur" örneği.</p>
+
+  <!-- shared SVG filters -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <filter id="disc" x="-25%" y="-25%" width="150%" height="150%"><feTurbulence type="fractalNoise" baseFrequency="0.032" numOctaves="2" seed="6" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="10"/></filter>
+    <filter id="ring" x="-30%" y="-30%" width="160%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="11" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="12"/></filter>
+    <filter id="ink" x="-25%" y="-25%" width="150%" height="150%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/></filter>
+  </defs></svg>
+
+  <div class="grid">
+    <div class="cell">
+      <svg class="fr" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="45" fill="none" stroke="#B5502F" stroke-width="3" opacity=".26" filter="url(#ring)"/>
+        <circle cx="60" cy="60" r="39" fill="#B5502F" filter="url(#disc)"/>
+        <text x="60" y="84" font-size="70" fill="#F4EDE0" text-anchor="middle" class="jp" filter="url(#ink)">あ</text>
+      </svg>
+      <div class="cap">Kana</div>
+    </div>
+    <div class="cell">
+      <svg class="fr" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="45" fill="none" stroke="#D3813A" stroke-width="3" opacity=".26" filter="url(#ring)" transform="rotate(70 60 60)"/>
+        <circle cx="60" cy="60" r="39" fill="#D3813A" filter="url(#disc)" transform="rotate(120 60 60)"/>
+        <text x="60" y="84" font-size="66" fill="#F4EDE0" text-anchor="middle" class="jp" filter="url(#ink)">木</text>
+      </svg>
+      <div class="cap">Kanji</div>
+    </div>
+    <div class="cell">
+      <svg class="fr" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="45" fill="none" stroke="#468A80" stroke-width="3" opacity=".26" filter="url(#ring)" transform="rotate(150 60 60)"/>
+        <circle cx="60" cy="60" r="39" fill="#468A80" filter="url(#disc)" transform="rotate(210 60 60)"/>
+        <g transform="translate(60 60) scale(2.9) translate(-12 -12)" fill="#F4EDE0" filter="url(#ink)">
+          <path d="M5 19.4 L6.7 14 L15.7 5 a1.6 1.6 0 0 1 2.3 0 l1 1 a1.6 1.6 0 0 1 0 2.3 l-9 9 Z"/>
+        </g>
+      </svg>
+      <div class="cap">Yazı · kalem</div>
+    </div>
+    <div class="cell">
+      <svg class="fr" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="45" fill="none" stroke="#C99A3F" stroke-width="3" opacity=".3" filter="url(#ring)" transform="rotate(30 60 60)"/>
+        <circle cx="60" cy="60" r="39" fill="#C99A3F" filter="url(#disc)" transform="rotate(260 60 60)"/>
+        <g transform="translate(60 60) scale(3) translate(-12 -12)" fill="#2A211C" filter="url(#ink)">
+          <path d="M12 8.6 L3.2 15 C 6.7 14 9.6 14 11 14.6 L9.6 20 L12 16.6 L14.4 20 L13 14.6 C 14.4 14 17.3 14 20.8 15 Z"/>
+          <path d="M12 8.8 L8.9 4.2 C 10.1 5.2 11.4 6.7 12 8.8 Z"/>
+        </g>
+      </svg>
+      <div class="cap">Oyunlar · origami</div>
+    </div>
+    <div class="cell">
+      <svg class="fr" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="45" fill="none" stroke="#B5502F" stroke-width="3" opacity=".26" filter="url(#ring)" transform="rotate(200 60 60)"/>
+        <circle cx="60" cy="60" r="39" fill="#B5502F" filter="url(#disc)" transform="rotate(40 60 60)"/>
+        <g transform="translate(60 60) scale(2.9) translate(-12 -12)" fill="none" stroke="#F4EDE0" stroke-width="2.4" filter="url(#ink)">
+          <circle cx="12" cy="12" r="7.4"/><circle cx="12" cy="12" r="2.1" fill="#F4EDE0" stroke="none"/>
+        </g>
+      </svg>
+      <div class="cap">İlerleme</div>
+    </div>
+    <div class="cell">
+      <svg class="fr" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="45" fill="none" stroke="#D3813A" stroke-width="3" opacity=".26" filter="url(#ring)" transform="rotate(300 60 60)"/>
+        <circle cx="60" cy="60" r="39" fill="#D3813A" filter="url(#disc)" transform="rotate(90 60 60)"/>
+        <g transform="translate(60 60) scale(2.9) translate(-12 -12)" fill="#F4EDE0" filter="url(#ink)">
+          <path d="M6.6 20 h1.9 V4.5 H6.6 Z"/>
+          <path d="M8 5 C 11 3.6 14.2 6 17.6 5.2 L17.6 11 C 14.2 11.8 11 9.4 8 10.8 Z"/>
+        </g>
+      </svg>
+      <div class="cap">Öğrenme Yolu</div>
+    </div>
+  </div>
+
+  <!-- in a list row -->
+  <div class="rows">
+    <div class="row">
+      <svg class="fr" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="44" fill="none" stroke="#468A80" stroke-width="3" opacity=".26" filter="url(#ring)"/>
+        <circle cx="60" cy="60" r="39" fill="#468A80" filter="url(#disc)"/>
+        <text x="60" y="84" font-size="70" fill="#F4EDE0" text-anchor="middle" class="jp" filter="url(#ink)">あ</text>
+      </svg>
+      <div><div class="tt">Kana Rehberi</div><div class="ss">Liste satırında nasıl durur</div></div><div class="chev">›</div>
+    </div>
+    <div class="row">
+      <svg class="fr" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="44" fill="none" stroke="#D3813A" stroke-width="3" opacity=".26" filter="url(#ring)" transform="rotate(120 60 60)"/>
+        <circle cx="60" cy="60" r="39" fill="#D3813A" filter="url(#disc)" transform="rotate(200 60 60)"/>
+        <text x="60" y="84" font-size="66" fill="#F4EDE0" text-anchor="middle" class="jp" filter="url(#ink)">木</text>
+      </svg>
+      <div><div class="tt">Kanji Atlası</div><div class="ss">木 · ağaç kanjisi, aile kökü</div></div><div class="chev">›</div>
+    </div>
+  </div>
+
+  <p class="note"><b>Deneme notu:</b> fırça daire (enso) SVG turbulence ile üretiliyor — harici görsel yok, her renk aile paletinden. İkon mürekkep dolu, hafif taşıyor. Bu yönü sevdiysen: renk↔hedef eşlemesi, taşma miktarı, fırça pürüz dozu ve origami/kalem gliflerini inceltiriz. Sevmediysen kare tile'a döneriz — ikisi de elde var.</p>
+</div>
+</body>
+</html>
