@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>Kanji Atlas — jel nav v6 (jiggle yok, iki doz)</title>
+<title>Kanji Atlas — jel nav v7 (çarşaf altı, temiz ikon)</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{ --bg:#EFE7D6; --paper:#FBF5EF; --card:#FFFFFF; --line:#E6DCCB;
@@ -15,7 +15,7 @@
     padding:30px 16px 50px;display:flex;flex-direction:column;align-items:center;min-height:100vh}
   .eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-weight:800;text-align:center}
   h1{font-family:var(--serif);font-weight:700;font-size:23px;margin:8px 0 6px;text-align:center}
-  .lead{color:var(--muted);font-size:13px;text-align:center;max-width:420px;margin:0 auto;line-height:1.5}
+  .lead{color:var(--muted);font-size:13px;text-align:center;max-width:430px;margin:0 auto;line-height:1.5}
   .block{width:340px;max-width:100%;margin:22px auto 0}
   .btag{font-size:12px;font-weight:800;letter-spacing:.4px;color:var(--amber-deep);margin:0 0 8px 4px}
   .btag span{color:var(--muted);font-weight:600}
@@ -24,9 +24,9 @@
   .filler{padding:0 20px 12px}
   .filler .l{height:11px;border-radius:6px;background:var(--card);border:1px solid var(--line);margin-bottom:8px}
   .filler .l.a{width:58%} .filler .l.b{width:84%} .filler .l.c{width:38%}
-  .nav{position:relative;height:88px;user-select:none;-webkit-user-select:none;touch-action:none}
-  .nav svg{position:absolute;left:0;bottom:0;width:100%;height:88px;overflow:visible}
-  .icon{position:absolute;pointer-events:none;transform:translate(-50%,-50%)}
+  .nav{position:relative;height:92px;user-select:none;-webkit-user-select:none;touch-action:none}
+  .nav svg{position:absolute;left:0;bottom:0;width:100%;height:92px;overflow:visible}
+  .icon{position:absolute;pointer-events:none;transform:translate(-50%,-50%);z-index:4}
   .icon svg{position:static;width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
   .tabs{position:absolute;left:0;bottom:0;width:100%;height:54px;display:flex;align-items:flex-end;padding-bottom:10px;z-index:3}
   .tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;pointer-events:none}
@@ -39,9 +39,9 @@
 </style>
 </head>
 <body>
-  <div class="eyebrow">Kanji Atlas · alt nav · v6 · jiggle yok</div>
-  <h1>İki doz — magnetik, jiggle'sız</h1>
-  <p class="lead">İkisi de: jiggle yok, hafif esneme, magnetik yerleşme, sabit ikon, gömülü top. Fark yalnız esneme dozu.</p>
+  <div class="eyebrow">Kanji Atlas · alt nav · v7 · çarşaf altı</div>
+  <h1>Bütünleşik jel — göçük yok</h1>
+  <p class="lead">Top, barın yüzeyini altından yukarı kaldırıyormuş gibi (çarşaf altı). Aşağı çökme yok, temiz ikonlar. Dokun ya da sürükle.</p>
 
   <div class="block">
     <div class="btag">SAKİN <span>· çok hafif esneme</span></div>
@@ -52,30 +52,28 @@
     <div class="dev"><div class="filler"><div class="l a"></div><div class="l b"></div><div class="l c"></div></div><div class="nav" id="navB"></div></div>
   </div>
 
-  <p class="foot"><b>Dokun</b> → topu o sekmeye magnetik çeker · <b>sürükle</b> → parmağı takip eder, bırakınca en yakına oturur. Overshoot/jiggle YOK. Android'de hafif titreşim. İkonlar geçici.</p>
+  <p class="foot"><b>Değişen:</b> göçük/oyuk gitti → yüzey yukarı kabararak bütünleşir · ikonlar temiz (Kanji=田) · jiggle yok, magnetik. İkonlar hâlâ geçici. Hangi doz?</p>
 
   <script>
   var ICONS=[
-    '<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5.5"/><path d="M9.5 9c2.2 0 3.6 1.1 3.6 2.8 0 1.6-1.4 2.4-2.3 3.4"/></svg>',
-    '<svg viewBox="0 0 24 24"><circle cx="7" cy="8" r="1.9"/><circle cx="16.5" cy="7" r="1.9"/><circle cx="12" cy="16.5" r="1.9"/><path d="M8.7 9.4l2.4 5M14.6 8.5l-1.8 6M9 8h5.6"/></svg>',
-    '<svg viewBox="0 0 24 24"><path d="M5 19l1.8-4.8L16 5l3 3-9.2 9.2L5 19z"/><path d="M14 7l3 3"/></svg>',
-    '<svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="9.5" rx="4.5"/><path d="M8 12.7h3.2M9.6 11.1v3.2"/><circle cx="16" cy="12.3" r="1.05"/><circle cx="18" cy="14.3" r="1.05"/></svg>'
+    '<svg viewBox="0 0 24 24"><path d="M4 5.5c2.6-1 5.4-1 8 .8 2.6-1.8 5.4-1.8 8-.8v13c-2.6-1-5.4-1-8 .8-2.6-1.8-5.4-1.8-8-.8z"/><path d="M12 6.3v13"/></svg>',
+    '<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2.6"/><path d="M12 4v16M4 12h16"/></svg>',
+    '<svg viewBox="0 0 24 24"><path d="M5 19l1.6-4.6L16 5l3 3-9.4 9.4L5 19z"/><path d="M14 7l3 3"/></svg>',
+    '<svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="9.5" rx="4.5"/><path d="M7.5 12.7h3.4M9.2 11v3.4"/><circle cx="16.2" cy="12.7" r="1.15"/></svg>'
   ];
   var LB=['Kana','Kanji','Yazı','Oyunlar'], N=4;
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   function now(){ return (window.performance&&performance.now)?performance.now():Date.now(); }
-  function easeOut(t){ return 1-Math.pow(1-t,3); }   // monoton — overshoot/jiggle YOK
+  function easeOut(t){ return 1-Math.pow(1-t,3); }
 
   function createNav(root, id, P){
-    var H=88, EDGE=32, DEPTH=25, HALF=32, R=22, BALLY=EDGE+4;
+    var H=92, EDGE=40, BUMP=15, R=21, BALLY=19;   // EDGE: bar üst çizgisi · BUMP: yüzeyin yukarı kabarması · top merkezi yukarıda, alt kısmı barın ARKASINDA (çarşaf altı)
     root.innerHTML =
       '<svg id="'+id+'svg" preserveAspectRatio="none"><defs>'+
-        '<linearGradient id="'+id+'g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6A45C"/><stop offset="1" stop-color="#C9762F"/></linearGradient>'+
-        '<filter id="'+id+'s" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#B5651F" flood-opacity="0.4"/></filter>'+
+        '<linearGradient id="'+id+'g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E7A860"/><stop offset="1" stop-color="#CB7A31"/></linearGradient>'+
       '</defs>'+
+      '<g id="'+id+'bg"><ellipse id="'+id+'ball" fill="url(#'+id+'g)"></ellipse><ellipse id="'+id+'hl" fill="#fff" opacity="0.30"></ellipse></g>'+
       '<path id="'+id+'bar" fill="#fff" stroke="#E6DCCB" stroke-width="1"></path>'+
-      '<g filter="url(#'+id+'s)"><ellipse id="'+id+'ball" fill="url(#'+id+'g)"></ellipse></g>'+
-      '<ellipse id="'+id+'hl" fill="#fff" opacity="0.32"></ellipse>'+
       '<div></div>';
     var svg=document.getElementById(id+'svg'), bar=document.getElementById(id+'bar'),
         ball=document.getElementById(id+'ball'), hl=document.getElementById(id+'hl');
@@ -85,51 +83,45 @@
     root.appendChild(icon); root.appendChild(tabsEl);
     var tabs=tabsEl.children;
 
-    var W=0, slot=0, cx=0, prevCx=0, svel=0, active=-1;
-    var dragging=false, startX=0, moved=false, tw=null;
+    var W=0, slot=0, cx=0, prevCx=0, svel=0, active=-1, dragging=false, startX=0, moved=false, tw=null, target=0;
     function center(i){ return slot*i+slot/2; }
     function clamp(x){ return Math.max(slot/2, Math.min(W-slot/2, x)); }
     function nearest(){ return Math.max(0,Math.min(N-1,Math.round((cx-slot/2)/slot))); }
-    function layout(){ W=root.clientWidth; slot=W/N; svg.setAttribute('viewBox','0 0 '+W+' '+H); cx=center(0); prevCx=cx; render(0); setActive(0); }
+    function layout(){ W=root.clientWidth; slot=W/N; svg.setAttribute('viewBox','0 0 '+W+' '+H); cx=center(0); target=cx; prevCx=cx; render(0); setActive(0); }
     function setActive(i){ if(i===active)return; active=i; for(var k=0;k<N;k++) tabs[k].classList.toggle('on',k===i);
       icon.innerHTML=ICONS[i]; try{if(navigator.vibrate)navigator.vibrate(reduce?0:8);}catch(e){} }
 
     function render(vel){
       svel=svel*0.8+vel*0.2; var av=Math.abs(svel); if(av<0.5)av=0;
       var stretch=Math.min(P.maxS, av*P.k);
-      var rx=R*(1+stretch), ry=R*(1-stretch*0.6);
-      var pb=EDGE+DEPTH, lagX=cx-svel*P.lag;
-      bar.setAttribute('d','M0,'+EDGE+' L'+(lagX-HALF)+','+EDGE
-        +' C'+(lagX-HALF*0.42)+','+EDGE+' '+(lagX-R*0.82)+','+pb+' '+lagX+','+pb
-        +' C'+(lagX+R*0.82)+','+pb+' '+(lagX+HALF*0.42)+','+EDGE+' '+(lagX+HALF)+','+EDGE
-        +' L'+W+','+EDGE+' L'+W+','+H+' L0,'+H+' Z');
+      var rx=R*(1+stretch), ry=R*(1-stretch*0.55);
+      // top (barın ARKASINDA) — sadece kabaran yüzeyin üstünde görünür
       ball.setAttribute('cx',cx); ball.setAttribute('cy',BALLY); ball.setAttribute('rx',rx); ball.setAttribute('ry',ry);
-      hl.setAttribute('cx',cx); hl.setAttribute('cy',BALLY-ry*0.42); hl.setAttribute('rx',rx*0.52); hl.setAttribute('ry',ry*0.30);
-      icon.style.left=cx+'px'; icon.style.top=BALLY+'px';   // ikon SABİT
+      hl.setAttribute('cx',cx); hl.setAttribute('cy',BALLY-ry*0.4); hl.setAttribute('rx',rx*0.5); hl.setAttribute('ry',ry*0.28);
+      // bar yüzeyi cx'te YUKARI kabarır (çarşaf altı tümsek) — göçük değil
+      var bx=cx - svel*P.lag, top=EDGE-BUMP, HW=R+11;
+      bar.setAttribute('d','M0,'+EDGE+' L'+(bx-HW)+','+EDGE
+        +' C'+(bx-HW*0.42)+','+EDGE+' '+(bx-R*0.85)+','+top+' '+bx+','+top
+        +' C'+(bx+R*0.85)+','+top+' '+(bx+HW*0.42)+','+EDGE+' '+(bx+HW)+','+EDGE
+        +' L'+W+','+EDGE+' L'+W+','+H+' L0,'+H+' Z');
+      icon.style.left=cx+'px'; icon.style.top=(BALLY-1)+'px';   // ikon SABİT, kabaran domun üstünde
       setActive(nearest());
     }
-    function tweenTo(tx){
-      var from=cx, t0=now(), dur=P.dur; if(tw)cancelAnimationFrame(tw);
-      (function step(){
-        var t=Math.min(1,(now()-t0)/dur), nx=from+(tx-from)*easeOut(t);
-        var vel=nx-cx; cx=nx; render(vel);
-        if(t<1) tw=requestAnimationFrame(step); else { cx=tx; svel=0; render(0); tw=null; }
-      })();
-    }
+    function tweenTo(tx){ var from=cx, t0=now(), dur=P.dur; if(tw)cancelAnimationFrame(tw);
+      (function step(){ var t=Math.min(1,(now()-t0)/dur), nx=from+(tx-from)*easeOut(t), vel=nx-cx; cx=nx; render(vel);
+        if(t<1) tw=requestAnimationFrame(step); else { cx=tx; svel=0; render(0); tw=null; } })(); }
     function xOf(e){ return (e.touches?e.touches[0].clientX:e.clientX)-root.getBoundingClientRect().left; }
     function down(e){ dragging=true; moved=false; startX=xOf(e); prevCx=cx; if(tw){cancelAnimationFrame(tw);tw=null;} }
     function move(e){ if(!dragging)return; var x=xOf(e); if(Math.abs(x-startX)>7)moved=true;
       if(moved){ cx=clamp(x); var vel=cx-prevCx; prevCx=cx; render(vel); e.preventDefault(); } }
-    function up(e){ if(!dragging)return; dragging=false;
-      if(moved){ tweenTo(center(nearest())); }
-      else { var i=Math.max(0,Math.min(N-1,Math.floor(startX/slot))); tweenTo(center(i)); } }  // tap → magnetik
+    function up(){ if(!dragging)return; dragging=false;
+      if(moved) tweenTo(center(nearest())); else tweenTo(center(Math.max(0,Math.min(N-1,Math.floor(startX/slot))))); }
     root.addEventListener('pointerdown',down); window.addEventListener('pointermove',move); window.addEventListener('pointerup',up);
     root.addEventListener('touchstart',down,{passive:false}); window.addEventListener('touchmove',move,{passive:false}); window.addEventListener('touchend',up);
-    window.addEventListener('resize',layout);
-    layout();
+    window.addEventListener('resize',layout); layout();
   }
-  createNav(document.getElementById('navA'),'A', reduce?{dur:180,maxS:0,k:0,lag:0}:{dur:330,maxS:0.07,k:0.008,lag:0.06});
-  createNav(document.getElementById('navB'),'B', reduce?{dur:180,maxS:0,k:0,lag:0}:{dur:300,maxS:0.15,k:0.015,lag:0.14});
+  createNav(document.getElementById('navA'),'A', reduce?{dur:180,maxS:0,k:0,lag:0}:{dur:330,maxS:0.07,k:0.008,lag:0.05});
+  createNav(document.getElementById('navB'),'B', reduce?{dur:180,maxS:0,k:0,lag:0}:{dur:300,maxS:0.14,k:0.014,lag:0.12});
   </script>
 </body>
 </html>
