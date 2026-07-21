@@ -4407,6 +4407,1566 @@
    "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": true
+  },
+  {
+   "id": "word_f_yasu",
+   "kategori": "word",
+   "metin": "休",
+   "okunus": "yasu",
+   "ses_dosyasi": "audio/word/yasu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_shigatsu",
+   "kategori": "word",
+   "metin": "四月",
+   "okunus": "shigatsu",
+   "ses_dosyasi": "audio/word/shigatsu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_yottsu",
+   "kategori": "word",
+   "metin": "四つ",
+   "okunus": "yottsu",
+   "ses_dosyasi": "audio/word/yottsu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_yoji",
+   "kategori": "word",
+   "metin": "四時",
+   "okunus": "yoji",
+   "ses_dosyasi": "audio/word/yoji.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_gogatsu",
+   "kategori": "word",
+   "metin": "五月",
+   "okunus": "gogatsu",
+   "ses_dosyasi": "audio/word/gogatsu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_itsutsu",
+   "kategori": "word",
+   "metin": "五つ",
+   "okunus": "itsutsu",
+   "ses_dosyasi": "audio/word/itsutsu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_goji",
+   "kategori": "word",
+   "metin": "五時",
+   "okunus": "goji",
+   "ses_dosyasi": "audio/word/goji.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_rokugatsu",
+   "kategori": "word",
+   "metin": "六月",
+   "okunus": "rokugatsu",
+   "ses_dosyasi": "audio/word/rokugatsu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_muttsu",
+   "kategori": "word",
+   "metin": "六つ",
+   "okunus": "muttsu",
+   "ses_dosyasi": "audio/word/muttsu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_rokuji",
+   "kategori": "word",
+   "metin": "六時",
+   "okunus": "rokuji",
+   "ses_dosyasi": "audio/word/rokuji.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_shichigatsu",
+   "kategori": "word",
+   "metin": "七月",
+   "okunus": "shichigatsu",
+   "ses_dosyasi": "audio/word/shichigatsu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_nanatsu",
+   "kategori": "word",
+   "metin": "七つ",
+   "okunus": "nanatsu",
+   "ses_dosyasi": "audio/word/nanatsu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_shichiji",
+   "kategori": "word",
+   "metin": "七時",
+   "okunus": "shichiji",
+   "ses_dosyasi": "audio/word/shichiji.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_hachigatsu",
+   "kategori": "word",
+   "metin": "八月",
+   "okunus": "hachigatsu",
+   "ses_dosyasi": "audio/word/hachigatsu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_yattsu",
+   "kategori": "word",
+   "metin": "八つ",
+   "okunus": "yattsu",
+   "ses_dosyasi": "audio/word/yattsu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_hachiji",
+   "kategori": "word",
+   "metin": "八時",
+   "okunus": "hachiji",
+   "ses_dosyasi": "audio/word/hachiji.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_kugatsu",
+   "kategori": "word",
+   "metin": "九月",
+   "okunus": "kugatsu",
+   "ses_dosyasi": "audio/word/kugatsu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_kokonotsu",
+   "kategori": "word",
+   "metin": "九つ",
+   "okunus": "kokonotsu",
+   "ses_dosyasi": "audio/word/kokonotsu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_kuji",
+   "kategori": "word",
+   "metin": "九時",
+   "okunus": "kuji",
+   "ses_dosyasi": "audio/word/kuji.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_juugatsu",
+   "kategori": "word",
+   "metin": "十月",
+   "okunus": "juugatsu",
+   "ses_dosyasi": "audio/word/juugatsu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_juuji",
+   "kategori": "word",
+   "metin": "十時",
+   "okunus": "juuji",
+   "ses_dosyasi": "audio/word/juuji.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_sanbyaku",
+   "kategori": "word",
+   "metin": "三百",
+   "okunus": "sanbyaku",
+   "ses_dosyasi": "audio/word/sanbyaku.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_hyakuen",
+   "kategori": "word",
+   "metin": "百円",
+   "okunus": "hyakuen",
+   "ses_dosyasi": "audio/word/hyakuen.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_senen",
+   "kategori": "word",
+   "metin": "千円",
+   "okunus": "sen'en",
+   "ses_dosyasi": "audio/word/senen.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_sanzen",
+   "kategori": "word",
+   "metin": "三千",
+   "okunus": "sanzen",
+   "ses_dosyasi": "audio/word/sanzen.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_ichiman",
+   "kategori": "word",
+   "metin": "一万",
+   "okunus": "ichiman",
+   "ses_dosyasi": "audio/word/ichiman.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_juuman",
+   "kategori": "word",
+   "metin": "十万",
+   "okunus": "juuman",
+   "ses_dosyasi": "audio/word/juuman.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_hyakuman",
+   "kategori": "word",
+   "metin": "百万",
+   "okunus": "hyakuman",
+   "ses_dosyasi": "audio/word/hyakuman.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_doyoubi",
+   "kategori": "word",
+   "metin": "土曜日",
+   "okunus": "doyoubi",
+   "ses_dosyasi": "audio/word/doyoubi.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_tsuchi",
+   "kategori": "word",
+   "metin": "土",
+   "okunus": "tsuchi",
+   "ses_dosyasi": "audio/word/tsuchi.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_kotoshi",
+   "kategori": "word",
+   "metin": "今年",
+   "okunus": "kotoshi",
+   "ses_dosyasi": "audio/word/kotoshi.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_rainen",
+   "kategori": "word",
+   "metin": "来年",
+   "okunus": "rainen",
+   "ses_dosyasi": "audio/word/rainen.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_kyonen",
+   "kategori": "word",
+   "metin": "去年",
+   "okunus": "kyonen",
+   "ses_dosyasi": "audio/word/kyonen.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_ippun",
+   "kategori": "word",
+   "metin": "一分",
+   "okunus": "ippun",
+   "ses_dosyasi": "audio/word/ippun.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_gofun",
+   "kategori": "word",
+   "metin": "五分",
+   "okunus": "gofun",
+   "ses_dosyasi": "audio/word/gofun.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_hanbun",
+   "kategori": "word",
+   "metin": "半分",
+   "okunus": "hanbun",
+   "ses_dosyasi": "audio/word/hanbun.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_sanjihan",
+   "kategori": "word",
+   "metin": "三時半",
+   "okunus": "sanjihan",
+   "ses_dosyasi": "audio/word/sanjihan.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_hantoshi",
+   "kategori": "word",
+   "metin": "半年",
+   "okunus": "hantoshi",
+   "ses_dosyasi": "audio/word/hantoshi.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_konshuu",
+   "kategori": "word",
+   "metin": "今週",
+   "okunus": "konshuu",
+   "ses_dosyasi": "audio/word/konshuu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_ooame",
+   "kategori": "word",
+   "metin": "大雨",
+   "okunus": "ooame",
+   "ses_dosyasi": "audio/word/ooame.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_genki",
+   "kategori": "word",
+   "metin": "元気",
+   "okunus": "genki",
+   "ses_dosyasi": "audio/word/genki.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_denki",
+   "kategori": "word",
+   "metin": "電気",
+   "okunus": "denki",
+   "ses_dosyasi": "audio/word/denki.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_otoko_no_hito",
+   "kategori": "word",
+   "metin": "男の人",
+   "okunus": "otoko no hito",
+   "ses_dosyasi": "audio/word/otoko_no_hito.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_danshi",
+   "kategori": "word",
+   "metin": "男子",
+   "okunus": "danshi",
+   "ses_dosyasi": "audio/word/danshi.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_okaasan",
+   "kategori": "word",
+   "metin": "お母さん",
+   "okunus": "okaasan",
+   "ses_dosyasi": "audio/word/okaasan.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_otousan",
+   "kategori": "word",
+   "metin": "お父さん",
+   "okunus": "otousan",
+   "ses_dosyasi": "audio/word/otousan.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_yuujin",
+   "kategori": "word",
+   "metin": "友人",
+   "okunus": "yuujin",
+   "ses_dosyasi": "audio/word/yuujin.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_tegami",
+   "kategori": "word",
+   "metin": "手紙",
+   "okunus": "tegami",
+   "ses_dosyasi": "audio/word/tegami.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_jouzu",
+   "kategori": "word",
+   "metin": "上手",
+   "okunus": "jouzu",
+   "ses_dosyasi": "audio/word/jouzu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_tariru",
+   "kategori": "word",
+   "metin": "足りる",
+   "okunus": "tariru",
+   "ses_dosyasi": "audio/word/tariru.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_heta",
+   "kategori": "word",
+   "metin": "下手",
+   "okunus": "heta",
+   "ses_dosyasi": "audio/word/heta.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_chika",
+   "kategori": "word",
+   "metin": "地下",
+   "okunus": "chika",
+   "ses_dosyasi": "audio/word/chika.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_chuugoku",
+   "kategori": "word",
+   "metin": "中国",
+   "okunus": "chuugoku",
+   "ses_dosyasi": "audio/word/chuugoku.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_shougakkou",
+   "kategori": "word",
+   "metin": "小学校",
+   "okunus": "shougakkou",
+   "ses_dosyasi": "audio/word/shougakkou.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_shougakusei",
+   "kategori": "word",
+   "metin": "小学生",
+   "okunus": "shougakusei",
+   "ses_dosyasi": "audio/word/shougakusei.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_migite",
+   "kategori": "word",
+   "metin": "右手",
+   "okunus": "migite",
+   "ses_dosyasi": "audio/word/migite.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_hidarite",
+   "kategori": "word",
+   "metin": "左手",
+   "okunus": "hidarite",
+   "ses_dosyasi": "audio/word/hidarite.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_ushiro",
+   "kategori": "word",
+   "metin": "後ろ",
+   "okunus": "ushiro",
+   "ses_dosyasi": "audio/word/ushiro.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_toukyou",
+   "kategori": "word",
+   "metin": "東京",
+   "okunus": "toukyou",
+   "ses_dosyasi": "audio/word/toukyou.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_omoshiroi",
+   "kategori": "word",
+   "metin": "面白い",
+   "okunus": "omoshiroi",
+   "ses_dosyasi": "audio/word/omoshiroi.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_senshuu",
+   "kategori": "word",
+   "metin": "先週",
+   "okunus": "senshuu",
+   "ses_dosyasi": "audio/word/senshuu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_sengetsu",
+   "kategori": "word",
+   "metin": "先月",
+   "okunus": "sengetsu",
+   "ses_dosyasi": "audio/word/sengetsu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_umareru",
+   "kategori": "word",
+   "metin": "生まれる",
+   "okunus": "umareru",
+   "ses_dosyasi": "audio/word/umareru.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_koukou",
+   "kategori": "word",
+   "metin": "高校",
+   "okunus": "koukou",
+   "ses_dosyasi": "audio/word/koukou.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_yuumei",
+   "kategori": "word",
+   "metin": "有名",
+   "okunus": "yuumei",
+   "ses_dosyasi": "audio/word/yuumei.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_eigo",
+   "kategori": "word",
+   "metin": "英語",
+   "okunus": "eigo",
+   "ses_dosyasi": "audio/word/eigo.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_ryokou",
+   "kategori": "word",
+   "metin": "旅行",
+   "okunus": "ryokou",
+   "ses_dosyasi": "audio/word/ryokou.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_ginkou",
+   "kategori": "word",
+   "metin": "銀行",
+   "okunus": "ginkou",
+   "ses_dosyasi": "audio/word/ginkou.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_raishuu",
+   "kategori": "word",
+   "metin": "来週",
+   "okunus": "raishuu",
+   "ses_dosyasi": "audio/word/raishuu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_miseru",
+   "kategori": "word",
+   "metin": "見せる",
+   "okunus": "miseru",
+   "ses_dosyasi": "audio/word/miseru.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_shinbun",
+   "kategori": "word",
+   "metin": "新聞",
+   "okunus": "shinbun",
+   "ses_dosyasi": "audio/word/shinbun.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_dokusho",
+   "kategori": "word",
+   "metin": "読書",
+   "okunus": "dokusho",
+   "ses_dosyasi": "audio/word/dokusho.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_jisho",
+   "kategori": "word",
+   "metin": "辞書",
+   "okunus": "jisho",
+   "ses_dosyasi": "audio/word/jisho.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_toshokan",
+   "kategori": "word",
+   "metin": "図書館",
+   "okunus": "toshokan",
+   "ses_dosyasi": "audio/word/toshokan.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_shokuji",
+   "kategori": "word",
+   "metin": "食事",
+   "okunus": "shokuji",
+   "ses_dosyasi": "audio/word/shokuji.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_shokudou",
+   "kategori": "word",
+   "metin": "食堂",
+   "okunus": "shokudou",
+   "ses_dosyasi": "audio/word/shokudou.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_nomimono",
+   "kategori": "word",
+   "metin": "飲み物",
+   "okunus": "nomimono",
+   "ses_dosyasi": "audio/word/nomimono.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_kaimono",
+   "kategori": "word",
+   "metin": "買い物",
+   "okunus": "kaimono",
+   "ses_dosyasi": "audio/word/kaimono.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_gaikoku",
+   "kategori": "word",
+   "metin": "外国",
+   "okunus": "gaikoku",
+   "ses_dosyasi": "audio/word/gaikoku.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_gaikokujin",
+   "kategori": "word",
+   "metin": "外国人",
+   "okunus": "gaikokujin",
+   "ses_dosyasi": "audio/word/gaikokujin.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_jitensha",
+   "kategori": "word",
+   "metin": "自転車",
+   "okunus": "jitensha",
+   "ses_dosyasi": "audio/word/jitensha.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_nanji",
+   "kategori": "word",
+   "metin": "何時",
+   "okunus": "nanji",
+   "ses_dosyasi": "audio/word/nanji.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_nannin",
+   "kategori": "word",
+   "metin": "何人",
+   "okunus": "nannin",
+   "ses_dosyasi": "audio/word/nannin.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_inu",
+   "kategori": "word",
+   "metin": "いぬ",
+   "okunus": "inu",
+   "ses_dosyasi": "audio/word/inu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_eki",
+   "kategori": "word",
+   "metin": "えき",
+   "okunus": "eki",
+   "ses_dosyasi": "audio/word/eki.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_kasa",
+   "kategori": "word",
+   "metin": "かさ",
+   "okunus": "kasa",
+   "ses_dosyasi": "audio/word/kasa.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_kitte",
+   "kategori": "word",
+   "metin": "きって",
+   "okunus": "kitte",
+   "ses_dosyasi": "audio/word/kitte.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_kesa",
+   "kategori": "word",
+   "metin": "けさ",
+   "okunus": "kesa",
+   "ses_dosyasi": "audio/word/kesa.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_shio",
+   "kategori": "word",
+   "metin": "しお",
+   "okunus": "shio",
+   "ses_dosyasi": "audio/word/shio.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_sushi",
+   "kategori": "word",
+   "metin": "すし",
+   "okunus": "sushi",
+   "ses_dosyasi": "audio/word/sushi.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_sekai",
+   "kategori": "word",
+   "metin": "せかい",
+   "okunus": "sekai",
+   "ses_dosyasi": "audio/word/sekai.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_sora",
+   "kategori": "word",
+   "metin": "そら",
+   "okunus": "sora",
+   "ses_dosyasi": "audio/word/sora.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_tamago",
+   "kategori": "word",
+   "metin": "たまご",
+   "okunus": "tamago",
+   "ses_dosyasi": "audio/word/tamago.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_chizu",
+   "kategori": "word",
+   "metin": "ちず",
+   "okunus": "chizu",
+   "ses_dosyasi": "audio/word/chizu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_tori",
+   "kategori": "word",
+   "metin": "とり",
+   "okunus": "tori",
+   "ses_dosyasi": "audio/word/tori.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_natsu",
+   "kategori": "word",
+   "metin": "なつ",
+   "okunus": "natsu",
+   "ses_dosyasi": "audio/word/natsu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_niku",
+   "kategori": "word",
+   "metin": "にく",
+   "okunus": "niku",
+   "ses_dosyasi": "audio/word/niku.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_nuno",
+   "kategori": "word",
+   "metin": "ぬの",
+   "okunus": "nuno",
+   "ses_dosyasi": "audio/word/nuno.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_neko",
+   "kategori": "word",
+   "metin": "ねこ",
+   "okunus": "neko",
+   "ses_dosyasi": "audio/word/neko.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_nori",
+   "kategori": "word",
+   "metin": "のり",
+   "okunus": "nori",
+   "ses_dosyasi": "audio/word/nori.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_fuyu",
+   "kategori": "word",
+   "metin": "ふゆ",
+   "okunus": "fuyu",
+   "ses_dosyasi": "audio/word/fuyu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_heya",
+   "kategori": "word",
+   "metin": "へや",
+   "okunus": "heya",
+   "ses_dosyasi": "audio/word/heya.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_hoshi",
+   "kategori": "word",
+   "metin": "ほし",
+   "okunus": "hoshi",
+   "ses_dosyasi": "audio/word/hoshi.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_mado",
+   "kategori": "word",
+   "metin": "まど",
+   "okunus": "mado",
+   "ses_dosyasi": "audio/word/mado.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_mushi",
+   "kategori": "word",
+   "metin": "むし",
+   "okunus": "mushi",
+   "ses_dosyasi": "audio/word/mushi.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_yuki",
+   "kategori": "word",
+   "metin": "ゆき",
+   "okunus": "yuki",
+   "ses_dosyasi": "audio/word/yuki.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_yoru",
+   "kategori": "word",
+   "metin": "よる",
+   "okunus": "yoru",
+   "ses_dosyasi": "audio/word/yoru.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_raku",
+   "kategori": "word",
+   "metin": "らく",
+   "okunus": "raku",
+   "ses_dosyasi": "audio/word/raku.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_ringo",
+   "kategori": "word",
+   "metin": "りんご",
+   "okunus": "ringo",
+   "ses_dosyasi": "audio/word/ringo.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_haru",
+   "kategori": "word",
+   "metin": "はる",
+   "okunus": "haru",
+   "ses_dosyasi": "audio/word/haru.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_rekishi",
+   "kategori": "word",
+   "metin": "れきし",
+   "okunus": "rekishi",
+   "ses_dosyasi": "audio/word/rekishi.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_watashi",
+   "kategori": "word",
+   "metin": "わたし",
+   "okunus": "watashi",
+   "ses_dosyasi": "audio/word/watashi.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_hon_o_yomu",
+   "kategori": "word",
+   "metin": "ほんをよむ",
+   "okunus": "hon o yomu",
+   "ses_dosyasi": "audio/word/hon_o_yomu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_aisu",
+   "kategori": "word",
+   "metin": "アイス",
+   "okunus": "aisu",
+   "ses_dosyasi": "audio/word/aisu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_inku",
+   "kategori": "word",
+   "metin": "インク",
+   "okunus": "inku",
+   "ses_dosyasi": "audio/word/inku.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_ūru",
+   "kategori": "word",
+   "metin": "ウール",
+   "okunus": "ūru",
+   "ses_dosyasi": "audio/word/ūru.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_eakon",
+   "kategori": "word",
+   "metin": "エアコン",
+   "okunus": "eakon",
+   "ses_dosyasi": "audio/word/eakon.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_orenji",
+   "kategori": "word",
+   "metin": "オレンジ",
+   "okunus": "orenji",
+   "ses_dosyasi": "audio/word/orenji.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_kamera",
+   "kategori": "word",
+   "metin": "カメラ",
+   "okunus": "kamera",
+   "ses_dosyasi": "audio/word/kamera.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_kī",
+   "kategori": "word",
+   "metin": "キー",
+   "okunus": "kī",
+   "ses_dosyasi": "audio/word/kī.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_kurasu",
+   "kategori": "word",
+   "metin": "クラス",
+   "okunus": "kurasu",
+   "ses_dosyasi": "audio/word/kurasu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_kēki",
+   "kategori": "word",
+   "metin": "ケーキ",
+   "okunus": "kēki",
+   "ses_dosyasi": "audio/word/kēki.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_kōhī",
+   "kategori": "word",
+   "metin": "コーヒー",
+   "okunus": "kōhī",
+   "ses_dosyasi": "audio/word/kōhī.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_sarada",
+   "kategori": "word",
+   "metin": "サラダ",
+   "okunus": "sarada",
+   "ses_dosyasi": "audio/word/sarada.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_shatsu",
+   "kategori": "word",
+   "metin": "シャツ",
+   "okunus": "shatsu",
+   "ses_dosyasi": "audio/word/shatsu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_supūn",
+   "kategori": "word",
+   "metin": "スプーン",
+   "okunus": "supūn",
+   "ses_dosyasi": "audio/word/supūn.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_sētā",
+   "kategori": "word",
+   "metin": "セーター",
+   "okunus": "sētā",
+   "ses_dosyasi": "audio/word/sētā.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_sofa",
+   "kategori": "word",
+   "metin": "ソファ",
+   "okunus": "sofa",
+   "ses_dosyasi": "audio/word/sofa.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_takushī",
+   "kategori": "word",
+   "metin": "タクシー",
+   "okunus": "takushī",
+   "ses_dosyasi": "audio/word/takushī.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_chīzu",
+   "kategori": "word",
+   "metin": "チーズ",
+   "okunus": "chīzu",
+   "ses_dosyasi": "audio/word/chīzu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_tsuā",
+   "kategori": "word",
+   "metin": "ツアー",
+   "okunus": "tsuā",
+   "ses_dosyasi": "audio/word/tsuā.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_terebi",
+   "kategori": "word",
+   "metin": "テレビ",
+   "okunus": "terebi",
+   "ses_dosyasi": "audio/word/terebi.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_tomato",
+   "kategori": "word",
+   "metin": "トマト",
+   "okunus": "tomato",
+   "ses_dosyasi": "audio/word/tomato.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_naifu",
+   "kategori": "word",
+   "metin": "ナイフ",
+   "okunus": "naifu",
+   "ses_dosyasi": "audio/word/naifu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_nyūsu",
+   "kategori": "word",
+   "metin": "ニュース",
+   "okunus": "nyūsu",
+   "ses_dosyasi": "audio/word/nyūsu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_nūdoru",
+   "kategori": "word",
+   "metin": "ヌードル",
+   "okunus": "nūdoru",
+   "ses_dosyasi": "audio/word/nūdoru.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_nekutai",
+   "kategori": "word",
+   "metin": "ネクタイ",
+   "okunus": "nekutai",
+   "ses_dosyasi": "audio/word/nekutai.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_nōto",
+   "kategori": "word",
+   "metin": "ノート",
+   "okunus": "nōto",
+   "ses_dosyasi": "audio/word/nōto.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_hamu",
+   "kategori": "word",
+   "metin": "ハム",
+   "okunus": "hamu",
+   "ses_dosyasi": "audio/word/hamu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_hītā",
+   "kategori": "word",
+   "metin": "ヒーター",
+   "okunus": "hītā",
+   "ses_dosyasi": "audio/word/hītā.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_fōku",
+   "kategori": "word",
+   "metin": "フォーク",
+   "okunus": "fōku",
+   "ses_dosyasi": "audio/word/fōku.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_herikoputā",
+   "kategori": "word",
+   "metin": "ヘリコプター",
+   "okunus": "herikoputā",
+   "ses_dosyasi": "audio/word/herikoputā.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_hoteru",
+   "kategori": "word",
+   "metin": "ホテル",
+   "okunus": "hoteru",
+   "ses_dosyasi": "audio/word/hoteru.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_masuku",
+   "kategori": "word",
+   "metin": "マスク",
+   "okunus": "masuku",
+   "ses_dosyasi": "audio/word/masuku.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_gēmu",
+   "kategori": "word",
+   "metin": "ゲーム",
+   "okunus": "gēmu",
+   "ses_dosyasi": "audio/word/gēmu.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_menyū",
+   "kategori": "word",
+   "metin": "メニュー",
+   "okunus": "menyū",
+   "ses_dosyasi": "audio/word/menyū.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_memo",
+   "kategori": "word",
+   "metin": "メモ",
+   "okunus": "memo",
+   "ses_dosyasi": "audio/word/memo.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_taiya",
+   "kategori": "word",
+   "metin": "タイヤ",
+   "okunus": "taiya",
+   "ses_dosyasi": "audio/word/taiya.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_yūmoa",
+   "kategori": "word",
+   "metin": "ユーモア",
+   "okunus": "yūmoa",
+   "ses_dosyasi": "audio/word/yūmoa.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_yoga",
+   "kategori": "word",
+   "metin": "ヨガ",
+   "okunus": "yoga",
+   "ses_dosyasi": "audio/word/yoga.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_rajio",
+   "kategori": "word",
+   "metin": "ラジオ",
+   "okunus": "rajio",
+   "ses_dosyasi": "audio/word/rajio.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_risuto",
+   "kategori": "word",
+   "metin": "リスト",
+   "okunus": "risuto",
+   "ses_dosyasi": "audio/word/risuto.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_rūru",
+   "kategori": "word",
+   "metin": "ルール",
+   "okunus": "rūru",
+   "ses_dosyasi": "audio/word/rūru.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_remon",
+   "kategori": "word",
+   "metin": "レモン",
+   "okunus": "remon",
+   "ses_dosyasi": "audio/word/remon.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_robotto",
+   "kategori": "word",
+   "metin": "ロボット",
+   "okunus": "robotto",
+   "ses_dosyasi": "audio/word/robotto.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
+  },
+  {
+   "id": "word_f_wain",
+   "kategori": "word",
+   "metin": "ワイン",
+   "okunus": "wain",
+   "ses_dosyasi": "audio/word/wain.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": true
   }
  ]
 }
