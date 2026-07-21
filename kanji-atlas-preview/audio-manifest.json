@@ -6059,6 +6059,76 @@
    "kaynak": "yeni",
    "durum": "recorded",
    "dogrulanmali": false
+  },
+  {
+   "id": "word_i_mimi_ga_itai",
+   "kategori": "word",
+   "metin": "耳が痛い",
+   "okunus": "mimi ga itai",
+   "ses_dosyasi": "audio/word/mimi_ga_itai.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": false
+  },
+  {
+   "id": "word_i_nishiguchi",
+   "kategori": "word",
+   "metin": "西口",
+   "okunus": "nishiguchi",
+   "ses_dosyasi": "audio/word/nishiguchi.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": false
+  },
+  {
+   "id": "word_i_hokusei",
+   "kategori": "word",
+   "metin": "北西",
+   "okunus": "hokusei",
+   "ses_dosyasi": "audio/word/hokusei.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": false
+  },
+  {
+   "id": "word_i_minamiguchi",
+   "kategori": "word",
+   "metin": "南口",
+   "okunus": "minamiguchi",
+   "ses_dosyasi": "audio/word/minamiguchi.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": false
+  },
+  {
+   "id": "word_i_nantou",
+   "kategori": "word",
+   "metin": "南東",
+   "okunus": "nantou",
+   "ses_dosyasi": "audio/word/nantou.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": false
+  },
+  {
+   "id": "word_i_kitaguchi",
+   "kategori": "word",
+   "metin": "北口",
+   "okunus": "kitaguchi",
+   "ses_dosyasi": "audio/word/kitaguchi.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": false
+  },
+  {
+   "id": "word_i_hokutou",
+   "kategori": "word",
+   "metin": "北東",
+   "okunus": "hokutou",
+   "ses_dosyasi": "audio/word/hokutou.mp3",
+   "kaynak": "yeni",
+   "durum": "recorded",
+   "dogrulanmali": false
   }
  ]
 }
