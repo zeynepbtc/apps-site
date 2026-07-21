@@ -1785,6 +1785,17 @@ function iconBadge(glyph,main,shad,size=64){
     +`</svg>`;
 }
 const IC={amber:'#D3813A',teal:'#468A80',terra:'#B5502F',gold:'#C99A3F',brown:'#3C2F28'};
+/* Kanji Atlas logo (C: teal boncuk + amber + 木) — header/onboarding mührü */
+function appLogo(px){
+  const r=Math.round(px*0.22);
+  return `<span style="display:inline-flex;width:${px}px;height:${px}px;border-radius:${r}px;overflow:hidden;box-shadow:0 3px 9px -2px rgba(58,47,40,.35);flex:none">`
+    +`<svg viewBox="0 0 100 100" width="${px}" height="${px}" style="display:block">`
+    +`<rect width="100" height="100" fill="#468A80"/>`
+    +`<rect x="45.5" y="6" width="9" height="24" fill="#F1E6CE"/><rect x="45.5" y="70" width="9" height="24" fill="#F1E6CE"/>`
+    +`<circle cx="50" cy="50" r="33" fill="#F1E6CE"/><circle cx="50" cy="50" r="26" fill="#D3813A"/>`
+    +`<text x="50" y="51" text-anchor="middle" dominant-baseline="central" font-size="30" fill="#F6F0E6" style="font-family:'Shippori Mincho',serif;font-weight:800">木</text>`
+    +`</svg></span>`;
+}
 function renderTabs(){
   const tabs=[["home","Ana Sayfa",ICONS.home],["kana","Kana Okulu",ICONS.practice],["kanji5","Kanji Atlası",ICONS.map],["games","Oyunlar",ICONS.games],["progress","İlerleme",ICONS.progress]];
   const map={
@@ -1801,7 +1812,7 @@ function renderTabs(){
 }
 function renderHeader(){
   const noBack=["home","kanji5","words","games","progress","profile"].includes(state.screen);
-  const left = noBack ? `<div class="seal jp">仮</div>` : `<button class="back" data-act="back">‹</button>`;
+  const left = noBack ? appLogo(34) : `<button class="back" data-act="back">‹</button>`;
   let ttl="Ana", sub="Japonca Yazı Atlası";
   const T={home:["Ana","Japonca Yazı Atlası · N5"],learn:["Öğren","Temel ve ilerleme"],map:["Kanji Atlası","Parçadan kanjiye"],
     practice:["Çizim Pratiği","Önce şekli tanı, sonra çiz"],review:["Tekrar","Aralıklı hatırlama"],
@@ -1926,7 +1937,7 @@ function Onboarding(){
   switch(step){
     case 1:
       body = `<div class="ob-step ob-step-welcome">
-        <div class="ob-seal jp">仮</div>
+        <div style="display:flex;justify-content:center;margin:0 auto 8px;animation:obSealIn .6s cubic-bezier(.2,.7,.3,1.2)">${appLogo(88)}</div>
         <div class="ob-title">Japonca Yazı Atlası</div>
         <div class="ob-lead">Japonca yazı sistemlerinin mantığını adım adım keşfedin.</div>
         <button class="btn full ob-cta" data-act="ob-next">Başlayalım</button>
