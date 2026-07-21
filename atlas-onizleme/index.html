@@ -1784,7 +1784,7 @@ function iconBadge(glyph,main,shad,size=64){
     +`<text x="48" y="49" text-anchor="middle" dominant-baseline="central" font-size="44" fill="#F6F0E6" style="font-family:'Klee One','Shippori Mincho',serif;font-weight:600">${glyph}</text>`
     +`</svg>`;
 }
-const IC={amber:'#D3813A',teal:'#468A80',terra:'#B5502F',gold:'#C99A3F'};
+const IC={amber:'#D3813A',teal:'#468A80',terra:'#B5502F',gold:'#C99A3F',brown:'#3C2F28'};
 function renderTabs(){
   const tabs=[["home","Ana Sayfa",ICONS.home],["kana","Kana Okulu",ICONS.practice],["kanji5","Kanji Atlası",ICONS.map],["games","Oyunlar",ICONS.games],["progress","İlerleme",ICONS.progress]];
   const map={
@@ -2531,17 +2531,17 @@ function Learn(){
   <div class="h1" style="margin-top:2px">Neyi öğrenmek istersin?</div>
   <div class="lead" style="margin-bottom:6px">Temelden ileriye doğru yapılandırılmış bir yol. İstediğin yerden başlayabilirsin.</div>
 
-  ${hubCard("仮","Kana Temeli","Hiragana ve Katakana — sesleri ve şekilleri","kana","Hiragana / Katakana")}
-  ${hubCard("林","Kanji Haritası","Basit köklerin kanjilere dallanışı","map","Görsel atlas")}
-  ${hubCard("亻","Kök Dönüşümleri","Bir kök konuma göre nasıl değişir","transform","7 dönüşüm")}
-  ${hubCard("筆","Çizim Pratiği","Vuruş sırasını izle, sonra kendin çiz","practice","Stroke order")}
-  ${hubCard("遊","Oyunlar","Eşleme, eşleştirme ve hızlı testler","games","10 oyun")}
-  ${hubCard("道","Öğrenme Yolu","8 aşamalı ilerleme — neredesin?","path","Aşama "+state.pathStage+"/8")}
+  ${hubCard("仮","Kana Temeli","Hiragana ve Katakana — sesleri ve şekilleri","kana","Hiragana / Katakana",IC.terra,IC.amber)}
+  ${hubCard("林","Kanji Haritası","Basit köklerin kanjilere dallanışı","map","Görsel atlas",IC.amber,IC.teal)}
+  ${hubCard("亻","Kök Dönüşümleri","Bir kök konuma göre nasıl değişir","transform","7 dönüşüm",IC.brown,IC.gold)}
+  ${hubCard("筆","Çizim Pratiği","Vuruş sırasını izle, sonra kendin çiz","practice","Stroke order",IC.teal,IC.gold)}
+  ${hubCard("遊","Oyunlar","Eşleme, eşleştirme ve hızlı testler","games","10 oyun",IC.gold,IC.terra)}
+  ${hubCard("道","Öğrenme Yolu","8 aşamalı ilerleme — neredesin?","path","Aşama "+state.pathStage+"/8",IC.terra,IC.gold)}
   </div>`;
 }
-function hubCard(glyph,t,d,go,tag){
+function hubCard(glyph,t,d,go,tag,main,shad){
   return `<div class="card" data-go="${go}" style="cursor:pointer;display:flex;gap:14px;align-items:center;margin-bottom:11px">
-    <div class="jp" style="width:52px;height:52px;flex:none;display:grid;place-items:center;font-size:32px;background:var(--accent-soft);color:var(--accent-deep);border-radius:14px">${glyph}</div>
+    <div style="width:52px;height:52px;flex:none;display:grid;place-items:center">${iconBadge(glyph,main||IC.amber,shad||IC.teal,52)}</div>
     <div style="flex:1"><div style="font-weight:700;font-size:15px">${t}</div><div class="lead" style="margin-top:2px">${d}</div></div>
     <div style="text-align:right"><div class="chip">${tag}</div><div style="color:var(--accent);font-size:20px;margin-top:6px">›</div></div>
   </div>`;
