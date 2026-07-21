@@ -8,12 +8,12 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Yazı Atlası">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Crect width='180' height='180' rx='40' fill='%23A4392C'/%3E%3Ctext x='50%25' y='62%25' font-family='serif' font-size='110' fill='white' text-anchor='middle'%3E仮%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Crect width='180' height='180' fill='%23468A80'/%3E%3Crect x='82' y='11' width='16' height='43' fill='%23F1E6CE'/%3E%3Crect x='82' y='126' width='16' height='43' fill='%23F1E6CE'/%3E%3Ccircle cx='90' cy='90' r='59' fill='%23F1E6CE'/%3E%3Ccircle cx='90' cy='90' r='47' fill='%23D3813A'/%3E%3Ctext x='50%25' y='63%25' font-family='serif' font-size='56' fill='%23F6F0E6' text-anchor='middle'%3E木%3C/text%3E%3C/svg%3E">
 <link rel="manifest" href="data:application/json,%7B%22name%22%3A%22Japonca%20Yaz%C4%B1%20Atlas%C4%B1%22%2C%22short_name%22%3A%22Yaz%C4%B1%20Atlas%C4%B1%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23F4EEE3%22%2C%22theme_color%22%3A%22%23A4392C%22%7D">
 <title>Japonca Yazı Atlası</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500;600;700;800&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#F4EEE3; --surface:#FFFFFF; --card:#FCF8F1; --card2:#F1E8D8;
@@ -58,7 +58,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 /* header */
 header{
   flex:none;z-index:30;
-  padding:14px 20px 12px; background:rgba(244,238,227,.82);
+  padding:calc(14px + env(safe-area-inset-top)) 20px 12px; background:rgba(244,238,227,.82);
   -webkit-backdrop-filter:saturate(1.2) blur(10px);backdrop-filter:saturate(1.2) blur(10px);
   border-bottom:1px solid var(--line);
   display:flex;align-items:center;gap:12px;
@@ -668,13 +668,13 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 .ob-lvl:active{transform:scale(.99)}
 /* === Faz 7-A: 10-ekran onboarding (Apple-tarzı sakin akış) === */
 .ob-root{max-width:440px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;
-  padding:18px 22px 28px;box-sizing:border-box;position:relative;background:var(--bg)}
-.ob-skip{position:absolute;top:14px;right:18px;background:none;border:none;font-family:var(--sans);
+  padding:calc(18px + env(safe-area-inset-top)) 22px 28px;box-sizing:border-box;position:relative;background:var(--bg)}
+.ob-skip{position:absolute;top:calc(14px + env(safe-area-inset-top));right:18px;background:none;border:none;font-family:var(--sans);
   font-size:13px;color:var(--muted);cursor:pointer;padding:8px 4px;letter-spacing:.2px;
   transition:color .15s}
 .ob-skip:hover{color:var(--ink)}
 /* Minimal geri oku — sol üst köşe, çok ufak */
-.ob-back{position:absolute;top:10px;left:14px;background:none;border:none;font-family:var(--sans);
+.ob-back{position:absolute;top:calc(10px + env(safe-area-inset-top));left:14px;background:none;border:none;font-family:var(--sans);
   font-size:24px;color:var(--muted);cursor:pointer;padding:6px 10px;line-height:1;
   font-weight:300;transition:color .15s, transform .12s}
 .ob-back:hover{color:var(--ink)}
@@ -1776,6 +1776,26 @@ const ICONS={
   words:'<svg viewBox="0 0 24 24"><path d="M4 6h16M4 6v12a1 1 0 0 0 1 1h6M4 6 8 3M20 6v6m0-6L16 3M9 11h6M9 15h3"/><path d="M16 16l2 2 4-4"/></svg>',
   progress:'<svg viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-7"/></svg>',
 };
+/* Aile ikon rozeti: temiz daire + 45° çapraz renkli gölge (+6px) + tertemiz glif (Klee One) */
+function iconBadge(glyph,main,shad,size=64){
+  return `<svg viewBox="0 0 100 100" width="${size}" height="${size}" style="overflow:visible;display:block">`
+    +`<circle cx="54" cy="54" r="34" fill="${shad}" opacity=".34"/>`
+    +`<circle cx="48" cy="48" r="34" fill="${main}"/>`
+    +`<text x="48" y="49" text-anchor="middle" dominant-baseline="central" font-size="44" fill="#F6F0E6" style="font-family:'Klee One','Shippori Mincho',serif;font-weight:600">${glyph}</text>`
+    +`</svg>`;
+}
+const IC={amber:'#D3813A',teal:'#468A80',terra:'#B5502F',gold:'#C99A3F',brown:'#3C2F28'};
+/* Kanji Atlas logo (C: teal boncuk + amber + 木) — header/onboarding mührü */
+function appLogo(px){
+  const r=Math.round(px*0.22);
+  return `<span style="display:inline-flex;width:${px}px;height:${px}px;border-radius:${r}px;overflow:hidden;box-shadow:0 3px 9px -2px rgba(58,47,40,.35);flex:none">`
+    +`<svg viewBox="0 0 100 100" width="${px}" height="${px}" style="display:block">`
+    +`<rect width="100" height="100" fill="#468A80"/>`
+    +`<rect x="45.5" y="6" width="9" height="24" fill="#F1E6CE"/><rect x="45.5" y="70" width="9" height="24" fill="#F1E6CE"/>`
+    +`<circle cx="50" cy="50" r="33" fill="#F1E6CE"/><circle cx="50" cy="50" r="26" fill="#D3813A"/>`
+    +`<text x="50" y="51" text-anchor="middle" dominant-baseline="central" font-size="30" fill="#F6F0E6" style="font-family:'Shippori Mincho',serif;font-weight:800">木</text>`
+    +`</svg></span>`;
+}
 function renderTabs(){
   const tabs=[["home","Ana Sayfa",ICONS.home],["kana","Kana Okulu",ICONS.practice],["kanji5","Kanji Atlası",ICONS.map],["games","Oyunlar",ICONS.games],["progress","İlerleme",ICONS.progress]];
   const map={
@@ -1792,7 +1812,7 @@ function renderTabs(){
 }
 function renderHeader(){
   const noBack=["home","kanji5","words","games","progress","profile"].includes(state.screen);
-  const left = noBack ? `<div class="seal jp">仮</div>` : `<button class="back" data-act="back">‹</button>`;
+  const left = noBack ? appLogo(34) : `<button class="back" data-act="back">‹</button>`;
   let ttl="Ana", sub="Japonca Yazı Atlası";
   const T={home:["Ana","Japonca Yazı Atlası · N5"],learn:["Öğren","Temel ve ilerleme"],map:["Kanji Atlası","Parçadan kanjiye"],
     practice:["Çizim Pratiği","Önce şekli tanı, sonra çiz"],review:["Tekrar","Aralıklı hatırlama"],
@@ -1917,7 +1937,7 @@ function Onboarding(){
   switch(step){
     case 1:
       body = `<div class="ob-step ob-step-welcome">
-        <div class="ob-seal jp">仮</div>
+        <div style="display:flex;justify-content:center;margin:0 auto 8px;animation:obSealIn .6s cubic-bezier(.2,.7,.3,1.2)">${appLogo(88)}</div>
         <div class="ob-title">Japonca Yazı Atlası</div>
         <div class="ob-lead">Japonca yazı sistemlerinin mantığını adım adım keşfedin.</div>
         <button class="btn full ob-cta" data-act="ob-next">Başlayalım</button>
@@ -2464,7 +2484,7 @@ function Home(){
   </div>`}
   <div class="big-cards">
     <button class="bigcard" data-go="kana">
-      <div class="bg jp">あ</div>
+      <div class="bg" style="background:none;box-shadow:none;overflow:visible">${iconBadge('あ',IC.terra,IC.amber,64)}</div>
       <div class="bd">
         <div class="bt">Kana Rehberi</div>
         <div class="bs">Hiragana ve katakana — Japoncanın ses alfabesi</div>
@@ -2473,7 +2493,7 @@ function Home(){
       <span class="ba">›</span>
     </button>
     <button class="bigcard k2" data-go="kanji5">
-      <div class="bg jp">学</div>
+      <div class="bg" style="background:none;box-shadow:none;overflow:visible">${iconBadge('木',IC.amber,IC.teal,64)}</div>
       <div class="bd">
         <div class="bt">Kanji Atlası</div>
         <div class="bs">Anlam taşıyan işaretler — N5'in 83 kanjisi</div>
@@ -2487,17 +2507,17 @@ function Home(){
   <div class="sec-head"><div class="eb">Anlamak için</div><div class="ti">Japonca nasıl çalışır?</div></div>
   <div class="howto">
     <button class="howto-note" data-go="kana-about">
-      <span class="hg jp">あ</span>
+      <span class="hg" style="width:38px">${iconBadge('あ',IC.terra,IC.amber,38)}</span>
       <span class="ht"><span class="htt">Kana nedir?</span><span class="hss">Japoncanın ses harfleri: hiragana ve katakana</span></span>
       <span class="ha">›</span>
     </button>
     <button class="howto-note" data-go="kanji-about">
-      <span class="hg jp">学</span>
+      <span class="hg" style="width:38px">${iconBadge('木',IC.amber,IC.teal,38)}</span>
       <span class="ht"><span class="htt">Kanji nedir?</span><span class="hss">Anlam taşıyan işaretler nereden gelir</span></span>
       <span class="ha">›</span>
     </button>
     <button class="howto-note" data-go="writing-system">
-      <span class="hg jp">字</span>
+      <span class="hg" style="width:38px">${iconBadge('字',IC.teal,IC.gold,38)}</span>
       <span class="ht"><span class="htt">Japonca Yazı Mantığı</span><span class="hss">Üç sistem bir cümlede nasıl birlikte çalışır</span></span>
       <span class="ha">›</span>
     </button>
@@ -2522,17 +2542,17 @@ function Learn(){
   <div class="h1" style="margin-top:2px">Neyi öğrenmek istersin?</div>
   <div class="lead" style="margin-bottom:6px">Temelden ileriye doğru yapılandırılmış bir yol. İstediğin yerden başlayabilirsin.</div>
 
-  ${hubCard("仮","Kana Temeli","Hiragana ve Katakana — sesleri ve şekilleri","kana","Hiragana / Katakana")}
-  ${hubCard("林","Kanji Haritası","Basit köklerin kanjilere dallanışı","map","Görsel atlas")}
-  ${hubCard("亻","Kök Dönüşümleri","Bir kök konuma göre nasıl değişir","transform","7 dönüşüm")}
-  ${hubCard("筆","Çizim Pratiği","Vuruş sırasını izle, sonra kendin çiz","practice","Stroke order")}
-  ${hubCard("遊","Oyunlar","Eşleme, eşleştirme ve hızlı testler","games","10 oyun")}
-  ${hubCard("道","Öğrenme Yolu","8 aşamalı ilerleme — neredesin?","path","Aşama "+state.pathStage+"/8")}
+  ${hubCard("仮","Kana Temeli","Hiragana ve Katakana — sesleri ve şekilleri","kana","Hiragana / Katakana",IC.terra,IC.amber)}
+  ${hubCard("林","Kanji Haritası","Basit köklerin kanjilere dallanışı","map","Görsel atlas",IC.amber,IC.teal)}
+  ${hubCard("亻","Kök Dönüşümleri","Bir kök konuma göre nasıl değişir","transform","7 dönüşüm",IC.brown,IC.gold)}
+  ${hubCard("筆","Çizim Pratiği","Vuruş sırasını izle, sonra kendin çiz","practice","Stroke order",IC.teal,IC.gold)}
+  ${hubCard("遊","Oyunlar","Eşleme, eşleştirme ve hızlı testler","games","10 oyun",IC.gold,IC.terra)}
+  ${hubCard("道","Öğrenme Yolu","8 aşamalı ilerleme — neredesin?","path","Aşama "+state.pathStage+"/8",IC.terra,IC.gold)}
   </div>`;
 }
-function hubCard(glyph,t,d,go,tag){
+function hubCard(glyph,t,d,go,tag,main,shad){
   return `<div class="card" data-go="${go}" style="cursor:pointer;display:flex;gap:14px;align-items:center;margin-bottom:11px">
-    <div class="jp" style="width:52px;height:52px;flex:none;display:grid;place-items:center;font-size:32px;background:var(--accent-soft);color:var(--accent-deep);border-radius:14px">${glyph}</div>
+    <div style="width:52px;height:52px;flex:none;display:grid;place-items:center">${iconBadge(glyph,main||IC.amber,shad||IC.teal,52)}</div>
     <div style="flex:1"><div style="font-weight:700;font-size:15px">${t}</div><div class="lead" style="margin-top:2px">${d}</div></div>
     <div style="text-align:right"><div class="chip">${tag}</div><div style="color:var(--accent);font-size:20px;margin-top:6px">›</div></div>
   </div>`;
@@ -2872,7 +2892,13 @@ function Detail(){
       <div class="center lead" style="margin-top:2px">${c.meaning_en}</div>
     </div>
 
-    <div class="kv" style="margin-top:12px">
+    <div class="row" style="gap:10px;margin-top:12px">
+      <button class="btn ghost" style="flex:1" data-go="drill" data-param="${id}">✎ Çiz</button>
+      <button class="btn ghost" style="flex:1" data-go="quiz" data-param="${id}">◇ Mini test</button>
+    </div>
+    <button class="btn full" style="margin-top:10px" data-act="addreview" data-param="${id}">＋ Tekrara ekle & öğrenildi işaretle</button>
+
+    <div class="kv" style="margin-top:16px">
       ${c.onyomi&&c.onyomi!=="-"?`<div class="it"><div class="lab">Onyomi</div><div class="v jp">${c.onyomi}</div></div>`:''}
       ${c.kunyomi&&c.kunyomi!=="-"?`<div class="it"><div class="lab">Kunyomi</div><div class="v jp">${c.kunyomi}</div></div>`:''}
       ${c.romaji?`<div class="it"><div class="lab">Romaji</div><div class="v">${c.romaji}</div></div>`:''}
@@ -2909,13 +2935,6 @@ function Detail(){
     ${familyStrip(c,id) || (related?`<div class="section-t"><h3>İlgili kanjiler</h3></div>
       <div class="kgrid">${related}</div>
       <small class="note" style="margin-top:8px">Bu karakteri öğrenince bu kanjileri daha kolay anlayacaksın.</small>`:'')}
-
-    <div class="divider"></div>
-    <div class="row" style="gap:10px">
-      <button class="btn ghost" style="flex:1" data-go="drill" data-param="${id}">✎ Çiz</button>
-      <button class="btn ghost" style="flex:1" data-go="quiz" data-param="${id}">◇ Mini test</button>
-    </div>
-    <button class="btn full" style="margin-top:10px" data-act="addreview" data-param="${id}">＋ Tekrara ekle & öğrenildi işaretle</button>
   </div>`;
 }
 

@@ -1,0 +1,3208 @@
+{
+  "_meta": {
+    "surum": 1,
+    "aciklama": "Kanji Atlas ses manifesti — Atlas/Flick/PTJ ortak yapisi. Kanonik kaynak; kod bunu okur.",
+    "pedagojik_hukum": "Karakter (kanji) sesi pedagojik temsili okunustur; tum okunuslari temsil ettigi iddia edilmez.",
+    "durum_enum": [
+      "recorded",
+      "tts",
+      "missing"
+    ],
+    "kaynak_enum": [
+      "flick",
+      "yeni"
+    ],
+    "klasor_yapisi": [
+      "audio/kana/",
+      "audio/kanji/",
+      "audio/word/",
+      "audio/sentence/"
+    ]
+  },
+  "entries": [
+    {
+      "id": "kana_hira_a",
+      "kategori": "kana",
+      "metin": "あ",
+      "okunus": "a",
+      "ses_dosyasi": "audio/kana/a.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_i",
+      "kategori": "kana",
+      "metin": "い",
+      "okunus": "i",
+      "ses_dosyasi": "audio/kana/i.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_u",
+      "kategori": "kana",
+      "metin": "う",
+      "okunus": "u",
+      "ses_dosyasi": "audio/kana/u.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_e",
+      "kategori": "kana",
+      "metin": "え",
+      "okunus": "e",
+      "ses_dosyasi": "audio/kana/e.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_o",
+      "kategori": "kana",
+      "metin": "お",
+      "okunus": "o",
+      "ses_dosyasi": "audio/kana/o.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_ka",
+      "kategori": "kana",
+      "metin": "か",
+      "okunus": "ka",
+      "ses_dosyasi": "audio/kana/ka.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_ki",
+      "kategori": "kana",
+      "metin": "き",
+      "okunus": "ki",
+      "ses_dosyasi": "audio/kana/ki.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_ku",
+      "kategori": "kana",
+      "metin": "く",
+      "okunus": "ku",
+      "ses_dosyasi": "audio/kana/ku.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_ke",
+      "kategori": "kana",
+      "metin": "け",
+      "okunus": "ke",
+      "ses_dosyasi": "audio/kana/ke.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_ko",
+      "kategori": "kana",
+      "metin": "こ",
+      "okunus": "ko",
+      "ses_dosyasi": "audio/kana/ko.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_sa",
+      "kategori": "kana",
+      "metin": "さ",
+      "okunus": "sa",
+      "ses_dosyasi": "audio/kana/sa.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_shi",
+      "kategori": "kana",
+      "metin": "し",
+      "okunus": "shi",
+      "ses_dosyasi": "audio/kana/shi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_su",
+      "kategori": "kana",
+      "metin": "す",
+      "okunus": "su",
+      "ses_dosyasi": "audio/kana/su.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_se",
+      "kategori": "kana",
+      "metin": "せ",
+      "okunus": "se",
+      "ses_dosyasi": "audio/kana/se.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_so",
+      "kategori": "kana",
+      "metin": "そ",
+      "okunus": "so",
+      "ses_dosyasi": "audio/kana/so.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_ta",
+      "kategori": "kana",
+      "metin": "た",
+      "okunus": "ta",
+      "ses_dosyasi": "audio/kana/ta.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_chi",
+      "kategori": "kana",
+      "metin": "ち",
+      "okunus": "chi",
+      "ses_dosyasi": "audio/kana/chi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_tsu",
+      "kategori": "kana",
+      "metin": "つ",
+      "okunus": "tsu",
+      "ses_dosyasi": "audio/kana/tsu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_te",
+      "kategori": "kana",
+      "metin": "て",
+      "okunus": "te",
+      "ses_dosyasi": "audio/kana/te.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_to",
+      "kategori": "kana",
+      "metin": "と",
+      "okunus": "to",
+      "ses_dosyasi": "audio/kana/to.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_na",
+      "kategori": "kana",
+      "metin": "な",
+      "okunus": "na",
+      "ses_dosyasi": "audio/kana/na.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_ni",
+      "kategori": "kana",
+      "metin": "に",
+      "okunus": "ni",
+      "ses_dosyasi": "audio/kana/ni.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_nu",
+      "kategori": "kana",
+      "metin": "ぬ",
+      "okunus": "nu",
+      "ses_dosyasi": "audio/kana/nu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_ne",
+      "kategori": "kana",
+      "metin": "ね",
+      "okunus": "ne",
+      "ses_dosyasi": "audio/kana/ne.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_no",
+      "kategori": "kana",
+      "metin": "の",
+      "okunus": "no",
+      "ses_dosyasi": "audio/kana/no.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_ha",
+      "kategori": "kana",
+      "metin": "は",
+      "okunus": "ha",
+      "ses_dosyasi": "audio/kana/ha.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_hi",
+      "kategori": "kana",
+      "metin": "ひ",
+      "okunus": "hi",
+      "ses_dosyasi": "audio/kana/hi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_fu",
+      "kategori": "kana",
+      "metin": "ふ",
+      "okunus": "fu",
+      "ses_dosyasi": "audio/kana/fu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_he",
+      "kategori": "kana",
+      "metin": "へ",
+      "okunus": "he",
+      "ses_dosyasi": "audio/kana/he.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_ho",
+      "kategori": "kana",
+      "metin": "ほ",
+      "okunus": "ho",
+      "ses_dosyasi": "audio/kana/ho.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_ma",
+      "kategori": "kana",
+      "metin": "ま",
+      "okunus": "ma",
+      "ses_dosyasi": "audio/kana/ma.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_mi",
+      "kategori": "kana",
+      "metin": "み",
+      "okunus": "mi",
+      "ses_dosyasi": "audio/kana/mi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_mu",
+      "kategori": "kana",
+      "metin": "む",
+      "okunus": "mu",
+      "ses_dosyasi": "audio/kana/mu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_me",
+      "kategori": "kana",
+      "metin": "め",
+      "okunus": "me",
+      "ses_dosyasi": "audio/kana/me.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_mo",
+      "kategori": "kana",
+      "metin": "も",
+      "okunus": "mo",
+      "ses_dosyasi": "audio/kana/mo.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_ya",
+      "kategori": "kana",
+      "metin": "や",
+      "okunus": "ya",
+      "ses_dosyasi": "audio/kana/ya.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_yu",
+      "kategori": "kana",
+      "metin": "ゆ",
+      "okunus": "yu",
+      "ses_dosyasi": "audio/kana/yu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_yo",
+      "kategori": "kana",
+      "metin": "よ",
+      "okunus": "yo",
+      "ses_dosyasi": "audio/kana/yo.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_ra",
+      "kategori": "kana",
+      "metin": "ら",
+      "okunus": "ra",
+      "ses_dosyasi": "audio/kana/ra.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_ri",
+      "kategori": "kana",
+      "metin": "り",
+      "okunus": "ri",
+      "ses_dosyasi": "audio/kana/ri.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_ru",
+      "kategori": "kana",
+      "metin": "る",
+      "okunus": "ru",
+      "ses_dosyasi": "audio/kana/ru.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_re",
+      "kategori": "kana",
+      "metin": "れ",
+      "okunus": "re",
+      "ses_dosyasi": "audio/kana/re.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_ro",
+      "kategori": "kana",
+      "metin": "ろ",
+      "okunus": "ro",
+      "ses_dosyasi": "audio/kana/ro.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_wa",
+      "kategori": "kana",
+      "metin": "わ",
+      "okunus": "wa",
+      "ses_dosyasi": "audio/kana/wa.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_wo",
+      "kategori": "kana",
+      "metin": "を",
+      "okunus": "wo",
+      "ses_dosyasi": "audio/kana/wo.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_hira_n",
+      "kategori": "kana",
+      "metin": "ん",
+      "okunus": "n",
+      "ses_dosyasi": "audio/kana/n.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_a",
+      "kategori": "kana",
+      "metin": "ア",
+      "okunus": "a",
+      "ses_dosyasi": "audio/kana/a.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_i",
+      "kategori": "kana",
+      "metin": "イ",
+      "okunus": "i",
+      "ses_dosyasi": "audio/kana/i.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_u",
+      "kategori": "kana",
+      "metin": "ウ",
+      "okunus": "u",
+      "ses_dosyasi": "audio/kana/u.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_e",
+      "kategori": "kana",
+      "metin": "エ",
+      "okunus": "e",
+      "ses_dosyasi": "audio/kana/e.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_o",
+      "kategori": "kana",
+      "metin": "オ",
+      "okunus": "o",
+      "ses_dosyasi": "audio/kana/o.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_ka",
+      "kategori": "kana",
+      "metin": "カ",
+      "okunus": "ka",
+      "ses_dosyasi": "audio/kana/ka.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_ki",
+      "kategori": "kana",
+      "metin": "キ",
+      "okunus": "ki",
+      "ses_dosyasi": "audio/kana/ki.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_ku",
+      "kategori": "kana",
+      "metin": "ク",
+      "okunus": "ku",
+      "ses_dosyasi": "audio/kana/ku.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_ke",
+      "kategori": "kana",
+      "metin": "ケ",
+      "okunus": "ke",
+      "ses_dosyasi": "audio/kana/ke.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_ko",
+      "kategori": "kana",
+      "metin": "コ",
+      "okunus": "ko",
+      "ses_dosyasi": "audio/kana/ko.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_sa",
+      "kategori": "kana",
+      "metin": "サ",
+      "okunus": "sa",
+      "ses_dosyasi": "audio/kana/sa.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_shi",
+      "kategori": "kana",
+      "metin": "シ",
+      "okunus": "shi",
+      "ses_dosyasi": "audio/kana/shi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_su",
+      "kategori": "kana",
+      "metin": "ス",
+      "okunus": "su",
+      "ses_dosyasi": "audio/kana/su.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_se",
+      "kategori": "kana",
+      "metin": "セ",
+      "okunus": "se",
+      "ses_dosyasi": "audio/kana/se.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_so",
+      "kategori": "kana",
+      "metin": "ソ",
+      "okunus": "so",
+      "ses_dosyasi": "audio/kana/so.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_ta",
+      "kategori": "kana",
+      "metin": "タ",
+      "okunus": "ta",
+      "ses_dosyasi": "audio/kana/ta.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_chi",
+      "kategori": "kana",
+      "metin": "チ",
+      "okunus": "chi",
+      "ses_dosyasi": "audio/kana/chi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_tsu",
+      "kategori": "kana",
+      "metin": "ツ",
+      "okunus": "tsu",
+      "ses_dosyasi": "audio/kana/tsu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_te",
+      "kategori": "kana",
+      "metin": "テ",
+      "okunus": "te",
+      "ses_dosyasi": "audio/kana/te.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_to",
+      "kategori": "kana",
+      "metin": "ト",
+      "okunus": "to",
+      "ses_dosyasi": "audio/kana/to.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_na",
+      "kategori": "kana",
+      "metin": "ナ",
+      "okunus": "na",
+      "ses_dosyasi": "audio/kana/na.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_ni",
+      "kategori": "kana",
+      "metin": "ニ",
+      "okunus": "ni",
+      "ses_dosyasi": "audio/kana/ni.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_nu",
+      "kategori": "kana",
+      "metin": "ヌ",
+      "okunus": "nu",
+      "ses_dosyasi": "audio/kana/nu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_ne",
+      "kategori": "kana",
+      "metin": "ネ",
+      "okunus": "ne",
+      "ses_dosyasi": "audio/kana/ne.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_no",
+      "kategori": "kana",
+      "metin": "ノ",
+      "okunus": "no",
+      "ses_dosyasi": "audio/kana/no.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_ha",
+      "kategori": "kana",
+      "metin": "ハ",
+      "okunus": "ha",
+      "ses_dosyasi": "audio/kana/ha.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_hi",
+      "kategori": "kana",
+      "metin": "ヒ",
+      "okunus": "hi",
+      "ses_dosyasi": "audio/kana/hi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_fu",
+      "kategori": "kana",
+      "metin": "フ",
+      "okunus": "fu",
+      "ses_dosyasi": "audio/kana/fu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_he",
+      "kategori": "kana",
+      "metin": "ヘ",
+      "okunus": "he",
+      "ses_dosyasi": "audio/kana/he.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_ho",
+      "kategori": "kana",
+      "metin": "ホ",
+      "okunus": "ho",
+      "ses_dosyasi": "audio/kana/ho.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_ma",
+      "kategori": "kana",
+      "metin": "マ",
+      "okunus": "ma",
+      "ses_dosyasi": "audio/kana/ma.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_mi",
+      "kategori": "kana",
+      "metin": "ミ",
+      "okunus": "mi",
+      "ses_dosyasi": "audio/kana/mi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_mu",
+      "kategori": "kana",
+      "metin": "ム",
+      "okunus": "mu",
+      "ses_dosyasi": "audio/kana/mu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_me",
+      "kategori": "kana",
+      "metin": "メ",
+      "okunus": "me",
+      "ses_dosyasi": "audio/kana/me.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_mo",
+      "kategori": "kana",
+      "metin": "モ",
+      "okunus": "mo",
+      "ses_dosyasi": "audio/kana/mo.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_ya",
+      "kategori": "kana",
+      "metin": "ヤ",
+      "okunus": "ya",
+      "ses_dosyasi": "audio/kana/ya.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_yu",
+      "kategori": "kana",
+      "metin": "ユ",
+      "okunus": "yu",
+      "ses_dosyasi": "audio/kana/yu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_yo",
+      "kategori": "kana",
+      "metin": "ヨ",
+      "okunus": "yo",
+      "ses_dosyasi": "audio/kana/yo.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_ra",
+      "kategori": "kana",
+      "metin": "ラ",
+      "okunus": "ra",
+      "ses_dosyasi": "audio/kana/ra.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_ri",
+      "kategori": "kana",
+      "metin": "リ",
+      "okunus": "ri",
+      "ses_dosyasi": "audio/kana/ri.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_ru",
+      "kategori": "kana",
+      "metin": "ル",
+      "okunus": "ru",
+      "ses_dosyasi": "audio/kana/ru.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_re",
+      "kategori": "kana",
+      "metin": "レ",
+      "okunus": "re",
+      "ses_dosyasi": "audio/kana/re.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_ro",
+      "kategori": "kana",
+      "metin": "ロ",
+      "okunus": "ro",
+      "ses_dosyasi": "audio/kana/ro.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_wa",
+      "kategori": "kana",
+      "metin": "ワ",
+      "okunus": "wa",
+      "ses_dosyasi": "audio/kana/wa.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_wo",
+      "kategori": "kana",
+      "metin": "ヲ",
+      "okunus": "wo",
+      "ses_dosyasi": "audio/kana/wo.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kana_kata_n",
+      "kategori": "kana",
+      "metin": "ン",
+      "okunus": "n",
+      "ses_dosyasi": "audio/kana/n.mp3",
+      "kaynak": "flick",
+      "durum": "recorded"
+    },
+    {
+      "id": "kanji_ichi",
+      "kategori": "kanji",
+      "metin": "一",
+      "okunus": "ichi",
+      "ses_dosyasi": "audio/word/ichi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_ni",
+      "kategori": "kanji",
+      "metin": "二",
+      "okunus": "ni",
+      "ses_dosyasi": "audio/kana/ni.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_san",
+      "kategori": "kanji",
+      "metin": "三",
+      "okunus": "san",
+      "ses_dosyasi": "audio/word/san.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_hito",
+      "kategori": "kanji",
+      "metin": "人",
+      "okunus": "hito",
+      "ses_dosyasi": "audio/word/hito.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_dai",
+      "kategori": "kanji",
+      "metin": "大",
+      "okunus": "dai",
+      "ses_dosyasi": "audio/kanji/dai.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_ten",
+      "kategori": "kanji",
+      "metin": "天",
+      "okunus": "ten",
+      "ses_dosyasi": "audio/kanji/ten.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_fu",
+      "kategori": "kanji",
+      "metin": "夫",
+      "okunus": "otto",
+      "ses_dosyasi": "audio/kanji/otto.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_ki",
+      "kategori": "kanji",
+      "metin": "木",
+      "okunus": "ki",
+      "ses_dosyasi": "audio/kana/ki.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_hayashi",
+      "kategori": "kanji",
+      "metin": "林",
+      "okunus": "hayashi",
+      "ses_dosyasi": "audio/kanji/hayashi.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_mori",
+      "kategori": "kanji",
+      "metin": "森",
+      "okunus": "mori",
+      "ses_dosyasi": "audio/word/mori.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_hon",
+      "kategori": "kanji",
+      "metin": "本",
+      "okunus": "hon",
+      "ses_dosyasi": "audio/word/hon.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_yasumu",
+      "kategori": "kanji",
+      "metin": "休",
+      "okunus": "yasumu",
+      "ses_dosyasi": "audio/word/yasumu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_hi",
+      "kategori": "kanji",
+      "metin": "日",
+      "okunus": "hi",
+      "ses_dosyasi": "audio/kana/hi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_tsuki",
+      "kategori": "kanji",
+      "metin": "月",
+      "okunus": "tsuki",
+      "ses_dosyasi": "audio/word/tsuki.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_akarui",
+      "kategori": "kanji",
+      "metin": "明",
+      "okunus": "aka",
+      "ses_dosyasi": "audio/word/aka.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_toki",
+      "kategori": "kanji",
+      "metin": "時",
+      "okunus": "toki",
+      "ses_dosyasi": "audio/kanji/toki.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_hareru",
+      "kategori": "kanji",
+      "metin": "晴",
+      "okunus": "ha",
+      "ses_dosyasi": "audio/kana/ha.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_ko",
+      "kategori": "kanji",
+      "metin": "子",
+      "okunus": "ko",
+      "ses_dosyasi": "audio/kana/ko.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_manabu",
+      "kategori": "kanji",
+      "metin": "学",
+      "okunus": "gaku",
+      "ses_dosyasi": "audio/kanji/gaku.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_ki2",
+      "kategori": "kanji",
+      "metin": "季",
+      "okunus": "ki",
+      "ses_dosyasi": "audio/kana/ki.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_onna",
+      "kategori": "kanji",
+      "metin": "女",
+      "okunus": "onna",
+      "ses_dosyasi": "audio/kanji/onna.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_mizu",
+      "kategori": "kanji",
+      "metin": "水",
+      "okunus": "mizu",
+      "ses_dosyasi": "audio/word/mizu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_hi2",
+      "kategori": "kanji",
+      "metin": "火",
+      "okunus": "hi",
+      "ses_dosyasi": "audio/kana/hi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_yama",
+      "kategori": "kanji",
+      "metin": "山",
+      "okunus": "yama",
+      "ses_dosyasi": "audio/word/yama.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_kawa",
+      "kategori": "kanji",
+      "metin": "川",
+      "okunus": "kawa",
+      "ses_dosyasi": "audio/word/kawa.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_kuchi",
+      "kategori": "kanji",
+      "metin": "口",
+      "okunus": "kuchi",
+      "ses_dosyasi": "audio/word/kuchi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_ta",
+      "kategori": "kanji",
+      "metin": "田",
+      "okunus": "ta",
+      "ses_dosyasi": "audio/kana/ta.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_ou",
+      "kategori": "kanji",
+      "metin": "王",
+      "okunus": "ou",
+      "ses_dosyasi": "audio/kanji/ou.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_tama",
+      "kategori": "kanji",
+      "metin": "玉",
+      "okunus": "tama",
+      "ses_dosyasi": "audio/kanji/tama.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_yon",
+      "kategori": "kanji",
+      "metin": "四",
+      "okunus": "yon",
+      "ses_dosyasi": "audio/word/yon.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_go",
+      "kategori": "kanji",
+      "metin": "五",
+      "okunus": "go",
+      "ses_dosyasi": "audio/kana/go.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_roku",
+      "kategori": "kanji",
+      "metin": "六",
+      "okunus": "roku",
+      "ses_dosyasi": "audio/word/roku.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_nana",
+      "kategori": "kanji",
+      "metin": "七",
+      "okunus": "nana",
+      "ses_dosyasi": "audio/word/nana.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_hachi",
+      "kategori": "kanji",
+      "metin": "八",
+      "okunus": "hachi",
+      "ses_dosyasi": "audio/word/hachi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_kyuu",
+      "kategori": "kanji",
+      "metin": "九",
+      "okunus": "kyuu",
+      "ses_dosyasi": "audio/word/kyuu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_juu",
+      "kategori": "kanji",
+      "metin": "十",
+      "okunus": "juu",
+      "ses_dosyasi": "audio/word/juu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_hyaku",
+      "kategori": "kanji",
+      "metin": "百",
+      "okunus": "hyaku",
+      "ses_dosyasi": "audio/word/hyaku.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_sen",
+      "kategori": "kanji",
+      "metin": "千",
+      "okunus": "sen",
+      "ses_dosyasi": "audio/word/sen.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_man",
+      "kategori": "kanji",
+      "metin": "万",
+      "okunus": "man",
+      "ses_dosyasi": "audio/word/man.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_en",
+      "kategori": "kanji",
+      "metin": "円",
+      "okunus": "en",
+      "ses_dosyasi": "audio/kanji/en.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_kin",
+      "kategori": "kanji",
+      "metin": "金",
+      "okunus": "kin",
+      "ses_dosyasi": "audio/kanji/kin.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_do",
+      "kategori": "kanji",
+      "metin": "土",
+      "okunus": "do",
+      "ses_dosyasi": "audio/kana/do.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_toshi",
+      "kategori": "kanji",
+      "metin": "年",
+      "okunus": "toshi",
+      "ses_dosyasi": "audio/kanji/toshi.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_fun",
+      "kategori": "kanji",
+      "metin": "分",
+      "okunus": "fun",
+      "ses_dosyasi": "audio/kanji/fun.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_han",
+      "kategori": "kanji",
+      "metin": "半",
+      "okunus": "han",
+      "ses_dosyasi": "audio/kanji/han.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_ima",
+      "kategori": "kanji",
+      "metin": "今",
+      "okunus": "ima",
+      "ses_dosyasi": "audio/word/ima.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_ame",
+      "kategori": "kanji",
+      "metin": "雨",
+      "okunus": "ame",
+      "ses_dosyasi": "audio/word/ame.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_ki3",
+      "kategori": "kanji",
+      "metin": "気",
+      "okunus": "ki",
+      "ses_dosyasi": "audio/kana/ki.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_otoko",
+      "kategori": "kanji",
+      "metin": "男",
+      "okunus": "otoko",
+      "ses_dosyasi": "audio/kanji/otoko.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_haha",
+      "kategori": "kanji",
+      "metin": "母",
+      "okunus": "haha",
+      "ses_dosyasi": "audio/word/haha.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_chichi",
+      "kategori": "kanji",
+      "metin": "父",
+      "okunus": "chichi",
+      "ses_dosyasi": "audio/word/chichi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_tomo",
+      "kategori": "kanji",
+      "metin": "友",
+      "okunus": "tomo",
+      "ses_dosyasi": "audio/kanji/tomo.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_me",
+      "kategori": "kanji",
+      "metin": "目",
+      "okunus": "me",
+      "ses_dosyasi": "audio/kana/me.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_mimi",
+      "kategori": "kanji",
+      "metin": "耳",
+      "okunus": "mimi",
+      "ses_dosyasi": "audio/word/mimi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_te",
+      "kategori": "kanji",
+      "metin": "手",
+      "okunus": "te",
+      "ses_dosyasi": "audio/kana/te.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_ashi",
+      "kategori": "kanji",
+      "metin": "足",
+      "okunus": "ashi",
+      "ses_dosyasi": "audio/word/ashi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_ue",
+      "kategori": "kanji",
+      "metin": "上",
+      "okunus": "ue",
+      "ses_dosyasi": "audio/word/ue.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_shita",
+      "kategori": "kanji",
+      "metin": "下",
+      "okunus": "shita",
+      "ses_dosyasi": "audio/word/shita.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_naka",
+      "kategori": "kanji",
+      "metin": "中",
+      "okunus": "naka",
+      "ses_dosyasi": "audio/word/naka.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_chiisai",
+      "kategori": "kanji",
+      "metin": "小",
+      "okunus": "shou",
+      "ses_dosyasi": "audio/kanji/shou.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_migi",
+      "kategori": "kanji",
+      "metin": "右",
+      "okunus": "migi",
+      "ses_dosyasi": "audio/word/migi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_hidari",
+      "kategori": "kanji",
+      "metin": "左",
+      "okunus": "hidari",
+      "ses_dosyasi": "audio/word/hidari.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_mae",
+      "kategori": "kanji",
+      "metin": "前",
+      "okunus": "mae",
+      "ses_dosyasi": "audio/word/mae.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_ato",
+      "kategori": "kanji",
+      "metin": "後",
+      "okunus": "ato",
+      "ses_dosyasi": "audio/kanji/ato.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_higashi",
+      "kategori": "kanji",
+      "metin": "東",
+      "okunus": "higashi",
+      "ses_dosyasi": "audio/word/higashi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_nishi",
+      "kategori": "kanji",
+      "metin": "西",
+      "okunus": "nishi",
+      "ses_dosyasi": "audio/word/nishi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_minami",
+      "kategori": "kanji",
+      "metin": "南",
+      "okunus": "minami",
+      "ses_dosyasi": "audio/word/minami.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_kita",
+      "kategori": "kanji",
+      "metin": "北",
+      "okunus": "kita",
+      "ses_dosyasi": "audio/word/kita.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_shiro",
+      "kategori": "kanji",
+      "metin": "白",
+      "okunus": "shiro",
+      "ses_dosyasi": "audio/word/shiro.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_aka",
+      "kategori": "kanji",
+      "metin": "赤",
+      "okunus": "aka",
+      "ses_dosyasi": "audio/word/aka.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_ao",
+      "kategori": "kanji",
+      "metin": "青",
+      "okunus": "ao",
+      "ses_dosyasi": "audio/word/ao.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_saki",
+      "kategori": "kanji",
+      "metin": "先",
+      "okunus": "sen",
+      "ses_dosyasi": "audio/word/sen.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_sei",
+      "kategori": "kanji",
+      "metin": "生",
+      "okunus": "sei",
+      "ses_dosyasi": "audio/kanji/sei.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_gakkou",
+      "kategori": "kanji",
+      "metin": "校",
+      "okunus": "kou",
+      "ses_dosyasi": "audio/kanji/kou.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_na",
+      "kategori": "kanji",
+      "metin": "名",
+      "okunus": "na",
+      "ses_dosyasi": "audio/kana/na.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_gengo",
+      "kategori": "kanji",
+      "metin": "語",
+      "okunus": "go",
+      "ses_dosyasi": "audio/kana/go.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_iku",
+      "kategori": "kanji",
+      "metin": "行",
+      "okunus": "iku",
+      "ses_dosyasi": "audio/word/iku.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_kuru",
+      "kategori": "kanji",
+      "metin": "来",
+      "okunus": "kuru",
+      "ses_dosyasi": "audio/word/kuru.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_miru",
+      "kategori": "kanji",
+      "metin": "見",
+      "okunus": "miru",
+      "ses_dosyasi": "audio/word/miru.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_kiku",
+      "kategori": "kanji",
+      "metin": "聞",
+      "okunus": "kiku",
+      "ses_dosyasi": "audio/word/kiku.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_yomu",
+      "kategori": "kanji",
+      "metin": "読",
+      "okunus": "yomu",
+      "ses_dosyasi": "audio/word/yomu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_kaku",
+      "kategori": "kanji",
+      "metin": "書",
+      "okunus": "kaku",
+      "ses_dosyasi": "audio/word/kaku.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_taberu",
+      "kategori": "kanji",
+      "metin": "食",
+      "okunus": "taberu",
+      "ses_dosyasi": "audio/word/taberu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_nomu",
+      "kategori": "kanji",
+      "metin": "飲",
+      "okunus": "nomu",
+      "ses_dosyasi": "audio/word/nomu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_hanasu",
+      "kategori": "kanji",
+      "metin": "話",
+      "okunus": "hanasu",
+      "ses_dosyasi": "audio/word/hanasu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_kau",
+      "kategori": "kanji",
+      "metin": "買",
+      "okunus": "kau",
+      "ses_dosyasi": "audio/word/kau.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_soto",
+      "kategori": "kanji",
+      "metin": "外",
+      "okunus": "soto",
+      "ses_dosyasi": "audio/word/soto.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_kuni",
+      "kategori": "kanji",
+      "metin": "国",
+      "okunus": "kuni",
+      "ses_dosyasi": "audio/word/kuni.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_kuruma",
+      "kategori": "kanji",
+      "metin": "車",
+      "okunus": "kuruma",
+      "ses_dosyasi": "audio/word/kuruma.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "kanji_denki",
+      "kategori": "kanji",
+      "metin": "電",
+      "okunus": "den",
+      "ses_dosyasi": "audio/kanji/den.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "kanji_nani",
+      "kategori": "kanji",
+      "metin": "何",
+      "okunus": "nani",
+      "ses_dosyasi": "audio/word/nani.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_ohayou",
+      "kategori": "word",
+      "metin": "おはよう",
+      "okunus": "ohayou",
+      "ses_dosyasi": "audio/word/ohayou.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_konnichiwa",
+      "kategori": "word",
+      "metin": "こんにちは",
+      "okunus": "konnichiwa",
+      "ses_dosyasi": "audio/word/konnichiwa.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_konbanwa",
+      "kategori": "word",
+      "metin": "こんばんは",
+      "okunus": "konbanwa",
+      "ses_dosyasi": "audio/word/konbanwa.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_arigatou",
+      "kategori": "word",
+      "metin": "ありがとう",
+      "okunus": "arigatou",
+      "ses_dosyasi": "audio/word/arigatou.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_sumimasen",
+      "kategori": "word",
+      "metin": "すみません",
+      "okunus": "sumimasen",
+      "ses_dosyasi": "audio/word/sumimasen.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_sayounara",
+      "kategori": "word",
+      "metin": "さようなら",
+      "okunus": "sayounara",
+      "ses_dosyasi": "audio/word/sayounara.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_hai",
+      "kategori": "word",
+      "metin": "はい",
+      "okunus": "hai",
+      "ses_dosyasi": "audio/word/hai.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_iie",
+      "kategori": "word",
+      "metin": "いいえ",
+      "okunus": "iie",
+      "ses_dosyasi": "audio/word/iie.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_hitotsu",
+      "kategori": "word",
+      "metin": "一つ",
+      "okunus": "hitotsu",
+      "ses_dosyasi": "audio/word/hitotsu.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_futatsu",
+      "kategori": "word",
+      "metin": "二つ",
+      "okunus": "futatsu",
+      "ses_dosyasi": "audio/word/futatsu.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_mittsu",
+      "kategori": "word",
+      "metin": "三つ",
+      "okunus": "mittsu",
+      "ses_dosyasi": "audio/word/mittsu.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_hyaku_w",
+      "kategori": "word",
+      "metin": "百",
+      "okunus": "hyaku",
+      "ses_dosyasi": "audio/word/hyaku.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_sen_w",
+      "kategori": "word",
+      "metin": "千",
+      "okunus": "sen",
+      "ses_dosyasi": "audio/word/sen.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_man_w",
+      "kategori": "word",
+      "metin": "万",
+      "okunus": "man",
+      "ses_dosyasi": "audio/word/man.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_ima_w",
+      "kategori": "word",
+      "metin": "今",
+      "okunus": "ima",
+      "ses_dosyasi": "audio/word/ima.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_gozen",
+      "kategori": "word",
+      "metin": "午前",
+      "okunus": "gozen",
+      "ses_dosyasi": "audio/word/gozen.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_gogo",
+      "kategori": "word",
+      "metin": "午後",
+      "okunus": "gogo",
+      "ses_dosyasi": "audio/word/gogo.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_han_w",
+      "kategori": "word",
+      "metin": "半",
+      "okunus": "han",
+      "ses_dosyasi": "audio/word/han.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_mainichi",
+      "kategori": "word",
+      "metin": "毎日",
+      "okunus": "mainichi",
+      "ses_dosyasi": "audio/word/mainichi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_kyou",
+      "kategori": "word",
+      "metin": "今日",
+      "okunus": "kyou",
+      "ses_dosyasi": "audio/word/kyou.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_getsuyoubi",
+      "kategori": "word",
+      "metin": "月曜日",
+      "okunus": "getsuyoubi",
+      "ses_dosyasi": "audio/word/getsuyoubi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_suiyoubi",
+      "kategori": "word",
+      "metin": "水曜日",
+      "okunus": "suiyoubi",
+      "ses_dosyasi": "audio/word/suiyoubi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_kinyoubi",
+      "kategori": "word",
+      "metin": "金曜日",
+      "okunus": "kinyoubi",
+      "ses_dosyasi": "audio/word/kinyoubi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_nichiyoubi",
+      "kategori": "word",
+      "metin": "日曜日",
+      "okunus": "nichiyoubi",
+      "ses_dosyasi": "audio/word/nichiyoubi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_haha_w",
+      "kategori": "word",
+      "metin": "母",
+      "okunus": "haha",
+      "ses_dosyasi": "audio/word/haha.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_chichi_w",
+      "kategori": "word",
+      "metin": "父",
+      "okunus": "chichi",
+      "ses_dosyasi": "audio/word/chichi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_tomodachi",
+      "kategori": "word",
+      "metin": "友達",
+      "okunus": "tomodachi",
+      "ses_dosyasi": "audio/word/tomodachi.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_onnanoko",
+      "kategori": "word",
+      "metin": "女の子",
+      "okunus": "onnanoko",
+      "ses_dosyasi": "audio/word/onnanoko.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_otokonoko",
+      "kategori": "word",
+      "metin": "男の子",
+      "okunus": "otokonoko",
+      "ses_dosyasi": "audio/word/otokonoko.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_hito_w",
+      "kategori": "word",
+      "metin": "人",
+      "okunus": "hito",
+      "ses_dosyasi": "audio/word/hito.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_sensei",
+      "kategori": "word",
+      "metin": "先生",
+      "okunus": "sensei",
+      "ses_dosyasi": "audio/word/sensei.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_gakusei",
+      "kategori": "word",
+      "metin": "学生",
+      "okunus": "gakusei",
+      "ses_dosyasi": "audio/word/gakusei.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_namae",
+      "kategori": "word",
+      "metin": "名前",
+      "okunus": "namae",
+      "ses_dosyasi": "audio/word/namae.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_gakkou",
+      "kategori": "word",
+      "metin": "学校",
+      "okunus": "gakkou",
+      "ses_dosyasi": "audio/word/gakkou.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_hon_w",
+      "kategori": "word",
+      "metin": "本",
+      "okunus": "hon",
+      "ses_dosyasi": "audio/word/hon.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_nihongo",
+      "kategori": "word",
+      "metin": "日本語",
+      "okunus": "nihongo",
+      "ses_dosyasi": "audio/word/nihongo.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_mizu_w",
+      "kategori": "word",
+      "metin": "水",
+      "okunus": "mizu",
+      "ses_dosyasi": "audio/word/mizu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_denwa",
+      "kategori": "word",
+      "metin": "電話",
+      "okunus": "denwa",
+      "ses_dosyasi": "audio/word/denwa.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_okane",
+      "kategori": "word",
+      "metin": "お金",
+      "okunus": "okane",
+      "ses_dosyasi": "audio/word/okane.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_tokei",
+      "kategori": "word",
+      "metin": "時計",
+      "okunus": "tokei",
+      "ses_dosyasi": "audio/word/tokei.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_ocha",
+      "kategori": "word",
+      "metin": "お茶",
+      "okunus": "ocha",
+      "ses_dosyasi": "audio/word/ocha.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_gohan",
+      "kategori": "word",
+      "metin": "ご飯",
+      "okunus": "gohan",
+      "ses_dosyasi": "audio/word/gohan.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_pan",
+      "kategori": "word",
+      "metin": "パン",
+      "okunus": "pan",
+      "ses_dosyasi": "audio/word/pan.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_sakana",
+      "kategori": "word",
+      "metin": "魚",
+      "okunus": "sakana",
+      "ses_dosyasi": "audio/word/sakana.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_miruku",
+      "kategori": "word",
+      "metin": "ミルク",
+      "okunus": "miruku",
+      "ses_dosyasi": "audio/word/miruku.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_yama_w",
+      "kategori": "word",
+      "metin": "山",
+      "okunus": "yama",
+      "ses_dosyasi": "audio/word/yama.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_kawa_w",
+      "kategori": "word",
+      "metin": "川",
+      "okunus": "kawa",
+      "ses_dosyasi": "audio/word/kawa.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_ame_w",
+      "kategori": "word",
+      "metin": "雨",
+      "okunus": "ame",
+      "ses_dosyasi": "audio/word/ame.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_tenki",
+      "kategori": "word",
+      "metin": "天気",
+      "okunus": "tenki",
+      "ses_dosyasi": "audio/word/tenki.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_ki_w",
+      "kategori": "word",
+      "metin": "木",
+      "okunus": "ki",
+      "ses_dosyasi": "audio/word/ki.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_kuni_w",
+      "kategori": "word",
+      "metin": "国",
+      "okunus": "kuni",
+      "ses_dosyasi": "audio/word/kuni.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_nihon",
+      "kategori": "word",
+      "metin": "日本",
+      "okunus": "nihon",
+      "ses_dosyasi": "audio/word/nihon.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_soto_w",
+      "kategori": "word",
+      "metin": "外",
+      "okunus": "soto",
+      "ses_dosyasi": "audio/word/soto.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_ue_w",
+      "kategori": "word",
+      "metin": "上",
+      "okunus": "ue",
+      "ses_dosyasi": "audio/word/ue.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_shita_w",
+      "kategori": "word",
+      "metin": "下",
+      "okunus": "shita",
+      "ses_dosyasi": "audio/word/shita.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_kuruma_w",
+      "kategori": "word",
+      "metin": "車",
+      "okunus": "kuruma",
+      "ses_dosyasi": "audio/word/kuruma.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_densha",
+      "kategori": "word",
+      "metin": "電車",
+      "okunus": "densha",
+      "ses_dosyasi": "audio/word/densha.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_ikimasu",
+      "kategori": "word",
+      "metin": "行きます",
+      "okunus": "ikimasu",
+      "ses_dosyasi": "audio/word/ikimasu.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_kimasu",
+      "kategori": "word",
+      "metin": "来ます",
+      "okunus": "kimasu",
+      "ses_dosyasi": "audio/word/kimasu.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_mimasu",
+      "kategori": "word",
+      "metin": "見ます",
+      "okunus": "mimasu",
+      "ses_dosyasi": "audio/word/mimasu.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_kikimasu",
+      "kategori": "word",
+      "metin": "聞きます",
+      "okunus": "kikimasu",
+      "ses_dosyasi": "audio/word/kikimasu.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_yomimasu",
+      "kategori": "word",
+      "metin": "読みます",
+      "okunus": "yomimasu",
+      "ses_dosyasi": "audio/word/yomimasu.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_kakimasu",
+      "kategori": "word",
+      "metin": "書きます",
+      "okunus": "kakimasu",
+      "ses_dosyasi": "audio/word/kakimasu.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_tabemasu",
+      "kategori": "word",
+      "metin": "食べます",
+      "okunus": "tabemasu",
+      "ses_dosyasi": "audio/word/tabemasu.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_nomimasu",
+      "kategori": "word",
+      "metin": "飲みます",
+      "okunus": "nomimasu",
+      "ses_dosyasi": "audio/word/nomimasu.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_hanashimasu",
+      "kategori": "word",
+      "metin": "話します",
+      "okunus": "hanashimasu",
+      "ses_dosyasi": "audio/word/hanashimasu.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_kaimasu",
+      "kategori": "word",
+      "metin": "買います",
+      "okunus": "kaimasu",
+      "ses_dosyasi": "audio/word/kaimasu.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_yasumimasu",
+      "kategori": "word",
+      "metin": "休みます",
+      "okunus": "yasumimasu",
+      "ses_dosyasi": "audio/word/yasumimasu.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_ookii",
+      "kategori": "word",
+      "metin": "大きい",
+      "okunus": "ookii",
+      "ses_dosyasi": "audio/word/ookii.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_chiisai",
+      "kategori": "word",
+      "metin": "小さい",
+      "okunus": "chiisai",
+      "ses_dosyasi": "audio/word/chiisai.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_shiroi",
+      "kategori": "word",
+      "metin": "白い",
+      "okunus": "shiroi",
+      "ses_dosyasi": "audio/word/shiroi.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_akai",
+      "kategori": "word",
+      "metin": "赤い",
+      "okunus": "akai",
+      "ses_dosyasi": "audio/word/akai.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_aoi",
+      "kategori": "word",
+      "metin": "青い",
+      "okunus": "aoi",
+      "ses_dosyasi": "audio/word/aoi.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "word_nani_w",
+      "kategori": "word",
+      "metin": "何",
+      "okunus": "nani",
+      "ses_dosyasi": "audio/word/nani.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_dare",
+      "kategori": "word",
+      "metin": "だれ",
+      "okunus": "dare",
+      "ses_dosyasi": "audio/word/dare.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_doko",
+      "kategori": "word",
+      "metin": "どこ",
+      "okunus": "doko",
+      "ses_dosyasi": "audio/word/doko.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_itsu",
+      "kategori": "word",
+      "metin": "いつ",
+      "okunus": "itsu",
+      "ses_dosyasi": "audio/word/itsu.mp3",
+      "kaynak": "flick",
+      "durum": "recorded",
+      "dogrulanmali": true
+    },
+    {
+      "id": "word_ikura",
+      "kategori": "word",
+      "metin": "いくら",
+      "okunus": "ikura",
+      "ses_dosyasi": "audio/word/ikura.mp3",
+      "kaynak": "yeni",
+      "durum": "recorded",
+      "dogrulanmali": false
+    },
+    {
+      "id": "sentence_ohayou",
+      "kategori": "sentence",
+      "metin": "おはよう。",
+      "okunus": "Ohayou.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_konnichiwa",
+      "kategori": "sentence",
+      "metin": "こんにちは。",
+      "okunus": "Konnichiwa.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_konbanwa",
+      "kategori": "sentence",
+      "metin": "こんばんは。",
+      "okunus": "Konbanwa.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_arigatou",
+      "kategori": "sentence",
+      "metin": "ありがとう。",
+      "okunus": "Arigatou.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_sumimasen",
+      "kategori": "sentence",
+      "metin": "すみません。",
+      "okunus": "Sumimasen.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_sayounara",
+      "kategori": "sentence",
+      "metin": "さようなら。",
+      "okunus": "Sayounara.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_hai",
+      "kategori": "sentence",
+      "metin": "はい、そうです。",
+      "okunus": "Hai, sou desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_iie",
+      "kategori": "sentence",
+      "metin": "いいえ。",
+      "okunus": "Iie.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_hitotsu",
+      "kategori": "sentence",
+      "metin": "一つください。",
+      "okunus": "Hitotsu kudasai.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_futatsu",
+      "kategori": "sentence",
+      "metin": "二つあります。",
+      "okunus": "Futatsu arimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_mittsu",
+      "kategori": "sentence",
+      "metin": "三つほしいです。",
+      "okunus": "Mittsu hoshii desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_hyaku_w",
+      "kategori": "sentence",
+      "metin": "百円です。",
+      "okunus": "Hyaku en desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_sen_w",
+      "kategori": "sentence",
+      "metin": "千円です。",
+      "okunus": "Sen en desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_man_w",
+      "kategori": "sentence",
+      "metin": "一万円です。",
+      "okunus": "Ichiman en desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_ima_w",
+      "kategori": "sentence",
+      "metin": "今、何時ですか。",
+      "okunus": "Ima, nanji desu ka.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_gozen",
+      "kategori": "sentence",
+      "metin": "午前九時です。",
+      "okunus": "Gozen kuji desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_gogo",
+      "kategori": "sentence",
+      "metin": "午後三時です。",
+      "okunus": "Gogo sanji desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_han_w",
+      "kategori": "sentence",
+      "metin": "二時半です。",
+      "okunus": "Niji han desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_mainichi",
+      "kategori": "sentence",
+      "metin": "毎日水を飲みます。",
+      "okunus": "Mainichi mizu o nomimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_kyou",
+      "kategori": "sentence",
+      "metin": "今日は金曜日です。",
+      "okunus": "Kyou wa kinyoubi desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_getsuyoubi",
+      "kategori": "sentence",
+      "metin": "月曜日に学校へ行きます。",
+      "okunus": "Getsuyoubi ni gakkou e ikimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_suiyoubi",
+      "kategori": "sentence",
+      "metin": "水曜日は休みです。",
+      "okunus": "Suiyoubi wa yasumi desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_kinyoubi",
+      "kategori": "sentence",
+      "metin": "金曜日に友達と話します。",
+      "okunus": "Kinyoubi ni tomodachi to hanashimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_nichiyoubi",
+      "kategori": "sentence",
+      "metin": "日曜日に休みます。",
+      "okunus": "Nichiyoubi ni yasumimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_haha_w",
+      "kategori": "sentence",
+      "metin": "母は先生です。",
+      "okunus": "Haha wa sensei desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_chichi_w",
+      "kategori": "sentence",
+      "metin": "父は車で行きます。",
+      "okunus": "Chichi wa kuruma de ikimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_tomodachi",
+      "kategori": "sentence",
+      "metin": "友達と話します。",
+      "okunus": "Tomodachi to hanashimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_onnanoko",
+      "kategori": "sentence",
+      "metin": "女の子が本を読みます。",
+      "okunus": "Onnanoko ga hon o yomimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_otokonoko",
+      "kategori": "sentence",
+      "metin": "男の子が来ます。",
+      "okunus": "Otokonoko ga kimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_hito_w",
+      "kategori": "sentence",
+      "metin": "あの人は学生です。",
+      "okunus": "Ano hito wa gakusei desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_sensei",
+      "kategori": "sentence",
+      "metin": "先生はやさしいです。",
+      "okunus": "Sensei wa yasashii desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_gakusei",
+      "kategori": "sentence",
+      "metin": "私は学生です。",
+      "okunus": "Watashi wa gakusei desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_namae",
+      "kategori": "sentence",
+      "metin": "お名前は何ですか。",
+      "okunus": "Onamae wa nan desu ka.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_gakkou",
+      "kategori": "sentence",
+      "metin": "学校へ行きます。",
+      "okunus": "Gakkou e ikimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_hon_w",
+      "kategori": "sentence",
+      "metin": "これは本です。",
+      "okunus": "Kore wa hon desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_nihongo",
+      "kategori": "sentence",
+      "metin": "日本語を話します。",
+      "okunus": "Nihongo o hanashimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_mizu_w",
+      "kategori": "sentence",
+      "metin": "水を飲みます。",
+      "okunus": "Mizu o nomimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_denwa",
+      "kategori": "sentence",
+      "metin": "電話で話します。",
+      "okunus": "Denwa de hanashimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_okane",
+      "kategori": "sentence",
+      "metin": "お金がありません。",
+      "okunus": "Okane ga arimasen.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_tokei",
+      "kategori": "sentence",
+      "metin": "時計を見ます。",
+      "okunus": "Tokei o mimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_ocha",
+      "kategori": "sentence",
+      "metin": "お茶を飲みます。",
+      "okunus": "Ocha o nomimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_gohan",
+      "kategori": "sentence",
+      "metin": "ご飯を食べます。",
+      "okunus": "Gohan o tabemasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_pan",
+      "kategori": "sentence",
+      "metin": "パンを買います。",
+      "okunus": "Pan o kaimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_sakana",
+      "kategori": "sentence",
+      "metin": "魚を食べます。",
+      "okunus": "Sakana o tabemasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_miruku",
+      "kategori": "sentence",
+      "metin": "ミルクを飲みます。",
+      "okunus": "Miruku o nomimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_yama_w",
+      "kategori": "sentence",
+      "metin": "山を見ます。",
+      "okunus": "Yama o mimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_kawa_w",
+      "kategori": "sentence",
+      "metin": "川は大きいです。",
+      "okunus": "Kawa wa ookii desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_ame_w",
+      "kategori": "sentence",
+      "metin": "今日は雨です。",
+      "okunus": "Kyou wa ame desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_tenki",
+      "kategori": "sentence",
+      "metin": "いい天気です。",
+      "okunus": "Ii tenki desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_ki_w",
+      "kategori": "sentence",
+      "metin": "木を見ます。",
+      "okunus": "Ki o mimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_kuni_w",
+      "kategori": "sentence",
+      "metin": "どこの国ですか。",
+      "okunus": "Doko no kuni desu ka.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_nihon",
+      "kategori": "sentence",
+      "metin": "日本へ行きます。",
+      "okunus": "Nihon e ikimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_soto_w",
+      "kategori": "sentence",
+      "metin": "外は雨です。",
+      "okunus": "Soto wa ame desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_ue_w",
+      "kategori": "sentence",
+      "metin": "机の上に本があります。",
+      "okunus": "Tsukue no ue ni hon ga arimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_shita_w",
+      "kategori": "sentence",
+      "metin": "下を見ます。",
+      "okunus": "Shita o mimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_kuruma_w",
+      "kategori": "sentence",
+      "metin": "車で行きます。",
+      "okunus": "Kuruma de ikimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_densha",
+      "kategori": "sentence",
+      "metin": "電車で行きます。",
+      "okunus": "Densha de ikimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_kimasu",
+      "kategori": "sentence",
+      "metin": "友達が来ます。",
+      "okunus": "Tomodachi ga kimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_mimasu",
+      "kategori": "sentence",
+      "metin": "テレビを見ます。",
+      "okunus": "Terebi o mimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_kikimasu",
+      "kategori": "sentence",
+      "metin": "話を聞きます。",
+      "okunus": "Hanashi o kikimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_yomimasu",
+      "kategori": "sentence",
+      "metin": "本を読みます。",
+      "okunus": "Hon o yomimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_kakimasu",
+      "kategori": "sentence",
+      "metin": "名前を書きます。",
+      "okunus": "Namae o kakimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_kaimasu",
+      "kategori": "sentence",
+      "metin": "本を買います。",
+      "okunus": "Hon o kaimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_yasumimasu",
+      "kategori": "sentence",
+      "metin": "今日は休みます。",
+      "okunus": "Kyou wa yasumimasu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_ookii",
+      "kategori": "sentence",
+      "metin": "大きい山です。",
+      "okunus": "Ookii yama desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_chiisai",
+      "kategori": "sentence",
+      "metin": "小さい子です。",
+      "okunus": "Chiisai ko desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_shiroi",
+      "kategori": "sentence",
+      "metin": "白い車です。",
+      "okunus": "Shiroi kuruma desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_akai",
+      "kategori": "sentence",
+      "metin": "赤い花です。",
+      "okunus": "Akai hana desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_aoi",
+      "kategori": "sentence",
+      "metin": "青い空です。",
+      "okunus": "Aoi sora desu.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_nani_w",
+      "kategori": "sentence",
+      "metin": "これは何ですか。",
+      "okunus": "Kore wa nan desu ka.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_dare",
+      "kategori": "sentence",
+      "metin": "あの人はだれですか。",
+      "okunus": "Ano hito wa dare desu ka.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_doko",
+      "kategori": "sentence",
+      "metin": "トイレはどこですか。",
+      "okunus": "Toire wa doko desu ka.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_itsu",
+      "kategori": "sentence",
+      "metin": "いつ来ますか。",
+      "okunus": "Itsu kimasu ka.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    },
+    {
+      "id": "sentence_ikura",
+      "kategori": "sentence",
+      "metin": "いくらですか。",
+      "okunus": "Ikura desu ka.",
+      "ses_dosyasi": null,
+      "kaynak": "yeni",
+      "durum": "tts"
+    }
+  ]
+}
