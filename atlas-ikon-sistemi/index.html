@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <title>Atlas — Flick İkon Sistemi (önizleme)</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Shippori+Mincho:wght@600;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#EFE7D6; --paper:#FBF5EF; --card:#FFFFFF; --line:#E6DCCB;
@@ -27,6 +27,7 @@
   .tile{width:46px;height:46px;flex:0 0 46px;border-radius:14px;display:grid;place-items:center;box-shadow:0 6px 14px -8px rgba(58,47,40,.5)}
   .tile svg{width:26px;height:26px;fill:none;stroke:var(--on);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .tile svg .fill{fill:var(--on);stroke:none}
+  .tile .jp{font-family:'Klee One','Shippori Mincho',serif;color:var(--on);font-size:27px;font-weight:600;line-height:1}
   .t-teal{background:var(--teal)} .t-amber{background:var(--amber)} .t-terra{background:var(--terra)} .t-brown{background:var(--brown)} .t-gold{background:var(--gold)}
 
   /* home rows */
@@ -65,11 +66,11 @@
     <div class="sechd">Ana hedefler — tile + glif</div>
     <div class="secsub">home kartları ve menü öğeleri bu sisteme geçer</div>
 
-    <div class="row"><div class="tile t-teal"><svg viewBox="0 0 24 24"><path class="fill" d="M11.3 7.2C9.3 5.9 6.7 5.6 4.5 6.2v10.3c2.2-.6 4.8-.3 6.8 1z"/><path class="fill" d="M12.7 7.2c2-1.3 4.6-1.6 6.8-1v10.3c-2.2-.6-4.8-.3-6.8 1z"/></svg></div><div class="tx"><div class="tt">Kana Rehberi</div><div class="ss">Hiragana + katakana</div></div><div class="chev">›</div></div>
+    <div class="row"><div class="tile t-teal"><span class="jp">あ</span></div><div class="tx"><div class="tt">Kana Rehberi</div><div class="ss">Hiragana + katakana</div></div><div class="chev">›</div></div>
 
-    <div class="row"><div class="tile t-amber"><svg viewBox="0 0 24 24"><rect x="4.6" y="4.6" width="14.8" height="14.8" rx="3.4"/><path d="M12 4.6v14.8M4.6 12h14.8"/></svg></div><div class="tx"><div class="tt">Kanji Atlası</div><div class="ss">Parçalar · aileler · anlam</div></div><div class="chev">›</div></div>
+    <div class="row"><div class="tile t-amber"><span class="jp">木</span></div><div class="tx"><div class="tt">Kanji Atlası</div><div class="ss">Parçalar · aileler · anlam</div></div><div class="chev">›</div></div>
 
-    <div class="row"><div class="tile t-terra"><svg viewBox="0 0 24 24"><path d="M5.7 18.3l1.4-3.7L15.6 6a1.5 1.5 0 0 1 2.1 0l1.1 1.1a1.5 1.5 0 0 1 0 2.1l-8.6 8.6z"/><path class="fill" d="M5.7 18.3l1.4-3.7 2.3 2.3z"/></svg></div><div class="tx"><div class="tt">Yazı</div><div class="ss">Çizim · stroke pratiği</div></div><div class="chev">›</div></div>
+    <div class="row"><div class="tile t-terra"><svg viewBox="0 0 24 24"><path d="M18.8 5.4 L13.9 10.4"/><path class="fill" d="M13.3 10.7 L15.5 12.9 C 13.7 14.7, 9 18.9, 6.7 18.5 C 6.3 16.2, 10.5 11.5, 13.3 10.7 Z"/></svg></div><div class="tx"><div class="tt">Yazı</div><div class="ss">Kaligrafi · çizim pratiği</div></div><div class="chev">›</div></div>
 
     <div class="row"><div class="tile t-brown"><svg viewBox="0 0 24 24"><rect x="3.6" y="3.6" width="16.8" height="16.8" rx="4.7"/><path class="fill" d="M12 6.6 L14.2 10.1 L9.8 10.1 Z"/><path class="fill" d="M12 17.4 L9.8 13.9 L14.2 13.9 Z"/><path class="fill" d="M6.6 12 L10.1 9.8 L10.1 14.2 Z"/><path class="fill" d="M17.4 12 L13.9 9.8 L13.9 14.2 Z"/></svg></div><div class="tx"><div class="tt">Oyunlar</div><div class="ss">Oyna · rekor kır</div></div><div class="chev">›</div></div>
   </div>
