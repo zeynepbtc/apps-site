@@ -1814,8 +1814,9 @@ function appLogo(px){
 }
 /* P0-1 Dilim 3: kilitli floating socket selector (v23 geometri/animasyon). State-güdümlü: render → SNAV.apply(state._navSel). */
 const SNAV = (function(){
+  /* Üç durum: active (daire socket'te) · sunk (Home: kısa iniş + ikon kaybolur, sakin) · hidden (derin: kısa fade+scale, socket in-place kapanır). */
   const H=118, INSET=10, BAR_TOP=48, R=28, GAP=5, holeR=R+GAP,
-    PRES_CY=BAR_TOP+10, BALL_SINK=BAR_TOP+52, HOLE_SEAL=BAR_TOP-holeR-2, ICON_Y=BAR_TOP+16, LABEL_Y=BAR_TOP+47;
+    PRES_CY=BAR_TOP+10, SINK=20 /* Home: KISA iniş — daire bar altına tam tuck (sızma yok) */, HFALL=3 /* hidden: minik nudge */, ICON_Y=BAR_TOP+16, LABEL_Y=BAR_TOP+47;
   const IC=[
     '<path d="M12 6.7C9.7 5.2 6.7 4.9 4.3 5.6v11.5c2.4-.7 5.4-.4 7.7 1.1 2.3-1.5 5.3-1.8 7.7-1.1V5.6c-2.4-.7-5.4-.4-7.7 1.1z"/><path d="M12 6.7v11.5"/>',
     '<rect x="4.6" y="4.6" width="14.8" height="14.8" rx="2.4"/><path d="M12 4.6v14.8M4.6 12h14.8"/>',
@@ -1825,35 +1826,52 @@ const SNAV = (function(){
   const LB=['Kana','Kanji','Yazı','Oyunlar'], SCREENS=['kana','kanji5','practice','games'], N=4;
   const reduce = (typeof window!=="undefined" && window.matchMedia) ? matchMedia('(prefers-reduced-motion: reduce)').matches : false;
   let host,svg,bar,ball,aicon,mhole,rim,clipR,tabsEl,tabs=[];
-  let W=0,slot=0,cx=0,cxT=0,em=0,emT=0,act=-1,svel=0,raf=null,mounted=false,onTap=null;
+  let W=0,slot=0,mode='sunk',activeIdx=0,ctxIdx=-1,raf=null,mounted=false,onTap=null;
+  /* eased durum + hedef */
+  let cx=0,by=PRES_CY+SINK,bs=0.92,bo=1,ho=0,svel=0;
+  let cxT=0,byT=PRES_CY+SINK,bsT=0.92,boT=1,hoT=0;
   const center=i=>INSET+slot*i+slot/2;
-  const nearest=()=>Math.max(0,Math.min(N-1,Math.round((cx-INSET-slot/2)/slot)));
   const lerp=(a,b,t)=>a+(b-a)*t;
-  function paint(vel){
-    svel=svel*0.8+vel*0.2; let av=Math.abs(svel); if(av<0.5)av=0;
-    const stretch=Math.min(0.12,av*0.012), bx=cx-svel*0.08;
-    const cyB=lerp(BALL_SINK,PRES_CY,em), cyH=lerp(HOLE_SEAL,PRES_CY,em);
-    const rx=R*(1+stretch), ry=R*(1-stretch*0.5);
-    bar.setAttribute('d','M0,'+BAR_TOP+' L'+W+','+BAR_TOP+' L'+W+','+H+' L0,'+H+' Z');
-    mhole.setAttribute('cx',bx); mhole.setAttribute('cy',cyH); mhole.setAttribute('rx',holeR); mhole.setAttribute('ry',holeR);
-    ball.setAttribute('cx',bx); ball.setAttribute('cy',cyB); ball.setAttribute('rx',rx); ball.setAttribute('ry',ry);
-    aicon.setAttribute('transform','translate('+(bx-12)+','+(cyB-12)+')');
-    aicon.setAttribute('opacity',Math.max(0,Math.min(1,(em-0.1)*1.4)));
-    rim.setAttribute('cx',bx); rim.setAttribute('cy',cyH); rim.setAttribute('r',holeR);
-    rim.setAttribute('opacity',Math.max(0,Math.min(1,(em-0.06)*1.5)));
-    const nr=nearest();
-    for(let k=0;k<N;k++){ const t=tabs[k]; if(!t)continue; t.querySelector('.ic').style.opacity=(k===nr?(1-em):1);
-      t.querySelector('.lb').style.color=(k===nr&&em>0.5)?'var(--accent)':'var(--faint)'; }
-    if(nr!==act){ act=nr; if(aicon.dataset.i!=nr){aicon.dataset.i=nr;aicon.innerHTML=IC[nr];} }
+  function setTargets(){
+    if(mode==='active'){ cxT=center(activeIdx); byT=PRES_CY; bsT=1; boT=1; hoT=1; }
+    else if(mode==='sunk'){ byT=PRES_CY+SINK; bsT=0.92; boT=1; hoT=0; }  /* cxT sabit kalır (yatay hareket yok) */
+    else { byT=PRES_CY+HFALL; bsT=0.6; boT=0; hoT=0; }                    /* hidden: fade+scale */
   }
-  function loop(){ cx+=(cxT-cx)*(reduce?0.5:0.2); em+=(emT-em)*(reduce?0.5:0.2);
-    const vel=(cxT-cx)*0.2; paint(vel);
-    if(Math.abs(cxT-cx)>0.3||Math.abs(emT-em)>0.004) raf=requestAnimationFrame(loop);
-    else { cx=cxT; em=emT; paint(0); raf=null; } }
-  function kick(){ if(!raf) raf=requestAnimationFrame(loop); }
+  function paint(){
+    /* stretch YALNIZ aktif yatay harekette, ≤%3.5; sunk/hidden'da yok */
+    const av=Math.abs(svel), stretch=(mode==='active')?Math.min(0.035,av*0.010):0;
+    const bx=cx - (mode==='active'?svel*0.05:0);
+    const rx=R*bs*(1+stretch), ry=R*bs*(1-stretch*0.5);
+    const hr=Math.max(0,holeR*ho);
+    bar.setAttribute('d','M0,'+BAR_TOP+' L'+W+','+BAR_TOP+' L'+W+','+H+' L0,'+H+' Z');
+    /* socket YERİNDE kapanır (radius→0); hole ile top ZIT YÖNDE uzun hareket YOK */
+    mhole.setAttribute('cx',bx); mhole.setAttribute('cy',PRES_CY); mhole.setAttribute('rx',hr); mhole.setAttribute('ry',hr);
+    ball.setAttribute('cx',bx); ball.setAttribute('cy',by); ball.setAttribute('rx',rx); ball.setAttribute('ry',ry); ball.setAttribute('opacity',bo);
+    aicon.setAttribute('transform','translate('+(bx-12)+','+(by-12)+')');
+    aicon.setAttribute('opacity',ho);                 /* ikon socket ile birlikte solar — crossfade, snap-back yok */
+    rim.setAttribute('cx',bx); rim.setAttribute('cy',PRES_CY); rim.setAttribute('r',hr); rim.setAttribute('opacity',ho);
+    for(let k=0;k<N;k++){ const t=tabs[k]; if(!t)continue;
+      const covered=(mode==='active'&&k===activeIdx)?ho:0;      /* aktif tab satır ikonu daire altında kaybolur */
+      t.querySelector('.ic').style.opacity=1-covered;
+      let strong=(mode==='active'&&k===activeIdx&&ho>0.5), light=(mode==='hidden'&&k===ctxIdx);
+      const lb=t.querySelector('.lb');
+      lb.style.color = strong?'var(--accent)':(light?'var(--muted)':'var(--faint)');
+      lb.style.fontWeight = light?'800':'700';   /* derin: parent tab statik hafif vurgu (topsuz) */
+    }
+  }
+  function loop(){
+    const k=0.2; svel=(cxT-cx)*0.2;
+    cx=lerp(cx,cxT,k); by=lerp(by,byT,k); bs=lerp(bs,bsT,k); bo=lerp(bo,boT,k); ho=lerp(ho,hoT,k);
+    paint();
+    const done=Math.abs(cxT-cx)<0.3&&Math.abs(byT-by)<0.3&&Math.abs(bsT-bs)<0.004&&Math.abs(boT-bo)<0.01&&Math.abs(hoT-ho)<0.01;
+    if(!done) raf=requestAnimationFrame(loop);
+    else { cx=cxT;by=byT;bs=bsT;bo=boT;ho=hoT;svel=0; paint(); raf=null; }
+  }
+  function snap(){ cx=cxT;by=byT;bs=bsT;bo=boT;ho=hoT;svel=0; if(raf){cancelAnimationFrame(raf);raf=null;} paint(); }
+  function kick(){ if(reduce){ snap(); return; } if(!raf) raf=requestAnimationFrame(loop); }  /* reduced-motion: fiziksel hareket/deformasyon YOK, state doğrudan uygulanır */
   function layout(){ if(!mounted)return; W=host.clientWidth||W||336; slot=(W-2*INSET)/N; svg.setAttribute('viewBox','0 0 '+W+' '+H);
     clipR.setAttribute('y',BAR_TOP); clipR.setAttribute('height',H-BAR_TOP);
-    if(cxT===0&&cx===0){cx=cxT=center(0);} paint(0); }
+    if(cx===0){cx=cxT=center(activeIdx);} paint(); }
   function mount(hostEl,tapCb){
     host=hostEl; onTap=tapCb;
     host.innerHTML =
@@ -1872,14 +1890,19 @@ const SNAV = (function(){
     clipR=host.querySelector('#snclip'); tabsEl=host.querySelector('.snav-tabs'); tabs=[].slice.call(tabsEl.children);
     tabs.forEach((t,i)=>{ t.querySelector('.ic').style.top=ICON_Y+'px'; t.querySelector('.lb').style.top=LABEL_Y+'px';
       t.addEventListener('click',()=>{ if(onTap)onTap(SCREENS[i]); }); });
-    mounted=true; layout();
+    aicon.dataset.i=activeIdx; aicon.innerHTML=IC[activeIdx];
+    mounted=true; setTargets(); layout();
     window.addEventListener('resize',layout);
   }
   function apply(sel){
-    if(!mounted||!sel) return; layout();
-    if(sel.kind==='active'){ let i=SCREENS.indexOf(sel.tab); if(i<0)i=0; cxT=center(i); emT=1; }
-    else { emT=0; }  /* sunk (Home) / hidden (derin) → daire batar (kilitli davranış) */
-    kick();
+    if(!mounted||!sel) return;
+    mode=sel.kind;
+    if(mode==='active'){ let i=SCREENS.indexOf(sel.tab); if(i<0)i=0; activeIdx=i; ctxIdx=-1;
+      if(aicon.dataset.i!=i){ aicon.dataset.i=i; aicon.innerHTML=IC[i]; }  /* ikon HEDEF tab'a set — slide ortasında ani swap yok */
+    } else {
+      ctxIdx = sel.contextTab ? SCREENS.indexOf(sel.contextTab) : -1;
+    }
+    layout(); setTargets(); kick();
   }
   return { mount, apply, layout };
 })();
@@ -1916,11 +1939,13 @@ function renderHeader(){
 /* ============================ SCREENS ============================ */
 /* P0-1 Dilim 2: nav görünürlük + selector state hazırlığı (görsel Dilim 3'te). */
 const NAV_HIDDEN = ["onboarding","game","drill","profile","profile-edit","reset-confirm"];
+const NAV_TAB_GROUP={kana:["kana","kanadetail"],kanji5:["kanji5","detail","map","transform","words","worddetail","atlasnode","quiz"],practice:["practice","drill","mochi"],games:["games","game"]};
+function navTabOf(screen){ for(const k in NAV_TAB_GROUP){ if(NAV_TAB_GROUP[k].includes(screen)) return k; } return null; }
 function navSelectorState(screen){
-  const ROOTSEL={kana:"kana",kanji5:"kanji5",practice:"practice",games:"games"};
-  if(ROOTSEL[screen]) return {kind:"active",tab:ROOTSEL[screen]};
-  if(screen==="home") return {kind:"sunk"};      /* Home: floating selector gömülü/pasif (Dilim 3) — DOM'dan kaldırılmaz */
-  return {kind:"hidden"};
+  const roots={kana:1,kanji5:1,practice:1,games:1};
+  if(roots[screen]) return {kind:"active",tab:screen};        /* daire socket'te */
+  if(screen==="home") return {kind:"sunk"};                   /* Home: kısa iniş, ikon kaybolur, sakin bara oturur */
+  return {kind:"hidden", contextTab: navTabOf(screen)};       /* derin: kısa fade+scale; parent tab statik hafif vurgu */
 }
 function render(){
   const onb = state.screen==="onboarding";
