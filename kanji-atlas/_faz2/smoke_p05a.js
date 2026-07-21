@@ -236,6 +236,68 @@ H("Ek. Katı v2 validator (-2 / 1.5 / NaN / Infinity / seen<cw)");
   A("last=finite ts kabul", S.validSrsRecord({ ...base, last: 123 }) === true);
 }
 
+/* ============ RESET-FULL koruma (P0-5A merkezi resetCanonical) ============ */
+H("R1. Forward v3 + reset-full → canonical byte-değişmez");
+{
+  const v3 = JSON.stringify({ schemaVersion: 3, srs: { f: { x: 1 } }, brandNew: 42 });
+  const ls = makeLS(); ls.setItem(KEY, v3);
+  const st = mk(ls); st.read();                              // → readOnly (unsupported)
+  const res = st.resetCanonical();
+  A("reset reddedildi (read-only)", res.ok === false && res.reason === "read-only");
+  A("canonical byte-değişmez (v3 korundu)", ls.getItem(KEY) === v3);
+}
+H("R2. Recovery (bozuk) + reset-full → canonical byte-değişmez");
+{
+  const corrupt = '{"srs":{"x":tru';
+  const ls = makeLS(); ls.setItem(KEY, corrupt);
+  const st = mk(ls); st.read();                              // → recovery/readOnly
+  const res = st.resetCanonical();
+  A("reset reddedildi (storage-recovery)", res.ok === false && res.reason === "storage-recovery");
+  A("canonical byte-değişmez (bozuk ham korundu)", ls.getItem(KEY) === corrupt);
+}
+H("R3. Backup-fail read-only + reset-full → canonical byte-değişmez");
+{
+  const v1 = JSON.stringify({ schemaVersion: 1, kana: { "あ": true }, srs: {} });
+  const ls = makeLS(k => k === BAK); ls.setItem(KEY, v1);
+  const st = mk(ls); st.read();                              // backup fail → readOnly
+  const res = st.resetCanonical();
+  A("reset reddedildi (read-only)", res.ok === false && res.reason === "read-only");
+  A("canonical hâlâ v1 (byte-değişmez)", ls.getItem(KEY) === v1);
+}
+H("R4. Normal full reset → doğrulanmış temiz v2 + artefakt temizliği");
+{
+  const v1 = JSON.stringify({ schemaVersion: 1, kana: { "あ": true }, srs: { ichi: { correct: 3, wrong: 1, mastery: 2 } }, userHints: { ichi: "not" } });
+  const ls = makeLS(); ls.setItem(KEY, v1);
+  const st = mk(ls); st.read();                              // v1→v2 migrate (normal), .bak.v1 yazıldı
+  A("reset öncesi backup mevcut", ls.getItem(BAK) !== null);
+  const res = st.resetCanonical();
+  A("reset ok", res.ok === true);
+  const after = JSON.parse(ls.getItem(KEY));
+  A("temiz v2 (schemaVersion 2)", after.schemaVersion === 2);
+  A("srs boş", Object.keys(after.srs).length === 0);
+  A("kana boş", Object.keys(after.kana).length === 0);
+  A("userHints boş (full reset temizler)", Object.keys(after.userHints).length === 0);
+  A("_migrationQuarantine yok", after._migrationQuarantine === undefined);
+  A("kaydedilen geçerli v2", S.validateV2Shape(after) === true);
+  A(".bak.v1 temizlendi (temiz sayfa)", ls.getItem(BAK) === null);
+  A("removeItem KULLANILMADI — canonical hep doluydu", ls.getItem(KEY) !== null);
+}
+H("R5. Reset write-fail → eski canonical korunur, başarı yok");
+{
+  // togglable LS: read normal, sonra KEY yazımı başarısız
+  const m = new Map(); let failKey = null;
+  const ls = { getItem: k => (m.has(k) ? m.get(k) : null), setItem: (k, v) => { if (failKey && k === failKey) throw new Error("sim"); m.set(k, String(v)); }, removeItem: k => m.delete(k) };
+  const v2 = JSON.stringify({ schemaVersion: 2, srs: { ichi: { type: "kanji", correct: 1, wrong: 0, mastery: 1, seen: 1, write: 0, last: null, next: null } }, kana: {}, learned: {}, userHints: { ichi: "not" } });
+  ls.setItem(KEY, v2);
+  const st = mk(ls); st.read();                              // v2 → normal mod, commit yok
+  const before = ls.getItem(KEY);
+  failKey = KEY;                                             // artık KEY yazımı başarısız
+  const res = st.resetCanonical();
+  A("reset write-error döner", res.ok === false && res.reason === "write-error");
+  A("eski canonical KORUNDU (byte-değişmez)", ls.getItem(KEY) === before);
+  A("eski userHints hâlâ orada", JSON.parse(ls.getItem(KEY)).userHints.ichi === "not");
+}
+
 console.log("\n────────────────────────────");
 console.log(`P0-5A SMOKE: ${pass} geçti, ${fail} kaldı`);
 process.exit(fail ? 1 : 0);

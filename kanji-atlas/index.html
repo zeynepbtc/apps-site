@@ -1663,6 +1663,32 @@ function createStorage(ls, opts = {}) {
       try { if (typeof console !== "undefined") console.warn("[storage] save başarısız — yazma hatası (eski kayıt yerinde)"); } catch (e) {}
       return { ok: false, reason: "write-error" };
     },
+    /* Tam profil sıfırlama — MERKEZİ, sonuç döndürür. Handler doğrudan localStorage'a DOKUNMAZ.
+       KİLİTLİ invariant: readOnly||recoveryMode → canonical'a set/remove YOK (byte-değişmez).
+       removeItem KULLANILMAZ: temiz v2 state doğrulanıp tek atomik setItem ile yazılır; yazma başarısızsa eski kayıt YERİNDE.
+       Politika (full reset = temiz sayfa): srs/kana/learned/userHints/_migrationQuarantine/_migratedFrom hepsi sıfırlanır;
+       .bak.v1 ve recovery kopyaları best-effort temizlenir. (Progress-only reset AYRI: userHints korur.) */
+    resetCanonical() {
+      if (readOnly || recoveryMode) {
+        try { if (typeof console !== "undefined") console.warn("[storage] full reset reddedildi — " + (recoveryMode ? "recovery" : "read-only") + " (kana_state korunuyor)"); } catch (e) {}
+        return { ok: false, reason: recoveryMode ? "storage-recovery" : "read-only" };
+      }
+      const clean = freshState(); // v2 fresh (DEFAULT_STATE): srs/kana/learned/userHints boş; quarantine/_migratedFrom yok
+      clean.schemaVersion = SCHEMA_VERSION;
+      const okShape = isPlainObject(clean.learned) && isPlainObject(clean.srs) && isPlainObject(clean.userHints) && validateV2Shape(clean);
+      if (!okShape) return { ok: false, reason: "validate-error" };           // teoride olmaz; savunma
+      if (!trySet(KEY, JSON.stringify(clean))) return { ok: false, reason: "write-error" }; // eski canonical YERİNDE
+      // best-effort temizlik (başarısızlığı reset'i bozmaz)
+      try { ls.removeItem(BAK); } catch (e) {}
+      try {
+        if (typeof ls.length === "number" && typeof ls.key === "function") {
+          const rm = [];
+          for (let i = 0; i < ls.length; i++) { const k = ls.key(i); if (k && k.indexOf(KEY + "_recovery_") === 0) rm.push(k); }
+          rm.forEach(k => { try { ls.removeItem(k); } catch (e) {} });
+        }
+      } catch (e) {}
+      return { ok: true, reason: null, state: clean };
+    },
     get recoveryMode() { return recoveryMode; },
     get readOnly() { return readOnly; }
   };
@@ -5679,27 +5705,38 @@ document.addEventListener("click",e=>{
   }
   else if(act==="reset-cancel"){ go("profile", null, false); }
   else if(act==="reset-progress-only"){
-    // Faz 9-C: merkezi clear — profil + onboarding + ayarlar korunur
+    // Faz 9-C: merkezi clear — profil + onboarding + ayarlar korunur (userHints KORUNUR)
+    // P0-5A: veri koruma modunda sahte başarı gösterme (canonical zaten save() ile korunuyor)
+    if(STORE.readOnly || STORE.recoveryMode){ toast("Veri koruma modu açık — ilerleme sıfırlanamadı."); return; }
     clearProgressData();
     if(state.userProfile) state.userProfile.updatedAt = new Date().toISOString();
-    save(); toast("İlerleme sıfırlandı. Yeni başlangıca hazırsın.");
-    go("home", null, false);
+    if(save().ok){ toast("İlerleme sıfırlandı. Yeni başlangıca hazırsın."); go("home", null, false); }
+    else toast("Sıfırlanamadı — kayıt yazılamadı, veri yerinde.");
   }
   else if(act==="reset-onboarding-only"){
     // Faz 9-C: sadece tanıtımı yeniden başlat — öğrenme ilerlemesi korunur
+    if(STORE.readOnly || STORE.recoveryMode){ toast("Veri koruma modu açık — işlem yapılamadı."); return; }
     state.onboarding = { completed:false, step:1, name:"", motivation:"", level:"", style:"", startedAt:null, completedAt:null };
     // Tanıtım içinde gösterilen yardım/intro ekranlarını da tekrar göster
     state.seenReadingIntro = false; state.seenWritingSystem = false; state._wsStep = 0;
-    save(); toast("Tanıtım yeniden başlatıldı.");
-    go("onboarding", null, false);
+    if(save().ok){ toast("Tanıtım yeniden başlatıldı."); go("onboarding", null, false); }
+    else toast("İşlem yapılamadı — kayıt yazılamadı.");
   }
   else if(act==="reset-full"){
-    // Faz 9-C: tüm profili sil ve onboarding'e dön
-    try{ localStorage.removeItem("kana_state"); }catch(_){}
-    clearProgressData();
-    state.userProfile=null;
+    // P0-5A: tam profil sıfırlama MERKEZİ storage üzerinden — handler localStorage'a DOKUNMAZ.
+    // readOnly/recovery → reddedilir, canonical byte-değişmez. removeItem YOK: temiz v2 tek atomik yazım.
+    const res = STORE.resetCanonical();
+    if(!res.ok){
+      toast((res.reason==="read-only"||res.reason==="storage-recovery")
+        ? "Veri koruma modu açıkken profil sıfırlanamaz."
+        : "Profil sıfırlanamadı — veri yerinde.");
+      return;
+    }
+    Object.assign(state, res.state);          // doğrulanmış temiz v2 state benimse
+    state.userProfile = null;
     state.onboarding = { completed:false, step:1, name:"", motivation:"", level:"", style:"", startedAt:null, completedAt:null };
-    save(); toast("Profil sıfırlandı.");
+    save();                                    // reset başarılı → normal mod → onboarding'i kalıcılaştır
+    toast("Profil sıfırlandı.");
     go("onboarding", null, false);
   }
   else if(act==="resume"){

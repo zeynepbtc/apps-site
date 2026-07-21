@@ -266,6 +266,32 @@ function createStorage(ls, opts = {}) {
       try { if (typeof console !== "undefined") console.warn("[storage] save başarısız — yazma hatası (eski kayıt yerinde)"); } catch (e) {}
       return { ok: false, reason: "write-error" };
     },
+    /* Tam profil sıfırlama — MERKEZİ, sonuç döndürür. Handler doğrudan localStorage'a DOKUNMAZ.
+       KİLİTLİ invariant: readOnly||recoveryMode → canonical'a set/remove YOK (byte-değişmez).
+       removeItem KULLANILMAZ: temiz v2 state doğrulanıp tek atomik setItem ile yazılır; yazma başarısızsa eski kayıt YERİNDE.
+       Politika (full reset = temiz sayfa): srs/kana/learned/userHints/_migrationQuarantine/_migratedFrom hepsi sıfırlanır;
+       .bak.v1 ve recovery kopyaları best-effort temizlenir. (Progress-only reset AYRI: userHints korur.) */
+    resetCanonical() {
+      if (readOnly || recoveryMode) {
+        try { if (typeof console !== "undefined") console.warn("[storage] full reset reddedildi — " + (recoveryMode ? "recovery" : "read-only") + " (kana_state korunuyor)"); } catch (e) {}
+        return { ok: false, reason: recoveryMode ? "storage-recovery" : "read-only" };
+      }
+      const clean = freshState(); // v2 fresh (DEFAULT_STATE): srs/kana/learned/userHints boş; quarantine/_migratedFrom yok
+      clean.schemaVersion = SCHEMA_VERSION;
+      const okShape = isPlainObject(clean.learned) && isPlainObject(clean.srs) && isPlainObject(clean.userHints) && validateV2Shape(clean);
+      if (!okShape) return { ok: false, reason: "validate-error" };           // teoride olmaz; savunma
+      if (!trySet(KEY, JSON.stringify(clean))) return { ok: false, reason: "write-error" }; // eski canonical YERİNDE
+      // best-effort temizlik (başarısızlığı reset'i bozmaz)
+      try { ls.removeItem(BAK); } catch (e) {}
+      try {
+        if (typeof ls.length === "number" && typeof ls.key === "function") {
+          const rm = [];
+          for (let i = 0; i < ls.length; i++) { const k = ls.key(i); if (k && k.indexOf(KEY + "_recovery_") === 0) rm.push(k); }
+          rm.forEach(k => { try { ls.removeItem(k); } catch (e) {} });
+        }
+      } catch (e) {}
+      return { ok: true, reason: null, state: clean };
+    },
     get recoveryMode() { return recoveryMode; },
     get readOnly() { return readOnly; }
   };
