@@ -1764,14 +1764,14 @@ function markLearned(id, status="learning"){
 
 /* ============================ NAV ============================ */
 function go(screen, param=null, push=true){
-  if(push && state.screen!==screen) state.stack.push({screen:state.screen,param:state.param});
+  if(push && state.screen!==screen) state.stack.push({screen:state.screen,param:state.param,scroll:(main?main.scrollTop:0)}); /* geri dönüşte kaldığı yeri koru */
   state.screen=screen; state.param=param;
   render();
   main.scrollTop=0;
 }
 function back(){
   const prev=state.stack.pop();
-  if(prev){ state.screen=prev.screen; state.param=prev.param; render(); main.scrollTop=0; }
+  if(prev){ state.screen=prev.screen; state.param=prev.param; render(); main.scrollTop=(prev.scroll||0); } /* liste kaydırmasını geri yükle */
   else go("home",null,false);
 }
 /* Root navigation politikası (P0-1 · IA sözleşmesi): alt tab / logo → root reset.
