@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>Kanji Atlas — jel nav v9 (yükselen top + submerge)</title>
+<title>Kanji Atlas — jel nav v11 (uyarlanan: kompakt ↔ açık)</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{ --bg:#EFE7D6; --paper:#FBF5EF; --card:#FFFFFF; --line:#E6DCCB;
@@ -12,39 +12,40 @@
     --serif:'Shippori Mincho',serif; --sans:'Nunito',system-ui,sans-serif;}
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;
-    padding:32px 16px 50px;display:flex;flex-direction:column;align-items:center;min-height:100vh}
+    padding:30px 16px 46px;display:flex;flex-direction:column;align-items:center;min-height:100vh}
   .eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-weight:800;text-align:center}
-  h1{font-family:var(--serif);font-weight:700;font-size:23px;margin:8px 0 6px;text-align:center}
-  .lead{color:var(--muted);font-size:13px;text-align:center;max-width:430px;margin:0 auto;line-height:1.5}
-  .phone{width:336px;max-width:100%;margin:24px auto 0;background:var(--paper);border-radius:36px;overflow:hidden;
+  h1{font-family:var(--serif);font-weight:700;font-size:22px;margin:8px 0 6px;text-align:center}
+  .lead{color:var(--muted);font-size:13px;text-align:center;max-width:440px;margin:0 auto;line-height:1.5}
+  .phone{width:336px;max-width:100%;margin:22px auto 0;background:var(--paper);border-radius:36px;overflow:hidden;
     box-shadow:0 2px 5px rgba(58,47,40,.12),0 30px 55px -26px rgba(58,47,40,.5);border:1px solid rgba(0,0,0,.05);
-    display:flex;flex-direction:column;height:560px}
-  .topbar{display:flex;align-items:center;gap:10px;padding:16px 18px 8px}
+    display:flex;flex-direction:column;height:580px}
+  .topbar{display:flex;align-items:center;gap:10px;padding:15px 18px 6px}
   .logo{width:34px;height:34px;border-radius:10px;overflow:hidden;flex:none;box-shadow:0 3px 8px -3px rgba(58,47,40,.4);cursor:pointer}
   .logo svg{display:block;width:100%;height:100%}
   .topbar .tt{font-family:var(--serif);font-weight:600;font-size:16px}
-  .topbar .home{margin-left:auto;font-size:11px;font-weight:800;color:var(--amber-deep);background:var(--card);border:1px solid var(--line);
-    padding:6px 12px;border-radius:999px;cursor:pointer}
-  .screen{flex:1;padding:14px 20px 6px;display:flex;flex-direction:column;gap:11px}
+  .topbar .home{margin-left:auto;font-size:11px;font-weight:800;color:var(--amber-deep);background:var(--card);border:1px solid var(--line);padding:6px 12px;border-radius:999px;cursor:pointer}
+  .screen{flex:1;padding:12px 20px 4px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
   .st{font-family:var(--serif);font-size:19px;font-weight:600}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;height:54px;box-shadow:0 8px 18px -15px rgba(58,47,40,.3)}
+  .subtle{font-size:12px;color:var(--faint);margin:-2px 0 4px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;height:52px;box-shadow:0 8px 18px -15px rgba(58,47,40,.3);cursor:pointer;transition:transform .12s}
+  .card:active{transform:scale(.985)}
   .card.sm{height:38px;opacity:.7}
-  .hint{margin-top:auto;text-align:center;font-size:12px;color:var(--faint);padding-bottom:4px}
-  .nav{position:relative;height:96px;flex:none;user-select:none;-webkit-user-select:none;touch-action:none}
-  .nav svg.bar{position:absolute;left:0;bottom:0;width:100%;height:96px;overflow:visible;display:block;z-index:1}
-  .tabs{position:absolute;left:0;bottom:0;width:100%;height:96px;display:flex;z-index:2}
-  .tab{flex:1;position:relative;pointer-events:none}
-  .tab .ic{position:absolute;left:50%;top:60px;width:22px;height:22px;transform:translateX(-50%);color:var(--muted)}
+  .tap{display:flex;align-items:center;justify-content:center;color:var(--amber-deep);font-weight:700;font-size:13px}
+  .nav{position:relative;height:104px;flex:none;user-select:none;-webkit-user-select:none;touch-action:none}
+  .nav svg.bar{position:absolute;left:0;bottom:0;width:100%;height:104px;overflow:visible;display:block;z-index:1}
+  .tabs{position:absolute;left:0;bottom:0;width:100%;height:104px;display:flex;z-index:2;pointer-events:none}
+  .tab{flex:1;position:relative}
+  .tab .ic{position:absolute;left:50%;width:22px;height:22px;transform:translateX(-50%);color:var(--muted)}
   .tab .ic svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  .tab .lb{position:absolute;left:0;top:84px;width:100%;text-align:center;font-size:11px;font-weight:700;color:var(--muted)}
-  .foot{margin-top:22px;font-size:11.5px;color:var(--muted);text-align:center;max-width:450px;line-height:1.55}
+  .tab .lb{position:absolute;left:0;width:100%;text-align:center;font-size:11px;font-weight:700;color:var(--muted)}
+  .foot{margin-top:20px;font-size:11.5px;color:var(--muted);text-align:center;max-width:460px;line-height:1.55}
   .foot b{color:var(--amber-deep)}
 </style>
 </head>
 <body>
-  <div class="eyebrow">Kanji Atlas · alt nav · v10 · yuva + boşluk</div>
-  <h1>Top bağımsız · Home'da gömülür</h1>
-  <p class="lead">Sekmeye dokun → top yükselir, ikon içine girer, etiket altta kalır. <b>Logo/Ana Sayfa'ya bas → top menüye gömülür, bar düzleşir.</b></p>
+  <div class="eyebrow">Kanji Atlas · alt nav · v11 · uyarlanan menü</div>
+  <h1>Kompakt ↔ açık · içeriğe göre</h1>
+  <p class="lead">1) Home: sadece ikonlar. 2) Sekmeye dokun → menü yükselir, yazılar gelir, ikon topa girer. 3) Sayfada karta dokun → menü yuvasına iner, yazılar gizlenir, ikon+top kalır.</p>
 
   <div class="phone">
     <div class="topbar">
@@ -54,8 +55,11 @@
     </div>
     <div class="screen">
       <div class="st" id="scrTitle">Ana Sayfa</div>
-      <div class="card"></div><div class="card sm"></div><div class="card sm"></div>
-      <div class="hint">sekmeye dokun · logoya bas (gömülme)</div>
+      <div class="subtle" id="scrSub">alttaki bir sekmeye dokun</div>
+      <div class="card" id="c1"></div>
+      <div class="card sm" id="c2"></div>
+      <div class="card sm" id="c3"></div>
+      <div class="tap" id="tapHint" style="margin-top:6px">↑ bir karta dokun → menü yuvasına insin</div>
     </div>
     <div class="nav" id="nav">
       <svg class="bar" id="svg" preserveAspectRatio="none">
@@ -64,6 +68,7 @@
           <filter id="sh" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#B5651F" flood-opacity="0.38"/></filter>
         </defs>
         <path id="bar" fill="#fff" stroke="#E6DCCB" stroke-width="1"></path>
+        <rect id="handle" rx="2" ry="2" height="4" fill="#E0D4BE"></rect>
         <g filter="url(#sh)"><ellipse id="ball" fill="url(#gel)"></ellipse></g>
         <ellipse id="hl" fill="#fff"></ellipse>
         <g id="aicon" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -71,7 +76,7 @@
       <div class="tabs" id="tabs"></div>
     </div>
   </div>
-  <p class="foot"><b>v10:</b> aktif sekmede top yükselir + ikon içine girer (büyüteç) + etiket altta kalır · Home'da top menüye eriyip iner, bar düzleşir (bütünleşir). Doz Canlı, jiggle yok. İkonlar geçici.</p>
+  <p class="foot"><b>v11:</b> menü hiç kaybolmaz (ikon+top hep tıklanabilir) — sadece yükseklik + yazılar değişir. Top yarıya kadar gömülü (kompakt), yükselir (açık). Handle'dan yukarı çekilebilir. Doz Canlı. İkonlar geçici.</p>
 
   <script>
   (function(){
@@ -86,14 +91,18 @@
     var SEAL='<svg viewBox="0 0 1024 1024"><rect width="1024" height="1024" fill="#FBF5EF"/><path d="M256 716 C 290 392, 562 290, 734 342 C 580 376, 392 478, 376 666 Z" fill="#C0562F"/><circle cx="684" cy="632" r="112" fill="#E3BC6A"/><circle cx="344" cy="344" r="64" fill="#9CBFC9"/></svg>';
     document.getElementById('logo').innerHTML=SEAL;
 
-    var H=98, EDGE=48, R=20, RAISE=22, SUB=52, DIP=10;  // EDGE bar üst · top R · yükselik/gömülü merkez · barın topa yuva açması (içbükey)
-    var nav=document.getElementById('nav'), svg=document.getElementById('svg'), bar=document.getElementById('bar'),
+    // geometri (container H=104)
+    var H=104, R=18;
+    var COMPACT_TOP=60, EXP_TOP=30;      // bar üst kenarı: kompakt alçak, açık yüksek
+    var ICON_Y=78;                        // ikonlar SABİT (yerli yerinde)
+    var svg=document.getElementById('svg'), bar=document.getElementById('bar'), handle=document.getElementById('handle'),
         ball=document.getElementById('ball'), hl=document.getElementById('hl'), aicon=document.getElementById('aicon'),
-        tabsEl=document.getElementById('tabs'), scrTitle=document.getElementById('scrTitle');
+        tabsEl=document.getElementById('tabs'), nav=document.getElementById('nav'),
+        scrTitle=document.getElementById('scrTitle'), scrSub=document.getElementById('scrSub'), tapHint=document.getElementById('tapHint');
     tabsEl.innerHTML=LB.map(function(l,i){return '<div class="tab"><span class="ic"><svg viewBox="0 0 24 24">'+ICONS[i]+'</svg></span><span class="lb">'+l+'</span></div>';}).join('');
     var tabs=tabsEl.children;
 
-    var W=0, slot=0, cx=0, cxT=0, em=0, emT=0, act=-1, svel=0, dragging=false, startX=0, moved=false, raf=null, prevCx=0;
+    var W=0, slot=0, cx=0, cxT=0, ex=0, exT=0, em=0, emT=0, act=-1, svel=0, dragging=false, startX=0, moved=false, raf=null, prevCx=0;
     function center(i){ return slot*i+slot/2; }
     function clamp(x){ return Math.max(slot/2, Math.min(W-slot/2, x)); }
     function nearest(){ return Math.max(0,Math.min(N-1,Math.round((cx-slot/2)/slot))); }
@@ -101,48 +110,57 @@
 
     function paint(vel){
       svel=svel*0.8+vel*0.2; var av=Math.abs(svel); if(av<0.5)av=0;
-      var stretch=Math.min(0.14, av*0.014), rx=R*(1+stretch), ry=R*(1-stretch*0.55);
-      var by=lerp(SUB,RAISE,em), op=Math.max(0,Math.min(1,em*1.15));
-      var bx=cx - svel*0.12, dip=DIP*em, bot=EDGE+dip, HW=R+12;
-      // bar: aktif topun ALTINDA içbükey yuva açar (boşluk + oturma); Home'da düzleşir. Göçük DEĞİL — top yukarıda ayrık.
-      bar.setAttribute('d','M0,'+EDGE+' L'+(bx-HW)+','+EDGE
-        +' C'+(bx-HW*0.46)+','+EDGE+' '+(bx-R*0.86)+','+bot+' '+bx+','+bot
-        +' C'+(bx+R*0.86)+','+bot+' '+(bx+HW*0.46)+','+EDGE+' '+(bx+HW)+','+EDGE
-        +' L'+W+','+EDGE+' L'+W+','+H+' L0,'+H+' Z');
+      var stretch=Math.min(0.13, av*0.013), rx=R*(1+stretch), ry=R*(1-stretch*0.5);
+      var barTop=lerp(COMPACT_TOP,EXP_TOP,ex);
+      // top: kompaktta yarıya gömülü (merkez ≈ barTop), açıkta yükselir
+      var presentY=lerp(barTop, EXP_TOP-6, ex);   // kompakt: barTop (yarı gömülü) · açık: barTop üstünde
+      var by=lerp(barTop+12, presentY, em), op=Math.max(0,Math.min(1,em*1.2));
+      var bx=cx - svel*0.11, dip=9*em, bot=barTop+dip, HW=R+13;
+      // bar: üst kenar barTop; aktif topun altında içbükey yuva
+      bar.setAttribute('d','M0,'+barTop+' L'+(bx-HW)+','+barTop
+        +' C'+(bx-HW*0.46)+','+barTop+' '+(bx-R*0.86)+','+bot+' '+bx+','+bot
+        +' C'+(bx+R*0.86)+','+bot+' '+(bx+HW*0.46)+','+barTop+' '+(bx+HW)+','+barTop
+        +' L'+W+','+barTop+' L'+W+','+H+' L0,'+H+' Z');
+      // handle (çentik) — açıkken solar, kompaktta belirgin
+      handle.setAttribute('x',W/2-14); handle.setAttribute('y',barTop-8); handle.setAttribute('width',28);
+      handle.setAttribute('opacity',0.5*(1-ex));
+      // top
       ball.setAttribute('cx',cx); ball.setAttribute('cy',by); ball.setAttribute('rx',rx); ball.setAttribute('ry',ry); ball.setAttribute('opacity',op);
       hl.setAttribute('cx',cx); hl.setAttribute('cy',by-ry*0.42); hl.setAttribute('rx',rx*0.5); hl.setAttribute('ry',ry*0.28); hl.setAttribute('opacity',0.3*op);
       aicon.setAttribute('transform','translate('+(cx-12)+','+(by-12)+')'); aicon.setAttribute('opacity',op);
       var nr=nearest();
       for(var k=0;k<N;k++){
-        var isAct=(k===nr);
-        tabs[k].querySelector('.ic').style.opacity = (isAct? (1-em) : 1);       // ikon topa "girerken" düz kopyası solar
-        tabs[k].querySelector('.lb').style.color = (isAct && em>0.5)? 'var(--amber-deep)' : 'var(--muted)';
+        var icE=tabs[k].querySelector('.ic'), lbE=tabs[k].querySelector('.lb');
+        icE.style.top=ICON_Y+'px';
+        icE.style.opacity = (k===nr? (1-em) : 1);           // aktif ikon topa girer
+        lbE.style.top=(ICON_Y+20)+'px';
+        lbE.style.opacity=ex;                                // yazılar yalnız açıkken
+        lbE.style.color=(k===nr && em>0.5)?'var(--amber-deep)':'var(--muted)';
       }
-      if(nr!==act && em>0.5){ act=nr; try{if(navigator.vibrate)navigator.vibrate(reduce?0:8);}catch(e){} }
+      if(nr!==act && em>0.5){ act=nr; try{if(navigator.vibrate)navigator.vibrate(reduce?0:7);}catch(e){} }
       if(aicon.dataset.i!=nr){ aicon.dataset.i=nr; aicon.innerHTML=ICONS[nr]; }
     }
     function loop(){
-      cx += (cxT-cx)*0.2; em += (emT-em)*(reduce?0.4:0.2);
+      cx+=(cxT-cx)*0.2; ex+=(exT-ex)*(reduce?0.4:0.18); em+=(emT-em)*(reduce?0.4:0.2);
       var vel=(cxT-cx)*0.2; paint(vel);
-      if(Math.abs(cxT-cx)>0.3 || Math.abs(emT-em)>0.004) raf=requestAnimationFrame(loop);
-      else { cx=cxT; em=emT; paint(0); raf=null; }
+      if(Math.abs(cxT-cx)>0.3||Math.abs(exT-ex)>0.004||Math.abs(emT-em)>0.004) raf=requestAnimationFrame(loop);
+      else { cx=cxT; ex=exT; em=emT; paint(0); raf=null; }
     }
     function kick(){ if(!raf) raf=requestAnimationFrame(loop); }
-    function goTab(i){ cxT=center(i); emT=1; scrTitle.textContent=LB[i]; kick(); }
-    function goHome(){ emT=0; scrTitle.textContent='Ana Sayfa'; kick(); }
+    function goTab(i){ cxT=center(i); emT=1; exT=1; scrTitle.textContent=LB[i]; scrSub.textContent='menü açık · bir karta dokun (yuvasına insin)'; tapHint.style.opacity=1; kick(); }
+    function collapse(){ exT=0; scrSub.textContent='menü yuvasında · ikon+top sabit, gezebilirsin'; kick(); }
+    function goHome(){ emT=0; exT=0; scrTitle.textContent='Ana Sayfa'; scrSub.textContent='alttaki bir sekmeye dokun'; kick(); }
 
     function xOf(e){ return (e.touches?e.touches[0].clientX:e.clientX)-nav.getBoundingClientRect().left; }
     function down(e){ dragging=true; moved=false; startX=xOf(e); prevCx=cx; if(raf){cancelAnimationFrame(raf);raf=null;} }
     function move(e){ if(!dragging)return; var x=xOf(e); if(Math.abs(x-startX)>7)moved=true;
-      if(moved){ cx=clamp(x); em+=(1-em)*0.35; var vel=cx-prevCx; prevCx=cx; paint(vel); e.preventDefault(); } }
-    function up(){ if(!dragging)return; dragging=false;
-      if(moved){ cxT=center(nearest()); emT=1; scrTitle.textContent=LB[nearest()]; }
-      else { var i=Math.max(0,Math.min(N-1,Math.floor(startX/slot))); cxT=center(i); emT=1; scrTitle.textContent=LB[i]; }
-      kick(); }
+      if(moved){ cx=clamp(x); em+=(1-em)*0.35; ex+=(1-ex)*0.3; var vel=cx-prevCx; prevCx=cx; paint(vel); e.preventDefault(); } }
+    function up(){ if(!dragging)return; dragging=false; goTab(moved?nearest():Math.max(0,Math.min(N-1,Math.floor(startX/slot)))); }
     nav.addEventListener('pointerdown',down); window.addEventListener('pointermove',move); window.addEventListener('pointerup',up);
     nav.addEventListener('touchstart',down,{passive:false}); window.addEventListener('touchmove',move,{passive:false}); window.addEventListener('touchend',up);
     document.getElementById('homeBtn').addEventListener('click',goHome);
     document.getElementById('logo').addEventListener('click',goHome);
+    ['c1','c2','c3'].forEach(function(id){ document.getElementById(id).addEventListener('click',collapse); });
 
     function layout(){ W=nav.clientWidth; slot=W/N; svg.setAttribute('viewBox','0 0 '+W+' '+H); if(cxT===0){cx=cxT=center(0);} paint(0); }
     window.addEventListener('resize',layout); layout(); paint(0);
