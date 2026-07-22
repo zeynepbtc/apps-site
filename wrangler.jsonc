@@ -1,0 +1,10 @@
+{
+  // STAGING ONLY — faz2-kalem1 (P0-5A). Ayrı origin; production zeynepkaya.app'e DOKUNMAZ.
+  // Cloudflare Workers static-assets: kanji-atlas/ klasörünü site kökü olarak sunar.
+  "name": "kanji-atlas-staging",
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "./kanji-atlas",
+    "not_found_handling": "single-page-application"
+  }
+}
