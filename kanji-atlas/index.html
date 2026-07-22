@@ -1401,7 +1401,7 @@ let state = {
    Kapsam: R1 (bozuk JSON'da sessiz sıfırlama YOK) · R2 (schemaVersion) · R3 (kontrollü nested-default).
    Export/import ve her-save yedek KAPSAM DIŞI (sonraki storage işi). */
 
-const SCHEMA_VERSION = 1;
+const SCHEMA_VERSION = 2;
 
 // Uygulamadaki state defaults ile birebir.
 const DEFAULT_STATE = {
@@ -1417,6 +1417,73 @@ const DEFAULT_STATE = {
 const isPlainObject = x => x !== null && typeof x === "object" && !Array.isArray(x);
 const freshState = () => structuredClone(DEFAULT_STATE);
 
+/* ---- P0-5A yardımcılar ---- */
+// Deterministik, fixture-testable NON-crypto hash (FNV-1a 32-bit → 8 hex). Amaç: kaynak-blob eşleştirme.
+function hashStr(s) {
+  s = String(s);
+  let h = 0x811c9dc5;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0;
+  }
+  return ("00000000" + h.toString(16)).slice(-8);
+}
+const isNonNegInt = n => Number.isInteger(n) && n >= 0;
+const intOr0 = n => (Number.isInteger(n) && n >= 0 ? n : 0);
+const clampMastery = m => Math.max(0, Math.min(4, Number.isInteger(m) ? m : 0));
+const normTs = v => (v === null ? null : (Number.isFinite(v) && v >= 0 ? v : null));
+
+/* Tip çözümleyici — global DATA'ya bağlı DEĞİL; enjekte edilir.
+   Uygulamada makeTypeResolver(DATA) ile; testte stub ile. DATA yoksa DEFAULT_RESOLVER (yalnız kana Unicode). */
+function isKanaCodepoint(ch) {
+  if (typeof ch !== "string" || Array.from(ch).length !== 1) return false;
+  const c = ch.codePointAt(0);
+  return (c >= 0x3040 && c <= 0x309F) || (c >= 0x30A0 && c <= 0x30FF) || (c >= 0xFF66 && c <= 0xFF9D);
+}
+const DEFAULT_RESOLVER = {
+  resolveType(key) { return isKanaCodepoint(key) ? "kana" : null; }, // DATA yoksa kanji/word ayırt edilemez → quarantine
+  isKana: isKanaCodepoint
+};
+function makeTypeResolver(DATA) {
+  const chars = (DATA && DATA.chars) || {};
+  const kanaSet = new Set();
+  const collect = arr => {
+    if (!Array.isArray(arr)) return;
+    arr.forEach(row => (Array.isArray(row) ? row : [row]).forEach(x => { if (x && x.character) kanaSet.add(x.character); }));
+  };
+  collect(DATA && DATA.hiragana); collect(DATA && DATA.katakana);
+  const wordIds = new Set();
+  const words = (DATA && DATA.words) || [];
+  (Array.isArray(words) ? words : Object.values(words)).forEach(w => { if (w && w.id) wordIds.add(w.id); });
+  return {
+    resolveType(key) {
+      if (chars[key]) return chars[key].type || "kanji";   // kanji | radical
+      if (wordIds.has(key)) return "word";
+      if (kanaSet.has(key)) return "kana";
+      return null;                                          // çözülemez → quarantine
+    },
+    isKana(key) { return kanaSet.has(key); }
+  };
+}
+
+/* Katı v2 srs kayıt doğrulaması. -2 / 1.5 / NaN / Infinity ELENİR. */
+function validSrsRecord(r) {
+  if (!isPlainObject(r)) return false;
+  if (["kanji", "radical", "word", "kana"].indexOf(r.type) < 0) return false;
+  if (!(Number.isInteger(r.mastery) && r.mastery >= 0 && r.mastery <= 4)) return false;
+  if (!isNonNegInt(r.correct) || !isNonNegInt(r.wrong) || !isNonNegInt(r.seen) || !isNonNegInt(r.write)) return false;
+  if (!(r.last === null || (Number.isFinite(r.last) && r.last >= 0))) return false;
+  if (!(r.next === null || (Number.isFinite(r.next) && r.next >= 0))) return false;
+  if (r.seen < r.correct + r.wrong) return false;          // invariant: seen ≥ correct+wrong
+  return true;
+}
+function validateV2Shape(state) {
+  if (!isPlainObject(state) || !isPlainObject(state.srs)) return false;
+  const s = state.srs;
+  for (const k of Object.keys(s)) { if (!validSrsRecord(s[k])) return false; }
+  return true;
+}
+
 /* migrateV0ToV1 — idempotent, deterministik; yalnız bildiği alanı dönüştürür;
    bilinmeyen kullanıcı alanını SEBEPSİZ SİLMEZ; storage'a yazmaz. */
 function migrateV0ToV1(s) {
@@ -1431,10 +1498,56 @@ function migrateV0ToV1(s) {
   out.schemaVersion = 1;
   return out;
 }
-function migrate(parsed) {
+
+/* migrateV1ToV2 — SAF: girdi nesnesini MUTATE ETMEZ, yeni nesne döndürür. resolver enjekte.
+   srs normalize (type/seen/write) · type-null → quarantine (kayıpsız) · legacy boolean kana → SEED.
+   Kana SRS DAVRANIŞI değişmez (bu yalnız veri şekli). */
+function migrateV1ToV2(state, resolver) {
+  resolver = resolver || DEFAULT_RESOLVER;
+  const src = isPlainObject(state) ? state : {};
+  const out = { ...src };
+  out.schemaVersion = 2;
+
+  const srcSrs = isPlainObject(src.srs) ? src.srs : {};
+  const newSrs = {};
+  const quarantine = isPlainObject(src._migrationQuarantine) ? { ...src._migrationQuarantine } : {};
+  const qSrs = isPlainObject(quarantine.srs) ? { ...quarantine.srs } : {};
+
+  for (const key of Object.keys(srcSrs)) {
+    const rec = srcSrs[key];
+    if (!isPlainObject(rec)) { qSrs[key] = rec; continue; }       // bozuk kayıt → quarantine
+    const type = resolver.resolveType(key);
+    if (type == null) { qSrs[key] = rec; continue; }             // çözülemez tip → quarantine
+    const correct = intOr0(rec.correct), wrong = intOr0(rec.wrong), mastery = clampMastery(rec.mastery);
+    const cw = correct + wrong;
+    let seen;
+    if (isNonNegInt(rec.seen)) seen = Math.max(rec.seen, cw);    // existing valid → max (invariant korunur)
+    else if (cw > 0) seen = cw;
+    else if (mastery > 0) seen = 1;                              // pozitif mastery eski sistemden kanıt
+    else seen = 0;                                               // hiç görülmemiş → 0 (sahte seen YOK)
+    const write = isNonNegInt(rec.write) ? rec.write : 0;
+    newSrs[key] = { type, correct, wrong, mastery, seen, write, last: normTs(rec.last), next: normTs(rec.next) };
+  }
+
+  // legacy boolean-only kana (kana[char]===true, srs kaydı YOK) → SEED mastery 1, last/next null
+  const kanaMap = isPlainObject(src.kana) ? src.kana : {};
+  for (const ch of Object.keys(kanaMap)) {
+    if (kanaMap[ch] === true && !newSrs[ch] && !qSrs[ch] && resolver.isKana(ch)) {
+      newSrs[ch] = { type: "kana", correct: 0, wrong: 0, mastery: 1, seen: 1, write: 0, last: null, next: null };
+    }
+  }
+
+  out.srs = newSrs;
+  if (Object.keys(qSrs).length) { quarantine.srs = qSrs; out._migrationQuarantine = quarantine; }
+  // legacy aynalar (kana/learned/status) …src ile korunur (okuma-kaynağı P0-5B'de değişir; burada değil)
+  return out;
+}
+
+function migrate(parsed, resolver) {
   const ver = (typeof parsed.schemaVersion === "number") ? parsed.schemaVersion : 0;
   let s = parsed;
   if (ver < 1) s = migrateV0ToV1(s);
+  if (ver < 2) s = migrateV1ToV2(s, resolver || DEFAULT_RESOLVER);
   return s;
 }
 
@@ -1463,54 +1576,133 @@ function safeMerge(parsed) {
   };
 }
 
-/* hydrate — ham string → {state, recoveryRequired}. Bozuk/eksik → recovery (ham DOKUNULMAZ). */
-function hydrate(raw) {
+/* hydrate — ham string → {state, recoveryRequired, unsupported?}. Bozuk/eksik → recovery (ham DOKUNULMAZ).
+   Forward-schema guard: storedVer > SCHEMA_VERSION → migrate/safeMerge YOK, state DÖNÜŞTÜRÜLMEZ (unsupported). */
+function hydrate(raw, resolver) {
+  resolver = resolver || DEFAULT_RESOLVER;
   if (raw == null) return { state: freshState(), recoveryRequired: false };
   let parsed;
   try { parsed = JSON.parse(raw); } catch (e) { return { state: freshState(), recoveryRequired: true }; }
   if (!isPlainObject(parsed)) return { state: freshState(), recoveryRequired: true };
-  const merged = safeMerge(migrate(parsed));
-  // kritik alan doğrulaması
-  const ok = isPlainObject(merged.learned) && isPlainObject(merged.srs) && isPlainObject(merged.userHints);
+  const storedVer = (typeof parsed.schemaVersion === "number") ? parsed.schemaVersion : 0;
+  if (storedVer > SCHEMA_VERSION) {
+    // İleri sürüm: veriyi DEĞİŞTİRME, downgrade etme. Read-only sunulacak.
+    return { state: parsed, recoveryRequired: false, unsupported: true };
+  }
+  const merged = safeMerge(migrate(parsed, resolver));
+  // kritik alan + katı v2-şekil doğrulaması (bump ÖNCESİ)
+  const ok = isPlainObject(merged.learned) && isPlainObject(merged.srs) && isPlainObject(merged.userHints) && validateV2Shape(merged);
   if (!ok) return { state: freshState(), recoveryRequired: true };
   return { state: merged, recoveryRequired: false };
 }
 
-/* createStorage — localStorage sarmalayıcı. Recovery modunda kana_state ASLA ezilmez. */
+/* createStorage — localStorage sarmalayıcı. Recovery/unsupported/backup-fail → read-only; kana_state ASLA ezilmez.
+   İki aşamalı commit: (1) hash'li doğrulanmış backup (2) atomik canonical v2 yazımı. */
 function createStorage(ls, opts = {}) {
   const KEY = "kana_state";
+  const BAK = "kana_state.bak.v1";
   const now = opts.now || (() => Date.now());
+  const resolver = opts.resolver || DEFAULT_RESOLVER;
   let recoveryMode = false;
+  let readOnly = false;
+
+  const tryGet = k => { try { return ls.getItem(k); } catch (e) { return null; } };
+  const trySet = (k, v) => { try { ls.setItem(k, v); return true; } catch (e) { return false; } };
+  const versionOf = raw => { try { const p = JSON.parse(raw); return (p && typeof p.schemaVersion === "number") ? p.schemaVersion : 0; } catch (e) { return 0; } };
+
+  // Kaynak-blob'a bağlı, geri-okunup doğrulanan backup. true = güncel backup kaynak blob ile eşleşiyor.
+  function ensureBackup(raw) {
+    const sourceHash = hashStr(raw);
+    let cur = null; try { cur = JSON.parse(tryGet(BAK)); } catch (e) {}
+    if (isPlainObject(cur) && cur.sourceHash === sourceHash && cur.raw === raw) return true; // zaten eşleşiyor
+    if (!trySet(BAK, JSON.stringify({ sourceHash, createdAt: now(), raw }))) return false;   // backup yazımı başarısız
+    let rb = null; try { rb = JSON.parse(tryGet(BAK)); } catch (e) {}                          // geri-oku + doğrula
+    return !!(isPlainObject(rb) && rb.sourceHash === sourceHash && rb.raw === raw);
+  }
+
   return {
     read() {
-      let raw = null; try { raw = ls.getItem(KEY); } catch (e) {}
-      const { state, recoveryRequired } = hydrate(raw);
-      if (recoveryRequired) {
-        recoveryMode = true;
-        try { if (raw != null) ls.setItem(KEY + "_recovery_" + now(), raw); } catch (e) {} // KOPYALA, orijinali silME
-        state.storageRecoveryRequired = true;
+      const raw = tryGet(KEY);
+      const h = hydrate(raw, resolver);
+
+      // Forward-schema: byte-değişmez, HİÇBİR yazma yok, read-only.
+      if (h.unsupported) {
+        readOnly = true;
+        h.state.storageReadOnly = true; h.state.storageUnsupported = true;
+        return { state: h.state, recoveryRequired: false, readOnly: true, unsupported: true };
       }
-      return { state, recoveryRequired };
+      // Bozuk/eksik: recovery → read-only; ham KOPYALANIR, orijinal SİLİNMEZ.
+      if (h.recoveryRequired) {
+        recoveryMode = true; readOnly = true;
+        if (raw != null) trySet(KEY + "_recovery_" + now(), raw);
+        h.state.storageRecoveryRequired = true; h.state.storageReadOnly = true;
+        return { state: h.state, recoveryRequired: true, readOnly: true };
+      }
+      // Migration commit — yalnız stored sürüm < güncel iken; backup-gate.
+      if (raw != null && versionOf(raw) < SCHEMA_VERSION) {
+        if (!ensureBackup(raw)) {                         // BACKUP ZORUNLU KAPI
+          readOnly = true; h.state.storageReadOnly = true; h.state.storageBackupFailed = true;
+          return { state: h.state, recoveryRequired: false, readOnly: true, backupFailed: true };
+        }
+        h.state._migratedFrom = hashStr(raw);
+        if (!trySet(KEY, JSON.stringify(h.state))) {      // atomik canonical v2 yazımı
+          readOnly = true; h.state.storageReadOnly = true; h.state.storageCommitFailed = true;
+          return { state: h.state, recoveryRequired: false, readOnly: true, commitFailed: true };
+        }
+      }
+      return { state: h.state, recoveryRequired: false, readOnly: false };
     },
+    // MERKEZİ read-only kilit: srsRecord/reset/onboarding/userHint/oyun — hepsi buradan geçer.
     save(state) {
-      // GÖRÜNÜR SÖZLEŞME: {ok, reason}. Sessiz başarısızlık yok.
-      if (recoveryMode) {
-        try { if (typeof console !== "undefined") console.warn("[storage] save reddedildi — recovery modu (kana_state korunuyor)"); } catch (e) {}
-        return { ok: false, reason: "storage-recovery" };   // recovery: kana_state ezilmez
+      if (readOnly || recoveryMode) {
+        try { if (typeof console !== "undefined") console.warn("[storage] save reddedildi — " + (recoveryMode ? "recovery" : "read-only") + " (kana_state korunuyor)"); } catch (e) {}
+        return { ok: false, reason: recoveryMode ? "storage-recovery" : "read-only" };
       }
-      try { state.schemaVersion = SCHEMA_VERSION; ls.setItem(KEY, JSON.stringify(state)); return { ok: true, reason: null }; }
-      catch (e) {
-        try { if (typeof console !== "undefined") console.warn("[storage] save başarısız — yazma hatası (eski kayıt yerinde)"); } catch (_) {}
-        return { ok: false, reason: "write-error" };         // setItem hata → eski payload yerinde
-      }
+      state.schemaVersion = SCHEMA_VERSION;
+      if (trySet(KEY, JSON.stringify(state))) return { ok: true, reason: null };
+      try { if (typeof console !== "undefined") console.warn("[storage] save başarısız — yazma hatası (eski kayıt yerinde)"); } catch (e) {}
+      return { ok: false, reason: "write-error" };
     },
-    get recoveryMode() { return recoveryMode; }
+    /* Tam profil sıfırlama — MERKEZİ, sonuç döndürür. Handler doğrudan localStorage'a DOKUNMAZ.
+       KİLİTLİ invariant: readOnly||recoveryMode → canonical'a set/remove YOK (byte-değişmez).
+       removeItem KULLANILMAZ: temiz v2 state doğrulanıp tek atomik setItem ile yazılır; yazma başarısızsa eski kayıt YERİNDE.
+       Politika (full reset = temiz sayfa): srs/kana/learned/userHints/_migrationQuarantine/_migratedFrom hepsi sıfırlanır;
+       .bak.v1 ve recovery kopyaları best-effort temizlenir. (Progress-only reset AYRI: userHints korur.) */
+    resetCanonical() {
+      if (readOnly || recoveryMode) {
+        try { if (typeof console !== "undefined") console.warn("[storage] full reset reddedildi — " + (recoveryMode ? "recovery" : "read-only") + " (kana_state korunuyor)"); } catch (e) {}
+        return { ok: false, reason: recoveryMode ? "storage-recovery" : "read-only" };
+      }
+      const clean = freshState(); // v2 fresh (DEFAULT_STATE): srs/kana/learned/userHints boş; quarantine/_migratedFrom yok
+      clean.schemaVersion = SCHEMA_VERSION;
+      const okShape = isPlainObject(clean.learned) && isPlainObject(clean.srs) && isPlainObject(clean.userHints) && validateV2Shape(clean);
+      if (!okShape) return { ok: false, reason: "validate-error" };           // teoride olmaz; savunma
+      if (!trySet(KEY, JSON.stringify(clean))) return { ok: false, reason: "write-error" }; // eski canonical YERİNDE
+      // best-effort temizlik (başarısızlığı reset'i bozmaz)
+      try { ls.removeItem(BAK); } catch (e) {}
+      try {
+        if (typeof ls.length === "number" && typeof ls.key === "function") {
+          const rm = [];
+          for (let i = 0; i < ls.length; i++) { const k = ls.key(i); if (k && k.indexOf(KEY + "_recovery_") === 0) rm.push(k); }
+          rm.forEach(k => { try { ls.removeItem(k); } catch (e) {} });
+        }
+      } catch (e) {}
+      return { ok: true, reason: null, state: clean };
+    },
+    get recoveryMode() { return recoveryMode; },
+    get readOnly() { return readOnly; }
   };
 }
 
-if (typeof module !== "undefined") module.exports = { SCHEMA_VERSION, DEFAULT_STATE, isPlainObject, freshState, migrateV0ToV1, migrate, safeMerge, hydrate, createStorage };
+if (typeof module !== "undefined") module.exports = {
+  SCHEMA_VERSION, DEFAULT_STATE, isPlainObject, freshState,
+  hashStr, isKanaCodepoint, DEFAULT_RESOLVER, makeTypeResolver,
+  validSrsRecord, validateV2Shape,
+  migrateV0ToV1, migrateV1ToV2, migrate, safeMerge, hydrate, createStorage
+};
 
-const STORE = createStorage((typeof localStorage!=="undefined")?localStorage:{getItem:()=>null,setItem:()=>{}});
+const APP_RESOLVER = makeTypeResolver(DATA);   // P0-5B: paylaşılan tip çözümleyici (STORE + srsRecord)
+const STORE = createStorage((typeof localStorage!=="undefined")?localStorage:{getItem:()=>null,setItem:()=>{}}, { resolver: APP_RESOLVER });
 if(typeof window!=="undefined") window.STORE = STORE;
 function load(){
   const _r = STORE.read(); Object.assign(state, _r.state);   // hydrate + migration + recovery
@@ -1547,21 +1739,63 @@ function clearProgressData(){
 
 /* ============================ SRS / MASTERY ENGINE ============================ */
 // record an answer for any reviewable item (kanji id or kana character)
-function srsRecord(key, correct){
+/* P0-5B: srsRecord — v2-uyumlu (type/seen/write üretir), resolver TİP OTORİTESİ (eksik VE yanlış type'ı düzeltir),
+   çözülemeyen key güvenli reddedilir/karantina, {ok,reason,record} döndürür. seen = anlamlı maruziyet (çağrı başına +1, I2).
+   opts.known: kullanıcı "biliyorum" beyanı → doğru cevap + mastery tabanı 2 (eski word-known çift-çağrısının açık hali). */
+function srsRecord(key, correct, opts){
+  opts = opts || {};
+  const resolvedType = APP_RESOLVER.resolveType(key);   // DATA-temelli otorite
+  const existing = state.srs[key];
+  if(resolvedType == null){
+    // Çözülemeyen tip → canonical srs KİRLETİLMEZ.
+    if(!isPlainObject(existing)){
+      try{ if(typeof console!=="undefined") console.warn("[srs] çözülemeyen yeni key — kayıt oluşturulmadı:", key); }catch(e){}
+      return { ok:false, reason:"unresolved-type", record:null };
+    }
+    // Mevcut çözülemeyen kayıt → kayıpsız karantinaya taşı, srs'ten çıkar, güvenli kaydet.
+    state._migrationQuarantine = isPlainObject(state._migrationQuarantine) ? state._migrationQuarantine : {};
+    state._migrationQuarantine.srs = isPlainObject(state._migrationQuarantine.srs) ? state._migrationQuarantine.srs : {};
+    state._migrationQuarantine.srs[key] = existing;
+    delete state.srs[key];
+    try{ if(typeof console!=="undefined") console.warn("[srs] çözülemeyen mevcut kayıt karantinaya alındı:", key); }catch(e){}
+    save();
+    return { ok:false, reason:"quarantined", record:null };
+  }
   const now=Date.now();
-  let r=state.srs[key]||{correct:0,wrong:0,mastery:0,last:0,next:0};
-  if(correct){ r.correct++; r.mastery=Math.min(4,r.mastery+1); }
-  else { r.wrong++; r.mastery=Math.max(0, r.mastery-1); }
-  r.last=now;
-  r.next=now + SRS_DAYS[r.mastery]*DAY;
+  // v2 kaydı kur/normalize et (girişteki geçersiz alanları güvenli tut)
+  let r;
+  if(isPlainObject(existing)){
+    r = existing;
+    r.type = resolvedType;                                              // OTORİTE: eksik/yanlış type düzeltilir
+    if(!(Number.isInteger(r.correct)&&r.correct>=0)) r.correct = 0;
+    if(!(Number.isInteger(r.wrong)&&r.wrong>=0))     r.wrong = 0;
+    if(!(Number.isInteger(r.mastery)&&r.mastery>=0&&r.mastery<=4)) r.mastery = Math.max(0,Math.min(4, (r.mastery|0)));
+    if(!(Number.isInteger(r.write)&&r.write>=0))     r.write = 0;
+    if(!(Number.isInteger(r.seen)&&r.seen>=0))       r.seen = Math.max(r.correct+r.wrong, r.mastery>0?1:0); // backfill
+  } else {
+    r = { type:resolvedType, correct:0, wrong:0, mastery:0, seen:0, write:0, last:null, next:null };
+  }
+  // Cevabı uygula
+  if(correct){
+    r.correct++;
+    r.mastery = opts.known ? Math.max(2, Math.min(4, r.mastery+1)) : Math.min(4, r.mastery+1);
+  } else {
+    r.wrong++;
+    // P0-5B-3 yumuşatma: mastery 0/1 tek yanlışla SİLİNMEZ; ≥2'de -1. (next aşağıda YENİ mastery'den hesaplanır)
+    r.mastery = r.mastery <= 1 ? r.mastery : r.mastery - 1;
+  }
+  r.seen++;                                                             // tek anlamlı maruziyet (I2)
+  if(r.seen < r.correct + r.wrong) r.seen = r.correct + r.wrong;        // invariant garanti
+  r.last = now;
+  r.next = now + SRS_DAYS[r.mastery]*DAY;
   state.srs[key]=r;
-  // sync legacy status for kanji ids so Review screen + map stay consistent
+  // kanji legacy ayna (Review + harita tutarlılığı) — değişmedi
   if(DATA.chars[key]){
     state.learned[key]=true;
     state.status[key]= ["new","learning","soon","almost","mastered"][r.mastery];
   }
   save();
-  return r;
+  return { ok:true, reason:null, record:r };
 }
 /* FAZ 2 · Kana Review / SRS tutarlılığı — TEK kanonik due kaynağı (kapsam A: yalnız kanji, kesin zaman-temelli).
    SAF: state+data+now ENJEKTE; yan etki yok, giriş mutasyonu yok. Test edilen fonksiyon buildKanjiReviewQueue. */
@@ -1594,7 +1828,27 @@ function inspectKanjiReviewData(state, data){
   }
   return { unknownKeys, invalidNext };
 }
-if(typeof window!=="undefined") window.__srs = { inKanjiReviewScope, buildKanjiReviewQueue, currentKanjiReviewQueue, dueCount, inspectKanjiReviewData };
+/* P0-5B-2 · Kana review MOTORU — kanji kuyruğundan AYRI, buildKanjiReviewQueue'ya DOKUNMAZ.
+   Kapsam = srs kaydının type==="kana"'sı (kana DATA.chars'ta değil). SEED kana next:null → finite filtresi eler → due DEĞİL (pile-up yok).
+   SAF: state+now enjekte; yan etki yok. Görünür badge/ekran YOK — yalnız motor + internal due count (5B). */
+function inKanaReviewScope(rec){ return Boolean(rec && rec.type === "kana"); }
+function buildKanaReviewQueue(state, now){
+  if(!Number.isFinite(now)) return [];
+  return Object.entries((state && state.srs) || {})
+    .filter(([id, rec]) =>
+      inKanaReviewScope(rec) &&
+      Number.isFinite(rec && rec.next) &&                       // null/NaN/Infinity ELENİR (SEED next:null due değil)
+      rec.next <= now)
+    .sort(([idA, a], [idB, b]) =>
+      (a.next - b.next) ||                                      // 1) en eski next önce
+      ((Number.isFinite(a.mastery) ? a.mastery : 0) -
+       (Number.isFinite(b.mastery) ? b.mastery : 0)) ||         // 2) düşük mastery önce
+      idA.localeCompare(idB))                                   // 3) ID tie-break → deterministik
+    .map(([id]) => id);
+}
+function currentKanaReviewQueue(now){ return buildKanaReviewQueue(state, (now===undefined?Date.now():now)); }
+function kanaDueCount(now){ return currentKanaReviewQueue(now).length; }   // INTERNAL — UI'da gösterilmiyor (5B)
+if(typeof window!=="undefined") window.__srs = { inKanjiReviewScope, buildKanjiReviewQueue, currentKanjiReviewQueue, dueCount, inspectKanjiReviewData, inKanaReviewScope, buildKanaReviewQueue, currentKanaReviewQueue, kanaDueCount };
 function srsStats(){
   let correct=0,wrong=0; Object.values(state.srs).forEach(r=>{correct+=r.correct;wrong+=r.wrong;});
   return {correct,wrong,total:correct+wrong, acc: (correct+wrong)?Math.round(correct/(correct+wrong)*100):0};
@@ -1614,6 +1868,16 @@ function masteryScore(key){
   return Math.max(0,Math.min(100,Math.round(base)));
 }
 function masteryTier(score){ return score>=100?4:score>=60?3:score>=25?2:score>0?1:1; }
+/* P0-5B-3: Kana "öğrenilmiş" türetilmiş kaynak. SRS kana kaydı varsa YALNIZ mastery≥1; yoksa legacy boolean fallback.
+   OR-mantığı YASAK — yanlış type'lı kayıt kana kanıtı sayılmaz. state.kana ayna olarak yazılmaya devam eder. */
+function kanaLearned(char){
+  const record = state.srs && state.srs[char];
+  if(record && record.type === "kana"){
+    return Number.isInteger(record.mastery) && record.mastery >= 1;
+  }
+  // Kana tipinde geçerli SRS kaydı yoksa legacy fallback (kayıt yok VEYA type !== "kana")
+  return (state.kana && state.kana[char]) === true;
+}
 // reusable ink-fill cell (kana/kanji). attrs is a string of data-* attributes.
 function inkCell(glyph, sub, key, attrs=""){
   const sc=masteryScore(key); const t=masteryTier(sc);
@@ -1724,8 +1988,8 @@ function reviewQueue(){
 function userStage(){
   const hira=DATA.hiragana.flat().filter(x=>x&&x.character);
   const kata=DATA.katakana.flat().filter(x=>x&&x.character);
-  const hiraDone=hira.filter(x=>state.kana[x.character]).length;
-  const kataDone=kata.filter(x=>state.kana[x.character]).length;
+  const hiraDone=hira.filter(x=>kanaLearned(x.character)).length;
+  const kataDone=kata.filter(x=>kanaLearned(x.character)).length;
   const kanjiLearned=Object.keys(state.learned||{}).filter(id=>ch(id)&&ch(id).type==="kanji").length;
   if(kanjiLearned>0) return "kanji";
   if(hiraDone<hira.length) return "hiragana";
@@ -2523,7 +2787,7 @@ function Home(){
   const allKanaChars=[...DATA.hiragana.flat(),...DATA.katakana.flat()].filter(x=>x&&x.character);
   const kanjiChars=Object.values(DATA.chars).filter(c=>c.type==="kanji");
   const total=allKanaChars.length+kanjiChars.length;
-  const learnedKana=allKanaChars.filter(x=>state.kana[x.character]).length;
+  const learnedKana=allKanaChars.filter(x=>kanaLearned(x.character)).length;
   const learnedKanji=Object.keys(state.learned).filter(id=>ch(id)&&ch(id).type==="kanji").length;
   const learned=learnedKana+learnedKanji;
   const pct=total?Math.round(learned/total*100):0;
@@ -2705,7 +2969,7 @@ function Kana(){
 
   const groupsHtml = rows.map((row, gi)=>{
     const groupChars = row.filter(x=>x&&x.character).map(x=>x.character);
-    const groupDone = groupChars.filter(c=>state.kana[c]).length;
+    const groupDone = groupChars.filter(c=>kanaLearned(c)).length;
     const groupTotal = groupChars.length;
     const completed = groupDone===groupTotal;
     const isActive = gi===activeGroupIdx;
@@ -3643,7 +3907,7 @@ function kanaGroupInfo(char){
         const cell = row[pi];
         if(cell && cell.character===char){
           const groupChars = row.filter(x=>x&&x.character).map(x=>x.character);
-          const groupDone = groupChars.filter(c=>state.kana[c]).length;
+          const groupDone = groupChars.filter(c=>kanaLearned(c)).length;
           const g = KANA_GROUPS[gi] || {name:`Grup ${gi+1}`, romaji:""};
           return {
             set, groupIdx:gi, posInGroup:pi,
@@ -5380,8 +5644,8 @@ document.addEventListener("click",e=>{
   else if(act==="hint-save"){ const key=el.dataset.param; const t=document.getElementById("uhint-input"); const val=t?t.value.trim():""; if(val){ state.userHints[key]=val; } else { delete state.userHints[key]; } state._editHint=null; save(); toast(val?"İpucun kaydedildi ✓":"Boş bırakıldı"); render(); }
   else if(act==="hint-cancel"){ state._editHint=null; render(); }
   else if(act==="hint-clear"){ delete state.userHints[el.dataset.param]; state._editHint=null; save(); toast("İpucun silindi"); render(); }
-  else if(act==="kana-known"){ const k=el.dataset.param; state.kana[k]=true; srsRecord(k,true); toast(`${k} tanıdın olarak işaretlendi`); render(); }
-  else if(act==="word-known"){ const id=el.dataset.param; srsRecord(id,true); if(!state.srs[id]||state.srs[id].mastery<2){ srsRecord(id,true); } toast("Kelime tekrara eklendi ✓"); render(); }
+  else if(act==="kana-known"){ const k=el.dataset.param; const _r=srsRecord(k,true); if(_r.ok){ state.kana[k]=true; toast(`${k} tanıdın olarak işaretlendi`); } else { toast("İşaretlenemedi."); } render(); }
+  else if(act==="word-known"){ const id=el.dataset.param; const _r=srsRecord(id,true,{known:true}); toast(_r.ok?"Kelime tekrara eklendi ✓":"Eklenemedi."); render(); }
   else if(act==="audiomode"){ state.settings.audioMode=el.dataset.mode; state.settings.audio=el.dataset.mode!=="off"; save(); render(); }
   else if(act==="game-stroke-kana"){ startGame("stroke",{charId:el.dataset.param}); }
   else if(act==="game-exit"){ state._game=null; go("games",null,false); }
@@ -5514,27 +5778,38 @@ document.addEventListener("click",e=>{
   }
   else if(act==="reset-cancel"){ go("profile", null, false); }
   else if(act==="reset-progress-only"){
-    // Faz 9-C: merkezi clear — profil + onboarding + ayarlar korunur
+    // Faz 9-C: merkezi clear — profil + onboarding + ayarlar korunur (userHints KORUNUR)
+    // P0-5A: veri koruma modunda sahte başarı gösterme (canonical zaten save() ile korunuyor)
+    if(STORE.readOnly || STORE.recoveryMode){ toast("Veri koruma modu açık — ilerleme sıfırlanamadı."); return; }
     clearProgressData();
     if(state.userProfile) state.userProfile.updatedAt = new Date().toISOString();
-    save(); toast("İlerleme sıfırlandı. Yeni başlangıca hazırsın.");
-    go("home", null, false);
+    if(save().ok){ toast("İlerleme sıfırlandı. Yeni başlangıca hazırsın."); go("home", null, false); }
+    else toast("Sıfırlanamadı — kayıt yazılamadı, veri yerinde.");
   }
   else if(act==="reset-onboarding-only"){
     // Faz 9-C: sadece tanıtımı yeniden başlat — öğrenme ilerlemesi korunur
+    if(STORE.readOnly || STORE.recoveryMode){ toast("Veri koruma modu açık — işlem yapılamadı."); return; }
     state.onboarding = { completed:false, step:1, name:"", motivation:"", level:"", style:"", startedAt:null, completedAt:null };
     // Tanıtım içinde gösterilen yardım/intro ekranlarını da tekrar göster
     state.seenReadingIntro = false; state.seenWritingSystem = false; state._wsStep = 0;
-    save(); toast("Tanıtım yeniden başlatıldı.");
-    go("onboarding", null, false);
+    if(save().ok){ toast("Tanıtım yeniden başlatıldı."); go("onboarding", null, false); }
+    else toast("İşlem yapılamadı — kayıt yazılamadı.");
   }
   else if(act==="reset-full"){
-    // Faz 9-C: tüm profili sil ve onboarding'e dön
-    try{ localStorage.removeItem("kana_state"); }catch(_){}
-    clearProgressData();
-    state.userProfile=null;
+    // P0-5A: tam profil sıfırlama MERKEZİ storage üzerinden — handler localStorage'a DOKUNMAZ.
+    // readOnly/recovery → reddedilir, canonical byte-değişmez. removeItem YOK: temiz v2 tek atomik yazım.
+    const res = STORE.resetCanonical();
+    if(!res.ok){
+      toast((res.reason==="read-only"||res.reason==="storage-recovery")
+        ? "Veri koruma modu açıkken profil sıfırlanamaz."
+        : "Profil sıfırlanamadı — veri yerinde.");
+      return;
+    }
+    Object.assign(state, res.state);          // doğrulanmış temiz v2 state benimse (canonical zaten yazıldı)
+    state.userProfile = null;
     state.onboarding = { completed:false, step:1, name:"", motivation:"", level:"", style:"", startedAt:null, completedAt:null };
-    save(); toast("Profil sıfırlandı.");
+    const _sv = save();                        // onboarding/profil sıfırını kalıcılaştır — sonucu kontrol et
+    toast(_sv.ok ? "Profil sıfırlandı." : "Profil sıfırlandı — ayarlar bir sonraki açılışta tamamlanacak.");
     go("onboarding", null, false);
   }
   else if(act==="resume"){
