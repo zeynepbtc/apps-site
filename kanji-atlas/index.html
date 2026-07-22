@@ -2049,7 +2049,7 @@ function back(){
 }
 /* Root navigation politikası (P0-1 · IA sözleşmesi): alt tab / logo → root reset.
    Detay dalını kapatır, root'u kendi üzerine push ETMEZ, stack şişmez. Avatar→Profile bunu KULLANMAZ (çağıranı korur). */
-const ROOT_SCREENS = ["home","kana","kanji5","practice","games"];
+const ROOT_SCREENS = ["home","kana","kanji5","games","progress"];
 function goRoot(screen){
   state.stack=[]; state.param=null; state.screen=screen;
   render(); main.scrollTop=0;
@@ -2091,12 +2091,12 @@ const SNAV = (function(){
   const H=118, INSET=10, BAR_TOP=48, R=28, GAP=5, holeR=R+GAP,
     PRES_CY=BAR_TOP+10, SINK=20 /* Home: KISA iniş — daire bar altına tam tuck (sızma yok) */, HFALL=3 /* hidden: minik nudge */, ICON_Y=BAR_TOP+16, LABEL_Y=BAR_TOP+47;
   const IC=[
-    '<path d="M12 6.7C9.7 5.2 6.7 4.9 4.3 5.6v11.5c2.4-.7 5.4-.4 7.7 1.1 2.3-1.5 5.3-1.8 7.7-1.1V5.6c-2.4-.7-5.4-.4-7.7 1.1z"/><path d="M12 6.7v11.5"/>',
-    '<rect x="4.6" y="4.6" width="14.8" height="14.8" rx="2.4"/><path d="M12 4.6v14.8M4.6 12h14.8"/>',
-    '<path d="M5.6 18.4l1.7-4.4L16 5.3l2.9 2.9-8.7 8.7z"/><path d="M13.8 7.5l2.9 2.9"/><path d="M7.3 14l2.7 2.7"/>',
-    '<rect x="3.6" y="3.6" width="16.8" height="16.8" rx="4.7"/><path d="M12 6.6 L14.2 10.1 L9.8 10.1 Z" fill="currentColor" stroke="none"/><path d="M12 17.4 L9.8 13.9 L14.2 13.9 Z" fill="currentColor" stroke="none"/><path d="M6.6 12 L10.1 9.8 L10.1 14.2 Z" fill="currentColor" stroke="none"/><path d="M17.4 12 L13.9 9.8 L13.9 14.2 Z" fill="currentColor" stroke="none"/>'
+    /* 0 Kana */    '<path d="M12 6.7C9.7 5.2 6.7 4.9 4.3 5.6v11.5c2.4-.7 5.4-.4 7.7 1.1 2.3-1.5 5.3-1.8 7.7-1.1V5.6c-2.4-.7-5.4-.4-7.7 1.1z"/><path d="M12 6.7v11.5"/>',
+    /* 1 Kanji */   '<rect x="4.6" y="4.6" width="14.8" height="14.8" rx="2.4"/><path d="M12 4.6v14.8M4.6 12h14.8"/>',
+    /* 2 Oyunlar */ '<rect x="3.6" y="3.6" width="16.8" height="16.8" rx="4.7"/><path d="M12 6.6 L14.2 10.1 L9.8 10.1 Z" fill="currentColor" stroke="none"/><path d="M12 17.4 L9.8 13.9 L14.2 13.9 Z" fill="currentColor" stroke="none"/><path d="M6.6 12 L10.1 9.8 L10.1 14.2 Z" fill="currentColor" stroke="none"/><path d="M17.4 12 L13.9 9.8 L13.9 14.2 Z" fill="currentColor" stroke="none"/>',
+    /* 3 İlerleme */'<path d="M4.5 19.5h15"/><path d="M7.5 19.5v-4.2"/><path d="M12 19.5v-8.4"/><path d="M16.5 19.5v-12"/>'
   ];
-  const LB=['Kana','Kanji','Yazı','Oyunlar'], SCREENS=['kana','kanji5','practice','games'], N=4;
+  const LB=['Kana','Kanji','Oyunlar','İlerleme'], SCREENS=['kana','kanji5','games','progress'], N=4;
   const reduce = (typeof window!=="undefined" && window.matchMedia) ? matchMedia('(prefers-reduced-motion: reduce)').matches : false;
   let host,svg,bar,ball,aicon,mhole,rim,clipR,tabsEl,tabs=[];
   let W=0,slot=0,mode='sunk',activeIdx=0,ctxIdx=-1,raf=null,mounted=false,onTap=null;
@@ -2185,7 +2185,7 @@ function renderTabs(){
   SNAV.apply(state._navSel);
 }
 function renderHeader(){
-  const noBack=["home","kana","kanji5","practice","games"].includes(state.screen); /* P0-1 Dilim 2: root'lar (logo); diğer hepsi geri */
+  const noBack=["home","kana","kanji5","games","progress"].includes(state.screen); /* P0-1 Dilim 2: root'lar (logo); diğer hepsi geri */
   const left = noBack ? appLogo(34) : `<button class="back" data-act="back">‹</button>`;
   let ttl="Ana", sub="Japonca Yazı Atlası";
   const T={home:["Ana","Japonca Yazı Atlası · N5"],learn:["Öğren","Temel ve ilerleme"],map:["Kanji Atlası","Parçadan kanjiye"],
@@ -2212,10 +2212,10 @@ function renderHeader(){
 /* ============================ SCREENS ============================ */
 /* P0-1 Dilim 2: nav görünürlük + selector state hazırlığı (görsel Dilim 3'te). */
 const NAV_HIDDEN = ["onboarding","game","drill","profile","profile-edit","reset-confirm"];
-const NAV_TAB_GROUP={kana:["kana","kanadetail"],kanji5:["kanji5","detail","map","transform","words","worddetail","atlasnode","quiz"],practice:["practice","drill","mochi"],games:["games","game"]};
+const NAV_TAB_GROUP={kana:["kana","kanadetail","mochi"],kanji5:["kanji5","detail","map","transform","words","worddetail","atlasnode","quiz","drill"],games:["games","game"]};
 function navTabOf(screen){ for(const k in NAV_TAB_GROUP){ if(NAV_TAB_GROUP[k].includes(screen)) return k; } return null; }
 function navSelectorState(screen){
-  const roots={kana:1,kanji5:1,practice:1,games:1};
+  const roots={kana:1,kanji5:1,games:1,progress:1};
   if(roots[screen]) return {kind:"active",tab:screen};        /* daire socket'te */
   if(screen==="home") return {kind:"sunk"};                   /* Home: kısa iniş, ikon kaybolur, sakin bara oturur */
   return {kind:"hidden", contextTab: navTabOf(screen)};       /* derin: kısa fade+scale; parent tab statik hafif vurgu */
@@ -2254,17 +2254,17 @@ const LEVEL_OPTIONS = [
 const I18N = {
   tr: {
     "onboarding.welcome.title": "Kanji Atlas",
-    "onboarding.welcome.lead": "Japonca yazının mantığını adım adım keşfet.",
+    "onboarding.welcome.lead": "Japonca yazı sistemlerini keşfetmeye başla",
     "onboarding.actions.start": "Başlayalım",
     "onboarding.actions.continue": "Devam",
     "onboarding.actions.goHome.mid": "Ana sayfaya geç",
     "onboarding.actions.goHome.final": "Ana sayfaya git",
-    "onboarding.competency.title": "Japonca yazıda nereden başlıyorsun?",
+    "onboarding.competency.title": "Şu an hangi seviyedesin?",
     "onboarding.competency.lead": "Sana uygun bir başlangıç önerelim.",
-    "onboarding.competency.band0": "Japonca yazıya hiç başlamadım",
-    "onboarding.competency.band1": "Birkaç temel karakter tanıyorum",
-    "onboarding.competency.band2": "Hiragana ve katakana okuyabiliyorum",
-    "onboarding.competency.band3": "Hiragana, katakana ve bazı kanjileri biliyorum",
+    "onboarding.competency.band0": "Yeni başlıyorum",
+    "onboarding.competency.band1": "Kana'yı biraz tanıyorum, pekiştirmek istiyorum",
+    "onboarding.competency.band2": "Kana'yı biliyorum, kanjiye geçmek istiyorum",
+    "onboarding.competency.band3": "Biraz kanji biliyorum, devam etmek istiyorum",
     "onboarding.ws.title": "Japonca yazıda üç ana sistem birlikte kullanılır.",
     "onboarding.ws.hira.name": "Hiragana",
     "onboarding.ws.hira.desc": "Japonca sözcüklerde ve dilbilgisi eklerinde sık kullanılır.",
@@ -2901,7 +2901,7 @@ function Home(){
     <span class="pa">›</span>
   </div>
 
-  <!-- Dört kalıcı ve doğrudan giriş (Kana/Kanji/Yazı/Oyunlar) — D1: eşit erişim -->
+  <!-- Üç doğrudan öğrenme girişi (Kana/Kanji/Oyunlar) — D1: eşit erişim. Yazı, Kana/Kanji içinde; İlerleme alt navda. -->
   <div class="sec-head"><div class="eb">Başla</div><div class="ti">Bugün ne öğrenmek istiyorsun?</div></div>
   <div class="big-cards">
     <button class="bigcard" data-go="kana">
@@ -2919,14 +2919,6 @@ function Home(){
         <div class="bt">Kanji Atlası</div>
         <div class="bs">Anlam taşıyan işaretler — N5'in 83 kanjisi</div>
         <div class="bp"><span class="bar"><i style="width:${kanjiPct}%"></i></span><span class="pc">${learnedKanji}/${kanjiChars.length}</span></div>
-      </div>
-      <span class="ba">›</span>
-    </button>
-    <button class="bigcard" data-go="practice">
-      <div class="bg" style="background:none;box-shadow:none;overflow:visible">${iconBadge('書',IC.teal,IC.gold,64)}</div>
-      <div class="bd">
-        <div class="bt">Yazı</div>
-        <div class="bs">Karakterleri elle çiz — vuruş sırası ve rehberli iz</div>
       </div>
       <span class="ba">›</span>
     </button>
