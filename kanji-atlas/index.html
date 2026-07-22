@@ -1827,7 +1827,27 @@ function inspectKanjiReviewData(state, data){
   }
   return { unknownKeys, invalidNext };
 }
-if(typeof window!=="undefined") window.__srs = { inKanjiReviewScope, buildKanjiReviewQueue, currentKanjiReviewQueue, dueCount, inspectKanjiReviewData };
+/* P0-5B-2 · Kana review MOTORU — kanji kuyruğundan AYRI, buildKanjiReviewQueue'ya DOKUNMAZ.
+   Kapsam = srs kaydının type==="kana"'sı (kana DATA.chars'ta değil). SEED kana next:null → finite filtresi eler → due DEĞİL (pile-up yok).
+   SAF: state+now enjekte; yan etki yok. Görünür badge/ekran YOK — yalnız motor + internal due count (5B). */
+function inKanaReviewScope(rec){ return Boolean(rec && rec.type === "kana"); }
+function buildKanaReviewQueue(state, now){
+  if(!Number.isFinite(now)) return [];
+  return Object.entries((state && state.srs) || {})
+    .filter(([id, rec]) =>
+      inKanaReviewScope(rec) &&
+      Number.isFinite(rec && rec.next) &&                       // null/NaN/Infinity ELENİR (SEED next:null due değil)
+      rec.next <= now)
+    .sort(([idA, a], [idB, b]) =>
+      (a.next - b.next) ||                                      // 1) en eski next önce
+      ((Number.isFinite(a.mastery) ? a.mastery : 0) -
+       (Number.isFinite(b.mastery) ? b.mastery : 0)) ||         // 2) düşük mastery önce
+      idA.localeCompare(idB))                                   // 3) ID tie-break → deterministik
+    .map(([id]) => id);
+}
+function currentKanaReviewQueue(now){ return buildKanaReviewQueue(state, (now===undefined?Date.now():now)); }
+function kanaDueCount(now){ return currentKanaReviewQueue(now).length; }   // INTERNAL — UI'da gösterilmiyor (5B)
+if(typeof window!=="undefined") window.__srs = { inKanjiReviewScope, buildKanjiReviewQueue, currentKanjiReviewQueue, dueCount, inspectKanjiReviewData, inKanaReviewScope, buildKanaReviewQueue, currentKanaReviewQueue, kanaDueCount };
 function srsStats(){
   let correct=0,wrong=0; Object.values(state.srs).forEach(r=>{correct+=r.correct;wrong+=r.wrong;});
   return {correct,wrong,total:correct+wrong, acc: (correct+wrong)?Math.round(correct/(correct+wrong)*100):0};
