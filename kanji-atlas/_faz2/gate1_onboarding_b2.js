@@ -15,7 +15,7 @@ const src = html.slice(s, e);
 
 const isPlainObject = x => x !== null && typeof x === "object" && !Array.isArray(x);
 const factory = new Function("isPlainObject", "state", "save", src +
-  "\nreturn { I18N, t, OB_BANDS, OB_STAGES, VALID_START_KEYS, START_DESCRIPTORS, startDescriptorFor, startKeyForCompetency, competencyNeedsIntro, competencyToLegacyLevel, competencyShowAdvanced, normalizeOnboarding, completeOnboarding, skipOnboarding, markFirstMeaningfulLearningAction, markLearn, hasMeaningfulLearning, shouldShowInitialRec };");
+  "\nreturn { I18N, t, OB_BANDS, OB_STAGES, VALID_START_KEYS, START_DESCRIPTORS, startDescriptorFor, startKeyForCompetency, competencyNeedsIntro, competencyToLegacyLevel, competencyShowAdvanced, normalizeOnboarding, completeOnboarding, skipOnboarding, markFirstMeaningfulLearningAction, markLearn, shouldShowInitialRec };");
 
 const state = { settings: {}, srs: {}, userProfile: null, onboarding: null };
 let saveCount = 0, saveMode = "ok"; // "ok" | "fail" | "throw"
@@ -107,16 +107,11 @@ ok(API.shouldShowInitialRec({ status: "completed", startKey: null, firstMeaningf
 state.onboarding = { status: "completed", startKey: "kana-a", firstMeaningfulActionAt: null };
 state.srs = { "ki": { correct: 7, wrong: 0 } };
 ok(API.shouldShowInitialRec(state.onboarding) === true, "IMPORT: eski correct>0 ama marker yok → şerit GÖSTERİLİR (fix)");
-ok(API.hasMeaningfulLearning() === true, "hasMeaningfulLearning fallback: correct>0 → true (yalnız legacy amaçlı)");
 
 /* 11) RESET-persist: srs temizlense de kalıcı marker kalır → şerit yeniden GÖRÜNMEZ */
 state.onboarding = { status: "completed", startKey: "kana-a", firstMeaningfulActionAt: "2026-01-01T00:00:00.000Z" };
 state.srs = {}; // progress reset (srs temizlendi; onboarding.marker temizlenmez)
 ok(API.shouldShowInitialRec(state.onboarding) === false, "RESET sonrası marker kalır → şerit görünmez (SRS-reset'ten bağımsız)");
-
-/* 12) hasMeaningfulLearning yanlış-only */
-state.onboarding = { firstMeaningfulActionAt: null }; state.srs = { "ki": { correct: 0, wrong: 3 } };
-ok(API.hasMeaningfulLearning() === false, "hasMeaningfulLearning: yalnız yanlış (correct=0) → false");
 
 /* 13) restart marker'ı korur (normalize semantiği) */
 const rn = API.normalizeOnboarding({ status: "in-progress", stage: "welcome", competency: null, startKey: null, introShown: false, firstMeaningfulActionAt: "2026-01-01T00:00:00.000Z", startedAt: "x", completedAt: null, skippedAt: null });
