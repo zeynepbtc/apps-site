@@ -2423,20 +2423,13 @@ function markLearn(r, correct, kind){
   if(r && r.ok && correct !== false) markFirstMeaningfulLearningAction(kind);
   return r;
 }
-/* Legacy/import KORUYUCU fallback — YALNIZ marker'ı olmayan eski/içe-aktarılmış kullanıcılar için.
-   Yeni kullanıcı davranışının kanonik kaynağı DEĞİLDİR; Home ilk-öneri şeridi doğrudan firstMeaningfulActionAt kullanır. */
-function hasMeaningfulLearning(){
-  const o = state.onboarding;
-  if(o && o.firstMeaningfulActionAt) return true;                 // kanonik damga
-  const srs = state.srs;                                          // fallback: yalnız marker yokken anlamlı (legacy/import)
-  if(isPlainObject(srs)){ for(const k in srs){ const r=srs[k]; if(r && Number(r.correct)>0) return true; } }
-  return false;
-}
-/* Home ilk-öneri şeridi kararı — KANONİK kalıcı marker (eski/import progress GİZLEMEZ). Saf/testlenebilir. */
+/* Home ilk-öneri şeridi kararı — KANONİK kalıcı marker (eski/import progress GİZLEMEZ). Saf/testlenebilir.
+   NOT: Türetilmiş "hasMeaningfulLearning" (correct>0) yardımcısı KALDIRILDI — kilitli kararla şerit yalnız
+   kalıcı firstMeaningfulActionAt'a bakar; correct>0 hiçbir kararı etkilemiyordu (ölü yardımcı). */
 function shouldShowInitialRec(ob){
   return !!(ob && ob.status==="completed" && ob.startKey && !ob.firstMeaningfulActionAt);
 }
-if(typeof window!=="undefined") window.__ob = { normalizeOnboarding, startDescriptorFor, startKeyForCompetency, competencyToLegacyLevel, competencyShowAdvanced, competencyNeedsIntro, markLearn, markFirstMeaningfulLearningAction, hasMeaningfulLearning, shouldShowInitialRec, t, I18N, OB_BANDS, VALID_START_KEYS };
+if(typeof window!=="undefined") window.__ob = { normalizeOnboarding, startDescriptorFor, startKeyForCompetency, competencyToLegacyLevel, competencyShowAdvanced, competencyNeedsIntro, markLearn, markFirstMeaningfulLearningAction, shouldShowInitialRec, t, I18N, OB_BANDS, VALID_START_KEYS };
 
 function Onboarding(){
   const o = state.onboarding = normalizeOnboarding(state.onboarding);
@@ -5980,7 +5973,7 @@ function handleQuizAnswer(i){
 }
 
 /* ============================ INIT ============================ */
-window.JYA = { GAMES, get state(){ return state; }, startGame, go, render, buildRounds, n5Kanji, masteryScore, srsRecord, validateStroke, mochiStart, mochiRestart, mochiNextChar, kanaGroupInfo, kanaNextInGroup, kanaPrevInGroup, kanaNextGroupFirstChar, kanaNextOverall, KANA_GROUPS, completeOnboarding, skipOnboarding, normalizeOnboarding, startDescriptorFor, startKeyForCompetency, competencyNeedsIntro, hasMeaningfulLearning, markFirstMeaningfulLearningAction, t, OB_BANDS, get drillExpected(){return drillExpected;}, set drillExpected(v){drillExpected=v;}, get drillValidated(){return drillValidated;}, set drillValidated(v){drillValidated=v;}, get WORD_CATS(){return WORD_CATS;}, get DATA(){return DATA;}, get GAIRAIGO_RULES(){return GAIRAIGO_RULES;}, get KATAKANA_GAIRAIGO(){return KATAKANA_GAIRAIGO;}, get cipherLearned(){return state.cipherLearned||{};}, gameChoiceAnswer, save };
+window.JYA = { GAMES, get state(){ return state; }, startGame, go, render, buildRounds, n5Kanji, masteryScore, srsRecord, validateStroke, mochiStart, mochiRestart, mochiNextChar, kanaGroupInfo, kanaNextInGroup, kanaPrevInGroup, kanaNextGroupFirstChar, kanaNextOverall, KANA_GROUPS, completeOnboarding, skipOnboarding, normalizeOnboarding, startDescriptorFor, startKeyForCompetency, competencyNeedsIntro, markFirstMeaningfulLearningAction, shouldShowInitialRec, markLearn, t, OB_BANDS, get drillExpected(){return drillExpected;}, set drillExpected(v){drillExpected=v;}, get drillValidated(){return drillValidated;}, set drillValidated(v){drillValidated=v;}, get WORD_CATS(){return WORD_CATS;}, get DATA(){return DATA;}, get GAIRAIGO_RULES(){return GAIRAIGO_RULES;}, get KATAKANA_GAIRAIGO(){return KATAKANA_GAIRAIGO;}, get cipherLearned(){return state.cipherLearned||{};}, gameChoiceAnswer, save };
 // visible error net — turns a blank screen into a readable message on the phone
 function showFatal(msg){
   try{ document.body.innerHTML='<div style="padding:28px;font-family:-apple-system,sans-serif;color:#272320">'
