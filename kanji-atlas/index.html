@@ -20,12 +20,14 @@
   --ink:#272320; --muted:#7C746A; --faint:#A9A095; --line:#E6DCCB;
   --accent:#A4392C; --accent-deep:#83291F; --accent-soft:#F3E1DB; --accent-tint:#FBEFEA;
   --ok:#5C7B57; --ok-soft:#E8EEE2; --gold:#A9803F; --gold-soft:#F0E6D2;
-  --serif:'Shippori Mincho',serif;
-  /* Faz "Font Patch v2": Tek font, Noto Sans JP. Google Fonts subset'leri latin + latin-ext + japanese
-     + cyrillic + vietnamese içerir — Türkçe (Ş U+015E, Ğ U+011E, İ U+0130) tam destekli.
-     Önceki Zen Kaku Gothic New Latin Extended-A glyph'i içermiyordu, Inter fallback ise
-     mix-and-match görsel uyumsuzluk yaratıyordu. Tek font ile tutarlı tipografi sağlanır. */
-  --sans:'Noto Sans JP',system-ui,-apple-system,sans-serif;
+  /* Adım 7 · i18n-readiness — üç KANONİK semantik font token'ı (görsel-nötr, GATE 0 uyumlu).
+     Eski --serif/--sans bunlara ALIAS; aynı değer iki yerde tanımlanmaz → drift yok.
+     Noto Sans JP subset'i Türkçe (Ş U+015E, Ğ U+011E, İ U+0130) tam destekler. */
+  --font-display:'Shippori Mincho',serif;                       /* marka + H1/H2 başlık */
+  --font-ui:'Noto Sans JP',system-ui,-apple-system,sans-serif;  /* gövde/kart/CTA/kaçış/a11y */
+  --font-ja-learning:'Shippori Mincho',serif;                   /* .jp eğitim glifi = detay ekranı */
+  --serif:var(--font-display);   /* geçici legacy alias */
+  --sans:var(--font-ui);         /* geçici legacy alias */
   --shadow:0 1px 2px rgba(40,30,20,.04),0 8px 24px rgba(40,30,20,.06);
   --shadow-lg:0 2px 6px rgba(40,30,20,.06),0 24px 60px rgba(40,30,20,.14);
   --r:18px; --r-sm:12px;
@@ -39,7 +41,7 @@ body{
   min-height:100vh; -webkit-font-smoothing:antialiased;
 }
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
-.jp{font-family:var(--serif)}
+.jp{font-family:var(--font-ja-learning)}
 
 /* device shell */
 #app{
@@ -526,7 +528,7 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 .mcol{flex:1;display:flex;flex-direction:column;gap:9px}
 .mitem{padding:14px 8px;border-radius:13px;border:1px solid var(--line);background:var(--surface);
   box-shadow:var(--shadow);font-size:22px;min-height:54px;display:flex;align-items:center;justify-content:center;transition:transform .1s,background .2s}
-.mitem .jp{font-family:var(--serif)}
+.mitem .jp{font-family:var(--font-ja-learning)}
 .mitem:active{transform:scale(.96)}
 .mitem.sel{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 2px var(--accent-soft)}
 .mitem.matched{background:rgba(92,123,87,.16);border-color:var(--ink-green);color:var(--ink-green);opacity:.7}
@@ -953,6 +955,21 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 .confuse-details summary::before{content:"▸ ";color:var(--muted);transition:transform .15s;display:inline-block}
 .confuse-details[open] summary::before{content:"▾ ";color:var(--accent)}
 .confuse-details[open] summary{background:var(--card2);border-color:var(--accent-soft)}
+
+/* ADIM 7 · B2 onboarding görsel eklentileri (sakin premium; metin sans, glif .jp; escape görünür ikincil) */
+.ob-root h1{margin:0}
+.ob-title{font-family:var(--font-display)}
+.ob-escape{display:block;margin:14px auto 2px;min-height:44px;padding:11px 16px;background:none;border:none;
+  font-family:var(--font-ui);font-size:15px;color:var(--accent-deep);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.ob-escape:active{opacity:.7}
+.ob-title:focus,.ob-title-sm:focus{outline:none}
+.ob-final-glyph{font-size:96px;line-height:1;text-align:center;color:var(--ink);margin:2px 0 4px}
+.ob-final-pair{display:flex;align-items:center;justify-content:center;gap:12px;font-size:72px;line-height:1;color:var(--ink);margin:2px 0 4px}
+.ob-final-pair-mid{font-size:32px;color:var(--faint)}
+.ob-final-target{font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--accent-deep);text-align:center;margin:2px 0}
+.ob-final-atlas{display:flex;justify-content:center;margin:2px 0 4px}
+.ob-three-bridge{font-family:var(--font-ui);font-weight:600;color:var(--accent-deep);
+  background:var(--accent-tint);border-radius:12px;padding:11px 14px;margin:14px 2px 4px;font-size:15px;line-height:1.4}
 </style>
 </head>
 <body>
@@ -1712,11 +1729,9 @@ function load(){
   else if(last && today-last>1) state.streak=1;
   else if(!last) state.streak=state.streak||1;
   state.lastActive=today;
-  // bootstrap: oturum alanları BİLİNÇLİ sıfırlanır (storage taşısa da)
-  // FAZ 2 · fresh-user regresyon fix: DEFAULT onboarding=null + freshState migrate'i atlar → yeni kullanıcıda
-  // onboarding null kalır ve ob-next/ob-* guard'ları (if(!state.onboarding)return) akışı öldürür. Taze nesne garanti et.
-  if(!state.onboarding) state.onboarding = { completed:false, step:1, name:"", motivation:"", level:"", style:"", startedAt:null, completedAt:null };
-  state.screen = (state.onboarding&&state.onboarding.completed) ? "home" : "onboarding";
+  // ADIM 7 · onboarding alt-nesnesini B2 şekline geriye-uyumlu normalize et (schemaVersion DOKUNULMAZ)
+  state.onboarding = normalizeOnboarding(state.onboarding);
+  state.screen = (state.onboarding.status==="completed" || state.onboarding.status==="skipped") ? "home" : "onboarding";
   state.stack=[]; state.param=null; state._game=null; state._gamePick=null;
 }
 function save(){ return STORE.save(state); }
@@ -1996,14 +2011,8 @@ function userStage(){
   if(kataDone<kata.length) return "katakana";
   return "kanji";
 }
-// Faz 11: Home erişimi kısıtlamaz, kişiye uygun BAŞLANGIÇ önerir (onboarding cevabına göre).
-function recommendedStart(){
-  const ob=state.onboarding||{}; const lvl=ob.level||""; const style=ob.style||"";
-  const pLvl=(state.userProfile&&state.userProfile.level)||"";
-  if(lvl==="explorer"||style==="play"||style==="mix") return "games";
-  if(["hiragana","kana","basic_kanji","advanced"].includes(lvl)||["hiragana","kana","basic_kanji","advanced"].includes(pLvl)) return "kanji";
-  return "kana";
-}
+// ADIM 7 · recommendedStart KALDIRILDI — Home ilk önerisi artık B2 descriptor'ından (startDescriptorFor) beslenir.
+// recommendedNext (ilerleme-temelli öneri motoru) sonraki faz.
 function homeGameIcon(id){
   const g=GAMES[id]; if(!g) return ""; const rec=state.games[id];
   return `<div class="gapp ${g.cat}" data-game="${id}"><div class="gi jp">${g.glyph}</div><div class="gtt">${g.title}</div><div class="gsc">${rec?`Son: ${rec.lastScore}${rec.lastMax?'/'+rec.lastMax:''}`:(g.time||'')}</div></div>`;
@@ -2240,223 +2249,248 @@ const LEVEL_OPTIONS = [
   ["advanced","İleri seviyeleri de keşfetmek istiyorum"],
 ];
 // Faz 7-A: yeni 4 seviye (onboarding'de kullanılır; ProfileEdit eski 5'i kullanmaya devam eder)
-const OB_LEVELS = [
-  ["beginner","Hiç dokunmadım"],
-  ["a_few","Birkaç harf biliyorum"],
-  ["hiragana","Hiragana biliyorum, kanjiye girmek istiyorum"],
-  ["explorer","Karıştırmayı seviyorum, sen yönlendir"],
-];
-const OB_MOTIVATIONS = [
-  ["travel","Japonya seyahati","旅"],
-  ["culture","Anime, manga, oyunlar","漫"],
-  ["curiosity","Sadece merak","脳"],
-  ["work","Akademik / iş","業"],
-];
-const OB_STYLES = [
-  ["step","Adım adım ilerlemek isterim"],
-  ["play","Oyunlarla öğrenirim"],
-  ["mix","Karıştırarak keşfetmeyi severim"],
-  ["any","Hepsi / kararsızım"],
-];
-const OB_TOTAL_STEPS = 8;
+/* ==================== ADIM 7 · B2 ONBOARDING + i18n-readiness ====================
+   i18n = mimari sınır, localization DEĞİL. Yalnız `tr` sözlüğü. Kesin metin R2-A kilitli. */
+const I18N = {
+  tr: {
+    "onboarding.welcome.title": "Kanji Atlas",
+    "onboarding.welcome.lead": "Japonca yazının mantığını adım adım keşfet.",
+    "onboarding.actions.start": "Başlayalım",
+    "onboarding.actions.continue": "Devam",
+    "onboarding.actions.goHome.mid": "Ana sayfaya geç",
+    "onboarding.actions.goHome.final": "Ana sayfaya git",
+    "onboarding.competency.title": "Japonca yazıda nereden başlıyorsun?",
+    "onboarding.competency.lead": "Sana uygun bir başlangıç önerelim.",
+    "onboarding.competency.band0": "Japonca yazıya hiç başlamadım",
+    "onboarding.competency.band1": "Birkaç temel karakter tanıyorum",
+    "onboarding.competency.band2": "Hiragana ve katakana okuyabiliyorum",
+    "onboarding.competency.band3": "Hiragana, katakana ve bazı kanjileri biliyorum",
+    "onboarding.ws.title": "Japonca yazıda üç ana sistem birlikte kullanılır.",
+    "onboarding.ws.hira.name": "Hiragana",
+    "onboarding.ws.hira.desc": "Japonca sözcüklerde ve dilbilgisi eklerinde sık kullanılır.",
+    "onboarding.ws.kata.name": "Katakana",
+    "onboarding.ws.kata.desc": "Hiragana ile aynı sesleri yazar; çoğunlukla yabancı kökenli sözcüklerde, adlarda ve ses taklitlerinde kullanılır.",
+    "onboarding.ws.kanji.name": "Kanji",
+    "onboarding.ws.kanji.desc": "Anlamla ilişkili karakterlerdir. Bir kanjinin okunuşu, bulunduğu kelimeye göre değişebilir.",
+    "onboarding.ws.bridge": "Temel sesleri tanımak, sonraki adımları kolaylaştırır.",
+    "onboarding.final.band0.title": "あ ile başlayalım.",
+    "onboarding.final.band0.reason": "Önce sesini dinle ve şeklini tanı. Hazır olduğunda yazmayı dene.",
+    "onboarding.final.band0.cta": "あ ile başla",
+    "onboarding.final.band1.title": "Temel karakterlerden devam et.",
+    "onboarding.final.band1.reason": "Tanıdıklarını gözden geçir, eksiklerini seçerek ilerle.",
+    "onboarding.final.band1.cta": "Kana bölümünü aç",
+    "onboarding.final.band2.title": "Kanji yapılarına geçmeye hazırsın.",
+    "onboarding.final.band2.targetLabel": "İlk kanji ailesi: 木",
+    "onboarding.final.band2.reason": "Ortak parçaları izleyerek kanjiler arasındaki bağlantıları keşfet.",
+    "onboarding.final.band2.cta": "木 ailesiyle başla",
+    "onboarding.final.band3.title": "Atlas'tan devam et.",
+    "onboarding.final.band3.reason": "Kanjiler arasındaki bağlantıları keşfet ve istediğin noktadan ilerle.",
+    "onboarding.final.band3.cta": "Atlas'ı aç",
+    "onboarding.a11y.back": "Geri",
+    "onboarding.a11y.jaGlyph": "Japonca karakter",
+    "home.rec.kana.label": "Kana Rehberi",
+    "home.rec.kana.reason": "Japoncanın temel sesleriyle başla",
+    "home.rec.kanji.label": "Kanji Atlası",
+    "home.rec.kanji.reason": "Hiraganan hazırsa doğrudan kanjiye geç",
+    "home.rec.atlas.label": "Kanji Haritası",
+    "home.rec.atlas.reason": "Kanjiler arasındaki bağları haritada keşfet",
+    "home.rec.prefix": "Senin için öneri"
+  }
+};
+const DEFAULT_LOCALE = "tr";
+function currentLocale(){
+  const l = (state.settings && state.settings.locale) || DEFAULT_LOCALE;
+  return I18N[l] ? l : DEFAULT_LOCALE;                 // desteklenmeyen/bozuk locale → tr
+}
+/* t() fallback zinciri: istenen locale → tr → okunabilir key adı. Production ÇÖKMEZ. */
+function t(key, locale){
+  const loc = (locale && I18N[locale]) ? locale : currentLocale();
+  const dict = I18N[loc] || {};
+  if(Object.prototype.hasOwnProperty.call(dict, key)) return dict[key];
+  const tr = I18N[DEFAULT_LOCALE] || {};
+  if(Object.prototype.hasOwnProperty.call(tr, key)) return tr[key];   // → tr
+  try{ if(typeof console!=="undefined") console.warn("[i18n] eksik anahtar:", key, loc); }catch(e){}
+  return key;                                                          // → okunabilir key (boş/exception değil)
+}
 
-/* FAZ 2 · Onboarding: niyet (entryPath) sakla — ekran adı DEĞİL. Yönlendirme resolver'da türetilir. */
-function deriveEntryPath(level){
-  if(level==="hiragana") return "kanji-family";   // "Hiragana biliyorum, kanjiye girmek istiyorum" -> 木 vitrini
-  if(level==="explorer") return "explore";         // "sen yonlendir" -> Atlas kesif
-  return "kana";                                   // beginner / a_few / eksik/taninmayan -> guvenli varsayilan
+/* Yetkinlik bantları (0–3) — tek yönlendirme girdisi; explorer YOK, "ileri seviye" YOK. */
+const OB_BANDS = [
+  { competency:0, labelKey:"onboarding.competency.band0", startKey:"kana-a",    intro:true  },
+  { competency:1, labelKey:"onboarding.competency.band1", startKey:"kana-home", intro:true  },
+  { competency:2, labelKey:"onboarding.competency.band2", startKey:"kanji-ki",  intro:false },
+  { competency:3, labelKey:"onboarding.competency.band3", startKey:"atlas-map", intro:false },
+];
+function bandOf(c){ return OB_BANDS.find(b=>b.competency===c) || null; }
+function competencyNeedsIntro(c){ const b=bandOf(c); return !!(b && b.intro); }
+function startKeyForCompetency(c){ const b=bandOf(c); return b ? b.startKey : null; }
+
+/* Tek descriptor kaynağı — startKey → rota + ÇEVİRİ ANAHTARLARI (literal metin DEĞİL). */
+const START_DESCRIPTORS = {
+  "kana-a":    { route:"kanadetail", param:"あ", labelKey:"home.rec.kana.label",  reasonKey:"home.rec.kana.reason",  ctaKey:"onboarding.final.band0.cta" },
+  "kana-home": { route:"kana",       param:null, labelKey:"home.rec.kana.label",  reasonKey:"home.rec.kana.reason",  ctaKey:"onboarding.final.band1.cta" },
+  "kanji-ki":  { route:"detail",     param:"ki", labelKey:"home.rec.kanji.label", reasonKey:"home.rec.kanji.reason", ctaKey:"onboarding.final.band2.cta" },
+  "atlas-map": { route:"map",        param:null, labelKey:"home.rec.atlas.label", reasonKey:"home.rec.atlas.reason", ctaKey:"onboarding.final.band3.cta" },
+};
+const VALID_START_KEYS = Object.keys(START_DESCRIPTORS);
+function startDescriptorFor(key){ return START_DESCRIPTORS[key] || null; }
+
+/* competency → legacy userProfile aynası (rollback/geri uyumluluk). explorer kullanılmaz. */
+function competencyToLegacyLevel(c){ return (c===2||c===3) ? "hiragana" : (c===1 ? "a_few" : "beginner"); }
+function competencyShowAdvanced(c){ return c===2 || c===3; }
+
+/* Onboarding NORMALIZER — schemaVersion DOKUNULMAZ (P0-5). Yalnız onboarding alt-nesnesini
+   yeni B2 şekline geriye-uyumlu getirir: migration + invariant matris; sahte rota üretmez. */
+const OB_STAGES = ["welcome","competency","writing-intro","final"];
+function normalizeOnboarding(o){
+  const nowIso = ()=>new Date().toISOString();
+  const src = isPlainObject(o) ? o : null;
+  if(!src){                                            // hiç yok → fresh
+    return { status:"in-progress", completed:false, stage:"welcome", competency:null, startKey:null,
+             introShown:false, firstMeaningfulActionAt:null, startedAt:nowIso(), completedAt:null, skippedAt:null };
+  }
+  if(typeof src.status !== "string"){                  // eski şema (status yok) → migration
+    if(src.completed === true){                        // eski completed: competency TÜRETİLMEZ (sahte öneri yok)
+      return { ...src, status:"completed", completed:true, stage:"final", competency:null, startKey:null,
+               introShown:!!src.introShown, firstMeaningfulActionAt:src.firstMeaningfulActionAt||null,
+               startedAt:src.startedAt||null, completedAt:src.completedAt||null, skippedAt:null };
+    }
+    return { ...src, status:"in-progress", completed:false, stage:"welcome", competency:null, startKey:null,
+             introShown:false, firstMeaningfulActionAt:src.firstMeaningfulActionAt||null,
+             startedAt:src.startedAt||nowIso(), completedAt:null, skippedAt:null };
+  }
+  // yeni şema → invariant doğrulaması + güvenli düşüş
+  let status = (src.status==="completed"||src.status==="skipped"||src.status==="in-progress") ? src.status : "in-progress";
+  let stage  = OB_STAGES.indexOf(src.stage)>=0 ? src.stage : "welcome";
+  let competency = (src.competency===0||src.competency===1||src.competency===2||src.competency===3) ? src.competency : null;
+  let startKey = VALID_START_KEYS.indexOf(src.startKey)>=0 ? src.startKey : null;
+  if(status==="skipped"){ competency=null; startKey=null; }
+  else if(status==="completed"){
+    stage="final";
+    if(competency==null){ startKey=null; }             // competency yoksa sahte rota yok
+    else { startKey = startKeyForCompetency(competency); if(!startDescriptorFor(startKey)) startKey=null; }
+  } else {                                             // in-progress
+    if(stage==="writing-intro" && !(competency===0||competency===1)) stage = (competency==null?"competency":"final");
+    if(stage==="final" && competency==null) stage="competency";
+    if(stage==="welcome") competency=null;
+    startKey=null;                                     // final tamamlanana kadar yazılmaz
+  }
+  const completed = (status==="completed"||status==="skipped");
+  return { ...src, status, completed, stage, competency, startKey,
+           introShown:!!src.introShown,
+           firstMeaningfulActionAt:src.firstMeaningfulActionAt||null,
+           startedAt:src.startedAt||null,
+           completedAt: status==="completed" ? (src.completedAt||null) : null,   // skipped'a sahte completedAt YOK
+           skippedAt: status==="skipped" ? (src.skippedAt||null) : null };
 }
-function resolveEntryRoute(ep){
-  const ROUTES = { "kana":{screen:"kanadetail",param:"あ"}, "kanji-family":{screen:"detail",param:"ki"}, "explore":{screen:"map",param:null} };
-  return ROUTES[ep] || ROUTES["kana"];             // taninmayan -> kana (guvenli)
-}
-if(typeof window!=="undefined") window.__ob = { deriveEntryPath, resolveEntryRoute };
-// Faz 7-A: onboarding tamamlanınca çağrılır. Hem state.onboarding.completed=true hem userProfile yaratır (geri uyumluluk).
+
+/* Final tamamlandı → completed. userProfile aynası KORUNARAK (name ezilmez) güncellenir. */
 function completeOnboarding(){
-  if(!state.onboarding) state.onboarding = { completed:false, step:1, name:"", motivation:"", level:"", style:"" };
+  const o = state.onboarding = normalizeOnboarding(state.onboarding);
   const now = new Date().toISOString();
-  state.onboarding.completed = true;
-  state.onboarding.completedAt = now;
-  // Legacy userProfile da doldur — pek çok yer (Home, Profile, header) hala bunu okuyor.
-  // Onboarding seviyesi (OB_LEVELS) eski LEVEL_OPTIONS'a maplenir:
-  //   beginner → beginner, a_few → beginner, hiragana → hiragana, explorer → advanced
-  const lvlMap = { beginner:"beginner", a_few:"beginner", hiragana:"hiragana", explorer:"advanced" };
-  const legacyLevel = lvlMap[state.onboarding.level] || "beginner";
-  state.userProfile = {
-    name: state.onboarding.name || "",
-    level: legacyLevel,
-    showAdvanced: legacyLevel==="advanced",
-    motivation: state.onboarding.motivation || "",
-    style: state.onboarding.style || "",
-    createdAt: (state.userProfile && state.userProfile.createdAt) || now,
-    updatedAt: now
-  };
-  state.onboarding.entryPath = deriveEntryPath(state.onboarding.level);   // niyet (kalici sonuc)
+  const c = (o.competency===0||o.competency===1||o.competency===2||o.competency===3) ? o.competency : null;
+  o.status="completed"; o.completed=true; o.stage="final"; o.competency=c;
+  o.startKey = c==null ? null : startKeyForCompetency(c);
+  o.completedAt=now; o.skippedAt=null; if(!o.startedAt) o.startedAt=now;
+  const prev = isPlainObject(state.userProfile) ? state.userProfile : {};
+  state.userProfile = { ...prev,
+    name: (prev.name!=null ? prev.name : ""),                                  // mevcut ad KORUNUR
+    level: c==null ? (prev.level||"beginner") : competencyToLegacyLevel(c),
+    showAdvanced: c==null ? !!prev.showAdvanced : competencyShowAdvanced(c),
+    createdAt: prev.createdAt || now, updatedAt: now };
   save();
 }
+/* Erken kaçış → skipped. competency/startKey temizlenir; sahte completedAt YOK. */
+function skipOnboarding(){
+  const o = state.onboarding = normalizeOnboarding(state.onboarding);
+  const now = new Date().toISOString();
+  o.status="skipped"; o.completed=true; o.competency=null; o.startKey=null;
+  o.completedAt=null; o.skippedAt=now; if(!o.startedAt) o.startedAt=now;
+  save();
+}
+/* Anlamlı öğrenme eylemi — idempotent damga. SRS/mastery/backup DOKUNULMAZ; save hatası öğrenmeyi geri almaz. */
+function markFirstMeaningfulLearningAction(kind){
+  try{
+    const o = state.onboarding; if(!isPlainObject(o) || o.firstMeaningfulActionAt) return;
+    o.firstMeaningfulActionAt = new Date().toISOString(); save();
+  }catch(e){}
+}
+/* Türetilmiş sinyal — Home ilk-öneri şeridi görünürlüğü: damga VEYA gerçek başarılı öğrenme (correct>0).
+   Yanlış cevap (correct=0) ve gezinme sayılmaz. */
+function hasMeaningfulLearning(){
+  const o = state.onboarding;
+  if(o && o.firstMeaningfulActionAt) return true;
+  const srs = state.srs;
+  if(isPlainObject(srs)){ for(const k in srs){ const r=srs[k]; if(r && Number(r.correct)>0) return true; } }
+  return false;
+}
+if(typeof window!=="undefined") window.__ob = { normalizeOnboarding, startDescriptorFor, startKeyForCompetency, competencyToLegacyLevel, competencyShowAdvanced, competencyNeedsIntro, t, I18N, OB_BANDS, VALID_START_KEYS };
 
 function Onboarding(){
-  const o = state.onboarding || {step:1, name:"", motivation:"", level:"", style:""};
-  const step = Math.max(1, Math.min(OB_TOTAL_STEPS, o.step||1));
-  // Sağ üstte "Atla" — ekran 1 ve 10'da yok
-  const skipHtml = (step>1 && step<OB_TOTAL_STEPS)
-    ? `<button class="ob-skip" data-act="ob-skip" type="button">Atla</button>`
+  const o = state.onboarding = normalizeOnboarding(state.onboarding);
+  const stage = o.stage || "welcome";
+  const jaAria = esc(t("onboarding.a11y.jaGlyph"));
+  const glyph = (ch)=>`<span class="jp" lang="ja" role="img" aria-label="${jaAria}: ${ch}">${ch}</span>`;
+  // Erken kaçış (welcome/competency/writing-intro) — görünür ikincil metin eylemi
+  const escapeMid = `<button class="ob-escape" data-act="ob-home" type="button">${t("onboarding.actions.goHome.mid")}</button>`;
+  // Geri oku — welcome'da yok; stage haritasıyla
+  const backHtml = (stage!=="welcome")
+    ? `<button class="ob-back" data-act="ob-back" type="button" aria-label="${esc(t("onboarding.a11y.back"))}">‹</button>`
     : "";
-  // Sol üstte minimal geri oku — ekran 1'de yok (giriş ekranı)
-  const backHtml = (step>1)
-    ? `<button class="ob-back" data-act="ob-back" type="button" aria-label="Geri">‹</button>`
-    : "";
-  // Step indicator
-  const pct = Math.round((step / OB_TOTAL_STEPS) * 100);
-  const progressHtml = `<div class="ob-progress"><span style="width:${pct}%"></span></div>`;
 
   let body = "";
-  switch(step){
-    case 1:
-      body = `<div class="ob-step ob-step-welcome">
-        <div style="display:flex;justify-content:center;margin:0 auto 8px;animation:obSealIn .6s cubic-bezier(.2,.7,.3,1.2)">${appLogo(88)}</div>
-        <div class="ob-title">Japonca Yazı Atlası</div>
-        <div class="ob-lead">Japonca yazı sistemlerinin mantığını adım adım keşfedin.</div>
-        <button class="btn full ob-cta" data-act="ob-next">Başlayalım</button>
-      </div>`;
-      break;
-    case 2:
-      body = `<div class="ob-step">
-        <div class="ob-eyebrow">01</div>
-        <div class="ob-title-sm">Sana nasıl hitap edelim?</div>
-        <input id="ob-name-input" class="ob-input" type="text" maxlength="32" placeholder="Adın" autocomplete="off" value="${esc(o.name||"")}" />
-        <button class="btn full ob-cta" data-act="ob-name-submit">Devam</button>
-        <button class="btn ghost full ob-cta-ghost" data-act="ob-name-skip" type="button">İsim girmeden geç</button>
-      </div>`;
-      break;
-    case 3:
-      body = `<div class="ob-step">
-        <div class="ob-eyebrow">02</div>
-        <div class="ob-title-sm">Japoncaya neden ilgi duyuyorsun?</div>
-        <div class="ob-cards">
-          ${OB_MOTIVATIONS.map(([v,l,g])=>`<button class="ob-card ${o.motivation===v?'on':''}" data-act="ob-select-motivation" data-val="${v}" type="button">
-            <span class="ob-card-glyph jp">${g}</span>
-            <span class="ob-card-label">${l}</span>
-          </button>`).join("")}
-        </div>
-      </div>`;
-      break;
-    case 4:
-      body = `<div class="ob-step">
-        <div class="ob-eyebrow">03</div>
-        <div class="ob-title-sm">Hangi aşamadasın?</div>
-        <div class="ob-cards ob-cards-vert">
-          ${OB_LEVELS.map(([v,l])=>`<button class="ob-card ob-card-row ${o.level===v?'on':''}" data-act="ob-select-level" data-val="${v}" type="button">
-            <span class="ob-card-label">${l}</span>
-            <span class="ob-card-arr">›</span>
-          </button>`).join("")}
-        </div>
-      </div>`;
-      break;
-    case 5:
-      // Mini keşif: ミルク + romaji "miruku" → kullanıcı kendi 'aaa MILK!' der → 1.8s sonra cevap reveal
-      body = `<div class="ob-step ob-step-quiz">
-        <div class="ob-eyebrow">04</div>
-        <div class="ob-title-sm">Bu kelime sence ne demek?</div>
-        <div class="ob-quiz-card">
-          <div class="ob-quiz-word jp">ミルク</div>
-          <div class="ob-quiz-romaji">miruku</div>
-          <div class="ob-quiz-reveal">
-            <div class="ob-quiz-arrow">↓</div>
-            <div class="ob-quiz-en">Milk'ten gelen bir Japonca kelime: <b>süt</b>.</div>
-            <div class="ob-quiz-wink">Zaten biliyordun aslında.</div>
-          </div>
-        </div>
-        <div class="ob-lead ob-quiz-bridge">
-          Katakana'nın mantığını çözünce günlük Japoncada kullanılan birçok kelimeyi aslında zaten tanıdığını fark edeceksin.
-        </div>
-        <div class="ob-quiz-extras">
-          <div class="ob-mir-row" data-row="0">
-            <span class="ob-mir-jp jp">コンピューター</span>
-            <span class="ob-mir-rom">konpyuutaa</span>
-            <span class="ob-mir-arr">→</span>
-            <span class="ob-mir-en">computer</span>
-          </div>
-          <div class="ob-mir-row" data-row="1">
-            <span class="ob-mir-jp jp">サラダ</span>
-            <span class="ob-mir-rom">sarada</span>
-            <span class="ob-mir-arr">→</span>
-            <span class="ob-mir-en">salad</span>
-          </div>
-          <div class="ob-mir-row" data-row="2">
-            <span class="ob-mir-jp jp">ホテル</span>
-            <span class="ob-mir-rom">hoteru</span>
-            <span class="ob-mir-arr">→</span>
-            <span class="ob-mir-en">hotel</span>
-          </div>
-        </div>
-        <button class="btn full ob-cta" data-act="ob-next">Devam</button>
-      </div>`;
-      break;
-    case 6:
-      body = `<div class="ob-step">
-        <div class="ob-eyebrow">05</div>
-        <div class="ob-title-sm">Japonca üç yazı sisteminden oluşur.</div>
-        <div class="ob-three">
-          <div class="ob-three-row" style="animation-delay:200ms">
-            <span class="ob-three-glyph jp">あ</span>
-            <span class="ob-three-meta">
-              <span class="ob-three-name">Hiragana</span>
-              <span class="ob-three-sub">en yaygın Japonca kökenli kelimeleri yazmada kullanılan ses sistemi</span>
-            </span>
-          </div>
-          <div class="ob-three-row" style="animation-delay:550ms">
-            <span class="ob-three-glyph jp">ア</span>
-            <span class="ob-three-meta">
-              <span class="ob-three-name">Katakana</span>
-              <span class="ob-three-sub">aynı sesleri yazan ikiz sistem; yabancı kelimeler, isimler ve ses taklitleri için kullanılır</span>
-            </span>
-          </div>
-          <div class="ob-three-row" style="animation-delay:900ms">
-            <span class="ob-three-glyph jp">火</span>
-            <span class="ob-three-meta">
-              <span class="ob-three-name">Kanji</span>
-              <span class="ob-three-sub">ses değil anlam taşıyan, Çin'den uyarlanmış işaretler; her biri bir kavramı gösterir</span>
-            </span>
-          </div>
-        </div>
-        <div class="ob-three-bridge">Önce temel seslerle başlayacağız.</div>
-        <button class="btn full ob-cta" data-act="ob-next">Devam</button>
-      </div>`;
-      break;
-    case 7:
-      body = `<div class="ob-step">
-        <div class="ob-eyebrow">06</div>
-        <div class="ob-title-sm">Nasıl ilerlemek istersin?</div>
-        <div class="ob-cards ob-cards-vert">
-          ${OB_STYLES.map(([v,l])=>`<button class="ob-card ob-card-row ${o.style===v?'on':''}" data-act="ob-select-style" data-val="${v}" type="button">
-            <span class="ob-card-label">${l}</span>
-            <span class="ob-card-arr">›</span>
-          </button>`).join("")}
-        </div>
-      </div>`;
-      break;
-    case 8: {
-      const greet = o.name ? `Hazır mısın, ${esc(o.name)}?` : "Hazır mısın?";
-      body = `<div class="ob-step ob-step-final">
-        <div class="ob-title-sm">${greet}</div>
-        <div class="ob-final-glyph jp">あ</div>
-        <div class="ob-final-meta">
-          <div class="ob-final-label">İlk harfin</div>
-          <div class="ob-final-romaji">a</div>
-        </div>
-        <div class="ob-lead">Vuruş sırasını izleyeceksin, kendin çizeceksin. Birkaç saniyeden uzun sürmeyecek.</div>
-        <button class="btn full ob-cta" data-act="ob-finish">Başla</button>
-      </div>`;
-      break;
-    }
+  if(stage==="welcome"){
+    body = `<div class="ob-step ob-step-welcome">
+      <div style="display:flex;justify-content:center;margin:0 auto 8px;animation:obSealIn .6s cubic-bezier(.2,.7,.3,1.2)">${appLogo(88)}</div>
+      <h1 class="ob-title" tabindex="-1">${t("onboarding.welcome.title")}</h1>
+      <div class="ob-lead">${t("onboarding.welcome.lead")}</div>
+      <button class="btn full ob-cta" data-act="ob-continue">${t("onboarding.actions.start")}</button>
+      ${escapeMid}
+    </div>`;
+  } else if(stage==="competency"){
+    const cards = OB_BANDS.map(b=>`<button class="ob-card ob-card-row" data-act="ob-competency" data-comp="${b.competency}" type="button">
+        <span class="ob-card-label">${t(b.labelKey)}</span>
+        <span class="ob-card-arr">›</span>
+      </button>`).join("");
+    body = `<div class="ob-step">
+      <h1 class="ob-title-sm" tabindex="-1">${t("onboarding.competency.title")}</h1>
+      <div class="ob-lead">${t("onboarding.competency.lead")}</div>
+      <div class="ob-cards ob-cards-vert">${cards}</div>
+      ${escapeMid}
+    </div>`;
+  } else if(stage==="writing-intro"){
+    body = `<div class="ob-step">
+      <h1 class="ob-title-sm" tabindex="-1">${t("onboarding.ws.title")}</h1>
+      <div class="ob-three">
+        <div class="ob-three-row"><span class="ob-three-glyph">${glyph("あ")}</span><span class="ob-three-meta"><span class="ob-three-name">${t("onboarding.ws.hira.name")}</span><span class="ob-three-sub">${t("onboarding.ws.hira.desc")}</span></span></div>
+        <div class="ob-three-row"><span class="ob-three-glyph">${glyph("ア")}</span><span class="ob-three-meta"><span class="ob-three-name">${t("onboarding.ws.kata.name")}</span><span class="ob-three-sub">${t("onboarding.ws.kata.desc")}</span></span></div>
+        <div class="ob-three-row"><span class="ob-three-glyph">${glyph("火")}</span><span class="ob-three-meta"><span class="ob-three-name">${t("onboarding.ws.kanji.name")}</span><span class="ob-three-sub">${t("onboarding.ws.kanji.desc")}</span></span></div>
+      </div>
+      <div class="ob-three-bridge">${t("onboarding.ws.bridge")}</div>
+      <button class="btn full ob-cta" data-act="ob-continue">${t("onboarding.actions.continue")}</button>
+      ${escapeMid}
+    </div>`;
+  } else { // final
+    const c = (o.competency===0||o.competency===1||o.competency===2||o.competency===3) ? o.competency : 0;
+    const band = "band"+c;
+    let focus;
+    if(c===0) focus = `<div class="ob-final-glyph">${glyph("あ")}</div>`;
+    else if(c===1) focus = `<div class="ob-final-pair">${glyph("あ")}<span class="ob-final-pair-mid">·</span>${glyph("ア")}</div>`;
+    else if(c===2) focus = `<div class="ob-final-glyph">${glyph("木")}</div>`;
+    else focus = `<div class="ob-final-atlas">${iconBadge('森',IC.teal,IC.amber,64)}</div>`;
+    const targetLabel = (c===2) ? `<div class="ob-final-target">${t("onboarding.final.band2.targetLabel")}</div>` : "";
+    body = `<div class="ob-step ob-step-final">
+      ${focus}
+      <h1 class="ob-title-sm" tabindex="-1">${t("onboarding.final."+band+".title")}</h1>
+      ${targetLabel}
+      <div class="ob-lead">${t("onboarding.final."+band+".reason")}</div>
+      <button class="btn full ob-cta" data-act="ob-final-start">${t("onboarding.final."+band+".cta")}</button>
+      <button class="ob-escape" data-act="ob-home" type="button">${t("onboarding.actions.goHome.final")}</button>
+    </div>`;
   }
 
   return `<div class="ob-root">
     ${backHtml}
-    ${skipHtml}
-    ${progressHtml}
-    <div class="ob-stage" data-step="${step}">${body}</div>
+    <div class="ob-stage" data-stage="${stage}">${body}</div>
   </div>`;
 }
 function ProfileEdit(){
@@ -2813,14 +2847,15 @@ function Home(){
   const homeSubline = hasAnyProgress ? "Kaldığın yerden devam et." : "Birlikte küçük bir adım atalım.";
   const kanaPct = allKanaChars.length? Math.round(learnedKana/allKanaChars.length*100):0;
   const kanjiPct = kanjiChars.length? Math.round(learnedKanji/kanjiChars.length*100):0;
-  const REC={
-    kana:{go:"kana",label:"Kana Rehberi",reason:"Japoncanın temel sesleriyle başla"},
-    kanji:{go:"kanji5",label:"Kanji Atlası",reason:"Hiraganan hazırsa doğrudan kanjiye geç"},
-    games:{go:"games",label:"Oyunlar",reason:"Pratikle, karıştırarak öğren"}
-  };
-  const rec=REC[recommendedStart()]||REC.kana;
-  // Öneri satırı yalnızca yeni/az ilerlemiş kullanıcıda görünür; ilerleyince gizlenir (eşik ayarlanabilir).
-  const established=(learnedKana+learnedKanji)>=10;
+  // ADIM 7 · Home ilk-öneri şeridi: yalnız completed + startKey + henüz anlamlı eylem YOK.
+  // skipped VEYA competency'siz eski completed → şerit YOK (sahte kişiselleştirme yok). İlk anlamlı eylemde boşluksuz gizlenir.
+  const _ob = state.onboarding || {};
+  const _startDesc = (_ob.status==="completed" && _ob.startKey) ? startDescriptorFor(_ob.startKey) : null;
+  const showRecHint = !!(_startDesc && !hasMeaningfulLearning());
+  const recGo = _startDesc ? _startDesc.route : "kana";
+  const recParam = (_startDesc && _startDesc.param!=null) ? _startDesc.param : "";
+  const recLabel = _startDesc ? t(_startDesc.labelKey) : "";
+  const recReason = _startDesc ? t(_startDesc.reasonKey) : "";
   return `
   <div class="stagger">
   <div style="margin:2px 2px 4px">
@@ -2838,11 +2873,11 @@ function Home(){
     </div>
   </div>`:''}
 
-  <!-- Öneri: HER ZAMAN görünür, progress'ten ÖNCE ve baskın (P0-1 Dilim 3.5 · D1) — 10 karakterden sonra kaybolmaz -->
-  <div class="rec-hint" data-go="${rec.go}" role="button">
-    <span>Senin için öneri: <b>${rec.label}</b> — ${rec.reason}</span>
+  <!-- ADIM 7 · İlk öneri: yalnız onboarding-sonrası (completed+startKey); ilk anlamlı eylemde boşluksuz gizlenir -->
+  ${showRecHint?`<div class="rec-hint" data-go="${recGo}"${recParam?` data-param="${esc(recParam)}"`:''} role="button">
+    <span>${t("home.rec.prefix")}: <b>${recLabel}</b> — ${recReason}</span>
     <span class="ra">›</span>
-  </div>
+  </div>`:''}
 
   <!-- Genel İlerleme: İKİNCİL erişim (öneriden sonra) -->
   <div class="prog-strip" data-go="progress" role="button">
@@ -5341,6 +5376,8 @@ function memoryFlip(idx){
   } else render();
 }
 function afterRender(){
+  // ADIM 7 · a11y: onboarding ekran değişiminde focus'u ekranın H1'ine taşı (klavye/ekran okuyucu)
+  if(state.screen==="onboarding"){ try{ const _h=document.querySelector(".ob-stage h1"); if(_h && _h.focus) _h.focus({preventScroll:true}); }catch(e){} }
   if(state.screen==="detail"){ const c=ch(state.param); if(c&&state.settings.autoplay) animateStrokes($("#bigStage svg"), c.stroke_order_steps, false); }
   if(state.screen==="kanadetail"){ const k=KANA_BY_CHAR[state.param]; if(k&&state.settings.autoplay) animateStrokes($("#bigStage svg"), k.stroke_order_steps, false); }
   if(state.screen==="drill"||state.screen==="practice") setupDrill();
@@ -5644,8 +5681,8 @@ document.addEventListener("click",e=>{
   else if(act==="hint-save"){ const key=el.dataset.param; const t=document.getElementById("uhint-input"); const val=t?t.value.trim():""; if(val){ state.userHints[key]=val; } else { delete state.userHints[key]; } state._editHint=null; save(); toast(val?"İpucun kaydedildi ✓":"Boş bırakıldı"); render(); }
   else if(act==="hint-cancel"){ state._editHint=null; render(); }
   else if(act==="hint-clear"){ delete state.userHints[el.dataset.param]; state._editHint=null; save(); toast("İpucun silindi"); render(); }
-  else if(act==="kana-known"){ const k=el.dataset.param; const _r=srsRecord(k,true); if(_r.ok){ state.kana[k]=true; toast(`${k} tanıdın olarak işaretlendi`); } else { toast("İşaretlenemedi."); } render(); }
-  else if(act==="word-known"){ const id=el.dataset.param; const _r=srsRecord(id,true,{known:true}); toast(_r.ok?"Kelime tekrara eklendi ✓":"Eklenemedi."); render(); }
+  else if(act==="kana-known"){ const k=el.dataset.param; const _r=srsRecord(k,true); if(_r.ok){ state.kana[k]=true; markFirstMeaningfulLearningAction("known-kana"); toast(`${k} tanıdın olarak işaretlendi`); } else { toast("İşaretlenemedi."); } render(); }
+  else if(act==="word-known"){ const id=el.dataset.param; const _r=srsRecord(id,true,{known:true}); if(_r.ok) markFirstMeaningfulLearningAction("known-word"); toast(_r.ok?"Kelime tekrara eklendi ✓":"Eklenemedi."); render(); }
   else if(act==="audiomode"){ state.settings.audioMode=el.dataset.mode; state.settings.audio=el.dataset.mode!=="off"; save(); render(); }
   else if(act==="game-stroke-kana"){ startGame("stroke",{charId:el.dataset.param}); }
   else if(act==="game-exit"){ state._game=null; go("games",null,false); }
@@ -5692,80 +5729,50 @@ document.addEventListener("click",e=>{
     group.querySelectorAll(".ob-lvl").forEach(x=>x.classList.remove("on"));
     el.classList.add("on");
   }
-  else if(act==="ob-next"){
-    // Faz 7-A: bir sonraki onboarding adımına geç
-    if(!state.onboarding) return;
-    state.onboarding.step = Math.min(OB_TOTAL_STEPS, (state.onboarding.step||1)+1);
+  else if(act==="ob-continue"){
+    // welcome → competency; writing-intro → final
+    const o = state.onboarding = normalizeOnboarding(state.onboarding);
+    if(o.stage==="welcome") o.stage="competency";
+    else if(o.stage==="writing-intro") o.stage="final";
+    save(); render();
+  }
+  else if(act==="ob-competency"){
+    const o = state.onboarding = normalizeOnboarding(state.onboarding);
+    const c = el && el.dataset ? parseInt(el.dataset.comp,10) : NaN;
+    if(!(c===0||c===1||c===2||c===3)) return;
+    o.competency = c;
+    o.stage = competencyNeedsIntro(c) ? "writing-intro" : "final";   // Band 0/1 → üç-sistem; 2/3 → doğrudan final
+    if(o.stage==="writing-intro") o.introShown = true;               // onboarding intro işareti (tam ders DEĞİL)
     save(); render();
   }
   else if(act==="ob-back"){
-    // Faz 7-A: bir önceki onboarding adımına dön (kullanıcı cevabını değiştirmek isteyebilir)
-    if(!state.onboarding) return;
-    state.onboarding.step = Math.max(1, (state.onboarding.step||1)-1);
+    // Stage haritası: competency→welcome; writing-intro→competency; final(0/1)→writing-intro; final(2/3)→competency
+    const o = state.onboarding = normalizeOnboarding(state.onboarding);
+    if(o.stage==="competency") o.stage="welcome";
+    else if(o.stage==="writing-intro") o.stage="competency";
+    else if(o.stage==="final") o.stage = competencyNeedsIntro(o.competency) ? "writing-intro" : "competency";
     save(); render();
   }
-  else if(act==="ob-name-submit"){
-    const nameEl = document.getElementById("ob-name-input");
-    const name = nameEl ? (nameEl.value||"").trim().slice(0,32) : "";
-    if(!state.onboarding) return;
-    state.onboarding.name = name;
-    state.onboarding.step = Math.min(OB_TOTAL_STEPS, (state.onboarding.step||1)+1);
-    save(); render();
-  }
-  else if(act==="ob-name-skip"){
-    if(!state.onboarding) return;
-    state.onboarding.name = "";
-    state.onboarding.step = Math.min(OB_TOTAL_STEPS, (state.onboarding.step||1)+1);
-    save(); render();
-  }
-  else if(act==="ob-select-motivation"){
-    if(!state.onboarding) return;
-    const val = el && el.dataset ? el.dataset.val : "";
-    state.onboarding.motivation = val;
-    state.onboarding.step = Math.min(OB_TOTAL_STEPS, (state.onboarding.step||1)+1);
-    save(); render();
-  }
-  else if(act==="ob-select-level"){
-    if(!state.onboarding) return;
-    const val = el && el.dataset ? el.dataset.val : "";
-    state.onboarding.level = val;
-    state.onboarding.step = Math.min(OB_TOTAL_STEPS, (state.onboarding.step||1)+1);
-    save(); render();
-  }
-  else if(act==="ob-select-style"){
-    if(!state.onboarding) return;
-    const val = el && el.dataset ? el.dataset.val : "";
-    state.onboarding.style = val;
-    state.onboarding.step = Math.min(OB_TOTAL_STEPS, (state.onboarding.step||1)+1);
-    save(); render();
-  }
-  else if(act==="ob-skip"){
-    // "Atla" → onboarding'i tamamlanmış işaretle + Home'a git (kararla aynı: Home, ilk derse değil)
-    completeOnboarding();
+  else if(act==="ob-home"){
+    // "Ana sayfaya geç/git". Final'e ulaşıldıysa → completed (skip DEĞİL); erken ekranlar → skipped.
+    const o = normalizeOnboarding(state.onboarding);
+    if(o.stage==="final") completeOnboarding(); else skipOnboarding();
     go("home", null, false);
   }
-  else if(act==="ob-finish"){
-    // Başla → onboarding sonucundan (entryPath) türetilen rotaya git; koşulsuz あ DEĞİL
+  else if(act==="ob-final-start"){
+    // Final birincil → completed + descriptor rotasına git (startKey yoksa Home güvenli düşüş)
     completeOnboarding();
-    const _r = resolveEntryRoute(state.onboarding.entryPath);
-    const _valid = ["kanadetail","detail","map"].includes(_r.screen);
-    go(_valid ? _r.screen : "home", _valid ? _r.param : null, false);   // hedef geçersizse ana ekrana güvenli düşüş
+    const d = startDescriptorFor(state.onboarding.startKey);
+    if(d) go(d.route, d.param, false); else go("home", null, false);
   }
   else if(act==="ob-restart"){
-    // Settings'ten "Onboarding'i yeniden başlat" — ilerleme korunur
-    state.onboarding = { completed:false, step:1, name:(state.onboarding&&state.onboarding.name)||"", motivation:"", level:"", style:"", startedAt:new Date().toISOString(), completedAt:null };
+    // Profil "Onboarding'i yeniden başlat" — öğrenme ilerlemesi KORUNUR; competency/target temizlenir;
+    // firstMeaningfulActionAt KORUNUR (dönen kullanıcı yeniden dürtülmez); userProfile.name korunur (ellenmez).
+    const prev = isPlainObject(state.onboarding) ? state.onboarding : {};
+    state.onboarding = { status:"in-progress", completed:false, stage:"welcome", competency:null, startKey:null,
+      introShown:false, firstMeaningfulActionAt: prev.firstMeaningfulActionAt||null,
+      startedAt:new Date().toISOString(), completedAt:null, skippedAt:null };
     save(); go("onboarding", null, false);
-  }
-  else if(act==="ob-start"){
-    // Legacy handler — eski tek-ekran onboarding (Faz 4) için tutuluyor, yeni akışta kullanılmaz
-    const nameEl = document.getElementById("ob-name");
-    const name = nameEl ? (nameEl.value||"").trim().slice(0,32) : "";
-    const lvlEl = document.querySelector(".ob-lvl.on");
-    const level = lvlEl ? lvlEl.dataset.lvl : "beginner";
-    const now = new Date().toISOString();
-    state.userProfile = { name:name, level:level, showAdvanced: level==="advanced", createdAt:now, updatedAt:now };
-    completeOnboarding();
-    save(); go("home", null, false);
   }
   else if(act==="pe-save"){
     const nameEl = document.getElementById("pe-name");
@@ -5959,7 +5966,7 @@ function handleQuizAnswer(i){
 }
 
 /* ============================ INIT ============================ */
-window.JYA = { GAMES, get state(){ return state; }, startGame, go, render, buildRounds, n5Kanji, masteryScore, srsRecord, validateStroke, mochiStart, mochiRestart, mochiNextChar, kanaGroupInfo, kanaNextInGroup, kanaPrevInGroup, kanaNextGroupFirstChar, kanaNextOverall, KANA_GROUPS, completeOnboarding, OB_TOTAL_STEPS, OB_MOTIVATIONS, OB_LEVELS, OB_STYLES, get drillExpected(){return drillExpected;}, set drillExpected(v){drillExpected=v;}, get drillValidated(){return drillValidated;}, set drillValidated(v){drillValidated=v;}, get WORD_CATS(){return WORD_CATS;}, get DATA(){return DATA;}, get GAIRAIGO_RULES(){return GAIRAIGO_RULES;}, get KATAKANA_GAIRAIGO(){return KATAKANA_GAIRAIGO;}, get cipherLearned(){return state.cipherLearned||{};}, gameChoiceAnswer, save };
+window.JYA = { GAMES, get state(){ return state; }, startGame, go, render, buildRounds, n5Kanji, masteryScore, srsRecord, validateStroke, mochiStart, mochiRestart, mochiNextChar, kanaGroupInfo, kanaNextInGroup, kanaPrevInGroup, kanaNextGroupFirstChar, kanaNextOverall, KANA_GROUPS, completeOnboarding, skipOnboarding, normalizeOnboarding, startDescriptorFor, startKeyForCompetency, competencyNeedsIntro, hasMeaningfulLearning, markFirstMeaningfulLearningAction, t, OB_BANDS, get drillExpected(){return drillExpected;}, set drillExpected(v){drillExpected=v;}, get drillValidated(){return drillValidated;}, set drillValidated(v){drillValidated=v;}, get WORD_CATS(){return WORD_CATS;}, get DATA(){return DATA;}, get GAIRAIGO_RULES(){return GAIRAIGO_RULES;}, get KATAKANA_GAIRAIGO(){return KATAKANA_GAIRAIGO;}, get cipherLearned(){return state.cipherLearned||{};}, gameChoiceAnswer, save };
 // visible error net — turns a blank screen into a readable message on the phone
 function showFatal(msg){
   try{ document.body.innerHTML='<div style="padding:28px;font-family:-apple-system,sans-serif;color:#272320">'
