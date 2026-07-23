@@ -2334,7 +2334,7 @@ function renderHeader(){
     mochi:["Aşamalı Yazım","Kana yazım rehberi"]};
   if(state.screen==="game"&&state._game){ ttl=GAMES[state._game.id].title; sub=GAMES[state._game.id].sub; }
   else if(T[state.screen]){ttl=T[state.screen][0];sub=T[state.screen][1];}
-  const menu = `<button class="tb-menu" data-tab="profile" aria-label="Ayarlar ve profil"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" fill="none" stroke="var(--brown)" stroke-width="2.1" stroke-linecap="round"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>`;
+  const menu = `<button class="tb-menu" data-tab="profile" aria-label="Ayarlar ve profil"><svg viewBox="0 0 44 44" width="40" height="40" aria-hidden="true"><g transform="rotate(-9 22 22)"><rect x="7.5" y="7.5" width="29" height="29" rx="9.5" fill="#B5502F"/><circle cx="14.5" cy="22" r="2.7" fill="#33251E"/><circle cx="22" cy="22" r="2.7" fill="#33251E"/><circle cx="29.5" cy="22" r="2.7" fill="#33251E"/></g></svg></button>`;
   const backBtn = noBack ? "" : `<div class="tb-backrow"><button class="tb-back" data-act="back" aria-label="Geri"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button></div>`;
   hdr.innerHTML = `<div class="tb-row"><button class="tb-logo" data-go="home" aria-label="Ana sayfa">${appLogo(44)}</button><div class="tb-spacer"></div>${menu}</div>${backBtn}`;
 }
