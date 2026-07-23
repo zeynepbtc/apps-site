@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Japanese Kanji Atlas · Zeynep Kaya Apps</title>
+<meta name="description" content="Japanese Kanji Atlas — kanji'yi ezber değil; parçalar, kökler ve anlam aileleriyle keşfettiren sakin bir atlas. Türkçe ve İngilizce ile başlıyor; Almanca, Fransızca ve daha fazlası yolda." />
+<link rel="canonical" href="https://zeynepkaya.app/atlas/" />
+<link rel="icon" type="image/svg+xml" href="/zk-logo.svg" />
+<link rel="apple-touch-icon" href="/zk-logo-180.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zeynep Kaya Apps" />
+<meta property="og:title" content="Japanese Kanji Atlas" />
+<meta property="og:description" content="Kanji'yi ezberleme — keşfet. Parçalar, kökler ve anlam aileleriyle Japon yazısını anlamlandıran sakin bir atlas. Coming soon." />
+<meta property="og:url" content="https://zeynepkaya.app/atlas/" />
+<meta property="og:image" content="https://zeynepkaya.app/zk-logo-512.png" />
+<meta name="twitter:card" content="summary" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Shippori+Mincho:wght@500;600;700;800&family=Klee+One:wght@400;600&display=swap');
+
+  :root{
+    --bg:#eee8dc;
+    --paper:#fff9ee;
+    --paper2:#f7efe1;
+    --paper3:#eadfce;
+    --ink:#2b251f;
+    --muted:#746a5e;
+    --faint:#9b9184;
+    --line:#d8cbbb;
+    --orange:#d3813a;
+    --orange2:#bf6f2b;
+    --teal:#4f9a8f;
+    --deep:#275f59;
+    --brick:#b5502f;
+    --gold:#c99a3f;
+    /* logo family */
+    --logo-teal:#468A80;
+    --logo-cream:#F1E6CE;
+    --logo-amber:#D3813A;
+    --shadow:0 18px 45px rgba(82,61,38,.16);
+    --lift:0 1px 0 rgba(255,255,255,.6), 0 14px 34px -18px rgba(58,47,40,.34);
+    --serif:'Shippori Mincho', Georgia, serif;
+    --jp:'Klee One','Shippori Mincho', serif;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    min-height:100vh;
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    color:var(--ink);
+    line-height:1.6;
+    background:
+      radial-gradient(820px 480px at 8% 2%, rgba(79,154,143,.20), transparent 60%),
+      radial-gradient(760px 430px at 94% 6%, rgba(211,129,58,.16), transparent 62%),
+      radial-gradient(720px 520px at 78% 98%, rgba(39,95,89,.12), transparent 60%),
+      var(--bg);
+    overflow-x:hidden;
+  }
+  body:before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:radial-gradient(rgba(120,100,72,.05) 1px, transparent 1px);
+    background-size:22px 22px;mix-blend-mode:multiply;opacity:.5;
+  }
+
+  [data-lang="en"] .tr{display:none!important}
+  [data-lang="tr"] .en{display:none!important}
+
+  .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* ---------- top bar ---------- */
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0 8px}
+  .brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+  .brand img{width:34px;height:34px;display:block}
+  .brand b{font-size:15px;font-weight:800;letter-spacing:-.2px;display:block;line-height:1.15}
+  .brand span{font-size:12px;color:var(--muted);display:block}
+  .lang{display:inline-flex;background:rgba(255,249,238,.8);border:1px solid var(--line);border-radius:999px;padding:3px;box-shadow:0 2px 8px -4px rgba(58,47,40,.3)}
+  .lang button{border:0;background:transparent;font:inherit;font-weight:800;font-size:12.5px;color:var(--muted);padding:6px 12px;border-radius:999px;cursor:pointer;letter-spacing:.3px}
+  .lang button.on{background:var(--deep);color:#fdf7ec}
+
+  /* ---------- hero ---------- */
+  .hero{padding:34px 0 20px;text-align:center;display:flex;flex-direction:column;align-items:center}
+  .seal{width:104px;height:104px;border-radius:24px;overflow:hidden;box-shadow:0 20px 40px -18px rgba(58,47,40,.55), 0 1px 0 rgba(255,255,255,.5);animation:sealIn .8s cubic-bezier(.2,.7,.3,1.15) both}
+  @keyframes sealIn{from{opacity:0;transform:translateY(10px) scale(.9)}to{opacity:1;transform:none}}
+  .eyebrow{margin-top:22px;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--deep);background:rgba(79,154,143,.15);border:1px solid rgba(79,154,143,.3);border-radius:999px;padding:7px 14px}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 rgba(79,154,143,.6);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(79,154,143,.5)}70%{box-shadow:0 0 0 8px rgba(79,154,143,0)}100%{box-shadow:0 0 0 0 rgba(79,154,143,0)}}
+  h1.name{margin:16px 0 0;font-family:var(--serif);font-weight:700;font-size:clamp(30px,6vw,50px);letter-spacing:-.5px;line-height:1.02}
+  .tagline{margin-top:10px;font-family:var(--serif);font-weight:600;font-size:clamp(19px,3.4vw,27px);color:var(--brick);letter-spacing:-.2px}
+  .lead{margin:16px auto 0;max-width:620px;font-size:clamp(15px,2.1vw,17.5px);color:var(--muted);line-height:1.66}
+  .cta-row{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+  .btn{display:inline-flex;align-items:center;gap:9px;font:inherit;font-weight:800;font-size:15px;text-decoration:none;border-radius:14px;padding:13px 20px;cursor:pointer;transition:transform .12s ease, box-shadow .2s ease;border:1px solid transparent}
+  .btn:active{transform:scale(.975)}
+  .btn.primary{background:var(--deep);color:#fdf7ec;box-shadow:0 12px 24px -12px rgba(39,95,89,.7)}
+  .btn.primary:hover{box-shadow:0 16px 30px -12px rgba(39,95,89,.8)}
+  .btn.ghost{background:rgba(255,249,238,.7);color:var(--ink);border-color:var(--line)}
+
+  /* ---------- language chips ---------- */
+  .langs{margin-top:30px;display:flex;flex-wrap:wrap;gap:9px;justify-content:center;max-width:640px}
+  .chip{font-size:13px;font-weight:700;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,249,238,.6);color:var(--muted)}
+  .chip.live{background:var(--deep);color:#fdf7ec;border-color:transparent}
+  .chip.soon{border-style:dashed;color:var(--deep)}
+  .langs-note{margin-top:12px;font-size:12.5px;color:var(--faint)}
+
+  /* ---------- sections ---------- */
+  section.block{padding:46px 0}
+  .klabel{font-size:12.5px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+  h2.head{font-family:var(--serif);font-weight:700;font-size:clamp(24px,4vw,36px);letter-spacing:-.5px;line-height:1.1}
+  .sub{margin-top:12px;max-width:640px;color:var(--muted);font-size:16px;line-height:1.66}
+
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:26px;box-shadow:var(--lift)}
+
+  /* family strip */
+  .idea-card{padding:30px 26px;margin-top:26px;display:flex;flex-direction:column;align-items:center;text-align:center;background:
+      radial-gradient(500px 200px at 50% 0%, rgba(79,154,143,.12), transparent 70%), var(--paper)}
+  .family{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;margin:6px 0 4px}
+  .glyph{font-family:var(--jp);display:flex;flex-direction:column;align-items:center;gap:7px}
+  .glyph .k{width:74px;height:74px;display:grid;place-items:center;font-size:38px;border-radius:18px;background:#fff;border:1px solid var(--line);box-shadow:0 8px 18px -12px rgba(58,47,40,.4);color:var(--ink)}
+  .glyph.root .k{background:var(--logo-teal);color:#fbf6ec;border-color:transparent;box-shadow:0 12px 22px -10px rgba(70,138,128,.7)}
+  .glyph small{font-size:11.5px;color:var(--muted);font-family:Inter,sans-serif;font-weight:600}
+  .glyph .r{font-size:12px;color:var(--faint);font-family:Inter,sans-serif}
+  .link{font-family:Inter,sans-serif;font-size:26px;color:var(--teal);font-weight:300}
+  .idea-caption{margin-top:16px;max-width:540px;color:var(--muted);font-size:15px}
+
+  /* three layers */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+  .layer{padding:26px 22px}
+  .layer .ic{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;margin-bottom:16px}
+  .layer svg{width:23px;height:23px;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .layer.l1 .ic{background:rgba(211,129,58,.14)} .layer.l1 svg{stroke:var(--orange2)}
+  .layer.l2 .ic{background:rgba(79,154,143,.16)} .layer.l2 svg{stroke:var(--deep)}
+  .layer.l3 .ic{background:rgba(201,154,63,.18)} .layer.l3 svg{stroke:var(--gold)}
+  .layer h3{font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:4px}
+  .layer .jp-tag{font-family:var(--jp);font-size:13px;color:var(--faint);margin-bottom:8px}
+  .layer p{font-size:14.5px;color:var(--muted);line-height:1.6}
+
+  /* features */
+  .grid-feat{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+  .feat{padding:22px 20px;display:flex;gap:14px;align-items:flex-start}
+  .feat svg{width:24px;height:24px;fill:none;stroke:var(--teal);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto;margin-top:2px}
+  .feat b{font-size:15.5px;font-weight:800;display:block;margin-bottom:3px}
+  .feat span.d{font-size:13.5px;color:var(--muted);line-height:1.55}
+
+  /* multilingual band */
+  .band{margin-top:26px;padding:34px 28px;border-radius:26px;color:#f3ede2;position:relative;overflow:hidden;
+    background:linear-gradient(135deg,#2e6a63,#275f59 55%,#1f4f4a)}
+  .band:before{content:"";position:absolute;inset:0;background:radial-gradient(420px 200px at 88% -10%, rgba(211,129,58,.4), transparent 60%);opacity:.5}
+  .band h3{position:relative;font-family:var(--serif);font-size:clamp(20px,3.2vw,27px);font-weight:700;letter-spacing:-.3px}
+  .band p{position:relative;margin-top:12px;max-width:600px;color:#dcece7;font-size:15.5px;line-height:1.62}
+  .band .llist{position:relative;margin-top:20px;display:flex;flex-wrap:wrap;gap:9px}
+  .band .lc{font-size:13px;font-weight:700;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22)}
+  .band .lc.on{background:var(--gold);color:#3a2f10;border-color:transparent}
+
+  /* family / closing */
+  .close{margin-top:26px;padding:30px 26px;display:flex;gap:20px;align-items:center;flex-wrap:wrap;justify-content:space-between;
+    background:radial-gradient(400px 160px at 12% 0%, rgba(211,129,58,.12), transparent 70%), var(--paper)}
+  .close .txt{max-width:520px}
+  .close h3{font-family:var(--serif);font-size:22px;font-weight:700;margin-bottom:6px}
+  .close p{color:var(--muted);font-size:14.5px}
+
+  footer{position:relative;z-index:1;border-top:1px solid var(--line);margin-top:30px;padding:26px 0 40px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+  footer a{color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:600}
+  footer a:hover{color:var(--ink)}
+  footer .fbrand{font-size:13.5px;color:var(--faint)}
+
+  /* reveal — only hidden when JS is active (progressive enhancement) */
+  .js .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1)}
+  .js .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}.seal{animation:none}.eyebrow .dot{animation:none}}
+
+  @media (max-width:860px){
+    .grid3{grid-template-columns:1fr}
+    .grid-feat{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:600px){
+    .brand span{display:none}
+    .grid-feat{grid-template-columns:1fr}
+    .glyph .k{width:60px;height:60px;font-size:30px}
+    .link{font-size:20px}
+    section.block{padding:38px 0}
+  }
+</style>
+</head>
+<script>document.documentElement.classList.add('js')</script>
+<body data-lang="tr">
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="/">
+        <img src="/zk-logo.svg" alt="Zeynep Kaya Apps" />
+        <span>
+          <b>Zeynep Kaya Apps</b>
+          <span class="tr">← ana sayfa</span>
+          <span class="en">← home</span>
+        </span>
+      </a>
+      <div class="lang" aria-label="Language / Dil">
+        <button id="trBtn" class="on" type="button" onclick="setLang('tr')">TR</button>
+        <button id="enBtn" type="button" onclick="setLang('en')">EN</button>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <span class="seal" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="104" height="104" style="display:block">
+          <rect width="100" height="100" fill="#468A80"/>
+          <rect x="45.5" y="6" width="9" height="24" fill="#F1E6CE"/><rect x="45.5" y="70" width="9" height="24" fill="#F1E6CE"/>
+          <circle cx="50" cy="50" r="33" fill="#F1E6CE"/><circle cx="50" cy="50" r="26" fill="#D3813A"/>
+          <text x="50" y="51" text-anchor="middle" dominant-baseline="central" font-size="30" fill="#F6F0E6" style="font-family:'Shippori Mincho',serif;font-weight:800">木</text>
+        </svg>
+      </span>
+
+      <span class="eyebrow"><span class="dot"></span>
+        <span class="tr">Yayına hazırlanıyor</span><span class="en">Getting ready for release</span>
+      </span>
+
+      <h1 class="name">Japanese Kanji Atlas</h1>
+      <p class="tagline">
+        <span class="tr">Kanji’yi ezberleme. Keşfet.</span>
+        <span class="en">Don’t memorize kanji. Explore it.</span>
+      </p>
+      <p class="lead">
+        <span class="tr">Japon yazısını — kana’dan kanji ailelerine, parçalara ve anlam bağlarına — sakin, editoryal bir atlasta anlamlandır. Hiçbir karakter yalnız değil; her biri bir ailenin parçası.</span>
+        <span class="en">Make sense of Japanese writing — from kana to kanji families, components and meaning links — in a calm, editorial atlas. No character stands alone; each one belongs to a family.</span>
+      </p>
+
+      <div class="cta-row">
+        <a class="btn primary" href="/apps/japanese-flick/">
+          <span class="tr">Bu arada Japanese Flick’i dene</span><span class="en">Meanwhile, try Japanese Flick</span>
+        </a>
+        <a class="btn ghost" href="/#updates">
+          <span class="tr">Yol haritası</span><span class="en">Roadmap</span>
+        </a>
+      </div>
+
+      <div class="langs" aria-label="Languages">
+        <span class="chip live">Türkçe</span>
+        <span class="chip live">English</span>
+        <span class="chip soon">Deutsch</span>
+        <span class="chip soon">Français</span>
+        <span class="chip soon">Português</span>
+        <span class="chip soon">Tiếng Việt</span>
+        <span class="chip soon">+ <span class="tr">daha fazlası</span><span class="en">more</span></span>
+      </div>
+      <p class="langs-note">
+        <span class="tr">Türkçe ve İngilizce hazır temel; diğer diller yolda.</span>
+        <span class="en">Turkish and English are the ready foundation; other languages are on the way.</span>
+      </p>
+    </section>
+
+    <!-- IDEA -->
+    <section class="block reveal">
+      <div class="klabel"><span class="tr">Fikir</span><span class="en">The idea</span></div>
+      <h2 class="head">
+        <span class="tr">Bir karakter, bir aile.</span>
+        <span class="en">One character, one family.</span>
+      </h2>
+      <p class="sub">
+        <span class="tr">Kanji tek tek ezberlenecek bir liste değil. Paylaşılan bir kök, karakterleri birbirine bağlar. Bir kökü tanıdığında, bütün bir aile aydınlanır.</span>
+        <span class="en">Kanji isn’t a flat list to memorize. A shared root ties characters together. Learn one root, and a whole family lights up.</span>
+      </p>
+
+      <div class="card idea-card">
+        <div class="family">
+          <span class="glyph root"><span class="k">木</span><small class="tr">ağaç · kök</small><small class="en">tree · root</small><span class="r">ki / moku</span></span>
+          <span class="link">→</span>
+          <span class="glyph"><span class="k">本</span><small class="tr">köken</small><small class="en">origin</small><span class="r">hon</span></span>
+          <span class="glyph"><span class="k">休</span><small class="tr">dinlenme</small><small class="en">rest</small><span class="r">yasu</span></span>
+          <span class="glyph"><span class="k">林</span><small class="tr">koru</small><small class="en">grove</small><span class="r">hayashi</span></span>
+          <span class="glyph"><span class="k">森</span><small class="tr">orman</small><small class="en">forest</small><span class="r">mori</span></span>
+        </div>
+        <p class="idea-caption">
+          <span class="tr">木 (ağaç) bir kök. Ondan doğan aile: 本 köken, 休 (insan + ağaç) dinlenme, 林 iki ağaç bir koru, 森 üç ağaç bir orman. Atlas bu bağları görünür kılar.</span>
+          <span class="en">木 (tree) is a root. Its family grows out of it: 本 origin, 休 (person + tree) rest, 林 two trees make a grove, 森 three make a forest. The Atlas makes these links visible.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- THREE LAYERS -->
+    <section class="block reveal">
+      <div class="klabel"><span class="tr">Üç katman</span><span class="en">Three layers</span></div>
+      <h2 class="head">
+        <span class="tr">Ezber değil, anlam.</span>
+        <span class="en">Meaning, not memorization.</span>
+      </h2>
+      <p class="sub">
+        <span class="tr">Her kanji üç ayrı katmanla açılır — ve bu katmanlar birbirine karıştırılmaz. Böylece ne öğrendiğini bilirsin.</span>
+        <span class="en">Every kanji opens in three distinct layers — and they’re never blurred together. So you always know what you’re learning.</span>
+      </p>
+
+      <div class="grid3">
+        <div class="card layer l1">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3c-2.5 3-4 5.5-4 8a4 4 0 0 0 8 0c0-2.5-1.5-5-4-8z"/><path d="M9 21h6"/></svg></div>
+          <h3><span class="tr">Kökeni</span><span class="en">Origin</span></h3>
+          <div class="jp-tag">象形 · pictogram</div>
+          <p>
+            <span class="tr">Karakterin piktogram kaynağı: neyin resminden doğdu. Şeklin nereden geldiğini görürsün.</span>
+            <span class="en">The pictographic source: what picture it grew from. You see where the shape comes from.</span>
+          </p>
+        </div>
+        <div class="card layer l2">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.4"/><rect x="13" y="13" width="7" height="7" rx="1.4"/><path d="M11 7.5h4a2 2 0 0 1 2 2V13"/></svg></div>
+          <h3><span class="tr">Neden böyle?</span><span class="en">Why this shape?</span></h3>
+          <div class="jp-tag">構造 · structure</div>
+          <p>
+            <span class="tr">Parçaların yapısal mantığı: neden bu bileşenler, neden bu düzen. Karakter anlam kazanır.</span>
+            <span class="en">The structural logic: why these components, why this arrangement. The character starts to make sense.</span>
+          </p>
+        </div>
+        <div class="card layer l3">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-3.5 10.9c.5.4.8 1 .8 1.6v.5h5.4v-.5c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3z"/><path d="M9.5 20h5M10 22h4"/></svg></div>
+          <h3><span class="tr">Hafıza</span><span class="en">Memory</span></h3>
+          <div class="jp-tag">記憶 · mnemonic</div>
+          <p>
+            <span class="tr">Hatırlamana yardımcı dürüst bir köprü. Tarihsel gerçek gibi sunulmaz — açıkça bir öğrenme desteğidir.</span>
+            <span class="en">An honest hook to help you remember. Never dressed up as history — plainly a learning aid.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="block reveal">
+      <div class="klabel"><span class="tr">İçinde ne var</span><span class="en">What’s inside</span></div>
+      <h2 class="head">
+        <span class="tr">Az ama derin.</span>
+        <span class="en">Small, but deep.</span>
+      </h2>
+      <div class="grid-feat">
+        <div class="card feat">
+          <svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M7.6 7.2 10.6 15M16.6 8.6 13.4 15.5M8 6.4h8"/></svg>
+          <div><b><span class="tr">Atlas grafiği</span><span class="en">The atlas</span></b><span class="d"><span class="tr">Kanjiler arasındaki bileşen ve anlam bağlarını gezersin.</span><span class="en">Wander the component and meaning links between kanji.</span></span></div>
+        </div>
+        <div class="card feat">
+          <svg viewBox="0 0 24 24"><path d="M4 12h4l2-5 3 10 2-5h5"/></svg>
+          <div><b><span class="tr">Aile şeritleri</span><span class="en">Family strips</span></b><span class="d"><span class="tr">Paylaşılan köke göre bir karakterin ailesi yan yana.</span><span class="en">A character’s family lined up by its shared root.</span></span></div>
+        </div>
+        <div class="card feat">
+          <svg viewBox="0 0 24 24"><path d="M5 4h6v16H5zM13 4h6v16h-6z"/><path d="M7 8h2M15 8h2"/></svg>
+          <div><b><span class="tr">Kana + Kanji</span><span class="en">Kana + Kanji</span></b><span class="d"><span class="tr">Hiragana, katakana ve N5 kanji — tek atlasta.</span><span class="en">Hiragana, katakana and N5 kanji — in one atlas.</span></span></div>
+        </div>
+        <div class="card feat">
+          <svg viewBox="0 0 24 24"><path d="M12 3v18M5 8l7-5 7 5"/><path d="M5 8v8l7 5 7-5V8"/></svg>
+          <div><b><span class="tr">N5 odağı</span><span class="en">N5 focus</span></b><span class="d"><span class="tr">Boğmadan, önce en gerekli anlam ve okuma.</span><span class="en">No overwhelm — the most useful meaning and reading first.</span></span></div>
+        </div>
+        <div class="card feat">
+          <svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 8.5a4 4 0 0 1 0 7"/></svg>
+          <div><b><span class="tr">Ses</span><span class="en">Audio</span></b><span class="d"><span class="tr">Okunuşu dinle; kulağınla da tanı.</span><span class="en">Hear the reading; recognize it by ear too.</span></span></div>
+        </div>
+        <div class="card feat">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+          <div><b><span class="tr">Sakin tasarım</span><span class="en">Calm design</span></b><span class="d"><span class="tr">Boşluk, sessiz tipografi, tek aksan. Yormaz.</span><span class="en">Whitespace, quiet type, a single accent. It won’t tire you.</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MULTILINGUAL -->
+    <section class="block reveal">
+      <div class="klabel"><span class="tr">Çok dilli</span><span class="en">Multilingual</span></div>
+      <div class="band">
+        <h3>
+          <span class="tr">Türkçe’den başlıyor, dünyaya açılıyor.</span>
+          <span class="en">Starts in Turkish, opens to the world.</span>
+        </h3>
+        <p>
+          <span class="tr">İçerik en baştan iki dilli tasarlandı: anlamlar Türkçe ve İngilizce hazır. Sırada Almanca, Fransızca, Portekizce ve Vietnamca var — ve daha fazlası. Amaç, Japoncayı kendi dilinde öğrenebilmen.</span>
+          <span class="en">The content was bilingual from day one: meanings are ready in Turkish and English. German, French, Portuguese and Vietnamese are next — with more to follow. The goal: learn Japanese in your own language.</span>
+        </p>
+        <div class="llist">
+          <span class="lc on">Türkçe</span>
+          <span class="lc on">English</span>
+          <span class="lc">Deutsch</span>
+          <span class="lc">Français</span>
+          <span class="lc">Português</span>
+          <span class="lc">Tiếng Việt</span>
+          <span class="lc">Español</span>
+          <span class="lc">Italiano</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING / FAMILY -->
+    <section class="block reveal" style="padding-bottom:14px">
+      <div class="card close">
+        <div class="txt">
+          <h3><span class="tr">Zeynep Kaya Apps ailesinden</span><span class="en">From the Zeynep Kaya Apps family</span></h3>
+          <p>
+            <span class="tr">Küçük, bağımsız, özenle yapılmış öğrenme araçları. Kanji Atlas yakında; Japanese Flick ise şimdi App Store’da.</span>
+            <span class="en">Small, independent, carefully made learning tools. Kanji Atlas is coming soon; Japanese Flick is on the App Store now.</span>
+          </p>
+        </div>
+        <a class="btn primary" href="/apps/japanese-flick/">
+          <span class="tr">Japanese Flick’i keşfet</span><span class="en">Explore Japanese Flick</span>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <span class="fbrand">© <span id="year">2026</span> Zeynep Kaya Apps</span>
+      <span style="display:flex;gap:18px;flex-wrap:wrap">
+        <a href="/"><span class="tr">Ana sayfa</span><span class="en">Home</span></a>
+        <a href="/apps/japanese-flick/">Japanese Flick</a>
+        <a href="/#updates"><span class="tr">Güncellemeler</span><span class="en">Updates</span></a>
+        <a href="/hakkimda/"><span class="tr">Hakkımda</span><span class="en">About</span></a>
+      </span>
+    </div>
+  </footer>
+
+<script>
+  function setLang(lang){
+    document.body.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang);
+    try{ localStorage.setItem('zk_lang', lang); }catch(e){}
+    document.getElementById('trBtn').classList.toggle('on', lang === 'tr');
+    document.getElementById('enBtn').classList.toggle('on', lang === 'en');
+  }
+  try{
+    var saved = localStorage.getItem('zk_lang');
+    if(saved === 'en' || saved === 'tr') setLang(saved);
+  }catch(e){}
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // gentle scroll reveal
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>
