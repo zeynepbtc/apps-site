@@ -491,6 +491,17 @@ body.gridB .pwcard::before{content:"";position:absolute;inset:0;border:1px solid
 
 .gopts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
 .gopts.col{grid-template-columns:1fr}
+/* Kana SRS tekrar (K1) */
+.krev-banner{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;margin:-2px 2px 14px;padding:13px 15px;border-radius:16px;background:linear-gradient(135deg,var(--teal-tint),#FFFDF9);border:1px solid var(--teal-soft);box-shadow:0 4px 12px rgba(60,42,26,.08);cursor:pointer;text-align:left}
+.krev-banner:active{transform:scale(.99)}
+.krev-banner .krb-l{display:flex;align-items:center;gap:9px}
+.krev-banner .krb-n{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--teal-deep);line-height:1}
+.krev-banner .krb-l span:last-child{font-size:13px;color:var(--muted);font-weight:600}
+.krev-banner .krb-cta{font-size:12.5px;font-weight:700;color:var(--teal-deep);white-space:nowrap}
+.krev-prog{height:6px;border-radius:6px;background:var(--card2);overflow:hidden;margin:2px 2px 14px}
+.krev-prog span{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--teal-deep));transition:width .3s ease}
+.krev-romaji{font-size:30px;font-weight:700;color:var(--ink);letter-spacing:.5px}
+.krev-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .gopt{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:16px 12px;
   font-weight:700;font-size:16px;transition:.12s;text-align:center;min-height:56px;display:flex;align-items:center;justify-content:center;gap:8px}
 .gopt .og{font-family:var(--serif);font-size:30px}
@@ -2314,8 +2325,8 @@ function renderHeader(){
 
 /* ============================ SCREENS ============================ */
 /* P0-1 Dilim 2: nav görünürlük + selector state hazırlığı (görsel Dilim 3'te). */
-const NAV_HIDDEN = ["onboarding","game","drill","profile","profile-edit","reset-confirm","import-confirm"];
-const NAV_TAB_GROUP={kana:["kana","kanadetail","mochi"],kanji5:["kanji5","kanjicat","detail","map","transform","words","worddetail","atlasnode","quiz","drill"],games:["games","game"]};
+const NAV_HIDDEN = ["onboarding","game","drill","profile","profile-edit","reset-confirm","import-confirm","kanareview"];
+const NAV_TAB_GROUP={kana:["kana","kanareview","kanadetail","mochi"],kanji5:["kanji5","kanjicat","detail","map","transform","words","worddetail","atlasnode","quiz","drill"],games:["games","game"]};
 function navTabOf(screen){ for(const k in NAV_TAB_GROUP){ if(NAV_TAB_GROUP[k].includes(screen)) return k; } return null; }
 function navSelectorState(screen){
   const roots={kana:1,kanji5:1,games:1,progress:1};
@@ -2331,7 +2342,7 @@ function render(){
   state._navSel = navSelectorState(state.screen);  /* Dilim 3 floating selector için hazır */
   if(!onb){ renderHeader(); renderTabs(); }
   const R={home:Home,learn:Learn,map:MapView,practice:Practice,review:Review,profile:Profile,
-    kana:Kana,path:Path,detail:Detail,transform:Transform,quiz:Quiz,drill:Drill,
+    kana:Kana,kanareview:KanaReview,path:Path,detail:Detail,transform:Transform,quiz:Quiz,drill:Drill,
     games:GamesHub,game:GameScreen,kanadetail:KanaDetail,
     kanji5:KanjiN5,kanjicat:KanjiCat,words:Words,worddetail:WordDetail,progress:Progress,atlasnode:AtlasNode,
     onboarding:Onboarding, "profile-edit":ProfileEdit, "reset-confirm":ResetConfirm, "import-confirm":ImportConfirm,
@@ -3160,6 +3171,7 @@ function Kana(){
     <button class="${set==='katakana'?'on':''}" data-kanaset="katakana">カタカナ Katakana</button>
   </div>
   <div class="lead" style="margin:-4px 2px 12px">Sıralı rota: sesliler → K → S → T → N → H → M → Y → R → W → N. ${doneInSet}/${totalChars} ${setLabel} işaretlendi.</div>
+  ${(()=>{ const kd=kanaDueCount(); return kd>0?`<button class="krev-banner" data-act="kanarev-start"><span class="krb-l"><span class="krb-n">${kd}</span><span>kana tekrar bekliyor</span></span><span class="krb-cta">Tekrara başla ›</span></button>`:''; })()}
   ${groupsHtml}
 
   <div class="section-t" style="margin-top:18px"><h3>Dakuten ve Handakuten</h3></div>
@@ -3982,6 +3994,48 @@ const KANA_BY_CHAR={};
 ["hiragana","katakana"].forEach(s=>DATA[s].forEach(r=>r.forEach(c=>{ if(c){c._set=s; KANA_BY_CHAR[c.character]=c;} })));
 function kanaList(set){ return DATA[set].flatMap(r=>r.filter(Boolean)); }
 function allKana(){ return [...kanaList("hiragana"),...kanaList("katakana")]; }
+
+/* ---------- KANA SRS TEKRAR (K1) — üretim-hafif: ses/romaji → doğru kanayı seç ---------- */
+function buildKanaRevRound(){
+  const s=state._kanarev; if(!s) return;
+  const char=s.queue[s.i]; const k=KANA_BY_CHAR[char];
+  const set=(k&&k._set)||"hiragana";
+  const pool=kanaList(set).map(x=>x.character).filter(c=>c&&c!==char);
+  const opts=shuffle([char, ...shuffle(pool).slice(0,3)]);
+  s.opts=opts; s.answer=opts.indexOf(char); s.answered=false; s.picked=-1;
+  s.char=char; s.romaji=(k&&k.romaji)||"";
+}
+function KanaReview(){
+  const s=state._kanarev;
+  if(!s){ return `<div class="stagger"><div class="card flat center" style="padding:26px"><div class="lead">Tekrar oturumu bulunamadı.</div><button class="btn ghost full" style="margin-top:12px" data-go="kana">Kana'ya dön</button></div></div>`; }
+  if(s.i>=s.queue.length){
+    const pctv=s.total?Math.round(s.correct/s.total*100):0;
+    return `<div class="stagger"><div class="card center" style="padding:28px 18px;background:linear-gradient(135deg,#fff,#FBF4EC)">
+      <div class="jp" style="font-size:40px;color:var(--teal-deep)">✓</div>
+      <div class="h2" style="margin-top:8px">Tekrar bitti</div>
+      <div class="lead" style="margin-top:6px"><b>${s.correct}/${s.total}</b> doğru · %${pctv}</div>
+      <div class="lead" style="margin-top:4px">Doğrular daha uzun aralıkla, yanlışlar daha sık dönecek.</div>
+      <button class="btn full" style="margin-top:18px" data-act="kanarev-exit">Bitir</button>
+    </div></div>`;
+  }
+  const opts=s.opts.map((c,i)=>{
+    let cls="gopt";
+    if(s.answered){ if(i===s.answer)cls+=" correct"; else if(i===s.picked)cls+=" wrong"; else cls+=" dim"; }
+    return `<button class="${cls}" ${s.answered?'':`data-act="kanarev-pick" data-idx="${i}"`}><span class="og jp">${c}</span></button>`;
+  }).join("");
+  return `<div class="stagger">
+    <div class="krev-prog"><span style="width:${Math.round(s.i/s.total*100)}%"></span></div>
+    <div class="card flat center" style="padding:22px 16px">
+      <div class="lead" style="margin-bottom:8px">Bu ses hangi kana?</div>
+      <div class="row" style="justify-content:center;align-items:center;gap:12px">
+        <span class="krev-romaji">${s.romaji}</span>
+        <button class="audio-btn" data-speak="${esc(s.char)}" aria-label="Sesli oku">${AUDIO_ICON}</button>
+      </div>
+    </div>
+    <div class="krev-opts">${opts}</div>
+    ${s.answered?`<button class="btn full" style="margin-top:14px" data-act="kanarev-next">${s.i+1>=s.total?"Sonucu gör":"Devam ›"}</button>`:'<div class="lead center" style="margin-top:12px;font-size:12px">Sesi dinlemek için hoparlöre dokun</div>'}
+  </div>`;
+}
 function kanjiList(){ return Object.values(DATA.chars).filter(c=>c.type==="kanji"); }
 function radicalList(){ return Object.values(DATA.chars).filter(c=>c.type==="radical"); }
 
@@ -5827,6 +5881,30 @@ document.addEventListener("click",e=>{
   else if(act==="drill-again") playGuide();
   else if(act==="drill-reset"){ const pad=$("#pad"); if(pad&&pad._clear) pad._clear(); }
   else if(act==="quiz-retry"){ const f = state.param || (state._quiz && state._quiz.focusId); state._quiz=buildQuiz(f); render(); }
+  else if(act==="kanarev-start"){
+    const due=currentKanaReviewQueue().filter(c=>KANA_BY_CHAR[c]);
+    if(!due.length){ toast("Şimdilik tekrar bekleyen kana yok"); return; }
+    state._kanarev={ queue:shuffle(due).slice(0,12), i:0, correct:0 };
+    state._kanarev.total=state._kanarev.queue.length;
+    buildKanaRevRound();
+    go("kanareview");
+  }
+  else if(act==="kanarev-pick"){
+    const s=state._kanarev; if(!s||s.answered) return;
+    const idx=parseInt(el.dataset.idx,10);
+    s.picked=idx; s.answered=true;
+    const correct=idx===s.answer;
+    if(correct) s.correct++;
+    srsRecord(s.char, correct);   // kana SRS halkasını kapatır (mastery/next günceller)
+    render();
+  }
+  else if(act==="kanarev-next"){
+    const s=state._kanarev; if(!s) return;
+    s.i++;
+    if(s.i<s.queue.length) buildKanaRevRound();
+    render();
+  }
+  else if(act==="kanarev-exit"){ state._kanarev=null; go("kana",null,false); }
   else if(act==="review-start"){
     const due=currentKanjiReviewQueue(); if(!due.length) return;   // tıklama anında kanonik snapshot
     state.param=due[0]; go("quiz",due[0]);
