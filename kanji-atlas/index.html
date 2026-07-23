@@ -67,10 +67,14 @@ header{
   display:flex;
 }
 header .tb-logo,header .tb-menu,header .tb-back{pointer-events:auto}
-header .tb-row{display:flex;align-items:center;gap:12px}
+/* Felsefe 2 · kenarsız whisper scrim: renksiz (sayfa bg tonu #DAD5C8) gradyen, hiçliğe kadar solar → görünür kenar/bant YOK. Boş zeminde neredeyse görünmez; sadece koyu içerik objelerin altına kaydığında onları okunur tutar. Tüm sayfalarda global. */
+header::before{content:"";position:absolute;left:0;right:0;top:0;bottom:-22px;z-index:-1;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(218,213,200,.80) 0%,rgba(218,213,200,.48) 50%,rgba(218,213,200,0) 100%)}
+header .tb-row{display:flex;align-items:center;gap:12px;position:relative;z-index:1}
 header .tb-spacer{flex:1}
-header .tb-logo{background:none;border:none;padding:0;cursor:pointer;display:flex;flex:none}
-header .tb-menu{width:40px;height:40px;display:grid;place-items:center;background:none;border:none;cursor:pointer;flex:none;filter:drop-shadow(0 2px 5px rgba(58,42,26,.30))}
+/* elevation birliği: logo+ayarlar, alt kapsülle aynı ışık ailesinde (aynı sıcak-kahve hue, yumuşak, algılanan yükseklik eşleşir) — exact değer kopyası değil */
+header .tb-logo{background:none;border:none;padding:0;cursor:pointer;display:flex;flex:none;filter:drop-shadow(0 4px 12px rgba(58,42,26,.20))}
+header .tb-menu{width:40px;height:40px;display:grid;place-items:center;background:none;border:none;cursor:pointer;flex:none;filter:drop-shadow(0 4px 12px rgba(58,42,26,.20))}
 header .tb-backrow{margin-top:9px}
 header .tb-back{width:34px;height:34px;display:grid;place-items:center;background:rgba(255,255,255,.55);border:1.4px solid var(--brown);cursor:pointer}
 /* legacy header (diğer ekranlar geçişte) */
@@ -128,7 +132,7 @@ main{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;
 /* Apple-tarzı yüzen şeffaf blob nav */
 nav.tab{position:fixed;bottom:0;left:0;right:0;z-index:40;padding:0 0 env(safe-area-inset-bottom);background:none;border:none;pointer-events:none;user-select:none;-webkit-user-select:none}
 .fnav{position:relative;display:flex;margin:6px 20px 10px;background:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:7px 8px;box-shadow:0 6px 20px rgba(58,42,26,.12);overflow:hidden;pointer-events:auto}
-.fnav::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:rgba(250,245,236,.24);-webkit-backdrop-filter:saturate(1.6) blur(18px);backdrop-filter:saturate(1.6) blur(18px)}
+.fnav::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:rgba(250,245,236,.30);-webkit-backdrop-filter:saturate(1.6) blur(20px);backdrop-filter:saturate(1.6) blur(20px)}
 .fnav-blob{position:absolute;top:5px;bottom:5px;left:0;width:0;border-radius:999px;background:rgba(211,129,58,.20);border:1px solid rgba(211,129,58,.40);opacity:0;transition:left .34s cubic-bezier(.34,1.05,.4,1),width .34s cubic-bezier(.34,1.05,.4,1),opacity .22s ease;z-index:0;pointer-events:none}
 .fnav-tab{flex:1;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;cursor:pointer;padding:4px 2px;transition:transform .13s}
 .fnav-tab:active{transform:scale(.9)}
