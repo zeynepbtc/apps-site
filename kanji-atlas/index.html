@@ -337,7 +337,8 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 .home-hello{margin:10px 4px 20px}
 .home-hello .eyebrow{color:var(--brown)}
 .home-hello .hh-name{font-family:var(--serif);font-size:25px;font-weight:600;color:var(--ink);line-height:1.15;margin-top:3px}
-.home-band{background:var(--teal-tint);border-radius:24px;padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:0 2px 18px}
+.home-band{background:var(--teal-soft);border-radius:24px;padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:0 2px 18px}
+.mbox .mb-fill{box-shadow:0 4px 11px rgba(60,42,26,.10)}
 .mbox{position:relative;display:block;width:100%;text-align:left;cursor:pointer;background:none;border:none;padding:0;transition:transform .14s}
 .mbox:active{transform:scale(.985)}
 .mbox .mb-fill{position:relative;z-index:1;display:block;background:#F6EFDE;border-radius:16px;padding:14px 14px 15px;min-height:98px;box-shadow:0 3px 9px rgba(60,42,26,.07)}
@@ -360,9 +361,9 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 .dc-sub{display:block;font-size:11.5px;margin-top:4px;opacity:.9;line-height:1.35}
 .dc-prog{margin-top:12px;height:5px;border-radius:5px;overflow:hidden;background:rgba(255,255,255,.26)}
 .dc-prog>i{display:block;height:100%;border-radius:5px;background:#FCF6EC}
-.wcard{position:relative;display:block;width:100%;text-align:left;cursor:pointer;background:none;border:none;padding:0;margin:0 2px;transition:transform .14s}
-.wcard:active{transform:scale(.99)}
-.wcard .wc-fill{display:flex;align-items:center;gap:15px;position:relative;z-index:1;border-radius:22px;padding:18px 18px;background:#E0AC2E;color:#3A2A16;box-shadow:0 6px 16px rgba(60,42,26,.11)}
+.pwcard{position:relative;display:block;width:100%;text-align:left;cursor:pointer;background:none;border:none;padding:0;margin:0 2px;transition:transform .14s}
+.pwcard:active{transform:scale(.99)}
+.pwcard .wc-fill{display:flex;align-items:center;gap:15px;position:relative;z-index:1;border-radius:22px;padding:18px 18px;background:#D9A23C;color:#3A2A16;box-shadow:0 6px 16px rgba(60,42,26,.11)}
 .wc-glyph{flex:none;font-family:var(--serif);font-size:32px;line-height:1;width:46px;text-align:center}
 .wc-body{flex:1;min-width:0}
 .wc-title{display:block;font-family:var(--serif);font-size:16.5px;font-weight:700;line-height:1.15}
@@ -372,7 +373,7 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 body.gridB .mbox::before{content:"";position:absolute;inset:0;border:1px solid var(--brown);border-radius:16px;transform:translate(-2.5px,-2.5px);z-index:0;pointer-events:none}
 body.gridB .dcard.c-kana::before{content:"";position:absolute;inset:0;border:1px solid var(--brown);border-radius:22px;transform:translate(-3px,-3px);z-index:0;pointer-events:none}
 body.gridB .dcard.c-kanji::before{content:"";position:absolute;inset:0;border:1px solid var(--brown);border-radius:22px;transform:translate(3px,-3px);z-index:0;pointer-events:none}
-body.gridB .wcard::before{content:"";position:absolute;inset:0;border:1px solid var(--brown);border-radius:22px;transform:translate(-3px,3px);z-index:0;pointer-events:none}
+body.gridB .pwcard::before{content:"";position:absolute;inset:0;border:1px solid var(--brown);border-radius:22px;transform:translate(-3px,3px);z-index:0;pointer-events:none}
 /* Flick-tarzı geometrik öğrenme kartları */
 .play-cards{display:flex;flex-direction:column;gap:20px;margin:12px 3px 6px}
 .pcard{display:block;width:100%;text-align:left;cursor:pointer;background:none;border:none;padding:0;position:relative;transition:transform .14s}
@@ -2959,7 +2960,7 @@ function Home(){
     </button>
   </div>
 
-  <button class="wcard c-games" data-go="games">
+  <button class="pwcard c-games" data-go="games">
     <span class="wc-fill">
       <span class="wc-glyph" lang="ja" aria-hidden="true">遊</span>
       <span class="wc-body"><span class="wc-title">Oyunlar</span><span class="wc-sub">Eğlenerek pekiştir</span></span>
