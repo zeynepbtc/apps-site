@@ -339,7 +339,7 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 .home-hello .hh-name{font-family:var(--serif);font-size:25px;font-weight:600;color:var(--ink);line-height:1.15;margin-top:3px}
 /* Flick hizalama — başlık, pill'ler, ince kapı, iz-hiragana, zemin dokusu */
 .home-title-wrap{margin:6px 4px 16px}
-.home-title{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--ink);line-height:1.08;letter-spacing:.2px}
+.home-title{font-family:var(--serif);font-size:27px;font-weight:700;color:var(--ink);line-height:1.12;letter-spacing:.2px}
 .home-sub{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.4}
 .home-pills{display:flex;flex-direction:column;align-items:flex-start;gap:9px;margin:2px 4px 18px}
 .stat-pill{display:inline-flex;align-items:center;gap:9px;cursor:pointer;background:var(--card);border:none;border-radius:13px;padding:6px 14px 6px 7px;box-shadow:0 2px 7px rgba(60,42,26,.07);transition:transform .12s,box-shadow .12s}
@@ -2945,8 +2945,8 @@ function Home(){
   <div class="bg-decor" aria-hidden="true"><span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span></div>
 
   <div class="home-title-wrap">
-    <div class="home-title">Kanji Atlas</div>
-    <div class="home-sub">${uName?`Merhaba ${esc(uName)} · `:""}Japonca yazıyı keşfet</div>
+    <div class="home-title">Japonca Yazı Atlası</div>
+    <div class="home-sub">${uName?`Merhaba ${esc(uName)} · `:""}Kana, kanji ve fazlası</div>
   </div>
 
   ${resume?`<div class="resume-card" data-go="quiz" data-param="${esc(resume.id)}" role="button" style="cursor:pointer">
