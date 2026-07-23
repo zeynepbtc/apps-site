@@ -5138,7 +5138,7 @@ function buildRounds(id, opts){
       const palette=shuffle([...correct, ...sampleN(allComps, Math.max(3,6-correct.length))]);
       rounds.push({multi:true,prompt:k.character,promptMean:k.meaning_tr,label:"Bu kanjiyi oluşturan parçaları seç",
         palette:palette.map(c=>({c, correct:correct.includes(c), mean:(k.component_meanings&&k.component_meanings[c])|| (DATA.chars[Object.keys(DATA.chars).find(id=>DATA.chars[id].character===c)]||{}).meaning_tr ||"parça"})),
-        explain:`${k.character} = ${k.components.join(" + ")}`, speak:k.character});
+        explain:`${k.character} (${k.meaning_tr}) = ${k.components.map(cc=>{const m=(k.component_meanings&&k.component_meanings[cc])||((DATA.chars[Object.keys(DATA.chars).find(id=>DATA.chars[id].character===cc)]||{}).meaning_tr)||"";return m?`${cc} (${m})`:cc;}).join(" + ")}`, speak:k.character});
     }
     else if(id==="word-meaning"){
       const words=DATA.words||[]; const w=words[Math.floor(Math.random()*words.length)];
@@ -5570,6 +5570,7 @@ function gameMultiCheck(){
   });
   G.answered=true; G.results[G.i]=allRight; if(allRight)G.correct++; else G.wrong++;
   if(R.speak){ const cid=charIdOf(R.speak); markLearn(srsRecord(cid||R.speak, allRight), allRight, "game-stroke"); }
+  const cb=document.querySelector('[data-act="game-check"]'); if(cb) cb.style.display="none";   // kontrol sonrası butonu gizle (kafa karışıklığı fix)
   const fb=$("#gfb"); const last=G.i>=G.rounds.length-1;
   fb.innerHTML=`<div class="fbx ${allRight?'ok':'no'}"><div class="ft">${allRight?'Doğru':'Tam değil'}</div>
     <div class="lead" style="margin-top:4px">${R.explain}</div>
@@ -5848,7 +5849,7 @@ document.addEventListener("click",e=>{
   if(el.dataset.speak!==undefined){ playAudio(el.dataset.speak, el.dataset.audioCat, el, "fixed"); return; }
   if(el.dataset.game!==undefined){ openGame(el.dataset.game); return; }
   if(el.dataset.gopt!==undefined){ gameChoiceAnswer(parseInt(el.dataset.gopt)); return; }
-  if(el.dataset.gsel!==undefined){ el.classList.toggle("on"); return; }
+  if(el.dataset.gsel!==undefined){ if(state._game&&state._game.answered) return; el.classList.toggle("on"); return; }
   if(el.dataset.mcard!==undefined){ memoryFlip(parseInt(el.dataset.mcard)); return; }
   if(el.dataset.reveal!==undefined){ const G=state._game; if(G){ G._reveal=true; render(); } return; }
   if(el.dataset.slev!==undefined){
