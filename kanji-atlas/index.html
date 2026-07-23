@@ -69,7 +69,7 @@ header{
 header .tb-row{display:flex;align-items:center;gap:12px}
 header .tb-spacer{flex:1}
 header .tb-logo{background:none;border:none;padding:0;cursor:pointer;display:flex;flex:none}
-header .tb-menu{width:40px;height:40px;display:grid;place-items:center;background:none;border:none;cursor:pointer;flex:none}
+header .tb-menu{width:40px;height:40px;display:grid;place-items:center;background:none;border:none;cursor:pointer;flex:none;filter:drop-shadow(0 2px 5px rgba(58,42,26,.30))}
 header .tb-backrow{margin-top:9px}
 header .tb-back{width:34px;height:34px;display:grid;place-items:center;background:rgba(255,255,255,.55);border:1.4px solid var(--brown);cursor:pointer}
 /* legacy header (diğer ekranlar geçişte) */
@@ -349,7 +349,7 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 .stat-pill .sp-pct{font-size:8.5px;font-weight:700;color:var(--brown)}
 .stat-pill .sp-text{font-size:12.5px;color:var(--ink);font-weight:600}
 .stat-pill .sp-text b{color:var(--accent-deep)}
-.tip-pill{display:inline-flex;align-items:center;gap:7px;cursor:pointer;background:var(--teal-soft);border:none;border-radius:13px;padding:8px 15px;box-shadow:0 2px 7px rgba(60,42,26,.05);transition:transform .12s}
+.tip-pill{display:inline-flex;align-items:center;gap:7px;cursor:pointer;background:rgba(70,138,128,.13);border:1px solid rgba(70,138,128,.42);border-radius:13px;padding:8px 15px;box-shadow:none;transition:transform .12s}
 .tip-pill:active{transform:scale(.97)}
 .tip-pill .tp-ico{flex:none;font-size:13px;color:var(--teal-deep)}
 .tip-pill .tp-text{font-size:12.5px;color:var(--teal-deep);font-weight:700}
@@ -364,9 +364,9 @@ header .tb-menu:active{opacity:.55}
 .gate-row .gr-arrow{flex:none;color:var(--faint);font-size:16px}
 .bg-decor{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .bg-decor .dot{position:absolute;border-radius:50%}
-.bg-decor .d1{width:210px;height:210px;top:-55px;right:-60px;background:radial-gradient(circle,rgba(211,129,58,.36),transparent 66%)}
-.bg-decor .d2{width:175px;height:175px;top:155px;right:-78px;background:radial-gradient(circle,rgba(70,138,128,.28),transparent 66%)}
-.bg-decor .d3{width:165px;height:165px;bottom:150px;left:-66px;background:radial-gradient(circle,rgba(180,99,75,.22),transparent 66%)}
+.bg-decor .d1{width:250px;height:250px;top:-45px;right:-55px;background:radial-gradient(circle,rgba(207,138,68,.26) 42%,transparent 72%)}
+.bg-decor .d2{width:310px;height:310px;top:70px;right:-120px;background:radial-gradient(circle,rgba(120,162,152,.22) 46%,transparent 72%)}
+.bg-decor .d3{width:200px;height:200px;bottom:120px;left:-75px;background:radial-gradient(circle,rgba(180,99,75,.15) 42%,transparent 72%)}
 .stagger>*{position:relative;z-index:1}
 .stagger>.bg-decor{z-index:0}
 .dcard .dc-fill{overflow:hidden}
@@ -398,7 +398,7 @@ header .tb-menu:active{opacity:.55}
 .dc-prog>i{display:block;height:100%;border-radius:5px;background:#FCF6EC}
 .pwcard{position:relative;display:block;width:100%;text-align:left;cursor:pointer;background:none;border:none;padding:0;margin:0 2px;transition:transform .14s}
 .pwcard:active{transform:scale(.99)}
-.pwcard .wc-fill{display:flex;align-items:center;gap:15px;position:relative;z-index:1;border-radius:22px;padding:18px 18px;background:#D9A23C;color:#3A2A16;box-shadow:0 6px 16px rgba(60,42,26,.11)}
+.pwcard .wc-fill{display:flex;align-items:center;gap:15px;position:relative;z-index:1;border-radius:22px;padding:18px 18px;background:#CF8A44;color:#FCF6EC;box-shadow:0 6px 16px rgba(60,42,26,.11)}
 .wc-glyph{flex:none;font-family:var(--serif);font-size:32px;line-height:1;width:46px;text-align:center}
 .wc-body{flex:1;min-width:0}
 .wc-title{display:block;font-family:var(--serif);font-size:16.5px;font-weight:700;line-height:1.15}
