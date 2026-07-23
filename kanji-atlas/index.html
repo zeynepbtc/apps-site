@@ -333,48 +333,46 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 .gate-card .gc-glyphs{flex:none;display:flex;gap:3px;font-family:var(--serif);font-size:18px;line-height:1;color:var(--clay)}
 .gate-card .gc-title{flex:1;min-width:0;font-family:var(--serif);font-size:14.5px;font-weight:700;color:var(--brown)}
 .gate-card .gc-arrow{flex:none;font-size:17px;color:var(--brown);opacity:.5}
-/* ===== YENİ HOME GRID (referans yerleşim uyarlaması) ===== */
-.home-hello{margin:10px 4px 18px}
+/* ===== HOME GRID — yumuşak yuvarlak, muted (editör promtu) ===== */
+.home-hello{margin:10px 4px 20px}
 .home-hello .eyebrow{color:var(--brown)}
-.home-hello .hh-name{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--ink);line-height:1.15;margin-top:2px}
-.home-band{background:var(--teal-tint);border-radius:20px;padding:13px;display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:0 2px 16px}
+.home-hello .hh-name{font-family:var(--serif);font-size:25px;font-weight:600;color:var(--ink);line-height:1.15;margin-top:3px}
+.home-band{background:var(--teal-tint);border-radius:24px;padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:0 2px 18px}
 .mbox{position:relative;display:block;width:100%;text-align:left;cursor:pointer;background:none;border:none;padding:0;transition:transform .14s}
 .mbox:active{transform:scale(.985)}
-.mbox::before{content:"";position:absolute;inset:0;border:1.4px solid var(--brown);z-index:0;pointer-events:none;transform:translate(-2.5px,-2.5px)}
-.mbox .mb-fill{display:block;position:relative;z-index:1;background:#F5EEDD;padding:13px 13px 15px;min-height:94px;clip-path:polygon(0.7% 3%,100% 0,99.3% 97%,0 100%)}
-.mbox .mb-glyphs{display:flex;gap:2px;font-family:var(--serif);font-size:16px;line-height:1;color:var(--clay);margin-bottom:8px}
-.mbox .mb-title{display:block;font-family:var(--serif);font-size:12.5px;font-weight:700;color:var(--brown);line-height:1.28}
-.mbox .mb-arrow{position:absolute;right:11px;bottom:9px;color:var(--brown);opacity:.5;font-size:15px;z-index:2}
+.mbox .mb-fill{position:relative;z-index:1;display:block;background:#F6EFDE;border-radius:16px;padding:14px 14px 15px;min-height:98px;box-shadow:0 3px 9px rgba(60,42,26,.07)}
+.mbox .mb-glyphs{display:flex;gap:3px;font-family:var(--serif);font-size:17px;line-height:1;color:var(--clay);margin-bottom:9px}
+.mbox .mb-title{display:block;font-family:var(--serif);font-size:12.5px;font-weight:700;color:var(--brown);line-height:1.3}
+.mbox .mb-arrow{position:absolute;right:12px;bottom:10px;color:var(--brown);opacity:.45;font-size:15px;z-index:2}
 .prog-mbox .mb-fill{display:flex;align-items:center;gap:11px}
-.prog-mbox .pm-ring{position:relative;width:42px;height:42px;flex:none;display:grid;place-items:center}
+.prog-mbox .pm-ring{position:relative;width:44px;height:44px;flex:none;display:grid;place-items:center}
 .prog-mbox .pm-ring svg{position:absolute;inset:0}
 .prog-mbox .pm-pct{font-size:11px;font-weight:700;color:var(--brown)}
 .prog-mbox .mb-title{margin:0}
-.home-duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 2px 20px}
+.home-duo{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:0 2px 22px}
 .dcard{position:relative;display:block;width:100%;text-align:left;cursor:pointer;background:none;border:none;padding:0;transition:transform .14s}
 .dcard:active{transform:scale(.985)}
-.dcard::before{content:"";position:absolute;inset:0;border:1.5px solid var(--ink);z-index:0;pointer-events:none}
-.dcard.c-kana::before{transform:translate(-3px,-3px) rotate(-0.8deg)}
-.dcard.c-kanji::before{transform:translate(3px,-3px) rotate(0.7deg)}
-.dcard .dc-fill{display:block;position:relative;z-index:1;padding:16px 15px 17px;min-height:156px;filter:drop-shadow(0 5px 12px rgba(60,42,26,.13))}
-.dcard.c-kana .dc-fill{background:#D3813A;color:#2E2418;clip-path:polygon(1% 2%,100% 0,99% 98%,0 100%)}
-.dcard.c-kanji .dc-fill{background:#468A80;color:#FCF6EC;clip-path:polygon(0 0,99% 2%,100% 100%,1% 98%)}
-.dc-glyph{display:block;font-family:var(--serif);font-size:34px;line-height:1;margin-bottom:8px}
-.dc-title{display:block;font-family:var(--serif);font-size:16px;font-weight:700;line-height:1.15}
-.dc-sub{display:block;font-size:11px;margin-top:3px;opacity:.9;line-height:1.35}
-.dc-prog{margin-top:10px;height:5px;border-radius:5px;overflow:hidden}
-.dc-prog>i{display:block;height:100%;border-radius:5px}
-.dcard.c-kana .dc-prog{background:rgba(46,36,24,.18)} .dcard.c-kana .dc-prog>i{background:#2E2418}
-.dcard.c-kanji .dc-prog{background:rgba(255,255,255,.26)} .dcard.c-kanji .dc-prog>i{background:#FCF6EC}
+.dcard .dc-fill{position:relative;z-index:1;display:block;border-radius:22px;padding:18px 17px 19px;min-height:162px;box-shadow:0 6px 16px rgba(60,42,26,.11)}
+.dcard.c-kana .dc-fill{background:#B4634B;color:#FCF6EC}
+.dcard.c-kanji .dc-fill{background:#468A80;color:#FCF6EC}
+.dc-glyph{display:block;font-family:var(--serif);font-size:36px;line-height:1;margin-bottom:10px}
+.dc-title{display:block;font-family:var(--serif);font-size:16.5px;font-weight:700;line-height:1.15}
+.dc-sub{display:block;font-size:11.5px;margin-top:4px;opacity:.9;line-height:1.35}
+.dc-prog{margin-top:12px;height:5px;border-radius:5px;overflow:hidden;background:rgba(255,255,255,.26)}
+.dc-prog>i{display:block;height:100%;border-radius:5px;background:#FCF6EC}
 .wcard{position:relative;display:block;width:100%;text-align:left;cursor:pointer;background:none;border:none;padding:0;margin:0 2px;transition:transform .14s}
 .wcard:active{transform:scale(.99)}
-.wcard::before{content:"";position:absolute;inset:0;border:1.5px solid var(--ink);z-index:0;pointer-events:none;transform:translate(-3px,3px) rotate(-0.5deg)}
-.wcard .wc-fill{display:flex;align-items:center;gap:14px;position:relative;z-index:1;padding:17px 16px;background:#E0AC2E;color:#2E2418;clip-path:polygon(1% 0,100% 3%,99% 100%,0 97%);filter:drop-shadow(0 5px 12px rgba(60,42,26,.13))}
-.wc-glyph{flex:none;font-family:var(--serif);font-size:30px;line-height:1;width:44px;text-align:center}
+.wcard .wc-fill{display:flex;align-items:center;gap:15px;position:relative;z-index:1;border-radius:22px;padding:18px 18px;background:#E0AC2E;color:#3A2A16;box-shadow:0 6px 16px rgba(60,42,26,.11)}
+.wc-glyph{flex:none;font-family:var(--serif);font-size:32px;line-height:1;width:46px;text-align:center}
 .wc-body{flex:1;min-width:0}
-.wc-title{display:block;font-family:var(--serif);font-size:16px;font-weight:700;line-height:1.15}
-.wc-sub{display:block;font-size:11.5px;margin-top:2px;opacity:.9}
-.wc-arrow{flex:none;font-size:20px;opacity:.7}
+.wc-title{display:block;font-family:var(--serif);font-size:16.5px;font-weight:700;line-height:1.15}
+.wc-sub{display:block;font-size:12px;margin-top:2px;opacity:.9}
+.wc-arrow{flex:none;font-size:20px;opacity:.65}
+/* Variant B — çok ince imza çizgi/taşma (yuvarlak, refined); body.gridB ile açılır */
+body.gridB .mbox::before{content:"";position:absolute;inset:0;border:1px solid var(--brown);border-radius:16px;transform:translate(-2.5px,-2.5px);z-index:0;pointer-events:none}
+body.gridB .dcard.c-kana::before{content:"";position:absolute;inset:0;border:1px solid var(--brown);border-radius:22px;transform:translate(-3px,-3px);z-index:0;pointer-events:none}
+body.gridB .dcard.c-kanji::before{content:"";position:absolute;inset:0;border:1px solid var(--brown);border-radius:22px;transform:translate(3px,-3px);z-index:0;pointer-events:none}
+body.gridB .wcard::before{content:"";position:absolute;inset:0;border:1px solid var(--brown);border-radius:22px;transform:translate(-3px,3px);z-index:0;pointer-events:none}
 /* Flick-tarzı geometrik öğrenme kartları */
 .play-cards{display:flex;flex-direction:column;gap:20px;margin:12px 3px 6px}
 .pcard{display:block;width:100%;text-align:left;cursor:pointer;background:none;border:none;padding:0;position:relative;transition:transform .14s}
