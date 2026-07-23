@@ -2283,7 +2283,7 @@ function renderHeader(){
     kanji5:["N5 Kanji","Şekil, ses, anlam, kullanım"],words:["N5 Kelimeler","Kanjilerin gerçek kullanımı"],
     worddetail:["Kelime","Anlam ve örnek kullanım"],progress:["İlerleme","Mürekkep dolarken öğren"],
     atlasnode:["Karakter","Atlas · bileşen ailesi"],
-    "profile-edit":["Profili düzenle","İsim ve seviye"], "reset-confirm":["İlerlemeyi sıfırla",""],
+    "profile-edit":["Profili düzenle","İsim ve seviye"], "reset-confirm":["İlerlemeyi sıfırla",""], "import-confirm":["Geri yükle",""],
     "writing-system":["Japonca Yazı Mantığı","Kısa giriş dersi"],
     "kana-about":["Kana nedir?","Hiragana ve Katakana"],
     "kanji-about":["Kanji nedir?","Anlam taşıyan işaretler"],
@@ -2297,7 +2297,7 @@ function renderHeader(){
 
 /* ============================ SCREENS ============================ */
 /* P0-1 Dilim 2: nav görünürlük + selector state hazırlığı (görsel Dilim 3'te). */
-const NAV_HIDDEN = ["onboarding","game","drill","profile","profile-edit","reset-confirm"];
+const NAV_HIDDEN = ["onboarding","game","drill","profile","profile-edit","reset-confirm","import-confirm"];
 const NAV_TAB_GROUP={kana:["kana","kanadetail","mochi"],kanji5:["kanji5","detail","map","transform","words","worddetail","atlasnode","quiz","drill"],games:["games","game"]};
 function navTabOf(screen){ for(const k in NAV_TAB_GROUP){ if(NAV_TAB_GROUP[k].includes(screen)) return k; } return null; }
 function navSelectorState(screen){
@@ -2317,7 +2317,7 @@ function render(){
     kana:Kana,path:Path,detail:Detail,transform:Transform,quiz:Quiz,drill:Drill,
     games:GamesHub,game:GameScreen,kanadetail:KanaDetail,
     kanji5:KanjiN5,words:Words,worddetail:WordDetail,progress:Progress,atlasnode:AtlasNode,
-    onboarding:Onboarding, "profile-edit":ProfileEdit, "reset-confirm":ResetConfirm,
+    onboarding:Onboarding, "profile-edit":ProfileEdit, "reset-confirm":ResetConfirm, "import-confirm":ImportConfirm,
     "writing-system":WritingSystem, mochi:Mochi,
     "kana-about":KanaAbout, "kanji-about":KanjiAbout};
   main.innerHTML = `<div class="screen">${(R[state.screen]||Home)()}</div>`;
@@ -2569,6 +2569,74 @@ function ResetConfirm(){
     </div>
     <small class="note" style="margin-top:14px;display:block;text-align:center;color:var(--muted)">Bu prototipte ilerleme bilgilerin yalnızca bu cihazda saklanır.</small>
   </div>`;
+}
+
+/* ---------- IMPORT CONFIRM (yedekten geri yükleme onayı — tam değiştirir) ---------- */
+function ImportConfirm(){
+  const m=state._importMeta||{};
+  if(!state._pendingImport){ return Profile(); }
+  let when="bilinmiyor";
+  if(m.exportedAt){ try{ when=new Date(m.exportedAt).toLocaleDateString("tr-TR"); }catch(e){} }
+  return `<div class="stagger">
+    <div class="card flat" style="padding:18px 14px;text-align:left">
+      <div class="h2" style="font-size:18px">Yedekten geri yükle</div>
+      <div class="lead" style="margin-top:8px">Seçtiğin yedekte <b>${m.kanji||0}</b> kanji, <b>${m.kana||0}</b> kana ve <b>${m.srs||0}</b> tekrar kaydı var. Yedek tarihi: ${when}.</div>
+      <div class="lead" style="margin-top:10px;color:var(--accent-deep)"><b>Şu anki ilerlemenin yerine geçecek.</b> Bu işlem geri alınamaz.</div>
+      <small class="note" style="margin-top:10px;display:block">Emin değilsen: vazgeçip önce mevcut ilerlemeni dışa aktar, sonra geri yükle.</small>
+    </div>
+    <div style="display:flex;gap:9px;margin-top:14px">
+      <button class="btn ghost" style="flex:1" data-act="import-cancel">Vazgeç</button>
+      <button class="btn" style="flex:1" data-act="import-apply">Geri Yükle</button>
+    </div>
+  </div>`;
+}
+
+/* ---------- YEDEKLEME: dışa/içe aktarma (kalıcılık can simidi — bulut yok) ---------- */
+function exportProgress(){
+  try{
+    save(); // mevcut ilerlemeyi önce kalıcılaştır
+    const snap={}; Object.assign(snap, state);
+    ["_navSel","_game","_editHint","_quiz","_mapLevels","_resumeDismissed","_wsStep","_pendingImport","_importMeta","storageReadOnly","storageUnsupported","storageRecoveryRequired","storageBackupFailed","storageCommitFailed","_migratedFrom"].forEach(k=>{ delete snap[k]; });
+    snap._exportApp="japonca-yazi-atlasi"; snap._exportedAt=new Date().toISOString(); snap._exportSchema=SCHEMA_VERSION;
+    const blob=new Blob([JSON.stringify(snap,null,2)],{type:"application/json"});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");
+    a.href=url; a.download="japonca-yazi-atlasi-yedek-"+new Date().toISOString().slice(0,10)+".json";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(()=>{ try{ URL.revokeObjectURL(url); }catch(e){} },2000);
+    toast("Yedek indirildi ✓");
+  }catch(e){ toast("Yedek oluşturulamadı."); }
+}
+function triggerImportPicker(){
+  let inp=document.getElementById("import-file-input");
+  if(!inp){
+    inp=document.createElement("input");
+    inp.type="file"; inp.accept="application/json,.json"; inp.id="import-file-input"; inp.style.display="none";
+    document.body.appendChild(inp);
+    inp.addEventListener("change",function(){
+      const f=inp.files&&inp.files[0]; inp.value="";
+      if(!f) return;
+      const rd=new FileReader();
+      rd.onload=function(){ handleImportFile(String(rd.result||"")); };
+      rd.onerror=function(){ toast("Dosya okunamadı."); };
+      rd.readAsText(f);
+    });
+  }
+  inp.click();
+}
+function handleImportFile(text){
+  if(STORE.readOnly || STORE.recoveryMode){ toast("Veri koruma modu açık — geri yükleme yapılamadı."); return; }
+  let parsed; try{ parsed=JSON.parse(text); }catch(e){ toast("Geçersiz dosya — JSON okunamadı."); return; }
+  if(!parsed || typeof parsed!=="object" || Array.isArray(parsed)){ toast("Geçersiz yedek dosyası."); return; }
+  if(parsed._exportApp && parsed._exportApp!=="japonca-yazi-atlasi"){ toast("Bu dosya bu uygulamanın yedeği değil."); return; }
+  const h=hydrate(text, APP_RESOLVER);   // AYNI göç+güvenli-birleştirme yolu: eski yedek doğru sürüme yükselir
+  if(h.unsupported){ toast("Bu yedek daha yeni bir sürümden — açılamıyor."); return; }
+  if(h.recoveryRequired){ toast("Yedek geçersiz veya bozuk."); return; }
+  const st=h.state;
+  ["_exportApp","_exportedAt","_exportSchema","_migratedFrom"].forEach(k=>{ delete st[k]; });
+  state._pendingImport=st;
+  state._importMeta={ kanji:Object.keys(st.learned||{}).length, kana:Object.keys(st.kana||{}).length, srs:Object.keys(st.srs||{}).length, exportedAt: parsed._exportedAt||null };
+  go("import-confirm");
 }
 
 /* ---------- WRITING SYSTEM LESSON (Faz 4B intro lesson) ---------- */
@@ -3871,7 +3939,11 @@ function Profile(){
     </div>
     <div class="section-t"><h3>Veriler</h3></div>
     <div class="card flat">
-      <div class="lead">Bu prototipte ilerleme bilgilerin yalnızca bu cihazda saklanır. Tarayıcı verilerini silersen ilerleme de silinebilir.</div>
+      <div class="lead">İlerleme bilgilerin yalnızca bu cihazda saklanır (bulut yok). Tarayıcı verilerini silersen ya da cihaz değiştirirsen ilerlemen gidebilir — düzenli olarak yedek almanı öneririz.</div>
+      <button class="btn ghost full" style="margin-top:12px" data-act="export-progress">İlerlemeyi dışa aktar (yedek al)</button>
+      <button class="btn ghost full" style="margin-top:9px" data-act="import-progress">Yedekten geri yükle</button>
+      <small class="note" style="margin-top:8px;display:block">Yedek, bir <b>.json</b> dosyası olarak iner; başka bir cihazda ya da veri silindikten sonra geri yükleyebilirsin.</small>
+      <div style="height:1px;background:var(--line);margin:14px 0 2px"></div>
       <button class="btn ghost full" style="margin-top:12px" data-act="ob-restart">Karşılama ekranını yeniden başlat</button>
       <small class="note" style="margin-top:8px;display:block">İlerlemen silinmez — sadece tanıtım akışı yeniden başlar.</small>
       <button class="btn ghost full" style="margin-top:12px" data-go="reset-confirm">İlerlemeyi sıfırla</button>
@@ -5791,6 +5863,20 @@ document.addEventListener("click",e=>{
     save(); toast("Profil güncellendi"); go("profile", null, false);
   }
   else if(act==="reset-cancel"){ go("profile", null, false); }
+  else if(act==="export-progress"){ exportProgress(); }
+  else if(act==="import-progress"){ triggerImportPicker(); }
+  else if(act==="import-cancel"){ state._pendingImport=null; state._importMeta=null; go("profile", null, false); }
+  else if(act==="import-apply"){
+    const st=state._pendingImport;
+    if(!st){ go("profile", null, false); return; }
+    if(STORE.readOnly || STORE.recoveryMode){ toast("Veri koruma modu açık — geri yükleme yapılamadı."); return; }
+    Object.keys(state).forEach(k=>{ delete state[k]; });  // TAM DEĞİŞTİR: mevcut state tamamen temizlenir
+    Object.assign(state, st);                              // doğrulanmış v2 yedek benimsenir
+    state.schemaVersion = SCHEMA_VERSION;
+    const sv=save();
+    if(sv.ok){ toast("İlerleme geri yüklendi ✓"); go("home", null, false); }
+    else { toast("Geri yüklenemedi — kayıt yazılamadı, veri yerinde."); }
+  }
   else if(act==="reset-progress-only"){
     // Faz 9-C: merkezi clear — profil + onboarding + ayarlar korunur (userHints KORUNUR)
     // P0-5A: veri koruma modunda sahte başarı gösterme (canonical zaten save() ile korunuyor)
