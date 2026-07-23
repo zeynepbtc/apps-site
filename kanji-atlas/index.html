@@ -310,6 +310,15 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 .rec-hint:active{transform:translateY(0);transition-duration:.09s}
 @media (hover:none){.rec-hint:hover{transform:none}}
 .rec-hint .ra{margin-left:auto;flex:none;color:var(--accent);font-size:17px}
+.gate-card{display:flex;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;margin:14px 2px 6px;padding:14px 16px;border-radius:18px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s,border-color .15s}
+.gate-card:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(40,30,20,.10);border-color:var(--accent-soft)}
+.gate-card:active{transform:translateY(0) scale(.99);transition-duration:.09s}
+@media (hover:none){.gate-card:hover{transform:none;box-shadow:var(--shadow);border-color:var(--line)}}
+.gate-card .gc-glyphs{flex:none;display:flex;gap:3px;font-family:var(--serif);font-size:19px;line-height:1;color:var(--accent-deep)}
+.gate-card .gc-body{flex:1;min-width:0}
+.gate-card .gc-title{display:block;font-family:var(--serif);font-size:15.5px;font-weight:600;color:var(--ink);line-height:1.2}
+.gate-card .gc-sub{display:block;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.4}
+.gate-card .gc-arrow{flex:none;color:var(--accent);font-size:18px}
 .gapp .gi{width:64px;height:64px;border-radius:19px;display:grid;place-items:center;
   font-family:var(--serif);font-size:33px;background:var(--accent-soft);color:var(--accent-deep);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 2px 5px rgba(40,30,20,.07)}
@@ -2275,6 +2284,10 @@ const I18N = {
     "onboarding.actions.no": "Buradan başlayayım",
     "home.rec.writing.label": "Japonca Yazı Mantığı",
     "home.rec.writing.reason": "Yazının nasıl çalıştığını baştan öğren",
+    "home.gate.title.new": "Japonca üç yazıyla yazılır",
+    "home.gate.sub.new": "Nereden başlayacağını gör",
+    "home.gate.title.seen": "Yazı sistemleri",
+    "home.gate.sub.seen": "Hiragana · Katakana · Kanji",
     "onboarding.a11y.back": "Geri",
     "onboarding.a11y.jaGlyph": "Japonca karakter",
     "home.rec.kana.label": "Kana Rehberi",
@@ -2813,6 +2826,7 @@ function Home(){
   const recParam = (_startDesc && _startDesc.param!=null) ? _startDesc.param : "";
   const recLabel = _startDesc ? t(_startDesc.labelKey) : "";
   const recReason = _startDesc ? t(_startDesc.reasonKey) : "";
+  const gateNew = !hasAnyProgress;
   return `
   <div class="stagger">
   <div style="margin:2px 2px 4px">
@@ -2820,6 +2834,16 @@ function Home(){
     <div class="h1">${greet}${uName?'.':''}</div>
     <div class="lead">${homeSubline}</div>
   </div>
+
+  <!-- Dojo kapısı girişi — Merhaba'nın altında, kalıcı; dili ilerlemeye göre yumuşar -->
+  <button class="gate-card" data-go="writing-system">
+    <span class="gc-glyphs" lang="ja" aria-hidden="true"><span>あ</span><span>ア</span><span>木</span></span>
+    <span class="gc-body">
+      <span class="gc-title">${gateNew ? t("home.gate.title.new") : t("home.gate.title.seen")}</span>
+      <span class="gc-sub">${gateNew ? t("home.gate.sub.new") : t("home.gate.sub.seen")}</span>
+    </span>
+    <span class="gc-arrow">›</span>
+  </button>
 
   ${resume?`<div class="resume-card" data-go="quiz" data-param="${esc(resume.id)}" role="button" style="cursor:pointer">
     <div class="rc-kicker">Yarım kalan çalışma</div>
@@ -2882,25 +2906,6 @@ function Home(){
     </button>
   </div>
 
-  <!-- 4. Japonca nasıl çalışır? — açıklayıcı, hafif notlar -->
-  <div class="sec-head"><div class="eb">Anlamak için</div><div class="ti">Japonca nasıl çalışır?</div></div>
-  <div class="howto">
-    <button class="howto-note" data-go="kana-about">
-      <span class="hg" style="width:38px">${iconBadge('あ',IC.terra,IC.amber,38)}</span>
-      <span class="ht"><span class="htt">Kana nedir?</span><span class="hss">Japoncanın ses harfleri: hiragana ve katakana</span></span>
-      <span class="ha">›</span>
-    </button>
-    <button class="howto-note" data-go="kanji-about">
-      <span class="hg" style="width:38px">${iconBadge('木',IC.amber,IC.teal,38)}</span>
-      <span class="ht"><span class="htt">Kanji nedir?</span><span class="hss">Anlam taşıyan işaretler nereden gelir</span></span>
-      <span class="ha">›</span>
-    </button>
-    <button class="howto-note" data-go="writing-system">
-      <span class="hg" style="width:38px">${iconBadge('字',IC.teal,IC.gold,38)}</span>
-      <span class="ht"><span class="htt">Japonca Yazı Mantığı</span><span class="hss">Üç sistem bir cümlede nasıl birlikte çalışır</span></span>
-      <span class="ha">›</span>
-    </button>
-  </div>
   </div>`;
 }
 function qtile(go,glyph,title,sub){
