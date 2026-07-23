@@ -21,6 +21,7 @@
   --accent:#A4392C; --accent-deep:#83291F; --accent-soft:#F3E1DB; --accent-tint:#FBEFEA;
   --ok:#5C7B57; --ok-soft:#E8EEE2; --gold:#A9803F; --gold-soft:#F0E6D2;
   --teal:#468A80; --teal-deep:#33635B; --teal-soft:#CFE3DF; --teal-tint:#E9F2EF;
+  --sun:#EDDD9A; --brown:#5C4030;
   /* Adım 7 · i18n-readiness — üç KANONİK semantik font token'ı (görsel-nötr, GATE 0 uyumlu).
      Eski --serif/--sans bunlara ALIAS; aynı değer iki yerde tanımlanmaz → drift yok.
      Noto Sans JP subset'i Türkçe (Ş U+015E, Ğ U+011E, İ U+0130) tam destekler. */
@@ -311,24 +312,30 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 .rec-hint:active{transform:translateY(0);transition-duration:.09s}
 @media (hover:none){.rec-hint:hover{transform:none}}
 .rec-hint .ra{margin-left:auto;flex:none;color:var(--teal);font-size:17px}
-/* Home header: küçük selam + kompakt Genel İlerleme sayacı */
-.home-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:2px 2px 14px}
+/* Home header: küçük selam + kompakt framed Genel İlerleme sayacı */
+.home-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:4px 3px 16px}
 .home-head .hh-greet{min-width:0}
+.home-head .eyebrow{color:var(--brown)}
 .home-head .hh-name{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--ink);line-height:1.15;margin-top:2px}
-.prog-mini{flex:none;display:flex;align-items:center;gap:9px;padding:6px 12px 6px 7px;border-radius:15px;background:var(--card);border:1px solid var(--line);cursor:pointer;transition:transform .12s}
+.prog-mini{flex:none;position:relative;display:flex;align-items:center;gap:9px;padding:7px 13px 7px 8px;background:var(--card);cursor:pointer;transition:transform .12s;box-shadow:0 4px 9px rgba(60,42,26,.09)}
+.prog-mini::before{content:"";position:absolute;inset:0;border:1.6px solid var(--ink);z-index:0;pointer-events:none;transform:rotate(1.3deg) translate(2px,2px)}
+.prog-mini > *{position:relative;z-index:1}
 .prog-mini:active{transform:scale(.98)}
-.prog-mini .pm-ring{position:relative;width:38px;height:38px;flex:none;display:grid;place-items:center}
+.prog-mini .pm-ring{position:relative;width:36px;height:36px;flex:none;display:grid;place-items:center}
 .prog-mini .pm-ring svg{position:absolute;inset:0}
-.prog-mini .pm-pct{font-size:10.5px;font-weight:700;color:var(--accent-deep)}
+.prog-mini .pm-pct{font-size:10.5px;font-weight:700;color:var(--brown)}
 .prog-mini .pm-lbl{font-size:11px;line-height:1.15;color:var(--muted);font-weight:600;max-width:58px}
-/* Dojo kapısı — sakin, tek satır, göze batmaz */
-.gate-card{display:flex;align-items:center;gap:11px;width:100%;text-align:left;cursor:pointer;margin:0 2px 14px;padding:10px 14px;border-radius:14px;background:var(--card);border:1px solid var(--line);box-shadow:none;transition:background .15s,border-color .15s}
-.gate-card:hover{background:var(--card2);border-color:var(--accent-soft)}
-.gate-card .gc-glyphs{flex:none;display:flex;gap:3px;font-family:var(--serif);font-size:16px;line-height:1;color:var(--accent-deep)}
-.gate-card .gc-title{flex:1;min-width:0;font-family:var(--serif);font-size:13.5px;font-weight:600;color:var(--ink)}
-.gate-card .gc-arrow{flex:none;color:var(--faint);font-size:16px}
+/* Dojo kapısı — framed mini-kart (aile dili), kartlardan küçük */
+.gate-card{display:block;width:100%;text-align:left;cursor:pointer;background:none;border:none;padding:0;position:relative;margin:0 3px 18px;transition:transform .14s}
+.gate-card:active{transform:scale(.99)}
+.gate-card::before{content:"";position:absolute;inset:0;border:2px solid var(--ink);z-index:0;pointer-events:none;transform:rotate(-1deg) translate(-3px,-3px)}
+.gate-card .gc-fill{display:block;position:relative;z-index:1;background:var(--sun);padding:12px 15px;clip-path:polygon(0.6% 4%,100% 0,99.4% 96%,0 100%);filter:drop-shadow(0 5px 11px rgba(60,42,26,.12))}
+.gate-card .gc-row{display:flex;align-items:center;gap:12px}
+.gate-card .gc-glyphs{flex:none;display:flex;gap:3px;font-family:var(--serif);font-size:18px;line-height:1;color:#5C4030}
+.gate-card .gc-title{flex:1;min-width:0;font-family:var(--serif);font-size:14.5px;font-weight:700;color:#463713}
+.gate-card .gc-arrow{flex:none;font-size:17px;color:#463713;opacity:.55}
 /* Flick-tarzı geometrik öğrenme kartları */
-.play-cards{display:flex;flex-direction:column;gap:18px;margin:10px 3px 4px}
+.play-cards{display:flex;flex-direction:column;gap:20px;margin:12px 3px 6px}
 .pcard{display:block;width:100%;text-align:left;cursor:pointer;background:none;border:none;padding:0;position:relative;transition:transform .14s}
 .pcard:active{transform:scale(.99)}
 /* offset köşeli ink çerçeve — referans #1 tarzı (bevel yok, keskin köşe) */
@@ -336,7 +343,7 @@ small.note{font-size:11px;color:var(--faint);line-height:1.5;display:block}
 .pcard.c-kana::before{transform:rotate(-1.7deg) translate(-3px,-4px)}
 .pcard.c-kanji::before{transform:rotate(1.4deg) translate(3px,-4px)}
 .pcard.c-games::before{transform:rotate(-1.3deg) translate(-3px,4px)}
-.pc-fill{display:block;width:100%;position:relative;z-index:1;padding:18px 18px 16px}
+.pc-fill{display:block;width:100%;position:relative;z-index:1;padding:20px 18px 18px;filter:drop-shadow(0 6px 13px rgba(60,42,26,.13))}
 .pcard.c-kana .pc-fill{background:#E0AC2E;color:#2E2418;clip-path:polygon(1% 2%,100% 0,99% 98%,0 100%)}
 .pcard.c-kanji .pc-fill{background:#468A80;color:#FCF6EC;clip-path:polygon(0 0,99% 2%,100% 100%,1% 98%)}
 .pcard.c-games .pc-fill{background:#D3813A;color:#2E2418;clip-path:polygon(1% 0,100% 2%,99% 100%,0 98%)}
@@ -2865,18 +2872,20 @@ function Home(){
     </div>
     <button class="prog-mini" data-go="progress" aria-label="Genel ilerleme: ${pct}%">
       <span class="pm-ring">
-        <svg viewBox="0 0 44 44" width="38" height="38" aria-hidden="true"><circle cx="22" cy="22" r="18" fill="none" stroke="var(--card2)" stroke-width="4.5"/><circle cx="22" cy="22" r="18" fill="none" stroke="var(--accent)" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="${2*Math.PI*18}" stroke-dashoffset="${2*Math.PI*18*(1-pct/100)}" transform="rotate(-90 22 22)"/></svg>
+        <svg viewBox="0 0 44 44" width="38" height="38" aria-hidden="true"><circle cx="22" cy="22" r="18" fill="none" stroke="var(--card2)" stroke-width="4.5"/><circle cx="22" cy="22" r="18" fill="none" stroke="var(--brown)" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="${2*Math.PI*18}" stroke-dashoffset="${2*Math.PI*18*(1-pct/100)}" transform="rotate(-90 22 22)"/></svg>
         <span class="pm-pct">${pct}%</span>
       </span>
       <span class="pm-lbl">Genel İlerleme</span>
     </button>
   </div>
 
-  <!-- Dojo kapısı — sakin, tek satır; yeni/eski kullanıcıya göze batmadan durur -->
+  <!-- Dojo kapısı — framed mini-kart (aile dili), kartlardan küçük -->
   <button class="gate-card" data-go="writing-system">
-    <span class="gc-glyphs" lang="ja" aria-hidden="true"><span>あ</span><span>ア</span><span>木</span></span>
-    <span class="gc-title">${t("home.gate.title")}</span>
-    <span class="gc-arrow">›</span>
+    <span class="gc-fill"><span class="gc-row">
+      <span class="gc-glyphs" lang="ja" aria-hidden="true"><span>あ</span><span>ア</span><span>木</span></span>
+      <span class="gc-title">${t("home.gate.title")}</span>
+      <span class="gc-arrow">›</span>
+    </span></span>
   </button>
 
   ${resume?`<div class="resume-card" data-go="quiz" data-param="${esc(resume.id)}" role="button" style="cursor:pointer">
