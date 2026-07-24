@@ -34,7 +34,10 @@ for (const id in chars) {
   else if (hasEty && k.etymology.qaStatus === "pending") expKo = null;        // pending → gizli
   else expKo = (k.pictogram_note || "");
   ok("kokenOf " + id, api.kokenOf(k) === expKo);
-  ok("mnemonicOf==legacy " + id, api.mnemonicOf(k) === (k.memory_hint_tr || ""));   // B'de mnemonic v2 yok
+  let expMn;
+  if (k.mnemonic && k.mnemonic.status) expMn = (k.mnemonic.status === "active" ? (k.mnemonic.textTr || "") : "");  // not_required/pending_review → gizli
+  else expMn = (k.memory_hint_tr || "");
+  ok("mnemonicOf " + id, api.mnemonicOf(k) === expMn);
   ok("componentsOf==legacy(türetilmiş) " + id, JSON.stringify(api.componentsOf(k)) === JSON.stringify(k.components || []));
   const fc = (k.components || [])[0];
   if (k.structure && Array.isArray(k.structure.components) && fc) {
