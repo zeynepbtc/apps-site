@@ -4901,7 +4901,20 @@ const GAMES = {
   "word-cloze":{title:"Cümleyi Tamamla",sub:"Boşluğa doğru kelime",cat:"kelime",glyph:"＿",desc:"Basit cümlede eksik kelimeyi seç. (gramer değil, kullanım)",diff:"Orta",time:"~3 dk",engine:"choice",rounds:8},
   // Faz 9-B v2: stroke artık Oyunlar kategorilerinde listelenmiyor ama kana detayından çağrılıyor
   "stroke":{title:"Vuruş Sırası",sub:"İzle ve çiz",cat:"kanji",glyph:"筆",desc:"Animasyonu izle, sonra doğru sırayla çiz.",diff:"Zor",time:"~4 dk",engine:"stroke",hidden:true},
+  "kanji-confuse":{title:"Kanji Ayırt Etme",sub:"Karışan çiftler",cat:"kanji",glyph:"土",desc:"Neredeyse aynı görünen kanjileri farkıyla ayır.",diff:"Orta",time:"~3 dk",engine:"choice",rounds:8},
 };
+/* Kanji karışan çiftleri (İnce Farklar / minimal-çift — kana confusables'ın kanji karşılığı).
+   [charA, charB, fark notu]. En az biri DATA'da (anlamı hedef olur); diğeri görsel ikiz çeldirici. */
+const KANJI_CONFUSABLES=[
+  ["木","本","本 = 木'nin köküne bir çizgi eklenmişi (asıl/kök); 木 sade ağaç."],
+  ["日","目","目 içinde iki yatay çizgi var (göz); 日 içinde tek yatay (gün/güneş)."],
+  ["王","玉","玉'de fazladan bir nokta var (mücevher); 王 noktasız (kral)."],
+  ["人","入","人 iki bacak dışa açılır (insan); 入 tepesi kapalı, içe döner (girmek)."],
+  ["土","士","土 alt yatay üstten uzun (toprak); 士 üst yatay alttan uzun (bilgin)."],
+  ["大","太","太'de içeride bir nokta var (kalın); 大 noktasız (büyük)."],
+  ["千","干","千 üstte eğik çizgiyle başlar (bin); 干 düz yatayla başlar (kuru)."],
+  ["右","石","右 üstte kısa eğik + 口 (sağ); 石 üstte kaya çatısı (厂) + 口 (taş)."]
+];
 
 const shuffle=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
 const sampleN=(arr,n)=>shuffle(arr).slice(0,n);
@@ -4914,7 +4927,7 @@ function uniqOpts(correct, pool, n=4){
 function GamesHub(){
   const groups=[
     ["Kana Ustalığı","Yazım sistemlerini tanı ve ayırt et",["kana-match","confuse","katakana-cipher"]],
-    ["Kanji Dedektifi","Atlasın kalbi: parçadan anlama",["comp-meaning","atolye","comp-select","structure","family"]],
+    ["Kanji Dedektifi","Atlasın kalbi: parçadan anlama",["comp-meaning","atolye","comp-select","structure","family","kanji-confuse"]],
     ["Gerçek Kullanım","Okuma, anlam ve bağlamda kullanım",["kanji-reading","word-meaning","word-reading","word-cloze"]],
   ];
   const card=(id)=>{
@@ -5095,6 +5108,19 @@ function buildRounds(id, opts){
       rounds.push({ptype:"discriminate", pair:members.map(m=>m.character), note,
         label:`Okunuşu “${t.romaji}” olan hangisi?`, options:opts,
         explain:`<b>${t.character}</b> = ${t.romaji}. ${note}`, speak:t.character});
+    }
+    else if(id==="kanji-confuse"){
+      const kd=(c)=>{ const id2=kanjiIdByChar(c); return id2?ch(id2):null; };
+      const g=KANJI_CONFUSABLES[Math.floor(Math.random()*KANJI_CONFUSABLES.length)];
+      const note=g[2]; const pair=[g[0],g[1]];
+      const inData=pair.map(kd);
+      const ti=(inData[0]&&inData[1])?Math.floor(Math.random()*2):(inData[0]?0:(inData[1]?1:-1));
+      if(ti<0){ r--; continue; }
+      const target=inData[ti]; const tChar=pair[ti];
+      const opts=shuffle(pair.map(c=>({label:c,glyph:true,correct:c===tChar})));
+      rounds.push({ptype:"discriminate", pair, note,
+        label:`Anlamı “${target.meaning_tr}” olan hangisi?`, options:opts,
+        explain:`<b>${tChar}</b> = ${target.meaning_tr}. ${note}`, speak:tChar});
     }
     else if(id==="kanji-meaning"){
       const k=kanji[Math.floor(Math.random()*kanji.length)];
