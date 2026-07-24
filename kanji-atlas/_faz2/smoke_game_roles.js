@@ -55,6 +55,9 @@ for (const id of ["dai", "ou"]) {
   const k = byId[id];
   ok(`${id} 象形 → tüm bileşen oyunlarından çıktı`, GAMES.every(g => api.eligibleForGame(k, g) === false));
 }
+// C/P1: 国 (囗+玉, ikisi de semantic) tüm havuzlarda; 玉 (象形, structure=[]) hiçbir havuzda
+if (byId.kuni) GAMES.forEach(g => ok(`kuni 会意 → ${g} ✓`, api.eligibleForGame(byId.kuni, g) === true));
+if (byId.tama) ok("tama 象形 → tüm bileşen oyunlarından çıktı", GAMES.every(g => api.eligibleForGame(byId.tama, g) === false));
 
 // (2) FIXTURE MATRIS — v2 role kayıtları
 const mk = (roles) => ({

@@ -22,6 +22,18 @@ for (const id in chars) {
       ok(`${id}: ${c.glyph} (${c.role}) legacy meaning taşımıyor`, !(k.component_meanings && k.component_meanings[c.glyph]));
   }
 }
-console.log(`v2 kayıt: ${v2count}`);
+// READINGS türetmesi: onyomi/kunyomi == taughtOn/taughtKun ("・" ile), deferred official∖taught
+let rcount = 0;
+for (const id in chars) {
+  const k = chars[id];
+  if (!k.readings) continue;
+  rcount++;
+  ok("onyomi == taughtOn: " + id, k.onyomi === k.readings.taughtOn.join("・"));
+  ok("kunyomi == taughtKun: " + id, k.kunyomi === k.readings.taughtKun.join("・"));
+  // deferred okuma taught'ta OLMAMALI (official ama öğretilmiyor)
+  for (const d of (k.readings.deferred || []))
+    ok(`${id}: deferred ${d.reading} taught'ta değil`, !k.readings.taughtOn.includes(d.reading) && !k.readings.taughtKun.includes(d.reading));
+}
+console.log(`v2 struct kayıt: ${v2count} · v2 readings kayıt: ${rcount}`);
 console.log(`smoke_legacy_derived: ${pass}/${pass + fail}`);
 process.exit(fail ? 1 : 0);
