@@ -1609,8 +1609,9 @@ const CONTENT_HASH = "8d3fc40be3559982";
 // köken (Kökeni): v2 etymology.summaryTr → yoksa legacy pictogram_note
 function kokenOf(k){
   if (k && k.etymology){
-    if (typeof k.etymology.summaryTr === "string") return k.etymology.summaryTr;
-    if (k.etymology.qaStatus === "pending") return null;   // yanlış eski köken gizlenir (Authoring yeni metni yazacak)
+    const e = k.etymology;
+    if (e.qaStatus === "pending" || e.qaStatus === "drafted") return null;  // QA öncesi (yazılmadı/taslak) → GİZLİ (yazan≠onaylayan kapısı)
+    if (typeof e.summaryTr === "string") return e.summaryTr;                // reviewed + yazılmış → görünür
   }
   return (k && k.pictogram_note) || "";
 }

@@ -30,8 +30,8 @@ for (const id in chars) {
   const k = chars[id];
   const hasEty = !!k.etymology;
   let expKo;
-  if (hasEty && typeof k.etymology.summaryTr === "string") expKo = k.etymology.summaryTr;
-  else if (hasEty && k.etymology.qaStatus === "pending") expKo = null;        // pending → gizli
+  if (hasEty && (k.etymology.qaStatus === "pending" || k.etymology.qaStatus === "drafted")) expKo = null;  // QA öncesi → gizli
+  else if (hasEty && typeof k.etymology.summaryTr === "string") expKo = k.etymology.summaryTr;
   else expKo = (k.pictogram_note || "");
   ok("kokenOf " + id, api.kokenOf(k) === expKo);
   let expMn;
@@ -50,6 +50,12 @@ for (const id in chars) {
 
 // 5) CANONICAL-SOURCE (generator lossless): DATA.chars → serialize → parse → derin eşit
 ok("canonical-source lossless", JSON.stringify(JSON.parse(canonical)) === canonical && Object.keys(JSON.parse(canonical)).length === Object.keys(chars).length);
+
+// 6) DRAFTED KAPISI (fixture): yazan≠onaylayan — köken yalnız reviewed'da görünür
+ok("gate: reviewed+summaryTr görünür", api.kokenOf({ etymology: { qaStatus: "reviewed", summaryTr: "X" } }) === "X");
+ok("gate: drafted GİZLİ", api.kokenOf({ etymology: { qaStatus: "drafted", summaryTr: "X" } }) === null);
+ok("gate: pending GİZLİ", api.kokenOf({ etymology: { qaStatus: "pending", summaryTr: "X" } }) === null);
+ok("gate: reviewed summaryTr yok → legacy köken", api.kokenOf({ etymology: { qaStatus: "reviewed" }, pictogram_note: "L" }) === "L");
 
 console.log(`\nsmoke_content_scaffold: ${pass}/${pass + fail}`);
 process.exit(fail ? 1 : 0);
