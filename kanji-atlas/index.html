@@ -35,7 +35,7 @@
   --r:18px; --r-sm:12px;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;padding:0}
+html,body{margin:0;padding:0;touch-action:manipulation}  /* çift-dokun zoom kapalı; pinch-zoom + scroll açık (çizim pad'i kendi touch-action:none'ıyla korunur) */
 body{
   font-family:var(--sans); color:var(--ink);
   background:#E7DFD1;
