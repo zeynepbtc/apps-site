@@ -1599,6 +1599,39 @@ let state = {
   cipherLearned:{},      // v2: glyph -> {kana, romaji, source, tr, firstLearnedAt, correctCount}
   userHints:{},          // Faz 10-C: id/karakter -> kullanıcının kendi hatırlatıcı notu
 };
+
+/* ===== FAZ2-FIX A1 · İçerik v2 uyumluluk iskeleti (DAVRANIŞ DEĞİŞİKLİĞİ YOK) =====
+   İçerik şeması, kullanıcı state SCHEMA_VERSION'dan AYRI versiyonlanır (statik dataset; kimlikler değişmez).
+   Accessor'lar v2 alanını okur, yoksa legacy alana düşer → v2 verisi eklenene dek çıktı BİREBİR aynı.
+   CONTENT_HASH canonical DATA.chars checksum'ıdır; _faz2/generate_data_chars.js üretir/doğrular. */
+const CONTENT_VERSION = "2026.07-c1";
+const CONTENT_HASH = "86b02bde48c9fac9";
+// köken (Kökeni): v2 etymology.summaryTr → yoksa legacy pictogram_note
+function kokenOf(k){
+  if (k && k.etymology && typeof k.etymology.summaryTr === "string") return k.etymology.summaryTr;
+  return (k && k.pictogram_note) || "";
+}
+// hatırlatıcı: v2 mnemonic{status,textTr} — status active ise metin, not_required/pending_review → boş; yoksa legacy memory_hint_tr
+function mnemonicOf(k){
+  if (k && k.mnemonic && typeof k.mnemonic.status === "string"){
+    return k.mnemonic.status === "active" ? (k.mnemonic.textTr || "") : "";
+  }
+  return (k && k.memory_hint_tr) || "";
+}
+// bileşen glifleri: v2 structure.components[].glyph → yoksa legacy components
+function componentsOf(k){
+  if (k && k.structure && Array.isArray(k.structure.components)) return k.structure.components.map(c=>c.glyph);
+  return (k && k.components) || [];
+}
+// bileşen rolü (semantic/phonetic/indicative/form/uncertain) — v2 only, yoksa null (A2 oyun politikası kullanır)
+function componentRole(k, glyph){
+  if (k && k.structure && Array.isArray(k.structure.components)){
+    const f = k.structure.components.find(c=>c.glyph===glyph);
+    if (f) return f.role || null;
+  }
+  return null;
+}
+/* ===== /FAZ2-FIX A1 ===== */
 // hydrate
 /* FAZ 2 · Storage — sürümlü + recovery-korumalı (bozuk JSON kana_state'i EZMEZ) */
 /* FAZ 2 · Storage/Migration — SAF mantık (localStorage'a doğrudan bağlı DEĞİL, test edilebilir).
@@ -3454,7 +3487,7 @@ function Detail(){
     </div>
 
     <div class="section-t"><h3>Kökeni</h3></div>
-    <div class="card flat"><div class="lead">${c.pictogram_note}</div></div>
+    <div class="card flat"><div class="lead">${kokenOf(c)}</div></div>
 
     <div class="section-t"><h3>Bu karakter neyden oluşur</h3></div>
     <div class="card flat">${compHTML}
@@ -3462,9 +3495,9 @@ function Detail(){
       ${Object.entries(c.component_meanings).map(([cc,mm])=>`<div class="cm-row"><span class="cm-c jp">${cc}</span><span class="cm-eq">→</span><span>${mm}</span></div>`).join("")}
     </div>`:''}</div>
 
-    ${c.memory_hint_tr?`<div class="card flat" style="margin-top:11px;padding:0;background:none;border:none;box-shadow:none">
-      <div class="hint-card"><span class="hi jp">記</span><div class="ht"><b>Şöyle hatırlayabilirsin:</b> ${c.memory_hint_tr}</div></div>
-    </div>`:''}
+    ${(()=>{const _mn=mnemonicOf(c);return _mn?`<div class="card flat" style="margin-top:11px;padding:0;background:none;border:none;box-shadow:none">
+      <div class="hint-card"><span class="hi jp">記</span><div class="ht"><b>Şöyle hatırlayabilirsin:</b> ${_mn}</div></div>
+    </div>`:'';})()}
     ${userHintBlock(id)}
 
     ${v?`<div class="section-t"><h3>Konum değişimi</h3></div>
