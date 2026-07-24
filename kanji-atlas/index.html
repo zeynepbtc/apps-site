@@ -3188,7 +3188,7 @@ function Kana(){
   <div class="lead" style="margin:-4px 2px 10px">İki küçük işaret sesi değiştirir. Yeni karakter yok — bildiğin kanaya eklenir. <b>Dokun:</b> dönüşümü gör, dinle, biliyorsan işaretle (tekrara girer).</div>
   ${state._dakOpen?dakFocusCard(state._dakOpen):''}
   <div class="card flat">
-    <div class="row" style="gap:6px;margin-bottom:9px"><span class="jp" style="font-size:20px">゛</span><span class="lead">Dakuten — sesi yumuşatır: k→g, s→z, t→d, h→b</span></div>
+    <div class="row" style="gap:6px;margin-bottom:9px"><span class="jp" style="font-size:20px">゛</span><span class="lead">Dakuten ünsüze <b>ses katar</b> — söylerken boğazın titreşir (ötümlü olur): k→g, s→z, t→d, h→b</span></div>
     <div class="dakwrap">${DAKUTEN_PAIRS.map(dakBtn).join("")}</div>
     <div class="row" style="gap:6px;margin:14px 0 9px"><span class="jp" style="font-size:20px">゜</span><span class="lead">Handakuten — yalnızca h satırında: h→p</span></div>
     <div class="dakwrap">${HANDAKUTEN_PAIRS.map(dakBtn).join("")}</div>
@@ -4035,7 +4035,7 @@ function dakFocusCard(voiced){
   const info=DAKU_KANA[voiced]; if(!info) return "";
   const base=info.base; const baseRo=(KANA_BY_CHAR[base]&&KANA_BY_CHAR[base].romaji)||"";
   const mark=info.kind==="handakuten"?"゜":"゛";
-  const ruleTxt=info.kind==="handakuten"?"handakuten — h sesi p'ye döner":"dakuten — sesi yumuşatır";
+  const ruleTxt=info.kind==="handakuten"?"handakuten — h sesi p'ye döner":"dakuten — ünsüze ses katar (ötümlü olur)";
   const kn=!!state.kana[voiced];
   return `<div class="dak-focus">
     <button class="dak-focus-x" data-act="dak-close" aria-label="Kapat">×</button>
@@ -4043,7 +4043,7 @@ function dakFocusCard(voiced){
     <div class="dak-focus-ro">${baseRo} → ${info.romaji}</div>
     <div class="dak-focus-rule">${mark} ${ruleTxt}</div>
     <div class="row" style="justify-content:center;gap:10px;margin-top:13px">
-      <button class="audio-btn" data-speak="${esc(voiced)}" aria-label="Sesli oku">${AUDIO_ICON}</button>
+      <button class="audio-btn" data-tts="${esc(voiced)}" aria-label="Sesli oku">${AUDIO_ICON}</button>
       <button class="btn ${kn?'ghost':''} sm" data-act="dak-known" data-v="${esc(voiced)}">${kn?'Biliyorum ✓':'Biliyorum'}</button>
     </div>
   </div>`;
@@ -4084,7 +4084,7 @@ function KanaReview(){
       <div class="lead" style="margin-bottom:8px">Bu ses hangi kana?</div>
       <div class="row" style="justify-content:center;align-items:center;gap:12px">
         <span class="krev-romaji">${s.romaji}</span>
-        <button class="audio-btn" data-speak="${esc(s.char)}" aria-label="Sesli oku">${AUDIO_ICON}</button>
+        <button class="audio-btn" ${DAKU_KANA[s.char]?`data-tts="${esc(s.char)}"`:`data-speak="${esc(s.char)}"`} aria-label="Sesli oku">${AUDIO_ICON}</button>
       </div>
     </div>
     <div class="krev-opts">${opts}</div>
@@ -5888,7 +5888,7 @@ function playGuide(){
 
 /* ============================ EVENT DELEGATION ============================ */
 document.addEventListener("click",e=>{
-  const el=e.target.closest("[data-tab],[data-go],[data-act],[data-node],[data-kana],[data-kanaset],[data-opt],[data-practice],[data-game],[data-gopt],[data-gsel],[data-mcard],[data-speak],[data-gstart],[data-level],[data-kcat],[data-wcat],[data-ptab],[data-mlev],[data-anode],[data-mleft],[data-mright],[data-reveal],[data-slev],[data-pathstep],[data-premium],[data-lvl],[data-target]");
+  const el=e.target.closest("[data-tab],[data-go],[data-act],[data-node],[data-kana],[data-kanaset],[data-opt],[data-practice],[data-game],[data-gopt],[data-gsel],[data-mcard],[data-speak],[data-tts],[data-gstart],[data-level],[data-kcat],[data-wcat],[data-ptab],[data-mlev],[data-anode],[data-mleft],[data-mright],[data-reveal],[data-slev],[data-pathstep],[data-premium],[data-lvl],[data-target]");
   if(!el) return;
   if(el.dataset.premium!==undefined){
     toast("Bu modül ileri sürüm için planlandı. Şimdilik Kana, N5 Kanji ve Atlas ile temeli güçlendirebilirsin.", 4200);
@@ -5909,6 +5909,7 @@ document.addEventListener("click",e=>{
   if(el.dataset.ptab!==undefined){ state._progTab=el.dataset.ptab; render(); return; }
   if(el.dataset.gstart!==undefined){ const a=el.dataset.arg; const id=el.dataset.gstart; state._gamePick=null; const e=GAMES[id].engine; startGame(id, e==="match"?{mode:a}:e==="memory"?{diff:a}:{set:a}); return; }
   if(el.dataset.speak!==undefined){ playAudio(el.dataset.speak, el.dataset.audioCat, el, "fixed"); return; }
+  if(el.dataset.tts!==undefined){ speak(el.dataset.tts, el); return; }   // ses dosyası olmayan içerik (dakuten vb.) → doğrudan TTS
   if(el.dataset.game!==undefined){ openGame(el.dataset.game); return; }
   if(el.dataset.gopt!==undefined){ gameChoiceAnswer(parseInt(el.dataset.gopt)); return; }
   if(el.dataset.gsel!==undefined){ if(state._game&&state._game.answered) return; el.classList.toggle("on"); return; }
@@ -6023,7 +6024,7 @@ document.addEventListener("click",e=>{
     render();
   }
   else if(act==="kanarev-exit"){ state._kanarev=null; go("kana",null,false); }
-  else if(act==="dak-open"){ const v=el.dataset.v; state._dakOpen=(state._dakOpen===v)?null:v; render(); if(state._dakOpen) playAudio(v,"",null,"fixed"); }
+  else if(act==="dak-open"){ const v=el.dataset.v; state._dakOpen=(state._dakOpen===v)?null:v; render(); if(state._dakOpen) speak(v,null); }
   else if(act==="dak-close"){ state._dakOpen=null; render(); }
   else if(act==="dak-known"){
     const v=el.dataset.v; const r=srsRecord(v,true,{known:true});   // dakuten kana → kana SRS halkasına girer
