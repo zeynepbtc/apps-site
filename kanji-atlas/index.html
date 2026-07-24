@@ -1150,7 +1150,7 @@ body.gridB .pwcard::before{content:"";position:absolute;inset:0;border:1px solid
   background:var(--accent-tint);border-radius:12px;padding:11px 14px;margin:14px 2px 4px;font-size:15px;line-height:1.4}
 /* Tanıma merdiveni — iki EŞİT seçim butonu (Evet/Hayır) */
 .ob-yesno{display:flex;flex-direction:column;gap:10px;width:100%;margin-top:14px}
-.ob-choice{display:flex;flex-direction:column;align-items:center;gap:3px;width:100%;min-height:56px;padding:14px 16px;border-radius:16px;background:var(--surface);border:1.5px solid var(--line);cursor:pointer;font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--ink);text-align:center;transition:transform .12s,border-color .12s,box-shadow .12s}
+.ob-choice{display:flex;flex-direction:column;align-items:center;gap:3px;width:100%;min-height:56px;padding:14px 16px;border-radius:16px;background:var(--surface);border:1.5px solid var(--line);cursor:pointer;font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--ink);text-align:center;transition:transform .12s,border-color .12s,box-shadow .12s}
 .ob-choice:hover{transform:translateY(-1px);border-color:var(--accent-soft);box-shadow:0 6px 16px rgba(40,30,20,.08)}
 .ob-choice:active{transform:translateY(0) scale(.99);transition-duration:.09s}
 @media (hover:none){.ob-choice:hover{transform:none;box-shadow:none;border-color:var(--line)}}
@@ -5661,8 +5661,8 @@ function memoryFlip(idx){
 function afterRender(){
   // ADIM 7 · a11y: onboarding ekran değişiminde focus'u ekranın H1'ine taşı (klavye/ekran okuyucu)
   if(state.screen==="onboarding"){ try{ const _h=document.querySelector(".ob-stage h1"); if(_h && _h.focus) _h.focus({preventScroll:true}); }catch(e){} }
-  if(state.screen==="detail"){ const c=ch(state.param); if(c&&state.settings.autoplay) animateStrokes($("#bigStage svg"), c.stroke_order_steps, false); }
-  if(state.screen==="kanadetail"){ const k=KANA_BY_CHAR[state.param]; if(k&&state.settings.autoplay) animateStrokes($("#bigStage svg"), k.stroke_order_steps, false); }
+  if(state.screen==="detail"){ const c=ch(state.param); if(c&&state.settings.autoplay) animateStrokes($("#bigStage svg.kvg"), c.stroke_order_steps, false); }
+  if(state.screen==="kanadetail"){ const k=KANA_BY_CHAR[state.param]; if(k&&state.settings.autoplay) animateStrokes($("#bigStage svg.kvg"), k.stroke_order_steps, false); }
   if(state.screen==="drill"||state.screen==="practice") setupDrill();
   if(state.screen==="game"&&state._game&&state._game.engine==="stroke") setupDrill();
   if(state.screen==="mochi" && state._mochi){
@@ -5952,7 +5952,7 @@ document.addEventListener("click",e=>{
 
   const act=el.dataset.act;
   if(act==="back") back();
-  else if(act==="play"){ const c=ch(state.param)||KANA_BY_CHAR[state.param]; animateStrokes($("#bigStage svg"),c.stroke_order_steps); }
+  else if(act==="play"){ const c=ch(state.param)||KANA_BY_CHAR[state.param]; animateStrokes($("#bigStage svg.kvg"),c.stroke_order_steps); }
   else if(act==="addreview"){
     if($("#pad") && drillValidated<drillExpected){ toast("Önce tüm vuruşları doğru çizmelisin."); return; }
     const id=el.dataset.param; const fresh=markLearned(id, state.status[id]||"learning");
